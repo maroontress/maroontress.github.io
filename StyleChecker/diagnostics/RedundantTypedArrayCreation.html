@@ -49,6 +49,26 @@ initializer. Note that
 <p>You can create an implicitly-typed array in which the type of the array
 instance is inferred from the elements specified in the array initializer.</p>
 </blockquote>
+<h3>Remarks</h3>
+<p>There are some cases where type inference does not work so that the
+implicitly-typed arrays are not available.
+For example, when all the elements are Method References, the implicitly-typed
+array creation causes an error CS0826 as follows:</p>
+<pre><code class="language-csharp">public static void RaiseCS0826()
+{
+    _ = new[]
+    {
+        DoSomething,
+    };
+}
+
+public static void DoSomething()
+{
+}
+</code></pre>
+<blockquote>
+<p><a href="https://sharplab.io/#v2:C4LghgzsA0AmIGoA+ABATARgLAChcoGYACFDANhLSIFEAPMAWwAcAbAUwlwG9ci+TipCigAsRACoBPJmwCSAOwBmbAE5t5AYzkQAcgHtgAQQBuYAJYswAI3YAKAJS9+PHPzdEA9B6KGWLImzsDOrAEERgakTAABZsRMExerBEaspqmhwAdE7uRAD6RAC8RPJsAO4kGGgA2gC6Oe4uubkAInoAynoJ0WbyAObQDW4AvgDcDcO4DYSVwmJSMgpp6lqyECbmljZsDg1NzV4+wETskMd6pQFBIURmYWBEsIFsfWDAbNmuzQXFpWV1Q2cgNytlIaHsbU63V6A2B7khXTYMRhgy+uTGEymaIEsxIYgASuYIGwAMLtAAMAA40GRdtj9rkfiVygDsW4Gc0+Ajof1UZyMdjJtjpoJyHiiNykT1+nT2ZicEKgA">See errors</a></p>
+</blockquote>
 <h2>Code fix</h2>
 <p>The code fix provides an option removing the explicit type of the array.</p>
 <h2>Example</h2>
@@ -68,7 +88,7 @@ instance is inferred from the elements specified in the array initializer.</p>
 </code></pre>
 <h2>References</h2>
 <p><a id="ref1"></a>
-[1] <a href="https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/arrays/implicitly-typed-arrays">Microsoft, <em>Implicitly Typed Arrays (C# Reference)</em></a></p>
+[1] <a href="https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/arrays/implicitly-typed-arrays">Microsoft, <em>Implicitly Typed Arrays (C# Programming Guide)</em></a></p>
           </main>
         </section>
       </div>
@@ -145,6 +165,12 @@ instance is inferred from the elements specified in the array initializer.</p>
     </li>
     <li>
       <a href="StaticGenericClass.html">Static<wbr>Generic<wbr>Class</a>
+    </li>
+    <li>
+      <a href="StinkyBooleanExpression.html">Stinky<wbr>Boolean<wbr>Expression</a>
+    </li>
+    <li>
+      <a href="StrayText.html">Stray<wbr>Text</a>
     </li>
     <li>
       <a href="ThoughtlessName.html">Thoughtless<wbr>Name</a>

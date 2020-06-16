@@ -12,7 +12,7 @@
     </script>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>NoSpaceAfterSemicolon | StyleChecker | List of diagnostics</title>
+    <title>StinkyBooleanExpression | StyleChecker | List of diagnostics</title>
     <link rel="stylesheet" type="text/css" href="/css/markdown.css">
     <link rel="apple-touch-icon" sizes="120x120" href="/images/logo-v2-120x120.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/images/logo-v2-180x180.png">
@@ -32,51 +32,53 @@
           <main class="content">
 <div class="project-logo">StyleChecker</div>
 <div id="toc-level" data-values="H2,H3"></div>
-<h1>NoSpaceAfterSemicolon</h1>
+<h1>StinkyBooleanExpression</h1>
 <div class="horizontal-scroll">
-<p><img src="https://maroontress.github.io/StyleChecker/images/NoSpaceAfterSemicolon.png" alt="NoSpaceAfterSemicolon"></p>
+<p><img src="https://maroontress.github.io/StyleChecker/images/StinkyBooleanExpression.png" alt="StinkyBooleanExpression"></p>
 </div>
 <h2>Summary</h2>
-<p>A semicolon must be followed by a white space.</p>
+<p>Do not use the conditional operator (<code>?:</code>)
+where either the second or third operand is a <code>bool</code> literal
+(<code>true</code> or <code>false</code>), resulting in <code>bool</code> values.</p>
 <h2>Default severity</h2>
 <p>Warning</p>
 <h2>Description</h2>
-<p>In most cases, a semicolon is followed by the end of
-the line (EOL). If exceptionally a semicolon is followed by
-other than EOL (e.g. an expression in a <code>for</code> statement,
-a comment, and so on), it must be followed by a space.</p>
-<p>However, in the style like <em>infinite <code>for</code> loops</em>,
-semicolons may not be followed by a space, as follows:</p>
-<pre><code class="language-csharp">for (;;)
-{
-    ...
-}
+<p>There are some stinky boolean expressions with a conditional
+operator that can be replaced with the <code>&amp;&amp;</code> (conditional logical
+AND) or <code>||</code> (conditional logical OR) operator, as follows:</p>
+<pre><code class="language-csharp">(b1 ? b2 : false)
+(b1 ? true : b2)
 </code></pre>
-<p>Note that it is intended that this analyzer and
-<a href="SpaceBeforeSemicolon.md">SpaceBeforeSemicolon</a>
-analyzer are used together, and <a href="https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/documentation/SA1002.md">SA1002</a> is replaced with them.</p>
+<p>where the type of <code>b1</code> and <code>b2</code> is <code>bool</code>. It is possible to
+replace the former conditional expression with <code>b1 &amp;&amp; b2</code>, the
+latter with <code>b1 || b2</code>.</p>
+<h3>Remarks</h3>
+<p>The diagnostics IDE0057 providing
+<em>Simplify conditional expressions refactoring</em>,
+which is available with
+<a href="https://docs.microsoft.com/en-us/visualstudio/releases/2019/release-notes-preview#16.6.0-pre.2.1">Visual Studio 2019 version 16.6 preview
+2</a>,
+includes the same feature as this analyzer.</p>
 <h2>Code fix</h2>
-<p>The code fix provides an option inserting a space after the semicolon.</p>
+<p>The code fix provides an option replacing the conditional
+operator with the <code>&amp;&amp;</code> or <code>||</code> operator.
+However, if the diagnostics IDE0057 provides an option
+&quot;Simplify conditional expression&quot; with Visual Studio,
+you should use it.</p>
 <h2>Example</h2>
 <h3>Diagnostic</h3>
-<pre><code class="language-csharp">public void Method()
-{
-    var n = 10;// Comment
-    for (var k = 0;k &lt; n;++k)
-    {
-        Console.WriteLine(k);/**/
-    }
-}
+<pre><code class="language-csharp">_ = (b1 ? b2 : false);
+_ = (b1 ? false : b2);
+
+_ = (b1 ? true : b2);
+_ = (b1 ? b2 : true);
 </code></pre>
 <h3>Code fix</h3>
-<pre><code class="language-csharp">public void Method()
-{
-    var n = 10; // Comment
-    for (var k = 0; k &lt; n; ++k)
-    {
-        Console.WriteLine(k); /**/
-    }
-}
+<pre><code class="language-csharp">_ = ((b1) &amp;&amp; (b2));
+_ = (!(b1) &amp;&amp; (b2));
+
+_ = ((b1) || (b2));
+_ = (!(b1) || (b2));
 </code></pre>
           </main>
         </section>
@@ -132,11 +134,9 @@ analyzer are used together, and <a href="https://github.com/DotNetAnalyzers/Styl
     <li>
       <a href="NoSingleSpaceAfterTripleSlash.html">No<wbr>Single<wbr>Space<wbr>After<wbr>Triple<wbr>Slash</a>
     </li>
-    <li class="selected">
-      No<wbr>Space<wbr>After<wbr>Semicolon
+    <li>
+      <a href="NoSpaceAfterSemicolon.html">No<wbr>Space<wbr>After<wbr>Semicolon</a>
     </li>
-    <ul id="toc-placeholder">
-    </ul>
     <li>
       <a href="NotDesignedForExtension.html">Not<wbr>Designed<wbr>For<wbr>Extension</a>
     </li>
@@ -155,9 +155,11 @@ analyzer are used together, and <a href="https://github.com/DotNetAnalyzers/Styl
     <li>
       <a href="StaticGenericClass.html">Static<wbr>Generic<wbr>Class</a>
     </li>
-    <li>
-      <a href="StinkyBooleanExpression.html">Stinky<wbr>Boolean<wbr>Expression</a>
+    <li class="selected">
+      Stinky<wbr>Boolean<wbr>Expression
     </li>
+    <ul id="toc-placeholder">
+    </ul>
     <li>
       <a href="StrayText.html">Stray<wbr>Text</a>
     </li>

@@ -121,6 +121,14 @@ be documented), and so on. It can be configured so that the entity
 with the specified attribute can be ignored.</p>
   </dd>
 </dl>
+<dl>
+  <dt>
+<p><a href="diagnostics/StrayText.html">StrayText</a></p>
+  </dt>
+  <dd>
+<p>Fix the misplaced text in the Documentation Comments.</p>
+  </dd>
+</dl>
 <h3>Category: Naming</h3>
 <dl>
   <dt>
@@ -221,6 +229,16 @@ in incremental <code>for</code> loops.</p>
   </dt>
   <dd>
 <p>Move type parameters from the static class to its methods if possible.</p>
+  </dd>
+</dl>
+<dl>
+  <dt>
+<p><a href="diagnostics/StinkyBooleanExpression.html">StinkyBooleanExpression</a></p>
+  </dt>
+  <dd>
+<p>Don't use the conditional operator (<code>?:</code>) where either the second or third
+operand is a <code>bool</code> literal (<code>true</code> or <code>false</code>), resulting in <code>bool</code> values.
+It is similar to IDE0057 <em>Conditional expression can be simplified</em>.</p>
   </dd>
 </dl>
 <dl>

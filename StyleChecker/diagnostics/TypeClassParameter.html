@@ -77,6 +77,13 @@ parameter <code>type</code> is removed but a type parameter <code>T</code> is ad
 invokes the original version of <code>Print</code> with an argument other than the
 <code>typeof()</code> operator whose operand is not a <code>static</code> class, because it is
 unable to replace the parameter <code>type</code> with a type parameter <code>T</code>.</p>
+<blockquote>
+<h3>Restriction</h3>
+<p>This analyzer can only diagnose local functions and private methods
+with the Visual Studio 2019 editor.
+To diagnose non-private methods with Visual Studio 2019,
+perform Build Solution or Analysis ➜ Run Code Analysis.</p>
+</blockquote>
 <h2>Code fix</h2>
 <p>The code fix provides the option of replacing the parameter with a type
 parameter and inserting a local variable declaration to the top of the
@@ -106,6 +113,13 @@ public void Invoke()
     DoSomething&lt;string&gt;();
 }
 </code></pre>
+<blockquote>
+<h3>Remarks</h3>
+<p>If a type has both <code>DoSomething&lt;T&gt;()</code> and <code>DoSomething(Type)</code> methods
+at the same time, the code fix provider renames <code>DoSomething&lt;T&gt;</code>
+(to <code>DoSomething_0&lt;T&gt;</code>, for example) at first, and then replaces
+<code>DoSomething(Type)</code> with <code>DoSomething&lt;T&gt;()</code>.</p>
+</blockquote>
           </main>
         </section>
       </div>
@@ -180,6 +194,12 @@ public void Invoke()
     </li>
     <li>
       <a href="StaticGenericClass.html">Static<wbr>Generic<wbr>Class</a>
+    </li>
+    <li>
+      <a href="StinkyBooleanExpression.html">Stinky<wbr>Boolean<wbr>Expression</a>
+    </li>
+    <li>
+      <a href="StrayText.html">Stray<wbr>Text</a>
     </li>
     <li>
       <a href="ThoughtlessName.html">Thoughtless<wbr>Name</a>

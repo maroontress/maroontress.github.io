@@ -128,6 +128,8 @@ https://maroontress.github.io/StyleChecker/diagnostics/RedundantTypedArrayCreati
 https://maroontress.github.io/StyleChecker/diagnostics/SingleTypeParameter.html
 https://maroontress.github.io/StyleChecker/diagnostics/SpaceBeforeSemicolon.html
 https://maroontress.github.io/StyleChecker/diagnostics/StaticGenericClass.html
+https://maroontress.github.io/StyleChecker/diagnostics/StinkyBooleanExpression.html
+https://maroontress.github.io/StyleChecker/diagnostics/StrayText.html
 https://maroontress.github.io/StyleChecker/diagnostics/ThoughtlessName.html
 https://maroontress.github.io/StyleChecker/diagnostics/TypeClassParameter.html
 https://maroontress.github.io/StyleChecker/diagnostics/Underscore.html

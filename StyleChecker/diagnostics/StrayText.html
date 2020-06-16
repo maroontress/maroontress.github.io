@@ -12,7 +12,7 @@
     </script>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>NoSpaceAfterSemicolon | StyleChecker | List of diagnostics</title>
+    <title>StrayText | StyleChecker | List of diagnostics</title>
     <link rel="stylesheet" type="text/css" href="/css/markdown.css">
     <link rel="apple-touch-icon" sizes="120x120" href="/images/logo-v2-120x120.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/images/logo-v2-180x180.png">
@@ -32,52 +32,70 @@
           <main class="content">
 <div class="project-logo">StyleChecker</div>
 <div id="toc-level" data-values="H2,H3"></div>
-<h1>NoSpaceAfterSemicolon</h1>
+<h1>StrayText</h1>
 <div class="horizontal-scroll">
-<p><img src="https://maroontress.github.io/StyleChecker/images/NoSpaceAfterSemicolon.png" alt="NoSpaceAfterSemicolon"></p>
+<p><img src="https://maroontress.github.io/StyleChecker/images/StrayText.png" alt="StrayText"></p>
 </div>
 <h2>Summary</h2>
-<p>A semicolon must be followed by a white space.</p>
+<p>Text in the <a href="https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/language-specification/documentation-comments">Documentation Comments</a>
+[<a href="#ref1">1</a>] must be inside any XML tag.</p>
 <h2>Default severity</h2>
 <p>Warning</p>
 <h2>Description</h2>
-<p>In most cases, a semicolon is followed by the end of
-the line (EOL). If exceptionally a semicolon is followed by
-other than EOL (e.g. an expression in a <code>for</code> statement,
-a comment, and so on), it must be followed by a space.</p>
-<p>However, in the style like <em>infinite <code>for</code> loops</em>,
-semicolons may not be followed by a space, as follows:</p>
-<pre><code class="language-csharp">for (;;)
+<p>The documentation comments must not have the top-level text,
+which is not in the XML tag.
+Such a stray text should be fixed.</p>
+<p>For example, I have seen the following code in a certain OSS project:</p>
+<pre><code class="language-csharp">/// This class is...
+public class DocumentCommentIsNotInsideTag
 {
-    ...
+    ⋮
 }
 </code></pre>
-<p>Note that it is intended that this analyzer and
-<a href="SpaceBeforeSemicolon.md">SpaceBeforeSemicolon</a>
-analyzer are used together, and <a href="https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/documentation/SA1002.md">SA1002</a> is replaced with them.</p>
+<p>The author probably missed the <code>summary</code> tag.</p>
+<p>Similarly, I have also seen the following code:</p>
+<pre><code class="language-csharp">/// &lt;summary&gt;
+/// ...
+/// &lt;/summary&gt;
+/// public
+public void TextIsOutsideTag()
+{
+    ⋮
+}
+</code></pre>
+<p>The text '<code>public</code>' in the documentation comments is outside the tags.
+Perhaps the author forgot to delete the text.</p>
 <h2>Code fix</h2>
-<p>The code fix provides an option inserting a space after the semicolon.</p>
+<p>The code fix is not provided.
+Surround the text with the proper tags,
+or move the text to the right location.</p>
 <h2>Example</h2>
 <h3>Diagnostic</h3>
-<pre><code class="language-csharp">public void Method()
+<pre><code class="language-csharp">/// Not in the tag.
+private void NotInTheTag()
 {
-    var n = 10;// Comment
-    for (var k = 0;k &lt; n;++k)
-    {
-        Console.WriteLine(k);/**/
-    }
+}
+
+/// Before the tag.
+/// &lt;summary&gt;
+/// &lt;/summary&gt;
+/// After the tag.
+private void OutsideTheTag()
+{
+}
+
+/// &lt;summary&gt;
+/// &lt;/summary&gt;
+/// Between tags.
+/// &lt;param name=&quot;x&quot;&gt;
+/// &lt;/param&gt;
+private void BetweenTags(int x)
+{
 }
 </code></pre>
-<h3>Code fix</h3>
-<pre><code class="language-csharp">public void Method()
-{
-    var n = 10; // Comment
-    for (var k = 0; k &lt; n; ++k)
-    {
-        Console.WriteLine(k); /**/
-    }
-}
-</code></pre>
+<h2>References</h2>
+<p><a id="ref1"></a>
+[1] <a href="https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/language-specification/documentation-comments">Microsoft, <em>C# Language Reference</em></a></p>
           </main>
         </section>
       </div>
@@ -132,11 +150,9 @@ analyzer are used together, and <a href="https://github.com/DotNetAnalyzers/Styl
     <li>
       <a href="NoSingleSpaceAfterTripleSlash.html">No<wbr>Single<wbr>Space<wbr>After<wbr>Triple<wbr>Slash</a>
     </li>
-    <li class="selected">
-      No<wbr>Space<wbr>After<wbr>Semicolon
+    <li>
+      <a href="NoSpaceAfterSemicolon.html">No<wbr>Space<wbr>After<wbr>Semicolon</a>
     </li>
-    <ul id="toc-placeholder">
-    </ul>
     <li>
       <a href="NotDesignedForExtension.html">Not<wbr>Designed<wbr>For<wbr>Extension</a>
     </li>
@@ -158,9 +174,11 @@ analyzer are used together, and <a href="https://github.com/DotNetAnalyzers/Styl
     <li>
       <a href="StinkyBooleanExpression.html">Stinky<wbr>Boolean<wbr>Expression</a>
     </li>
-    <li>
-      <a href="StrayText.html">Stray<wbr>Text</a>
+    <li class="selected">
+      Stray<wbr>Text
     </li>
+    <ul id="toc-placeholder">
+    </ul>
     <li>
       <a href="ThoughtlessName.html">Thoughtless<wbr>Name</a>
     </li>

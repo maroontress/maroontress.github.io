@@ -43,6 +43,39 @@ local variables, local functions, and parameters.</p>
 <p>Warning</p>
 <h2>Description</h2>
 <p>Don't use underscores in identifies.</p>
+<h3>Discards</h3>
+<p>This analyzer ignores discards [<a href="#ref1">1</a>].
+So it does not emit diagnostics to the following code:</p>
+<pre><code class="language-csharp">// standalone: be ignored as long as no identifier named '_' is in scope.
+ _ = &quot;hello&quot;.Length;
+
+// tuple
+(int, int) NewPoint(int x, int y) =&gt; (x, y);
+var (one, _) = NewPoint(1, 2);
+
+// out parameter
+void Out(out int x) =&gt; x = 3;
+Out(out _);
+
+// pattern matching (is)
+if (&quot;hello&quot; is string _)
+{
+    ...
+}
+
+// pattern matching (switch)
+switch (&quot;hello&quot;)
+{
+case string _:
+    break;
+...
+}
+</code></pre>
+<h2>Lambda parameters</h2>
+<p>This analyzer also checks the input parameters of lambda expressions
+[<a href="#ref2">2</a>]. So it emits diagnostics to the following code:</p>
+<pre><code class="language-csharp">Func&lt;int, int, int&gt; f = (a, _) =&gt; a; 
+</code></pre>
 <h2>Code fix</h2>
 <p>The code fix provides an option replacing the identifier with <code>underscore</code>
 if the identifier contains only <code>_</code> (a single underscore character). Otherwise,
@@ -83,6 +116,11 @@ concatenating words in the camel case style.</p>
     }
     ⋮
 </code></pre>
+<h2>References</h2>
+<p><a id="ref1"></a>
+[1] <a href="https://docs.microsoft.com/en-us/dotnet/csharp/discards">Microsoft, <em>Discards (C# Reference)</em></a></p>
+<p><a id="ref2"></a>
+[2] <a href="https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/statements-expressions-operators/lambda-expressions">Microsoft, <em>Lambda expressions (C# Programming Guide)</em></a></p>
           </main>
         </section>
       </div>
@@ -157,6 +195,12 @@ concatenating words in the camel case style.</p>
     </li>
     <li>
       <a href="StaticGenericClass.html">Static<wbr>Generic<wbr>Class</a>
+    </li>
+    <li>
+      <a href="StinkyBooleanExpression.html">Stinky<wbr>Boolean<wbr>Expression</a>
+    </li>
+    <li>
+      <a href="StrayText.html">Stray<wbr>Text</a>
     </li>
     <li>
       <a href="ThoughtlessName.html">Thoughtless<wbr>Name</a>
