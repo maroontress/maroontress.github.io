@@ -138,4 +138,11 @@ https://maroontress.github.io/StyleChecker/diagnostics/UnusedUsing.html
 https://maroontress.github.io/StyleChecker/diagnostics/UnusedVariable.html
 https://maroontress.github.io/StyleChecker/index.html
 https://maroontress.github.io/StyleChecker/releasenotes.html
+https://maroontress.github.io/The-Insanity-Beyond-Null/Part-0.html
+https://maroontress.github.io/The-Insanity-Beyond-Null/Part-1.html
+https://maroontress.github.io/The-Insanity-Beyond-Null/Part-2.html
+https://maroontress.github.io/The-Insanity-Beyond-Null/Part-3.html
+https://maroontress.github.io/The-Insanity-Beyond-Null/Part-4.html
+https://maroontress.github.io/The-Insanity-Beyond-Null/Part-5.html
+https://maroontress.github.io/The-Insanity-Beyond-Null/index.html
 https://maroontress.github.io/index.html
