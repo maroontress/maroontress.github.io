@@ -123,6 +123,7 @@ https://maroontress.github.io/StyleChecker/diagnostics/NoDocumentation.html
 https://maroontress.github.io/StyleChecker/diagnostics/NoSingleSpaceAfterTripleSlash.html
 https://maroontress.github.io/StyleChecker/diagnostics/NoSpaceAfterSemicolon.html
 https://maroontress.github.io/StyleChecker/diagnostics/NotDesignedForExtension.html
+https://maroontress.github.io/StyleChecker/diagnostics/NotOneShotInitialization.html
 https://maroontress.github.io/StyleChecker/diagnostics/PostIncrement.html
 https://maroontress.github.io/StyleChecker/diagnostics/RedundantTypedArrayCreation.html
 https://maroontress.github.io/StyleChecker/diagnostics/SingleTypeParameter.html
@@ -133,6 +134,7 @@ https://maroontress.github.io/StyleChecker/diagnostics/StrayText.html
 https://maroontress.github.io/StyleChecker/diagnostics/ThoughtlessName.html
 https://maroontress.github.io/StyleChecker/diagnostics/TypeClassParameter.html
 https://maroontress.github.io/StyleChecker/diagnostics/Underscore.html
+https://maroontress.github.io/StyleChecker/diagnostics/UninitializedLocalVariable.html
 https://maroontress.github.io/StyleChecker/diagnostics/UnnecessaryUsing.html
 https://maroontress.github.io/StyleChecker/diagnostics/UnusedUsing.html
 https://maroontress.github.io/StyleChecker/diagnostics/UnusedVariable.html
