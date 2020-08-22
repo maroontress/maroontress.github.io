@@ -90,6 +90,40 @@ so.</p>
 </tbody>
 </table>
 </div>
+<h2>Null checks for expressions of reference types</h2>
+<p>The following table summarizes how to see whether the expression <code>expr</code> is
+<code>null</code>:</p>
+<div class="horizontal-scroll">
+<table>
+<thead>
+<tr>
+<th style="text-align:left">How</th>
+<th style="text-align:left">is <code>null</code></th>
+<th style="text-align:left">is not <code>null</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Equality operators</td>
+<td style="text-align:left"><code>expr == null</code></td>
+<td style="text-align:left"><code>expr != null</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>is</code> pattern matching</td>
+<td style="text-align:left"><code>expr is null</code></td>
+<td style="text-align:left"><code>!(expr is null)</code></td>
+</tr>
+<tr>
+<td style="text-align:left">Property pattern</td>
+<td style="text-align:left"><code>!(expr is {})</code></td>
+<td style="text-align:left"><code>expr is {}</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+<blockquote>
+<p>C# 9 also allows <code>expr is not null</code>.</p>
+</blockquote>
 <h2>Nullable reference types at compile time and run time</h2>
 <p>We described that “the compiler only distinguishes” between the
 nullable and non-nullable reference types.  But in practice, it is not so
@@ -232,7 +266,7 @@ C#:</p>
 <pre><code class="language-cs">...
 public sealed class Program
 {
-    private static readonly Action doNothing = () =&gt; { };
+    private static readonly Action doNothing = () =&gt; {};
 
     private readonly Func&lt;char, Action&gt; toAction;
 
@@ -259,7 +293,7 @@ public sealed class Program
     ...
 </code></pre>
 <blockquote>
-<p><a href="https://sharplab.io/#v2:C4LgTgrgdgNAJiA1AHwMRQgG0wQwEaYCmABIVPkQLABQNAAgEwCM9ADMXUwCwDcN9AZmIBnQjiJwODDkwDsNAN41iKqQ2Wql1VTuIA3HGGIBbYgF5iUQgHcZsgBQBKPtt0rjAOgASOKHCIA0oQAngCSUAAOEMBOLjoAvvyuKhFgAJYGwCScAGzEYGJwAPZQmMEy0gAiRQByRcAAFmlQAObmxE7mAHzECsTxPMRJOqkZOFn5hSVlHACsADwAxg2GMBU9wEWcDC4aKnRCnA6Oe72nOgZGxjgR7Va2lWmLwGklhsFLK2Br211O55oAW4ANoAcgaoIAuu0ALJFPSEADCEDAwiKYAAMoQAGbAGBA3RggBWUNh8KRKLRYGq1lgBJ0YIA1qSLHCEcjUeiAKoRfHJNyqMGYFnENkUzlgABKaRaDTxBIGBM223ai26JhuHgAKmBggBxQjAABq4gghHsizWRWi+kMxBwz1eUBO/IFxAA/PbHSV6aoQMRqnVGs0WnFVIlaPyDhwuMQfH5AiFwlEYi6dFo3ZdiGqLAbgAAFArCURwILBWIErMOl4ldrKpgMC3OAnVp0V/kRnSnUaZEjLO15wuEYuEUshTpmHqgnCgsMpdK9mOi8kcqlY3GdPqd1Q98bZWNi1fomlQTf9bsLvdLw+U7kRM/b+djCZ0A8r29SmVyh80CNAA===">Run</a></p>
+<p><a href="https://sharplab.io/#v2:C4LgTgrgdgNAJiA1AHwMRQgG0wQwEaYCmABIVPkQLABQNAAgEwCM9ADMXUwCwDcN9AZmIBnQjiJwODDkwDsNAN41iKqQ2Wql1VTuIA3HGGIBbYgF5iUQgHcZsgBQBKPtt0rjAOgASOKHCIA0oQAngCSUAAOEMBOLjoAvvyuKhFgAJYGwCScAGzEYGJwAPZQmMEy0gAiRQByRcAAFmlQAObmxE7mAHzECvE8xEk6qRk4WfmFJWUcAKwAPADGDYYwFT3ARZwMLhoqdEKcDo67vSc6BkbGOBHtVraVaQvAaSWGwYvLYKtbXU5nmv83ABtADkDRBAF12gBZIp6QgAYQgYGERTAABlCAAzYAwQG6UEAK0hMLhiORqLA1WssHxOlBAGsSRZYfCkSi0QBVCJ45JuVSgzDM4is8kcsAAJTSLQauPx/XxGy27QW3RM1w8ABUwMEAOKEYAANXEEEI9gWqyK0X0hmIOCeLygxz5/OIAH47Q6SnTVCBiNU6o1mi04qpErQ+fsOFxiD4/IEQuEojFnTotK6LsRVRZ9cAAAoFYSiOBBYKxfGZ+3PErtJVMBjm5z4quO8t88M6E4jTIkJa23MFwhFwglkKdMw9EE4EGhlLpHvRkVk9mUzE4zoKYgd1TdsbZGOildo6lQDdbrvzveLw8UrkRM/buejcZ0A/L2+S6Wyh80cNAA===">Run</a></p>
 </blockquote>
 <p>Like the example in Java, <code>null</code> does not appear.  It's great, but there is a
 little bit of concern.</p>
@@ -356,7 +390,7 @@ the criteria.  Take a look at the following code:</p>
     .FirstOrDefault();
 
 // 'firstFavorite' can be 'null' ... Hmm!?
-if (!(firstFavorite is null))
+if (firstFavorite is {})
 {
     ...
 }
@@ -496,20 +530,22 @@ if (maybeInt.HasValue) {
 <p>Alternatively, you can also check that, comparing an expression of type <code>T</code>
 with <code>null</code> as follows:</p>
 <pre><code class="language-csharp">int? maybeInt = ...
-// The next statement is equivalent to 'if (maybeInt != null) {'
-if (!(maybeInt is null)) {
+// The next statement is equivalent to 'if (maybeInt is {}) {'
+// or 'if (!(maybeInt is null)) {'
+if (!(maybeInt != null)) {
     var intValue = maybeInt.Value;
     ...
 }
 </code></pre>
 <p>You can also apply pattern matching:</p>
 <pre><code class="language-csharp">int? maybeInt = ...
-if (maybeInt is int intValue) {
+// The next statement is equivalent to 'if (maybeInt is int intValue) {'
+if (maybeInt is {} intValue) {
     ...
 }
 </code></pre>
 <blockquote>
-<p><a href="#v2:C4LglgNgNAJiDUAfAAgJgIwFgBQPkGYACNQgYRwG8dCbijl0A2YgFkIFl0AKASmtqrZawwmAB2wAPyEAtgEMAngCMApgEkJhALyF0qfAG5+I0QDNCXecvUSAdAAk5AZwBqciAFcVPQoJMmANzkAJ1EJN08VbVlFVQ1gWwivIyF/AF9jQgzcVJoCYiZWDlReTL9/cSkY63jovUNM4TBzLgBCS1ibYFEnQjEPCAgeH3L/WiDQyqSonSs4u2mUsezhbMz8hmZkNnZ8UtzfRtpK6Tmuuv0lipaz2rBeyrDgaZGjmhXaNMIcbKA==">Compile</a></p>
+<p><a href="https://sharplab.io/#v2:C4LglgNgNAJiDUAfAAgJgIwFgBQPkGYACNQgYRwG8dCbijl0A2YgFkIFl0AKASmtqrZawwmAB2wAPyEAtgEMAngCMApgEkJhALyF0qfAG5+I0QDNCXecvUSAdAAk5AZwBqciAFcVPQoJMmANzkAJ1EJN08VbVlFVQ1gWwivIyF/AF9jQgzcVJoCYiZWDlReTL9/cSkY63jovUNM4TBzLgBCS1ibYFEnQjEPCAgeH3L/WiDQyqSonSs4u2mUsezhbMz8hmZkNnZ8UtzfRtpK6Tmuuv0lipaz2rBeijSRo8CQsOBp6NuF92SXrMyK1o63ohW2HBY+2EoxEJ2q826OnqVxMzQs32693e72mzwOq0BhBwIIKWx2AFYoQJ/nCMRcGvjjjdOncHmkcb9vIdGTQgbyidhskA===">Compile</a></p>
 </blockquote>
 <p>Note that there is no <code>Value</code> or <code>HasValue</code> property for nullable reference
 types.  Again, for nullable reference types, this is obvious because <code>T</code> and
@@ -618,7 +654,7 @@ error.</p>
 <p>For example, if <code>Member</code> represents invoking “a method that returns
 <code>void</code>,” or “a delegate such as <code>Action</code>,” the result is
 similar to as follows<sup>†5</sup>:</p>
-<pre><code class="language-cs">if (!(expr is null))
+<pre><code class="language-cs">if (expr is {})
 {
     expr.Member();
 }
@@ -751,7 +787,7 @@ and <strong>null-coalescing assignment operator</strong>, respectively.</p>
 have operators defined with the same meaning.  See Wikipedia [<a href="#ref5">5</a>].</p>
 </blockquote>
 <p><code>expr1 ?? expr2</code><sup>†7</sup> is equivalent to as follows:</p>
-<pre><code class="language-cs">!(expr1 is null) ? expr1 : expr2
+<pre><code class="language-cs">(expr1 is {}) ? expr1 : expr2
 </code></pre>
 <p>However, <code>expr1</code> is evaluated only once in the case of <code>expr1 ?? expr2</code>.</p>
 <p>If <code>expr1</code> is of nullable value types, <code>??</code> operators do operation similar to

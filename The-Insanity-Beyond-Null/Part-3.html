@@ -239,7 +239,7 @@ list containing the elements of the reference types, but the elements may be
 <pre><code class="language-csharp">public static IEnumerable&lt;T&gt; WhereNonNull&lt;T&gt;(this IEnumerable&lt;T?&gt; list)
     where T : class
 {
-    var newList = list.Where(e =&gt; !(e is null));
+    var newList = list.Where(e =&gt; e is {});
     ...
 </code></pre>
 <p>Thus, you can use <code>Where</code> to the <code>list</code> containing <code>null</code>, to create the

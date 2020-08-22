@@ -89,7 +89,7 @@ public sealed class Program
         var list = Nodes
             // Defers disposition of 'null' when 'ChildNodes' is empty
             .Select(n =&gt; n.ChildNodes.FirstOrDefault())
-            .Where(n =&gt; !(n is null));
+            .Where(n =&gt; n is {});
         ...
 </code></pre>
 <blockquote>
@@ -228,7 +228,7 @@ compares the element to <code>null</code>:</p>
             .Select(n =&gt; CommandMap.TryGetValue(n, out var action)
                 ? action
                 : null)
-            .Where(a =&gt; !(a is null));
+            .Where(a =&gt; a is {});
         ...
     }
     ...
