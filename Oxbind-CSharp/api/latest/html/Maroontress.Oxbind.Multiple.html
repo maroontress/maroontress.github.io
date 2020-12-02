@@ -115,6 +115,19 @@ gtag('config', 'UA-128974552-1');
             </div>
             <p>The <a href="Maroontress.Oxbind.SchemaType.html">SchemaType</a> object.</p>
           </div>
+          <h3>Remarks</h3>
+          <p>The <a href="Maroontress.Oxbind.SchemaType.html">SchemaType</a> object for the specified class
+    that this method returns
+    must not follow consecutively one that
+    <a href="Maroontress.Oxbind.Optional.html#M:Maroontress.Oxbind.Optional.Of``1">Optional.Of&lt;T&gt;()</a> or
+    <a href="#M:Maroontress.Oxbind.Multiple.Of``1">Of&lt;T&gt;()</a> with the same class returns,
+    in the parameters of the
+    <a href="Maroontress.Oxbind.Schema.html#M:Maroontress.Oxbind.Schema.Of(Maroontress.Oxbind.SchemaType[])">Schema.Of(SchemaType[])</a>.
+    For example, both
+    <code>Schema.Of(Optional.Of&lt;Movie&gt;(),
+    Multiple.Of&lt;Movie&gt;())</code> and
+    <code>Schema.Of(Multiple.Of&lt;Movie&gt;(),
+    Multiple.Of&lt;Movie&gt;())</code> are invalid.</p>
         </main>
       </section>
     </div>

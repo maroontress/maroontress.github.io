@@ -438,6 +438,12 @@ gtag('config', 'UA-128974552-1');
             </div>
             <p>The string representation.</p>
           </div>
+          <h3>Remarks</h3>
+          <p>This method returns the string with the form
+    <code>"</code>Line<code>:</code>Column<code>:</code>Message<code>"</code>
+    if the <a href="#P:Maroontress.Oxbind.BindException.LineInfo">LineInfo</a> has the line information (i.e.
+    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.xml.ixmllineinfo.haslineinfo?view=netcore-3.0">IXmlLineInfo.HasLineInfo()</a> returns <code>true</code>),
+    otherwise returns the same as <a href="https://docs.microsoft.com/en-us/dotnet/api/system.exception.message?view=netcore-3.0">Exception.Message</a>.</p>
         </main>
       </section>
     </div>

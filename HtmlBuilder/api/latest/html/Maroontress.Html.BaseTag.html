@@ -257,7 +257,7 @@ gtag('config', 'UA-128974552-1');
                 attributes
               </dt>
               <dd>
-                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.valuetuple-2?view=netcore-3.0" data-linktype="absolute-path">(string Name, string Value)</a>&lt;<a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.string?view=netcore-3.0" data-linktype="absolute-path">string</a>, <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.string?view=netcore-3.0" data-linktype="absolute-path">string</a>&gt;[]</span>
+                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.valuetuple-2?view=netcore-3.0" data-linktype="absolute-path">(string Name, string Value)</a>[]</span>
               </dd>
             </dl>
             <p>Tuples of the name and value representing an attribute. If the
@@ -301,6 +301,18 @@ gtag('config', 'UA-128974552-1');
             </div>
             <p>The new <a href="#">BaseTag&lt;T&gt;</a> object.</p>
           </div>
+          <h3>Remarks</h3>
+          <p>An invocation of this method of the form
+     <code>tag.AddEmptyAttributes(n1, n2)</code> behaves in exactly the same
+     way as the invocation <code>tag.AddAttributes((n1, null), (n2,
+     null))</code>.</p>
+          <p>The web browser interprets the value of
+     the empty attribute as the empty string implicitly. So, for
+     example, <code>&lt;input disabled&gt;</code> is equivalent to
+     <code>&lt;input disabled=""&gt;</code>. The former can be generated with
+     <code>AddEmptyAttributes("disabled")</code> or
+     <code>AddAttributes(("disabled", null))</code>, and the latter with
+     <code>AddAttributes(("disabled", ""))</code>.</p>
         </main>
       </section>
     </div>
