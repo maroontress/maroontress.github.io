@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9TQ6JWBKEK"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-9TQ6JWBKEK');
+    </script>
+    </script>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Attempt #2 Parallel build and image versions of runners | GitHub Actions and Dungeons</title>
+    <link rel="canonical" href="https://maroontress.github.io/GitHub-Actions-and-Dungeons/runner-image-versions.html" />
+    <link rel="stylesheet" type="text/css" href="/css/markdown.css">
+    <link rel="apple-touch-icon" sizes="120x120" href="/images/logo-v2-120x120.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/logo-v2-180x180.png">
+    <link rel="icon" type="image/x-icon" href="/images/logo-v2.ico">
+    <link rel="mask-icon" href="/images/logo-v2-mask-icon.svg" color="#800000">
+    <script src="/js/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+    <script src="/js/toc.js"></script>
+  </head>
+  <body>
+    <div class="logo">
+      <b>Maroontress Fast Software</b>
+    </div>
+    <div class="container">
+      <div class="main-container">
+        <section>
+          <main class="content">
+<div class="project-logo">GitHub Actions and Dungeons</div>
+<div id="toc-level" data-values="H2,H3"></div>
+<h1>Attempt #2<br>Parallel build and image versions of <ruby>🏃<rp>(</rp><rt>runner</rt><rp>)</rp></ruby>s</h1>
+<p>It is always a good idea to build in parallel to finish a build faster. GitHub
+Actions also allows you to run multiple jobs in parallel during a workflow. The
+key is <a href="https://docs.github.com/ja/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_idneeds"><code>needs</code></a>. You can use it as follows:</p>
+<pre><code class="language-yaml">jobs:
+  job1:
+    ⋮
+
+  job2:
+    ⋮
+
+  job3:
+    needs: [job1, job2]
+    ⋮
+</code></pre>
+<p><code>job3</code> will start when both <code>job1</code> and <code>job2</code> are finished. Since <code>job1</code>, <code>job2</code>
+and <code>job3</code> will run on different instances of the runner, <code>job1</code> and <code>job2</code> have
+to store the build results with <code>actions/upload-artifact</code>, and <code>job3</code> should
+retrieve them with <code>actions/download-artifact</code>. That is a typical approach to
+running parallel jobs.</p>
+<h2>Parallel build of libraries for iOS</h2>
+<p>Here is a more practical example. The following <a href="https://github.com/maroontress/mimicssl-aes128-cbc-decrypt/blob/main/.github/workflows/ios.yml">workflow</a> builds a library as an xcframework for iOS, which decrypts data encrypted with AES 128-bit in CBC mode:</p>
+<pre><code class="language-yaml">jobs:
+  build_non_fat:
+    runs-on: macos-latest
+    timeout-minutes: 30
+    strategy:
+      max-parallel: 3
+      matrix:
+        abi: [x86_64, arm64]
+        sdk: [iphoneos, iphonesimulator]
+        exclude:
+          - abi: x86_64
+            sdk: iphoneos
+    steps:
+      ⋮
+
+  install_and_test:
+    runs-on: macos-latest
+    timeout-minutes: 30
+    needs: build_non_fat
+    steps:
+      ⋮
+</code></pre>
+<p>When all <code>build_non_fat</code> jobs finish, the <code>install_and_test</code> job starts. The following is a visualization of the workflow:</p>
+<div>
+<a href="attempt2/Workflow-iOS.png"><img style="width: 100%;" src="attempt2/Workflow-iOS.png"></a>
+</div>
+<p>The first <code>build_non_fat</code> job executes three jobs<sup><a href="#1">†1</a></sup> in parallel in the following configurations:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">ABI</th>
+<th style="text-align:left">SDK</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>x86_64</code></td>
+<td style="text-align:left"><code>iphonesimulator</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>arm64</code></td>
+<td style="text-align:left"><code>iphonesimulator</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>arm64</code></td>
+<td style="text-align:left"><code>iphoneos</code></td>
+</tr>
+</tbody>
+</table>
+<p>It is also possible to use CMake to create a <em>fat</em> library at once for the
+<code>iphonesimulator</code> SDK that contains both <code>x86_64</code> and <code>arm64</code> ABIs. In that
+case, we can reduce the number of jobs to two. However, since this project uses
+assembler instructions (Intrinsics), the set of source files and compilation
+options are different for each ABI. Therefore, the <code>build_non_fat</code> job has to
+build the <em>non-fat</em> library separately. Each runner makes the <em>build directory</em>
+containing the artifacts CMake builds and saves them with
+<code>actions/upload-artifact</code>. The name of the build directory contains the ABI and
+SDK, so downloading them in the next job will not conflict.</p>
+<p>The second <code>install_and_test</code> job downloads all the artifacts of the build
+directories with <code>actions/download-artifact</code> and performs the following
+operations sequentially:</p>
+<ul>
+<li>Run the iOS simulator with <code>xcrun</code> and test the non-fat library for the
+<code>iphonesimulator</code> and <code>x86_64</code><sup><a href="#2">†2</a></sup> with <code>ctest</code>.</li>
+<li>Create the fat library for the <code>iphonesimulator</code> with <code>lipo</code>.</li>
+<li>Create the xcframework with <code>xcodebuild</code>.</li>
+<li>Install the xcframework, the non-fat library for <code>iphoneos</code>, the fat library
+for <code>iphonesimulator</code>, and the header files.</li>
+</ul>
+<p>It is somewhat complicated, but there is no need to understand all the details.
+We use shell scripts and CMake they execute to build. CMake runs not only in the
+first jobs but also in the second job<sup><a href="#3">†3</a></sup>, but it does not
+create a build directory in the second job. The second job downloads the build
+directories that the first jobs made, so it runs <code>ctest</code> and
+<code>cmake --target install</code> on them, respectively.</p>
+<p><a name="1"></a></p>
+<blockquote>
+<p>†1 The combination of <code>x86_64</code> and <code>iphoneos</code> is excluded by <code>exclude</code>.</p>
+</blockquote>
+<p><a name="2"></a></p>
+<blockquote>
+<p>†2 Due to using macOS runners with Intel architecture.</p>
+</blockquote>
+<p><a name="3"></a></p>
+<blockquote>
+<p>†3 We install the libraries (built in the first jobs) in a temporary
+location with <code>cmake --target install</code> and then use <code>lipo</code> or <code>xcodebuild</code>
+for them.</p>
+</blockquote>
+<h2>The <em>versions</em> of the runner image</h2>
+<p>However, when running such a workflow file, the build sometimes fails. The
+build failures occurred when executing <code>cmake</code> or <code>ctest</code> in the second job. Why
+did builds fail?</p>
+<p>The first part of the build log in GitHub Actions keeps information about the
+runner. For example, if you expand the “Set up job” entry in any
+build log, the following appears:</p>
+<div>
+<a href="attempt2/RunnerImage.png"><img style="width: 100%;" src="attempt2/RunnerImage.png"></a>
+</div>
+<p>That shows the runner image is <code>macos-12</code>, the version is <code>20231216.1</code>, and
+there are links about the image release. These links let us know what software
+the maintainers installed and what changes they made in that runner. Image
+releases are tagged, so it is easy to see how often the image is updated as
+follows:</p>
+<div>
+<img style="width: 320px;" src="attempt2/Tags.png">
+</div>
+<p>It appears that there are updates about one to two weeks apart.</p>
+<p>The README of that <a href="https://github.com/actions/runner-images">repository of runner images</a> contains the
+following <a href="https://github.com/actions/runner-images?tab=readme-ov-file#available-images">list of the latest available images</a>:</p>
+<div>
+<a href="attempt2/AvailableImages.png"><img style="width: 100%;" src="attempt2/AvailableImages.png"></a>
+</div>
+<p>There is a column titled <em>Rollout Progress of Latest Image Release</em> on the right
+side of the table. This column shows the percentage of the latest version of the
+image used. For example, if it is 100% for <code>macos-12</code>, it means all instances
+use the same (latest) version of that image. Since all rows in the table above
+are 100%, they were so that time.</p>
+<p>However, it is not always 100% at all times. The following table is from another
+day:</p>
+<div>
+<a href="attempt2/AvailableImages_20240111_1219.png"><img style="width: 100%;" src="attempt2/AvailableImages_20240111_1219.png"></a>
+</div>
+<p>As shown in this image, for example, if the rollout progress is 9.79% for
+<code>macos-12</code>, there is a 90.21% chance that the instance will use one previous
+(older) version of the image. If the image version differs, the installed
+compiler, toolchain, SDK, and so on might also have a different version.</p>
+<blockquote>
+<p><span style="font-size: large;">☕</span></p>
+<p>What about the probability that multiple instances will all have the same
+version? For a runner with an image having 10% rollout progress and for two
+instances, the probability is (1 − 0.1)<sup>2</sup> + 0.1<sup>2</sup> =
+0.82, which is the sum of the probability that they are all the old version
+and the probability that they are all the new version. For four instances, the
+probability is (1 − 0.1)<sup>4</sup> + 0.1<sup>4</sup> = 0.6561 + 0.001
+= 0.6562. The probability that all images in the instances are the same
+version is about 2/3.</p>
+</blockquote>
+<!--
+> ロールアウト進捗aのn個のインスタンスなら
+> (1 &minus; a)^n + a^n
+> 特にnが奇数なら
+> 1 - F(1)a + F(2)a^2 - ... - F(n-2)a^(n-2) + F(n-1)a^(n-1)
+> 例えばn = 3なら
+> 1 - 3a + 3a^2
+-->
+<p>That is why the build failed. One of the multiple instances running in the build
+was from an old image, and (unfortunately) the version of CMake was different
+between that old image and the latest one. No wonder trying to test or install
+with the new CMake and the build directory created by the old CMake does not
+work.</p>
+<p>The biggest problem was my assumption that the image of each runner would be
+identical.</p>
+<h2>Getting the version at runtime</h2>
+<p>Now, how do I get the version of the image that is running the workflow? I
+checked there is no documentation yet, but it seems to be
+<a href="https://github.com/actions/runner-images/discussions/7661">obtained from the <code>ImageVersion</code> environment variable</a> as
+follows:</p>
+<div>
+<a href="attempt2/ImageVersion.png"><img style="width: 100%;" src="attempt2/ImageVersion.png"></a>
+</div>
+<blockquote>
+<p><a href="https://github.com/maroontress/try_out_github_actions/actions/workflows/image-version.yml">View this workflow file on GitHub</a></p>
+</blockquote>
+<p>But even if you get the image version, there's nothing you can do. Of course, it
+is possible to “<em>store the versions of the running images in the parallel
+job, check them in the later job (the one that downloads the build directory, as
+described in the previous section), and stop execution if they are not all the
+same.</em>” However, as we saw earlier, the image is updated so often that it
+is inconvenient for the CI to stop every time. Even so, in the previous example,
+you should check the installed version of CMake, not the image version.</p>
+<h2>Install the specified version of CMake</h2>
+<p>CMake is not a huge tool, and there are binary distributions for Windows, Linux,
+and macOS. Instead of using the preinstalled CMake in the image, how about
+installing your favorite version of CMake yourself?</p>
+<p>There is a third-party action available on the marketplace to install CMake. In
+the first step of the workflow, try to install CMake by specifying the version
+as follows:</p>
+<div>
+<a href="attempt2/get-cmake.png"><img style="width: 100%;" src="attempt2/get-cmake.png"></a>
+</div>
+<p>Now, even if different versions of the image mix, the error no longer occurs.</p>
+<p>But there are other tools besides CMake that we depend on. What about Xcode, for
+example? When it comes to something as big as Xcode, you don't want to install
+it by specifying a version.
+<a href="https://github.com/actions/runner-images/blob/main/images/macos/macos-12-Readme.md#xcode">The Xcode versions installed on the current <code>macos-12</code> image</a>
+are as follows:</p>
+<div>
+<img width="320px;" src="attempt2/Xcode.png">
+</div>
+<p>For example, if you want to specify the Xcode version by the value of the
+`XCODE_VERSION' environment variable, you can do the following:</p>
+<pre><code class="language-yaml">    - name: Select Xcode
+      run: sudo xcode-select -s &quot;/Applications/Xcode_${XCODE_VERSION}.app/Contents/Developer&quot;
+</code></pre>
+<p>The specified version of Xcode may not be available via image updates, but the
+frequency of such updates would be about once a year (based on
+<a href="https://en.wikipedia.org/wiki/Xcode#Xcode_11.0_-_14.x_(since_SwiftUI_framework)">the release of 13.1 in October 2021 and 14.2 in December 2022</a>).</p>
+<h2>Finish the use of CMake in one job</h2>
+<p>Another idea to keep in mind is to avoid using a tool <em>across</em> instances. In our
+example above, this means that <em>the instance using CMake should complete its use
+of CMake</em>. To do this, we will no longer transfer the build directory created by
+CMake to the instance of the next job. Instead, we should <em>run the tests,
+install the non-fat library in a temporary directory, and upload it</em> with the
+first job in the same instance. Then we download all the non-fat libraries and
+create the xcframework with the last job. The workflow file would look like
+this:</p>
+<pre><code class="language-yaml">jobs:
+  build_non_fat:
+    runs-on: macos-latest
+    timeout-minutes: 30
+    strategy:
+      max-parallel: 3
+      matrix:
+        abi: [x86_64, arm64]
+        sdk: [iphoneos, iphonesimulator]
+        exclude:
+          - abi: x86_64
+            sdk: iphoneos
+    steps:
+      ⋮
+    - name: Run simulator and then test
+      if: ${{ matrix.sdk == 'iphonesimulator' &amp;&amp; matrix.abi == 'x86_64' }}
+      run: |
+        ⋮
+        ctest --test-dir build/iphonesimulator-x86_64 -C $BUILD_TYPE
+      ⋮
+    - name: Install non fat files temporally
+      run: |
+        cmake --build build/${{matrix.sdk}}-${{matrix.abi}} --target install \
+          $HOME/tmp ...
+    - name: Archive artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: non-fat-files-${{matrix.sdk}}-${{matrix.abi}}
+        path: ~/tmp
+        if-no-files-found: error
+
+  install:
+    runs-on: macos-latest
+    timeout-minutes: 30
+    needs: build_non_fat
+    steps:
+      ⋮
+    - name: Download artifacts
+      uses: actions/download-artifact@v3
+      ⋮
+    - name: Create xcframework
+      ⋮
+</code></pre>
+<p>Of course, working with libraries built by the old compiler and with the new
+compiler can lead to errors, but we should be aware that reducing the number of
+fragmentation points will increase tolerance. If that's not possible, let's do
+parallel builds with a self-hosted runner.</p>
+          </main>
+        </section>
+      </div>
+      <div class="left-container">
+<nav>
+  <div>
+    <a href="/">Projects</a>
+  </div>
+  <div>
+    <span>&#x25BE;</span>
+  </div>
+  <div>
+    <span class="project-name"><a href="index.html">GitHub Actions and Dungeons</a></span>
+  </div>
+  <ul>
+    <li>
+      <a href="index.html">Top</a>
+    </li>
+    <li>
+      <a href="ssh-agent-on-windows.html">Attempt #1 ssh-agent with Windows runners</a>
+    </li>
+    <li class="selected">
+      Attempt #2 Parallel build and image versions of runners
+    </li>
+    <ul id="toc-placeholder">
+    </ul>
+  </ul>
+</nav>
+      </div>
+    </div>
+  </body>
+</html>

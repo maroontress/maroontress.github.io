@@ -13,7 +13,7 @@
     </script>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>ssh-agent with Windows runners | GitHub Actions and Dungeons</title>
+    <title>Attempt #1 ssh-agent with Windows runners | GitHub Actions and Dungeons</title>
     <link rel="canonical" href="https://maroontress.github.io/GitHub-Actions-and-Dungeons/ssh-agent-on-windows.html" />
     <link rel="stylesheet" type="text/css" href="/css/markdown.css">
     <link rel="apple-touch-icon" sizes="120x120" href="/images/logo-v2-120x120.png">
@@ -34,7 +34,7 @@
           <main class="content">
 <div class="project-logo">GitHub Actions and Dungeons</div>
 <div id="toc-level" data-values="H2,H3"></div>
-<h1>ssh-agent with Windows runners</h1>
+<h1>Attempt #1<br>ssh-agent with Windows runners</h1>
 <p>Note that if you do not plan to use Windows runners, it is not worth reading at
 all thereafter.</p>
 <h2>Clone another private repository</h2>
@@ -55,7 +55,7 @@ actions/checkout as follows:</p>
         cat private-repository-example/README.md
 </code></pre>
 <blockquote>
-<p><a href="https://github.com/maroontress/try_out_github_actions/blob/d6dbe2337b2e2f2bca1eb0cb1be7588f57912f58/.github/workflows/windows-ssh-agent.yml#L13-L23">View on GitHub</a></p>
+<p><a href="https://github.com/maroontress/try_out_github_actions/blob/34978a2a8ae8e8ff696b696263402560da53f977/.github/workflows/windows-ssh-agent.yml#L13-L23">View on GitHub</a></p>
 </blockquote>
 <p>We shall use the <a href="https://docs.github.com/en/authentication/connecting-to-github-with-ssh/managing-deploy-keys#deploy-keys">deploy key</a> to access repository B. Let the
 URL of repository B be
@@ -87,7 +87,7 @@ Checking out the ref
 # An Example of Private Repository
 </code></pre>
 <blockquote>
-<p><a href="result-1.png">Results in GitHub Actions</a></p>
+<p><a href="attempt1/result-1.png">Results in GitHub Actions</a></p>
 </blockquote>
 <p>It succeeded. The last line is the exact content of <code>README.md</code>.</p>
 <p>Thus, we can use actions/checkout to check out another private repository.
@@ -111,7 +111,7 @@ runner:</p>
         ls -l `which git`
 </code></pre>
 <blockquote>
-<p><a href="https://github.com/maroontress/try_out_github_actions/blob/d6dbe2337b2e2f2bca1eb0cb1be7588f57912f58/.github/workflows/windows-ssh-agent.yml#L29-L35">View on GitHub</a></p>
+<p><a href="https://github.com/maroontress/try_out_github_actions/blob/34978a2a8ae8e8ff696b696263402560da53f977/.github/workflows/windows-ssh-agent.yml#L29-L35">View on GitHub</a></p>
 </blockquote>
 <p>The result is as follows:</p>
 <pre><code class="language-plaintext">-rwxr-xr-x 1 runneradmin 197121 958822 Aug 30 09:46 /usr/bin/ssh
@@ -120,7 +120,7 @@ runner:</p>
 -rwxr-xr-x 4 runneradmin 197121 3830264 Aug 30 09:49 /mingw64/bin/git
 </code></pre>
 <blockquote>
-<p><a href="result-2.png">Results in GitHub Actions</a></p>
+<p><a href="attempt1/result-2.png">Results in GitHub Actions</a></p>
 </blockquote>
 <p>There are several implementations of <code>ssh-agent</code> on Windows, but the one in the
 <code>PATH</code> is from Git for Windows.</p>
@@ -133,7 +133,7 @@ runner:</p>
         echo SSH_AGENT_PID=&quot;$SSH_AGENT_PID&quot; &gt;&gt; &quot;$GITHUB_ENV&quot;
 </code></pre>
 <blockquote>
-<p><a href="https://github.com/maroontress/try_out_github_actions/blob/d6dbe2337b2e2f2bca1eb0cb1be7588f57912f58/.github/workflows/windows-ssh-agent.yml#L36-L41">View on GitHub</a></p>
+<p><a href="https://github.com/maroontress/try_out_github_actions/blob/34978a2a8ae8e8ff696b696263402560da53f977/.github/workflows/windows-ssh-agent.yml#L36-L41">View on GitHub</a></p>
 </blockquote>
 <p><code>eval `ssh-agent`</code> sets the environment variables
 <code>SSH_AUTH_SOCK</code> and <code>SSH_AGENT_PID</code>. The last two lines append these variables
@@ -143,7 +143,7 @@ Variables</a> for details).</p>
 <pre><code class="language-plaintext">Agent pid 433
 </code></pre>
 <blockquote>
-<p><a href="result-3.png">Results in GitHub Actions</a></p>
+<p><a href="attempt1/result-3.png">Results in GitHub Actions</a></p>
 </blockquote>
 <p>Since <code>ssh-agent</code> is now running in the background, the next step is to add the
 deploy key to the agent with the <code>ssh-add</code> command:</p>
@@ -155,7 +155,7 @@ deploy key to the agent with the <code>ssh-add</code> command:</p>
         ssh-add $HOME/.ssh/PRIVATE_REPO_DEPLOY_KEY
 </code></pre>
 <blockquote>
-<p><a href="https://github.com/maroontress/try_out_github_actions/blob/d6dbe2337b2e2f2bca1eb0cb1be7588f57912f58/.github/workflows/windows-ssh-agent.yml#L42-L47">View on GitHub</a></p>
+<p><a href="https://github.com/maroontress/try_out_github_actions/blob/34978a2a8ae8e8ff696b696263402560da53f977/.github/workflows/windows-ssh-agent.yml#L42-L47">View on GitHub</a></p>
 </blockquote>
 <p>The first two lines create the <code>~/.ssh</code> directory and save the private key there
 as a file.</p>
@@ -163,7 +163,7 @@ as a file.</p>
 <pre><code class="language-plaintext">Identity added: /c/Users/runneradmin/.ssh/PRIVATE_REPO_DEPLOY_KEY (git@github.com:maroontress-tomohisa/private-repository-example.git)
 </code></pre>
 <blockquote>
-<p><a href="result-4.png">Results in GitHub Actions</a></p>
+<p><a href="attempt1/result-4.png">Results in GitHub Actions</a></p>
 </blockquote>
 <p>We added it successfully. The comment on the SSH key is in parentheses. Although
 we created this deploy key using the repository URL in the comment, it is
@@ -176,13 +176,13 @@ to access multiple private repositories.</p>
         ssh-add -l
 </code></pre>
 <blockquote>
-<p><a href="https://github.com/maroontress/try_out_github_actions/blob/d6dbe2337b2e2f2bca1eb0cb1be7588f57912f58/.github/workflows/windows-ssh-agent.yml#L48-L51">View on GitHub</a></p>
+<p><a href="https://github.com/maroontress/try_out_github_actions/blob/34978a2a8ae8e8ff696b696263402560da53f977/.github/workflows/windows-ssh-agent.yml#L48-L51">View on GitHub</a></p>
 </blockquote>
 <p>The result is as follows:</p>
 <pre><code class="language-plaintext">3072 SHA256:EHYsJhMvV2X03sbEYcAH3w7MNft1lra8M/ZSF0XMr5k git@github.com:maroontress-tomohisa/private-repository-example.git (RSA)
 </code></pre>
 <blockquote>
-<p><a href="result-5.png">Results in GitHub Actions</a></p>
+<p><a href="attempt1/result-5.png">Results in GitHub Actions</a></p>
 </blockquote>
 <p>Usually, you should now be able to run <code>git clone</code>. Let's clone it as follows:</p>
 <pre><code class="language-yaml">    - name: Clone the private repository (which fails)
@@ -193,7 +193,7 @@ to access multiple private repositories.</p>
         cat private-repository-example/README.md
 </code></pre>
 <blockquote>
-<p><a href="https://github.com/maroontress/try_out_github_actions/blob/d6dbe2337b2e2f2bca1eb0cb1be7588f57912f58/.github/workflows/windows-ssh-agent.yml#L52-L57">View on GitHub</a></p>
+<p><a href="https://github.com/maroontress/try_out_github_actions/blob/34978a2a8ae8e8ff696b696263402560da53f977/.github/workflows/windows-ssh-agent.yml#L52-L57">View on GitHub</a></p>
 </blockquote>
 <p>The last line intends to show <code>README.md</code> if the clone succeeds, but it is
 meaningless because the cloning fails. The result is as follows:</p>
@@ -206,7 +206,7 @@ and the repository exists.
 Error: Process completed with exit code 128.
 </code></pre>
 <blockquote>
-<p><a href="result-6.png">Results in GitHub Actions</a></p>
+<p><a href="attempt1/result-6.png">Results in GitHub Actions</a></p>
 </blockquote>
 <p>The reason for this error is simple: the SSH public key for <code>github.com</code> is not
 in <code>~/.ssh/known_hosts</code>. No, in the first place, <code>~/.ssh/known_hosts</code> does not
@@ -220,7 +220,7 @@ exist. Let's create <code>known_hosts</code> as follows:</p>
         EOF
 </code></pre>
 <blockquote>
-<p><a href="https://github.com/maroontress/try_out_github_actions/blob/d6dbe2337b2e2f2bca1eb0cb1be7588f57912f58/.github/workflows/windows-ssh-agent.yml#L58-L64">View on GitHub</a></p>
+<p><a href="https://github.com/maroontress/try_out_github_actions/blob/34978a2a8ae8e8ff696b696263402560da53f977/.github/workflows/windows-ssh-agent.yml#L58-L64">View on GitHub</a></p>
 </blockquote>
 <p>And then clone it again as follows:</p>
 <pre><code class="language-yaml">    - name: Clone a private repository
@@ -230,14 +230,14 @@ exist. Let's create <code>known_hosts</code> as follows:</p>
         cat private-repository-example/README.md
 </code></pre>
 <blockquote>
-<p><a href="https://github.com/maroontress/try_out_github_actions/blob/d6dbe2337b2e2f2bca1eb0cb1be7588f57912f58/.github/workflows/windows-ssh-agent.yml#L65-L69">View on GitHub</a></p>
+<p><a href="https://github.com/maroontress/try_out_github_actions/blob/34978a2a8ae8e8ff696b696263402560da53f977/.github/workflows/windows-ssh-agent.yml#L65-L69">View on GitHub</a></p>
 </blockquote>
 <p>The result is as follows:</p>
 <pre><code class="language-plaintext">Cloning into 'private-repository-example'...
 # An Example of Private Repository
 </code></pre>
 <blockquote>
-<p><a href="result-7.png">Results in GitHub Actions</a></p>
+<p><a href="attempt1/result-7.png">Results in GitHub Actions</a></p>
 </blockquote>
 <p>The clone is successful.</p>
 <blockquote>
@@ -286,7 +286,7 @@ section, only changing the URL and secret variables. Run the steps as follows:</
         unzip -v private-lfs-repository-example/empty.zip
 </code></pre>
 <blockquote>
-<p><a href="https://github.com/maroontress/try_out_github_actions/blob/d6dbe2337b2e2f2bca1eb0cb1be7588f57912f58/.github/workflows/windows-ssh-agent.yml#L74-L99">View on GitHub</a></p>
+<p><a href="https://github.com/maroontress/try_out_github_actions/blob/34978a2a8ae8e8ff696b696263402560da53f977/.github/workflows/windows-ssh-agent.yml#L74-L99">View on GitHub</a></p>
 </blockquote>
 <p>The root of private repository C contains <code>empty.zip</code>. If the last line of
 output is OK, the clone is successful. The result is as follows:</p>
@@ -306,7 +306,7 @@ Archive:  private-lfs-repository-example/empty.zip
        0                0   0%                            1 file
 </code></pre>
 <blockquote>
-<p><a href="result-8.png">Results in GitHub Actions</a></p>
+<p><a href="attempt1/result-8.png">Results in GitHub Actions</a></p>
 </blockquote>
 <p>The clone is successful.</p>
 <blockquote>
@@ -326,8 +326,8 @@ follows:</p>
         path: private-lfs-repository-example
 </code></pre>
 <blockquote>
-<p><a href="https://github.com/maroontress/try_out_github_actions/blob/d6dbe2337b2e2f2bca1eb0cb1be7588f57912f58/.github/workflows/windows-ssh-agent.yml#L104-L116">View on GitHub</a></p>
-<p><a href="result-9.png">Results in GitHub Actions</a></p>
+<p><a href="https://github.com/maroontress/try_out_github_actions/blob/34978a2a8ae8e8ff696b696263402560da53f977/.github/workflows/windows-ssh-agent.yml#L104-L116">View on GitHub</a></p>
+<p><a href="attempt1/result-9.png">Results in GitHub Actions</a></p>
 </blockquote>
 <h2>Clone multiple private repositories</h2>
 <p>Next, we want to access the two repositories B and C, during the job of
@@ -422,7 +422,7 @@ with the SSH key of the corresponding repository as follows:</p>
         unzip -v private-lfs-repository-example/empty.zip
 </code></pre>
 <blockquote>
-<p><a href="https://github.com/maroontress/try_out_github_actions/blob/d6dbe2337b2e2f2bca1eb0cb1be7588f57912f58/.github/workflows/windows-ssh-agent.yml#L121-L172">View on GitHub</a></p>
+<p><a href="https://github.com/maroontress/try_out_github_actions/blob/34978a2a8ae8e8ff696b696263402560da53f977/.github/workflows/windows-ssh-agent.yml#L121-L172">View on GitHub</a></p>
 </blockquote>
 <p>It's a bit long, but not too difficult. In the <code>Add deploy keys</code> step, change
 the configuration with <code>git config</code> and create entries in <code>~/.ssh/config</code> for
@@ -463,7 +463,7 @@ Archive:  private-lfs-repository-example/empty.zip
        0                0   0%                            1 file
 </code></pre>
 <blockquote>
-<p><a href="result-10.png">Results in GitHub Actions</a></p>
+<p><a href="attempt1/result-10.png">Results in GitHub Actions</a></p>
 </blockquote>
 <p>After checking the contents of <code>git config</code> and <code>~/.ssh/config</code>,
 we check out repositories B and C. We have done it correctly.</p>
@@ -489,7 +489,7 @@ marketplace <a href="https://github.com/marketplace/actions/webfactory-ssh-agent
           ${{secrets.PRIVATE_LFS_REPO_DEPLOY_KEY}}
 </code></pre>
 <blockquote>
-<p><a href="https://github.com/maroontress/try_out_github_actions/blob/d6dbe2337b2e2f2bca1eb0cb1be7588f57912f58/.github/workflows/windows-ssh-agent.yml#L241-L247">View on GitHub</a></p>
+<p><a href="https://github.com/maroontress/try_out_github_actions/blob/34978a2a8ae8e8ff696b696263402560da53f977/.github/workflows/windows-ssh-agent.yml#L241-L247">View on GitHub</a></p>
 </blockquote>
 <p>The result is as follows:</p>
 <pre><code class="language-plaintext">Starting ssh-agent
@@ -506,7 +506,7 @@ Added deploy-key mapping: Use identity 'C:\Users\runneradmin/.ssh/key-43749e3def
 Added deploy-key mapping: Use identity 'C:\Users\runneradmin/.ssh/key-aabbaf196b10644a69c23360df933575c9e9d496cfc251dabf9b22ee13d7bea9' for GitHub repository maroontress-tomohisa/private-lfs-repository-example
 </code></pre>
 <blockquote>
-<p><a href="result-11.png">Results in GitHub Actions</a></p>
+<p><a href="attempt1/result-11.png">Results in GitHub Actions</a></p>
 </blockquote>
 <p>It's easier, but as a side effect, it starts <code>ssh-agent</code> in the background.
 Let's check it out in the next step:</p>
@@ -515,14 +515,14 @@ Let's check it out in the next step:</p>
       run: ssh-add -l
 </code></pre>
 <blockquote>
-<p><a href="https://github.com/maroontress/try_out_github_actions/blob/d6dbe2337b2e2f2bca1eb0cb1be7588f57912f58/.github/workflows/windows-ssh-agent.yml#L248-L250">View on GitHub</a></p>
+<p><a href="https://github.com/maroontress/try_out_github_actions/blob/34978a2a8ae8e8ff696b696263402560da53f977/.github/workflows/windows-ssh-agent.yml#L248-L250">View on GitHub</a></p>
 </blockquote>
 <p>The result is as follows:</p>
 <pre><code class="language-plaintext">3072 SHA256:EHYsJhMvV2X03sbEYcAH3w7MNft1lra8M/ZSF0XMr5k git@github.com:maroontress-tomohisa/private-repository-example.git (RSA)
 3072 SHA256:61EFfTJR56r9rX3u9EGG/HrvPcejWJTR0VLssfIpBzg git@github.com:maroontress-tomohisa/private-lfs-repository-example.git (RSA)
 </code></pre>
 <blockquote>
-<p><a href="result-12.png">Results in GitHub Actions</a></p>
+<p><a href="attempt1/result-12.png">Results in GitHub Actions</a></p>
 </blockquote>
 <p>Let's also check the contents of <code>git config</code> and <code>~/.ssh/config</code>:</p>
 <pre><code class="language-yaml">    - name: Print git config
@@ -533,7 +533,7 @@ Let's check it out in the next step:</p>
       run: cat $HOME/.ssh/config
 </code></pre>
 <blockquote>
-<p><a href="https://github.com/maroontress/try_out_github_actions/blob/d6dbe2337b2e2f2bca1eb0cb1be7588f57912f58/.github/workflows/windows-ssh-agent.yml#L251-L256">View on GitHub</a></p>
+<p><a href="https://github.com/maroontress/try_out_github_actions/blob/34978a2a8ae8e8ff696b696263402560da53f977/.github/workflows/windows-ssh-agent.yml#L251-L256">View on GitHub</a></p>
 </blockquote>
 <p>The result is as follows:</p>
 <pre><code class="language-plaintext">url.git@key-43749e3def49002289a25278b6d8d5a0b8fed7f2c33f26750fe6233c114a1c39.github.com:maroontress-tomohisa/private-repository-example.insteadof=https://github.com/maroontress-tomohisa/private-repository-example
@@ -555,7 +555,7 @@ Host key-aabbaf196b10644a69c23360df933575c9e9d496cfc251dabf9b22ee13d7bea9.github
     IdentitiesOnly yes
 </code></pre>
 <blockquote>
-<p><a href="result-13.png">Results in GitHub Actions</a></p>
+<p><a href="attempt1/result-13.png">Results in GitHub Actions</a></p>
 </blockquote>
 <p>For <code>git config</code>, the number of entries has tripled from the previous section,
 but in addition to the SSH URL starting with <code>git@github.com:</code>, the HTTPS URL
@@ -570,7 +570,7 @@ for the fake hostname.</p>
         git clone --depth 1 git@github.com:maroontress-tomohisa/private-repository-example.git
 </code></pre>
 <blockquote>
-<p><a href="https://github.com/maroontress/try_out_github_actions/blob/d6dbe2337b2e2f2bca1eb0cb1be7588f57912f58/.github/workflows/windows-ssh-agent.yml#L257-L261">View on GitHub</a></p>
+<p><a href="https://github.com/maroontress/try_out_github_actions/blob/34978a2a8ae8e8ff696b696263402560da53f977/.github/workflows/windows-ssh-agent.yml#L257-L261">View on GitHub</a></p>
 </blockquote>
 <p>The result is as follows:</p>
 <pre><code class="language-plaintext">Cloning into 'private-repository-example'...
@@ -582,7 +582,7 @@ and the repository exists.
 Error: Process completed with exit code 128.
 </code></pre>
 <blockquote>
-<p><a href="result-14.png">Results in GitHub Actions</a></p>
+<p><a href="attempt1/result-14.png">Results in GitHub Actions</a></p>
 </blockquote>
 <p>The <a href="https://github.com/marketplace/actions/webfactory-ssh-agent#ssh-agent-github-action">description</a> of webfactory/ssh-agent states
 that it generates <code>~/.ssh/known_hosts</code> as follows:</p>
@@ -609,7 +609,7 @@ that it generates <code>~/.ssh/known_hosts</code> as follows:</p>
         cat private-repository-example/README.md
 </code></pre>
 <blockquote>
-<p><a href="https://github.com/maroontress/try_out_github_actions/blob/d6dbe2337b2e2f2bca1eb0cb1be7588f57912f58/.github/workflows/windows-ssh-agent.yml#L262-L279">View on GitHub</a></p>
+<p><a href="https://github.com/maroontress/try_out_github_actions/blob/34978a2a8ae8e8ff696b696263402560da53f977/.github/workflows/windows-ssh-agent.yml#L262-L279">View on GitHub</a></p>
 </blockquote>
 <p>The result is as follows:</p>
 <pre><code class="language-plaintext">Cloning into 'private-repository-example'...
@@ -625,7 +625,7 @@ Archive:  private-lfs-repository-example/empty.zip
        0                0   0%                            1 file
 </code></pre>
 <blockquote>
-<p><a href="result-15.png">Results in GitHub Actions</a></p>
+<p><a href="attempt1/result-15.png">Results in GitHub Actions</a></p>
 </blockquote>
 <p>It succeeded. And now we can finally get down to business.</p>
 <blockquote>
@@ -640,10 +640,10 @@ except official GitHub actions.</p>
 repository that uses an action copied to your organization:</p>
 <div style="padding-left: 4em;">
 <p><strong>Setting up a private repository using actions</strong></p>
-<p>In <a href="settings-actions-general.png">Settings ➜ Actions ➜ General</a> ➜ Actions
-permissions, select “Allow <em>your-organization</em>, and select
+<p>In <a href="attempt1/settings-actions-general.png">Settings ➜ Actions ➜ General</a> ➜
+Actions permissions, select “Allow <em>your-organization</em>, and select
 non-<em>your-organization</em>, actions and reusable workflows” and save.</p>
-<img style="width: calc(100% - 16px); padding: 8px; background-color: #0e1017;" src="security-hardening.png">
+<img style="width: calc(100% - 16px); padding: 8px; background-color: #0e1017;" src="attempt1/security-hardening.png">
 </div>
 <p>If you configure your private repository like this, your organization's
 actions (including copied third-party actions), official GitHub actions, and
@@ -681,7 +681,7 @@ follows:</p>
         EOF
 </code></pre>
 <blockquote>
-<p><a href="https://github.com/maroontress/try_out_github_actions/blob/d6dbe2337b2e2f2bca1eb0cb1be7588f57912f58/.github/workflows/windows-ssh-agent.yml#L285-L306">View on GitHub</a></p>
+<p><a href="https://github.com/maroontress/try_out_github_actions/blob/34978a2a8ae8e8ff696b696263402560da53f977/.github/workflows/windows-ssh-agent.yml#L285-L306">View on GitHub</a></p>
 </blockquote>
 <p>The result is as follows:</p>
 <pre><code class="language-plaintext">Starting ssh-agent
@@ -696,7 +696,7 @@ Added deploy-key mapping: Use identity 'C:\Users\runneradmin/.ssh/key-aabbaf196b
 ⋮
 </code></pre>
 <blockquote>
-<p><a href="result-16.png">Results in GitHub Actions</a></p>
+<p><a href="attempt1/result-16.png">Results in GitHub Actions</a></p>
 </blockquote>
 <p>All that we need to do now is to check out repository C. But before we do that,
 we check out repository B with actions/checkout:</p>
@@ -708,7 +708,7 @@ we check out repository B with actions/checkout:</p>
         path: private-repository
 </code></pre>
 <blockquote>
-<p><a href="https://github.com/maroontress/try_out_github_actions/blob/d6dbe2337b2e2f2bca1eb0cb1be7588f57912f58/.github/workflows/windows-ssh-agent.yml#L311-L316">View on GitHub</a></p>
+<p><a href="https://github.com/maroontress/try_out_github_actions/blob/34978a2a8ae8e8ff696b696263402560da53f977/.github/workflows/windows-ssh-agent.yml#L311-L316">View on GitHub</a></p>
 </blockquote>
 <p>The result is as follows:</p>
 <pre><code class="language-plaintext">Syncing repository: maroontress-tomohisa/private-repository-example
@@ -728,7 +728,7 @@ Checking out the ref
 '3cf9492e7ffb20ea5246a8edf1bec8d3aab293a4'
 </code></pre>
 <blockquote>
-<p><a href="result-17.png">Results in GitHub Actions</a></p>
+<p><a href="attempt1/result-17.png">Results in GitHub Actions</a></p>
 </blockquote>
 <p>Success. Next, let's clone repository C:</p>
 <pre><code class="language-yaml">    - name: List fingerprints after actions/checkout (which fails)
@@ -744,7 +744,7 @@ Checking out the ref
         unzip -v private-lfs-repository-example/empty.zip
 </code></pre>
 <blockquote>
-<p><a href="https://github.com/maroontress/try_out_github_actions/blob/d6dbe2337b2e2f2bca1eb0cb1be7588f57912f58/.github/workflows/windows-ssh-agent.yml#L317-L327">View on GitHub</a></p>
+<p><a href="https://github.com/maroontress/try_out_github_actions/blob/34978a2a8ae8e8ff696b696263402560da53f977/.github/workflows/windows-ssh-agent.yml#L317-L327">View on GitHub</a></p>
 </blockquote>
 <p>It would work without it, but in the step before <code>git clone</code>, we use <code>ssh-add</code>
 to check the status of <code>ssh-agent</code>. The result is as follows:</p>
@@ -761,7 +761,7 @@ and the repository exists.
 Error: Process completed with exit code 128.
 </code></pre>
 <blockquote>
-<p><a href="result-18.png">Results in GitHub Actions</a></p>
+<p><a href="attempt1/result-18.png">Results in GitHub Actions</a></p>
 </blockquote>
 <p>The <code>git clone</code> failed. The preceding <code>git-add -l</code> also failed. The execution of
 actions/checkout has likely broken the state of the <code>ssh-agent</code> running in the
@@ -792,7 +792,7 @@ goes wrong).</p>
         unzip -v private-lfs-repository-example/empty.zip
 </code></pre>
 <blockquote>
-<p><a href="https://github.com/maroontress/try_out_github_actions/blob/d6dbe2337b2e2f2bca1eb0cb1be7588f57912f58/.github/workflows/windows-ssh-agent.yml#L329-L350">View on GitHub</a></p>
+<p><a href="https://github.com/maroontress/try_out_github_actions/blob/34978a2a8ae8e8ff696b696263402560da53f977/.github/workflows/windows-ssh-agent.yml#L329-L350">View on GitHub</a></p>
 </blockquote>
 <p>The result is as follows:</p>
 <pre><code class="language-plaintext">Agent pid 1650 killed;
@@ -819,7 +819,7 @@ Archive:  private-lfs-repository-example/empty.zip
        0                0   0%                            1 file
 </code></pre>
 <blockquote>
-<p><a href="result-19.png">Results in GitHub Actions</a></p>
+<p><a href="attempt1/result-19.png">Results in GitHub Actions</a></p>
 </blockquote>
 <p>After restarting <code>ssh-agent</code>, all the errors should be gone. Now, let's find out
 why these errors happen.</p>
@@ -831,7 +831,7 @@ line:</p>
   &quot;C:\Program Files\Git\bin\git.exe&quot; config --local core.sshCommand &quot;\&quot;C:\Windows\System32\OpenSSH\ssh.exe\&quot; -i \&quot;$RUNNER_TEMP/455b31bf-8bfa-4d87-bb2e-3d92b700ba9a\&quot; -o StrictHostKeyChecking=yes -o CheckHostIP=no -o \&quot;UserKnownHostsFile=$RUNNER_TEMP/455b31bf-8bfa-4d87-bb2e-3d92b700ba9a_known_hosts\&quot;&quot;
 </code></pre>
 <blockquote>
-<p><a href="result-20.png">Results in GitHub Actions</a></p>
+<p><a href="attempt1/result-20.png">Results in GitHub Actions</a></p>
 </blockquote>
 <p>Surprisingly, actions/checkout uses
 <code>C:\<wbr>Windows\<wbr>System32\<wbr>OpenSSH\<wbr>ssh.exe</code> for SSH
@@ -893,10 +893,13 @@ it seems like it would be a good idea to create (and publish) the action myself.
       <a href="index.html">Top</a>
     </li>
     <li class="selected">
-      ssh-agent with Windows runners
+      Attempt #1 ssh-agent with Windows runners
     </li>
     <ul id="toc-placeholder">
     </ul>
+    <li>
+      <a href="runner-image-versions.html">Attempt #2 Parallel build and image versions of runners</a>
+    </li>
   </ul>
 </nav>
       </div>

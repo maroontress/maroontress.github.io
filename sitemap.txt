@@ -85,6 +85,7 @@ https://maroontress.github.io/Euclid/api/latest/html/index.html
 https://maroontress.github.io/Euclid/index.html
 https://maroontress.github.io/Euclid/releasenotes.html
 https://maroontress.github.io/GitHub-Actions-and-Dungeons/index.html
+https://maroontress.github.io/GitHub-Actions-and-Dungeons/runner-image-versions.html
 https://maroontress.github.io/GitHub-Actions-and-Dungeons/ssh-agent-on-windows.html
 https://maroontress.github.io/HtmlBuilder/api/latest/html/Maroontress.Html.BaseTag.html
 https://maroontress.github.io/HtmlBuilder/api/latest/html/Maroontress.Html.EmptyTag.html

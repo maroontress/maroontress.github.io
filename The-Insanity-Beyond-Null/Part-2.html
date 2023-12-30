@@ -268,7 +268,7 @@ C#:</p>
 <pre><code class="language-cs">...
 public sealed class Program
 {
-    private static readonly Action doNothing = () =&gt; {};
+    private static readonly Action DoNothing = () =&gt; {};
 
     private readonly Func&lt;char, Action&gt; toAction;
 
@@ -283,7 +283,7 @@ public sealed class Program
         };
         toAction = c =&gt; map.TryGetValue(c, out var action)
             ? action
-            : doNothing;
+            : DoNothing;
     }
 
     public void HandleKeyInput()
@@ -534,7 +534,7 @@ with <code>null</code> as follows:</p>
 <pre><code class="language-csharp">int? maybeInt = ...
 // The next statement is equivalent to 'if (maybeInt is {}) {'
 // or 'if (!(maybeInt is null)) {'
-if (!(maybeInt != null)) {
+if (maybeInt != null) {
     var intValue = maybeInt.Value;
     ...
 }
