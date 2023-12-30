@@ -1,0 +1,535 @@
+<!doctype html>
+<html>
+  <head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9TQ6JWBKEK">
+    </script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+function gtag() { dataLayer.push(arguments); }
+gtag('js', new Date());
+gtag('config', 'G-9TQ6JWBKEK');
+    </script>
+    <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Metadata&lt;T&gt; Class | API Reference | SqlBind Project</title>
+    <link rel="stylesheet" href="bulldoc.css">
+    <script src="highlight.pack.js">
+    </script>
+    <script>
+      hljs.initHighlightingOnLoad();
+    </script>
+  </head>
+  <body>
+    <div class="mainContainer uhf-container has-top-padding has-default-focus" data-bi-name="body">
+      <section>
+        <main class="content">
+          <h1><span class="lang-csharp">Metadata&lt;T&gt;</span> Class</h1>
+          <div class="metadata">
+            <dl class="attributeList">
+              <dt>
+                Namespace:
+                <dd>
+                  <span class="lang-csharp"><a class="xref" href="Maroontress.SqlBind.Impl.html" data-linktype="relative-path">Maroontress.Sql<wbr>Bind.Impl</a></span>
+                </dd>
+              </dt>
+            </dl>
+            <dl class="attributeList">
+              <dt>
+                Assembly:
+                <dd>
+                  <span class="lang-csharp">Sql<wbr>Bind.dll</span>
+                </dd>
+              </dt>
+            </dl>
+          </div>
+          <div class="summaryHolder">
+            <div class="summary clearFix">
+              <p>The cache of the metadata for reflection.</p>
+            </div>
+          </div>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-keyword">sealed</span> <span class="hljs-keyword">class</span> <span class="hljs-title">Metadata</span>&lt;<span class="hljs-title">T</span>&gt; : <span class="hljs-title">WildMetadata</span><br>    <span class="hljs-keyword">where</span> <span class="hljs-title">T</span> : <span class="hljs-keyword">notnull</span></code></pre>
+          <h4 id="type-parameters" class="propertyInfoTitle stack heading-with-anchor">Type Parameters</h4>
+          <div class="propertyInfo">
+            <dl class="parameterList">
+              <dt>
+                T
+              </dt>
+              <dd>
+                <code>notnull</code>
+              </dd>
+            </dl>
+            <p>The type qualified with <a href="Maroontress.SqlBind.TableAttribute.html">TableAttribute</a>.</p>
+          </div>
+          <dl class="attributeList stack">
+            <dt>
+              Inheritance
+            </dt>
+            <dd>
+              <div class="pdlHolder">
+                <div class="pdl">
+                  <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=netcore-3.0" data-linktype="absolute-path">object</a></span>
+                </div>
+                <span class="lang-csharp">Metadata&lt;T&gt;</span>
+              </div>
+            </dd>
+          </dl>
+          <dl class="attributeList stack">
+            <dt>
+              Implements
+            </dt>
+            <dd>
+              <div class="cdlHolder">
+                <span class="cdl"><span class="lang-csharp break-text"><a class="xref" href="Maroontress.SqlBind.Impl.WildMetadata.html" data-linktype="relative-path">Wild<wbr>Metadata</a></span></span>
+              </div>
+            </dd>
+          </dl>
+          <h2 id="constructors" class="heading-with-anchor">Constructors</h2>
+          <div class="table-scroll-wrapper">
+            <table class="nameValue">
+              <tbody>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.SqlBind.Impl.Metadata`1.#ctor" data-linktype="relative-path">Metadata()</a></span>
+                  </td>
+                  <td>
+                    <p>Initializes a new instance of the <a href="#">Metadata&lt;T&gt;</a> class.</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <h2 id="properties" class="heading-with-anchor">Properties</h2>
+          <div class="table-scroll-wrapper">
+            <table class="nameValue">
+              <tbody>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="#P:Maroontress.SqlBind.Impl.Metadata`1.CreateTableStatements" data-linktype="relative-path">Create<wbr>Table<wbr>Statements</a></span>
+                  </td>
+                  <td>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="#P:Maroontress.SqlBind.Impl.Metadata`1.DropTableStatements" data-linktype="relative-path">Drop<wbr>Table<wbr>Statements</a></span>
+                  </td>
+                  <td>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="#P:Maroontress.SqlBind.Impl.Metadata`1.InsertStatement" data-linktype="relative-path">Insert<wbr>Statement</a></span>
+                  </td>
+                  <td>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="#P:Maroontress.SqlBind.Impl.Metadata`1.TableName" data-linktype="relative-path">Table<wbr>Name</a></span>
+                  </td>
+                  <td>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="#P:Maroontress.SqlBind.Impl.Metadata`1.DeleteStatement" data-linktype="relative-path">Delete<wbr>Statement</a></span>
+                  </td>
+                  <td>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="#P:Maroontress.SqlBind.Impl.Metadata`1.SelectAllStatement" data-linktype="relative-path">Select<wbr>All<wbr>Statement</a></span>
+                  </td>
+                  <td>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="#P:Maroontress.SqlBind.Impl.Metadata`1.Fields" data-linktype="relative-path">Fields</a></span>
+                  </td>
+                  <td>
+                    <p>Gets all the fields of <code>T</code>.</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <h2 id="methods" class="heading-with-anchor">Methods</h2>
+          <div class="table-scroll-wrapper">
+            <table class="nameValue">
+              <tbody>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.SqlBind.Impl.Metadata`1.NewSelectStatement(System.String)" data-linktype="relative-path">New<wbr>Select<wbr>Statement(string)</a></span>
+                  </td>
+                  <td>
+                    <p>Description copied from interface: WildMetadata</p>
+                    <blockquote>
+                      <p>Gets a new string representing the <code>SELECT</code> statement to find the
+    row where the specified column is equal to the specific value.</p>
+                    </blockquote>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.SqlBind.Impl.Metadata`1.NewSelectAllStatement(System.String)" data-linktype="relative-path">New<wbr>Select<wbr>All<wbr>Statement(string)</a></span>
+                  </td>
+                  <td>
+                    <p>Description copied from interface: WildMetadata</p>
+                    <blockquote>
+                      <p>Gets a new string representing the incomplete <code>select</code> statement.</p>
+                    </blockquote>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.SqlBind.Impl.Metadata`1.ToColumnName(System.String)" data-linktype="relative-path">To<wbr>Column<wbr>Name(string)</a></span>
+                  </td>
+                  <td>
+                    <p>Description copied from interface: WildMetadata</p>
+                    <blockquote>
+                      <p>Gets the column name associated with the specified parameter name.</p>
+                    </blockquote>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.SqlBind.Impl.Metadata`1.NewInsertParameterMap(`0)" data-linktype="relative-path">New<wbr>Insert<wbr>Parameter<wbr>Map(T)</a></span>
+                  </td>
+                  <td>
+                    <p>Gets a new map of the parameter name to the parameter value.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.object.equals?view=netcore-3.0#System_Object_Equals_System_Object_">Equals(object)</a>
+                  </td>
+                  <td>
+                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=netcore-3.0" data-linktype="absolute-path">object</a>)
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.object.gethashcode?view=netcore-3.0">GetHashCode()</a>
+                  </td>
+                  <td>
+                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=netcore-3.0" data-linktype="absolute-path">object</a>)
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.object.gettype?view=netcore-3.0">GetType()</a>
+                  </td>
+                  <td>
+                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=netcore-3.0" data-linktype="absolute-path">object</a>)
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.object.memberwiseclone?view=netcore-3.0">MemberwiseClone()</a>
+                  </td>
+                  <td>
+                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=netcore-3.0" data-linktype="absolute-path">object</a>)
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.object.tostring?view=netcore-3.0">ToString()</a>
+                  </td>
+                  <td>
+                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=netcore-3.0" data-linktype="absolute-path">object</a>)
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <h1 id="constructors-detail" class="heading-with-anchor">Constructors Detail</h1>
+          <h2 id="M:Maroontress.SqlBind.Impl.Metadata`1.#ctor">Metadata()</h2>
+          <div class="summaryHolder">
+            <div class="summary clearFix">
+              <p>Initializes a new instance of the <a href="#">Metadata&lt;T&gt;</a> class.</p>
+            </div>
+          </div>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-title">Metadata</span>()</code></pre>
+          <h1 id="properties-detail" class="heading-with-anchor">Properties Detail</h1>
+          <h2 id="P:Maroontress.SqlBind.Impl.Metadata`1.CreateTableStatements">CreateTableStatements</h2>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-title">IEnumerable</span>&lt;<span class="hljs-keyword">string</span>&gt; <span class="hljs-title">CreateTableStatements</span> { <span class="hljs-keyword">get</span>; }</code></pre>
+          <h4 class="propertyInfoTitle stack">Property Value</h4>
+          <div class="propertyInfo">
+            <div class="subtle">
+              <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1?view=netcore-3.0" data-linktype="absolute-path">IEnumerable</a>&lt;<a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.string?view=netcore-3.0" data-linktype="absolute-path">string</a>&gt;
+            </div>
+          </div>
+          <h4 class="propertyInfoTitle stack">Implements</h4>
+          <div class="propertyInfo">
+            <div class="cdlHolder">
+              <span class="cdl"><a href="Maroontress.SqlBind.Impl.WildMetadata.html#P:Maroontress.SqlBind.Impl.WildMetadata.CreateTableStatements">WildMetadata.CreateTableStatements</a></span>
+            </div>
+          </div>
+          <h2 id="P:Maroontress.SqlBind.Impl.Metadata`1.DropTableStatements">DropTableStatements</h2>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-title">IEnumerable</span>&lt;<span class="hljs-keyword">string</span>&gt; <span class="hljs-title">DropTableStatements</span> { <span class="hljs-keyword">get</span>; }</code></pre>
+          <h4 class="propertyInfoTitle stack">Property Value</h4>
+          <div class="propertyInfo">
+            <div class="subtle">
+              <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1?view=netcore-3.0" data-linktype="absolute-path">IEnumerable</a>&lt;<a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.string?view=netcore-3.0" data-linktype="absolute-path">string</a>&gt;
+            </div>
+          </div>
+          <h4 class="propertyInfoTitle stack">Implements</h4>
+          <div class="propertyInfo">
+            <div class="cdlHolder">
+              <span class="cdl"><a href="Maroontress.SqlBind.Impl.WildMetadata.html#P:Maroontress.SqlBind.Impl.WildMetadata.DropTableStatements">WildMetadata.DropTableStatements</a></span>
+            </div>
+          </div>
+          <h2 id="P:Maroontress.SqlBind.Impl.Metadata`1.InsertStatement">InsertStatement</h2>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-keyword">string</span> <span class="hljs-title">InsertStatement</span> { <span class="hljs-keyword">get</span>; }</code></pre>
+          <h4 class="propertyInfoTitle stack">Property Value</h4>
+          <div class="propertyInfo">
+            <div class="subtle">
+              <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.string?view=netcore-3.0" data-linktype="absolute-path">string</a>
+            </div>
+          </div>
+          <h4 class="propertyInfoTitle stack">Implements</h4>
+          <div class="propertyInfo">
+            <div class="cdlHolder">
+              <span class="cdl"><a href="Maroontress.SqlBind.Impl.WildMetadata.html#P:Maroontress.SqlBind.Impl.WildMetadata.InsertStatement">WildMetadata.InsertStatement</a></span>
+            </div>
+          </div>
+          <h2 id="P:Maroontress.SqlBind.Impl.Metadata`1.TableName">TableName</h2>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-keyword">string</span> <span class="hljs-title">TableName</span> { <span class="hljs-keyword">get</span>; }</code></pre>
+          <h4 class="propertyInfoTitle stack">Property Value</h4>
+          <div class="propertyInfo">
+            <div class="subtle">
+              <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.string?view=netcore-3.0" data-linktype="absolute-path">string</a>
+            </div>
+          </div>
+          <h4 class="propertyInfoTitle stack">Implements</h4>
+          <div class="propertyInfo">
+            <div class="cdlHolder">
+              <span class="cdl"><a href="Maroontress.SqlBind.Impl.WildMetadata.html#P:Maroontress.SqlBind.Impl.WildMetadata.TableName">WildMetadata.TableName</a></span>
+            </div>
+          </div>
+          <h2 id="P:Maroontress.SqlBind.Impl.Metadata`1.DeleteStatement">DeleteStatement</h2>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-keyword">string</span> <span class="hljs-title">DeleteStatement</span> { <span class="hljs-keyword">get</span>; }</code></pre>
+          <h4 class="propertyInfoTitle stack">Property Value</h4>
+          <div class="propertyInfo">
+            <div class="subtle">
+              <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.string?view=netcore-3.0" data-linktype="absolute-path">string</a>
+            </div>
+          </div>
+          <h4 class="propertyInfoTitle stack">Implements</h4>
+          <div class="propertyInfo">
+            <div class="cdlHolder">
+              <span class="cdl"><a href="Maroontress.SqlBind.Impl.WildMetadata.html#P:Maroontress.SqlBind.Impl.WildMetadata.DeleteStatement">WildMetadata.DeleteStatement</a></span>
+            </div>
+          </div>
+          <h2 id="P:Maroontress.SqlBind.Impl.Metadata`1.SelectAllStatement">SelectAllStatement</h2>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-keyword">string</span> <span class="hljs-title">SelectAllStatement</span> { <span class="hljs-keyword">get</span>; }</code></pre>
+          <h4 class="propertyInfoTitle stack">Property Value</h4>
+          <div class="propertyInfo">
+            <div class="subtle">
+              <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.string?view=netcore-3.0" data-linktype="absolute-path">string</a>
+            </div>
+          </div>
+          <h4 class="propertyInfoTitle stack">Implements</h4>
+          <div class="propertyInfo">
+            <div class="cdlHolder">
+              <span class="cdl"><a href="Maroontress.SqlBind.Impl.WildMetadata.html#P:Maroontress.SqlBind.Impl.WildMetadata.SelectAllStatement">WildMetadata.SelectAllStatement</a></span>
+            </div>
+          </div>
+          <h2 id="P:Maroontress.SqlBind.Impl.Metadata`1.Fields">Fields</h2>
+          <div class="summaryHolder">
+            <div class="summary clearFix">
+              <p>Gets all the fields of <code>T</code>.</p>
+            </div>
+          </div>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-title">IEnumerable</span>&lt;<span class="hljs-title">Field</span>&lt;<span class="hljs-title">T</span>&gt;&gt; <span class="hljs-title">Fields</span> { <span class="hljs-keyword">get</span>; }</code></pre>
+          <h4 class="propertyInfoTitle stack">Property Value</h4>
+          <div class="propertyInfo">
+            <div class="subtle">
+              <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1?view=netcore-3.0" data-linktype="absolute-path">IEnumerable</a>&lt;<a class="xref" href="Maroontress.SqlBind.Impl.Field.html" data-linktype="relative-path">Field&lt;T&gt;</a>&gt;
+            </div>
+          </div>
+          <h1 id="methods-detail" class="heading-with-anchor">Methods Detail</h1>
+          <h2 id="M:Maroontress.SqlBind.Impl.Metadata`1.NewSelectStatement(System.String)">NewSelectStatement(string)</h2>
+          <div class="summaryHolder">
+            <div class="summary clearFix">
+              <p>Description copied from interface: WildMetadata</p>
+              <blockquote>
+                <p>Gets a new string representing the <code>SELECT</code> statement to find the
+    row where the specified column is equal to the specific value.</p>
+              </blockquote>
+            </div>
+          </div>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-keyword">string</span> <span class="hljs-title">NewSelectStatement</span>(<span class="hljs-keyword">string</span> columnName)</code></pre>
+          <h4 class="propertyInfoTitle stack">Parameters</h4>
+          <div class="propertyInfo">
+            <dl class="parameterList">
+              <dt>
+                columnName
+              </dt>
+              <dd>
+                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.string?view=netcore-3.0" data-linktype="absolute-path">string</a></span>
+              </dd>
+            </dl>
+          </div>
+          <h4 class="propertyInfoTitle stack">Returns</h4>
+          <div class="propertyInfo">
+            <div class="subtle">
+              <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.string?view=netcore-3.0" data-linktype="absolute-path">string</a>
+            </div>
+            <p>Description copied from interface: WildMetadata</p>
+            <blockquote>
+              <p>The new string: <code>SELECT</code> ... <code>FROM</code> ... <code>WHERE columnName =
+    $columnName</code>.</p>
+            </blockquote>
+          </div>
+          <h4 class="propertyInfoTitle stack">Implements</h4>
+          <div class="propertyInfo">
+            <div class="cdlHolder">
+              <span class="cdl"><a href="Maroontress.SqlBind.Impl.WildMetadata.html#M:Maroontress.SqlBind.Impl.WildMetadata.NewSelectStatement(System.String)">WildMetadata.NewSelectStatement(string)</a></span>
+            </div>
+          </div>
+          <h2 id="M:Maroontress.SqlBind.Impl.Metadata`1.NewSelectAllStatement(System.String)">NewSelectAllStatement(string)</h2>
+          <div class="summaryHolder">
+            <div class="summary clearFix">
+              <p>Description copied from interface: WildMetadata</p>
+              <blockquote>
+                <p>Gets a new string representing the incomplete <code>select</code> statement.</p>
+              </blockquote>
+            </div>
+          </div>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-keyword">string</span> <span class="hljs-title">NewSelectAllStatement</span>(<span class="hljs-keyword">string</span> alias)</code></pre>
+          <h4 class="propertyInfoTitle stack">Parameters</h4>
+          <div class="propertyInfo">
+            <dl class="parameterList">
+              <dt>
+                alias
+              </dt>
+              <dd>
+                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.string?view=netcore-3.0" data-linktype="absolute-path">string</a></span>
+              </dd>
+            </dl>
+          </div>
+          <h4 class="propertyInfoTitle stack">Returns</h4>
+          <div class="propertyInfo">
+            <div class="subtle">
+              <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.string?view=netcore-3.0" data-linktype="absolute-path">string</a>
+            </div>
+            <p>Description copied from interface: WildMetadata</p>
+            <blockquote>
+              <p>The new string: <code>SELECT</code> ... <code>FROM</code> ... <code>alias</code>.</p>
+            </blockquote>
+          </div>
+          <h4 class="propertyInfoTitle stack">Implements</h4>
+          <div class="propertyInfo">
+            <div class="cdlHolder">
+              <span class="cdl"><a href="Maroontress.SqlBind.Impl.WildMetadata.html#M:Maroontress.SqlBind.Impl.WildMetadata.NewSelectAllStatement(System.String)">WildMetadata.NewSelectAllStatement(string)</a></span>
+            </div>
+          </div>
+          <h2 id="M:Maroontress.SqlBind.Impl.Metadata`1.ToColumnName(System.String)">ToColumnName(string)</h2>
+          <div class="summaryHolder">
+            <div class="summary clearFix">
+              <p>Description copied from interface: WildMetadata</p>
+              <blockquote>
+                <p>Gets the column name associated with the specified parameter name.</p>
+              </blockquote>
+            </div>
+          </div>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-keyword">string</span> <span class="hljs-title">ToColumnName</span>(<span class="hljs-keyword">string</span> parameterName)</code></pre>
+          <h4 class="propertyInfoTitle stack">Parameters</h4>
+          <div class="propertyInfo">
+            <dl class="parameterList">
+              <dt>
+                parameterName
+              </dt>
+              <dd>
+                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.string?view=netcore-3.0" data-linktype="absolute-path">string</a></span>
+              </dd>
+            </dl>
+          </div>
+          <h4 class="propertyInfoTitle stack">Returns</h4>
+          <div class="propertyInfo">
+            <div class="subtle">
+              <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.string?view=netcore-3.0" data-linktype="absolute-path">string</a>
+            </div>
+            <p>Description copied from interface: WildMetadata</p>
+            <blockquote>
+              <p>The column name.</p>
+            </blockquote>
+          </div>
+          <h4 class="propertyInfoTitle stack">Implements</h4>
+          <div class="propertyInfo">
+            <div class="cdlHolder">
+              <span class="cdl"><a href="Maroontress.SqlBind.Impl.WildMetadata.html#M:Maroontress.SqlBind.Impl.WildMetadata.ToColumnName(System.String)">WildMetadata.ToColumnName(string)</a></span>
+            </div>
+          </div>
+          <h2 id="M:Maroontress.SqlBind.Impl.Metadata`1.NewInsertParameterMap(`0)">NewInsertParameterMap(T)</h2>
+          <div class="summaryHolder">
+            <div class="summary clearFix">
+              <p>Gets a new map of the parameter name to the parameter value.</p>
+            </div>
+          </div>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-title">IReadOnlyDictionary</span>&lt;<span class="hljs-keyword">string</span>, <span class="hljs-keyword">object</span>&gt; <span class="hljs-title">NewInsertParameterMap</span>(<span class="hljs-title">T</span> row)</code></pre>
+          <h4 class="propertyInfoTitle stack">Parameters</h4>
+          <div class="propertyInfo">
+            <dl class="parameterList">
+              <dt>
+                row
+              </dt>
+              <dd>
+                <span class="lang-csharp">T</span>
+              </dd>
+            </dl>
+            <p>The row object containing the all field values.</p>
+          </div>
+          <h4 class="propertyInfoTitle stack">Returns</h4>
+          <div class="propertyInfo">
+            <div class="subtle">
+              <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ireadonlydictionary-2?view=netcore-3.0" data-linktype="absolute-path">IRead<wbr>Only<wbr>Dictionary</a>&lt;<a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.string?view=netcore-3.0" data-linktype="absolute-path">string</a>, <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=netcore-3.0" data-linktype="absolute-path">object</a>&gt;
+            </div>
+            <p>The new dictionary containing the parameter name-value pairs.</p>
+          </div>
+        </main>
+      </section>
+    </div>
+  </body>
+</html>

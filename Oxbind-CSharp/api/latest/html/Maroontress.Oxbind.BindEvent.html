@@ -1,0 +1,149 @@
+<!doctype html>
+<html>
+  <head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9TQ6JWBKEK">
+    </script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+function gtag() { dataLayer.push(arguments); }
+gtag('js', new Date());
+gtag('config', 'G-9TQ6JWBKEK');
+    </script>
+    <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BindEvent&lt;T&gt; Interface | API Reference | Oxbind Project</title>
+    <link rel="stylesheet" href="bulldoc.css">
+    <script src="highlight.pack.js">
+    </script>
+    <script>
+      hljs.initHighlightingOnLoad();
+    </script>
+  </head>
+  <body>
+    <div class="mainContainer uhf-container has-top-padding has-default-focus" data-bi-name="body">
+      <section>
+        <main class="content">
+          <h1><span class="lang-csharp">Bind<wbr>Event&lt;T&gt;</span> Interface</h1>
+          <div class="metadata">
+            <dl class="attributeList">
+              <dt>
+                Namespace:
+                <dd>
+                  <span class="lang-csharp"><a class="xref" href="Maroontress.Oxbind.html" data-linktype="relative-path">Maroontress.Oxbind</a></span>
+                </dd>
+              </dt>
+            </dl>
+            <dl class="attributeList">
+              <dt>
+                Assembly:
+                <dd>
+                  <span class="lang-csharp">Oxbind.dll</span>
+                </dd>
+              </dt>
+            </dl>
+          </div>
+          <div class="summaryHolder">
+            <div class="summary clearFix">
+              <p>The event of the deserialized value.</p>
+            </div>
+          </div>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-keyword">interface</span> <span class="hljs-title">BindEvent</span>&lt;<span class="hljs-keyword">out</span> <span class="hljs-title">T</span>&gt;<br>    <span class="hljs-keyword">where</span> <span class="hljs-title">T</span> : <span class="hljs-keyword">class</span></code></pre>
+          <h4 id="type-parameters" class="propertyInfoTitle stack heading-with-anchor">Type Parameters</h4>
+          <div class="propertyInfo">
+            <dl class="parameterList">
+              <dt>
+                T
+              </dt>
+              <dd>
+                <code>class</code>
+              </dd>
+            </dl>
+            <p>The type of the value.</p>
+          </div>
+          <h2 id="properties" class="heading-with-anchor">Properties</h2>
+          <div class="table-scroll-wrapper">
+            <table class="nameValue">
+              <tbody>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="#P:Maroontress.Oxbind.BindEvent`1.Value" data-linktype="relative-path">Value</a></span>
+                  </td>
+                  <td>
+                    <p>Gets the deserialized value.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="#P:Maroontress.Oxbind.BindEvent`1.Line" data-linktype="relative-path">Line</a></span>
+                  </td>
+                  <td>
+                    <p>Gets the line number where this event occurs in the XML document.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="#P:Maroontress.Oxbind.BindEvent`1.Column" data-linktype="relative-path">Column</a></span>
+                  </td>
+                  <td>
+                    <p>Gets the column number where this event occurs in the XML document.</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <h1 id="properties-detail" class="heading-with-anchor">Properties Detail</h1>
+          <h2 id="P:Maroontress.Oxbind.BindEvent`1.Value">Value</h2>
+          <div class="summaryHolder">
+            <div class="summary clearFix">
+              <p>Gets the deserialized value.</p>
+            </div>
+          </div>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-title">T</span> <span class="hljs-title">Value</span> { <span class="hljs-keyword">get</span>; }</code></pre>
+          <h4 class="propertyInfoTitle stack">Property Value</h4>
+          <div class="propertyInfo">
+            <div class="subtle">
+              T
+            </div>
+          </div>
+          <h2 id="P:Maroontress.Oxbind.BindEvent`1.Line">Line</h2>
+          <div class="summaryHolder">
+            <div class="summary clearFix">
+              <p>Gets the line number where this event occurs in the XML document.</p>
+            </div>
+          </div>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">int</span> <span class="hljs-title">Line</span> { <span class="hljs-keyword">get</span>; }</code></pre>
+          <h4 class="propertyInfoTitle stack">Property Value</h4>
+          <div class="propertyInfo">
+            <div class="subtle">
+              <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.int32?view=netcore-3.0" data-linktype="absolute-path">int</a>
+            </div>
+          </div>
+          <h2 id="P:Maroontress.Oxbind.BindEvent`1.Column">Column</h2>
+          <div class="summaryHolder">
+            <div class="summary clearFix">
+              <p>Gets the column number where this event occurs in the XML document.</p>
+            </div>
+          </div>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">int</span> <span class="hljs-title">Column</span> { <span class="hljs-keyword">get</span>; }</code></pre>
+          <h4 class="propertyInfoTitle stack">Property Value</h4>
+          <div class="propertyInfo">
+            <div class="subtle">
+              <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.int32?view=netcore-3.0" data-linktype="absolute-path">int</a>
+            </div>
+          </div>
+        </main>
+      </section>
+    </div>
+  </body>
+</html>

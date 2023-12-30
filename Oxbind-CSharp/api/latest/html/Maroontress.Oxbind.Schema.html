@@ -1,0 +1,284 @@
+<!doctype html>
+<html>
+  <head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9TQ6JWBKEK">
+    </script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+function gtag() { dataLayer.push(arguments); }
+gtag('js', new Date());
+gtag('config', 'G-9TQ6JWBKEK');
+    </script>
+    <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schema Class | API Reference | Oxbind Project</title>
+    <link rel="stylesheet" href="bulldoc.css">
+    <script src="highlight.pack.js">
+    </script>
+    <script>
+      hljs.initHighlightingOnLoad();
+    </script>
+  </head>
+  <body>
+    <div class="mainContainer uhf-container has-top-padding has-default-focus" data-bi-name="body">
+      <section>
+        <main class="content">
+          <h1><span class="lang-csharp">Schema</span> Class</h1>
+          <div class="metadata">
+            <dl class="attributeList">
+              <dt>
+                Namespace:
+                <dd>
+                  <span class="lang-csharp"><a class="xref" href="Maroontress.Oxbind.html" data-linktype="relative-path">Maroontress.Oxbind</a></span>
+                </dd>
+              </dt>
+            </dl>
+            <dl class="attributeList">
+              <dt>
+                Assembly:
+                <dd>
+                  <span class="lang-csharp">Oxbind.dll</span>
+                </dd>
+              </dt>
+            </dl>
+          </div>
+          <div class="summaryHolder">
+            <div class="summary clearFix">
+              <p>Metadata for the class corresponding to the XML element, that
+     represents the relationship between the element and its child elements.</p>
+            </div>
+          </div>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-keyword">sealed</span> <span class="hljs-keyword">class</span> <span class="hljs-title">Schema</span></code></pre>
+          <dl class="attributeList stack">
+            <dt>
+              Inheritance
+            </dt>
+            <dd>
+              <div class="pdlHolder">
+                <div class="pdl">
+                  <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=netcore-3.0" data-linktype="absolute-path">object</a></span>
+                </div>
+                <span class="lang-csharp">Schema</span>
+              </div>
+            </dd>
+          </dl>
+          <h2 id="remarks" class="heading-with-anchor">Remarks</h2>
+          <p>The <a href="#">Schema</a> object is the immutable list of <a href="Maroontress.Oxbind.SchemaType.html">SchemaType</a>, and defines the possible order and number of
+     occurrences of the child elements.</p>
+          <p>The class corresponding to the XML element that has the child elements
+     must have the single, <code>static</code> and <code>readonly</code> <a href="#">Schema</a> field annotated with <a href="Maroontress.Oxbind.ElementSchemaAttribute.html">ElementSchemaAttribute</a>. For example, the root element
+     <code>movie</code> has its child elements <code>director</code> and <code>cast</code> as
+     follows:</p>
+          <pre><code class="lang-xml">&lt;movie name="Avatar"&gt;
+  &lt;director name="James Cameron"/&gt;
+  &lt;cast name="Sam Worthington"/&gt;
+  &lt;cast name="Zoe Saldana"/&gt;
+&lt;/movie&gt;</code></pre>
+          <p>The <code>Movie</code> class that stands for the element <code>movie</code>
+     should be as follows:</p>
+          <pre><code class="lang-csharp">[ForElement("movie")]
+public sealed class Movie
+{
+    [ElementSchema]
+    private static readonly Schema TheSchema = Schema.Of(
+        Mandatory.Of&lt;Director&gt;(),
+        Multiple.Of&lt;Cast&gt;());
+
+    [ForAttribute("name")]
+    private String name;
+    ...
+}</code></pre>
+          <p>Likewise, The <code>Director</code> and <code>Cast</code> classes that stand for
+     the elements <code>director</code> and <code>cast</code> respectively should be as
+     follows:</p>
+          <pre><code class="lang-csharp">[ForElement("director")]
+public class Director { ... }
+
+[ForElement("cast")]
+public class Cast { ... }</code></pre>
+          <p>All classes that the <a href="#">Schema</a> object contains must be
+     handled in that class with the field annotated with <a href="Maroontress.Oxbind.ForChildAttribute.html">ForChildAttribute</a> or the method annotated with
+     <a href="Maroontress.Oxbind.FromChildAttribute.html">FromChildAttribute</a>.</p>
+          <p>The definition of the <a href="#">Schema</a> object does not allow the
+     child element corresponding to the class <code>T</code> to appear two or more
+     times.</p>
+          <h2 id="fields" class="heading-with-anchor">Fields</h2>
+          <div class="table-scroll-wrapper">
+            <table class="nameValue">
+              <tbody>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="#F:Maroontress.Oxbind.Schema.Empty" data-linktype="relative-path">Empty</a></span>
+                  </td>
+                  <td>
+                    <p>An empty <a href="#">Schema</a> object.</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <h2 id="methods" class="heading-with-anchor">Methods</h2>
+          <div class="table-scroll-wrapper">
+            <table class="nameValue">
+              <tbody>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Oxbind.Schema.Of(Maroontress.Oxbind.SchemaType[])" data-linktype="relative-path">Of(Schema<wbr>Type[])</a></span>
+                  </td>
+                  <td>
+                    <p>Creates a new instance with the specified <a href="Maroontress.Oxbind.SchemaType.html">SchemaType</a>
+    objects.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Oxbind.Schema.Types" data-linktype="relative-path">Types()</a></span>
+                  </td>
+                  <td>
+                    <p>Gets the immutable array of the <a href="Maroontress.Oxbind.SchemaType.html">SchemaType</a>
+    object.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.object.equals?view=netcore-3.0#System_Object_Equals_System_Object_">Equals(object)</a>
+                  </td>
+                  <td>
+                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=netcore-3.0" data-linktype="absolute-path">object</a>)
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.object.gethashcode?view=netcore-3.0">GetHashCode()</a>
+                  </td>
+                  <td>
+                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=netcore-3.0" data-linktype="absolute-path">object</a>)
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.object.gettype?view=netcore-3.0">GetType()</a>
+                  </td>
+                  <td>
+                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=netcore-3.0" data-linktype="absolute-path">object</a>)
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.object.memberwiseclone?view=netcore-3.0">MemberwiseClone()</a>
+                  </td>
+                  <td>
+                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=netcore-3.0" data-linktype="absolute-path">object</a>)
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.object.tostring?view=netcore-3.0">ToString()</a>
+                  </td>
+                  <td>
+                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=netcore-3.0" data-linktype="absolute-path">object</a>)
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <h2 id="see-also" class="heading-with-anchor">See Also</h2>
+          <ul>
+            <li>
+              <a href="Maroontress.Oxbind.ElementSchemaAttribute.html">ElementSchemaAttribute</a>
+            </li>
+            <li>
+              <a href="Maroontress.Oxbind.ForChildAttribute.html">ForChildAttribute</a>
+            </li>
+            <li>
+              <a href="Maroontress.Oxbind.FromChildAttribute.html">FromChildAttribute</a>
+            </li>
+            <li>
+              <a href="Maroontress.Oxbind.SchemaType.html">SchemaType</a>
+            </li>
+            <li>
+              <a href="Maroontress.Oxbind.Mandatory.html#M:Maroontress.Oxbind.Mandatory.Of``1">Mandatory.Of&lt;T&gt;()</a>
+            </li>
+            <li>
+              <a href="Maroontress.Oxbind.Multiple.html#M:Maroontress.Oxbind.Multiple.Of``1">Multiple.Of&lt;T&gt;()</a>
+            </li>
+            <li>
+              <a href="Maroontress.Oxbind.Optional.html#M:Maroontress.Oxbind.Optional.Of``1">Optional.Of&lt;T&gt;()</a>
+            </li>
+          </ul>
+          <h1 id="fields-detail" class="heading-with-anchor">Fields Detail</h1>
+          <h2 id="F:Maroontress.Oxbind.Schema.Empty">Empty</h2>
+          <div class="summaryHolder">
+            <div class="summary clearFix">
+              <p>An empty <a href="#">Schema</a> object.</p>
+            </div>
+          </div>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">readonly</span> <span class="hljs-title">Schema</span> <span class="hljs-title">Empty</span></code></pre>
+          <h4 class="propertyInfoTitle stack">Field Value</h4>
+          <div class="propertyInfo">
+            <div class="subtle">
+              <a class="xref" href="#" data-linktype="relative-path">Schema</a>
+            </div>
+          </div>
+          <h1 id="methods-detail" class="heading-with-anchor">Methods Detail</h1>
+          <h2 id="M:Maroontress.Oxbind.Schema.Of(Maroontress.Oxbind.SchemaType[])">Of(SchemaType[])</h2>
+          <div class="summaryHolder">
+            <div class="summary clearFix">
+              <p>Creates a new instance with the specified <a href="Maroontress.Oxbind.SchemaType.html">SchemaType</a>
+    objects.</p>
+            </div>
+          </div>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-title">Schema</span> <span class="hljs-title">Of</span>(<span class="hljs-keyword">params</span> <span class="hljs-title">SchemaType</span>[] args)</code></pre>
+          <h4 class="propertyInfoTitle stack">Parameters</h4>
+          <div class="propertyInfo">
+            <dl class="parameterList">
+              <dt>
+                args
+              </dt>
+              <dd>
+                <span class="lang-csharp"><a class="xref" href="Maroontress.Oxbind.SchemaType.html" data-linktype="relative-path">Schema<wbr>Type</a>[]</span>
+              </dd>
+            </dl>
+            <p><a href="Maroontress.Oxbind.SchemaType.html">SchemaType</a> objects.</p>
+          </div>
+          <h4 class="propertyInfoTitle stack">Returns</h4>
+          <div class="propertyInfo">
+            <div class="subtle">
+              <a class="xref" href="#" data-linktype="relative-path">Schema</a>
+            </div>
+            <p>A new <a href="#">Schema</a> object.</p>
+          </div>
+          <h3>Remarks</h3>
+          <p>If the <code>args</code> is empty,
+    returns <a href="#F:Maroontress.Oxbind.Schema.Empty">Empty</a>.</p>
+          <h2 id="M:Maroontress.Oxbind.Schema.Types">Types()</h2>
+          <div class="summaryHolder">
+            <div class="summary clearFix">
+              <p>Gets the immutable array of the <a href="Maroontress.Oxbind.SchemaType.html">SchemaType</a>
+    object.</p>
+            </div>
+          </div>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-title">ImmutableArray</span>&lt;<span class="hljs-title">SchemaType</span>&gt; <span class="hljs-title">Types</span>()</code></pre>
+          <h4 class="propertyInfoTitle stack">Returns</h4>
+          <div class="propertyInfo">
+            <div class="subtle">
+              <a class="xref" href="Maroontress.Util.ImmutableArray.html" data-linktype="relative-path">Immutable<wbr>Array</a>&lt;<a class="xref" href="Maroontress.Oxbind.SchemaType.html" data-linktype="relative-path">Schema<wbr>Type</a>&gt;
+            </div>
+            <p>The immutable array of the <a href="Maroontress.Oxbind.SchemaType.html">SchemaType</a> object.</p>
+          </div>
+        </main>
+      </section>
+    </div>
+  </body>
+</html>

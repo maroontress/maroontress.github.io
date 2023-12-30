@@ -1,0 +1,417 @@
+<!doctype html>
+<html>
+  <head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9TQ6JWBKEK">
+    </script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+function gtag() { dataLayer.push(arguments); }
+gtag('js', new Date());
+gtag('config', 'G-9TQ6JWBKEK');
+    </script>
+    <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OptionParsingException Class | API Reference | CuiMallet Project</title>
+    <link rel="stylesheet" href="bulldoc.css">
+    <script src="highlight.pack.js">
+    </script>
+    <script>
+      hljs.initHighlightingOnLoad();
+    </script>
+  </head>
+  <body>
+    <div class="mainContainer uhf-container has-top-padding has-default-focus" data-bi-name="body">
+      <section>
+        <main class="content">
+          <h1><span class="lang-csharp">Option<wbr>Parsing<wbr>Exception</span> Class</h1>
+          <div class="metadata">
+            <dl class="attributeList">
+              <dt>
+                Namespace:
+                <dd>
+                  <span class="lang-csharp"><a class="xref" href="Maroontress.Cui.html" data-linktype="relative-path">Maroontress.Cui</a></span>
+                </dd>
+              </dt>
+            </dl>
+            <dl class="attributeList">
+              <dt>
+                Assembly:
+                <dd>
+                  <span class="lang-csharp">Cui<wbr>Mallet.dll</span>
+                </dd>
+              </dt>
+            </dl>
+          </div>
+          <div class="summaryHolder">
+            <div class="summary clearFix">
+              <p>Represents errors that occurs while parsing the command-line options.</p>
+            </div>
+          </div>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-keyword">sealed</span> <span class="hljs-keyword">class</span> <span class="hljs-title">OptionParsingException</span> : <span class="hljs-title">Exception</span></code></pre>
+          <dl class="attributeList stack">
+            <dt>
+              Inheritance
+            </dt>
+            <dd>
+              <div class="pdlHolder">
+                <div class="pdl">
+                  <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=netcore-3.0" data-linktype="absolute-path">object</a></span>
+                </div>
+                <div class="pdl">
+                  <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.exception?view=netcore-3.0" data-linktype="absolute-path">Exception</a></span>
+                </div>
+                <span class="lang-csharp">Option<wbr>Parsing<wbr>Exception</span>
+              </div>
+            </dd>
+          </dl>
+          <dl class="attributeList stack">
+            <dt>
+              Implements
+            </dt>
+            <dd>
+              <div class="cdlHolder">
+                <span class="cdl"><span class="lang-csharp break-text"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.runtime.serialization.iserializable?view=netcore-3.0" data-linktype="absolute-path">ISerializable</a></span></span>
+              </div>
+            </dd>
+          </dl>
+          <h2 id="constructors" class="heading-with-anchor">Constructors</h2>
+          <div class="table-scroll-wrapper">
+            <table class="nameValue">
+              <tbody>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Cui.OptionParsingException.#ctor(Maroontress.Cui.OptionSchema,System.String)" data-linktype="relative-path">Option<wbr>Parsing<wbr>Exception(Option<wbr>Schema, string)</a></span>
+                  </td>
+                  <td>
+                    <p>Initializes a new instance of the <a href="#">OptionParsingException</a> class.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Cui.OptionParsingException.#ctor(Maroontress.Cui.Option,System.String)" data-linktype="relative-path">Option<wbr>Parsing<wbr>Exception(Option, string)</a></span>
+                  </td>
+                  <td>
+                    <p>Initializes a new instance of the <a href="#">OptionParsingException</a> class.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Cui.OptionParsingException.#ctor(Maroontress.Cui.Option,System.String,System.Exception)" data-linktype="relative-path">Option<wbr>Parsing<wbr>Exception(Option, string, Exception)</a></span>
+                  </td>
+                  <td>
+                    <p>Initializes a new instance of the <a href="#">OptionParsingException</a> class.</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <h2 id="properties" class="heading-with-anchor">Properties</h2>
+          <div class="table-scroll-wrapper">
+            <table class="nameValue">
+              <tbody>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="#P:Maroontress.Cui.OptionParsingException.Option" data-linktype="relative-path">Option</a></span>
+                  </td>
+                  <td>
+                    <p>Gets the option that failed to parse, if any.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="#P:Maroontress.Cui.OptionParsingException.Schema" data-linktype="relative-path">Schema</a></span>
+                  </td>
+                  <td>
+                    <p>Gets the schema.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.exception.data?view=netcore-3.0">Data</a>
+                  </td>
+                  <td>
+                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.exception?view=netcore-3.0" data-linktype="absolute-path">Exception</a>)
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.exception.helplink?view=netcore-3.0">HelpLink</a>
+                  </td>
+                  <td>
+                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.exception?view=netcore-3.0" data-linktype="absolute-path">Exception</a>)
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.exception.hresult?view=netcore-3.0">HResult</a>
+                  </td>
+                  <td>
+                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.exception?view=netcore-3.0" data-linktype="absolute-path">Exception</a>)
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.exception.innerexception?view=netcore-3.0">InnerException</a>
+                  </td>
+                  <td>
+                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.exception?view=netcore-3.0" data-linktype="absolute-path">Exception</a>)
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.exception.message?view=netcore-3.0">Message</a>
+                  </td>
+                  <td>
+                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.exception?view=netcore-3.0" data-linktype="absolute-path">Exception</a>)
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.exception.source?view=netcore-3.0">Source</a>
+                  </td>
+                  <td>
+                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.exception?view=netcore-3.0" data-linktype="absolute-path">Exception</a>)
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.exception.stacktrace?view=netcore-3.0">StackTrace</a>
+                  </td>
+                  <td>
+                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.exception?view=netcore-3.0" data-linktype="absolute-path">Exception</a>)
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.exception.targetsite?view=netcore-3.0">TargetSite</a>
+                  </td>
+                  <td>
+                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.exception?view=netcore-3.0" data-linktype="absolute-path">Exception</a>)
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <h2 id="methods" class="heading-with-anchor">Methods</h2>
+          <div class="table-scroll-wrapper">
+            <table class="nameValue">
+              <tbody>
+                <tr>
+                  <td>
+                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.exception.getbaseexception?view=netcore-3.0">GetBaseException()</a>
+                  </td>
+                  <td>
+                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.exception?view=netcore-3.0" data-linktype="absolute-path">Exception</a>)
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.exception.getobjectdata?view=netcore-3.0#System_Exception_GetObjectData_System_Runtime_Serialization_SerializationInfo_System_Runtime_Serialization_StreamingContext_">GetObjectData(SerializationInfo, StreamingContext)</a>
+                  </td>
+                  <td>
+                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.exception?view=netcore-3.0" data-linktype="absolute-path">Exception</a>)
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.exception.gettype?view=netcore-3.0">GetType()</a>
+                  </td>
+                  <td>
+                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.exception?view=netcore-3.0" data-linktype="absolute-path">Exception</a>)
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.exception.tostring?view=netcore-3.0">ToString()</a>
+                  </td>
+                  <td>
+                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.exception?view=netcore-3.0" data-linktype="absolute-path">Exception</a>)
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.object.equals?view=netcore-3.0#System_Object_Equals_System_Object_">Equals(object)</a>
+                  </td>
+                  <td>
+                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=netcore-3.0" data-linktype="absolute-path">object</a>)
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.object.gethashcode?view=netcore-3.0">GetHashCode()</a>
+                  </td>
+                  <td>
+                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=netcore-3.0" data-linktype="absolute-path">object</a>)
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.object.gettype?view=netcore-3.0">GetType()</a>
+                  </td>
+                  <td>
+                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=netcore-3.0" data-linktype="absolute-path">object</a>)
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.object.memberwiseclone?view=netcore-3.0">MemberwiseClone()</a>
+                  </td>
+                  <td>
+                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=netcore-3.0" data-linktype="absolute-path">object</a>)
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <h1 id="constructors-detail" class="heading-with-anchor">Constructors Detail</h1>
+          <h2 id="M:Maroontress.Cui.OptionParsingException.#ctor(Maroontress.Cui.OptionSchema,System.String)">OptionParsingException(OptionSchema, string)</h2>
+          <div class="summaryHolder">
+            <div class="summary clearFix">
+              <p>Initializes a new instance of the <a href="#">OptionParsingException</a> class.</p>
+            </div>
+          </div>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-title">OptionParsingException</span>(<span class="hljs-title">OptionSchema</span> schema, <span class="hljs-keyword">string</span> message)</code></pre>
+          <h4 class="propertyInfoTitle stack">Parameters</h4>
+          <div class="propertyInfo">
+            <dl class="parameterList">
+              <dt>
+                schema
+              </dt>
+              <dd>
+                <span class="lang-csharp"><a class="xref" href="Maroontress.Cui.OptionSchema.html" data-linktype="relative-path">Option<wbr>Schema</a></span>
+              </dd>
+            </dl>
+            <p>The schema.</p>
+          </div>
+          <div class="propertyInfo stack">
+            <dl class="parameterList">
+              <dt>
+                message
+              </dt>
+              <dd>
+                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.string?view=netcore-3.0" data-linktype="absolute-path">string</a></span>
+              </dd>
+            </dl>
+            <p>The message that describes the error.</p>
+          </div>
+          <h2 id="M:Maroontress.Cui.OptionParsingException.#ctor(Maroontress.Cui.Option,System.String)">OptionParsingException(Option, string)</h2>
+          <div class="summaryHolder">
+            <div class="summary clearFix">
+              <p>Initializes a new instance of the <a href="#">OptionParsingException</a> class.</p>
+            </div>
+          </div>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-title">OptionParsingException</span>(<span class="hljs-title">Option</span> option, <span class="hljs-keyword">string</span> message)</code></pre>
+          <h4 class="propertyInfoTitle stack">Parameters</h4>
+          <div class="propertyInfo">
+            <dl class="parameterList">
+              <dt>
+                option
+              </dt>
+              <dd>
+                <span class="lang-csharp"><a class="xref" href="Maroontress.Cui.Option.html" data-linktype="relative-path">Option</a></span>
+              </dd>
+            </dl>
+            <p>The option.</p>
+          </div>
+          <div class="propertyInfo stack">
+            <dl class="parameterList">
+              <dt>
+                message
+              </dt>
+              <dd>
+                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.string?view=netcore-3.0" data-linktype="absolute-path">string</a></span>
+              </dd>
+            </dl>
+            <p>The message that describes the error.</p>
+          </div>
+          <h2 id="M:Maroontress.Cui.OptionParsingException.#ctor(Maroontress.Cui.Option,System.String,System.Exception)">OptionParsingException(Option, string, Exception)</h2>
+          <div class="summaryHolder">
+            <div class="summary clearFix">
+              <p>Initializes a new instance of the <a href="#">OptionParsingException</a> class.</p>
+            </div>
+          </div>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-title">OptionParsingException</span>(<span class="hljs-title">Option</span> option, <span class="hljs-keyword">string</span> message, <span class="hljs-title">Exception</span> innerException)</code></pre>
+          <h4 class="propertyInfoTitle stack">Parameters</h4>
+          <div class="propertyInfo">
+            <dl class="parameterList">
+              <dt>
+                option
+              </dt>
+              <dd>
+                <span class="lang-csharp"><a class="xref" href="Maroontress.Cui.Option.html" data-linktype="relative-path">Option</a></span>
+              </dd>
+            </dl>
+            <p>The option.</p>
+          </div>
+          <div class="propertyInfo stack">
+            <dl class="parameterList">
+              <dt>
+                message
+              </dt>
+              <dd>
+                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.string?view=netcore-3.0" data-linktype="absolute-path">string</a></span>
+              </dd>
+            </dl>
+            <p>The error message that explains the reason for the exception.</p>
+          </div>
+          <div class="propertyInfo stack">
+            <dl class="parameterList">
+              <dt>
+                innerException
+              </dt>
+              <dd>
+                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.exception?view=netcore-3.0" data-linktype="absolute-path">Exception</a></span>
+              </dd>
+            </dl>
+            <p>The exception that is the cause of the current exception, or a null
+    reference if no inner exception is specified.</p>
+          </div>
+          <h1 id="properties-detail" class="heading-with-anchor">Properties Detail</h1>
+          <h2 id="P:Maroontress.Cui.OptionParsingException.Option">Option</h2>
+          <div class="summaryHolder">
+            <div class="summary clearFix">
+              <p>Gets the option that failed to parse, if any.</p>
+            </div>
+          </div>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-title">Option</span> <span class="hljs-title">Option</span> { <span class="hljs-keyword">get</span>; }</code></pre>
+          <h4 class="propertyInfoTitle stack">Property Value</h4>
+          <div class="propertyInfo">
+            <div class="subtle">
+              <a class="xref" href="Maroontress.Cui.Option.html" data-linktype="relative-path">Option</a>
+            </div>
+          </div>
+          <h2 id="P:Maroontress.Cui.OptionParsingException.Schema">Schema</h2>
+          <div class="summaryHolder">
+            <div class="summary clearFix">
+              <p>Gets the schema.</p>
+            </div>
+          </div>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-title">OptionSchema</span> <span class="hljs-title">Schema</span> { <span class="hljs-keyword">get</span>; }</code></pre>
+          <h4 class="propertyInfoTitle stack">Property Value</h4>
+          <div class="propertyInfo">
+            <div class="subtle">
+              <a class="xref" href="Maroontress.Cui.OptionSchema.html" data-linktype="relative-path">Option<wbr>Schema</a>
+            </div>
+          </div>
+        </main>
+      </section>
+    </div>
+  </body>
+</html>

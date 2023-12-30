@@ -1,0 +1,764 @@
+<!doctype html>
+<html>
+  <head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9TQ6JWBKEK">
+    </script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+function gtag() { dataLayer.push(arguments); }
+gtag('js', new Date());
+gtag('config', 'G-9TQ6JWBKEK');
+    </script>
+    <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ImmutableLinkedHashMap&lt;K, V&gt; Class | API Reference | Collection Project</title>
+    <link rel="stylesheet" href="bulldoc.css">
+    <script src="highlight.pack.js">
+    </script>
+    <script>
+      hljs.initHighlightingOnLoad();
+    </script>
+  </head>
+  <body>
+    <div class="mainContainer uhf-container has-top-padding has-default-focus" data-bi-name="body">
+      <section>
+        <main class="content">
+          <h1><span class="lang-csharp">Immutable<wbr>Linked<wbr>Hash<wbr>Map&lt;K, V&gt;</span> Class</h1>
+          <div class="metadata">
+            <dl class="attributeList">
+              <dt>
+                Namespace:
+                <dd>
+                  <span class="lang-csharp"><a class="xref" href="Maroontress.Collection.html" data-linktype="relative-path">Maroontress.Collection</a></span>
+                </dd>
+              </dt>
+            </dl>
+            <dl class="attributeList">
+              <dt>
+                Assembly:
+                <dd>
+                  <span class="lang-csharp">Collection.dll</span>
+                </dd>
+              </dt>
+            </dl>
+          </div>
+          <div class="summaryHolder">
+            <div class="summary clearFix">
+              <p>This class implements the <a href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.immutable.iimmutabledictionary-2?view=netcore-3.0">IImmutableDictionary&lt;TKey, TValue&gt;</a>
+    interface. It has <a href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.immutable.immutabledictionary-2?view=netcore-3.0">ImmutableDictionary&lt;TKey, TValue&gt;</a> and <a href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.immutable.immutablearray-1?view=netcore-3.0">ImmutableArray&lt;T&gt;</a> to maintain the elements so that it has
+    predictable iteration order, like that of the <code>LinkedHashMap</code>
+    class in Java.</p>
+            </div>
+          </div>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-keyword">sealed</span> <span class="hljs-keyword">class</span> <span class="hljs-title">ImmutableLinkedHashMap</span>&lt;<span class="hljs-title">K</span>, <span class="hljs-title">V</span>&gt; : <span class="hljs-title">IImmutableDictionary</span>&lt;<span class="hljs-title">K</span>, <span class="hljs-title">V</span>&gt;<br>    <span class="hljs-keyword">where</span> <span class="hljs-title">K</span> : <span class="hljs-keyword">notnull</span></code></pre>
+          <h4 id="type-parameters" class="propertyInfoTitle stack heading-with-anchor">Type Parameters</h4>
+          <div class="propertyInfo">
+            <dl class="parameterList">
+              <dt>
+                K
+              </dt>
+              <dd>
+                <code>notnull</code>
+              </dd>
+            </dl>
+            <p>The type of keys maintained by this dictionary.</p>
+          </div>
+          <div class="propertyInfo stack">
+            <dl class="parameterList">
+              <dt>
+                V
+              </dt>
+              <dd>
+              </dd>
+            </dl>
+            <p>The type of mapped values.</p>
+          </div>
+          <dl class="attributeList stack">
+            <dt>
+              Inheritance
+            </dt>
+            <dd>
+              <div class="pdlHolder">
+                <div class="pdl">
+                  <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=netcore-3.0" data-linktype="absolute-path">object</a></span>
+                </div>
+                <span class="lang-csharp">Immutable<wbr>Linked<wbr>Hash<wbr>Map&lt;K, V&gt;</span>
+              </div>
+            </dd>
+          </dl>
+          <dl class="attributeList stack">
+            <dt>
+              Implements
+            </dt>
+            <dd>
+              <div class="cdlHolder">
+                <span class="cdl"><span class="lang-csharp break-text"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.immutable.iimmutabledictionary-2?view=netcore-3.0" data-linktype="absolute-path">IImmutable<wbr>Dictionary&lt;K, V&gt;</a></span></span> <span class="cdl"><span class="lang-csharp break-text"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ireadonlydictionary-2?view=netcore-3.0" data-linktype="absolute-path">IRead<wbr>Only<wbr>Dictionary&lt;K, V&gt;</a></span></span> <span class="cdl"><span class="lang-csharp break-text"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ireadonlycollection-1?view=netcore-3.0" data-linktype="absolute-path">IRead<wbr>Only<wbr>Collection</a>&lt;<a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.keyvaluepair-2?view=netcore-3.0" data-linktype="absolute-path">Key<wbr>Value<wbr>Pair&lt;K, V&gt;</a>&gt;</span></span> <span class="cdl"><span class="lang-csharp break-text"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1?view=netcore-3.0" data-linktype="absolute-path">IEnumerable</a>&lt;<a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.keyvaluepair-2?view=netcore-3.0" data-linktype="absolute-path">Key<wbr>Value<wbr>Pair&lt;K, V&gt;</a>&gt;</span></span> <span class="cdl"><span class="lang-csharp break-text"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.ienumerable?view=netcore-3.0" data-linktype="absolute-path">IEnumerable</a></span></span>
+              </div>
+            </dd>
+          </dl>
+          <h2 id="remarks" class="heading-with-anchor">Remarks</h2>
+          <p>The <a href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.immutable.immutablearray-1?view=netcore-3.0">ImmutableArray&lt;T&gt;</a> keeps the iteration order corresponding
+    to the  in which you insert key-value pairs into
+    the map. Note that the insertion order is not affected when you re-inserted
+    any key into it (i.e., with the <a href="#M:Maroontress.Collection.ImmutableLinkedHashMap`2.SetItem(`0,`1)">SetItem(K, V)</a> method).</p>
+          <h2 id="fields" class="heading-with-anchor">Fields</h2>
+          <div class="table-scroll-wrapper">
+            <table class="nameValue">
+              <tbody>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="#F:Maroontress.Collection.ImmutableLinkedHashMap`2.Empty" data-linktype="relative-path">Empty</a></span>
+                  </td>
+                  <td>
+                    <p>Gets an empty <a href="#">ImmutableLinkedHashMap&lt;K, V&gt;</a>.</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <h2 id="properties" class="heading-with-anchor">Properties</h2>
+          <div class="table-scroll-wrapper">
+            <table class="nameValue">
+              <tbody>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="#P:Maroontress.Collection.ImmutableLinkedHashMap`2.Keys" data-linktype="relative-path">Keys</a></span>
+                  </td>
+                  <td>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="#P:Maroontress.Collection.ImmutableLinkedHashMap`2.Values" data-linktype="relative-path">Values</a></span>
+                  </td>
+                  <td>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="#P:Maroontress.Collection.ImmutableLinkedHashMap`2.Count" data-linktype="relative-path">Count</a></span>
+                  </td>
+                  <td>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="#P:Maroontress.Collection.ImmutableLinkedHashMap`2.Item(`0)" data-linktype="relative-path">this[K]</a></span>
+                  </td>
+                  <td>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <h2 id="methods" class="heading-with-anchor">Methods</h2>
+          <div class="table-scroll-wrapper">
+            <table class="nameValue">
+              <tbody>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Collection.ImmutableLinkedHashMap`2.Add(`0,`1)" data-linktype="relative-path">Add(K, V)</a></span>
+                  </td>
+                  <td>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Collection.ImmutableLinkedHashMap`2.AddRange(System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{`0,`1}})" data-linktype="relative-path">Add<wbr>Range(IEnumerable&lt;Key<wbr>Value<wbr>Pair&lt;K, V&gt;&gt;)</a></span>
+                  </td>
+                  <td>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Collection.ImmutableLinkedHashMap`2.Clear" data-linktype="relative-path">Clear()</a></span>
+                  </td>
+                  <td>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Collection.ImmutableLinkedHashMap`2.Contains(System.Collections.Generic.KeyValuePair{`0,`1})" data-linktype="relative-path">Contains(Key<wbr>Value<wbr>Pair&lt;K, V&gt;)</a></span>
+                  </td>
+                  <td>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Collection.ImmutableLinkedHashMap`2.ContainsKey(`0)" data-linktype="relative-path">Contains<wbr>Key(K)</a></span>
+                  </td>
+                  <td>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Collection.ImmutableLinkedHashMap`2.GetEnumerator" data-linktype="relative-path">Get<wbr>Enumerator()</a></span>
+                  </td>
+                  <td>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Collection.ImmutableLinkedHashMap`2.Remove(`0)" data-linktype="relative-path">Remove(K)</a></span>
+                  </td>
+                  <td>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Collection.ImmutableLinkedHashMap`2.RemoveRange(System.Collections.Generic.IEnumerable{`0})" data-linktype="relative-path">Remove<wbr>Range(IEnumerable&lt;K&gt;)</a></span>
+                  </td>
+                  <td>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Collection.ImmutableLinkedHashMap`2.SetItem(`0,`1)" data-linktype="relative-path">Set<wbr>Item(K, V)</a></span>
+                  </td>
+                  <td>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Collection.ImmutableLinkedHashMap`2.SetItems(System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{`0,`1}})" data-linktype="relative-path">Set<wbr>Items(IEnumerable&lt;Key<wbr>Value<wbr>Pair&lt;K, V&gt;&gt;)</a></span>
+                  </td>
+                  <td>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Collection.ImmutableLinkedHashMap`2.TryGetKey(`0,`0@)" data-linktype="relative-path">Try<wbr>Get<wbr>Key(K, K)</a></span>
+                  </td>
+                  <td>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Collection.ImmutableLinkedHashMap`2.TryGetValue(`0,`1@)" data-linktype="relative-path">Try<wbr>Get<wbr>Value(K, V)</a></span>
+                  </td>
+                  <td>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.object.equals?view=netcore-3.0#System_Object_Equals_System_Object_">Equals(object)</a>
+                  </td>
+                  <td>
+                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=netcore-3.0" data-linktype="absolute-path">object</a>)
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.object.gethashcode?view=netcore-3.0">GetHashCode()</a>
+                  </td>
+                  <td>
+                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=netcore-3.0" data-linktype="absolute-path">object</a>)
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.object.gettype?view=netcore-3.0">GetType()</a>
+                  </td>
+                  <td>
+                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=netcore-3.0" data-linktype="absolute-path">object</a>)
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.object.memberwiseclone?view=netcore-3.0">MemberwiseClone()</a>
+                  </td>
+                  <td>
+                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=netcore-3.0" data-linktype="absolute-path">object</a>)
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.object.tostring?view=netcore-3.0">ToString()</a>
+                  </td>
+                  <td>
+                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=netcore-3.0" data-linktype="absolute-path">object</a>)
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <h2 id="explicit-interface-implementations" class="heading-with-anchor">Explicit Interface Implementations</h2>
+          <div class="table-scroll-wrapper">
+            <table class="nameValue">
+              <tbody>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Collection.ImmutableLinkedHashMap`2.System#Collections#IEnumerable#GetEnumerator" data-linktype="relative-path">IEnumerable.Get<wbr>Enumerator()</a></span>
+                  </td>
+                  <td>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <h1 id="fields-detail" class="heading-with-anchor">Fields Detail</h1>
+          <h2 id="F:Maroontress.Collection.ImmutableLinkedHashMap`2.Empty">Empty</h2>
+          <div class="summaryHolder">
+            <div class="summary clearFix">
+              <p>Gets an empty <a href="#">ImmutableLinkedHashMap&lt;K, V&gt;</a>.</p>
+            </div>
+          </div>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">readonly</span> <span class="hljs-title">ImmutableLinkedHashMap</span>&lt;<span class="hljs-title">K</span>, <span class="hljs-title">V</span>&gt; <span class="hljs-title">Empty</span></code></pre>
+          <h4 class="propertyInfoTitle stack">Field Value</h4>
+          <div class="propertyInfo">
+            <div class="subtle">
+              <a class="xref" href="#" data-linktype="relative-path">Immutable<wbr>Linked<wbr>Hash<wbr>Map&lt;K, V&gt;</a>
+            </div>
+          </div>
+          <h1 id="properties-detail" class="heading-with-anchor">Properties Detail</h1>
+          <h2 id="P:Maroontress.Collection.ImmutableLinkedHashMap`2.Keys">Keys</h2>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-title">IEnumerable</span>&lt;<span class="hljs-title">K</span>&gt; <span class="hljs-title">Keys</span> { <span class="hljs-keyword">get</span>; }</code></pre>
+          <h4 class="propertyInfoTitle stack">Property Value</h4>
+          <div class="propertyInfo">
+            <div class="subtle">
+              <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1?view=netcore-3.0" data-linktype="absolute-path">IEnumerable&lt;K&gt;</a>
+            </div>
+          </div>
+          <h4 class="propertyInfoTitle stack">Implements</h4>
+          <div class="propertyInfo">
+            <div class="cdlHolder">
+              <span class="cdl"><a href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ireadonlydictionary-2.keys?view=netcore-3.0">IReadOnlyDictionary&lt;TKey, TValue&gt;.Keys</a></span>
+            </div>
+          </div>
+          <h2 id="P:Maroontress.Collection.ImmutableLinkedHashMap`2.Values">Values</h2>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-title">IEnumerable</span>&lt;<span class="hljs-title">V</span>&gt; <span class="hljs-title">Values</span> { <span class="hljs-keyword">get</span>; }</code></pre>
+          <h4 class="propertyInfoTitle stack">Property Value</h4>
+          <div class="propertyInfo">
+            <div class="subtle">
+              <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1?view=netcore-3.0" data-linktype="absolute-path">IEnumerable&lt;V&gt;</a>
+            </div>
+          </div>
+          <h4 class="propertyInfoTitle stack">Implements</h4>
+          <div class="propertyInfo">
+            <div class="cdlHolder">
+              <span class="cdl"><a href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ireadonlydictionary-2.values?view=netcore-3.0">IReadOnlyDictionary&lt;TKey, TValue&gt;.Values</a></span>
+            </div>
+          </div>
+          <h2 id="P:Maroontress.Collection.ImmutableLinkedHashMap`2.Count">Count</h2>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">Count</span> { <span class="hljs-keyword">get</span>; }</code></pre>
+          <h4 class="propertyInfoTitle stack">Property Value</h4>
+          <div class="propertyInfo">
+            <div class="subtle">
+              <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.int32?view=netcore-3.0" data-linktype="absolute-path">int</a>
+            </div>
+          </div>
+          <h4 class="propertyInfoTitle stack">Implements</h4>
+          <div class="propertyInfo">
+            <div class="cdlHolder">
+              <span class="cdl"><a href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ireadonlycollection-1.count?view=netcore-3.0">IReadOnlyCollection&lt;T&gt;.Count</a></span>
+            </div>
+          </div>
+          <h2 id="P:Maroontress.Collection.ImmutableLinkedHashMap`2.Item(`0)">this[K]</h2>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-title">V</span> <span class="hljs-keyword">this</span>[<span class="hljs-title">K</span> key] { <span class="hljs-keyword">get</span>; }</code></pre>
+          <h4 class="propertyInfoTitle stack">Property Value</h4>
+          <div class="propertyInfo">
+            <div class="subtle">
+              V
+            </div>
+          </div>
+          <h4 class="propertyInfoTitle stack">Implements</h4>
+          <div class="propertyInfo">
+            <div class="cdlHolder">
+              <span class="cdl"><a href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ireadonlydictionary-2.item?view=netcore-3.0#System_Collections_Generic_IReadOnlyDictionary_2_Item__0_">IReadOnlyDictionary&lt;TKey, TValue&gt;.this[TKey]</a></span>
+            </div>
+          </div>
+          <h1 id="methods-detail" class="heading-with-anchor">Methods Detail</h1>
+          <h2 id="M:Maroontress.Collection.ImmutableLinkedHashMap`2.Add(`0,`1)">Add(K, V)</h2>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-title">IImmutableDictionary</span>&lt;<span class="hljs-title">K</span>, <span class="hljs-title">V</span>&gt; <span class="hljs-title">Add</span>(<span class="hljs-title">K</span> key, <span class="hljs-title">V</span> value)</code></pre>
+          <h4 class="propertyInfoTitle stack">Parameters</h4>
+          <div class="propertyInfo">
+            <dl class="parameterList">
+              <dt>
+                key
+              </dt>
+              <dd>
+                <span class="lang-csharp">K</span>
+              </dd>
+            </dl>
+          </div>
+          <div class="propertyInfo stack">
+            <dl class="parameterList">
+              <dt>
+                value
+              </dt>
+              <dd>
+                <span class="lang-csharp">V</span>
+              </dd>
+            </dl>
+          </div>
+          <h4 class="propertyInfoTitle stack">Returns</h4>
+          <div class="propertyInfo">
+            <div class="subtle">
+              <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.immutable.iimmutabledictionary-2?view=netcore-3.0" data-linktype="absolute-path">IImmutable<wbr>Dictionary&lt;K, V&gt;</a>
+            </div>
+          </div>
+          <h4 class="propertyInfoTitle stack">Implements</h4>
+          <div class="propertyInfo">
+            <div class="cdlHolder">
+              <span class="cdl"><a href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.immutable.iimmutabledictionary-2.add?view=netcore-3.0#System_Collections_Immutable_IImmutableDictionary_2_Add__0__1_">IImmutableDictionary&lt;TKey, TValue&gt;.Add(TKey, TValue)</a></span>
+            </div>
+          </div>
+          <h2 id="M:Maroontress.Collection.ImmutableLinkedHashMap`2.AddRange(System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{`0,`1}})">AddRange(IEnumerable&lt;KeyValuePair&lt;K, V&gt;&gt;)</h2>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-title">IImmutableDictionary</span>&lt;<span class="hljs-title">K</span>, <span class="hljs-title">V</span>&gt; <span class="hljs-title">AddRange</span>(<span class="hljs-title">IEnumerable</span>&lt;<span class="hljs-title">KeyValuePair</span>&lt;<span class="hljs-title">K</span>, <span class="hljs-title">V</span>&gt;&gt; pairs)</code></pre>
+          <h4 class="propertyInfoTitle stack">Parameters</h4>
+          <div class="propertyInfo">
+            <dl class="parameterList">
+              <dt>
+                pairs
+              </dt>
+              <dd>
+                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1?view=netcore-3.0" data-linktype="absolute-path">IEnumerable</a>&lt;<a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.keyvaluepair-2?view=netcore-3.0" data-linktype="absolute-path">Key<wbr>Value<wbr>Pair&lt;K, V&gt;</a>&gt;</span>
+              </dd>
+            </dl>
+          </div>
+          <h4 class="propertyInfoTitle stack">Returns</h4>
+          <div class="propertyInfo">
+            <div class="subtle">
+              <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.immutable.iimmutabledictionary-2?view=netcore-3.0" data-linktype="absolute-path">IImmutable<wbr>Dictionary&lt;K, V&gt;</a>
+            </div>
+          </div>
+          <h4 class="propertyInfoTitle stack">Implements</h4>
+          <div class="propertyInfo">
+            <div class="cdlHolder">
+              <span class="cdl"><a href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.immutable.iimmutabledictionary-2.addrange?view=netcore-3.0#System_Collections_Immutable_IImmutableDictionary_2_AddRange_System_Collections_Generic_IEnumerable_System_Collections_Generic_KeyValuePair__0__1___">IImmutableDictionary&lt;TKey, TValue&gt;.AddRange(IEnumerable&lt;KeyValuePair&lt;TKey, TValue&gt;&gt;)</a></span>
+            </div>
+          </div>
+          <h2 id="M:Maroontress.Collection.ImmutableLinkedHashMap`2.Clear">Clear()</h2>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-title">IImmutableDictionary</span>&lt;<span class="hljs-title">K</span>, <span class="hljs-title">V</span>&gt; <span class="hljs-title">Clear</span>()</code></pre>
+          <h4 class="propertyInfoTitle stack">Returns</h4>
+          <div class="propertyInfo">
+            <div class="subtle">
+              <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.immutable.iimmutabledictionary-2?view=netcore-3.0" data-linktype="absolute-path">IImmutable<wbr>Dictionary&lt;K, V&gt;</a>
+            </div>
+          </div>
+          <h4 class="propertyInfoTitle stack">Implements</h4>
+          <div class="propertyInfo">
+            <div class="cdlHolder">
+              <span class="cdl"><a href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.immutable.iimmutabledictionary-2.clear?view=netcore-3.0">IImmutableDictionary&lt;TKey, TValue&gt;.Clear()</a></span>
+            </div>
+          </div>
+          <h2 id="M:Maroontress.Collection.ImmutableLinkedHashMap`2.Contains(System.Collections.Generic.KeyValuePair{`0,`1})">Contains(KeyValuePair&lt;K, V&gt;)</h2>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-keyword">bool</span> <span class="hljs-title">Contains</span>(<span class="hljs-title">KeyValuePair</span>&lt;<span class="hljs-title">K</span>, <span class="hljs-title">V</span>&gt; pair)</code></pre>
+          <h4 class="propertyInfoTitle stack">Parameters</h4>
+          <div class="propertyInfo">
+            <dl class="parameterList">
+              <dt>
+                pair
+              </dt>
+              <dd>
+                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.keyvaluepair-2?view=netcore-3.0" data-linktype="absolute-path">Key<wbr>Value<wbr>Pair&lt;K, V&gt;</a></span>
+              </dd>
+            </dl>
+          </div>
+          <h4 class="propertyInfoTitle stack">Returns</h4>
+          <div class="propertyInfo">
+            <div class="subtle">
+              <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.boolean?view=netcore-3.0" data-linktype="absolute-path">bool</a>
+            </div>
+          </div>
+          <h4 class="propertyInfoTitle stack">Implements</h4>
+          <div class="propertyInfo">
+            <div class="cdlHolder">
+              <span class="cdl"><a href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.immutable.iimmutabledictionary-2.contains?view=netcore-3.0#System_Collections_Immutable_IImmutableDictionary_2_Contains_System_Collections_Generic_KeyValuePair__0__1__">IImmutableDictionary&lt;TKey, TValue&gt;.Contains(KeyValuePair&lt;TKey, TValue&gt;)</a></span>
+            </div>
+          </div>
+          <h2 id="M:Maroontress.Collection.ImmutableLinkedHashMap`2.ContainsKey(`0)">ContainsKey(K)</h2>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-keyword">bool</span> <span class="hljs-title">ContainsKey</span>(<span class="hljs-title">K</span> key)</code></pre>
+          <h4 class="propertyInfoTitle stack">Parameters</h4>
+          <div class="propertyInfo">
+            <dl class="parameterList">
+              <dt>
+                key
+              </dt>
+              <dd>
+                <span class="lang-csharp">K</span>
+              </dd>
+            </dl>
+          </div>
+          <h4 class="propertyInfoTitle stack">Returns</h4>
+          <div class="propertyInfo">
+            <div class="subtle">
+              <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.boolean?view=netcore-3.0" data-linktype="absolute-path">bool</a>
+            </div>
+          </div>
+          <h4 class="propertyInfoTitle stack">Implements</h4>
+          <div class="propertyInfo">
+            <div class="cdlHolder">
+              <span class="cdl"><a href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ireadonlydictionary-2.containskey?view=netcore-3.0#System_Collections_Generic_IReadOnlyDictionary_2_ContainsKey__0_">IReadOnlyDictionary&lt;TKey, TValue&gt;.ContainsKey(TKey)</a></span>
+            </div>
+          </div>
+          <h2 id="M:Maroontress.Collection.ImmutableLinkedHashMap`2.GetEnumerator">GetEnumerator()</h2>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-title">IEnumerator</span>&lt;<span class="hljs-title">KeyValuePair</span>&lt;<span class="hljs-title">K</span>, <span class="hljs-title">V</span>&gt;&gt; <span class="hljs-title">GetEnumerator</span>()</code></pre>
+          <h4 class="propertyInfoTitle stack">Returns</h4>
+          <div class="propertyInfo">
+            <div class="subtle">
+              <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerator-1?view=netcore-3.0" data-linktype="absolute-path">IEnumerator</a>&lt;<a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.keyvaluepair-2?view=netcore-3.0" data-linktype="absolute-path">Key<wbr>Value<wbr>Pair&lt;K, V&gt;</a>&gt;
+            </div>
+          </div>
+          <h4 class="propertyInfoTitle stack">Implements</h4>
+          <div class="propertyInfo">
+            <div class="cdlHolder">
+              <span class="cdl"><a href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1.getenumerator?view=netcore-3.0">IEnumerable&lt;T&gt;.GetEnumerator()</a></span>
+            </div>
+          </div>
+          <h2 id="M:Maroontress.Collection.ImmutableLinkedHashMap`2.Remove(`0)">Remove(K)</h2>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-title">IImmutableDictionary</span>&lt;<span class="hljs-title">K</span>, <span class="hljs-title">V</span>&gt; <span class="hljs-title">Remove</span>(<span class="hljs-title">K</span> key)</code></pre>
+          <h4 class="propertyInfoTitle stack">Parameters</h4>
+          <div class="propertyInfo">
+            <dl class="parameterList">
+              <dt>
+                key
+              </dt>
+              <dd>
+                <span class="lang-csharp">K</span>
+              </dd>
+            </dl>
+          </div>
+          <h4 class="propertyInfoTitle stack">Returns</h4>
+          <div class="propertyInfo">
+            <div class="subtle">
+              <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.immutable.iimmutabledictionary-2?view=netcore-3.0" data-linktype="absolute-path">IImmutable<wbr>Dictionary&lt;K, V&gt;</a>
+            </div>
+          </div>
+          <h4 class="propertyInfoTitle stack">Implements</h4>
+          <div class="propertyInfo">
+            <div class="cdlHolder">
+              <span class="cdl"><a href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.immutable.iimmutabledictionary-2.remove?view=netcore-3.0#System_Collections_Immutable_IImmutableDictionary_2_Remove__0_">IImmutableDictionary&lt;TKey, TValue&gt;.Remove(TKey)</a></span>
+            </div>
+          </div>
+          <h2 id="M:Maroontress.Collection.ImmutableLinkedHashMap`2.RemoveRange(System.Collections.Generic.IEnumerable{`0})">RemoveRange(IEnumerable&lt;K&gt;)</h2>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-title">IImmutableDictionary</span>&lt;<span class="hljs-title">K</span>, <span class="hljs-title">V</span>&gt; <span class="hljs-title">RemoveRange</span>(<span class="hljs-title">IEnumerable</span>&lt;<span class="hljs-title">K</span>&gt; keys)</code></pre>
+          <h4 class="propertyInfoTitle stack">Parameters</h4>
+          <div class="propertyInfo">
+            <dl class="parameterList">
+              <dt>
+                keys
+              </dt>
+              <dd>
+                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1?view=netcore-3.0" data-linktype="absolute-path">IEnumerable&lt;K&gt;</a></span>
+              </dd>
+            </dl>
+          </div>
+          <h4 class="propertyInfoTitle stack">Returns</h4>
+          <div class="propertyInfo">
+            <div class="subtle">
+              <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.immutable.iimmutabledictionary-2?view=netcore-3.0" data-linktype="absolute-path">IImmutable<wbr>Dictionary&lt;K, V&gt;</a>
+            </div>
+          </div>
+          <h4 class="propertyInfoTitle stack">Implements</h4>
+          <div class="propertyInfo">
+            <div class="cdlHolder">
+              <span class="cdl"><a href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.immutable.iimmutabledictionary-2.removerange?view=netcore-3.0#System_Collections_Immutable_IImmutableDictionary_2_RemoveRange_System_Collections_Generic_IEnumerable__0__">IImmutableDictionary&lt;TKey, TValue&gt;.RemoveRange(IEnumerable&lt;TKey&gt;)</a></span>
+            </div>
+          </div>
+          <h2 id="M:Maroontress.Collection.ImmutableLinkedHashMap`2.SetItem(`0,`1)">SetItem(K, V)</h2>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-title">IImmutableDictionary</span>&lt;<span class="hljs-title">K</span>, <span class="hljs-title">V</span>&gt; <span class="hljs-title">SetItem</span>(<span class="hljs-title">K</span> key, <span class="hljs-title">V</span> value)</code></pre>
+          <h4 class="propertyInfoTitle stack">Parameters</h4>
+          <div class="propertyInfo">
+            <dl class="parameterList">
+              <dt>
+                key
+              </dt>
+              <dd>
+                <span class="lang-csharp">K</span>
+              </dd>
+            </dl>
+          </div>
+          <div class="propertyInfo stack">
+            <dl class="parameterList">
+              <dt>
+                value
+              </dt>
+              <dd>
+                <span class="lang-csharp">V</span>
+              </dd>
+            </dl>
+          </div>
+          <h4 class="propertyInfoTitle stack">Returns</h4>
+          <div class="propertyInfo">
+            <div class="subtle">
+              <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.immutable.iimmutabledictionary-2?view=netcore-3.0" data-linktype="absolute-path">IImmutable<wbr>Dictionary&lt;K, V&gt;</a>
+            </div>
+          </div>
+          <h4 class="propertyInfoTitle stack">Implements</h4>
+          <div class="propertyInfo">
+            <div class="cdlHolder">
+              <span class="cdl"><a href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.immutable.iimmutabledictionary-2.setitem?view=netcore-3.0#System_Collections_Immutable_IImmutableDictionary_2_SetItem__0__1_">IImmutableDictionary&lt;TKey, TValue&gt;.SetItem(TKey, TValue)</a></span>
+            </div>
+          </div>
+          <h2 id="M:Maroontress.Collection.ImmutableLinkedHashMap`2.SetItems(System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{`0,`1}})">SetItems(IEnumerable&lt;KeyValuePair&lt;K, V&gt;&gt;)</h2>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-title">IImmutableDictionary</span>&lt;<span class="hljs-title">K</span>, <span class="hljs-title">V</span>&gt; <span class="hljs-title">SetItems</span>(<span class="hljs-title">IEnumerable</span>&lt;<span class="hljs-title">KeyValuePair</span>&lt;<span class="hljs-title">K</span>, <span class="hljs-title">V</span>&gt;&gt; items)</code></pre>
+          <h4 class="propertyInfoTitle stack">Parameters</h4>
+          <div class="propertyInfo">
+            <dl class="parameterList">
+              <dt>
+                items
+              </dt>
+              <dd>
+                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1?view=netcore-3.0" data-linktype="absolute-path">IEnumerable</a>&lt;<a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.keyvaluepair-2?view=netcore-3.0" data-linktype="absolute-path">Key<wbr>Value<wbr>Pair&lt;K, V&gt;</a>&gt;</span>
+              </dd>
+            </dl>
+          </div>
+          <h4 class="propertyInfoTitle stack">Returns</h4>
+          <div class="propertyInfo">
+            <div class="subtle">
+              <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.immutable.iimmutabledictionary-2?view=netcore-3.0" data-linktype="absolute-path">IImmutable<wbr>Dictionary&lt;K, V&gt;</a>
+            </div>
+          </div>
+          <h4 class="propertyInfoTitle stack">Implements</h4>
+          <div class="propertyInfo">
+            <div class="cdlHolder">
+              <span class="cdl"><a href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.immutable.iimmutabledictionary-2.setitems?view=netcore-3.0#System_Collections_Immutable_IImmutableDictionary_2_SetItems_System_Collections_Generic_IEnumerable_System_Collections_Generic_KeyValuePair__0__1___">IImmutableDictionary&lt;TKey, TValue&gt;.SetItems(IEnumerable&lt;KeyValuePair&lt;TKey, TValue&gt;&gt;)</a></span>
+            </div>
+          </div>
+          <h2 id="M:Maroontress.Collection.ImmutableLinkedHashMap`2.TryGetKey(`0,`0@)">TryGetKey(K, K)</h2>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-keyword">bool</span> <span class="hljs-title">TryGetKey</span>(<span class="hljs-title">K</span> equalKey, <span class="hljs-keyword">out</span> <span class="hljs-title">K</span> actualKey)</code></pre>
+          <h4 class="propertyInfoTitle stack">Parameters</h4>
+          <div class="propertyInfo">
+            <dl class="parameterList">
+              <dt>
+                equalKey
+              </dt>
+              <dd>
+                <span class="lang-csharp">K</span>
+              </dd>
+            </dl>
+          </div>
+          <div class="propertyInfo stack">
+            <dl class="parameterList">
+              <dt>
+                actualKey
+              </dt>
+              <dd>
+                <span class="lang-csharp">K</span>
+              </dd>
+            </dl>
+          </div>
+          <h4 class="propertyInfoTitle stack">Returns</h4>
+          <div class="propertyInfo">
+            <div class="subtle">
+              <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.boolean?view=netcore-3.0" data-linktype="absolute-path">bool</a>
+            </div>
+          </div>
+          <h4 class="propertyInfoTitle stack">Implements</h4>
+          <div class="propertyInfo">
+            <div class="cdlHolder">
+              <span class="cdl"><a href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.immutable.iimmutabledictionary-2.trygetkey?view=netcore-3.0#System_Collections_Immutable_IImmutableDictionary_2_TryGetKey__0__0__">IImmutableDictionary&lt;TKey, TValue&gt;.TryGetKey(TKey, TKey)</a></span>
+            </div>
+          </div>
+          <h2 id="M:Maroontress.Collection.ImmutableLinkedHashMap`2.TryGetValue(`0,`1@)">TryGetValue(K, V)</h2>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-keyword">bool</span> <span class="hljs-title">TryGetValue</span>(<span class="hljs-title">K</span> key, <span class="hljs-keyword">out</span> <span class="hljs-title">V</span> value)</code></pre>
+          <h4 class="propertyInfoTitle stack">Parameters</h4>
+          <div class="propertyInfo">
+            <dl class="parameterList">
+              <dt>
+                key
+              </dt>
+              <dd>
+                <span class="lang-csharp">K</span>
+              </dd>
+            </dl>
+          </div>
+          <div class="propertyInfo stack">
+            <dl class="parameterList">
+              <dt>
+                value
+              </dt>
+              <dd>
+                <span class="lang-csharp">V</span>
+              </dd>
+            </dl>
+          </div>
+          <h4 class="propertyInfoTitle stack">Returns</h4>
+          <div class="propertyInfo">
+            <div class="subtle">
+              <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.boolean?view=netcore-3.0" data-linktype="absolute-path">bool</a>
+            </div>
+          </div>
+          <h4 class="propertyInfoTitle stack">Implements</h4>
+          <div class="propertyInfo">
+            <div class="cdlHolder">
+              <span class="cdl"><a href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ireadonlydictionary-2.trygetvalue?view=netcore-3.0#System_Collections_Generic_IReadOnlyDictionary_2_TryGetValue__0__1__">IReadOnlyDictionary&lt;TKey, TValue&gt;.TryGetValue(TKey, TValue)</a></span>
+            </div>
+          </div>
+          <h1 id="explicit-interface-implementations-detail" class="heading-with-anchor">Explicit Interface Implementations Detail</h1>
+          <h2 id="M:Maroontress.Collection.ImmutableLinkedHashMap`2.System#Collections#IEnumerable#GetEnumerator">IEnumerable.GetEnumerator()</h2>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">private</span> <span class="hljs-title">IEnumerator</span> <span class="hljs-title">IEnumerable</span>.<span class="hljs-title">GetEnumerator</span>()</code></pre>
+          <h4 class="propertyInfoTitle stack">Returns</h4>
+          <div class="propertyInfo">
+            <div class="subtle">
+              <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.ienumerator?view=netcore-3.0" data-linktype="absolute-path">IEnumerator</a>
+            </div>
+          </div>
+          <h4 class="propertyInfoTitle stack">Implements</h4>
+          <div class="propertyInfo">
+            <div class="cdlHolder">
+              <span class="cdl"><a href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.ienumerable.getenumerator?view=netcore-3.0">IEnumerable.GetEnumerator()</a></span>
+            </div>
+          </div>
+        </main>
+      </section>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9TQ6JWBKEK"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-9TQ6JWBKEK');
+    </script>
+    </script>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Top | IntExpr.Java</title>
+    <link rel="canonical" href="https://maroontress.github.io/IntExpr-Java/index.html" />
+    <link rel="stylesheet" type="text/css" href="/css/markdown.css">
+    <link rel="apple-touch-icon" sizes="120x120" href="/images/logo-v2-120x120.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/logo-v2-180x180.png">
+    <link rel="icon" type="image/x-icon" href="/images/logo-v2.ico">
+    <link rel="mask-icon" href="/images/logo-v2-mask-icon.svg" color="#800000">
+    <script src="/js/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+    <script src="/js/toc.js"></script>
+  </head>
+  <body>
+    <div class="logo">
+      <b>Maroontress Fast Software</b>
+    </div>
+    <div class="container">
+      <div class="main-container">
+        <section>
+          <main class="content">
+<div class="project-logo">IntExpr.Java</div>
+<div id="toc-level" data-values="H2,H3"></div>
+<p>IntExpr is a Java library to evaluate <code>int</code> expressions. The expression has
+some similarities in the syntax to the C programming language.</p>
+<h2>Get started</h2>
+<p>IntExpr is available as a Maven package.
+To add a dependency on IntExpr in your build,
+specify the custom repository and dependency as follows:</p>
+<h3>Gradle</h3>
+<pre><code class="language-groovy">repositories {
+    ⋮
+    maven {
+        url = uri('https://maroontress.github.io/maven')
+    }
+    ⋮
+}
+⋮
+dependencies {
+    ⋮
+    implementation 'com.maroontress:intexpr:1.0'
+    ⋮
+}
+</code></pre>
+<h3>Maven</h3>
+<pre><code class="language-xml">&lt;project&gt;
+  ⋮
+  &lt;repositories&gt;
+    ⋮
+    &lt;repository&gt;
+      &lt;id&gt;maroontress&lt;/id&gt;
+      &lt;name&gt;Maroontress maven repo&lt;/name&gt;
+      &lt;url&gt;https://maroontress.github.io/maven&lt;/url&gt;
+    &lt;/repository&gt;
+    ⋮
+  &lt;/repositories&gt;
+  ⋮
+  &lt;dependencies&gt;
+    ⋮
+    &lt;dependency&gt;
+      &lt;groupId&gt;com.maroontress&lt;/groupId&gt;
+      &lt;artifactId&gt;intexpr&lt;/artifactId&gt;
+      &lt;version&gt;1.0&lt;/version&gt;
+    &lt;/dependency&gt;
+    ⋮
+  &lt;/dependencies&gt;
+  ⋮
+&lt;/project&gt;
+</code></pre>
+<h2>Examples</h2>
+<h3>EvalDemo</h3>
+<p><a href="https://github.com/maroontress/IntExpr.Java/blob/main/src/test/java/com/example/EvalDemo.java">EvalDemo</a> evaluates the string that represents an integer expression and
+prints the result:</p>
+<pre><code class="language-java">package com.example;
+
+import com.maroontress.intexpr.IntExpr;
+
+public final class EvalDemo {
+    public static void main(String[] args) {
+        System.out.println(IntExpr.eval(args[0]));
+    }
+}
+</code></pre>
+<p>The output would be as follows:</p>
+<pre><code class="language-plaintext">$ java com.example.EvalDemo '(1+2*3&lt;&lt;4)%5'
+2
+</code></pre>
+<blockquote>
+<p><a href="https://replit.com/@maroontress/IntExpr-example-EvalDemo#src/main/java/com/example/EvalDemo.java">Run EvalDemo</a></p>
+</blockquote>
+<h3>TreeDemo</h3>
+<p>Internally, the specified expression is converted to the expression in
+<a href="https://en.wikipedia.org/wiki/Reverse_Polish_notation"><em>Reverse Polish notation</em></a> (RPN) before evaluation. The
+expressions in RPN do not contain parentheses. <a href="https://github.com/maroontress/IntExpr.Java/blob/main/src/test/java/com/example/TreeDemo.java">TreeDemo</a> prints the syntax
+tree representing the expression in RPN, which corresponds to the specified
+expression:</p>
+<pre><code class="language-java">package com.example;
+
+import com.maroontress.intexpr.IntExpr;
+
+public final class TreeDemo {
+    public static void main(String[] args) {
+        System.out.println(IntExpr.toTree(args[0]));
+    }
+}
+</code></pre>
+<p>The output would be as follows:</p>
+<pre><code class="language-plaintext">$ java com.example.TreeDemo '(1+2*3&lt;&lt;4)%5'
+MOD
+ ├ SHL
+ │  ├ ADD
+ │  │  ├ CONST 1
+ │  │  └ MUL
+ │  │     ├ CONST 2
+ │  │     └ CONST 3
+ │  └ CONST 4
+ └ CONST 5
+</code></pre>
+<p>The opcodes that the tree includes (such as <code>ADD</code>, <code>MUL</code>, <code>CONST</code>, etc.) are
+defined in <a href="https://github.com/maroontress/IntExpr.Java/blob/main/src/main/java/com/maroontress/intexpr/impl/Opcode.java">Opcode</a>.</p>
+<blockquote>
+<p><a href="https://replit.com/@maroontress/IntExpr-example-TreeDemo#src/main/java/com/example/TreeDemo.java">Run TreeDemo</a></p>
+</blockquote>
+<h2>Numbers</h2>
+<p>Numbers are 32-bit signed integers in two's-complement notation (like values of
+<code>int</code> type in Java and C#, <code>int32_t</code> type in C23, and so on). They can
+represent integers from −2147483648 to 2147483647.</p>
+<h2>Expressions</h2>
+<p>A simple expression is just an integer constant.</p>
+<p>Note that the minimum integer (−2147483648) cannot be constant because
+the expression <code>-2147483648</code> is a unary <code>-</code> operator followed by <code>2147483648</code>,
+and the integer is greater than the maximum integer (2147483647). So, you have
+to represent the minimum integer with <code>(-2147483647 - 1)</code>.</p>
+<p>In the following descriptions of legal expressions, <em>expr</em> refers to a complete
+expression:</p>
+<ul>
+<li><code>(</code> <em>expr</em> <code>)</code>: The parentheses alter the standard precedence to force the
+evaluation of the expression to precede the operation outside of them.</li>
+<li>unary <code>+</code> <em>expr</em>: The result is the expression itself (that is, no
+operation).</li>
+<li>unary <code>-</code> <em>expr</em>: The result is the negation of the expression.</li>
+<li>unary <code>!</code> <em>expr</em>:  The result is 1 if <em>expr</em> is 0, otherwise 0.</li>
+<li>unary <code>~</code> <em>expr</em>: The result is the logical negation on each bit, forming the
+ones' complement of the given binary value.</li>
+<li><em>expr</em> <code>*</code> <em>expr</em>: The result is the product of the two expressions.</li>
+<li><em>expr</em> <code>/</code> <em>expr</em>: The result is the quotient of the two expressions.</li>
+<li><em>expr</em> <code>%</code> <em>expr</em>: The result is the remainder of the two expressions.</li>
+<li><em>expr</em> <code>+</code> <em>expr</em>: The result is the sum of the two expressions.</li>
+<li><em>expr</em> <code>-</code> <em>expr</em>: The result is the difference between the two expressions.</li>
+<li><em>expr1</em> <code>&lt;&lt;</code> <em>expr2</em>: The result is the left arithmetic shift of <em>expr1</em> by
+<em>expr2</em>.</li>
+<li><em>expr</em> <code>&gt;&gt;</code> <em>expr</em>: The result is the right arithmetic shift of <em>expr1</em> by
+<em>expr2</em>.</li>
+<li><em>expr1</em> <code>&lt;</code> <em>expr2</em>: The result is 1 if <em>expr1</em> is strictly less than
+<em>expr2</em>, otherwise 0.</li>
+<li><em>expr1</em> <code>&lt;=</code> <em>expr2</em>: The result is 1 if <em>expr1</em> is less than or equal to
+<em>expr2</em>, otherwise 0.</li>
+<li><em>expr1</em> <code>&gt;</code> <em>expr2</em>: The result is 1 if <em>expr1</em> is strictly greater than
+<em>expr2</em>, otherwise 0.</li>
+<li><em>expr1</em> <code>&gt;=</code> <em>expr2</em>: The result is 1 if <em>expr1</em> is greater than or equal to
+expr2, otherwise 0.</li>
+<li><em>expr1</em> <code>==</code> <em>expr2</em>: The result is 1 if <em>expr1</em> is equal to <em>expr2</em>,
+otherwise 0.</li>
+<li><em>expr1</em> <code>!=</code> <em>expr2</em>: The result is 1 if <em>expr1</em> is not equal to <em>expr2</em>,
+otherwise 0.</li>
+<li><em>expr</em> <code>&amp;&amp;</code> <em>expr</em>: The result is 1 if both expressions are non-zero,
+otherwise 0.</li>
+<li><em>expr</em> <code>||</code> <em>expr</em>: The result is 1 if either expression is non-zero,
+otherwise 0.</li>
+</ul>
+<p>The operator precedence is as follows:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Precedence</th>
+<th style="text-align:left">Operator</th>
+<th style="text-align:left">Associativity</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">highest</td>
+<td style="text-align:left">unary <code>+</code> <code>-</code> <code>!</code> <code>~</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><code>*</code> <code>/</code> <code>%</code></td>
+<td style="text-align:left">Left-to-right</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><code>+</code> <code>-</code></td>
+<td style="text-align:left">Left-to-right</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><code>&lt;&lt;</code> <code>&gt;&gt;</code></td>
+<td style="text-align:left">Left-to-right</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><code>&lt;</code> <code>&lt;=</code> <code>&gt;</code> <code>&gt;=</code></td>
+<td style="text-align:left">Left-to-right</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><code>==</code> <code>!=</code></td>
+<td style="text-align:left">Left-to-right</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><code>&amp;</code></td>
+<td style="text-align:left">Left-to-right</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><code>^</code></td>
+<td style="text-align:left">Left-to-right</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><code>|</code></td>
+<td style="text-align:left">Left-to-right</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><code>&amp;&amp;</code></td>
+<td style="text-align:left">Left-to-right</td>
+</tr>
+<tr>
+<td style="text-align:left">lowest</td>
+<td style="text-align:left"><code>||</code></td>
+<td style="text-align:left">Left-to-right</td>
+</tr>
+</tbody>
+</table>
+<h2>Errors</h2>
+<p>Syntax errors (such as a mismatched or missing parenthesis, a stray token, an
+unknown token) throw an <code>IllegalArgumentException</code>. The division by zero and
+the overflow during the evaluation throw an <code>ArithmeticException</code>.</p>
+<h2>Documents</h2>
+<ul>
+<li><a href="https://maroontress.github.io/IntExpr-Java/api/latest/html/index.html">API reference (latest)</a></li>
+<li><a href="https://github.com/maroontress/IntExpr.Java/blob/main/README.md">README</a></li>
+<li><a href="releasenotes.html">Release notes</a></li>
+</ul>
+<h2>How to contribute</h2>
+<p>Please send us pull requests or issues from
+<a href="https://github.com/maroontress/IntExpr.Java">the <img src="https://maroontress.github.io/images/GitHub-logo.png" alt="GitHub icon"> GitHub repository</a>.</p>
+          </main>
+        </section>
+      </div>
+      <div class="left-container">
+<nav>
+  <div>
+    <a href="/">Projects</a>
+  </div>
+  <div>
+    <span>&#x25BE;</span>
+  </div>
+  <div>
+    <span class="project-name"><a href="index.html">IntExpr.Java</a></span>
+  </div>
+  <ul>
+    <li class="selected">
+      Top
+    </li>
+    <ul id="toc-placeholder">
+    </ul>
+    <li>
+      <a href="releasenotes.html">Release Notes</a>
+    </li>
+  </ul>
+</nav>
+      </div>
+    </div>
+  </body>
+</html>

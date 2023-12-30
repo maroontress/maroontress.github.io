@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9TQ6JWBKEK"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-9TQ6JWBKEK');
+    </script>
+    </script>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Part 5. Epilog | The Insanity Beyond Null</title>
+    <link rel="canonical" href="https://maroontress.github.io/The-Insanity-Beyond-Null/Part-5.html" />
+    <link rel="stylesheet" type="text/css" href="/css/markdown.css">
+    <link rel="stylesheet" type="text/css" href="/css/next-button.css">
+    <link rel="apple-touch-icon" sizes="120x120" href="/images/logo-v2-120x120.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/logo-v2-180x180.png">
+    <link rel="icon" type="image/x-icon" href="/images/logo-v2.ico">
+    <link rel="mask-icon" href="/images/logo-v2-mask-icon.svg" color="#800000">
+    <script src="/js/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+    <script src="/js/toc.js"></script>
+    <script src="/js/next-button.js"></script>
+  </head>
+  <body>
+    <div class="logo">
+      <b>Maroontress Fast Software</b>
+    </div>
+    <div class="container">
+      <div class="main-container">
+        <section>
+          <main class="content">
+<div class="project-logo">The Insanity Beyond Null</div>
+<div id="toc-level" data-values="H2,H3"></div>
+<h1>5. Epilog</h1>
+<p>It's just a matter of checking to see if a value is <code>null</code>, but humans can't do
+it perfectly.  To overcome <em>a lapse of null checks</em>, we have seen various
+improvements such as null object patterns, option types, nullable types, and
+static analysis of the compilers.  But can you say with confidence that the
+cost of introducing those complexities is worth the effect?</p>
+<p>The book <em>Software Tools</em> [<a href="#ref1">1</a>] describes error handling as follows:</p>
+<blockquote>
+<p><em>Error checking interferes with readability, no question about it, but it is
+necessary.  With the best of languages, error checking obscures the main flow
+of events because the checks themselves impose a structure on the code which
+is different from that which expresses the basic job to be done.  Programs
+written from the start with well thought out error checks, however, prove to
+be more reliable and live longer than those where the error checking is
+pasted on as an afterthought.</em></p>
+</blockquote>
+<p>If you replace error checking with null checking, the situation doesn't seem to
+have changed much over the past 40 years.  Of course, many languages are now
+able to separate the structure of exception handling from that of normal
+handling with mechanisms like throwing and catching exceptions.  However,
+nothing has changed in terms of checking the return value in normal handling
+and then performing something depending on the kind of the value.</p>
+<p>There is also a significant difference in usability, in terms of the null
+safety of programming languages, between one that has a trick added from the
+middle version of the language and one that is endowed by nature with it.  The
+null safety which is inborn is quite different from acquired.  To appropriate
+the expression in [1], “Programming languages designed from the start
+with well-thought-out null safety prove to be more reliable and live longer
+than those where the null safety is pasted on as an afterthought.”</p>
+<p>Finally, the debate about null safety seems like the old <em>goto</em>.  It will get
+better anyway with removing goto.  Or a ghost of goto called <em>labeled break</em>
+appears despite having buried goto.  Even if you conceal goto, the concept
+never disappears.  It is the same for <code>null</code>.  The situation where you have at
+most one value continues to exist with or without <code>null</code>.</p>
+<h2>References</h2>
+<!--
+<style>
+#references + ol > li::marker { content: "[" counter(list-item) "] "; }
+</style>
+-->
+<div id="references"></div>
+<ol>
+<li><a name="ref1"></a>
+<a href="http://books.google.com/books?vid=ISBN020103669X">Brian W. Kernighan, P. J. Plauger, P. L. Plauger.
+<em>Software Tools</em>, Addison-Wesley, 1976.</a></li>
+</ol>
+<!--
+
+### Single Entry, Single Exit (SESE)
+
+- https://en.wikipedia.org/wiki/Structured_programming
+- https://softwareengineering.stackexchange.com/questions/118703/where-did-the-notion-of-one-return-only-come-from
+- [Dijkstra, Edsger W. "Letters to the editor:
+  Go to statement considered harmful",
+  _Communications of the ACM_,
+  Vol. 11, No. 3, pp. 147&mdash;148, Mar. 1968.](https://doi.org/10.1145%2F362929.362947)
+
+### The Billion Dollar Mistake
+
+- [Null References: The Billion Dollar Mistake - Tony Hoare](https://www.youtube.com/watch?v=ybrQvs4x0Ps)
+- https://www.infoq.com/presentations/Null-References-The-Billion-Dollar-Mistake-Tony-Hoare/
+- https://en.wikipedia.org/wiki/Tony_Hoare
+
+-->
+          </main>
+        </section>
+      </div>
+      <div class="left-container">
+<nav>
+  <div>
+    <a href="/">Projects</a>
+  </div>
+  <div>
+    <span>&#x25BE;</span>
+  </div>
+  <div>
+    <span class="project-name"><a href="index.html">The Insanity Beyond Null</a></span>
+  </div>
+  <ul>
+    <li>
+      <a href="index.html">Top</a>
+    </li>
+    <li>
+      <a href="Part-0.html">0. Null</a>
+    </li>
+    <li>
+      <a href="Part-1.html">1. Null in Java 11</a>
+    </li>
+    <li>
+      <a href="Part-2.html">2. Null in C# 8</a>
+    </li>
+    <li>
+      <a href="Part-3.html">3. Null in Others</a>
+    </li>
+    <li>
+      <a href="Part-4.html">4. Exercises</a>
+    </li>
+    <li class="selected">
+      5. Epilog
+    </li>
+    <ul id="toc-placeholder">
+    </ul>
+  </ul>
+</nav>
+      </div>
+    </div>
+  </body>
+</html>

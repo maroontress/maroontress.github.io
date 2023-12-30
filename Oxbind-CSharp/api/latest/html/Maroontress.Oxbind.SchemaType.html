@@ -1,0 +1,409 @@
+<!doctype html>
+<html>
+  <head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9TQ6JWBKEK">
+    </script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+function gtag() { dataLayer.push(arguments); }
+gtag('js', new Date());
+gtag('config', 'G-9TQ6JWBKEK');
+    </script>
+    <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SchemaType Class | API Reference | Oxbind Project</title>
+    <link rel="stylesheet" href="bulldoc.css">
+    <script src="highlight.pack.js">
+    </script>
+    <script>
+      hljs.initHighlightingOnLoad();
+    </script>
+  </head>
+  <body>
+    <div class="mainContainer uhf-container has-top-padding has-default-focus" data-bi-name="body">
+      <section>
+        <main class="content">
+          <h1><span class="lang-csharp">Schema<wbr>Type</span> Class</h1>
+          <div class="metadata">
+            <dl class="attributeList">
+              <dt>
+                Namespace:
+                <dd>
+                  <span class="lang-csharp"><a class="xref" href="Maroontress.Oxbind.html" data-linktype="relative-path">Maroontress.Oxbind</a></span>
+                </dd>
+              </dt>
+            </dl>
+            <dl class="attributeList">
+              <dt>
+                Assembly:
+                <dd>
+                  <span class="lang-csharp">Oxbind.dll</span>
+                </dd>
+              </dt>
+            </dl>
+          </div>
+          <div class="summaryHolder">
+            <div class="summary clearFix">
+              <p>A component of <a href="Maroontress.Oxbind.Schema.html">Schema</a> that represents one of the child
+    elements, which stands for the class corresponding to the child
+    element, and how the child element occurs inside the parent.</p>
+            </div>
+          </div>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> <span class="hljs-keyword">class</span> <span class="hljs-title">SchemaType</span></code></pre>
+          <dl class="attributeList stack">
+            <dt>
+              Inheritance
+            </dt>
+            <dd>
+              <div class="pdlHolder">
+                <div class="pdl">
+                  <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=netcore-3.0" data-linktype="absolute-path">object</a></span>
+                </div>
+                <span class="lang-csharp">Schema<wbr>Type</span>
+              </div>
+            </dd>
+          </dl>
+          <h2 id="remarks" class="heading-with-anchor">Remarks</h2>
+          <p>The <a href="#">SchemaType</a> object is immutable, and has a class
+    annotated with <a href="Maroontress.Oxbind.ForElementAttribute.html">ForElementAttribute</a> corresponding to the
+    child element. It must be created with one of <a href="Maroontress.Oxbind.Mandatory.html#M:Maroontress.Oxbind.Mandatory.Of``1">Mandatory.Of&lt;T&gt;()</a>, <a href="Maroontress.Oxbind.Optional.html#M:Maroontress.Oxbind.Optional.Of``1">Optional.Of&lt;T&gt;()</a> and <a href="Maroontress.Oxbind.Multiple.html#M:Maroontress.Oxbind.Multiple.Of``1">Multiple.Of&lt;T&gt;()</a>.</p>
+          <h2 id="constructors" class="heading-with-anchor">Constructors</h2>
+          <div class="table-scroll-wrapper">
+            <table class="nameValue">
+              <tbody>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Oxbind.SchemaType.#ctor(System.Type,System.Boolean,System.Boolean)" data-linktype="relative-path">Schema<wbr>Type(Type, bool, bool)</a></span>
+                  </td>
+                  <td>
+                    <p>Initializes a new instance of the <a href="#">SchemaType</a> class.</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <h2 id="properties" class="heading-with-anchor">Properties</h2>
+          <div class="table-scroll-wrapper">
+            <table class="nameValue">
+              <tbody>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="#P:Maroontress.Oxbind.SchemaType.ElementType" data-linktype="relative-path">Element<wbr>Type</a></span>
+                  </td>
+                  <td>
+                    <p>Gets the class corresponding to the child element.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="#P:Maroontress.Oxbind.SchemaType.PlaceholderType" data-linktype="relative-path">Placeholder<wbr>Type</a></span>
+                  </td>
+                  <td>
+                    <p>Gets the placeholder class corresponding to the child element.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="#P:Maroontress.Oxbind.SchemaType.IsMandatory" data-linktype="relative-path">Is<wbr>Mandatory</a></span>
+                  </td>
+                  <td>
+                    <p>Gets a value indicating whether the child element always occurs
+    inside the parent.</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <h2 id="methods" class="heading-with-anchor">Methods</h2>
+          <div class="table-scroll-wrapper">
+            <table class="nameValue">
+              <tbody>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Oxbind.SchemaType.ApplyWithContent(System.Xml.XmlReader,System.Func{System.Type,Maroontress.Oxbind.Impl.Metadata},Maroontress.Oxbind.Impl.Reflector{System.Object},System.Action{System.Object})" data-linktype="relative-path">Apply<wbr>With<wbr>Content(Xml<wbr>Reader, Func&lt;Type, Metadata&gt;, Reflector&lt;object&gt;, Action&lt;object&gt;)</a></span>
+                  </td>
+                  <td>
+                    <p>Applies the content of the element with the specified action.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Oxbind.SchemaType.ApplyWithEmptyElement(System.Xml.XmlReader,System.Func{System.Type,Maroontress.Oxbind.Impl.Metadata},Maroontress.Oxbind.Impl.Reflector{System.Object},System.Action{System.Object})" data-linktype="relative-path">Apply<wbr>With<wbr>Empty<wbr>Element(Xml<wbr>Reader, Func&lt;Type, Metadata&gt;, Reflector&lt;object&gt;, Action&lt;object&gt;)</a></span>
+                  </td>
+                  <td>
+                    <p>Applies the empty element with the specified action.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.object.equals?view=netcore-3.0#System_Object_Equals_System_Object_">Equals(object)</a>
+                  </td>
+                  <td>
+                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=netcore-3.0" data-linktype="absolute-path">object</a>)
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.object.gethashcode?view=netcore-3.0">GetHashCode()</a>
+                  </td>
+                  <td>
+                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=netcore-3.0" data-linktype="absolute-path">object</a>)
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.object.gettype?view=netcore-3.0">GetType()</a>
+                  </td>
+                  <td>
+                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=netcore-3.0" data-linktype="absolute-path">object</a>)
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.object.memberwiseclone?view=netcore-3.0">MemberwiseClone()</a>
+                  </td>
+                  <td>
+                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=netcore-3.0" data-linktype="absolute-path">object</a>)
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.object.tostring?view=netcore-3.0">ToString()</a>
+                  </td>
+                  <td>
+                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=netcore-3.0" data-linktype="absolute-path">object</a>)
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <h2 id="see-also" class="heading-with-anchor">See Also</h2>
+          <ul>
+            <li>
+              <a href="Maroontress.Oxbind.Mandatory.html#M:Maroontress.Oxbind.Mandatory.Of``1">Mandatory.Of&lt;T&gt;()</a>
+            </li>
+            <li>
+              <a href="Maroontress.Oxbind.Multiple.html#M:Maroontress.Oxbind.Multiple.Of``1">Multiple.Of&lt;T&gt;()</a>
+            </li>
+            <li>
+              <a href="Maroontress.Oxbind.Optional.html#M:Maroontress.Oxbind.Optional.Of``1">Optional.Of&lt;T&gt;()</a>
+            </li>
+          </ul>
+          <h1 id="constructors-detail" class="heading-with-anchor">Constructors Detail</h1>
+          <h2 id="M:Maroontress.Oxbind.SchemaType.#ctor(System.Type,System.Boolean,System.Boolean)">SchemaType(Type, bool, bool)</h2>
+          <div class="summaryHolder">
+            <div class="summary clearFix">
+              <p>Initializes a new instance of the <a href="#">SchemaType</a> class.</p>
+            </div>
+          </div>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">protected</span> <span class="hljs-title">SchemaType</span>(<span class="hljs-title">Type</span> type, <span class="hljs-keyword">bool</span> isMandatory, <span class="hljs-keyword">bool</span> isMultiple)</code></pre>
+          <h4 class="propertyInfoTitle stack">Parameters</h4>
+          <div class="propertyInfo">
+            <dl class="parameterList">
+              <dt>
+                type
+              </dt>
+              <dd>
+                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.type?view=netcore-3.0" data-linktype="absolute-path">Type</a></span>
+              </dd>
+            </dl>
+            <p>The class corresponding to the child element.</p>
+          </div>
+          <div class="propertyInfo stack">
+            <dl class="parameterList">
+              <dt>
+                isMandatory
+              </dt>
+              <dd>
+                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.boolean?view=netcore-3.0" data-linktype="absolute-path">bool</a></span>
+              </dd>
+            </dl>
+            <p>Whether the child element always occurs inside the parent.</p>
+          </div>
+          <div class="propertyInfo stack">
+            <dl class="parameterList">
+              <dt>
+                isMultiple
+              </dt>
+              <dd>
+                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.boolean?view=netcore-3.0" data-linktype="absolute-path">bool</a></span>
+              </dd>
+            </dl>
+            <p>Whether the child element occurs zero or multiple times.</p>
+          </div>
+          <h1 id="properties-detail" class="heading-with-anchor">Properties Detail</h1>
+          <h2 id="P:Maroontress.Oxbind.SchemaType.ElementType">ElementType</h2>
+          <div class="summaryHolder">
+            <div class="summary clearFix">
+              <p>Gets the class corresponding to the child element.</p>
+            </div>
+          </div>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-title">Type</span> <span class="hljs-title">ElementType</span> { <span class="hljs-keyword">get</span>; }</code></pre>
+          <h4 class="propertyInfoTitle stack">Property Value</h4>
+          <div class="propertyInfo">
+            <div class="subtle">
+              <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.type?view=netcore-3.0" data-linktype="absolute-path">Type</a>
+            </div>
+            <p>The class corresponding to the child element.</p>
+          </div>
+          <h2 id="P:Maroontress.Oxbind.SchemaType.PlaceholderType">PlaceholderType</h2>
+          <div class="summaryHolder">
+            <div class="summary clearFix">
+              <p>Gets the placeholder class corresponding to the child element.</p>
+            </div>
+          </div>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-title">Type</span> <span class="hljs-title">PlaceholderType</span> { <span class="hljs-keyword">get</span>; }</code></pre>
+          <h4 class="propertyInfoTitle stack">Property Value</h4>
+          <div class="propertyInfo">
+            <div class="subtle">
+              <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.type?view=netcore-3.0" data-linktype="absolute-path">Type</a>
+            </div>
+            <p>The placeholder class corresponding to the child element.</p>
+          </div>
+          <h2 id="P:Maroontress.Oxbind.SchemaType.IsMandatory">IsMandatory</h2>
+          <div class="summaryHolder">
+            <div class="summary clearFix">
+              <p>Gets a value indicating whether the child element always occurs
+    inside the parent.</p>
+            </div>
+          </div>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-keyword">bool</span> <span class="hljs-title">IsMandatory</span> { <span class="hljs-keyword">get</span>; }</code></pre>
+          <h4 class="propertyInfoTitle stack">Property Value</h4>
+          <div class="propertyInfo">
+            <div class="subtle">
+              <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.boolean?view=netcore-3.0" data-linktype="absolute-path">bool</a>
+            </div>
+            <p><code>true</code> if the child element always occurs inside the parent.</p>
+          </div>
+          <h1 id="methods-detail" class="heading-with-anchor">Methods Detail</h1>
+          <h2 id="M:Maroontress.Oxbind.SchemaType.ApplyWithContent(System.Xml.XmlReader,System.Func{System.Type,Maroontress.Oxbind.Impl.Metadata},Maroontress.Oxbind.Impl.Reflector{System.Object},System.Action{System.Object})">ApplyWithContent(XmlReader, Func&lt;Type, Metadata&gt;, Reflector&lt;object&gt;, Action&lt;object&gt;)</h2>
+          <div class="summaryHolder">
+            <div class="summary clearFix">
+              <p>Applies the content of the element with the specified action.</p>
+            </div>
+          </div>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> <span class="hljs-keyword">void</span> <span class="hljs-title">ApplyWithContent</span>(<span class="hljs-title">XmlReader</span> input, <span class="hljs-title">Func</span>&lt;<span class="hljs-title">Type</span>, <span class="hljs-title">Metadata</span>&gt; getMetadata, <span class="hljs-title">Reflector</span>&lt;<span class="hljs-keyword">object</span>&gt; reflector, <span class="hljs-title">Action</span>&lt;<span class="hljs-keyword">object</span>&gt; setChildValue)</code></pre>
+          <h4 class="propertyInfoTitle stack">Parameters</h4>
+          <div class="propertyInfo">
+            <dl class="parameterList">
+              <dt>
+                input
+              </dt>
+              <dd>
+                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.xml.xmlreader?view=netcore-3.0" data-linktype="absolute-path">Xml<wbr>Reader</a></span>
+              </dd>
+            </dl>
+            <p>The <a href="https://docs.microsoft.com/en-us/dotnet/api/system.xml.xmlreader?view=netcore-3.0">XmlReader</a> object.</p>
+          </div>
+          <div class="propertyInfo stack">
+            <dl class="parameterList">
+              <dt>
+                getMetadata
+              </dt>
+              <dd>
+                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.func-2?view=netcore-3.0" data-linktype="absolute-path">Func</a>&lt;<a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.type?view=netcore-3.0" data-linktype="absolute-path">Type</a>, <a class="xref" href="Maroontress.Oxbind.Impl.Metadata.html" data-linktype="relative-path">Metadata</a>&gt;</span>
+              </dd>
+            </dl>
+            <p>The function that returns the metadata corresponding to the
+    specified class.</p>
+          </div>
+          <div class="propertyInfo stack">
+            <dl class="parameterList">
+              <dt>
+                reflector
+              </dt>
+              <dd>
+                <span class="lang-csharp"><a class="xref" href="Maroontress.Oxbind.Impl.Reflector.html" data-linktype="relative-path">Reflector</a>&lt;<a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=netcore-3.0" data-linktype="absolute-path">object</a>&gt;</span>
+              </dd>
+            </dl>
+            <p>The reflector.</p>
+          </div>
+          <div class="propertyInfo stack">
+            <dl class="parameterList">
+              <dt>
+                setChildValue
+              </dt>
+              <dd>
+                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.action-1?view=netcore-3.0" data-linktype="absolute-path">Action</a>&lt;<a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=netcore-3.0" data-linktype="absolute-path">object</a>&gt;</span>
+              </dd>
+            </dl>
+            <p>The action to supply a child object to inject.</p>
+          </div>
+          <h2 id="M:Maroontress.Oxbind.SchemaType.ApplyWithEmptyElement(System.Xml.XmlReader,System.Func{System.Type,Maroontress.Oxbind.Impl.Metadata},Maroontress.Oxbind.Impl.Reflector{System.Object},System.Action{System.Object})">ApplyWithEmptyElement(XmlReader, Func&lt;Type, Metadata&gt;, Reflector&lt;object&gt;, Action&lt;object&gt;)</h2>
+          <div class="summaryHolder">
+            <div class="summary clearFix">
+              <p>Applies the empty element with the specified action.</p>
+            </div>
+          </div>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> <span class="hljs-keyword">void</span> <span class="hljs-title">ApplyWithEmptyElement</span>(<span class="hljs-title">XmlReader</span> input, <span class="hljs-title">Func</span>&lt;<span class="hljs-title">Type</span>, <span class="hljs-title">Metadata</span>&gt; getMetadata, <span class="hljs-title">Reflector</span>&lt;<span class="hljs-keyword">object</span>&gt; reflector, <span class="hljs-title">Action</span>&lt;<span class="hljs-keyword">object</span>&gt; setChildValue)</code></pre>
+          <h4 class="propertyInfoTitle stack">Parameters</h4>
+          <div class="propertyInfo">
+            <dl class="parameterList">
+              <dt>
+                input
+              </dt>
+              <dd>
+                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.xml.xmlreader?view=netcore-3.0" data-linktype="absolute-path">Xml<wbr>Reader</a></span>
+              </dd>
+            </dl>
+            <p>The <a href="https://docs.microsoft.com/en-us/dotnet/api/system.xml.xmlreader?view=netcore-3.0">XmlReader</a> object.</p>
+          </div>
+          <div class="propertyInfo stack">
+            <dl class="parameterList">
+              <dt>
+                getMetadata
+              </dt>
+              <dd>
+                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.func-2?view=netcore-3.0" data-linktype="absolute-path">Func</a>&lt;<a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.type?view=netcore-3.0" data-linktype="absolute-path">Type</a>, <a class="xref" href="Maroontress.Oxbind.Impl.Metadata.html" data-linktype="relative-path">Metadata</a>&gt;</span>
+              </dd>
+            </dl>
+            <p>The function that returns the metadata corresponding to the
+    specified class.</p>
+          </div>
+          <div class="propertyInfo stack">
+            <dl class="parameterList">
+              <dt>
+                reflector
+              </dt>
+              <dd>
+                <span class="lang-csharp"><a class="xref" href="Maroontress.Oxbind.Impl.Reflector.html" data-linktype="relative-path">Reflector</a>&lt;<a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=netcore-3.0" data-linktype="absolute-path">object</a>&gt;</span>
+              </dd>
+            </dl>
+            <p>The reflector.</p>
+          </div>
+          <div class="propertyInfo stack">
+            <dl class="parameterList">
+              <dt>
+                setChildValue
+              </dt>
+              <dd>
+                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.action-1?view=netcore-3.0" data-linktype="absolute-path">Action</a>&lt;<a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=netcore-3.0" data-linktype="absolute-path">object</a>&gt;</span>
+              </dd>
+            </dl>
+            <p>The action to supply a child object to inject.</p>
+          </div>
+        </main>
+      </section>
+    </div>
+  </body>
+</html>

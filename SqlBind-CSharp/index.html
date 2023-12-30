@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9TQ6JWBKEK"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-9TQ6JWBKEK');
+    </script>
+    </script>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Top | SqlBind.CSharp</title>
+    <link rel="canonical" href="https://maroontress.github.io/SqlBind-CSharp/index.html" />
+    <link rel="stylesheet" type="text/css" href="/css/markdown.css">
+    <link rel="apple-touch-icon" sizes="120x120" href="/images/logo-v2-120x120.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/logo-v2-180x180.png">
+    <link rel="icon" type="image/x-icon" href="/images/logo-v2.ico">
+    <link rel="mask-icon" href="/images/logo-v2-mask-icon.svg" color="#800000">
+    <script src="/js/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+    <script src="/js/toc.js"></script>
+  </head>
+  <body>
+    <div class="logo">
+      <b>Maroontress Fast Software</b>
+    </div>
+    <div class="container">
+      <div class="main-container">
+        <section>
+          <main class="content">
+<div class="project-logo">SqlBind.CSharp</div>
+<div id="toc-level" data-values="H2,H3"></div>
+<p>SqlBind.CSharp is a C# class library that is a wrapper for SQLite.</p>
+<h2>How to create a table and insert rows</h2>
+<p>Let's consider creating the Actors table as follows:</p>
+<blockquote>
+<h3><em>Actors</em></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:right"><u>id</u></th>
+<th style="text-align:left">name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">1</td>
+<td style="text-align:left">Chloë Grace Moretz</td>
+</tr>
+<tr>
+<td style="text-align:right">2</td>
+<td style="text-align:left">Gary Carr</td>
+</tr>
+<tr>
+<td style="text-align:right">3</td>
+<td style="text-align:left">Jack Reynor</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<p>Create the following class to represent this table:</p>
+<pre><code class="language-csharp">[Table(&quot;Actors&quot;)]
+public record class Actor(
+    [Column(&quot;id&quot;)][PrimaryKey][AutoIncrement] long Id,
+    [Column(&quot;name&quot;)] string Name)
+{
+}
+</code></pre>
+<p>Each parameter in the constructor of the <code>Actor</code> class corresponds to each column in the Actors table in the same order. The type of each parameter must be either <code>long</code> or <code>string</code>.</p>
+<p>Note that you can implement the <code>Actor</code> class without a <code>record</code> class. However, the parameter names of the constructor must start with an <em>uppercase</em> letter if you create a regular one according to the naming conventions of the <code>record</code> class. This is inconsistent with general naming conventions. Therefore, we recommend that you use <code>record</code> classes.</p>
+<p>The following code from the <code>Example</code> class uses the <code>Actor</code> class to create the Actors table and add three rows of data to the table:</p>
+<pre><code class="language-csharp">public sealed class Example
+{
+    private TransactionKit Kit { get; } = new TransactionKit(
+        &quot;example.db&quot;,
+        m =&gt; Console.WriteLine(m()));
+
+    public void CreateTableAndInsertRows()
+    {
+        Kit.Execute(q =&gt;
+        {
+            q.NewTables(typeof(Actor));
+            q.Insert(new Actor(0, &quot;Chloë Grace Moretz&quot;));
+            q.Insert(new Actor(0, &quot;Gary Carr&quot;));
+            q.Insert(new Actor(0, &quot;Jack Reynor&quot;));
+        });
+    }
+    ...
+</code></pre>
+<p>The <code>Kit</code> property has the <code>TransactionKit</code> instance, which uses the <code>example.db</code> file as a database backend and writes log messages to the console. The <code>Execute</code> method executes the queries that the lambda expression of its parameter performs atomically (as a single transaction).</p>
+<p>Note that calling the <code>Insert(object)</code> method with the <code>Actor</code> instance ignores its <code>Id</code> property, which is specified with the first parameter of the constructor of the <code>Actor</code> class, because it is qualified with the <code>AutoIncrement</code> attribute.</p>
+<p>The log messages that the <code>CreateTableAndInsertRows()</code> method prints to the console are as follows:</p>
+<pre><code class="language-plaintext">DROP TABLE IF EXISTS Actors
+CREATE TABLE Actors (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT)
+INSERT INTO Actors (name) VALUES ($name)
+  ($name, Chloë Grace Moretz)
+INSERT INTO Actors (name) VALUES ($name)
+  ($name, Gary Carr)
+INSERT INTO Actors (name) VALUES ($name)
+  ($name, Jack Reynor)
+</code></pre>
+<p>The non-indented lines are actual SQL statements that were automatically generated and executed.</p>
+<h2>How to select a table and get rows</h2>
+<p>Then run the <code>SelectAllRows()</code> method as follows:</p>
+<pre><code class="language-csharp">public sealed class Example
+{
+    ...
+    public void SelectAllRows()
+    {
+        Kit.Execute(q =&gt;
+        {
+            var all = q.SelectAll&lt;Actor&gt;();
+            foreach (var i in all)
+            {
+                Console.WriteLine(i);
+            }
+        });
+    }
+    ...
+</code></pre>
+<p>The <code>SelectAllRows()</code> method outputs:</p>
+<pre><code class="language-plaintext">SELECT id, name FROM Actors
+Actor { Id = 1, Name = Chloë Grace Moretz }
+Actor { Id = 2, Name = Gary Carr }
+Actor { Id = 3, Name = Jack Reynor }
+</code></pre>
+<p>The first line is the log message that the <code>TransactionKit</code> instance prints. The <code>SelectAll&lt;T&gt;()</code> method generates this statement.</p>
+<p>The next three lines are the messages that the <code>WriteLine(object)</code> method outputs within the <code>foreach</code> block.</p>
+<h2>Inner join with two or more tables</h2>
+<p>Consider the following Titles table:</p>
+<blockquote>
+<h3><em>Titles</em></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:right">id</th>
+<th style="text-align:left">name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">1</td>
+<td style="text-align:left">Peripheral</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<p>And the following Casts table:</p>
+<blockquote>
+<h3><em>Casts</em></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:right">id</th>
+<th style="text-align:right">titleId</th>
+<th style="text-align:right">actorId</th>
+<th style="text-align:left">role</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">1</td>
+<td style="text-align:right">1</td>
+<td style="text-align:right">1</td>
+<td style="text-align:left">Flynne Fisher</td>
+</tr>
+<tr>
+<td style="text-align:right">2</td>
+<td style="text-align:right">1</td>
+<td style="text-align:right">2</td>
+<td style="text-align:left">Wilf Netherton</td>
+</tr>
+<tr>
+<td style="text-align:right">3</td>
+<td style="text-align:right">1</td>
+<td style="text-align:right">3</td>
+<td style="text-align:left">Burton Fisher</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<p>The classes that correspond to these tables are:</p>
+<pre><code class="language-csharp">[Table(&quot;Titles&quot;)]
+public record class Title(
+    [Column(&quot;id&quot;)][PrimaryKey][AutoIncrement] long Id,
+    [Column(&quot;name&quot;)] string Name)
+{
+}
+
+[Table(&quot;Casts&quot;)]
+public record class Cast(
+    [Column(&quot;id&quot;)][PrimaryKey][AutoIncrement] long Id,
+    [Column(&quot;titleId&quot;)] long TitleId,
+    [Column(&quot;actorId&quot;)] long ActorId,
+    [Column(&quot;role&quot;)] string Role)
+{
+}
+</code></pre>
+<p>The following code creates the tables and inserts the rows:</p>
+<pre><code class="language-csharp">public sealed class Example
+{
+    ...
+    public void CreateTables()
+    {
+        Kit.Execute(q =&gt;
+        {
+            q.NewTables(typeof(Title));
+            q.NewTables(typeof(Actor));
+            q.NewTables(typeof(Cast));
+            var titleId = q.InsertAndGetRowId(new Title(0, &quot;Peripheral&quot;));
+            var allCasts = new (string Name, string Role)[]
+            {
+                (&quot;Chloë Grace Moretz&quot;, &quot;Flynne Fisher&quot;),
+                (&quot;Gary Carr&quot;, &quot;Wilf Netherton&quot;),
+                (&quot;Jack Reynor&quot;, &quot;Burton Fisher&quot;),
+            };
+            foreach (var (name, role) in allCasts)
+            {
+                var actorId = q.InsertAndGetRowId(new Actor(0, name));
+                q.Insert(new Cast(0, titleId, actorId, role));
+            }
+        });
+    }
+    ...
+</code></pre>
+<p>The log messages that the <code>CreateTables()</code> method prints to the console are as follows:</p>
+<pre><code>DROP TABLE IF EXISTS Titles
+CREATE TABLE Titles (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT)
+DROP TABLE IF EXISTS Actors
+CREATE TABLE Actors (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT)
+DROP TABLE IF EXISTS Casts
+CREATE TABLE Casts (id INTEGER PRIMARY KEY AUTOINCREMENT, titleId INTEGER, actorId INTEGER, role TEXT)
+INSERT INTO Titles (name) VALUES ($name)
+  ($name, Peripheral)
+select last_insert_rowid()
+INSERT INTO Actors (name) VALUES ($name)
+  ($name, Chloë Grace Moretz)
+select last_insert_rowid()
+INSERT INTO Casts (titleId, actorId, role) VALUES ($titleId, $actorId, $role)
+  ($titleId, 1)
+  ($role, Flynne Fisher)
+  ($actorId, 1)
+INSERT INTO Actors (name) VALUES ($name)
+  ($name, Gary Carr)
+select last_insert_rowid()
+INSERT INTO Casts (titleId, actorId, role) VALUES ($titleId, $actorId, $role)
+  ($titleId, 1)
+  ($role, Wilf Netherton)
+  ($actorId, 2)
+INSERT INTO Actors (name) VALUES ($name)
+  ($name, Jack Reynor)
+select last_insert_rowid()
+INSERT INTO Casts (titleId, actorId, role) VALUES ($titleId, $actorId, $role)
+  ($titleId, 1)
+  ($role, Burton Fisher)
+  ($actorId, 3)
+</code></pre>
+<p>Let's suppose that you would like to get a list of the names of the actors who performed in the specified title. To do this, use the APIs as follows:</p>
+<pre><code class="language-csharp">public sealed class Example
+{
+    ...
+    public void ListActorNames(string title)
+    {
+        Kit.Execute(q =&gt;
+        {
+            var map = new Dictionary&lt;string, object&gt;
+            {
+                [&quot;$name&quot;] = title,
+            };
+            var all = q.SelectAllFrom&lt;Actor&gt;(&quot;a&quot;)
+                .InnerJoin&lt;Cast&gt;(&quot;c&quot;, &quot;a.id = c.actorId&quot;)
+                .InnerJoin&lt;Title&gt;(&quot;t&quot;, &quot;t.id = c.titleId&quot;)
+                .Where(&quot;t.name = $name&quot;, map)
+                .Execute();
+            foreach (var i in all)
+            {
+                Console.WriteLine(i.Name);
+            }
+        });
+    }
+    ...
+
+</code></pre>
+<p>Calling <code>ListActorNames(&quot;Peripheral&quot;);</code> results in the following output:</p>
+<pre><code>SELECT a.id, a.name FROM Actors a INNER JOIN Casts c ON a.id = c.actorId INNER JOIN Titles t ON t.id = c.titleId WHERE t.name = $name
+  ($name, Peripheral)
+Chloë Grace Moretz
+Gary Carr
+Jack Reynor
+</code></pre>
+<h2>Get started</h2>
+<p>SqlBind.CSharp is available as
+<a href="https://www.nuget.org/packages/Maroontress.SqlBind/">the <img src="https://maroontress.github.io/images/NuGet-logo.png" alt="NuGet-logo"> NuGet package</a>.</p>
+<h2>API Reference</h2>
+<ul>
+<li><a href="https://maroontress.github.io/SqlBind-CSharp/api/latest/html/Maroontress.SqlBind.html">Maroontress.SqlBind</a> namespace</li>
+</ul>
+          </main>
+        </section>
+      </div>
+      <div class="left-container">
+<nav>
+  <div>
+    <a href="/">Projects</a>
+  </div>
+  <div>
+    <span>&#x25BE;</span>
+  </div>
+  <div>
+    <span class="project-name"><a href="index.html">SqlBind.CSharp</a></span>
+  </div>
+  <ul>
+    <li class="selected">
+      Top
+    </li>
+    <ul id="toc-placeholder">
+    </ul>
+    <li>
+      <a href="releasenotes.html">Release Notes</a>
+    </li>
+  </ul>
+</nav>
+      </div>
+    </div>
+  </body>
+</html>

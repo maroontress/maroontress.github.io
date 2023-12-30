@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9TQ6JWBKEK"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-9TQ6JWBKEK');
+    </script>
+    </script>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Top | PourOver</title>
+    <link rel="canonical" href="https://maroontress.github.io/PourOver/index.html" />
+    <link rel="stylesheet" type="text/css" href="/css/markdown.css">
+    <link rel="apple-touch-icon" sizes="120x120" href="/images/logo-v2-120x120.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/logo-v2-180x180.png">
+    <link rel="icon" type="image/x-icon" href="/images/logo-v2.ico">
+    <link rel="mask-icon" href="/images/logo-v2-mask-icon.svg" color="#800000">
+    <script src="/js/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+    <script src="/js/toc.js"></script>
+  </head>
+  <body>
+    <div class="logo">
+      <b>Maroontress Fast Software</b>
+    </div>
+    <div class="container">
+      <div class="main-container">
+        <section>
+          <main class="content">
+<div class="project-logo">PourOver</div>
+<div id="toc-level" data-values="H2,H3"></div>
+<p>PourOver is a command-line tool that diagnoses string resources stored in CSV
+files expressed in multiple languages by comparing the tokens embedded in each
+string between the languages.</p>
+<h2>Structure of CSV file</h2>
+<p>The CSV file must be encoded with UTF-8, and the first row must be a header.
+The leftmost field in it is unused.  All other ones are assumed to represent
+the language name for each column.  It does not affect diagnostics, but
+diagnostic messages use the contents of the fields in the header, except for
+the leftmost one.</p>
+<p>The second and subsequent rows following the header are the ID of the message
+and strings for each language.  Consider string resources with the following:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">ID</th>
+<th style="text-align:left"><code>English</code></th>
+<th style="text-align:left"><code>Japanese</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>HELLO</code></td>
+<td style="text-align:left"><code>Hello</code></td>
+<td style="text-align:left"><code>こんにちは</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>BYE</code></td>
+<td style="text-align:left"><code>Bye</code></td>
+<td style="text-align:left"><code>さようなら</code></td>
+</tr>
+</tbody>
+</table>
+<p>The CSV file should be like the following:</p>
+<pre><code class="language-plaintext">ID,English,Japanese
+HELLO,Hello,こんにちは
+BYE,Bye,さようなら
+</code></pre>
+<h2>Token</h2>
+<p>A token is a placeholder embedded in a string resource, which is a string
+enclosed in braces (<code>{</code> and <code>}</code>).  For example, you have string resources as
+follows:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">ID</th>
+<th style="text-align:left"><code>English</code></th>
+<th style="text-align:left"><code>Japanese</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>TIME</code></td>
+<td style="text-align:left"><code>It's {hour} o'clock</code></td>
+<td style="text-align:left"><code>{hour}時です</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>DEAR</code></td>
+<td style="text-align:left"><code>Dear {name},</code></td>
+<td style="text-align:left"><code>拝啓 {name} さん、</code></td>
+</tr>
+</tbody>
+</table>
+<p>The string resource <code>TIME</code> should include the token <code>{hour}</code> in all languages,
+and the token <code>{hour}</code> is assumed to be replaced with the hour of the current
+time when displayed.  In addition, the string resource <code>DEAR</code> also includes the
+token <code>{name}</code>, replacing <code>{name}</code> with a person's name when displayed.</p>
+<p>A string resource can contain multiple tokens.</p>
+<h2>Diagnostic message</h2>
+<p>Each diagnostic message has the following format:</p>
+<blockquote>
+<p><em>filename</em><code>:</code><em>line</em><code>:</code> <em>ID</em><code>:</code> <em>diagnostic message</em></p>
+</blockquote>
+<h2>Token diagnostics</h2>
+<p>In many cases, the number of tokens in the field does not vary by language.
+(However, they may appear in a different order.) For example, in a string
+resource, if the one of language <em>A</em> contains tokens <code>{foo}</code> and <code>{bar}</code>, and
+the one of language <em>B</em> does tokens <code>{foo}</code> and <code>{baz}</code>, something might be
+wrong.  (Of course, exceptionally, it might not be.) Thus, we can use simple
+heuristics to diagnose tokens.</p>
+<p>The token-based diagnostics are as follows:</p>
+<ul>
+<li>TypeNumberMismatch</li>
+<li>StrayToken</li>
+<li>FrequencyMismatch</li>
+</ul>
+<h3>TypeNumberMismatch</h3>
+<p>TypeNumberMismatch arises when the number of token types in a string resource
+varies by language.  For example, it does when language <em>A</em> contains three
+tokens: <code>{foo}</code>, <code>{bar}</code>, and <code>{baz}</code>, but language <em>B</em> contains only two
+tokens: <code>{foo}</code>, and <code>{bar}</code>.  Note that two or more occurrences of the same
+token are considered as one type.</p>
+<p>Consider the following string resource:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">ID</th>
+<th style="text-align:left"><code>English</code></th>
+<th style="text-align:left"><code>Japanese</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>EXAMPLE1</code></td>
+<td style="text-align:left"><code>Hello {foo} {bar}</code></td>
+<td style="text-align:left"><code>こんにちは {foo}</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>EXAMPLE2</code></td>
+<td style="text-align:left"><code>Bye {foo} {bar}</code></td>
+<td style="text-align:left"><code>さようなら {foo} {foo}</code></td>
+</tr>
+</tbody>
+</table>
+<p>It prints out diagnostics such as the following (in English locales):</p>
+<pre><code class="language-plain">file.csv:2: EXAMPLE1: The number of unique tokens is different: 'English' has 2 token(s) but 'Japanese' has 1 token(s).
+file.csv:3: EXAMPLE2: The number of unique tokens is different: 'English' has 2 token(s) but 'Japanese' has 1 token(s).
+</code></pre>
+<p>If the TypeNumberMismatch arises, PourOver performs no further diagnostics to
+that field.</p>
+<h3>StrayToken</h3>
+<p>StrayToken arises when the token types vary by language.  For example, it does
+when language <em>A</em> contains two tokens of <code>{foo}</code>, <code>{bar}</code>, and language <em>B</em>
+does two ones of <code>{foo}</code>, <code>{baz}</code>.</p>
+<p>Consider the following string resource:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">ID</th>
+<th style="text-align:left"><code>English</code></th>
+<th style="text-align:left"><code>Japanese</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>EXAMPLE1</code></td>
+<td style="text-align:left"><code>Hello {foo} {bar}</code></td>
+<td style="text-align:left"><code>こんにちは {foo} {baz}</code></td>
+</tr>
+</tbody>
+</table>
+<p>It prints out diagnostics such as the following (in English locales):</p>
+<pre><code class="language-plaintext">file.csv:2: EXAMPLE1: Token {bar} appears only in 'English'.
+file.csv:2: EXAMPLE1: Token {baz} appears only in 'Japanese'.
+</code></pre>
+<p>If the StrayToken arises, PourOver performs no further diagnostics to that
+field.</p>
+<h3>FrequencyMismatch</h3>
+<p>FrequencyMismatch arises when the number of occurrences of a particular token in
+a string resource varies by language.  For example, it does when language <em>A</em>
+contains only one token <code>{foo}</code>, and language <em>B</em> does two tokens <code>{foo}</code>.</p>
+<p>Consider the following string resource:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">ID</th>
+<th style="text-align:left"><code>English</code></th>
+<th style="text-align:left"><code>Japanese</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>EXAMPLE1</code></td>
+<td style="text-align:left"><code>Hello {foo} {foo}</code></td>
+<td style="text-align:left"><code>こんにちは {foo}</code></td>
+</tr>
+</tbody>
+</table>
+<p>It prints out diagnostics such as the following (in English locales):</p>
+<pre><code class="language-plaintext">file.csv:2: EXAMPLE1: Token {foo} appears 2 time(s) in 'English' but appears 1 time(s) in 'Japanese'.
+</code></pre>
+<h2>Other diagnostics</h2>
+<p>The other diagnostics are as follows:</p>
+<ul>
+<li>InvalidToken</li>
+<li>DuplicateID</li>
+</ul>
+<h3>InvalidToken</h3>
+<p>InvalidToken arises when braces (<code>{</code> and <code>}</code>) in a field are mismatched, and
+PourOver cannot parse tokens.  For example, consider the following string
+resource:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">ID</th>
+<th style="text-align:left"><code>English</code></th>
+<th style="text-align:left"><code>Japanese</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>EXAMPLE1</code></td>
+<td style="text-align:left"><code>Good morning {foo}</code></td>
+<td style="text-align:left"><code>おはようございます {foo</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>EXAMPLE2</code></td>
+<td style="text-align:left"><code>Good afternoon {foo}</code></td>
+<td style="text-align:left"><code>こんにちは foo}</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>EXAMPLE3</code></td>
+<td style="text-align:left"><code>Good evening {f{oo}</code></td>
+<td style="text-align:left"><code>こんばんは {foo}</code></td>
+</tr>
+</tbody>
+</table>
+<p>It prints out diagnostics such as the following (in English locales):</p>
+<pre><code class="language-plaintext">file.csv:2: EXAMPLE1: ’Japanese’ has an invalid token: Missing a closing brace ('}')
+file.csv:3: EXAMPLE2: ’Japanese’ has an invalid token: Missing an opening brace ('{')
+file.csv:4: EXAMPLE3: ’English’ has an invalid token: Token containing an opening brace ('{')
+</code></pre>
+<p>Note that if InvalidToken arises, PourOver assumes the field to contain no
+tokens in further diagnostics.</p>
+<h3>DuplicateID</h3>
+<p>DuplicateID arises when the CSV file contains duplicate identifiers.  For
+example, consider the following string resource:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">ID</th>
+<th style="text-align:left"><code>English</code></th>
+<th style="text-align:left"><code>Japanese</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>EXAMPLE1</code></td>
+<td style="text-align:left"><code>Hello {foo}</code></td>
+<td style="text-align:left"><code>こんにちは {foo}</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>EXAMPLE1</code></td>
+<td style="text-align:left"><code>Bye {foo}</code></td>
+<td style="text-align:left"><code>さようなら {foo}</code></td>
+</tr>
+</tbody>
+</table>
+<p>It prints out diagnostics such as the following (in English locales):</p>
+<pre><code class="language-plaintext">file.csv:3: EXAMPLE1: This ID already appeared at line 2.
+</code></pre>
+<h2>Requirements</h2>
+<ul>
+<li><a href="https://dotnet.microsoft.com/download/dotnet-core/3.1">.NET Core 3.1 Runtime (Runtime 3.1)</a></li>
+</ul>
+<h2>Get started</h2>
+<p>PourOver is available as <a href="https://www.nuget.org/packages/PourOver.GlobalTool/">the <img src="https://maroontress.github.io/images/NuGet-logo.png" alt="NuGet-logo"> NuGet
+package</a>, so it can be installed as follows:</p>
+<pre><code class="language-plaintext">dotnet tool install -g PourOver.GlobalTool
+</code></pre>
+<h2>Synopsis</h2>
+<blockquote>
+<p><code>PourOver</code> [<code>-L</code> <em>CULTURE</em>] [<code>-hbvV</code>] [<code>--</code>] <em>FILE</em>.csv</p>
+</blockquote>
+<h2>Description</h2>
+<p><em>FILE</em>.csv is a CSV file with the structure described above.</p>
+<p>Options are as follows:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:right"></th>
+<th style="text-align:left">Option</th>
+<th style="text-align:left"></th>
+<th style="text-align:left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right"><code>-L</code>,</td>
+<td style="text-align:left"><code>--culture</code></td>
+<td style="text-align:left"><em>CULTURE</em></td>
+<td style="text-align:left">Specify culture (e.g., <code>en_US</code>)</td>
+</tr>
+<tr>
+<td style="text-align:right"><code>-h</code>,</td>
+<td style="text-align:left"><code>--help</code></td>
+<td style="text-align:left"></td>
+<td style="text-align:left">Show help message and exit</td>
+</tr>
+<tr>
+<td style="text-align:right"><code>-b</code>,</td>
+<td style="text-align:left"><code>--ignore-blank</code></td>
+<td style="text-align:left"></td>
+<td style="text-align:left">Ignore blank fields</td>
+</tr>
+<tr>
+<td style="text-align:right"><code>-v</code>,</td>
+<td style="text-align:left"><code>--verbose</code></td>
+<td style="text-align:left"></td>
+<td style="text-align:left">Be verbose</td>
+</tr>
+<tr>
+<td style="text-align:right"><code>-V</code>,</td>
+<td style="text-align:left"><code>--version</code></td>
+<td style="text-align:left"></td>
+<td style="text-align:left">Show version and exit</td>
+</tr>
+</tbody>
+</table>
+<h3>Exit status</h3>
+<p>PourOver exits with an exit status of 0 if successful (regardless of whether
+diagnostics arise or not), and &gt;0 if an error occurs, such as the corrupted
+format of the CSV file.</p>
+<h2>How to build</h2>
+<h3>Requirements to build</h3>
+<ul>
+<li>Visual Studio 2019 Version 16.10
+or <a href="https://dotnet.microsoft.com/download/dotnet-core/3.1">.NET Core 3.1 SDK (SDK 3.1)</a></li>
+</ul>
+<h3>Build with .NET Core SDK</h3>
+<pre><code class="language-plaintext">git clone URL
+cd PourOver
+dotnet restore
+dotnet build
+</code></pre>
+<h3>Get test coverage report with Coverlet</h3>
+<pre><code class="language-plaintext">dotnet test -p:CollectCoverage=true -p:CoverletOutputFormat=opencover \
+        --no-build PourOver.Test
+dotnet ANYWHERE/reportgenerator.dll \
+        --reports:PourOver.Test/coverage.opencover.xml \
+        --targetdir:Coverlet-html
+</code></pre>
+<h3>Install PourOver as a Global Tool</h3>
+<pre><code class="language-plaintext">cd PourOver.GlobalTool
+dotnet pack
+dotnet tool install --global --add-source bin/Debug PourOver.GlobalTool
+</code></pre>
+<h2>Documents</h2>
+<ul>
+<li><a href="https://github.com/maroontress/PourOver/blob/main/README.md">README</a></li>
+<li><a href="releasenotes.html">Release notes</a></li>
+</ul>
+<h2>How to contribute</h2>
+<p>Please send us pull requests or issues from
+<a href="https://github.com/maroontress/PourOver/">the <img src="https://maroontress.github.io/images/GitHub-logo.png" alt="GitHub icon"> GitHub repository</a>.</p>
+          </main>
+        </section>
+      </div>
+      <div class="left-container">
+<nav>
+  <div>
+    <a href="/">Projects</a>
+  </div>
+  <div>
+    <span>&#x25BE;</span>
+  </div>
+  <div>
+    <span class="project-name"><a href="index.html">PourOver</a></span>
+  </div>
+  <ul>
+    <li class="selected">
+      Top
+    </li>
+    <ul id="toc-placeholder">
+    </ul>
+    <li>
+      <a href="releasenotes.html">Release Notes</a>
+    </li>
+  </ul>
+</nav>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9TQ6JWBKEK"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-9TQ6JWBKEK');
+    </script>
+    </script>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Release Notes | HtmlBuilder</title>
+    <link rel="canonical" href="https://maroontress.github.io/HtmlBuilder/releasenotes.html" />
+    <link rel="stylesheet" type="text/css" href="/css/markdown.css">
+    <link rel="apple-touch-icon" sizes="120x120" href="/images/logo-v2-120x120.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/logo-v2-180x180.png">
+    <link rel="icon" type="image/x-icon" href="/images/logo-v2.ico">
+    <link rel="mask-icon" href="/images/logo-v2-mask-icon.svg" color="#800000">
+    <script src="/js/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+    <script src="/js/toc.js"></script>
+  </head>
+  <body>
+    <div class="logo">
+      <b>Maroontress Fast Software</b>
+    </div>
+    <div class="container">
+      <div class="main-container">
+        <section>
+          <main class="content">
+<div class="project-logo">HtmlBuilder</div>
+<div id="toc-level" data-values="H2"></div>
+<h1>Release Notes</h1>
+<!--
+## x.y.z (yyyy-mm-dd)
+
+abstract
+
+### Requirements to run
+
+- Visual Studio 2022 Version 17.2 or .NET 6.0 SDK (SDK 6.0.300)
+
+### Requirements to build
+
+- Visual Studio 2022 Version 17.2 or .NET 6.0 SDK (SDK 6.0.300)
+
+### New
+### Removed
+### Changed
+### Fixed
+### Known issue
+
+-->
+<h2>1.1.0 (2022-07-25)</h2>
+<p>Update dependencies.</p>
+<h3>Requirements to build</h3>
+<ul>
+<li>Visual Studio 2022 Version 17.2 or .NET 6.0 SDK (SDK 6.0.300)</li>
+</ul>
+<h3>Changed</h3>
+<ul>
+<li>Depend on Maroontress.Collection.</li>
+<li>Change <code>LangVersion</code> to <code>10</code>.</li>
+<li>Change <code>TargetFramework</code> to <code>10</code> and <code>net6</code>.</li>
+<li>Update dependencies.</li>
+<li>Migrate <code>*.ruleset</code> files to <code>.editorconfig</code> files.</li>
+</ul>
+<hr>
+<h2>1.0.4 (2019-09-28)</h2>
+<p>Add APIs to indent HTML files.</p>
+<h3>Requirements to run</h3>
+<ul>
+<li>Visual Studio 2019 (16.3) or .NET Core 3.0 (3.0.100)</li>
+</ul>
+<h3>Requirements to build</h3>
+<ul>
+<li>Visual Studio 2019 (16.3) or .NET Core 3.0 (3.0.100)</li>
+</ul>
+<h3>New</h3>
+<ul>
+<li>Add the
+<a href="https://maroontress.github.io/HtmlBuilder/api/latest/html/Maroontress.Html.Node.html#M:Maroontress.Html.Node.ToString(Maroontress.Html.FormatOptions)"><code>ToString(FormatOptions)</code></a>
+method and
+<a href="https://maroontress.github.io/HtmlBuilder/api/latest/html/Maroontress.Html.FormatOptions.html"><code>FormatOptions</code></a>
+class to generate HTML files with indentation.</li>
+</ul>
+<h3>Changed</h3>
+<ul>
+<li>Change the framework version with .NET Standard 2.1.</li>
+</ul>
+<hr>
+<h2>1.0.3 (2019-05-25)</h2>
+<p>Add APIs to generate an empty attribute.</p>
+<h3>Requirements to run</h3>
+<ul>
+<li>Visual Studio 2019 (16.1) or .NET Core 2.2 (2.2.300)</li>
+</ul>
+<h3>Requirements to build</h3>
+<ul>
+<li>Visual Studio 2019 (16.1) or .NET Core 2.2 (2.2.300)</li>
+</ul>
+<h3>New</h3>
+<ul>
+<li>Add <code>AddEmptyAttributes()</code> methods to <code>Tag</code> and <code>EmptyTag</code> classes in order to generate empty attributes.</li>
+</ul>
+<h3>Changed</h3>
+<ul>
+<li>Migrate to C# 8.0.</li>
+<li>Fix <code>Node.ToString()</code> method so that the occurrence order of attributes is deterministic.</li>
+<li>Fix <code>AddAttributes()</code> methods to generate empty attributes when the value of the attribute is <code>null</code>.</li>
+</ul>
+<hr>
+<h2>1.0.2 (2019-04-15)</h2>
+<p>Add APIs to use Character References.</p>
+<h3>Requirements to run</h3>
+<ul>
+<li>Visual Studio 2017 (15.9) or .NET Core 2.2 (2.2.203)</li>
+</ul>
+<h3>Requirements to build</h3>
+<ul>
+<li>Visual Studio 2017 (15.9) or .NET Core 2.2 (2.2.203)</li>
+</ul>
+<h3>New</h3>
+<ul>
+<li>Add a new node type of <code>NodeKind.CharacterReference</code>.</li>
+<li>Add <code>NodeFactory.Entity</code> property and a new interface <code>Entity</code> that provides Named Character References.</li>
+<li>Add <code>NodeFactory.CharacterReference(int)</code> method that provides a hexadecimal numeric character reference.</li>
+</ul>
+<hr>
+<h2>1.0.1 (2019-03-11)</h2>
+<p>Change API to separate interface and add properties.</p>
+<h3>Requirements to run</h3>
+<ul>
+<li>Visual Studio 2017 (15.9) or .NET Core 2.2 (2.2.104)</li>
+</ul>
+<h3>Requirements to build</h3>
+<ul>
+<li>Visual Studio 2017 (15.9) or .NET Core 2.2 (2.2.104)</li>
+</ul>
+<h3>New</h3>
+<ul>
+<li>Add <code>Name</code> property to <code>Tag</code> and <code>EmptyTag</code> interfaces.</li>
+<li>Add <code>NodeKind</code> property to the <code>Node</code> interface.</li>
+</ul>
+<h3>Changed</h3>
+<ul>
+<li>Separate <code>EmptyTag</code> interface from the <code>Tag</code> interface.</li>
+</ul>
+<hr>
+<h2>1.0.0 (2019-03-04)</h2>
+<p>Initial release.</p>
+<h3>Requirements to run</h3>
+<ul>
+<li>Visual Studio 2017 (15.9) or .NET Core 2.2 (2.2.104)</li>
+</ul>
+<h3>Requirements to build</h3>
+<ul>
+<li>Visual Studio 2017 (15.9) or .NET Core 2.2 (2.2.104)</li>
+</ul>
+<h3>New</h3>
+<ul>
+<li>Add APIs to generate an HTML document.</li>
+</ul>
+          </main>
+        </section>
+      </div>
+      <div class="left-container">
+<nav>
+  <div>
+    <a href="/">Projects</a>
+  </div>
+  <div>
+    <span>&#x25BE;</span>
+  </div>
+  <div>
+    <span class="project-name"><a href="index.html">HtmlBuilder</a></span>
+  </div>
+  <ul>
+    <li>
+      <a href="index.html">Top</a>
+    </li>
+    <li class="selected">
+      Release Notes
+    </li>
+    <ul id="toc-placeholder">
+    </ul>
+  </ul>
+</nav>
+      </div>
+    </div>
+  </body>
+</html>

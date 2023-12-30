@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9TQ6JWBKEK"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-9TQ6JWBKEK');
+    </script>
+    </script>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>DiscardingReturnValue | StyleChecker | List of diagnostics</title>
+    <link rel="canonical" href="https://maroontress.github.io/StyleChecker/diagnostics/DiscardingReturnValue.html" />
+    <link rel="stylesheet" type="text/css" href="/css/markdown.css">
+    <link rel="apple-touch-icon" sizes="120x120" href="/images/logo-v2-120x120.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/logo-v2-180x180.png">
+    <link rel="icon" type="image/x-icon" href="/images/logo-v2.ico">
+    <link rel="mask-icon" href="/images/logo-v2-mask-icon.svg" color="#800000">
+    <script src="/js/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+    <script src="/js/toc.js"></script>
+  </head>
+  <body>
+    <div class="logo">
+      <b>Maroontress Fast Software</b>
+    </div>
+    <div class="container">
+      <div class="main-container">
+        <section>
+          <main class="content">
+<div class="project-logo">StyleChecker</div>
+<div id="toc-level" data-values="H2,H3"></div>
+<h1>DiscardingReturnValue</h1>
+<div class="horizontal-scroll">
+<p><img src="https://maroontress.github.io/StyleChecker/images/DiscardingReturnValue.png" alt="DiscardingReturnValue"></p>
+</div>
+<h2>Summary</h2>
+<p>Do not discard the return value of some methods.</p>
+<h2>Default severity</h2>
+<p>Warning</p>
+<h2>Description</h2>
+<p>There are delicate methods that return a regardful value,
+or that do not make sense if the return value is discarded.
+This rule reports diagnostic information as a warning similar to
+<a href="https://docs.microsoft.com/en-us/visualstudio/code-quality/ca1806-do-not-ignore-method-results?view=vs-2017">CA1806 (Do not ignore method results)</a>[<a href="#ref1">1</a>]
+about discarding the return value of the methods as follows:</p>
+<ul>
+<li>Some <code>Read</code> methods returning the number of bytes read actually</li>
+<li>Some methods of immutable classes (e.g. <code>string</code>, <code>ImmutableArray</code>, ...)</li>
+<li>Methods whose return value is annotated with the custom attribute</li>
+<li>Methods specified with the configuration file <code>StyleChecker.xml</code></li>
+</ul>
+<h2>Read — POSIX read(2) style methods</h2>
+<p>The following methods are covered:</p>
+<ul>
+<li><code>System.IO.Stream.Read(byte[], int, int)</code></li>
+<li><code>System.IO.BinaryReader.Read(byte[], int, int)</code></li>
+</ul>
+<p>These <code>read</code> methods don't guarantee to read requested bytes
+even when the end of the stream has not been reached.
+See the specifications of
+<a href="https://docs.microsoft.com/en-us/dotnet/api/system.io.stream.read?view=netcore-2.1#System_IO_Stream_Read_System_Byte___System_Int32_System_Int32_">Stream.Read Method</a>
+[<a href="#ref2">2</a>], which are quoted as follows:</p>
+<blockquote>
+<h3>Remarks</h3>
+<p>... Implementations return the number of bytes read. The implementation will
+block until at least one byte of data can be read, in the event that no data
+is available. Read returns 0 only when there is no more data in the stream
+and no more is expected (such as a closed socket or end of file). An
+implementation is free to return fewer bytes than requested even if the end
+of the stream has not been reached.</p>
+</blockquote>
+<p>And the specifications of
+<a href="https://docs.microsoft.com/en-us/dotnet/api/system.io.binaryreader.read?view=netcore-2.1#System_IO_BinaryReader_Read_System_Byte___System_Int32_System_Int32_">BinaryReader.Read Method</a>
+[<a href="#ref2">2</a>], which are quoted as follows:</p>
+<blockquote>
+<h3>Returns</h3>
+<p>The number of bytes read into buffer. This might be less than the number
+of bytes requested if that many bytes are not available, or it might be zero
+if the end of the stream is reached.</p>
+</blockquote>
+<p>So, if the return value is discarded, the actual length of read bytes is
+unknown, which doesn't make sense.</p>
+<p>There is a useful common pattern using the <code>readFully</code>-like code as follows:</p>
+<pre><code class="language-csharp">Stream stream = ...;
+byte[] buffer = ...;
+int initialOffset = ...;
+int offset = initialOffset
+int length = ...;
+
+while (length &gt; 0)
+{
+    var size = stream.Read(buffer, offset, length);
+    if (size == 0)
+    {
+        break;
+        // or throw new EndOfStreamException();
+    }
+    offset += size;
+    length -= size;
+}
+
+// Here, the actual read length is (offset - initialOffset).
+</code></pre>
+<h2>Methods of immutable types</h2>
+<p>The following methods, that have no side effects
+and that do not make sense if the return value is discarded, are
+subject to the diagnostics:</p>
+<ul>
+<li>all <code>string</code> methods (except ones returning <code>void</code>)</li>
+<li>all <code>System.Type</code> methods (except ones returning <code>void</code>
+and <code>InvokeMember</code> methods)</li>
+<li>all methods of
+<code>ImmutableArray</code>,
+<code>ImmutableDictionary</code>,
+<code>ImmutableHashSet</code>,
+<code>ImmutableList</code>,
+<code>ImmutableQueue</code>,
+<code>ImmutableSortedDictionary</code>,
+<code>ImmutableSortedSet</code>,
+<code>ImmutableStack</code>
+types in namespace <code>System.Collections.Immutable</code></li>
+</ul>
+<p>The description of <a href="https://docs.microsoft.com/en-us/visualstudio/code-quality/ca1806-do-not-ignore-method-results?view=vs-2017">CA1806</a> is quoted as follows:</p>
+<blockquote>
+<p>Rule Description</p>
+<p>Unnecessary object creation and the associated garbage collection of
+the unused object degrade performance.</p>
+</blockquote>
+<p>However, those who discard the return value of the method having no side effects
+are just confused in many cases. For example, the <code>string</code> modification methods
+are typical. The specifications of
+<a href="https://docs.microsoft.com/en-us//dotnet/api/system.string?view=netframework-4.7.2#modifying-a-string">System.String Class</a>
+[<a href="#ref2">2</a>]
+are quoted as follows:</p>
+<blockquote>
+<p><strong>Important</strong></p>
+<p>All string modification methods return a new String object. They don't modify
+the value of the current instance.</p>
+</blockquote>
+<p>It is important that all modification methods of immutable objects
+always return the new <em>unshared</em> object for every call,
+so discarding the return value of those methods doesn't make sense.
+In the same way, any other methods without side effects also are wasteful
+if their return value is ignored.</p>
+<h2>Methods whose return value is annotated</h2>
+<p>The methods that are not of the standard API can be covered
+with <code>DoNotIgnoreAttribute</code> provided with
+<a href="https://www.nuget.org/packages/StyleChecker.Annotations/">StyleChecker.Annotations</a>.
+The methods are covered if the return value is annotated
+with <code>DoNotIgnoreAttribute</code> as follows:</p>
+<pre><code class="language-csharp">using Maroontress.StyleChecker.Annotations;
+
+public class Class
+{
+    [return: DoNotIgnore]
+    public void Method()
+    {
+        return new ImmutableValue();
+    }
+}
+</code></pre>
+<h2>Methods specified with the configuration file</h2>
+<p>If <code>DoNotIgnoreAttribute</code> is not available,
+you can specify methods with the configuration file <code>StyleChecker.xml</code>.
+For example, if you would like to make sure that the return values of
+<code>int.Parse(string)</code> method and <code>Array.Empty&lt;T&gt;()</code> method are not discarded,
+edit <code>StyleChecker.xml</code> file as follows:</p>
+<pre><code class="language-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;
+&lt;config xmlns=&quot;https://maroontress.com/StyleChecker/config.v1&quot;&gt;
+  ⋮
+  &lt;DiscardingReturnValue&gt;
+    &lt;method id=&quot;int.Parse(string)&quot;/&gt;
+    &lt;method id=&quot;System.Array.Empty&amp;lt;T&amp;gt;()&quot;/&gt;
+  &lt;/DiscardingReturnValue&gt;
+  ⋮
+&lt;/config&gt;
+</code></pre>
+<p>The <code>DiscardingReturnValue</code> element can have <code>method</code> elements
+as its child elements,
+and the <code>id</code> attribute of the <code>method</code> element specifies the method whose
+return value must not be ignored. The value of <code>id</code> attribute
+must represent the fully-qualified type name (of the type containing it)
+followed by its name and parameter types as follows:</p>
+<pre><code>FullyQualifiedTypeName.MethodName(ParameterTypeName1, ParameterTypeName2, ...)
+</code></pre>
+<p>The type name must be fully-qualified,
+but if there is the keyword for the type,
+it must be the keyword instead of the type name.
+For example, use <code>int</code> instead of <code>System.Int32</code>,
+<code>string</code> instead of <code>System.String</code>, and so on.</p>
+<p>If the type or method is a generic one,
+the name must be of the original definition.
+Note that the symbols '<code>&lt;</code>' and '<code>&gt;</code>' have to be escaped in an XML document
+with &quot;<code>&amp;lt;</code>&quot; and &quot;<code>&amp;gt;</code>&quot;, respectively.</p>
+<h2>Code fix</h2>
+<p>The code fix is not provided.</p>
+<h2>Example</h2>
+<h3>Diagnostic</h3>
+<pre><code class="language-csharp">public void Method(Stream inputStream)
+{
+    var reader = new BinaryReader(inputStream);
+    var buffer = new byte[1024];
+
+    reader.Read(buffer, 0, buffer.Length);
+
+    &quot;hello&quot;.IndexOf(&quot;o&quot;);
+}
+</code></pre>
+<h2>References</h2>
+<p><a id="ref1"></a>
+[1] <a href="https://docs.microsoft.com/en-us/visualstudio/code-quality/code-analysis-for-managed-code-warnings?view=vs-2017">Microsoft, <em>Code Analysis for Managed Code Warnings</em></a></p>
+<p><a id="ref2"></a>
+[2] <a href="https://docs.microsoft.com/en-us/dotnet/api/">Microsoft, <em>.NET API Browser</em></a></p>
+          </main>
+        </section>
+      </div>
+      <div class="left-container">
+<nav>
+  <div>
+    <a href="/">Projects</a>
+  </div>
+  <div>
+    <span>&#x25BE;</span>
+  </div>
+  <div>
+    <span class="project-name"><a href="../index.html">StyleChecker</a></span>
+  </div>
+  <div>
+    <span>&#x25BE;</span>
+  </div>
+  <div>
+    <span class="project-name"><a href="../index.html#List%20of%20diagnostics">List of diagnostics</a></span>
+  </div>
+  <ul>
+    <li>
+      <a href="AssignmentToParameter.html">Assignment<wbr>To<wbr>Parameter</a>
+    </li>
+    <li>
+      <a href="ByteOrderMark.html">Byte<wbr>Order<wbr>Mark</a>
+    </li>
+    <li class="selected">
+      Discarding<wbr>Return<wbr>Value
+    </li>
+    <ul id="toc-placeholder">
+    </ul>
+    <li>
+      <a href="EmptyArrayCreation.html">Empty<wbr>Array<wbr>Creation</a>
+    </li>
+    <li>
+      <a href="EqualsNull.html">Equals<wbr>Null</a>
+    </li>
+    <li>
+      <a href="IneffectiveReadByte.html">Ineffective<wbr>Read<wbr>Byte</a>
+    </li>
+    <li>
+      <a href="InvalidConfig.html">Invalid<wbr>Config</a>
+    </li>
+    <li>
+      <a href="IsNull.html">Is<wbr>Null</a>
+    </li>
+    <li>
+      <a href="LongLine.html">Long<wbr>Line</a>
+    </li>
+    <li>
+      <a href="NoDocumentation.html">No<wbr>Documentation</a>
+    </li>
+    <li>
+      <a href="NoSingleSpaceAfterTripleSlash.html">No<wbr>Single<wbr>Space<wbr>After<wbr>Triple<wbr>Slash</a>
+    </li>
+    <li>
+      <a href="NoSpaceAfterSemicolon.html">No<wbr>Space<wbr>After<wbr>Semicolon</a>
+    </li>
+    <li>
+      <a href="NotDesignedForExtension.html">Not<wbr>Designed<wbr>For<wbr>Extension</a>
+    </li>
+    <li>
+      <a href="NotOneShotInitialization.html">Not<wbr>One<wbr>Shot<wbr>Initialization</a>
+    </li>
+    <li>
+      <a href="PostIncrement.html">Post<wbr>Increment</a>
+    </li>
+    <li>
+      <a href="RedundantTypedArrayCreation.html">Redundant<wbr>Typed<wbr>Array<wbr>Creation</a>
+    </li>
+    <li>
+      <a href="SingleTypeParameter.html">Single<wbr>Type<wbr>Parameter</a>
+    </li>
+    <li>
+      <a href="SpaceBeforeSemicolon.html">Space<wbr>Before<wbr>Semicolon</a>
+    </li>
+    <li>
+      <a href="StaticGenericClass.html">Static<wbr>Generic<wbr>Class</a>
+    </li>
+    <li>
+      <a href="StinkyBooleanExpression.html">Stinky<wbr>Boolean<wbr>Expression</a>
+    </li>
+    <li>
+      <a href="StrayText.html">Stray<wbr>Text</a>
+    </li>
+    <li>
+      <a href="ThoughtlessName.html">Thoughtless<wbr>Name</a>
+    </li>
+    <li>
+      <a href="TypeClassParameter.html">Type<wbr>Class<wbr>Parameter</a>
+    </li>
+    <li>
+      <a href="Underscore.html">Underscore</a>
+    </li>
+    <li>
+      <a href="UninitializedLocalVariable.html">Uninitialized<wbr>Local<wbr>Variable</a>
+    </li>
+    <li>
+      <a href="UnnecessaryUsing.html">Unnecessary<wbr>Using</a>
+    </li>
+    <li>
+      <a href="UnusedUsing.html">Unused<wbr>Using</a>
+    </li>
+    <li>
+      <a href="UnusedVariable.html">Unused<wbr>Variable</a>
+    </li>
+  </ul>
+</nav>
+      </div>
+    </div>
+  </body>
+</html>

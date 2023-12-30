@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9TQ6JWBKEK"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-9TQ6JWBKEK');
+    </script>
+    </script>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Top | NugetScraper</title>
+    <link rel="canonical" href="https://maroontress.github.io/NugetScraper/index.html" />
+    <link rel="stylesheet" type="text/css" href="/css/markdown.css">
+    <link rel="apple-touch-icon" sizes="120x120" href="/images/logo-v2-120x120.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/logo-v2-180x180.png">
+    <link rel="icon" type="image/x-icon" href="/images/logo-v2.ico">
+    <link rel="mask-icon" href="/images/logo-v2-mask-icon.svg" color="#800000">
+    <script src="/js/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+    <script src="/js/toc.js"></script>
+  </head>
+  <body>
+    <div class="logo">
+      <b>Maroontress Fast Software</b>
+    </div>
+    <div class="container">
+      <div class="main-container">
+        <section>
+          <main class="content">
+<div class="project-logo">NugetScraper</div>
+<div id="toc-level" data-values="H2,H3"></div>
+<p>NugetScraper is an HTML parser that reads an HTML page retrieved from
+<a href="https://nuget.org/">NuGet.org</a> and provides a list containing NuGet packages released by a
+specified organization.</p>
+<h2>Get started</h2>
+<p>NugetScraper is available as a Maven package.
+To add a dependency on NugetScraper in your build,
+specify the custom repository and dependency as follows:</p>
+<h3>Gradle</h3>
+<pre><code class="language-groovy">repositories {
+    ⋮
+    maven {
+        url = uri('https://maroontress.github.io/maven')
+    }
+    ⋮
+}
+⋮
+dependencies {
+    ⋮
+    implementation 'com.maroontress:nuget-scraper:1.0.0'
+    ⋮
+}
+</code></pre>
+<h3>Maven</h3>
+<pre><code class="language-xml">&lt;project&gt;
+  ⋮
+  &lt;repositories&gt;
+    ⋮
+    &lt;repository&gt;
+      &lt;id&gt;maroontress&lt;/id&gt;
+      &lt;name&gt;Maroontress maven repo&lt;/name&gt;
+      &lt;url&gt;https://maroontress.github.io/maven&lt;/url&gt;
+    &lt;/repository&gt;
+    ⋮
+  &lt;/repositories&gt;
+  ⋮
+  &lt;dependencies&gt;
+    ⋮
+    &lt;dependency&gt;
+      &lt;groupId&gt;com.maroontress&lt;/groupId&gt;
+      &lt;artifactId&gt;nuget-scraper&lt;/artifactId&gt;
+      &lt;version&gt;1.0.0&lt;/version&gt;
+    &lt;/dependency&gt;
+    ⋮
+  &lt;/dependencies&gt;
+  ⋮
+&lt;/project&gt;
+</code></pre>
+<h2>Example</h2>
+<p><a href="https://github.com/maroontress/NugetScraper/blob/main/src/test/java/com/example/Demo.java">A typical usage example</a> would be as follows:</p>
+<pre><code class="language-java">...
+public final class Demo {
+
+    public static void run(String organizationName)
+            throws IOException, InterruptedException {
+        var urlBase = &quot;https://www.nuget.org&quot;;
+        var id = URLEncoder.encode(organizationName, StandardCharsets.UTF_8);
+        var request = HttpRequest.newBuilder()
+                .uri(URI.create(urlBase + &quot;/profiles/&quot; + id + &quot;/&quot;))
+                .build();
+        var client = HttpClient.newHttpClient();
+        var response = client.send(request, HttpResponse.BodyHandlers.ofString());
+        var profile = NugetScraper.toProfile(response.body());
+
+        for (var i : profile.packageList()) {
+            System.out.println(i.title() + &quot;:&quot; + i.totalDownloads());
+        }
+        var maybePath = profile.nextPageUrl();
+        if (maybePath.isPresent()) {
+            var path = maybePath.get();
+            if (!path.startsWith(&quot;/&quot;)) {
+                throw new IllegalStateException(&quot;unexpected URL: &quot; + path);
+            }
+            var nextPageUrl = URI.create(urlBase + path);
+            System.out.println(&quot;The next page URL: &quot; + nextPageUrl);
+        }
+    }
+
+    public static void main(String[] args) {
+        if (args.length == 0) {
+            System.out.println(&quot;usage: java com.example.Demo ID&quot;);
+            return;
+        }
+        var organizationName = args[0];
+        try {
+            run(organizationName);
+        } catch (IOException | InterruptedException e) {
+            System.out.println(&quot;failed (ignored)&quot;);
+        }
+    }
+}
+</code></pre>
+<p>In this example, the result of &quot;<code>java com.example.Demo Microsoft</code>&quot; (that
+represents the one of parsing <a href="https://nuget.org/profiles/Microsoft/"><code>https://nuget.org/profiles/Microsoft/</code></a>) will be as
+follows:</p>
+<pre><code class="language-plaintext">Microsoft.Extensions.Primitives:3179750929
+Microsoft.NETCore.Platforms:3174900796
+Microsoft.Extensions.DependencyInjection.Abstractions:3114882542
+System.Runtime.CompilerServices.Unsafe:2688797891
+Microsoft.Extensions.Options:2661649028
+Microsoft.Extensions.Logging.Abstractions:2638017167
+Microsoft.Extensions.Configuration.Abstractions:2578117049
+System.Diagnostics.DiagnosticSource:2574167053
+System.Threading.Tasks.Extensions:2290236144
+Microsoft.CSharp:2003285729
+System.Buffers:1987825889
+Microsoft.Extensions.DependencyInjection:1958339674
+Microsoft.Extensions.Configuration:1916727034
+Microsoft.Extensions.FileProviders.Abstractions:1844208793
+Microsoft.Extensions.Logging:1837702027
+System.Memory:1792564237
+Microsoft.Extensions.Configuration.Binder:1668198620
+System.Security.Principal.Windows:1637388455
+Microsoft.NETCore.Targets:1590023964
+System.Security.Cryptography.Cng:1539977932
+The next page URL: https://www.nuget.org/profiles/Microsoft?page=2
+</code></pre>
+<p>Note that each number represents the total downloads at that time.</p>
+<blockquote>
+<p><a href="https://replit.com/@maroontress/NugetScraper-example#src/main/java/Demo.java">Run Example</a></p>
+</blockquote>
+<blockquote>
+<p>🚧 The structure of the HTML that <code>nuget.org</code> generates is subject to change.
+This parser will follow such changes in future releases.</p>
+</blockquote>
+<h2>Documents</h2>
+<ul>
+<li><a href="https://github.com/maroontress/NugetScraper/blob/main/README.md">README</a></li>
+<li><a href="api/latest/html/index.html">API reference (latest)</a></li>
+<li><a href="releasenotes.html">Release notes</a></li>
+</ul>
+<h2>How to contribute</h2>
+<p>Please send us pull requests or issues from
+<a href="https://github.com/maroontress/NugetScraper">the <img src="https://maroontress.github.io/images/GitHub-logo.png" alt="GitHub icon"> GitHub repository</a>.</p>
+          </main>
+        </section>
+      </div>
+      <div class="left-container">
+<nav>
+  <div>
+    <a href="/">Projects</a>
+  </div>
+  <div>
+    <span>&#x25BE;</span>
+  </div>
+  <div>
+    <span class="project-name"><a href="index.html">NugetScraper</a></span>
+  </div>
+  <ul>
+    <li class="selected">
+      Top
+    </li>
+    <ul id="toc-placeholder">
+    </ul>
+    <li>
+      <a href="releasenotes.html">Release Notes</a>
+    </li>
+  </ul>
+</nav>
+      </div>
+    </div>
+  </body>
+</html>

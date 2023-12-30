@@ -1,0 +1,452 @@
+<!doctype html>
+<html>
+  <head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9TQ6JWBKEK">
+    </script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+function gtag() { dataLayer.push(arguments); }
+gtag('js', new Date());
+gtag('config', 'G-9TQ6JWBKEK');
+    </script>
+    <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OptionSchema Interface | API Reference | CuiMallet Project</title>
+    <link rel="stylesheet" href="bulldoc.css">
+    <script src="highlight.pack.js">
+    </script>
+    <script>
+      hljs.initHighlightingOnLoad();
+    </script>
+  </head>
+  <body>
+    <div class="mainContainer uhf-container has-top-padding has-default-focus" data-bi-name="body">
+      <section>
+        <main class="content">
+          <h1><span class="lang-csharp">Option<wbr>Schema</span> Interface</h1>
+          <div class="metadata">
+            <dl class="attributeList">
+              <dt>
+                Namespace:
+                <dd>
+                  <span class="lang-csharp"><a class="xref" href="Maroontress.Cui.html" data-linktype="relative-path">Maroontress.Cui</a></span>
+                </dd>
+              </dt>
+            </dl>
+            <dl class="attributeList">
+              <dt>
+                Assembly:
+                <dd>
+                  <span class="lang-csharp">Cui<wbr>Mallet.dll</span>
+                </dd>
+              </dt>
+            </dl>
+          </div>
+          <div class="summaryHolder">
+            <div class="summary clearFix">
+              <p>The definition of the command line options.</p>
+            </div>
+          </div>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-keyword">interface</span> <span class="hljs-title">OptionSchema</span></code></pre>
+          <dl id="derived" class="attributeList stack">
+            <dt>
+              Derived
+            </dt>
+            <dd>
+              <div>
+                <div>
+                  <span class="lang-csharp break-text"><a class="xref" href="Maroontress.Cui.Impl.OptionSchemaImpl.html" data-linktype="relative-path">Option<wbr>Schema<wbr>Impl</a></span>
+                </div>
+              </div>
+            </dd>
+          </dl>
+          <h2 id="methods" class="heading-with-anchor">Methods</h2>
+          <div class="table-scroll-wrapper">
+            <table class="nameValue">
+              <tbody>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Cui.OptionSchema.Add(System.String,System.Nullable{System.Char},System.String,System.String,System.Action{Maroontress.Cui.RequiredArgumentOption})" data-linktype="relative-path">Add(string, char?, string, string, Action&lt;Required<wbr>Argument<wbr>Option&gt;)</a></span>
+                  </td>
+                  <td>
+                    <p>Gets a new <a href="#">OptionSchema</a> object with adding an option
+    that requires an option argument and has the specified short name,
+    the specified Action, the specified argument name, and the
+    specified description.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Cui.OptionSchema.Add(System.String,System.Nullable{System.Char},System.String,System.Action{Maroontress.Cui.Option})" data-linktype="relative-path">Add(string, char?, string, Action&lt;Option&gt;)</a></span>
+                  </td>
+                  <td>
+                    <p>Gets a new <a href="#">OptionSchema</a> object with adding an option
+    that has no argument, the specified short name, the specified
+    Action, and the specified description.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Cui.OptionSchema.Add(System.String,System.Nullable{System.Char},System.String,System.String)" data-linktype="relative-path">Add(string, char?, string, string)</a></span>
+                  </td>
+                  <td>
+                    <p>Gets a new <a href="#">OptionSchema</a> object with adding an option
+    that requires an option argument and has the specified short name,
+    the specified argument name, and the specified description.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Cui.OptionSchema.Add(System.String,System.Nullable{System.Char},System.String)" data-linktype="relative-path">Add(string, char?, string)</a></span>
+                  </td>
+                  <td>
+                    <p>Gets a new <a href="#">OptionSchema</a> object with adding an option
+    that has no argument, the specified short name, and the
+    specified description.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Cui.OptionSchema.Parse(System.String[])" data-linktype="relative-path">Parse(string[])</a></span>
+                  </td>
+                  <td>
+                    <p>Gets a new <a href="Maroontress.Cui.Setting.html">Setting</a> object associated with this <a href="#">OptionSchema</a>, which is the result of parsing the specified
+    command-line options.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Cui.OptionSchema.GetHelpMessage" data-linktype="relative-path">Get<wbr>Help<wbr>Message()</a></span>
+                  </td>
+                  <td>
+                    <p>Gets the description of the command-line options.</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <h1 id="methods-detail" class="heading-with-anchor">Methods Detail</h1>
+          <h2 id="M:Maroontress.Cui.OptionSchema.Add(System.String,System.Nullable{System.Char},System.String,System.String,System.Action{Maroontress.Cui.RequiredArgumentOption})">Add(string, char?, string, string, Action&lt;RequiredArgumentOption&gt;)</h2>
+          <div class="summaryHolder">
+            <div class="summary clearFix">
+              <p>Gets a new <a href="#">OptionSchema</a> object with adding an option
+    that requires an option argument and has the specified short name,
+    the specified Action, the specified argument name, and the
+    specified description.</p>
+            </div>
+          </div>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-title">OptionSchema</span> <span class="hljs-title">Add</span>(<span class="hljs-keyword">string</span> name, <span class="hljs-keyword">char</span>? shortName, <span class="hljs-keyword">string</span> argumentName, <span class="hljs-keyword">string</span> description, <span class="hljs-title">Action</span>&lt;<span class="hljs-title">RequiredArgumentOption</span>&gt; action)</code></pre>
+          <h4 class="propertyInfoTitle stack">Parameters</h4>
+          <div class="propertyInfo">
+            <dl class="parameterList">
+              <dt>
+                name
+              </dt>
+              <dd>
+                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.string?view=netcore-3.0" data-linktype="absolute-path">string</a></span>
+              </dd>
+            </dl>
+            <p>The name of the option. In general, it includes lowercase letters
+    and hyphens. The name must be unique in this object.</p>
+          </div>
+          <div class="propertyInfo stack">
+            <dl class="parameterList">
+              <dt>
+                shortName
+              </dt>
+              <dd>
+                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.nullable-1?view=netcore-3.0" data-linktype="absolute-path">char?</a></span>
+              </dd>
+            </dl>
+            <p>The short name of the option. The short name must be unique in this
+    object.</p>
+          </div>
+          <div class="propertyInfo stack">
+            <dl class="parameterList">
+              <dt>
+                argumentName
+              </dt>
+              <dd>
+                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.string?view=netcore-3.0" data-linktype="absolute-path">string</a></span>
+              </dd>
+            </dl>
+            <p>The name of the option argument.</p>
+          </div>
+          <div class="propertyInfo stack">
+            <dl class="parameterList">
+              <dt>
+                description
+              </dt>
+              <dd>
+                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.string?view=netcore-3.0" data-linktype="absolute-path">string</a></span>
+              </dd>
+            </dl>
+            <p>The description of the option. It can contain line feeds ('\n'),
+    which represents a line separator.</p>
+          </div>
+          <div class="propertyInfo stack">
+            <dl class="parameterList">
+              <dt>
+                action
+              </dt>
+              <dd>
+                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.action-1?view=netcore-3.0" data-linktype="absolute-path">Action</a>&lt;<a class="xref" href="Maroontress.Cui.RequiredArgumentOption.html" data-linktype="relative-path">Required<wbr>Argument<wbr>Option</a>&gt;</span>
+              </dd>
+            </dl>
+            <p>The action to be invoked when the specified option and its argument
+    are found while <a href="#M:Maroontress.Cui.OptionSchema.Parse(System.String[])">Parse(string[])</a> runs.</p>
+          </div>
+          <h4 class="propertyInfoTitle stack">Returns</h4>
+          <div class="propertyInfo">
+            <div class="subtle">
+              <a class="xref" href="#" data-linktype="relative-path">Option<wbr>Schema</a>
+            </div>
+            <p>The new <a href="#">OptionSchema</a> object.</p>
+          </div>
+          <h2 id="M:Maroontress.Cui.OptionSchema.Add(System.String,System.Nullable{System.Char},System.String,System.Action{Maroontress.Cui.Option})">Add(string, char?, string, Action&lt;Option&gt;)</h2>
+          <div class="summaryHolder">
+            <div class="summary clearFix">
+              <p>Gets a new <a href="#">OptionSchema</a> object with adding an option
+    that has no argument, the specified short name, the specified
+    Action, and the specified description.</p>
+            </div>
+          </div>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-title">OptionSchema</span> <span class="hljs-title">Add</span>(<span class="hljs-keyword">string</span> name, <span class="hljs-keyword">char</span>? shortName, <span class="hljs-keyword">string</span> description, <span class="hljs-title">Action</span>&lt;<span class="hljs-title">Option</span>&gt; action)</code></pre>
+          <h4 class="propertyInfoTitle stack">Parameters</h4>
+          <div class="propertyInfo">
+            <dl class="parameterList">
+              <dt>
+                name
+              </dt>
+              <dd>
+                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.string?view=netcore-3.0" data-linktype="absolute-path">string</a></span>
+              </dd>
+            </dl>
+            <p>The name of the option. It can include lowercase letters and
+    hyphens. The name must be unique in this object.</p>
+          </div>
+          <div class="propertyInfo stack">
+            <dl class="parameterList">
+              <dt>
+                shortName
+              </dt>
+              <dd>
+                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.nullable-1?view=netcore-3.0" data-linktype="absolute-path">char?</a></span>
+              </dd>
+            </dl>
+            <p>The short name of the option. The short name must be unique in this
+    object.</p>
+          </div>
+          <div class="propertyInfo stack">
+            <dl class="parameterList">
+              <dt>
+                description
+              </dt>
+              <dd>
+                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.string?view=netcore-3.0" data-linktype="absolute-path">string</a></span>
+              </dd>
+            </dl>
+            <p>The description of the option. It can contain line feeds ('\n'),
+    which represents a line separator.</p>
+          </div>
+          <div class="propertyInfo stack">
+            <dl class="parameterList">
+              <dt>
+                action
+              </dt>
+              <dd>
+                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.action-1?view=netcore-3.0" data-linktype="absolute-path">Action</a>&lt;<a class="xref" href="Maroontress.Cui.Option.html" data-linktype="relative-path">Option</a>&gt;</span>
+              </dd>
+            </dl>
+            <p>The action to be invoked when this option is found while <a href="#M:Maroontress.Cui.OptionSchema.Parse(System.String[])">Parse(string[])</a> runs.</p>
+          </div>
+          <h4 class="propertyInfoTitle stack">Returns</h4>
+          <div class="propertyInfo">
+            <div class="subtle">
+              <a class="xref" href="#" data-linktype="relative-path">Option<wbr>Schema</a>
+            </div>
+            <p>The new <a href="#">OptionSchema</a> object.</p>
+          </div>
+          <h2 id="M:Maroontress.Cui.OptionSchema.Add(System.String,System.Nullable{System.Char},System.String,System.String)">Add(string, char?, string, string)</h2>
+          <div class="summaryHolder">
+            <div class="summary clearFix">
+              <p>Gets a new <a href="#">OptionSchema</a> object with adding an option
+    that requires an option argument and has the specified short name,
+    the specified argument name, and the specified description.</p>
+            </div>
+          </div>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-title">OptionSchema</span> <span class="hljs-title">Add</span>(<span class="hljs-keyword">string</span> name, <span class="hljs-keyword">char</span>? shortName, <span class="hljs-keyword">string</span> argumentName, <span class="hljs-keyword">string</span> description)</code></pre>
+          <h4 class="propertyInfoTitle stack">Parameters</h4>
+          <div class="propertyInfo">
+            <dl class="parameterList">
+              <dt>
+                name
+              </dt>
+              <dd>
+                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.string?view=netcore-3.0" data-linktype="absolute-path">string</a></span>
+              </dd>
+            </dl>
+            <p>The name of the option. In general, it includes lowercase letters
+    and hyphens. The name must be unique in this object.</p>
+          </div>
+          <div class="propertyInfo stack">
+            <dl class="parameterList">
+              <dt>
+                shortName
+              </dt>
+              <dd>
+                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.nullable-1?view=netcore-3.0" data-linktype="absolute-path">char?</a></span>
+              </dd>
+            </dl>
+            <p>The short name of the option. The short name must be unique in this
+    object.</p>
+          </div>
+          <div class="propertyInfo stack">
+            <dl class="parameterList">
+              <dt>
+                argumentName
+              </dt>
+              <dd>
+                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.string?view=netcore-3.0" data-linktype="absolute-path">string</a></span>
+              </dd>
+            </dl>
+            <p>The name of the option argument.</p>
+          </div>
+          <div class="propertyInfo stack">
+            <dl class="parameterList">
+              <dt>
+                description
+              </dt>
+              <dd>
+                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.string?view=netcore-3.0" data-linktype="absolute-path">string</a></span>
+              </dd>
+            </dl>
+            <p>The description of the option. It can contain line feeds ('\n'),
+    which represents a line separator.</p>
+          </div>
+          <h4 class="propertyInfoTitle stack">Returns</h4>
+          <div class="propertyInfo">
+            <div class="subtle">
+              <a class="xref" href="#" data-linktype="relative-path">Option<wbr>Schema</a>
+            </div>
+            <p>The new <a href="#">OptionSchema</a> object.</p>
+          </div>
+          <h2 id="M:Maroontress.Cui.OptionSchema.Add(System.String,System.Nullable{System.Char},System.String)">Add(string, char?, string)</h2>
+          <div class="summaryHolder">
+            <div class="summary clearFix">
+              <p>Gets a new <a href="#">OptionSchema</a> object with adding an option
+    that has no argument, the specified short name, and the
+    specified description.</p>
+            </div>
+          </div>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-title">OptionSchema</span> <span class="hljs-title">Add</span>(<span class="hljs-keyword">string</span> name, <span class="hljs-keyword">char</span>? shortName, <span class="hljs-keyword">string</span> description)</code></pre>
+          <h4 class="propertyInfoTitle stack">Parameters</h4>
+          <div class="propertyInfo">
+            <dl class="parameterList">
+              <dt>
+                name
+              </dt>
+              <dd>
+                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.string?view=netcore-3.0" data-linktype="absolute-path">string</a></span>
+              </dd>
+            </dl>
+            <p>The name of the option. It can include lowercase letters and
+    hyphens. The name must be unique in this object.</p>
+          </div>
+          <div class="propertyInfo stack">
+            <dl class="parameterList">
+              <dt>
+                shortName
+              </dt>
+              <dd>
+                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.nullable-1?view=netcore-3.0" data-linktype="absolute-path">char?</a></span>
+              </dd>
+            </dl>
+            <p>The short name of the option. The short name must be unique in this
+    object.</p>
+          </div>
+          <div class="propertyInfo stack">
+            <dl class="parameterList">
+              <dt>
+                description
+              </dt>
+              <dd>
+                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.string?view=netcore-3.0" data-linktype="absolute-path">string</a></span>
+              </dd>
+            </dl>
+            <p>The description of the option. It can contain line feeds ('\n'),
+    which represents a line separator.</p>
+          </div>
+          <h4 class="propertyInfoTitle stack">Returns</h4>
+          <div class="propertyInfo">
+            <div class="subtle">
+              <a class="xref" href="#" data-linktype="relative-path">Option<wbr>Schema</a>
+            </div>
+            <p>The new <a href="#">OptionSchema</a> object.</p>
+          </div>
+          <h2 id="M:Maroontress.Cui.OptionSchema.Parse(System.String[])">Parse(string[])</h2>
+          <div class="summaryHolder">
+            <div class="summary clearFix">
+              <p>Gets a new <a href="Maroontress.Cui.Setting.html">Setting</a> object associated with this <a href="#">OptionSchema</a>, which is the result of parsing the specified
+    command-line options.</p>
+            </div>
+          </div>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-title">Setting</span> <span class="hljs-title">Parse</span>(<span class="hljs-keyword">params</span> <span class="hljs-keyword">string</span>[] args)</code></pre>
+          <h4 class="propertyInfoTitle stack">Parameters</h4>
+          <div class="propertyInfo">
+            <dl class="parameterList">
+              <dt>
+                args
+              </dt>
+              <dd>
+                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.string?view=netcore-3.0" data-linktype="absolute-path">string</a>[]</span>
+              </dd>
+            </dl>
+            <p>The command-line options.</p>
+          </div>
+          <h4 class="propertyInfoTitle stack">Returns</h4>
+          <div class="propertyInfo">
+            <div class="subtle">
+              <a class="xref" href="Maroontress.Cui.Setting.html" data-linktype="relative-path">Setting</a>
+            </div>
+            <p>The new <a href="Maroontress.Cui.Setting.html">Setting</a> object.</p>
+          </div>
+          <h2 id="M:Maroontress.Cui.OptionSchema.GetHelpMessage">GetHelpMessage()</h2>
+          <div class="summaryHolder">
+            <div class="summary clearFix">
+              <p>Gets the description of the command-line options.</p>
+            </div>
+          </div>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-title">IEnumerable</span>&lt;<span class="hljs-keyword">string</span>&gt; <span class="hljs-title">GetHelpMessage</span>()</code></pre>
+          <h4 class="propertyInfoTitle stack">Returns</h4>
+          <div class="propertyInfo">
+            <div class="subtle">
+              <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1?view=netcore-3.0" data-linktype="absolute-path">IEnumerable</a>&lt;<a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.string?view=netcore-3.0" data-linktype="absolute-path">string</a>&gt;
+            </div>
+            <p>The description of this Options.</p>
+          </div>
+        </main>
+      </section>
+    </div>
+  </body>
+</html>

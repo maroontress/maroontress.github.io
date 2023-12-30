@@ -1,0 +1,169 @@
+<!doctype html>
+<html>
+  <head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9TQ6JWBKEK">
+    </script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+function gtag() { dataLayer.push(arguments); }
+gtag('js', new Date());
+gtag('config', 'G-9TQ6JWBKEK');
+    </script>
+    <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maroontress.SqlBind Namespace | API Reference | SqlBind Project</title>
+    <link rel="stylesheet" href="bulldoc.css">
+    <script src="highlight.pack.js">
+    </script>
+    <script>
+      hljs.initHighlightingOnLoad();
+    </script>
+  </head>
+  <body>
+    <div class="mainContainer uhf-container has-top-padding has-default-focus" data-bi-name="body">
+      <section>
+        <main class="content">
+          <h1><span class="lang-csharp">Maroontress.Sql<wbr>Bind</span> Namespace</h1>
+          <div class="summaryHolder">
+            <div class="summary clearFix">
+              <p>This namespace provides the wrapper of SQLite.</p>
+            </div>
+          </div>
+          <h2 id="classes" class="heading-with-anchor">Classes</h2>
+          <div class="table-scroll-wrapper">
+            <table class="nameValue">
+              <tbody>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="Maroontress.SqlBind.AutoIncrementAttribute.html" data-linktype="relative-path">Auto<wbr>Increment<wbr>Attribute</a></span>
+                  </td>
+                  <td>
+                    <p>An attribute that qualifies any parameter in the constructor, making the
+    column associated with the parameter an <code>AUTOINCREMENT</code> field.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="Maroontress.SqlBind.ColumnAttribute.html" data-linktype="relative-path">Column<wbr>Attribute</a></span>
+                  </td>
+                  <td>
+                    <p>An attribute that qualifies any parameter in the constructor, associating
+    the parameter with the column that has the specified name.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="Maroontress.SqlBind.IgnoredAttribute.html" data-linktype="relative-path">Ignored<wbr>Attribute</a></span>
+                  </td>
+                  <td>
+                    <p>An attribute that qualifies the constructor that SqlBind does not use to
+    instantiate when the type has two or more constructors.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="Maroontress.SqlBind.IndexedColumnsAttribute.html" data-linktype="relative-path">Indexed<wbr>Columns<wbr>Attribute</a></span>
+                  </td>
+                  <td>
+                    <p>An attribute that qualifies any class representing a table, creating the
+     index of the table and using the specified column names for the index key.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="Maroontress.SqlBind.PrimaryKeyAttribute.html" data-linktype="relative-path">Primary<wbr>Key<wbr>Attribute</a></span>
+                  </td>
+                  <td>
+                    <p>An attribute that qualifies any parameter in the constructor, making the
+    column associated with the parameter a <code>PRIMARY KEY</code> field.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="Maroontress.SqlBind.TableAttribute.html" data-linktype="relative-path">Table<wbr>Attribute</a></span>
+                  </td>
+                  <td>
+                    <p>An attribute that qualifies any class representing a row of a table,
+     associating the class with the table that has the specified name.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="Maroontress.SqlBind.TransactionKit.html" data-linktype="relative-path">Transaction<wbr>Kit</a></span>
+                  </td>
+                  <td>
+                    <p>The factory that creates queries.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="Maroontress.SqlBind.UniqueAttribute.html" data-linktype="relative-path">Unique<wbr>Attribute</a></span>
+                  </td>
+                  <td>
+                    <p>An attribute that qualifies any parameter in the constructor, making the
+    column associated with the parameter a <code>UNIQUE</code> field.</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <h2 id="interfaces" class="heading-with-anchor">Interfaces</h2>
+          <div class="table-scroll-wrapper">
+            <table class="nameValue">
+              <tbody>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="Maroontress.SqlBind.DeleteFrom.html" data-linktype="relative-path">Delete<wbr>From&lt;T&gt;</a></span>
+                  </td>
+                  <td>
+                    <p>Represents the <code>DELETE</code> statement in SQL.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="Maroontress.SqlBind.Query.html" data-linktype="relative-path">Query</a></span>
+                  </td>
+                  <td>
+                    <p>Represents a query.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="Maroontress.SqlBind.Select.html" data-linktype="relative-path">Select&lt;T&gt;</a></span>
+                  </td>
+                  <td>
+                    <p>Represents the <code>SELECT</code> statement in SQL.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="Maroontress.SqlBind.SelectFrom.html" data-linktype="relative-path">Select<wbr>From&lt;T&gt;</a></span>
+                  </td>
+                  <td>
+                    <p>Represents the <code>SELECT</code> statement in SQL without a <code>WHERE</code>
+    clause. It can end with a <code>INNER JOIN</code> clause.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="Maroontress.SqlBind.TerminalOperation.html" data-linktype="relative-path">Terminal<wbr>Operation&lt;T&gt;</a></span>
+                  </td>
+                  <td>
+                    <p>Represents the executable <code>SELECT</code> statement in SQL.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="Maroontress.SqlBind.Where.html" data-linktype="relative-path">Where&lt;T&gt;</a></span>
+                  </td>
+                  <td>
+                    <p>Represents the <code>SELECT</code> ... <code>WHERE</code> ... statement in SQL.</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </main>
+      </section>
+    </div>
+  </body>
+</html>

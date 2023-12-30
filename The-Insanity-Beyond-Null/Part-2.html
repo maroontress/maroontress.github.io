@@ -1,0 +1,1098 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9TQ6JWBKEK"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-9TQ6JWBKEK');
+    </script>
+    </script>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Part 2. Null in C# 8 | The Insanity Beyond Null</title>
+    <link rel="canonical" href="https://maroontress.github.io/The-Insanity-Beyond-Null/Part-2.html" />
+    <link rel="stylesheet" type="text/css" href="/css/markdown.css">
+    <link rel="stylesheet" type="text/css" href="/css/next-button.css">
+    <link rel="apple-touch-icon" sizes="120x120" href="/images/logo-v2-120x120.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/logo-v2-180x180.png">
+    <link rel="icon" type="image/x-icon" href="/images/logo-v2.ico">
+    <link rel="mask-icon" href="/images/logo-v2-mask-icon.svg" color="#800000">
+    <script src="/js/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+    <script src="/js/toc.js"></script>
+    <script src="/js/next-button.js"></script>
+  </head>
+  <body>
+    <div class="logo">
+      <b>Maroontress Fast Software</b>
+    </div>
+    <div class="container">
+      <div class="main-container">
+        <section>
+          <main class="content">
+<div class="project-logo">The Insanity Beyond Null</div>
+<div id="toc-level" data-values="H2,H3"></div>
+<h1>2. Null in C# 8</h1>
+<p>The story is simple in C# if you forget about anything before C# 8.  Neither
+value types nor reference types can be <code>null</code>.  The types whose values can be
+<code>null</code> are only <strong>nullable</strong> value types and <strong>nullable</strong> reference types such
+as <code>int?</code>, <code>string?</code>, etc.  But, as you might expect, various traps are waiting
+for you.</p>
+<h2>Nullable value types and nullable reference types</h2>
+<p>C# has value types and reference types, both of which have nullable types and
+<strong>non-nullable types</strong>.</p>
+<p>If <code>T</code> is a <strong>value</strong> type and non-nullable, then <code>T?</code> is a <strong>nullable value
+type</strong><sup>†1</sup>.  The notation of <code>T?</code> is a syntax sugar and its
+actual type is <code>Nullable&lt;T&gt;</code> (<code>struct</code>).  Therefore, <code>T</code> and <code>T?</code> are different
+types at run time as well as at compile time.  The <code>T?</code>, that is, <code>Nullable&lt;T&gt;</code>
+is a nullable type.  Unlike Java's <code>Optional&lt;T&gt;</code>, both <code>T?</code> and <code>Nullable&lt;T&gt;</code>
+prohibit nesting.  The C# compiler achieves this by treating <code>Nullable&lt;T&gt;</code>
+types specially.  Note that instances of the nullable value type are immutable
+objects.</p>
+<blockquote>
+<p>†1 <a href="https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/nullable-value-types">Nullable value types</a> have
+been available since C# 2.0.</p>
+</blockquote>
+<p>In contrast, if <code>T</code> is a <strong>reference</strong> type and non-nullable, then <code>T?</code> is a
+<strong>nullable reference type</strong><sup>†2</sup>.  The compiler only
+distinguishes between <code>T</code> and <code>T?</code>.  At run time, <code>T</code> and <code>T?</code> is the same
+<em>thing</em> (that is, <code>T?</code>, which was called reference types before C# 8).  And, of
+course, <code>T?</code> is a nullable type.</p>
+<blockquote>
+<p>†2 From C# 8, <strong>nullable reference types</strong> have been available, making
+traditional reference types non-nullable reference types.  However, there are
+some tricks to keep backward compatibility and the default setting is to do
+so.</p>
+</blockquote>
+<p>These can be summarized as follows:</p>
+<div class="horizontal-scroll">
+<table>
+<thead>
+<tr>
+<th style="text-align:left"></th>
+<th style="text-align:left">Non-nullable types</th>
+<th style="text-align:left">Nullable types</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Value types</td>
+<td style="text-align:left">Non-nullable value types<br>(e.g., <code>int</code>)</td>
+<td style="text-align:left">Nullable value types<br>(e.g., <code>int?</code>, <code>Nullable&lt;int&gt;</code>)</td>
+</tr>
+<tr>
+<td style="text-align:left">Reference types</td>
+<td style="text-align:left">Nullable value types<br>(e.g., <code>string</code>）</td>
+<td style="text-align:left">Nullable reference types<br>(e.g., <code>string?</code>)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2>Null checks for expressions of reference types</h2>
+<p>The following table summarizes how to see whether the expression <code>expr</code> is
+<code>null</code>:</p>
+<div class="horizontal-scroll">
+<table>
+<thead>
+<tr>
+<th style="text-align:left">How</th>
+<th style="text-align:left">is <code>null</code></th>
+<th style="text-align:left">is not <code>null</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Equality operators</td>
+<td style="text-align:left"><code>expr == null</code></td>
+<td style="text-align:left"><code>expr != null</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>is</code> pattern matching</td>
+<td style="text-align:left"><code>expr is null</code></td>
+<td style="text-align:left"><code>!(expr is null)</code></td>
+</tr>
+<tr>
+<td style="text-align:left">Property pattern</td>
+<td style="text-align:left"><code>!(expr is {})</code></td>
+<td style="text-align:left"><code>expr is {}</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+<blockquote>
+<p>C# 9 also allows <code>expr is not null</code>.</p>
+</blockquote>
+<h2>Nullable reference types at compile time and run time</h2>
+<p>We described that “the compiler only distinguishes” between the
+nullable and non-nullable reference types.  But in practice, it is not so
+simple.  The compiler does not only distinguish between them but also treat
+them similarly, depending on the context.  For example, the following class
+results in a compilation error:</p>
+<pre><code class="language-csharp">public class RaiseCS0111
+{
+    public void M(string name)
+    {
+    }
+
+    public void M(string? name)
+    {
+    }
+}
+</code></pre>
+<blockquote>
+<p><a href="https://sharplab.io/#v2:C4LglgNgNAJiDUAfAxAOwK4QgQwEYQFMACA1PQgWAChqABAZiNoCYiAlbMAZwIGEBlAAwBGUdQDe1ItKaNaAFiIBZABRhUwItgDmBAJRSZkqjKIBfaoekMmi1euAB+LboMmjV85ffW5dlbTCgkRkALb6nsamFjQ+srbKAUHOYRFxUTIxMUA=">See errors</a></p>
+</blockquote>
+<p>Let <code>R</code> be a non-nullable reference type, and when the compiler considers the
+method signatures, it regards <code>R</code> and <code>R?</code> as the same type.  Thus, <code>M(string)</code> and
+<code>M(string?)</code> have the same signature, so the compilation fails.</p>
+<p>On the other hand, when it comes to overriding methods since the signatures are
+identical, then the compiler distinguishes between <code>R</code> and <code>R?</code> so that it
+warns against the following code:</p>
+<pre><code class="language-csharp">public class Base
+{
+    public virtual void M(string? name)
+    {
+    }
+}
+
+public sealed class RaiseCS8610 : Base
+{
+    public override void M(string name)
+    {
+    }
+}
+</code></pre>
+<blockquote>
+<p><a href="https://sharplab.io/#v2:C4LglgNgNAJiDUAfAxAOwK4QgQwEYQFMACA1PQgWAChqABAZiNoCYiAhbAZwOoG9qigpowBuYAE7B02CEwAsRALIAKWgEYADAH4iZALYEAlAKH8qQogF9q1mlQZFuMgjCasAStjDcAwgGUADgA2TSIQdi4eKjMLBwB7EQJxcTAYYloFFXUNXWwDY3NTE0FbWyA==">See warnings</a></p>
+</blockquote>
+<blockquote>
+<p>Contrariwise, if you override <code>M(string)</code> with <code>M(string?)</code>, the compiler
+doesn't warn.  This is because the <strong>Liskov substitution principle</strong>
+[<a href="#ref1">1</a>] is applied.</p>
+</blockquote>
+<p>Roughly speaking, the compiler does as follows:</p>
+<ol>
+<li>Ignore <code>?</code> in <code>R?</code> and compile ➜ If there are errors, output them</li>
+<li>Then, run the data flow analysis on nullability, considering <code>?</code> in <code>R?</code> ➜
+If there are warnings, output them</li>
+</ol>
+<p>If you find this hard to understand, consider that <code>?</code> in <code>R?</code> <strong>does not
+represent a type</strong>, but an attribute that exists only at compile time (e.g.,
+<code>[MaybeNull]</code>).  In other words, convert the following code:</p>
+<pre><code class="language-csharp">string? foo;
+</code></pre>
+<p>to as follows, just in your brain:</p>
+<pre><code class="language-csharp">[MaybeNull] string foo;
+</code></pre>
+<p>In such a case, it is easier to understand that the annotation is added to
+variables and parameters rather than <code>?</code> represents the type.</p>
+<p>The trouble is that there is no distinction between <code>R</code> and <code>R?</code> at run time.
+For example, let's consider the following code:</p>
+<pre><code class="language-csharp">public static void Main() {
+    var array = new[]
+    {
+        &quot;abc&quot;, null, &quot;def&quot;,
+    };
+    var all = array.OfType&lt;string?&gt;()
+        .ToArray();
+    foreach (var s in all)
+    {
+        Console.WriteLine(s);
+    }
+}
+</code></pre>
+<blockquote>
+<p><a href="https://sharplab.io/#v2:C4LgTgrgdgNAJiA1AHwMRQgG0wQwEaYCmABIVPkQLABQNAAgEwCM9ADMXUwHQAyAllACOAbhr0AzBwbEAwsQDeNYsqnTF1FZuIA3HGGJ6wOAJ7EAvMSiEA7gG0Aukq3L1z5wCJ8AY3cxLWTD93OEIAM18nZwBfUQ03XX0cbHMDMCNjLgB5UIAVYwAHQgAeTlYAfgA+AAoASki3ZS4cgHsAQTSTWtiG0OawQhwvAAtiKoTiAGdiAQNsOrjnVwaVTgBOKoma7rco+t3qfaA===">Run</a></p>
+</blockquote>
+<p>If you look at the result, there are just two lines of output, and so <code>all</code>
+does not contain <code>null</code>.  In other words, <code>OfType&lt;R&gt;()</code> and <code>OfType&lt;R?&gt;()</code> have
+the same result.  Looking at
+<a href="https://github.com/dotnet/runtime/blob/4f9ae42d861fcb4be2fcd5d3d55d5f227d30e723/src/libraries/System.Linq/src/System/Linq/Cast.cs">the reference implementation</a>,
+<code>OfType&lt;T&gt;()</code> only returns elements that match <code>T</code> with <code>is</code> pattern matching.
+In the first place, specifying <code>R?</code> with <code>is</code> pattern matching results in a
+compilation error as follows:</p>
+<pre><code class="language-csharp">public class RaiseCS8650
+{
+    public void M(object? o)
+    {
+        if (o is string?)
+        {
+        }
+    }
+}
+</code></pre>
+<blockquote>
+<p><a href="https://sharplab.io/#v2:C4LglgNgNAJiDUAfAxAOwK4QgQwEYQFMACA1PQgWAChqABAZiNoCYiAlbMAZwIGEBlABwA2AKwAGagG9qROU0a0ALEQCyACgD2uAFYEAxsAD8RTQEpZ8mVXm2iYAGZEt9rkwCM4oxZt251vzkAX0tg6hCqIA">See errors</a></p>
+</blockquote>
+<p>Now, let's try <code>is</code> pattern matching with the type parameter <code>T</code> as follows:</p>
+<pre><code class="language-csharp">public class C
+{
+    public static void M&lt;T&gt;(object? o)
+    {
+        if (o is T)
+        {
+            Console.WriteLine(&quot;true&quot;);
+        }
+        else
+        {
+            Console.WriteLine(&quot;false&quot;);
+        }
+    }
+
+    public static void Main()
+    {
+        M&lt;string?&gt;(&quot;a&quot;);
+        M&lt;string?&gt;(null);
+    }
+}
+</code></pre>
+<blockquote>
+<p><a href="https://sharplab.io/#v2:C4LgTgrgdgNAJiA1AHwMRQgG0wQwEaYCmABIVPkQLABQNAAgEwCMN9AzMY8QMI0DeNYkM4c6TAGycALMQCyAHgAqAPgAUAezwArQgGNgAfmLqAlIOEDqw68QCWAM2Ia7AZ2KKzVm0MvfvYgE5VACJgSEJgkwBuc28AX1ibQkwXQkTrXz9rQJD7HBSI6PThBK8hUsTGBkTM7wUxAAYDNWCcSJiym3qmJrUMbCLO0tKgA=">Run</a></p>
+</blockquote>
+<p>The result is <code>true</code> and <code>false</code>.  It shows that specifying <code>R?</code> for the type
+parameter <code>T</code> with <code>is</code> pattern matching is equivalent to specifying <code>R</code>.  This
+is a natural consequence since <code>is</code> pattern matching determines the type at run
+time, and <code>?</code> disappears at run time by <strong>type erasure</strong> [<a href="#ref2">2</a>].
+However, as shown in the example of <code>OfType&lt;T&gt;()</code>, there are some cases where
+we are easy to misunderstand.  If you write your original methods, of course,
+you can prevent specifying <code>R?</code> for <code>T</code> with <em>type constraints</em>, as described
+below.  On the other hand, for APIs in the standard library such as LINQ, the
+user needs to be careful whether they determine <code>T</code> at run time.</p>
+<h2>Default values</h2>
+<p>Let's consider the null object pattern, discussed in the Java part, again in
+C#:</p>
+<pre><code class="language-cs">...
+public sealed class Program
+{
+    private static readonly Action doNothing = () =&gt; {};
+
+    private readonly Func&lt;char, Action&gt; toAction;
+
+    public Program()
+    {
+        var map = new Dictionary&lt;char, Action&gt;()
+        {
+            ['h'] = MoveCursorLeft,
+            ['j'] = MoveCursorDown,
+            ['k'] = MoveCursorUp,
+            ['l'] = MoveCursorRight,
+        };
+        toAction = c =&gt; map.TryGetValue(c, out var action)
+            ? action
+            : doNothing;
+    }
+
+    public void HandleKeyInput()
+    {
+        var c = GetPressedKey();
+        var action = toAction(c);
+        action();
+    }
+    ...
+</code></pre>
+<blockquote>
+<p><a href="https://sharplab.io/#v2:C4LgTgrgdgNAJiA1AHwMRQgG0wQwEaYCmABIVPkQLABQNAAgEwCM9ADMXUwCwDcN9AZmIBnQjiJwODDkwDsNAN41iKqQ2Wql1VTuIA3HGGIBbYgF5iUQgHcZsgBQBKPtt0rjAOgASOKHCIA0oQAngCSUAAOEMBOLjoAvvyuKhFgAJYGwCScAGzEYGJwAPZQmMEy0gAiRQByRcAAFmlQAObmxE7mAHzECvE8xEk6qRk4WfmFJWUcAKwAPADGDYYwFT3ARZwMLhoqdEKcDo67vSc6BkbGOBHtVraVaQvAaSWGwYvLYKtbXU5nmv83ABtADkDRBAF12gBZIp6QgAYQgYGERTAABlCAAzYAwQG6UEAK0hMLhiORqLA1WssHxOlBAGsSRZYfCkSi0QBVCJ45JuVSgzDM4is8kcsAAJTSLQauPx/XxGy27QW3RM1w8ABUwMEAOKEYAANXEEEI9gWqyK0X0hmIOCeLygxz5/OIAH47Q6SnTVCBiNU6o1mi04qpErQ+fsOFxiD4/IEQuEojFnTotK6LsRVRZ9cAAAoFYSiOBBYKxfGZ+3PErtJVMBjm5z4quO8t88M6E4jTIkJa23MFwhFwglkKdMw9EE4EGhlLpHvRkVk9mUzE4zoKYgd1TdsbZGOildo6lQDdbrvzveLw8UrkRM/buejcZ0A/L2+S6Wyh80cNAA===">Run</a></p>
+</blockquote>
+<p>Like the example in Java, <code>null</code> does not appear.  It's great, but there is a
+little bit of concern.</p>
+<p>When the <code>TryGetValue(TKey, out TValue)</code> method of <code>Dictionary&lt;TKey, TValue&gt;</code>
+class returns <code>false</code>, what is the value of <code>action</code>?  As <code>Action</code> is a
+non-nullable type, you might assume that <code>action</code> should never be <code>null</code>.  But
+the answer is <code>null</code>.
+<a href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.dictionary-2.trygetvalue?view=netstandard-2.1">The API reference</a> states as
+follows:</p>
+<blockquote>
+<p><strong><code>value</code></strong> TValue<br>
+When this method returns, contains the value associated with the specified
+key, if the key is found; otherwise, the default value for the type of the
+value parameter.  This parameter is passed uninitialized.</p>
+</blockquote>
+<p>The default value of the reference type is <code>null</code>, so it is as the
+specification says.  To justify this, or rather to teach it to the compiler,
+.NET Core 3.0 added a new special attribute to the
+<code>TryGetValue</code><sup>†3</sup>.  Specifically, the second parameter is
+annotated with the
+<a href="https://docs.microsoft.com/en-us/dotnet/api/system.diagnostics.codeanalysis.maybenullwhenattribute?view=netstandard-2.1"><code>MaybeNullWhenAttribute</code></a> as
+follows:</p>
+<pre><code class="language-cs">public bool TryGetValue(TKey key, [MaybeNullWhen(false)] out TValue value)
+</code></pre>
+<blockquote>
+<p>†3 Confirmed with .NET Core SDK 3.0.100-preview9.</p>
+</blockquote>
+<p><code>[MaybeNullWhen(false)]</code> tells the compiler that “When the return value
+of the method is <code>false</code>, the parameter can be <code>null</code> even if the type of the
+parameter is a non-nullable reference type.” This allows the compiler to
+warn the code that accesses parameters of non-nullable reference types without
+a null check, on the path where the return value of the method is <code>false</code>.</p>
+<p>In short, the standard library, which debuted before non-nullable reference
+types were born, is designed with the assumption that the value of the
+reference types can be <code>null</code>, so it is somewhat incompatible with non-null
+reference types.  Therefore, the C# language designers bravely added the new
+attributes to the standard library that correspond to the annotations of the
+Checker Framework in Java and updated the compiler to track nullability.</p>
+<blockquote>
+<p>To solve that, at first glance, it seems that you could change the signature
+as follows:</p>
+<pre><code class="language-cs">public bool TryGetValue(TKey key, out TValue? value)
+</code></pre>
+<p>However, this doesn't work.  The reason is explained in detail in the article
+on Microsoft Developer Blogs, <em>Try out Nullable Reference Types</em>
+[<a href="#ref3">3</a>].</p>
+</blockquote>
+<p>To summarize:</p>
+<div class="horizontal-scroll">
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Types</th>
+<th style="text-align:left">Examples</th>
+<th style="text-align:left">Can be <code>null</code>?</th>
+<th style="text-align:left"><code>default</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>V</code></td>
+<td style="text-align:left"><code>int</code>, <code>bool</code></td>
+<td style="text-align:left">Never</td>
+<td style="text-align:left"><code>0</code>, <code>false</code>, etc.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>V?</code>, <code>Nullable&lt;V&gt;</code></td>
+<td style="text-align:left"><code>int?</code>, <code>Nullable&lt;int&gt;</code></td>
+<td style="text-align:left">Yes</td>
+<td style="text-align:left"><code>null</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>R</code></td>
+<td style="text-align:left"><code>string</code></td>
+<td style="text-align:left"><em>Yes</em></td>
+<td style="text-align:left"><code>null</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>R?</code></td>
+<td style="text-align:left"><code>string?</code></td>
+<td style="text-align:left">Yes</td>
+<td style="text-align:left"><code>null</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>where <code>V</code> and <code>R</code> are used as the non-nullable value and reference types,
+respectively.</p>
+<h2>LINQ</h2>
+<p>Now consider an operation to retrieve the first element in an array that meets
+the criteria.  Take a look at the following code:</p>
+<pre><code class="language-cs">var firstFavorite = new[] { &quot;foo&quot;, &quot;bar&quot;, &quot;baz&quot; }
+    .Where(matchesFavorite)
+    .FirstOrDefault();
+
+// 'firstFavorite' can be 'null' ... Hmm!?
+if (firstFavorite is {})
+{
+    ...
+}
+
+// Or
+if (firstFavorite is string s)
+{
+    ...
+}
+</code></pre>
+<p>The <code>FirstOrDefault()</code> method returns <code>default(T)</code> if <code>IEnumerable&lt;T&gt;</code> which
+<code>this</code> represents is empty, otherwise it returns the first element.  And the
+type of its return value is <code>T</code>.  In this example, <code>T</code> is a non-nullable
+reference type, <code>string</code>, so it returns <code>null</code> for the empty
+<code>IEnumerable&lt;string&gt;</code>.  This was usual before C# 8, but now unusual.  Because,
+although the return value may be <code>null</code> if its type is <code>string?</code>, it must not
+be <code>null</code> if <code>string</code>.</p>
+<p>The return value of <code>FirstOrDefault()</code> should be annotated with the
+<code>MaybeNullAttribute</code> to allow the return value to be <code>null</code> as follows:</p>
+<pre><code class="language-cs">[return: MaybeNull]
+public static TSource FirstOrDefault&lt;TSource&gt;(this IEnumerable&lt;TSource&gt; source)
+</code></pre>
+<p><code>[return: MaybeNull]</code> tells the compiler that “The return value of a
+method can be <code>null</code>, even if its type is a non-nullable reference type.”
+This allows the compiler to warn code that accesses the return value of the
+method without a null check.</p>
+<p>Of course, you can use <code>DefaultIfEmpty(defaultValue).First()</code> instead of
+<code>FirstOrDefault()</code>.  However, unless you can use the return value in such a way
+as to do with the null object pattern, after all, it is necessary to compare
+the return value with <code>defaultValue</code>.</p>
+<p>Again, let's dare to write as follows:</p>
+<pre><code class="language-cs">var firstFavorite = new[] { &quot;foo&quot;, &quot;bar&quot;, &quot;baz&quot; }
+    .Where(matchesFavorite)
+    .Take(1);
+foreach (var s in firstFavorite)
+{
+    ...
+}
+
+// Or...
+var firstOrEmpty = new[] { &quot;foo&quot;, &quot;bar&quot;, &quot;baz&quot; }
+    .Where(matchesFavorite)
+    .Take(1)
+    .ToArray();
+if (firstOrEmpty.Length &gt; 0)
+{
+    var s = firstOrEmpty[0];
+    ...
+}
+</code></pre>
+<p>To digress a little from the topic of <code>null</code>, <code>Take(1)</code> is sometimes more
+useful than <code>FirstOrDefault()</code>.  It is when the element type <code>T</code> is a value
+type.  If the value of <code>default(T)</code> is unwieldy, it may be happy for you to
+deal with <code>IEnumerable&lt;T&gt;</code> containing at most one element rather than the
+default value.  (It was no more than a way of thinking to get a better
+understanding in the Java part, but it's practical in C#.)</p>
+<p>The options for dealing with at most one (i.e., zero or one) in C# are as
+follows:</p>
+<div class="horizontal-scroll">
+<table>
+<thead>
+<tr>
+<th>Number of instances</th>
+<th>Nullable types/Comprehensions</th>
+<th><code>null</code>/Alternatives</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>At most 1</td>
+<td><code>T?</code></td>
+<td><code>null</code></td>
+</tr>
+<tr>
+<td>0 or more</td>
+<td><code>T[]</code></td>
+<td><code>Array.Empty&lt;T&gt;</code></td>
+</tr>
+<tr>
+<td>0 or more</td>
+<td><code>IEnumerable&lt;T&gt;</code></td>
+<td><code>Enumerable.Empty&lt;T&gt;</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2>Implicit and explicit operators for nullable value types</h2>
+<p>With nullable value types, you can assign not only an expression of type <code>T?</code>
+and <code>null</code> but also an expression of type <code>T</code> to a variable of type <code>T?</code>.  This
+is because the <code>implicit</code> operator of type <code>Nullable&lt;T&gt;</code> representing the
+conversion from <code>T?</code> to <code>T</code> applies.  For example, if <code>T</code> is <code>int</code>:</p>
+<pre><code class="language-csharp">int? v1 = null;
+int? v2 = 123;
+</code></pre>
+<p>Values on the right side are implicitly converted to type <code>Nullable&lt;int&gt;</code>.
+(The <code>implicit</code> operator to convert from <code>int</code> to <code>int?</code> applies.) That is,
+it is equivalent to:</p>
+<pre><code class="language-csharp">var v1 = new Nullable&lt;int&gt;();
+var v2 = new Nullable&lt;int&gt;(123);
+</code></pre>
+<blockquote>
+<p><a href="https://sharplab.io/#v2:C4LglgNgNAJiDUAfAAgJgIwFgBQPkGYACNQgYRwG8dCbijkAWQgWXQAoBKa2q7W/wmAB2wAPyEAbukIBeQkICuECAG5uAwSPETUswulT41fWgF8c6usSbNUnS7w00JAQwBOk6XKEBTAO6EAHJKEC4ARhA+ADzCwAB8nMZOku6Sut7+QSHhkTEiCQb4HElmOObYQA">Compile</a></p>
+</blockquote>
+<p>On the contrary, assigning an expression of type <code>T?</code> to a variable of type <code>T</code>
+requires an explicit type conversion (i.e., the <code>explicit</code> operator to convert
+from <code>T?</code> to <code>T</code>).  So, the following example results in compilation errors:</p>
+<pre><code class="language-csharp">int? maybeInt = 123;
+int intValue = maybeInt;
+</code></pre>
+<blockquote>
+<p><a href="https://sharplab.io/#v2:C4LglgNgNAJiDUAfAAgJgIwFgBQPkGYACNQgYRwG8dCbijkAWQgWXQAoBKa2q7W/wmAB2wAPyEAtgEMAngCMApgEkRhALyF0qfAG5uAwauHAAalIgBXBesmzFK4Hr60AvjjfYgA=">See errors</a></p>
+</blockquote>
+<p>It can be done without the errors if you use the explicit type conversions (i.e., casts to <code>int</code>) as follows:</p>
+<pre><code class="language-csharp">int? maybeInt = 123;
+var intValue = (int)maybeInt;
+</code></pre>
+<p>However, this is equivalent to the following code:</p>
+<pre><code class="language-csharp">int? maybeInt = 123;
+var intValue = maybeInt.Value;
+</code></pre>
+<blockquote>
+<p><a href="https://sharplab.io/#v2:C4LglgNgNAJiDUAfAAgJgIwFgBQPkGYACNQgYRwG8dCbijkAWQgWXQAoBKa2q7W/wmAB2wAPyEAtgEMAngCMApgEkRhALyF0qfAG5uAwgDcpAJ0EiAalIgBXBesJthwDtPnKRevrQC+OfXTETMyonAG8BjTO4m6KKsAOWroB/MZmzla29hqxHsAAdJl2Xvx+2GVAA===">Compile</a></p>
+</blockquote>
+<p>The <code>Value</code> property of <code>Nullable&lt;T&gt;</code> returns the value if the object has that.
+Otherwise, it throws the exception <code>InvalidOperationException</code>.  Thus, you
+should be careful that the explicit type conversions also throw an exception if
+there is no value at converting to type <code>T</code>.</p>
+<h2>Checking the presence of a value for nullable value types</h2>
+<p>You can check whether an expression of type <code>Nullable&lt;T&gt;</code> has a value, using
+the <code>HasValue</code> property as follows:</p>
+<pre><code class="language-csharp">int? maybeInt = ...
+if (maybeInt.HasValue) {
+    var intValue = maybeInt.Value;
+    ...
+}
+</code></pre>
+<p>Alternatively, you can also check that, comparing an expression of type <code>T</code>
+with <code>null</code> as follows:</p>
+<pre><code class="language-csharp">int? maybeInt = ...
+// The next statement is equivalent to 'if (maybeInt is {}) {'
+// or 'if (!(maybeInt is null)) {'
+if (!(maybeInt != null)) {
+    var intValue = maybeInt.Value;
+    ...
+}
+</code></pre>
+<p>You can also apply pattern matching:</p>
+<pre><code class="language-csharp">int? maybeInt = ...
+// The next statement is equivalent to 'if (maybeInt is int intValue) {'
+if (maybeInt is {} intValue) {
+    ...
+}
+</code></pre>
+<blockquote>
+<p><a href="https://sharplab.io/#v2:C4LglgNgNAJiDUAfAAgJgIwFgBQPkGYACNQgYRwG8dCbijl0A2YgFkIFl0AKASmtqrZawwmAB2wAPyEAtgEMAngCMApgEkJhALyF0qfAG5+I0QDNCXecvUSAdAAk5AZwBqciAFcVPQoJMmANzkAJ1EJN08VbVlFVQ1gWwivIyF/AF9jQgzcVJoCYiZWDlReTL9/cSkY63jovUNM4TBzLgBCS1ibYFEnQjEPCAgeH3L/WiDQyqSonSs4u2mUsezhbMz8hmZkNnZ8UtzfRtpK6Tmuuv0lipaz2rBeijSRo8CQsOBp6NuF92SXrMyK1o63ohW2HBY+2EoxEJ2q826OnqVxMzQs32693e72mzwOq0BhBwIIKWx2AFYoQJ/nCMRcGvjjjdOncHmkcb9vIdGTQgbyidhskA===">Compile</a></p>
+</blockquote>
+<p>Note that there is no <code>Value</code> or <code>HasValue</code> property for nullable reference
+types.  Again, for nullable reference types, this is obvious because <code>T</code> and
+<code>T?</code> are <em>virtually</em> the same type.  However, of course, comparison with <code>null</code>
+and pattern matching can be applied in the same way.</p>
+<h2>Lifted operators for nullable value types</h2>
+<p>The nullable value type allows you to apply operators of type <code>T</code> as is to type
+<code>T?</code>.  The operators of type <code>T</code> which are applied to type <code>T?</code> are called
+<strong>lifted operators</strong>.</p>
+<p>The result of the operations is an object of type <code>T?</code>, which has no value if
+either or both operands have no value (i.e., <code>null</code>), or which has the value of
+the result of the operation if both operands have the value.  For example, if
+<code>a</code> and <code>b</code> are objects of type <code>int?</code>, the following code:</p>
+<pre><code class="language-csharp">var c = a + b;
+</code></pre>
+<p>is almost equivalent to as follows:</p>
+<pre><code class="language-csharp">// You can also use '&amp;&amp;' instead of '&amp;'.
+var c = (a.HasValue &amp; b.HasValue)
+    ? new Nullable&lt;int&gt;(a.Value + b.Value)
+    : new Nullable&lt;int&gt;();
+</code></pre>
+<blockquote>
+<p><a href="https://sharplab.io/#v2:C4LglgNgNAJiDUAfAAgJgIwFgBQPkGYACNQgYRwG8dCbijkAWQgWXQAowA7YAfkIEMohLr0IAjAJTVaVbLXmEAbvwBOhAMaEAvAMLxxAbmk0AvjmN1iTZqg7c+g4ffFS5Mi/OVrNOtvwB0ABL8AM4AavwQAK4ApoQAZOJBoRHRMa4KmYR8nDEA7oQAclEQEPxiEDEAPCIAfH7+qbF6SU3pHlkghLkFxaXllTXc9RJGbqY4ZthAA=">Compile</a></p>
+</blockquote>
+<p>However, only the operations of type <code>bool?</code> are subject to special rules.  See
+<a href="https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/operators/boolean-logical-operators#nullable-boolean-logical-operators">Nullable Boolean logical operators</a>
+for more information.</p>
+<h2>Boxing and unboxing nullable value types</h2>
+<p>For the nullable value types, boxing an object of type <code>T?</code> results in <code>null</code> if
+the object has no value, otherwise the result of boxing the value of type <code>T</code>
+that the object has.  Here is an example:</p>
+<pre><code class="language-csharp">int? maybeInt = ...
+object boxedInt = maybeInt;
+</code></pre>
+<p>This is equivalent to the following code:</p>
+<pre><code class="language-csharp">int? maybeInt = ...
+var boxedInt = (maybeInt.HasValue)
+    ? (object)maybeInt.Value
+    : null;
+</code></pre>
+<blockquote>
+<p><a href="https://sharplab.io/#v2:C4LglgNgNAJiDUAfAAgJgIwFgBQPkGYACNQgYRwG8dCbijkAWQgWXQAoBKa2q7W/wmAB2wAPyEAtgEMAngCMApgEkRhALyF0qfAG5uAwgHs5AKwUBjYITmGAHgpgqrG6fOUi9fWgF8c+usRMzKic/rwGNMJikrKKTuqa2p4RhABuUgBO1nYO8RpsrnEiAHQAElIAzgBqUhAArgpcXik04mzGZpYche7AxTX1Cv4pIIRCdRAQyT44vthAA===">Compile</a></p>
+</blockquote>
+<p>An object boxing a value of type <code>T</code> can also be unboxed into another object of
+type <code>T?</code>.  Here is an example:</p>
+<pre><code class="language-csharp">int intValue = ...
+object boxedInt = intValue;
+int? maybeInt = (int?)boxedInt;
+</code></pre>
+<p>Note that there is no boxing or unboxing for nullable reference types, of
+course, because they are <em>reference</em> types.</p>
+<h2><code>?.</code> and <code>?[]</code> operators</h2>
+<p><a href="https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/operators/member-access-operators#null-conditional-operators--and-"><code>?.</code> and <code>?[]</code> operators</a> are the
+<a href="https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/language-specification/expressions#null-conditional-operator"><strong>null-conditional operators</strong></a><sup>†4</sup>.</p>
+<blockquote>
+<p>†4 According to Wikipedia [<a href="#ref4">4</a>], an operator with the same
+meaning as this operator is defined in other programming languages, but for
+now, its terminology varies from language to language.</p>
+</blockquote>
+<p>When <code>expr</code> is an expression of nullable types, <code>expr?.Member</code> is “access
+to <code>Member</code> of <code>expr</code> only if <code>expr</code> is not <code>null</code>.” If <code>expr</code> is <code>null</code>,
+there is no access to <code>Member</code>, and the expression results in <code>null</code> unless
+<code>Member</code> is of type <code>void</code>.</p>
+<p>Similarly, <code>expr?[index]</code> is “access to the indexer <code>this[int]</code> of <code>expr</code>
+only if <code>expr</code> is non-null.” If <code>expr</code> is <code>null</code>, the expression results
+in <code>null</code> without access to <code>this[int]</code>.</p>
+<p>Both result in compilation errors if <code>expr</code> is of non-nullable value types.</p>
+<blockquote>
+<p>More precisely, if it is unknown at compile time whether the type of <code>Member</code>
+or <code>this[int]</code> is a reference or value type (for example, if it is a generic
+type parameter and it has no type constraint), it results in a compilation
+error.</p>
+<p><a href="https://sharplab.io/#v2:CYLg1APgxAdgrgGwQQwEYIKYAIMzZgWAChiABAZiwGcNlNgtSAmLAMQHt2AeAFQD5iASAD0wrAFUYAY3YBbWbgAuASxgBzLIoAW2GBgAeirAlXYA7sqRYAThlnsAbtm3YM16+2tUQQ0VjM6tlg8WCCMTL5inj5EImIBbtghYVSK1nBSisQA3sRY+YyUHOwAFCFwMADWMOxmMACUeQW5RAVYgpLVtTBYALxYFV11ANxN+QC+Y21YUxTBElU1dVjZWGoYisNYkySxcyHaylQA2qpGygC6Uy1tgutGvXwLQzCjrQU7s5SkAIwAbIwACxYABKyCOGAAwgBlAAMsKY5BKxV4fAA/FgAGacRrvfI3AqCBzIaxYWR9LGcNEAOk6S1eUzaxNJPX62PYaOOsIubzaO3GQA===">See errors</a></p>
+</blockquote>
+<p>To summarize:</p>
+<div class="horizontal-scroll">
+<table>
+<thead>
+<tr>
+<th style="text-align:left">The type of <code>expr</code></th>
+<th style="text-align:left"><code>expr</code></th>
+<th style="text-align:left">The result of <code>expr?.Member</code>, <code>expr?[int]</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left" rowspan="2">
+  Nullable types or Non-<br>nullable reference types
+</td>
+<td style="text-align:left"><code>null</code></td>
+<td style="text-align:left">Nothing if the type is <code>void</code>,
+  <code>null</code> otherwise</td>
+</tr>
+<tr>
+<td style="text-align:left">not <code>null</code></td>
+<td style="text-align:left"><code>expr.Member</code>, <code>expr[int]</code></td>
+</tr>
+<tr>
+<td style="text-align:left">Non-nullable value types</td>
+<td style="text-align:left">never <code>null</code></td>
+<td style="text-align:left">A compilation error</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>For example, if <code>Member</code> represents invoking “a method that returns
+<code>void</code>,” or “a delegate such as <code>Action</code>,” the result is
+similar to as follows<sup>†5</sup>:</p>
+<pre><code class="language-cs">if (expr is {})
+{
+    expr.Member();
+}
+</code></pre>
+<p>Otherwise, as long as <code>Member</code> returns a value or reference, it is <code>null</code> if
+<code>expr</code> is <code>null</code>, or <code>expr.Member</code> if <code>expr</code> is not <code>null</code>.  Assuming that <code>R</code>
+and <code>V</code> are non-nullable reference types and non-nullable value types
+respectively, the results are as follows:</p>
+<div class="horizontal-scroll">
+<table>
+<thead>
+<tr>
+<th style="text-align:left">The type of<br><code>Member</code></th>
+<th style="text-align:left">The result simular to <code>expr?.Member</code><sup>†5</sup></th>
+<th style="text-align:left">The type of<br>the expression</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>R</code>/<code>R?</code></td>
+<td style="text-align:left"><code>(expr is null) ? null : expr.Member</code></td>
+<td style="text-align:left"><code>R?</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>V</code></td>
+<td style="text-align:left"><code>(expr is null) ? (V?)null : expr.Member</code></td>
+<td style="text-align:left"><code>V?</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>V?</code></td>
+<td style="text-align:left"><code>(expr is null) ? null : expr.Member</code></td>
+<td style="text-align:left"><code>V?</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>For an indexer, it is <code>null</code> if <code>expr</code> is <code>null</code>, or <code>expr[index]</code> if <code>expr</code> is
+not <code>null</code>.  Similarly, with <code>R</code> and <code>V</code>, the results are as follows:</p>
+<div class="horizontal-scroll">
+<table>
+<thead>
+<tr>
+<th style="text-align:left">The type of<br><code>this[int]</code></th>
+<th style="text-align:left">The result simular to <code>expr?[index]</code><sup>†5</sup></th>
+<th style="text-align:left">The type of<br>the expression</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>R</code>/<code>R?</code></td>
+<td style="text-align:left"><code>(expr is null) ? null : expr[index]</code></td>
+<td style="text-align:left"><code>R?</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>V</code></td>
+<td style="text-align:left"><code>(expr is null) ? (V?)null : expr[index]</code></td>
+<td style="text-align:left"><code>V?</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>V?</code></td>
+<td style="text-align:left"><code>(expr is null) ? null : expr[index]</code></td>
+<td style="text-align:left"><code>V?</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+<blockquote>
+<p>†5 In both <code>expr?.Member</code> and <code>expr?[index]</code>, <code>expr</code> is evaluated only
+once.</p>
+</blockquote>
+<p>However, unlike Swift, if you use <code>?.</code> and <code>?[]</code> as <em>l-values</em>, you get
+compilation errors as follows:</p>
+<pre><code class="language-cs">public sealed class Program
+{
+    public static void Main()
+    {
+        var m = new Program();
+
+        // Sets values with 'SetBar()' and 'SetChar()'
+        // if 'MaybeFoo' is not 'null'
+        m.MaybeFoo?.SetBar(&quot;hello&quot;);
+        m.MaybeFoo?.SetChar(0, 'h');
+
+        // The next statements result in compilation errors,
+        // even if we wish the same result as above.
+        m.MaybeFoo?.Bar = &quot;hello&quot;;
+        m.MaybeFoo?[0] = 'h';
+    }
+
+    public Foo? MaybeFoo { get; set; }
+
+    public sealed class Foo
+    {
+        private char[] table = {};
+
+        public string Bar { get; set; } = &quot;&quot;;
+
+        public char this[int k]
+        {
+            get =&gt; table[k];
+            set =&gt; table[k] = value;
+        }
+
+        public void SetBar(string newBar)
+            =&gt; Bar = newBar;
+
+        public void SetChar(int k, char c)
+            =&gt; this[k] = c;
+    }
+}
+</code></pre>
+<blockquote>
+<p><a href="https://sharplab.io/#v2:C4LgbgpgTglgZgTwDQBMQGoA+BiAdgVwBtCBDAI0IgAIJdzKBYAKGYAEBmKgZwhMpSqsATIICMAdmYBvZlTmChQ2fJlN56qmBJQqAWyoBeKrggB3MeIAUASgDczZRqoB6Z1QDKEYF0198EH1MYYAALKgByT2AAIW0bcKoSXAFIrwBhELjrcMcNVyp4CIBZEgQyCAAxAHsqhJgfXCrgCIJiHLUnPQA6ErLKmoB+LqjYqEsAIhCIYirxu1z1XR7S8uqqoaiMuIAGJAiQ8PmWDqd8gBUp4wgAD2auYBJgCF1abyooAKJmmFwqAGMqroAA4wUjAGBVX7QKBVKBcJALeT5CCQX6FUzUIJcMKhahcEgvd6fQjNEg+chVSBdRFyJa9VaDLqjQxUSbTQizewnDR0lb9dYAbW2AF0WeEDlz1ABfBzcjhUNYDKj0/lUKRUADmXls3G1VBlx3U8p4fAgAmECpquVUnSoQNgWie/0yUAFooeFGoRikUq5NMEnFYom2VGZ6q1wB1PEj+pZ43Gfu5Rs4fxdVFC9QFP2aAGthf6bbb5BHDAA+dP0CACvOSotyaNliue6uioxaQj+WtOA3++WsAAsHi8o0sQZDJlMo2s/vUBnLzKME9GidtfcHmxdlmzVBze1T2n+06TnTn6ZCmbzLL+Xf1zANQA">Compile</a></p>
+</blockquote>
+<p>In particular, when the type of <code>Member</code> or <code>this[int]</code> is <strong>non</strong>-nullable,
+the <code>?.</code> and <code>?[]</code> operators perform operations <strong>to cause <code>null</code> to land</strong>.
+In other words, it is possible that these operators cause <strong><code>?</code> infection</strong> so
+that <code>R?</code> and <code>V?</code>, which did not exist before, are born newly.  Therefore,
+these are operations to defer <strong>disposition</strong> of <code>null</code>.  They are similar to
+such as the misuse of null object patterns, catching <code>NullReferenceException</code>
+(NRE), etc., so they might cause <code>null</code> to slip through null checks in
+unexpected places.  Hence, we should not use <code>?.</code> and <code>?[]</code> (instead of <code>.</code> and
+<code>[]</code>) easily.</p>
+<h2><code>??</code> and <code>??=</code> operators</h2>
+<p><a href="https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/operators/null-coalescing-operator"><code>??</code> and <code>??=</code> operators</a> are the
+<a href="https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/language-specification/expressions#the-null-coalescing-operator"><strong>null-coalescing operator</strong></a><sup>†6</sup>
+and <strong>null-coalescing assignment operator</strong>, respectively.</p>
+<blockquote>
+<p>†6 Like null-conditional operators, other programming languages also
+have operators defined with the same meaning.  See Wikipedia [<a href="#ref5">5</a>].</p>
+</blockquote>
+<p><code>expr1 ?? expr2</code><sup>†7</sup> is equivalent to as follows:</p>
+<pre><code class="language-cs">(expr1 is {}) ? expr1 : expr2
+</code></pre>
+<p>However, <code>expr1</code> is evaluated only once in the case of <code>expr1 ?? expr2</code>.</p>
+<p>If <code>expr1</code> is of nullable value types, <code>??</code> operators do operation similar to
+<code>GetValueOrDefault(T)</code> method of <code>Nullable&lt;T&gt;</code>, except that <code>expr2</code> is
+evaluated only if <code>expr1</code> is <code>null</code>.</p>
+<p><code>expr1 ?? throw new Exception()</code><sup>†7</sup> throws an exception when
+<code>expr1</code> is <code>null</code>, otherwise it is an expression that returns <code>expr1</code>.</p>
+<p><code>variable ??= expr</code><sup>†7</sup> is equivalent to as follows:</p>
+<pre><code class="language-cs">if (variable is null)
+{
+    variable = expr;
+}
+</code></pre>
+<blockquote>
+<p>†7 If <code>expr1</code> or <code>variable</code> is of non-nullable value types, a
+compilation error occurs.</p>
+<p><a href="https://sharplab.io/#v2:CYLg1APgxAdgrgGwQQwEYIKYAIMzZgWAChiABAJgEZiyBmLAZw2U2CwqwDEB7b4gb2JZh7eqUoA2dgBYsAJWQBLJgGEAygAYNlAJwAKRTAAuWAG4AadpQ1YATgEohIwURFuzyW2ZsBeM1gB+AKwNAG4ndw8vW187QOCAIgTw10isAH0sP1N4rCMAC1tuAHcsGAxSgFEADwBjDAAHI0VuGD17FLSMrLigvMKSsoqsGvqmlraOiPccoL8w6bcvOawkzpEAXxpU4VIxSRksAFklNsMjYIsrDWCHaZcu009vHtnghZ2Z55ie5cTkxYiTLZXIFIqlcpVOqNZqtdrrSLA3rBMGDSEjaHjOFTT5uN7zBHuP5+NbTLZEDZAA">See errors</a></p>
+</blockquote>
+<p>In particular, if <code>expr2</code> is of <strong>non</strong>-nullable types, <code>??</code> operators
+<strong>prevent <code>null</code> from the landing</strong>.  They dispose of <code>null</code>.  Conversely, if
+<code>expr2</code> is of <strong>nullable</strong> types, we should not use <code>??</code> operators easily,
+as well as <code>?.</code> and <code>?[]</code> operators.</p>
+<h2><code>!</code> postfix operators</h2>
+<p><a href="https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/proposals/csharp-8.0/nullable-reference-types-specification#the-null-forgiving-operator"><strong>null-forgiveness operators</strong> or <strong>null forgiving operators</strong></a>
+treat an expression of nullable reference types (e.g., <code>null</code> itself or the
+expression that can be <code>null</code>) as that of non-nullable reference types.  (It is
+substantially a directive to the compiler so as not to issue the warnings.) You
+can place postfix <code>!</code> with an expression of nullable reference types to
+suppress the warnings, as follows:</p>
+<pre><code class="language-cs">public sealed class Foo
+{
+    public Foo()
+    {
+        // 'NonNullable = null;' causes the warning.
+        NonNullable = null!;
+    }
+
+    public string NonNullable { get; }
+
+    public void RaiseNoWarnings()
+    {
+        string? maybeNull = null;
+
+        // 'string t = maybeNull;' causes the warning.
+        string t = maybeNull!;
+
+        // 'var n = maybeNull.Length;' causes the warning.
+        var n = maybeNull!.Length;
+    }
+}
+</code></pre>
+<blockquote>
+<p><a href="https://sharplab.io/#v2:C4LgbgpgTglgZgTwDQBMQGoA+BiAdgVwBtCBDAI0IgAIJdzKBYAKGYAEBmKgZwhMpSqsATFQBiAe3HMA3syrzBnCeIAUASjkLZTBbqoB6fVQDkAOXG5TRUhWoBeKgWIBuY1QDGJfDy5VgAC2oAdxIoXBhcAHMAOk09KnNLa3p7R2sAQmc4qgBfXWZsjkEARgAGBIsrYhSqaSpIiGBnXIKdBSLWABYqACUSGB5zAHVQ8KiudWztePlWMoB+KgBbEgQyCCrCKgcnQiyWNvjDEzny4G3l1fXN1w8vHz9AqhCwiJjs3VO/C5W1jYz9h8FMdjGBQo4fld/sRogAZWiRAK3TzeCC+ALBUZvWKHPRgqAQhy/a4ZOEIpHZHLMHJAA===">See warnings</a></p>
+</blockquote>
+<p>Just to be sure, don't postfix <code>!</code> if you don't understand the compiler's
+warning and just want to clear it.  If you do that, you should be surprised
+later.</p>
+<blockquote>
+<p>The compiler ignores <code>!</code> if you postfix <code>!</code> with an expression of
+non-nullable types.  Note also that the postfix <code>!</code> with nullable value types
+just suppresses warnings (unlike <em>Unconditional Unwrapping</em> in Swift).  If
+you postfix <code>!</code>, as if it were the <code>Value</code> property of <code>Nullable&lt;T&gt;</code> to get a
+value (or throw an exception if there is no value), however, you will not get
+the value but just a compilation error.</p>
+<p><a href="https://sharplab.io/#v2:C4LgbgpgTglgZgTwDQBMQGoA+BiAdgVwBtCBDAI0IgAIJdzKBYAKGYAEBmKgZwhMpSqsATIICMAdmYBvKsyrzBnVqIBsggCxUASiRg8AwgGVRABhWiAFDFzAqMJFQBiAe2dU4D68AD8VAFYOLs6+AOYAlHIKUpEKCgD0cVQA5ACESVQA7jDEVGTUMCG4zlAQAtZUwAAW1LgQAB62VSXUhNYQXAB0MbFUAPpUALx2KQDc3bH9Q3Cj4wqT7ikdAEIkUGNMPZuyG1sJVACSuBXVVLUNFRlurbVcDqnpXPgADk8lXDxcx9QZq7jWIV0dpt5n5FgA1Pj4CDrLZ9QZUELgyHQ2axVFUPYAUSgUGKIGSiPSAGMSLgirY8lQSNx8GQuMAYMB8MBqHBigSOhDCFCkoDYfNEctVjCFABfZjdDjcYBQfBE2xBbrRIE9KVBCzKEy5VZhQYAPioKyg8LIwvRUs1htWVBkIQgwBG3HtjvFKtdrqAA=">See errors</a></p>
+</blockquote>
+<h2>Constraints of generic type parameters</h2>
+<p>Type parameters are troublesome.  Suppose there is a class <code>Foo&lt;T&gt;</code>.  So its
+type parameter <code>T</code> may not only be a non-nullable type such as <code>int</code> or
+<code>string</code> but also a nullable type such as <code>int?</code> or <code>string?</code>.  Therefore,
+parameters and return values of type <code>T?</code> go wrong.  The types that have a
+generic type parameter <code>T</code> and contain the <code>T?</code> types result in compilation
+error as follows:</p>
+<pre><code class="language-cs">public sealed class Foo&lt;T&gt;
+    // Uncommenting the next line will remove the errors:
+    // where T : class
+    // or:
+    // where T : struct
+{
+    public T? Default { get; } = default;
+
+    public void DoSomething(T? t)
+    {
+    }
+
+    public void DoAnything()
+    {
+        T? bar;
+    }
+}
+</code></pre>
+<blockquote>
+<p><a href="https://sharplab.io/#v2:C4LgbgpgTglgZgTwDQBMQGoA+BiAdgVwBtCBDAI0IgAIJdzKBYAKGYAEBmKgZwhMpSqsATFQBiAe3EAeACoA+ZlSVUA9CqoBVXAGNxAWz21gMXAHMqwABbVcEAB7AqhE9QDuMYlSgQ94yBesaKChxKC4QRWU1KldrbyoZKhBBIUilaNCIpmVVdVjoakTkrmAofG1gZgBvZgBIDgSAfioAEQg4EiJHKqpTCGAAbioAXyoAXioUds7CQeY6htYAFlbxAGV9fssTUwAKGWbgAEo0qhrs5WH5i6VFlZbxAEFcBCsd3ZObs9Ocg6oyEhQAanK5MUFAA==">See errors</a></p>
+</blockquote>
+<p>Limiting the type parameter <code>T</code> to a non-nullable reference type (<code>class</code>) or a
+non-nullable value type (<code>struct</code>) with type constraints resolves these errors.</p>
+<blockquote>
+<p>That is, we must clear it whether <code>T?</code> is in truth a reference type <code>T</code> or a
+value type <code>Nullable&lt;T&gt;</code>.  It's like an <strong>oath</strong> or a <strong>curse</strong> in C#.</p>
+</blockquote>
+<p>There is also <code>notnull</code> constraint representing that the type parameter <code>T</code> is
+a non-nullable type.  This is something like “<code>class</code> or <code>struct</code>.”
+If <code>T</code> has a <code>notnull</code> constraint, <code>Foo&lt;T&gt;</code> also cannot have the <code>T?</code> types
+because it is unclear whether <code>T</code> is a reference type or a value type.  And if
+you restrict the <code>T</code> of <code>Foo&lt;T&gt;</code> to be <code>notnull</code>, of course, you should no
+longer specify a nullable type for <code>T</code>.  Let's check it out it the following
+code:</p>
+<pre><code class="language-cs">public sealed class Foo&lt;T&gt;
+    where T : notnull
+{
+    public Foo(T t)
+    {
+    }
+}
+
+public static class Foo
+{
+    public static Foo&lt;T&gt; NewFoo&lt;T&gt;(T t)
+        where T : notnull
+        =&gt; new Foo&lt;T&gt;(t);
+
+    public static void RaiseWarnings(string? maybeNull)
+    {
+        _ = NewFoo(1);
+        _ = NewFoo(&quot;a&quot;);
+
+        int? i = 1;
+        string? notNull = &quot;a&quot;;
+
+        _ = NewFoo(notNull);
+        // The next two lines cause the warnings.
+        _ = NewFoo(i);
+        _ = NewFoo(maybeNull);
+    }
+}
+</code></pre>
+<blockquote>
+<p><a href="https://sharplab.io/#v2:C4LgbgpgTglgZgTwDQBMQGoA+BiAdgVwBtCBDAI0IgAIJdzKBYAKGYAEBmKgZwhMpSqsATFQBiAe3EAeACoA+ZlSVUA7gAto1GVRBVc44AWLMA3ouUcxkgBTbgASnNKzTZVQC+zTyyaXWARgA2QREJcVMnQU4A4LDZOSoAOQgVOPlbKgdIt3VNKm1dfUMiQmzlAF4E3BSraXSHAG5IyL8gwQAWKgAlEhgeAHUSKFwYXABzLmsAgAYAfioAWxIEMghEksdXZRc3NwB9KnKklLDrf3smrd2qA6Pk1JsAIhJHi7Kld6pR4HmYQ6p/JdrkoZvMiutiP9no9Lp9bscHuJrOCNkDgQB6dH5DR6CAAD2AmRU4iohFGEC4VAAxiR8DxMjiVEMRuMuAA6OH/e6nGBvK67eHcmxLFZrVGRbzeIA===">See warnings</a></p>
+</blockquote>
+<p>It is an interesting feature of nullable reference types that <code>NewFoo(notNull)</code>
+does not cause the warnings.  The type inference treats even the expressions of
+type <code>string?</code> as of type <code>string</code>, as long as the data flow analysis believes
+that the value should never be <code>null</code>.  On the other hand, this never happens
+for value types.</p>
+<p>Finally, although it is complicated, there is also a <code>class?</code> constraint.  If
+<code>T</code> has a <code>class?</code> constraint, <code>Foo&lt;T&gt;</code> cannot contain any <code>T?</code> type because
+<code>T</code> itself is a nullable type.  However, you can assign a reference type to <code>T</code>
+regardless of whether it is nullable or not.</p>
+<p>The above is summarized as follows:</p>
+<div class="horizontal-scroll">
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Constraint of <code>T</code></th>
+<th style="text-align:left"><code>Foo&lt;T&gt;</code> contains <code>T?</code></th>
+<th style="text-align:center"><code>Foo&lt;V&gt;</code></th>
+<th style="text-align:center"><code>Foo&lt;V?&gt;</code></th>
+<th style="text-align:center"><code>Foo&lt;R&gt;</code></th>
+<th style="text-align:center"><code>Foo&lt;R?&gt;</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Nothing</td>
+<td style="text-align:left">A compilation error</td>
+<td style="text-align:center">○</td>
+<td style="text-align:center">○</td>
+<td style="text-align:center">○</td>
+<td style="text-align:center">○</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>where T : class</code></td>
+<td style="text-align:left">OK</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">○</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>where T : class?</code></td>
+<td style="text-align:left">A compilation error</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">○</td>
+<td style="text-align:center">○</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>where T : struct</code></td>
+<td style="text-align:left">OK</td>
+<td style="text-align:center">○</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>where T : notnull</code></td>
+<td style="text-align:left">A compilation error</td>
+<td style="text-align:center">○</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">○</td>
+<td style="text-align:center"></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>where <code>R</code> is a non-nullable reference type, and <code>V</code> is a non-nullable value type.</p>
+<h2><code>typeof</code> operator</h2>
+<p>The <code>typeof</code> operator cannot be used on a nullable reference type.  This topic
+is similar to <code>is</code> pattern matching and, for example, <code>typeof(string?)</code> results
+in a compilation error.</p>
+<blockquote>
+<p><a href="https://sharplab.io/#v2:C4LgTgrgdgNAJiA1AHwMRQgG0wQwEaYCmABIVPkQLABQNAAgEwCMN9AzMXUwGycPEAxAPZCaAbxrEpfBpOkTq0pZyYBOABTAAngAdCQgGbquABgD8ASgsBuOVIC+Ne0A">See errors</a></p>
+</blockquote>
+<p>In contrast, <code>typeof(int?)</code> returns the <code>Type</code> object representing <code>Nullable&lt;int&gt;</code>.  With the results of <code>object.GetType()</code>, to summarize:</p>
+<pre><code class="language-cs">// 'Console.WriteLine(typeof(string?));'
+// results in a compilation error. 
+
+// System.Nullable`1[System.Int32]
+Console.WriteLine(typeof(int?));
+
+string? s = &quot;a&quot;;
+// System.String
+Console.WriteLine(s.GetType());
+
+int? i = 1;
+// System.Int32
+Console.WriteLine(i.GetType());
+</code></pre>
+<blockquote>
+<p><a href="https://sharplab.io/#v2:C4LgTgrgdgNAJiA1AHwMRQgG0wQwEaYCmABIVPkQLABQNAAgEwCMN9AzMXUwGycPEAxAPZCaAbxrEpfBpOkTq0pcQD0K4gHIuATgAUwAJ4AHQkIBmurgAYA/AEo7Abg1zlq9WEIBnLMC/EASyhiHGIAYyEAWyMA3GAAoWDCMDAhMAA6YldlbKU1TiZ0gDksXAJCAAMmAG0udIBJKGA2BgBdXOkdfWNTCyDgeydWRTcC22J/AF5iACIcGccOqXy6gGVgMCCAcyWCvS90gHFCYAAVHt0HRdoRt36bQOJppmvR9wKGppbdroCjk/OJkuQ1uxAAvjQIdQgA=">Run</a></p>
+</blockquote>
+<p>Again, if you evaluate <code>typeof(T)</code> with specifying <code>R?</code> for the type parameter <code>T</code>, the result is <code>typeof(R)</code>.</p>
+<hr>
+<h2>References</h2>
+<!--
+<style>
+#references + ol > li::marker { content: "[" counter(list-item) "] "; }
+</style>
+-->
+<div id="references"></div>
+<ol>
+<li>
+<p><a name="ref1"></a>
+<a href="https://en.wikipedia.org/wiki/Behavioral_subtyping">Wikipedia, <em>Behavioral subtyping</em></a></p>
+</li>
+<li>
+<p><a name="ref2"></a>
+<a href="https://en.wikipedia.org/wiki/Type_erasure">Wikipedia, <em>Type erasure</em></a></p>
+</li>
+<li>
+<p><a name="ref3"></a>
+<a href="https://devblogs.microsoft.com/dotnet/try-out-nullable-reference-types/">Microsoft Developer Blogs, <em>Try out Nullable Reference Types</em></a></p>
+</li>
+<li>
+<p><a name="ref4"></a>
+<a href="https://en.wikipedia.org/wiki/Safe_navigation_operator">Wikipedia, <em>Safe navigation operator</em></a></p>
+</li>
+<li>
+<p><a name="ref5"></a>
+<a href="https://en.wikipedia.org/wiki/Null_coalescing_operator">Wikipedia, <em>Null coalescing operator</em></a></p>
+</li>
+</ol>
+          </main>
+        </section>
+      </div>
+      <div class="left-container">
+<nav>
+  <div>
+    <a href="/">Projects</a>
+  </div>
+  <div>
+    <span>&#x25BE;</span>
+  </div>
+  <div>
+    <span class="project-name"><a href="index.html">The Insanity Beyond Null</a></span>
+  </div>
+  <ul>
+    <li>
+      <a href="index.html">Top</a>
+    </li>
+    <li>
+      <a href="Part-0.html">0. Null</a>
+    </li>
+    <li>
+      <a href="Part-1.html">1. Null in Java 11</a>
+    </li>
+    <li class="selected">
+      2. Null in C# 8
+    </li>
+    <ul id="toc-placeholder">
+    </ul>
+    <li>
+      <a href="Part-3.html">3. Null in Others</a>
+    </li>
+    <li>
+      <a href="Part-4.html">4. Exercises</a>
+    </li>
+    <li>
+      <a href="Part-5.html">5. Epilog</a>
+    </li>
+  </ul>
+</nav>
+      </div>
+    </div>
+  </body>
+</html>

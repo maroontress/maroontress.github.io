@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9TQ6JWBKEK"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-9TQ6JWBKEK');
+    </script>
+    </script>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Part 1. Null in Java 11 | The Insanity Beyond Null</title>
+    <link rel="canonical" href="https://maroontress.github.io/The-Insanity-Beyond-Null/Part-1.html" />
+    <link rel="stylesheet" type="text/css" href="/css/markdown.css">
+    <link rel="stylesheet" type="text/css" href="/css/next-button.css">
+    <link rel="apple-touch-icon" sizes="120x120" href="/images/logo-v2-120x120.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/logo-v2-180x180.png">
+    <link rel="icon" type="image/x-icon" href="/images/logo-v2.ico">
+    <link rel="mask-icon" href="/images/logo-v2-mask-icon.svg" color="#800000">
+    <script src="/js/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+    <script src="/js/toc.js"></script>
+    <script src="/js/next-button.js"></script>
+  </head>
+  <body>
+    <div class="logo">
+      <b>Maroontress Fast Software</b>
+    </div>
+    <div class="container">
+      <div class="main-container">
+        <section>
+          <main class="content">
+<div class="project-logo">The Insanity Beyond Null</div>
+<div id="toc-level" data-values="H2,H3"></div>
+<h1>1. Null in Java 11</h1>
+<p>In Java, primitive values such as <code>int</code> and <code>boolean</code> are never <code>null</code>.  So we
+only need to consider the values of the reference types.  However, you should
+be careful with boxing/unboxing primitive types to/from their wrapper-classes
+such as <code>Integer</code> and <code>Boolean</code>.</p>
+<h2>Null object pattern</h2>
+<p>Consider an example that when a key is pressed, the action associated
+with the key is performed:</p>
+<pre><code class="language-java">...
+public final class Main {
+
+    private final Map&lt;Character, Runnable&gt; map;
+
+    public Main() {
+        map = new HashMap&lt;&gt;();
+        map.put('h', () -&gt; moveCursorLeft());
+        map.put('j', () -&gt; moveCursorDown());
+        map.put('k', () -&gt; moveCursorUp());
+        map.put('l', () -&gt; moveCursorRight());
+    }
+
+    public void handleKeyInput() {
+        var c = getPressedKey();
+        var action = map.get(c);
+        // Since 'action' can be null, the next statement may throw
+        // a NullPointerException.
+        action.run();
+    }
+
+    /**
+        Returns the character of the pressed key.
+        If no key is pressed, blocks until any key is pressed.
+
+        @return
+            The character of the pressed key.
+    */
+    private char getPressedKey() {
+        ...
+    }
+    ...
+</code></pre>
+<blockquote>
+<p><a href="https://ideone.com/lgH2yN">Run</a></p>
+</blockquote>
+<p>Because the <code>get(Object)</code> method of the <code>Map</code> interface can return <code>null</code>, you
+need to add code to check whether the return value is <code>null</code> or not, that is, a
+null check:</p>
+<pre><code class="language-java">    private void handleKeyInput() {
+        var c = getPressedKey();
+        var action = map.get(c);
+        if (action == null) {
+            // Does nothing with keys not associated with actions.
+            return;
+        }
+        action.run();
+    }
+</code></pre>
+<blockquote>
+<p><a href="https://ideone.com/HnA7eL">Run</a></p>
+</blockquote>
+<p>What does this null check represent?  If you use
+<code>if</code>—<code>else if</code>—<code>else</code> or <code>switch</code> instead of <code>Map</code>, you find the
+process described in <code>else</code> or <code>default</code> corresponds to it (See #20 <em>Prefer
+subtyping to branching</em> ).</p>
+<blockquote>
+<p>Note that <code>if</code> and <code>switch</code> increase <strong>cyclomatic complexity</strong> and make
+testing cumbersome.  Besides, forgetting to write <code>else</code> or <code>default</code> doesn't
+cause errors at both compile and run time immediately, so it's hard to notice
+your mistakes.</p>
+</blockquote>
+<p>Well, we can remove this null check as follows:</p>
+<pre><code class="language-java">    private static final Runnable DO_NOTHING = () -&gt; {};
+
+    ...
+
+    private void handleKeyInput() {
+        var c = getPressedKey();
+        // Of course, you can pass the method reference to an empty method
+        // instead of 'DO_NOTHING'.
+        var action = map.getOrDefault(c, DO_NOTHING);
+        action.run();
+        // In fact, you don't need 'action' and can write:
+        //
+        // map.getOrDefault(c, DO_NOTHING)
+        //     .run();
+    }
+</code></pre>
+<blockquote>
+<p><a href="https://ideone.com/uHjPHl">Run</a></p>
+</blockquote>
+<p>We replaced <code>get(Object)</code> with <code>getOrDefault(Object, V)</code>.  It returns
+<code>DO_NOTHING</code>, which is a <code>Runnable</code> to do nothing, instead of <code>null</code> for
+characters not associated with any operation.  Now all you need is only to
+perform the returned operation, whether or not the character has been
+associated with an operation.  And <code>if</code> for the null check disappeared by
+<strong>shuffling off it</strong> on the library.</p>
+<p>Thus, the technique of using a special object instead of <code>null</code> is called
+<strong>Null object pattern</strong> [<a href="#ref1">1</a>].</p>
+<blockquote>
+<p>The book <em>Refactoring</em> [<a href="#ref2">2</a>] describes it within Introduce Null
+Object.</p>
+</blockquote>
+<p>As usual, this pattern is not a silver bullet.  It often works well when an
+object like <code>Runnable</code> or <code>Consumer</code> to do nothing is useful.  However, it may
+not be appropriate when an object such as <code>Function</code> or <code>Supplier</code> is required.
+Consider the following example:</p>
+<pre><code class="language-java">interface Color {
+
+    /**
+        Returns the Color instance that matches with the specified name.
+
+        @param name
+            ...
+        @return
+            {@code null} if nothing matches with {@code name}.
+            Otherwise, the instance that matches.
+    */
+    static Color findByName(String name) {
+        ...
+    }
+
+    /**
+        Returns the 24-bit integer value representing RGB.
+
+        @return
+            ...
+    */
+    int getRgb();
+}
+</code></pre>
+<blockquote>
+<p><a href="https://ideone.com/931Rpa">Run</a></p>
+</blockquote>
+<p><code>findByName(String)</code>, like <code>get(Object)</code> of <code>Map</code>, is a basic item of search
+operations, which returns <code>null</code> if there is nothing else to look for.  The
+caller's code looks like as follows:</p>
+<pre><code class="language-java">var yellow = Color.findByName(&quot;YELLOW&quot;);
+// Since 'yellow' can be null, the next statement may throw a
+// NullPointerException.
+var rgb = yellow.getRgb();
+</code></pre>
+<p>You can finish with adding a null check, but what does happen when you
+introduce something like a null object, as well as the previous <code>Map</code> example,
+as follows:</p>
+<pre><code class="language-java">interface Color {
+
+    /** Represents the invalid color. */
+    static final Color INVALID = () -&gt; -1;
+
+    /**
+        Returns the Color instance that matches with the specified name.
+
+        @param name
+            ...
+        @return
+            {@link INVALID} if nothing matches with {@code name}.
+            Otherwise, the instance that matches.
+    */
+    static Color findByName(String name) {
+        ...
+    }
+    ...
+</code></pre>
+<blockquote>
+<p><a href="https://ideone.com/yA1wwh">Run</a></p>
+</blockquote>
+<p>Nobody knows the RGB value of the invalid color, so let's make <code>INVALID</code> return
+−1 for now.  That value is also a basic item.  The caller's code would
+then be:</p>
+<pre><code class="language-java">var yellow = Color.findByName(&quot;YELLOW&quot;);
+var rgb = yellow.getRgb();
+// Needs to check whether or not 'rgb' is -1 after all.
+</code></pre>
+<p>The subsequent code can be executed without checking whether or not <code>rgb</code> is
+−1.  In some circumstances, such code is more dangerous.  It is often
+happier to throw an exception if the necessary null check is missing to prevent
+the runtime from executing any further code.</p>
+<p>Yup, it is important whether or not we do necessary checks, not whether or not
+it is <code>null</code>.  However, those checks themselves are the reason why the pseudo
+null object pattern does not work.  Imagine the inside of the
+<code>findByName(String)</code> method, in which the following intrinsic check should have
+already been implemented:</p>
+<pre><code class="language-java">interface Color {
+    ...
+    static Color findByName(String name) {
+        ...
+        // The next 'if' statement is the intrinsic check.
+        if (/* The Color object associated with 'name' is not found. */) {
+            // Path A
+            return INVALID;
+        }
+        // Path B
+        return /* The Color object found successfully. */;
+    }
+    ...
+</code></pre>
+<p>And the check of the caller's code should be as follows:</p>
+<pre><code class="language-java">var yellow = Color.findByName(&quot;YELLOW&quot;);
+var rgb = yellow.getRgb();
+if (rgb == -1) {
+    // Executes the Process A.
+} else {
+    // Executes the Process B.
+}
+</code></pre>
+<p>That is, if the path A/B is passed at the intrinsic check, the caller
+deterministically executes the Process A/B.  Now you may have noticed that by
+passing both <em>Process A</em> and <em>Process B</em> to <code>findByName(String)</code> additionally,
+the caller no longer needs the return value and to check it.  In short, you can
+change a way to something like this:</p>
+<pre><code class="language-java">interface Color {
+    ...
+    static void findByName(String name, /* Process A */, /* Process B */) {
+        ...
+        if (/* The Color object associated with 'name' is not found. */) {
+            // Executes the Process A.
+            return;
+        }
+        // Executes the Process B, with the Color object found successfully.
+    }
+    ...
+}
+
+...
+
+// The caller does not need the return value and to check it.
+Color.findByName(&quot;YELLOW&quot;, /* Process A */, /* Process B */);
+</code></pre>
+<h2><code>Optional</code> class</h2>
+<p>This kind of operation, that is, the operation that <em>gets information on the
+existence of a value and gets the value if it exists</em> can be described as
+follows:</p>
+<ul>
+<li>Use the instance as the return value, which holds a value of the type <code>T</code> and
+another <code>boolean</code> value indicating the existence of the value.</li>
+<li>Add the parameters of <code>Consumer&lt;T&gt;</code> to receive a value and of <code>Runnable</code> to
+know of no value, instead of the return value.</li>
+</ul>
+<p>In some languages, for example, the former can be implemented with tuples.  The
+latter is just to get results with the callback.  Suppose you have a terrible
+class like <code>Pair&lt;K, V&gt;</code> available, so the previous <code>findByName</code> method could be
+rewritten as follows:</p>
+<pre><code class="language-java">interface Color {
+
+    static Pair&lt;boolean, Color&gt; findByName(String name) {
+        ...
+    }
+
+    static void findByName(String name,
+                           Consumer&lt;Color&gt; found,
+                           Runnable notFound) {
+        ...
+    }
+    ...
+</code></pre>
+<p>But if you keep up this way to write the API, your code will soon be full of
+boilerplates.</p>
+<p>Fortunately, Java has <strong><code>Optional</code> class</strong><sup>†1</sup> that
+encapsulates these operations.  Let's rewrite the previous example with the
+<code>Optional</code> class:</p>
+<blockquote>
+<p>†1 <code>java.util.Optional</code> has been added since Java 8.</p>
+</blockquote>
+<pre><code class="language-java"> interface Color {
+
+    /**
+        Returns the Color instance that matches with the specified name.
+
+        @param name
+            ...
+        @return
+            An {@link Optional&lt;T&gt; Optional} object containing the Color
+            instance that matches with {@code name}, or an empty Optional
+            object (if nothing matches).
+    */
+    static Optional&lt;Color&gt; findByName(String name) {
+        ...
+    }
+}
+</code></pre>
+<blockquote>
+<p><a href="https://ideone.com/c99XyH">Run</a></p>
+</blockquote>
+<p>The caller's code would be as follows:</p>
+<pre><code class="language-java">var yellow = Color.findByName(&quot;YELLOW&quot;);
+yellow.ifPresent(c -&gt; {
+    var rgb = c.getRgb();
+    System.out.println(&quot;yellow: rgb=&quot; + rgb);
+});
+
+// Alternatively, we may write as follows, but...
+var blue = Color.findByName(&quot;BLUE&quot;);
+if (blue.isPresent()) {
+    var rgb = blue.get().getRgb();
+    System.out.println(&quot;blue: rgb=&quot; + rgb);
+}
+</code></pre>
+<p>If the <code>Optional</code> object has a value, the <code>ifPresent(Consumer)</code> method invokes
+the argument of <code>Consumer</code> with the value as a parameter.  If it doesn't, it
+does nothing.  It works by shuffling off the presence checks on the library.</p>
+<p>On the other hand, the combination of <code>isPresent()</code> and <code>get()</code> is the worst,
+and <code>get()</code> will just throw an exception if you forget to check with
+<code>isPresent()</code> after all.  Nothing changes.</p>
+<blockquote>
+<p><code>Optional&lt;T&gt;</code> also has methods to get the value such as <code>orElse(T)</code> and
+<code>orElseGet(Supplier)</code>, specifying a default value and a lambda expression
+that returns the default value, respectively.</p>
+</blockquote>
+<p>The type like this <code>Optional</code> class is called <strong>Option
+type</strong><sup>†2</sup> [3].</p>
+<blockquote>
+<p>†2 It is sometimes called <strong>Maybe type</strong>.</p>
+</blockquote>
+<p>Although Java does not have, there is a <strong>Nullable type</strong> in some other
+languages.  This is slightly different from the option type.  The option type
+can be nested like <code>Optional&lt;Optional&lt;T&gt;&gt;</code>, but the nullable type cannot.  The
+nullable type is covered in the next C# part.</p>
+<blockquote>
+<p>Let's digress a little bit from the main subject.  The easy tasks have got
+easier to write, such as <em>if YELLOW is found...</em>, <em>if BLUE is not found...</em>,
+and so on.  But the real tasks are harder.  Could you smell something not
+easy if it has changed into <em>if both YELLOW and BLUE are found...</em>?  You
+might think it can be as follows:</p>
+<pre><code class="language-java">var yellow = Color.findByName(&quot;YELLOW&quot;);
+yellow.ifPresent(c1 -&gt; {
+    var blue = Color.findByName(&quot;BLUE&quot;);
+    blue.ifPresent(c2 -&gt; {
+        // Process with 'c1' and 'c2'
+        ...
+    });
+});
+</code></pre>
+<p>That may be true.  But what do you do if there are <em>n</em> colors to be found
+instead of two?  There is a hint later.  Think about it.</p>
+</blockquote>
+<h2>Collection and null</h2>
+<p>Is the <code>Optional</code> class just an encapsulation of a null check?  Think about the
+essence of it.</p>
+<p>Here's an example of using the stream API:</p>
+<pre><code class="language-java">var firstFavorite = List.of(&quot;foo&quot;, &quot;bar&quot;, &quot;baz&quot;)
+    .stream()
+    .filter(matchesFavorite)
+    .findFirst();
+firstFavorite.ifPresent(s -&gt; { ... });
+
+// As a result, it is equivalent to the following code:
+List.of(&quot;foo&quot;, &quot;bar&quot;, &quot;baz&quot;)
+    .stream()
+    .filter(matchesFavorite)
+    .findFirst()
+    .ifPresent(s -&gt; { ... });
+</code></pre>
+<blockquote>
+<p><a href="https://ideone.com/NzUvcK">Run</a></p>
+</blockquote>
+<p>where <code>matchesFavorite</code> should be an appropriate <code>Predicate&lt;String&gt;</code>.  Since
+<code>findFirst()</code> of the <code>Stream</code> interface, which has been well thought out,
+returns an instance of <code>Optional&lt;String&gt;</code> in this case, checking whether it has
+the value or not must be required.  If you dare to do the same thing without
+using <code>findFirst()</code>, you'll get:</p>
+<pre><code class="language-java">var favoriteList = List.of(&quot;foo&quot;, &quot;bar&quot;, &quot;baz&quot;)
+    .stream()
+    .filter(matchesFavorite)
+    .limit(1)
+    .collect(Collectors.toList());
+</code></pre>
+<p>The difference from before is that the return type has changed from
+<code>Optional&lt;T&gt;</code> to <code>List&lt;T&gt;</code>.  Even though it's a list, the number of elements in
+the list is 0 or 1, or in cooler words, 1 at most.  Therefore, this <code>List&lt;T&gt;</code>
+is practically the same as <code>Optional&lt;T&gt;</code>, so it can continue as follows:</p>
+<pre><code class="language-java">favoriteList.forEach(s -&gt; { ... });
+
+// Or
+for (var s : favoriteList) {
+    // This loop only runs once at most.
+    ...
+}
+
+// Or again, it could be as follows, but...
+if (favoriteList.size() != 0) {
+    var s = favoriteList.get(0);
+    ...
+}
+</code></pre>
+<p>Thus, a version that <strong>dares not to use <code>findFirst()</code></strong> can be written as
+follows:</p>
+<pre><code class="language-java">List.of(&quot;foo&quot;, &quot;bar&quot;, &quot;baz&quot;)
+    .stream()
+    .filter(matchesFavorite)
+    .limit(1)
+    .forEach(s -&gt; { ... });
+</code></pre>
+<p>Of course, if you write such code in Java that has already had <code>Optional&lt;T&gt;</code>,
+it would be fixed in the code review after all.  If you see that <code>Optional&lt;T&gt;</code>
+<strong>can be thought of as a special <code>List&lt;T&gt;</code> whose length is at most 1</strong>, you
+should forget such code.</p>
+<blockquote>
+<p>Even if you can use <code>List</code> instead of <code>Optional</code>, wrapping a value in
+<code>ArrayList</code> gives us a lot of overhead.  If you have the implementation class
+of <code>List</code> with a constraint of at most one element, you can do it as lightly
+as <code>Optional</code>.  But even if you don't implement it yourself, Java has already
+had <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Collections.html#singletonList(T)"><code>Collections.singletonList(T)</code></a>
+since long before <code>Optional</code> debuted, which can serve that purpose.  You can
+use it and <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Collections.html#emptyList()"><code>Collections.emptyList()</code></a> to
+achieve something like <code>Optional</code>.
+(<a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Collections.html#singleton(T)"><code>Collections.singleton(T)</code></a> and
+<a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Collections.html#emptySet()"><code>Collections.emptySet()</code></a>) are also fine,
+but I've used <code>List</code> here for the explanation because getting an element from
+a <code>Set</code> is tedious.)</p>
+</blockquote>
+<p>Now, let's put these together with “Item 43: Return empty arrays or
+collections, not nulls” in the book <em>Effective Java</em> [<a href="#ref4">4</a>], so
+it shows the following table:</p>
+<div class="horizontal-scroll">
+<table>
+<thead>
+<tr>
+<th>Number of instances</th>
+<th>Types</th>
+<th><code>null</code>/Alternatives</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>At most 1</td>
+<td><code>T</code></td>
+<td><code>null</code></td>
+</tr>
+<tr>
+<td>At most 1</td>
+<td><code>Optional&lt;T&gt;</code></td>
+<td><a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Optional.html#empty()"><code>Optional&lt;T&gt;.empty()</code></a></td>
+</tr>
+<tr>
+<td>0 or more</td>
+<td><code>T[]</code></td>
+<td><code>public static final T[] EMPTY = {};</code></td>
+</tr>
+<tr>
+<td>0 or more</td>
+<td><code>List&lt;T&gt;</code></td>
+<td><a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Collections.html#emptyList()"><code>Collections.emptyList()</code></a></td>
+</tr>
+<tr>
+<td>0 or more</td>
+<td><code>Stream&lt;T&gt;</code></td>
+<td><a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/stream/Stream.html#empty()"><code>Stream&lt;T&gt;.empty()</code></a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Whether a reference is <code>null</code> is a matter at the same level as whether the
+array has zero elements.  In the same tone as “Using <code>int</code> is a waste of
+memory, so use <code>short</code> instead,” we just use a
+reference<sup>†3</sup>, for an array is too heavy if the number of its
+elements is at most one.  Some people, who try to eradicate <code>null</code>, scream:</p>
+<blockquote>
+<p>“<em>It's not my fault.  It's all <code>null</code>'s fault.  It's no good because we
+don't use null-safe languages.</em>”</p>
+</blockquote>
+<p>Should they achieve their goal, they might now try to eliminate fixed-length
+arrays that require size checks.</p>
+<blockquote>
+<p>†3 To explain something in detail, arrays are more expressive.  With
+arrays, the information about the presence or absence of a value (i.e.,
+whether the length of the array is 1 or 0) is independent of the value
+itself.  So the element of the array itself can be <code>null</code> to represent that
+<em>there is a value and the value is <code>null</code></em>.  On the other hand, if you
+represent the existence of a value with whether it is a null reference or
+not, it is impossible to set the value itself to <code>null</code>.</p>
+</blockquote>
+<p>Indirection of <code>NULL</code> pointers (or dereferencing <code>NULL</code> pointers) should not be
+allowed in C and C++ because it is <strong>undefined behavior</strong> (See #28 <em>Undefined
+Behavior</em> ).  Java defines that it throws a <code>NullPointerException</code> when
+dereferencing <code>null</code>, so <code>null</code> in Java is safer than <code>NULL</code> in C or C++.  It
+doesn't make sense to deal with things with such differences in the same way.</p>
+<h2>Problems with <code>Optional</code></h2>
+<p>Does <code>Optional</code> solve everything for at most one?  Of course not.  As well as
+returning an empty array instead of <code>null</code> does, it has the following problems:</p>
+<ol>
+<li><code>Optional</code> is a reference type, not a primitive type</li>
+<li>It is possible to invoke <code>get()</code> without checking with <code>isPresent()</code></li>
+<li>There are still a lot of old APIs in the standard library that return or
+accept <code>null</code></li>
+<li>Using <code>Optional</code> for everything that might be <code>null</code> sacrifices runtime
+performance</li>
+</ol>
+<p>The first problem comes from the compiler not treating <code>Optional</code> specially.
+It may happen that it seemed to be an <code>Optional</code> object but actually, it was
+<code>null</code>.  For example, the following code is surreal but not useful:</p>
+<pre><code class="language-java">Optional&lt;String&gt; maybeString = null;
+</code></pre>
+<p>or:</p>
+<pre><code class="language-java">public Optional&lt;String&gt; getMaybeString() {
+    return null;
+}
+</code></pre>
+<p>Of course, a method with a return type of <code>Optional&lt;T&gt;</code> can return <code>null</code>, and
+you can pass <code>null</code> to a method that accepts parameters of type <code>Optional&lt;T&gt;</code>.
+However, even if the current Java boxed <code>null</code> with <code>Optional&lt;T&gt;.empty()</code>,
+there would be a lot of trouble.</p>
+<p>The second problem is also a compiler problem.  It is possible to delay the
+discovery of the bugs that could be found at compile time with static analysis
+until throwing a <code>NoSuchElementException</code> at run time.</p>
+<p>The third problem is how to deal with <em>legacy APIs</em>.  You should properly
+integrate the old APIs with <code>null</code> and the new APIs with <code>Optional</code>.</p>
+<p>The last problem, although that's the usual, is that there are a lot of people
+who don't allow sacrificing performance at run time.</p>
+<h2>Compiler's static analysis</h2>
+<p>Combining the compiler's static analysis (data-flow analysis) with annotating
+the source code with metadata allows us to know at compile time whether the
+null check of the value of the reference type is appropriate.  Although not
+currently included in the JDK, there are static analysis tools as follows:</p>
+<ul>
+<li><a href="https://checkerframework.org/">Checker Framework</a>
+<ul>
+<li><a href="https://checkerframework.org/manual/#nullness-checker">Chapter 3. Nullness Checker</a></li>
+</ul>
+</li>
+<li>FindBugs
+<ul>
+<li><a href="http://findbugs.sourceforge.net/manual/annotations.html">Chapter 10. Annotations</a></li>
+</ul>
+</li>
+</ul>
+<p>The following IDEs also provide a similar mechanism:</p>
+<ul>
+<li>IntelliJ IDEA
+<ul>
+<li><a href="https://www.jetbrains.com/help/idea/nullable-and-notnull-annotations.html">@Nullable and @NotNull</a></li>
+</ul>
+</li>
+<li>Eclipse
+<ul>
+<li><a href="https://www.ibm.com/support/knowledgecenter/en/SSRTLW_9.5.0/org.eclipse.jdt.doc.user/tasks/task-using_null_annotations.htm">Using null annotations</a></li>
+<li><a href="https://www.ibm.com/support/knowledgecenter/en/SSRTLW_9.5.0/org.eclipse.jdt.doc.user/tasks/task-using_null_type_annotations.htm">Using null type annotations</a></li>
+</ul>
+</li>
+<li>Android Studio
+<ul>
+<li><a href="https://developer.android.com/studio/write/annotations.html">Improve code inspection with annotations</a></li>
+<li><a href="https://developer.android.com/reference/android/support/annotation/NonNull.html">NonNull</a></li>
+<li><a href="https://developer.android.com/reference/android/support/annotation/Nullable.html">Nullable</a></li>
+</ul>
+</li>
+</ul>
+<p>However, the classes used in annotations have not yet been
+standardized<sup>†4</sup>.  Therefore, it should be noted that each
+implementation defines its similar annotation classes (e.g., <code>@NonNull</code>,
+<code>@NotNull</code>, <code>@Nonnull</code>, and so on), which are not compatible with each other.</p>
+<blockquote>
+<p>†4 JSR-305 and JSR-308 try to standardize them.  See below for why
+there are too many annotation classes competing with one another:</p>
+<p>https://stackoverflow.com/questions/4963300/which-notnull-java-annotation-should-i-use</p>
+</blockquote>
+<p>Using an implementation of IntelliJ IDEA as an example, <code>@NotNull</code> and
+<code>@Nullable</code> annotate fields, parameters, return values, and so on as follows:</p>
+<pre><code class="language-java">public final class ContactInfo {
+
+    private @NotNull String name;
+    private @NotNull List&lt;@NotNull String&gt; mailList;
+    private @Nullable Integer age;
+
+    public ContactInfo(@NotNull String name,
+            @NotNull List&lt;@NotNull String&gt; mailList,
+            @Nullable Integer age) {
+        this.name = name;
+        this.mailList = Collections.unmodifiableList(mailList);
+        this.age = age;
+    }
+    ...
+    public @Nullable String getPrimaryMail() {
+        var list = mailList;
+        return list.size() == 0 ? null : list.get(0);
+    }
+    ...
+    public @Nullable Integer getAge() {
+        return age;
+    }
+}
+</code></pre>
+<p>Then you get the following code ready to use this <code>ContactInfo</code> class:</p>
+<pre><code class="language-java">public final class Main {
+
+    private static void sendMail(@NotNull String mailAddress,
+                                 @NotNull String name) {
+        System.out.println(mailAddress + &quot; &quot; + name);
+    }
+
+    public static void main(String[] args) {
+        var listContainingNull = new ArrayList&lt;String&gt;();
+        listContainingNull.add(null);
+        var infoList = List.of(
+                new ContactInfo(&quot;Jack&quot;, listContainingNull, null),
+                new ContactInfo(&quot;Jack&quot;, List.of(&quot;jack@example.com&quot;), null),
+                new ContactInfo(&quot;Kim&quot;, Collections.emptyList(), 18));
+        infoList.stream()
+                .filter(i -&gt; i.getAge() &lt; 20)
+                .forEach(i -&gt; sendMail(i.getPrimaryMail(), i.getName()));
+    }
+}
+</code></pre>
+<p>With IntelliJ IDEA, you click <em>Analyze</em> ➜ <em>Inspect Code...</em>, and then get the
+following result:</p>
+<p><a href="images/InspectionResultsExample1.png"><img style="width: 100%" src="images/InspectionResultsExample1.png"/></a></p>
+<p>Certainly, the indication is correct, because <code>getAge()</code> can return <code>null</code>.
+That is, a null check is necessary, but it is unboxing without a null check.
+Similarly, the following indication:</p>
+<p><a href="images/InspectionResultsExample2.png"><img style="width: 100%" src="images/InspectionResultsExample2.png"/></a></p>
+<p>This is also true.  The first parameter of <code>sendMail</code> which should not be
+<code>null</code> is specified with the return value of <code>i.getPrimaryMail()</code> which can be
+<code>null</code>.</p>
+<p>However, passing <code>listContainingNull</code> to the second parameter of the
+constructor of <code>ContactInfo</code> is ignored.  Annotations to type
+parameters like <code>List&lt;@NotNull String&gt;</code> don't seem to work.</p>
+<p>However, once these annotations are standardized and
+practical<sup>†5</sup>, the needs for strange boilerplates (which are
+ceremonies to check whether the value of the argument is <code>null</code> at the
+beginning of the <code>public</code> method) and
+<a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Objects.html#requireNonNull(T)">the APIs for them</a> are eliminated.</p>
+<blockquote>
+<p>†5 Static analysis cannot be perfect.
+<a href="https://en.wikipediaa.org/wiki/False_positives_and_false_negatives"><strong>False positives</strong> and <strong>false negatives</strong></a>
+just will not go away.  Also, metadata is fed by humans, so if an API is
+incorrectly annotated, then a catastrophe follows.</p>
+</blockquote>
+<h2>Quarantine policy</h2>
+<p>Unfortunately, the annotations related to <code>null</code> are just a proof of concept
+(PoC) until all the necessary APIs in the standard library have metadata fed
+and the compiler can issue warnings.  In Java and other languages without null
+safety, a practical way to prevent <code>null</code> from the <em>landing</em> is to take the
+following <em>quarantine measures</em> against <code>null</code>:</p>
+<ul>
+<li>Do not to use <code>null</code> as much as possible</li>
+<li>If using the APIs that may return/accept <code>null</code>, check whether it is <code>null</code>
+as soon as possible — Do not defer a <code>null</code> check</li>
+<li>If it is <code>null</code>, quickly <em>dispose of</em> it, for example, by converting it to
+another suitable expression — Do not defer disposition of <code>null</code></li>
+</ul>
+<p>Deferring the disposition of <code>null</code> is, for example, as follows:</p>
+<ul>
+<li>Shuffle off <code>null</code> on other <em>innocent</em> objects (But, of course, passing
+<code>null</code> to the classes for that purpose like the <code>ofNullable(T)</code> method of
+<code>Optional&lt;T&gt;</code> is good)</li>
+<li>Propagate <code>null</code> to another type<sup>†6</sup></li>
+<li>Convert <code>null</code> to an <em>irrelevant</em> null object</li>
+<li>Catch <code>NullPointerException</code><sup>†7</sup></li>
+</ul>
+<blockquote>
+<p>†6 An example of propagation to another type:
+<code>(s == null) ? null : s.getValue()</code></p>
+</blockquote>
+<blockquote>
+<p>†7 Without limited to <code>NullPointerException</code>, we shouldn't catch
+<code>RuntimeException</code> and its derived exceptions, but...</p>
+</blockquote>
+<p>In Java, in particular, you can wrap immediately a reference that might be
+<code>null</code> with <code>Optional.ofNullable(T)</code>, and then check and dispose of it.  Don't
+leave it wrapped.</p>
+<h2>Fountains of <code>null</code></h2>
+<p>If you can take quarantine measures, all you need is to avoid creating <code>null</code>
+as much as possible.  A typical source of <code>null</code> in Java may be uninitialized
+fields, array creation, and uninitialized local variables as follows:</p>
+<pre><code class="language-java">// Uninitialized fields
+private String name;
+
+public void foo() {
+
+    // Array creation (all the elements are null)
+    var array = new Object[SIZE];
+
+    // Uninitialized local variables
+    String s;
+    ...
+}
+</code></pre>
+<p>Since not all classes can be immutable<sup>†8</sup>, there are of course
+fields that change their values according to the state of the instance.
+However, there is no necessity for such fields to be <code>null</code>.  For example, if
+<code>null</code> means that its value is not assigned, instead of using <code>null</code>, you can
+change the type of the field from <code>T</code> to <code>Optional&lt;T&gt;</code> and assign
+<code>Optional&lt;T&gt;.empty()</code> to represent it.</p>
+<blockquote>
+<p>†8 Simple examples are two instances of cross-referencing, a list of
+circular references, and so on.</p>
+</blockquote>
+<p>If a particular field may be <code>null</code> in any state of the instance, then all
+accesses to that field require a null check, so that wrapping it with
+<code>Optional&lt;T&gt;</code> makes sense.  Or, in some cases, the state of the instance
+determines whether the field is <code>null</code>.  For example, if you are in a situation
+where certain fields are guaranteed not to be <code>null</code> while calling a private
+instance method, to reconsider your design by splitting classes, applying state
+patterns, etc. may improve your well-being.</p>
+<p>You should also create arrays with the terminal operations of the stream API as
+much as possible, allowing direct array creation only if you
+can't<sup>†9</sup>.</p>
+<blockquote>
+<p>†9 What immediately comes to mind is the implementation of a hash
+table, etc.</p>
+</blockquote>
+<p>Finally, local variables.  You should assign the initial values to local
+variables always when they are declared.  New hires, and somebodies with as
+much skill as they have, often seem to be smug, with writing the following
+code:</p>
+<pre><code class="language-java">String s;
+if (state == State.A) {
+    s = ...
+} else {
+    s = ...
+}
+</code></pre>
+<p>In some cases, it can be written as a ternary operator (or <code>switch</code> expression
+in Java 12).  Otherwise, you can separate it into another method that returns a
+value such as <code>var s = method();</code>.  Or, if the separation causes a lot of
+parameters, you can define <code>Supplier</code> or <code>Function</code> (i.e., lambda expressions)
+and assign the return value of the expression.  (You can use local functions
+instead of lambda expressions in C#.)</p>
+<blockquote>
+<p>There are many similar cases of uninitialized local variables.  For example,
+with <code>try</code>—<code>catch</code>, you must avoid declaring a local variable without
+initialization just before <code>try</code> and then assigning a value to the variable
+in a <code>try</code> block.</p>
+</blockquote>
+<h2>References</h2>
+<!--
+<style>
+#references + ol > li::marker { content: "[" counter(list-item) "] "; }
+</style>
+-->
+<div id="references"></div>
+<ol>
+<li>
+<p><a name="ref1"></a>
+<a href="https://en.wikipedia.org/wiki/Null_object_pattern">Wikipedia, <em>Null object pattern</em></a></p>
+</li>
+<li>
+<p><a name="ref2"></a>
+<a href="https://books.google.com/books?id=UTgFCAAAQBAJ">Fowler, Martin, et al. <em>Refactoring: improving the design of
+existing code.</em> Addison-Wesley Professional, 1999.</a></p>
+</li>
+<li>
+<p><a name="ref3"></a>
+<a href="https://en.wikipedia.org/wiki/Option_type">Wikipedia, <em>Option type</em></a></p>
+</li>
+<li>
+<p><a name="ref4"></a>
+<a href="https://books.google.com/books?id=ka2VUBqHiWkC">Joshua Bloch. <em>Effective Java, second edition.</em>
+Addison-Wesley Professional, 2008.</a></p>
+</li>
+</ol>
+          </main>
+        </section>
+      </div>
+      <div class="left-container">
+<nav>
+  <div>
+    <a href="/">Projects</a>
+  </div>
+  <div>
+    <span>&#x25BE;</span>
+  </div>
+  <div>
+    <span class="project-name"><a href="index.html">The Insanity Beyond Null</a></span>
+  </div>
+  <ul>
+    <li>
+      <a href="index.html">Top</a>
+    </li>
+    <li>
+      <a href="Part-0.html">0. Null</a>
+    </li>
+    <li class="selected">
+      1. Null in Java 11
+    </li>
+    <ul id="toc-placeholder">
+    </ul>
+    <li>
+      <a href="Part-2.html">2. Null in C# 8</a>
+    </li>
+    <li>
+      <a href="Part-3.html">3. Null in Others</a>
+    </li>
+    <li>
+      <a href="Part-4.html">4. Exercises</a>
+    </li>
+    <li>
+      <a href="Part-5.html">5. Epilog</a>
+    </li>
+  </ul>
+</nav>
+      </div>
+    </div>
+  </body>
+</html>

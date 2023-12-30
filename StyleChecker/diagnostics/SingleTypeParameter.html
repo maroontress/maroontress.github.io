@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9TQ6JWBKEK"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-9TQ6JWBKEK');
+    </script>
+    </script>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>SingleTypeParameter | StyleChecker | List of diagnostics</title>
+    <link rel="canonical" href="https://maroontress.github.io/StyleChecker/diagnostics/SingleTypeParameter.html" />
+    <link rel="stylesheet" type="text/css" href="/css/markdown.css">
+    <link rel="apple-touch-icon" sizes="120x120" href="/images/logo-v2-120x120.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/logo-v2-180x180.png">
+    <link rel="icon" type="image/x-icon" href="/images/logo-v2.ico">
+    <link rel="mask-icon" href="/images/logo-v2-mask-icon.svg" color="#800000">
+    <script src="/js/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+    <script src="/js/toc.js"></script>
+  </head>
+  <body>
+    <div class="logo">
+      <b>Maroontress Fast Software</b>
+    </div>
+    <div class="container">
+      <div class="main-container">
+        <section>
+          <main class="content">
+<div class="project-logo">StyleChecker</div>
+<div id="toc-level" data-values="H2,H3"></div>
+<h1>SingleTypeParameter</h1>
+<div class="horizontal-scroll">
+<p><img src="https://maroontress.github.io/StyleChecker/images/SingleTypeParameter.png" alt="SingleTypeParameter"></p>
+</div>
+<h2>Summary</h2>
+<p>Use <code>T</code> as a type parameter name if the type parameter is single.</p>
+<h2>Default severity</h2>
+<p>Warning</p>
+<h2>Description</h2>
+<p><a href="https://docs.microsoft.com/en-us/dotnet/standard/design-guidelines/names-of-classes-structs-and-interfaces">Names of Classes, Structs, and Interfaces</a>
+[<a href="#ref1">1</a>] is quoted as follows:</p>
+<blockquote>
+<h3>Names of Generic Type Parameters</h3>
+<ul>
+<li>✓ Consider using <code>T</code> as the type parameter name for types with one
+single-letter type parameter.</li>
+</ul>
+</blockquote>
+<h2>Code fix</h2>
+<p>The code fix provides an option replacing the type parameter name with <code>T</code>.</p>
+<h2>Example</h2>
+<h3>Diagnostic</h3>
+<pre><code class="language-csharp">public sealed class Code&lt;Type&gt;
+{
+    public Code(Type instance)
+    {
+        Instance = instance;
+    }
+
+    public Type Instance { get; }
+}
+</code></pre>
+<h3>Code fix</h3>
+<pre><code class="language-csharp">public sealed class Code&lt;T&gt;
+{
+    public Code(T instance)
+    {
+        Instance = instance;
+    }
+
+    public T Instance { get; }
+}
+</code></pre>
+<h2>References</h2>
+<p><a id="ref1"></a>
+[1] <a href="https://docs.microsoft.com/en-us/dotnet/standard/design-guidelines/">Microsoft, <em>.NET Framework Design Guidelines</em></a></p>
+          </main>
+        </section>
+      </div>
+      <div class="left-container">
+<nav>
+  <div>
+    <a href="/">Projects</a>
+  </div>
+  <div>
+    <span>&#x25BE;</span>
+  </div>
+  <div>
+    <span class="project-name"><a href="../index.html">StyleChecker</a></span>
+  </div>
+  <div>
+    <span>&#x25BE;</span>
+  </div>
+  <div>
+    <span class="project-name"><a href="../index.html#List%20of%20diagnostics">List of diagnostics</a></span>
+  </div>
+  <ul>
+    <li>
+      <a href="AssignmentToParameter.html">Assignment<wbr>To<wbr>Parameter</a>
+    </li>
+    <li>
+      <a href="ByteOrderMark.html">Byte<wbr>Order<wbr>Mark</a>
+    </li>
+    <li>
+      <a href="DiscardingReturnValue.html">Discarding<wbr>Return<wbr>Value</a>
+    </li>
+    <li>
+      <a href="EmptyArrayCreation.html">Empty<wbr>Array<wbr>Creation</a>
+    </li>
+    <li>
+      <a href="EqualsNull.html">Equals<wbr>Null</a>
+    </li>
+    <li>
+      <a href="IneffectiveReadByte.html">Ineffective<wbr>Read<wbr>Byte</a>
+    </li>
+    <li>
+      <a href="InvalidConfig.html">Invalid<wbr>Config</a>
+    </li>
+    <li>
+      <a href="IsNull.html">Is<wbr>Null</a>
+    </li>
+    <li>
+      <a href="LongLine.html">Long<wbr>Line</a>
+    </li>
+    <li>
+      <a href="NoDocumentation.html">No<wbr>Documentation</a>
+    </li>
+    <li>
+      <a href="NoSingleSpaceAfterTripleSlash.html">No<wbr>Single<wbr>Space<wbr>After<wbr>Triple<wbr>Slash</a>
+    </li>
+    <li>
+      <a href="NoSpaceAfterSemicolon.html">No<wbr>Space<wbr>After<wbr>Semicolon</a>
+    </li>
+    <li>
+      <a href="NotDesignedForExtension.html">Not<wbr>Designed<wbr>For<wbr>Extension</a>
+    </li>
+    <li>
+      <a href="NotOneShotInitialization.html">Not<wbr>One<wbr>Shot<wbr>Initialization</a>
+    </li>
+    <li>
+      <a href="PostIncrement.html">Post<wbr>Increment</a>
+    </li>
+    <li>
+      <a href="RedundantTypedArrayCreation.html">Redundant<wbr>Typed<wbr>Array<wbr>Creation</a>
+    </li>
+    <li class="selected">
+      Single<wbr>Type<wbr>Parameter
+    </li>
+    <ul id="toc-placeholder">
+    </ul>
+    <li>
+      <a href="SpaceBeforeSemicolon.html">Space<wbr>Before<wbr>Semicolon</a>
+    </li>
+    <li>
+      <a href="StaticGenericClass.html">Static<wbr>Generic<wbr>Class</a>
+    </li>
+    <li>
+      <a href="StinkyBooleanExpression.html">Stinky<wbr>Boolean<wbr>Expression</a>
+    </li>
+    <li>
+      <a href="StrayText.html">Stray<wbr>Text</a>
+    </li>
+    <li>
+      <a href="ThoughtlessName.html">Thoughtless<wbr>Name</a>
+    </li>
+    <li>
+      <a href="TypeClassParameter.html">Type<wbr>Class<wbr>Parameter</a>
+    </li>
+    <li>
+      <a href="Underscore.html">Underscore</a>
+    </li>
+    <li>
+      <a href="UninitializedLocalVariable.html">Uninitialized<wbr>Local<wbr>Variable</a>
+    </li>
+    <li>
+      <a href="UnnecessaryUsing.html">Unnecessary<wbr>Using</a>
+    </li>
+    <li>
+      <a href="UnusedUsing.html">Unused<wbr>Using</a>
+    </li>
+    <li>
+      <a href="UnusedVariable.html">Unused<wbr>Variable</a>
+    </li>
+  </ul>
+</nav>
+      </div>
+    </div>
+  </body>
+</html>

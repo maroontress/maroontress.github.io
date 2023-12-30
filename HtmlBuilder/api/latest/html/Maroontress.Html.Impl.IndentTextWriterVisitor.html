@@ -1,0 +1,395 @@
+<!doctype html>
+<html>
+  <head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9TQ6JWBKEK">
+    </script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+function gtag() { dataLayer.push(arguments); }
+gtag('js', new Date());
+gtag('config', 'G-9TQ6JWBKEK');
+    </script>
+    <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IndentTextWriterVisitor Class | API Reference | HtmlBuilder Project</title>
+    <link rel="stylesheet" href="bulldoc.css">
+    <script src="highlight.pack.js">
+    </script>
+    <script>
+      hljs.initHighlightingOnLoad();
+    </script>
+  </head>
+  <body>
+    <div class="mainContainer uhf-container has-top-padding has-default-focus" data-bi-name="body">
+      <section>
+        <main class="content">
+          <h1><span class="lang-csharp">Indent<wbr>Text<wbr>Writer<wbr>Visitor</span> Class</h1>
+          <div class="metadata">
+            <dl class="attributeList">
+              <dt>
+                Namespace:
+                <dd>
+                  <span class="lang-csharp"><a class="xref" href="Maroontress.Html.Impl.html" data-linktype="relative-path">Maroontress.Html.Impl</a></span>
+                </dd>
+              </dt>
+            </dl>
+            <dl class="attributeList">
+              <dt>
+                Assembly:
+                <dd>
+                  <span class="lang-csharp">Html<wbr>Builder.dll</span>
+                </dd>
+              </dt>
+            </dl>
+          </div>
+          <div class="summaryHolder">
+            <div class="summary clearFix">
+              <p>The visitor implementaion to write the HTML document into text with
+    indentation.</p>
+            </div>
+          </div>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-keyword">sealed</span> <span class="hljs-keyword">class</span> <span class="hljs-title">IndentTextWriterVisitor</span> : <span class="hljs-title">AbstractTextWriterVisitor</span></code></pre>
+          <dl class="attributeList stack">
+            <dt>
+              Inheritance
+            </dt>
+            <dd>
+              <div class="pdlHolder">
+                <div class="pdl">
+                  <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=netcore-3.0" data-linktype="absolute-path">object</a></span>
+                </div>
+                <div class="pdl">
+                  <span class="lang-csharp"><a class="xref" href="Maroontress.Html.Impl.AbstractTextWriterVisitor.html" data-linktype="relative-path">Abstract<wbr>Text<wbr>Writer<wbr>Visitor</a></span>
+                </div>
+                <span class="lang-csharp">Indent<wbr>Text<wbr>Writer<wbr>Visitor</span>
+              </div>
+            </dd>
+          </dl>
+          <dl class="attributeList stack">
+            <dt>
+              Implements
+            </dt>
+            <dd>
+              <div class="cdlHolder">
+                <span class="cdl"><span class="lang-csharp break-text"><a class="xref" href="Maroontress.Html.NodeVisitor.html" data-linktype="relative-path">Node<wbr>Visitor</a></span></span>
+              </div>
+            </dd>
+          </dl>
+          <h2 id="constructors" class="heading-with-anchor">Constructors</h2>
+          <div class="table-scroll-wrapper">
+            <table class="nameValue">
+              <tbody>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Html.Impl.IndentTextWriterVisitor.#ctor(System.IO.TextWriter,Maroontress.Html.FormatOptions)" data-linktype="relative-path">Indent<wbr>Text<wbr>Writer<wbr>Visitor(Text<wbr>Writer, Format<wbr>Options)</a></span>
+                  </td>
+                  <td>
+                    <p>Initializes a new instance of the <a href="#">IndentTextWriterVisitor</a>
+    class.</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <h2 id="methods" class="heading-with-anchor">Methods</h2>
+          <div class="table-scroll-wrapper">
+            <table class="nameValue">
+              <tbody>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Html.Impl.IndentTextWriterVisitor.WriteStartTagHook(Maroontress.Html.TagStruct@)" data-linktype="relative-path">Write<wbr>Start<wbr>Tag<wbr>Hook(Tag<wbr>Struct)</a></span>
+                  </td>
+                  <td>
+                    <p>Description copied from class: AbstractTextWriterVisitor</p>
+                    <blockquote>
+                      <p>The hook to write the start tag, which is invoked just before the tag
+    starts. The method overriding this method must invoke <a href="Maroontress.Html.Impl.AbstractTextWriterVisitor.html#M:Maroontress.Html.Impl.AbstractTextWriterVisitor.WriteStartTag(Maroontress.Html.TagStruct@)">AbstractTextWriterVisitor.WriteStartTag(TagStruct)</a> with the specified tag.</p>
+                    </blockquote>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Html.Impl.IndentTextWriterVisitor.WriteEndTagHook(Maroontress.Html.TagStruct@)" data-linktype="relative-path">Write<wbr>End<wbr>Tag<wbr>Hook(Tag<wbr>Struct)</a></span>
+                  </td>
+                  <td>
+                    <p>Description copied from class: AbstractTextWriterVisitor</p>
+                    <blockquote>
+                      <p>The hook to write the end tag, which is invoked just before the tag
+    ends. The method overriding this method must invoke <a href="Maroontress.Html.Impl.AbstractTextWriterVisitor.html#M:Maroontress.Html.Impl.AbstractTextWriterVisitor.WriteEndTag(Maroontress.Html.TagStruct@)">AbstractTextWriterVisitor.WriteEndTag(TagStruct)</a> with the specified tag.</p>
+                    </blockquote>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Html.Impl.IndentTextWriterVisitor.BeforeEmptyOrText" data-linktype="relative-path">Before<wbr>Empty<wbr>Or<wbr>Text()</a></span>
+                  </td>
+                  <td>
+                    <p>Description copied from class: AbstractTextWriterVisitor</p>
+                    <blockquote>
+                      <p>The hook called before the empty tag or the text node.</p>
+                    </blockquote>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="Maroontress.Html.Impl.AbstractTextWriterVisitor.html#M:Maroontress.Html.Impl.AbstractTextWriterVisitor.VisitEmptyTag(Maroontress.Html.TagStruct@)">VisitEmptyTag(TagStruct)</a>
+                  </td>
+                  <td>
+                    <p>Description copied from interface: NodeVisitor</p>
+                    <blockquote>
+                      <p>Performs the operation on the empty <a href="Maroontress.Html.Tag.html">Tag</a> representing a
+    void element.</p>
+                    </blockquote>
+                    (Inherited from <a class="xref" href="Maroontress.Html.Impl.AbstractTextWriterVisitor.html" data-linktype="relative-path">Abstract<wbr>Text<wbr>Writer<wbr>Visitor</a>)
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="Maroontress.Html.Impl.AbstractTextWriterVisitor.html#M:Maroontress.Html.Impl.AbstractTextWriterVisitor.VisitEntity(System.String)">VisitEntity(string)</a>
+                  </td>
+                  <td>
+                    <p>Description copied from interface: NodeVisitor</p>
+                    <blockquote>
+                      <p>Performs the operation on the entity node.</p>
+                    </blockquote>
+                    (Inherited from <a class="xref" href="Maroontress.Html.Impl.AbstractTextWriterVisitor.html" data-linktype="relative-path">Abstract<wbr>Text<wbr>Writer<wbr>Visitor</a>)
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="Maroontress.Html.Impl.AbstractTextWriterVisitor.html#M:Maroontress.Html.Impl.AbstractTextWriterVisitor.VisitTag(Maroontress.Html.TagStruct@)">VisitTag(TagStruct)</a>
+                  </td>
+                  <td>
+                    <p>Description copied from interface: NodeVisitor</p>
+                    <blockquote>
+                      <p>Performs the operation on the <a href="Maroontress.Html.Tag.html">Tag</a>.</p>
+                    </blockquote>
+                    (Inherited from <a class="xref" href="Maroontress.Html.Impl.AbstractTextWriterVisitor.html" data-linktype="relative-path">Abstract<wbr>Text<wbr>Writer<wbr>Visitor</a>)
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="Maroontress.Html.Impl.AbstractTextWriterVisitor.html#M:Maroontress.Html.Impl.AbstractTextWriterVisitor.VisitText(System.String)">VisitText(string)</a>
+                  </td>
+                  <td>
+                    <p>Description copied from interface: NodeVisitor</p>
+                    <blockquote>
+                      <p>Performs the operation on the text node.</p>
+                    </blockquote>
+                    (Inherited from <a class="xref" href="Maroontress.Html.Impl.AbstractTextWriterVisitor.html" data-linktype="relative-path">Abstract<wbr>Text<wbr>Writer<wbr>Visitor</a>)
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="Maroontress.Html.Impl.AbstractTextWriterVisitor.html#M:Maroontress.Html.Impl.AbstractTextWriterVisitor.WriteStartTag(Maroontress.Html.TagStruct@)">WriteStartTag(TagStruct)</a>
+                  </td>
+                  <td>
+                    <p>Writes a start tag.</p>
+                    (Inherited from <a class="xref" href="Maroontress.Html.Impl.AbstractTextWriterVisitor.html" data-linktype="relative-path">Abstract<wbr>Text<wbr>Writer<wbr>Visitor</a>)
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="Maroontress.Html.Impl.AbstractTextWriterVisitor.html#M:Maroontress.Html.Impl.AbstractTextWriterVisitor.WriteEndTag(Maroontress.Html.TagStruct@)">WriteEndTag(TagStruct)</a>
+                  </td>
+                  <td>
+                    <p>Writes an end tag.</p>
+                    (Inherited from <a class="xref" href="Maroontress.Html.Impl.AbstractTextWriterVisitor.html" data-linktype="relative-path">Abstract<wbr>Text<wbr>Writer<wbr>Visitor</a>)
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="Maroontress.Html.Impl.AbstractTextWriterVisitor.html#M:Maroontress.Html.Impl.AbstractTextWriterVisitor.WriteStartTagHook(Maroontress.Html.TagStruct@)">WriteStartTagHook(TagStruct)</a>
+                  </td>
+                  <td>
+                    <p>The hook to write the start tag, which is invoked just before the tag
+    starts. The method overriding this method must invoke <a href="Maroontress.Html.Impl.AbstractTextWriterVisitor.html#M:Maroontress.Html.Impl.AbstractTextWriterVisitor.WriteStartTag(Maroontress.Html.TagStruct@)">AbstractTextWriterVisitor.WriteStartTag(TagStruct)</a> with the specified tag.</p>
+                    (Inherited from <a class="xref" href="Maroontress.Html.Impl.AbstractTextWriterVisitor.html" data-linktype="relative-path">Abstract<wbr>Text<wbr>Writer<wbr>Visitor</a>)
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="Maroontress.Html.Impl.AbstractTextWriterVisitor.html#M:Maroontress.Html.Impl.AbstractTextWriterVisitor.WriteEndTagHook(Maroontress.Html.TagStruct@)">WriteEndTagHook(TagStruct)</a>
+                  </td>
+                  <td>
+                    <p>The hook to write the end tag, which is invoked just before the tag
+    ends. The method overriding this method must invoke <a href="Maroontress.Html.Impl.AbstractTextWriterVisitor.html#M:Maroontress.Html.Impl.AbstractTextWriterVisitor.WriteEndTag(Maroontress.Html.TagStruct@)">AbstractTextWriterVisitor.WriteEndTag(TagStruct)</a> with the specified tag.</p>
+                    (Inherited from <a class="xref" href="Maroontress.Html.Impl.AbstractTextWriterVisitor.html" data-linktype="relative-path">Abstract<wbr>Text<wbr>Writer<wbr>Visitor</a>)
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="Maroontress.Html.Impl.AbstractTextWriterVisitor.html#M:Maroontress.Html.Impl.AbstractTextWriterVisitor.BeforeEmptyOrText">BeforeEmptyOrText()</a>
+                  </td>
+                  <td>
+                    <p>The hook called before the empty tag or the text node.</p>
+                    (Inherited from <a class="xref" href="Maroontress.Html.Impl.AbstractTextWriterVisitor.html" data-linktype="relative-path">Abstract<wbr>Text<wbr>Writer<wbr>Visitor</a>)
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="Maroontress.Html.Impl.AbstractTextWriterVisitor.html#M:Maroontress.Html.Impl.AbstractTextWriterVisitor.Write(System.ReadOnlySpan{System.Char})">Write(ReadOnlySpan&lt;char&gt;)</a>
+                  </td>
+                  <td>
+                    <p>Writes characters into the text stream.</p>
+                    (Inherited from <a class="xref" href="Maroontress.Html.Impl.AbstractTextWriterVisitor.html" data-linktype="relative-path">Abstract<wbr>Text<wbr>Writer<wbr>Visitor</a>)
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="Maroontress.Html.Impl.AbstractTextWriterVisitor.html#M:Maroontress.Html.Impl.AbstractTextWriterVisitor.Write(System.String)">Write(string)</a>
+                  </td>
+                  <td>
+                    <p>Writes a string into the text stream.</p>
+                    (Inherited from <a class="xref" href="Maroontress.Html.Impl.AbstractTextWriterVisitor.html" data-linktype="relative-path">Abstract<wbr>Text<wbr>Writer<wbr>Visitor</a>)
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.object.equals?view=netcore-3.0#System_Object_Equals_System_Object_">Equals(object)</a>
+                  </td>
+                  <td>
+                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=netcore-3.0" data-linktype="absolute-path">object</a>)
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.object.gethashcode?view=netcore-3.0">GetHashCode()</a>
+                  </td>
+                  <td>
+                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=netcore-3.0" data-linktype="absolute-path">object</a>)
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.object.gettype?view=netcore-3.0">GetType()</a>
+                  </td>
+                  <td>
+                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=netcore-3.0" data-linktype="absolute-path">object</a>)
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.object.memberwiseclone?view=netcore-3.0">MemberwiseClone()</a>
+                  </td>
+                  <td>
+                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=netcore-3.0" data-linktype="absolute-path">object</a>)
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.object.tostring?view=netcore-3.0">ToString()</a>
+                  </td>
+                  <td>
+                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=netcore-3.0" data-linktype="absolute-path">object</a>)
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <h1 id="constructors-detail" class="heading-with-anchor">Constructors Detail</h1>
+          <h2 id="M:Maroontress.Html.Impl.IndentTextWriterVisitor.#ctor(System.IO.TextWriter,Maroontress.Html.FormatOptions)">IndentTextWriterVisitor(TextWriter, FormatOptions)</h2>
+          <div class="summaryHolder">
+            <div class="summary clearFix">
+              <p>Initializes a new instance of the <a href="#">IndentTextWriterVisitor</a>
+    class.</p>
+            </div>
+          </div>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-title">IndentTextWriterVisitor</span>(<span class="hljs-title">TextWriter</span> writer, <span class="hljs-title">FormatOptions</span> options)</code></pre>
+          <h4 class="propertyInfoTitle stack">Parameters</h4>
+          <div class="propertyInfo">
+            <dl class="parameterList">
+              <dt>
+                writer
+              </dt>
+              <dd>
+                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.io.textwriter?view=netcore-3.0" data-linktype="absolute-path">Text<wbr>Writer</a></span>
+              </dd>
+            </dl>
+            <p>The text writer object for this visitor to output.</p>
+          </div>
+          <div class="propertyInfo stack">
+            <dl class="parameterList">
+              <dt>
+                options
+              </dt>
+              <dd>
+                <span class="lang-csharp"><a class="xref" href="Maroontress.Html.FormatOptions.html" data-linktype="relative-path">Format<wbr>Options</a></span>
+              </dd>
+            </dl>
+            <p>The format options.</p>
+          </div>
+          <h1 id="methods-detail" class="heading-with-anchor">Methods Detail</h1>
+          <h2 id="M:Maroontress.Html.Impl.IndentTextWriterVisitor.WriteStartTagHook(Maroontress.Html.TagStruct@)">WriteStartTagHook(TagStruct)</h2>
+          <div class="summaryHolder">
+            <div class="summary clearFix">
+              <p>Description copied from class: AbstractTextWriterVisitor</p>
+              <blockquote>
+                <p>The hook to write the start tag, which is invoked just before the tag
+    starts. The method overriding this method must invoke <a href="Maroontress.Html.Impl.AbstractTextWriterVisitor.html#M:Maroontress.Html.Impl.AbstractTextWriterVisitor.WriteStartTag(Maroontress.Html.TagStruct@)">AbstractTextWriterVisitor.WriteStartTag(TagStruct)</a> with the specified tag.</p>
+              </blockquote>
+            </div>
+          </div>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">override</span> <span class="hljs-keyword">void</span> <span class="hljs-title">WriteStartTagHook</span>(<span class="hljs-keyword">in</span> <span class="hljs-title">TagStruct</span> tag)</code></pre>
+          <h4 class="propertyInfoTitle stack">Parameters</h4>
+          <div class="propertyInfo">
+            <dl class="parameterList">
+              <dt>
+                tag
+              </dt>
+              <dd>
+                <span class="lang-csharp"><a class="xref" href="Maroontress.Html.TagStruct.html" data-linktype="relative-path">Tag<wbr>Struct</a></span>
+              </dd>
+            </dl>
+          </div>
+          <h2 id="M:Maroontress.Html.Impl.IndentTextWriterVisitor.WriteEndTagHook(Maroontress.Html.TagStruct@)">WriteEndTagHook(TagStruct)</h2>
+          <div class="summaryHolder">
+            <div class="summary clearFix">
+              <p>Description copied from class: AbstractTextWriterVisitor</p>
+              <blockquote>
+                <p>The hook to write the end tag, which is invoked just before the tag
+    ends. The method overriding this method must invoke <a href="Maroontress.Html.Impl.AbstractTextWriterVisitor.html#M:Maroontress.Html.Impl.AbstractTextWriterVisitor.WriteEndTag(Maroontress.Html.TagStruct@)">AbstractTextWriterVisitor.WriteEndTag(TagStruct)</a> with the specified tag.</p>
+              </blockquote>
+            </div>
+          </div>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">override</span> <span class="hljs-keyword">void</span> <span class="hljs-title">WriteEndTagHook</span>(<span class="hljs-keyword">in</span> <span class="hljs-title">TagStruct</span> tag)</code></pre>
+          <h4 class="propertyInfoTitle stack">Parameters</h4>
+          <div class="propertyInfo">
+            <dl class="parameterList">
+              <dt>
+                tag
+              </dt>
+              <dd>
+                <span class="lang-csharp"><a class="xref" href="Maroontress.Html.TagStruct.html" data-linktype="relative-path">Tag<wbr>Struct</a></span>
+              </dd>
+            </dl>
+          </div>
+          <h2 id="M:Maroontress.Html.Impl.IndentTextWriterVisitor.BeforeEmptyOrText">BeforeEmptyOrText()</h2>
+          <div class="summaryHolder">
+            <div class="summary clearFix">
+              <p>Description copied from class: AbstractTextWriterVisitor</p>
+              <blockquote>
+                <p>The hook called before the empty tag or the text node.</p>
+              </blockquote>
+            </div>
+          </div>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">override</span> <span class="hljs-keyword">void</span> <span class="hljs-title">BeforeEmptyOrText</span>()</code></pre>
+        </main>
+      </section>
+    </div>
+  </body>
+</html>

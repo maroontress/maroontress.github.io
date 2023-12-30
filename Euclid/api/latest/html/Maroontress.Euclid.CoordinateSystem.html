@@ -1,0 +1,396 @@
+<!doctype html>
+<html>
+  <head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9TQ6JWBKEK">
+    </script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+function gtag() { dataLayer.push(arguments); }
+gtag('js', new Date());
+gtag('config', 'G-9TQ6JWBKEK');
+    </script>
+    <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CoordinateSystem Class | API Reference | Euclid Project</title>
+    <link rel="stylesheet" href="bulldoc.css">
+    <script src="highlight.pack.js">
+    </script>
+    <script>
+      hljs.initHighlightingOnLoad();
+    </script>
+  </head>
+  <body>
+    <div class="mainContainer uhf-container has-top-padding has-default-focus" data-bi-name="body">
+      <section>
+        <main class="content">
+          <h1><span class="lang-csharp">Coordinate<wbr>System</span> Class</h1>
+          <div class="metadata">
+            <dl class="attributeList">
+              <dt>
+                Namespace:
+                <dd>
+                  <span class="lang-csharp"><a class="xref" href="Maroontress.Euclid.html" data-linktype="relative-path">Maroontress.Euclid</a></span>
+                </dd>
+              </dt>
+            </dl>
+            <dl class="attributeList">
+              <dt>
+                Assembly:
+                <dd>
+                  <span class="lang-csharp">Euclid.dll</span>
+                </dd>
+              </dt>
+            </dl>
+          </div>
+          <div class="summaryHolder">
+            <div class="summary clearFix">
+              <p>Represents the nested coordinate system.</p>
+            </div>
+          </div>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-keyword">sealed</span> <span class="hljs-keyword">class</span> <span class="hljs-title">CoordinateSystem</span></code></pre>
+          <dl class="attributeList stack">
+            <dt>
+              Inheritance
+            </dt>
+            <dd>
+              <div class="pdlHolder">
+                <div class="pdl">
+                  <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=netcore-3.0" data-linktype="absolute-path">object</a></span>
+                </div>
+                <span class="lang-csharp">Coordinate<wbr>System</span>
+              </div>
+            </dd>
+          </dl>
+          <h2 id="constructors" class="heading-with-anchor">Constructors</h2>
+          <div class="table-scroll-wrapper">
+            <table class="nameValue">
+              <tbody>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Euclid.CoordinateSystem.#ctor(Maroontress.Euclid.Posture,Maroontress.Euclid.CoordinateSystem)" data-linktype="relative-path">Coordinate<wbr>System(Posture, Coordinate<wbr>System)</a></span>
+                  </td>
+                  <td>
+                    <p>Initializes a new instance of the <a href="#">CoordinateSystem</a>
+    class.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Euclid.CoordinateSystem.#ctor(Maroontress.Euclid.Posture)" data-linktype="relative-path">Coordinate<wbr>System(Posture)</a></span>
+                  </td>
+                  <td>
+                    <p>Initializes a new instance of the <a href="#">CoordinateSystem</a>
+    class, which parent is <a href="#P:Maroontress.Euclid.CoordinateSystem.World">World</a> coordinate system.</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <h2 id="properties" class="heading-with-anchor">Properties</h2>
+          <div class="table-scroll-wrapper">
+            <table class="nameValue">
+              <tbody>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="#P:Maroontress.Euclid.CoordinateSystem.World" data-linktype="relative-path">World</a></span>
+                  </td>
+                  <td>
+                    <p>Gets the world coordinate system.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="#P:Maroontress.Euclid.CoordinateSystem.Parent" data-linktype="relative-path">Parent</a></span>
+                  </td>
+                  <td>
+                    <p>Gets the parent coordinate system.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="#P:Maroontress.Euclid.CoordinateSystem.Posture" data-linktype="relative-path">Posture</a></span>
+                  </td>
+                  <td>
+                    <p>Gets the posture against the parent coordinate system.</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <h2 id="methods" class="heading-with-anchor">Methods</h2>
+          <div class="table-scroll-wrapper">
+            <table class="nameValue">
+              <tbody>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Euclid.CoordinateSystem.TranslateIntoWorld(Maroontress.Euclid.Position)" data-linktype="relative-path">Translate<wbr>Into<wbr>World(Position)</a></span>
+                  </td>
+                  <td>
+                    <p>Translates the local position in <code>this</code> coordinate system into
+    the world position in the world coordinate system.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Euclid.CoordinateSystem.TranslateIntoLocal(Maroontress.Euclid.Position)" data-linktype="relative-path">Translate<wbr>Into<wbr>Local(Position)</a></span>
+                  </td>
+                  <td>
+                    <p>Translates the world position in the world coordinate system into
+    the local position in <code>this</code> coordinate system.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Euclid.CoordinateSystem.NewChild(Maroontress.Euclid.Posture)" data-linktype="relative-path">New<wbr>Child(Posture)</a></span>
+                  </td>
+                  <td>
+                    <p>Gets new coordinate system whose parent is this one.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.object.equals?view=netcore-3.0#System_Object_Equals_System_Object_">Equals(object)</a>
+                  </td>
+                  <td>
+                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=netcore-3.0" data-linktype="absolute-path">object</a>)
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.object.gethashcode?view=netcore-3.0">GetHashCode()</a>
+                  </td>
+                  <td>
+                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=netcore-3.0" data-linktype="absolute-path">object</a>)
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.object.gettype?view=netcore-3.0">GetType()</a>
+                  </td>
+                  <td>
+                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=netcore-3.0" data-linktype="absolute-path">object</a>)
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.object.memberwiseclone?view=netcore-3.0">MemberwiseClone()</a>
+                  </td>
+                  <td>
+                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=netcore-3.0" data-linktype="absolute-path">object</a>)
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.object.tostring?view=netcore-3.0">ToString()</a>
+                  </td>
+                  <td>
+                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=netcore-3.0" data-linktype="absolute-path">object</a>)
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <h1 id="constructors-detail" class="heading-with-anchor">Constructors Detail</h1>
+          <h2 id="M:Maroontress.Euclid.CoordinateSystem.#ctor(Maroontress.Euclid.Posture,Maroontress.Euclid.CoordinateSystem)">CoordinateSystem(Posture, CoordinateSystem)</h2>
+          <div class="summaryHolder">
+            <div class="summary clearFix">
+              <p>Initializes a new instance of the <a href="#">CoordinateSystem</a>
+    class.</p>
+            </div>
+          </div>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-title">CoordinateSystem</span>(<span class="hljs-title">Posture</span> posture, <span class="hljs-title">CoordinateSystem</span> parent)</code></pre>
+          <h4 class="propertyInfoTitle stack">Parameters</h4>
+          <div class="propertyInfo">
+            <dl class="parameterList">
+              <dt>
+                posture
+              </dt>
+              <dd>
+                <span class="lang-csharp"><a class="xref" href="Maroontress.Euclid.Posture.html" data-linktype="relative-path">Posture</a></span>
+              </dd>
+            </dl>
+            <p>The posture against the parent coordinate system.</p>
+          </div>
+          <div class="propertyInfo stack">
+            <dl class="parameterList">
+              <dt>
+                parent
+              </dt>
+              <dd>
+                <span class="lang-csharp"><a class="xref" href="#" data-linktype="relative-path">Coordinate<wbr>System</a></span>
+              </dd>
+            </dl>
+            <p>The parent coordinate system.</p>
+          </div>
+          <h2 id="M:Maroontress.Euclid.CoordinateSystem.#ctor(Maroontress.Euclid.Posture)">CoordinateSystem(Posture)</h2>
+          <div class="summaryHolder">
+            <div class="summary clearFix">
+              <p>Initializes a new instance of the <a href="#">CoordinateSystem</a>
+    class, which parent is <a href="#P:Maroontress.Euclid.CoordinateSystem.World">World</a> coordinate system.</p>
+            </div>
+          </div>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-title">CoordinateSystem</span>(<span class="hljs-title">Posture</span> posture)</code></pre>
+          <h4 class="propertyInfoTitle stack">Parameters</h4>
+          <div class="propertyInfo">
+            <dl class="parameterList">
+              <dt>
+                posture
+              </dt>
+              <dd>
+                <span class="lang-csharp"><a class="xref" href="Maroontress.Euclid.Posture.html" data-linktype="relative-path">Posture</a></span>
+              </dd>
+            </dl>
+            <p>The posture against the parent coordinate system.</p>
+          </div>
+          <h1 id="properties-detail" class="heading-with-anchor">Properties Detail</h1>
+          <h2 id="P:Maroontress.Euclid.CoordinateSystem.World">World</h2>
+          <div class="summaryHolder">
+            <div class="summary clearFix">
+              <p>Gets the world coordinate system.</p>
+            </div>
+          </div>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-title">CoordinateSystem</span> <span class="hljs-title">World</span> { <span class="hljs-keyword">get</span>; }</code></pre>
+          <h4 class="propertyInfoTitle stack">Property Value</h4>
+          <div class="propertyInfo">
+            <div class="subtle">
+              <a class="xref" href="#" data-linktype="relative-path">Coordinate<wbr>System</a>
+            </div>
+          </div>
+          <h2 id="P:Maroontress.Euclid.CoordinateSystem.Parent">Parent</h2>
+          <div class="summaryHolder">
+            <div class="summary clearFix">
+              <p>Gets the parent coordinate system.</p>
+            </div>
+          </div>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-title">CoordinateSystem</span> <span class="hljs-title">Parent</span> { <span class="hljs-keyword">get</span>; }</code></pre>
+          <h4 class="propertyInfoTitle stack">Property Value</h4>
+          <div class="propertyInfo">
+            <div class="subtle">
+              <a class="xref" href="#" data-linktype="relative-path">Coordinate<wbr>System</a>
+            </div>
+          </div>
+          <h2 id="P:Maroontress.Euclid.CoordinateSystem.Posture">Posture</h2>
+          <div class="summaryHolder">
+            <div class="summary clearFix">
+              <p>Gets the posture against the parent coordinate system.</p>
+            </div>
+          </div>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-title">Posture</span> <span class="hljs-title">Posture</span> { <span class="hljs-keyword">get</span>; }</code></pre>
+          <h4 class="propertyInfoTitle stack">Property Value</h4>
+          <div class="propertyInfo">
+            <div class="subtle">
+              <a class="xref" href="Maroontress.Euclid.Posture.html" data-linktype="relative-path">Posture</a>
+            </div>
+          </div>
+          <h1 id="methods-detail" class="heading-with-anchor">Methods Detail</h1>
+          <h2 id="M:Maroontress.Euclid.CoordinateSystem.TranslateIntoWorld(Maroontress.Euclid.Position)">TranslateIntoWorld(Position)</h2>
+          <div class="summaryHolder">
+            <div class="summary clearFix">
+              <p>Translates the local position in <code>this</code> coordinate system into
+    the world position in the world coordinate system.</p>
+            </div>
+          </div>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-title">Position</span> <span class="hljs-title">TranslateIntoWorld</span>(<span class="hljs-title">Position</span> localPosition)</code></pre>
+          <h4 class="propertyInfoTitle stack">Parameters</h4>
+          <div class="propertyInfo">
+            <dl class="parameterList">
+              <dt>
+                localPosition
+              </dt>
+              <dd>
+                <span class="lang-csharp"><a class="xref" href="Maroontress.Euclid.Position.html" data-linktype="relative-path">Position</a></span>
+              </dd>
+            </dl>
+            <p>The local position.</p>
+          </div>
+          <h4 class="propertyInfoTitle stack">Returns</h4>
+          <div class="propertyInfo">
+            <div class="subtle">
+              <a class="xref" href="Maroontress.Euclid.Position.html" data-linktype="relative-path">Position</a>
+            </div>
+            <p>The world position in the world coordinate system.</p>
+          </div>
+          <h2 id="M:Maroontress.Euclid.CoordinateSystem.TranslateIntoLocal(Maroontress.Euclid.Position)">TranslateIntoLocal(Position)</h2>
+          <div class="summaryHolder">
+            <div class="summary clearFix">
+              <p>Translates the world position in the world coordinate system into
+    the local position in <code>this</code> coordinate system.</p>
+            </div>
+          </div>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-title">Position</span> <span class="hljs-title">TranslateIntoLocal</span>(<span class="hljs-title">Position</span> worldPosition)</code></pre>
+          <h4 class="propertyInfoTitle stack">Parameters</h4>
+          <div class="propertyInfo">
+            <dl class="parameterList">
+              <dt>
+                worldPosition
+              </dt>
+              <dd>
+                <span class="lang-csharp"><a class="xref" href="Maroontress.Euclid.Position.html" data-linktype="relative-path">Position</a></span>
+              </dd>
+            </dl>
+            <p>The world position.</p>
+          </div>
+          <h4 class="propertyInfoTitle stack">Returns</h4>
+          <div class="propertyInfo">
+            <div class="subtle">
+              <a class="xref" href="Maroontress.Euclid.Position.html" data-linktype="relative-path">Position</a>
+            </div>
+            <p>The local position in <code>this</code> coordinate system.</p>
+          </div>
+          <h2 id="M:Maroontress.Euclid.CoordinateSystem.NewChild(Maroontress.Euclid.Posture)">NewChild(Posture)</h2>
+          <div class="summaryHolder">
+            <div class="summary clearFix">
+              <p>Gets new coordinate system whose parent is this one.</p>
+            </div>
+          </div>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-title">CoordinateSystem</span> <span class="hljs-title">NewChild</span>(<span class="hljs-title">Posture</span> posture)</code></pre>
+          <h4 class="propertyInfoTitle stack">Parameters</h4>
+          <div class="propertyInfo">
+            <dl class="parameterList">
+              <dt>
+                posture
+              </dt>
+              <dd>
+                <span class="lang-csharp"><a class="xref" href="Maroontress.Euclid.Posture.html" data-linktype="relative-path">Posture</a></span>
+              </dd>
+            </dl>
+            <p>The posture against <code>this</code> coordinate system.</p>
+          </div>
+          <h4 class="propertyInfoTitle stack">Returns</h4>
+          <div class="propertyInfo">
+            <div class="subtle">
+              <a class="xref" href="#" data-linktype="relative-path">Coordinate<wbr>System</a>
+            </div>
+            <p>The new coordinate system.</p>
+          </div>
+        </main>
+      </section>
+    </div>
+  </body>
+</html>

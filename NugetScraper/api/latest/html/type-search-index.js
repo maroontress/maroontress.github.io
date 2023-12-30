@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"com.maroontress.nugetscraper","l":"NugetScraper"},{"p":"com.maroontress.nugetscraper","l":"Package"},{"p":"com.maroontress.nugetscraper","l":"Profile"}];updateSearchResults();

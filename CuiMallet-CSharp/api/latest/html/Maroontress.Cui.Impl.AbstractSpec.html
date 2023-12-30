@@ -1,0 +1,505 @@
+<!doctype html>
+<html>
+  <head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9TQ6JWBKEK">
+    </script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+function gtag() { dataLayer.push(arguments); }
+gtag('js', new Date());
+gtag('config', 'G-9TQ6JWBKEK');
+    </script>
+    <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AbstractSpec&lt;T&gt; Class | API Reference | CuiMallet Project</title>
+    <link rel="stylesheet" href="bulldoc.css">
+    <script src="highlight.pack.js">
+    </script>
+    <script>
+      hljs.initHighlightingOnLoad();
+    </script>
+  </head>
+  <body>
+    <div class="mainContainer uhf-container has-top-padding has-default-focus" data-bi-name="body">
+      <section>
+        <main class="content">
+          <h1><span class="lang-csharp">Abstract<wbr>Spec&lt;T&gt;</span> Class</h1>
+          <div class="metadata">
+            <dl class="attributeList">
+              <dt>
+                Namespace:
+                <dd>
+                  <span class="lang-csharp"><a class="xref" href="Maroontress.Cui.Impl.html" data-linktype="relative-path">Maroontress.Cui.Impl</a></span>
+                </dd>
+              </dt>
+            </dl>
+            <dl class="attributeList">
+              <dt>
+                Assembly:
+                <dd>
+                  <span class="lang-csharp">Cui<wbr>Mallet.dll</span>
+                </dd>
+              </dt>
+            </dl>
+          </div>
+          <div class="summaryHolder">
+            <div class="summary clearFix">
+              <p>The abstraction of <a href="Maroontress.Cui.Impl.OptionSpec.html">OptionSpec</a> and subclasses.</p>
+            </div>
+          </div>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> <span class="hljs-keyword">class</span> <span class="hljs-title">AbstractSpec</span>&lt;<span class="hljs-title">T</span>&gt; : <span class="hljs-title">Spec</span><br>    <span class="hljs-keyword">where</span> <span class="hljs-title">T</span> : <span class="hljs-title">Option</span></code></pre>
+          <h4 id="type-parameters" class="propertyInfoTitle stack heading-with-anchor">Type Parameters</h4>
+          <div class="propertyInfo">
+            <dl class="parameterList">
+              <dt>
+                T
+              </dt>
+              <dd>
+                <span class="lang-csharp"><a class="xref" href="Maroontress.Cui.Option.html" data-linktype="relative-path">Option</a></span>
+              </dd>
+            </dl>
+            <p>The type of <a href="Maroontress.Cui.Option.html">Option</a> interface.</p>
+          </div>
+          <dl class="attributeList stack">
+            <dt>
+              Inheritance
+            </dt>
+            <dd>
+              <div class="pdlHolder">
+                <div class="pdl">
+                  <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=netcore-3.0" data-linktype="absolute-path">object</a></span>
+                </div>
+                <span class="lang-csharp">Abstract<wbr>Spec&lt;T&gt;</span>
+              </div>
+            </dd>
+          </dl>
+          <dl class="attributeList stack">
+            <dt>
+              Implements
+            </dt>
+            <dd>
+              <div class="cdlHolder">
+                <span class="cdl"><span class="lang-csharp break-text"><a class="xref" href="Maroontress.Cui.Impl.Spec.html" data-linktype="relative-path">Spec</a></span></span>
+              </div>
+            </dd>
+          </dl>
+          <h2 id="constructors" class="heading-with-anchor">Constructors</h2>
+          <div class="table-scroll-wrapper">
+            <table class="nameValue">
+              <tbody>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Cui.Impl.AbstractSpec`1.#ctor(System.String,System.Nullable{System.Char},System.String,System.Action{`0})" data-linktype="relative-path">Abstract<wbr>Spec(string, char?, string, Action&lt;T&gt;)</a></span>
+                  </td>
+                  <td>
+                    <p>Initializes a new instance of the <a href="#">AbstractSpec&lt;T&gt;</a>
+    class.</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <h2 id="properties" class="heading-with-anchor">Properties</h2>
+          <div class="table-scroll-wrapper">
+            <table class="nameValue">
+              <tbody>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="#P:Maroontress.Cui.Impl.AbstractSpec`1.Name" data-linktype="relative-path">Name</a></span>
+                  </td>
+                  <td>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="#P:Maroontress.Cui.Impl.AbstractSpec`1.ShortName" data-linktype="relative-path">Short<wbr>Name</a></span>
+                  </td>
+                  <td>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="#P:Maroontress.Cui.Impl.AbstractSpec`1.Description" data-linktype="relative-path">Description</a></span>
+                  </td>
+                  <td>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <h2 id="methods" class="heading-with-anchor">Methods</h2>
+          <div class="table-scroll-wrapper">
+            <table class="nameValue">
+              <tbody>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Cui.Impl.AbstractSpec`1.Fire(`0)" data-linktype="relative-path">Fire(T)</a></span>
+                  </td>
+                  <td>
+                    <p>Invokes the callback function.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Cui.Impl.AbstractSpec`1.VisitLongOption(Maroontress.Cui.Impl.ParseKit,Maroontress.Cui.Impl.Builder,System.String,System.Collections.Generic.Queue{System.String})" data-linktype="relative-path">Visit<wbr>Long<wbr>Option(Parse<wbr>Kit, Builder, string, Queue&lt;string&gt;)</a></span>
+                  </td>
+                  <td>
+                    <p>Description copied from interface: Spec</p>
+                    <blockquote>
+                      <p>Visits the long option.</p>
+                    </blockquote>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Cui.Impl.AbstractSpec`1.VisitShortOption(Maroontress.Cui.Impl.ParseKit,Maroontress.Cui.Impl.Builder,System.Collections.Generic.Queue{System.Char},System.Collections.Generic.Queue{System.String})" data-linktype="relative-path">Visit<wbr>Short<wbr>Option(Parse<wbr>Kit, Builder, Queue&lt;char&gt;, Queue&lt;string&gt;)</a></span>
+                  </td>
+                  <td>
+                    <p>Description copied from interface: Spec</p>
+                    <blockquote>
+                      <p>Visits the short option.</p>
+                    </blockquote>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Cui.Impl.AbstractSpec`1.GetHelpHeading" data-linktype="relative-path">Get<wbr>Help<wbr>Heading()</a></span>
+                  </td>
+                  <td>
+                    <p>Description copied from interface: Spec</p>
+                    <blockquote>
+                      <p>Gets the heading of the help message.</p>
+                    </blockquote>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.object.equals?view=netcore-3.0#System_Object_Equals_System_Object_">Equals(object)</a>
+                  </td>
+                  <td>
+                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=netcore-3.0" data-linktype="absolute-path">object</a>)
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.object.gethashcode?view=netcore-3.0">GetHashCode()</a>
+                  </td>
+                  <td>
+                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=netcore-3.0" data-linktype="absolute-path">object</a>)
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.object.gettype?view=netcore-3.0">GetType()</a>
+                  </td>
+                  <td>
+                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=netcore-3.0" data-linktype="absolute-path">object</a>)
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.object.memberwiseclone?view=netcore-3.0">MemberwiseClone()</a>
+                  </td>
+                  <td>
+                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=netcore-3.0" data-linktype="absolute-path">object</a>)
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.object.tostring?view=netcore-3.0">ToString()</a>
+                  </td>
+                  <td>
+                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=netcore-3.0" data-linktype="absolute-path">object</a>)
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <h1 id="constructors-detail" class="heading-with-anchor">Constructors Detail</h1>
+          <h2 id="M:Maroontress.Cui.Impl.AbstractSpec`1.#ctor(System.String,System.Nullable{System.Char},System.String,System.Action{`0})">AbstractSpec(string, char?, string, Action&lt;T&gt;)</h2>
+          <div class="summaryHolder">
+            <div class="summary clearFix">
+              <p>Initializes a new instance of the <a href="#">AbstractSpec&lt;T&gt;</a>
+    class.</p>
+            </div>
+          </div>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-title">AbstractSpec</span>(<span class="hljs-keyword">string</span> name, <span class="hljs-keyword">char</span>? shortName, <span class="hljs-keyword">string</span> description, <span class="hljs-title">Action</span>&lt;<span class="hljs-title">T</span>&gt; action)</code></pre>
+          <h4 class="propertyInfoTitle stack">Parameters</h4>
+          <div class="propertyInfo">
+            <dl class="parameterList">
+              <dt>
+                name
+              </dt>
+              <dd>
+                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.string?view=netcore-3.0" data-linktype="absolute-path">string</a></span>
+              </dd>
+            </dl>
+            <p>The name of the option.</p>
+          </div>
+          <div class="propertyInfo stack">
+            <dl class="parameterList">
+              <dt>
+                shortName
+              </dt>
+              <dd>
+                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.nullable-1?view=netcore-3.0" data-linktype="absolute-path">char?</a></span>
+              </dd>
+            </dl>
+            <p>The short name of the option, if any.</p>
+          </div>
+          <div class="propertyInfo stack">
+            <dl class="parameterList">
+              <dt>
+                description
+              </dt>
+              <dd>
+                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.string?view=netcore-3.0" data-linktype="absolute-path">string</a></span>
+              </dd>
+            </dl>
+            <p>The description of the option.</p>
+          </div>
+          <div class="propertyInfo stack">
+            <dl class="parameterList">
+              <dt>
+                action
+              </dt>
+              <dd>
+                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.action-1?view=netcore-3.0" data-linktype="absolute-path">Action&lt;T&gt;</a></span>
+              </dd>
+            </dl>
+            <p>The action to be invoked.</p>
+          </div>
+          <h1 id="properties-detail" class="heading-with-anchor">Properties Detail</h1>
+          <h2 id="P:Maroontress.Cui.Impl.AbstractSpec`1.Name">Name</h2>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-keyword">string</span> <span class="hljs-title">Name</span> { <span class="hljs-keyword">get</span>; }</code></pre>
+          <h4 class="propertyInfoTitle stack">Property Value</h4>
+          <div class="propertyInfo">
+            <div class="subtle">
+              <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.string?view=netcore-3.0" data-linktype="absolute-path">string</a>
+            </div>
+          </div>
+          <h4 class="propertyInfoTitle stack">Implements</h4>
+          <div class="propertyInfo">
+            <div class="cdlHolder">
+              <span class="cdl"><a href="Maroontress.Cui.Impl.Spec.html#P:Maroontress.Cui.Impl.Spec.Name">Spec.Name</a></span>
+            </div>
+          </div>
+          <h2 id="P:Maroontress.Cui.Impl.AbstractSpec`1.ShortName">ShortName</h2>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-keyword">char</span>? <span class="hljs-title">ShortName</span> { <span class="hljs-keyword">get</span>; }</code></pre>
+          <h4 class="propertyInfoTitle stack">Property Value</h4>
+          <div class="propertyInfo">
+            <div class="subtle">
+              <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.nullable-1?view=netcore-3.0" data-linktype="absolute-path">char?</a>
+            </div>
+          </div>
+          <h4 class="propertyInfoTitle stack">Implements</h4>
+          <div class="propertyInfo">
+            <div class="cdlHolder">
+              <span class="cdl"><a href="Maroontress.Cui.Impl.Spec.html#P:Maroontress.Cui.Impl.Spec.ShortName">Spec.ShortName</a></span>
+            </div>
+          </div>
+          <h2 id="P:Maroontress.Cui.Impl.AbstractSpec`1.Description">Description</h2>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-keyword">string</span> <span class="hljs-title">Description</span> { <span class="hljs-keyword">get</span>; }</code></pre>
+          <h4 class="propertyInfoTitle stack">Property Value</h4>
+          <div class="propertyInfo">
+            <div class="subtle">
+              <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.string?view=netcore-3.0" data-linktype="absolute-path">string</a>
+            </div>
+          </div>
+          <h4 class="propertyInfoTitle stack">Implements</h4>
+          <div class="propertyInfo">
+            <div class="cdlHolder">
+              <span class="cdl"><a href="Maroontress.Cui.Impl.Spec.html#P:Maroontress.Cui.Impl.Spec.Description">Spec.Description</a></span>
+            </div>
+          </div>
+          <h1 id="methods-detail" class="heading-with-anchor">Methods Detail</h1>
+          <h2 id="M:Maroontress.Cui.Impl.AbstractSpec`1.Fire(`0)">Fire(T)</h2>
+          <div class="summaryHolder">
+            <div class="summary clearFix">
+              <p>Invokes the callback function.</p>
+            </div>
+          </div>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Fire</span>(<span class="hljs-title">T</span> option)</code></pre>
+          <h4 class="propertyInfoTitle stack">Parameters</h4>
+          <div class="propertyInfo">
+            <dl class="parameterList">
+              <dt>
+                option
+              </dt>
+              <dd>
+                <span class="lang-csharp">T</span>
+              </dd>
+            </dl>
+            <p>The option to be consumed.</p>
+          </div>
+          <h2 id="M:Maroontress.Cui.Impl.AbstractSpec`1.VisitLongOption(Maroontress.Cui.Impl.ParseKit,Maroontress.Cui.Impl.Builder,System.String,System.Collections.Generic.Queue{System.String})">VisitLongOption(ParseKit, Builder, string, Queue&lt;string&gt;)</h2>
+          <div class="summaryHolder">
+            <div class="summary clearFix">
+              <p>Description copied from interface: Spec</p>
+              <blockquote>
+                <p>Visits the long option.</p>
+              </blockquote>
+            </div>
+          </div>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> <span class="hljs-keyword">void</span> <span class="hljs-title">VisitLongOption</span>(<span class="hljs-title">ParseKit</span> kit, <span class="hljs-title">Builder</span> builer, <span class="hljs-keyword">string</span> argument, <span class="hljs-title">Queue</span>&lt;<span class="hljs-keyword">string</span>&gt; queue)</code></pre>
+          <h4 class="propertyInfoTitle stack">Parameters</h4>
+          <div class="propertyInfo">
+            <dl class="parameterList">
+              <dt>
+                kit
+              </dt>
+              <dd>
+                <span class="lang-csharp"><a class="xref" href="Maroontress.Cui.Impl.ParseKit.html" data-linktype="relative-path">Parse<wbr>Kit</a></span>
+              </dd>
+            </dl>
+          </div>
+          <div class="propertyInfo stack">
+            <dl class="parameterList">
+              <dt>
+                builer
+              </dt>
+              <dd>
+                <span class="lang-csharp"><a class="xref" href="Maroontress.Cui.Impl.Builder.html" data-linktype="relative-path">Builder</a></span>
+              </dd>
+            </dl>
+          </div>
+          <div class="propertyInfo stack">
+            <dl class="parameterList">
+              <dt>
+                argument
+              </dt>
+              <dd>
+                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.string?view=netcore-3.0" data-linktype="absolute-path">string</a></span>
+              </dd>
+            </dl>
+          </div>
+          <div class="propertyInfo stack">
+            <dl class="parameterList">
+              <dt>
+                queue
+              </dt>
+              <dd>
+                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.queue-1?view=netcore-3.0" data-linktype="absolute-path">Queue</a>&lt;<a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.string?view=netcore-3.0" data-linktype="absolute-path">string</a>&gt;</span>
+              </dd>
+            </dl>
+          </div>
+          <h4 class="propertyInfoTitle stack">Implements</h4>
+          <div class="propertyInfo">
+            <div class="cdlHolder">
+              <span class="cdl"><a href="Maroontress.Cui.Impl.Spec.html#M:Maroontress.Cui.Impl.Spec.VisitLongOption(Maroontress.Cui.Impl.ParseKit,Maroontress.Cui.Impl.Builder,System.String,System.Collections.Generic.Queue{System.String})">Spec.VisitLongOption(ParseKit, Builder, string, Queue&lt;string&gt;)</a></span>
+            </div>
+          </div>
+          <h2 id="M:Maroontress.Cui.Impl.AbstractSpec`1.VisitShortOption(Maroontress.Cui.Impl.ParseKit,Maroontress.Cui.Impl.Builder,System.Collections.Generic.Queue{System.Char},System.Collections.Generic.Queue{System.String})">VisitShortOption(ParseKit, Builder, Queue&lt;char&gt;, Queue&lt;string&gt;)</h2>
+          <div class="summaryHolder">
+            <div class="summary clearFix">
+              <p>Description copied from interface: Spec</p>
+              <blockquote>
+                <p>Visits the short option.</p>
+              </blockquote>
+            </div>
+          </div>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> <span class="hljs-keyword">void</span> <span class="hljs-title">VisitShortOption</span>(<span class="hljs-title">ParseKit</span> kit, <span class="hljs-title">Builder</span> builder, <span class="hljs-title">Queue</span>&lt;<span class="hljs-keyword">char</span>&gt; shortNameQueue, <span class="hljs-title">Queue</span>&lt;<span class="hljs-keyword">string</span>&gt; queue)</code></pre>
+          <h4 class="propertyInfoTitle stack">Parameters</h4>
+          <div class="propertyInfo">
+            <dl class="parameterList">
+              <dt>
+                kit
+              </dt>
+              <dd>
+                <span class="lang-csharp"><a class="xref" href="Maroontress.Cui.Impl.ParseKit.html" data-linktype="relative-path">Parse<wbr>Kit</a></span>
+              </dd>
+            </dl>
+          </div>
+          <div class="propertyInfo stack">
+            <dl class="parameterList">
+              <dt>
+                builder
+              </dt>
+              <dd>
+                <span class="lang-csharp"><a class="xref" href="Maroontress.Cui.Impl.Builder.html" data-linktype="relative-path">Builder</a></span>
+              </dd>
+            </dl>
+          </div>
+          <div class="propertyInfo stack">
+            <dl class="parameterList">
+              <dt>
+                shortNameQueue
+              </dt>
+              <dd>
+                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.queue-1?view=netcore-3.0" data-linktype="absolute-path">Queue</a>&lt;<a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.char?view=netcore-3.0" data-linktype="absolute-path">char</a>&gt;</span>
+              </dd>
+            </dl>
+          </div>
+          <div class="propertyInfo stack">
+            <dl class="parameterList">
+              <dt>
+                queue
+              </dt>
+              <dd>
+                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.queue-1?view=netcore-3.0" data-linktype="absolute-path">Queue</a>&lt;<a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.string?view=netcore-3.0" data-linktype="absolute-path">string</a>&gt;</span>
+              </dd>
+            </dl>
+          </div>
+          <h4 class="propertyInfoTitle stack">Implements</h4>
+          <div class="propertyInfo">
+            <div class="cdlHolder">
+              <span class="cdl"><a href="Maroontress.Cui.Impl.Spec.html#M:Maroontress.Cui.Impl.Spec.VisitShortOption(Maroontress.Cui.Impl.ParseKit,Maroontress.Cui.Impl.Builder,System.Collections.Generic.Queue{System.Char},System.Collections.Generic.Queue{System.String})">Spec.VisitShortOption(ParseKit, Builder, Queue&lt;char&gt;, Queue&lt;string&gt;)</a></span>
+            </div>
+          </div>
+          <h2 id="M:Maroontress.Cui.Impl.AbstractSpec`1.GetHelpHeading">GetHelpHeading()</h2>
+          <div class="summaryHolder">
+            <div class="summary clearFix">
+              <p>Description copied from interface: Spec</p>
+              <blockquote>
+                <p>Gets the heading of the help message.</p>
+              </blockquote>
+            </div>
+          </div>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> <span class="hljs-keyword">string</span> <span class="hljs-title">GetHelpHeading</span>()</code></pre>
+          <h4 class="propertyInfoTitle stack">Returns</h4>
+          <div class="propertyInfo">
+            <div class="subtle">
+              <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.string?view=netcore-3.0" data-linktype="absolute-path">string</a>
+            </div>
+            <p>Description copied from interface: Spec</p>
+            <blockquote>
+              <p>The heading of the help message.</p>
+            </blockquote>
+          </div>
+          <h4 class="propertyInfoTitle stack">Implements</h4>
+          <div class="propertyInfo">
+            <div class="cdlHolder">
+              <span class="cdl"><a href="Maroontress.Cui.Impl.Spec.html#M:Maroontress.Cui.Impl.Spec.GetHelpHeading">Spec.GetHelpHeading()</a></span>
+            </div>
+          </div>
+        </main>
+      </section>
+    </div>
+  </body>
+</html>

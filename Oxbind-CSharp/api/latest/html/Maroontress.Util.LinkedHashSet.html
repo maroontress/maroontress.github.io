@@ -1,0 +1,839 @@
+<!doctype html>
+<html>
+  <head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9TQ6JWBKEK">
+    </script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+function gtag() { dataLayer.push(arguments); }
+gtag('js', new Date());
+gtag('config', 'G-9TQ6JWBKEK');
+    </script>
+    <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LinkedHashSet&lt;T&gt; Class | API Reference | Oxbind Project</title>
+    <link rel="stylesheet" href="bulldoc.css">
+    <script src="highlight.pack.js">
+    </script>
+    <script>
+      hljs.initHighlightingOnLoad();
+    </script>
+  </head>
+  <body>
+    <div class="mainContainer uhf-container has-top-padding has-default-focus" data-bi-name="body">
+      <section>
+        <main class="content">
+          <h1><span class="lang-csharp">Linked<wbr>Hash<wbr>Set&lt;T&gt;</span> Class</h1>
+          <div class="metadata">
+            <dl class="attributeList">
+              <dt>
+                Namespace:
+                <dd>
+                  <span class="lang-csharp"><a class="xref" href="Maroontress.Util.html" data-linktype="relative-path">Maroontress.Util</a></span>
+                </dd>
+              </dt>
+            </dl>
+            <dl class="attributeList">
+              <dt>
+                Assembly:
+                <dd>
+                  <span class="lang-csharp">Oxbind.dll</span>
+                </dd>
+              </dt>
+            </dl>
+          </div>
+          <div class="summaryHolder">
+            <div class="summary clearFix">
+              <p>Hash table and linked list implementation of the <a href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.iset-1?view=netcore-3.0">ISet&lt;T&gt;</a>
+    interface, with predictable iteration order.</p>
+            </div>
+          </div>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-keyword">sealed</span> <span class="hljs-keyword">class</span> <span class="hljs-title">LinkedHashSet</span>&lt;<span class="hljs-title">T</span>&gt; : <span class="hljs-title">ISet</span>&lt;<span class="hljs-title">T</span>&gt;<br>    <span class="hljs-keyword">where</span> <span class="hljs-title">T</span> : <span class="hljs-keyword">notnull</span></code></pre>
+          <h4 id="type-parameters" class="propertyInfoTitle stack heading-with-anchor">Type Parameters</h4>
+          <div class="propertyInfo">
+            <dl class="parameterList">
+              <dt>
+                T
+              </dt>
+              <dd>
+                <code>notnull</code>
+              </dd>
+            </dl>
+            <p>The type of elements maintained by this set.</p>
+          </div>
+          <dl class="attributeList stack">
+            <dt>
+              Inheritance
+            </dt>
+            <dd>
+              <div class="pdlHolder">
+                <div class="pdl">
+                  <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=netcore-3.0" data-linktype="absolute-path">object</a></span>
+                </div>
+                <span class="lang-csharp">Linked<wbr>Hash<wbr>Set&lt;T&gt;</span>
+              </div>
+            </dd>
+          </dl>
+          <dl class="attributeList stack">
+            <dt>
+              Implements
+            </dt>
+            <dd>
+              <div class="cdlHolder">
+                <span class="cdl"><span class="lang-csharp break-text"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.iset-1?view=netcore-3.0" data-linktype="absolute-path">ISet&lt;T&gt;</a></span></span> <span class="cdl"><span class="lang-csharp break-text"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.icollection-1?view=netcore-3.0" data-linktype="absolute-path">ICollection&lt;T&gt;</a></span></span> <span class="cdl"><span class="lang-csharp break-text"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1?view=netcore-3.0" data-linktype="absolute-path">IEnumerable&lt;T&gt;</a></span></span> <span class="cdl"><span class="lang-csharp break-text"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.ienumerable?view=netcore-3.0" data-linktype="absolute-path">IEnumerable</a></span></span>
+              </div>
+            </dd>
+          </dl>
+          <h2 id="remarks" class="heading-with-anchor">Remarks</h2>
+          <p>This implementation differs from <a href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.hashset-1?view=netcore-3.0">HashSet&lt;T&gt;</a> in that it
+    maintains a doubly-linked list running through all of its entries. This
+    linked list defines the iteration ordering, which is the order in which
+    elements were inserted into the set (<i>insertion-order</i>). Note that
+    insertion order is <i>not</i> affected if an element is re-inserted
+    into the set. (An element <code>e</code> is reinserted into a set <code>s</code> if
+    <code>s.Add(e)</code> is invoked when <code>s.Contains(e)</code> would return
+    <code>true</code> immediately prior to the invocation.)</p>
+          <h2 id="constructors" class="heading-with-anchor">Constructors</h2>
+          <div class="table-scroll-wrapper">
+            <table class="nameValue">
+              <tbody>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Util.LinkedHashSet`1.#ctor" data-linktype="relative-path">Linked<wbr>Hash<wbr>Set()</a></span>
+                  </td>
+                  <td>
+                    <p>Initializes a new instance of the <a href="#">LinkedHashSet&lt;T&gt;</a>
+    class.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Util.LinkedHashSet`1.#ctor(System.Int32)" data-linktype="relative-path">Linked<wbr>Hash<wbr>Set(int)</a></span>
+                  </td>
+                  <td>
+                    <p>Initializes a new instance of the <a href="#">LinkedHashSet&lt;T&gt;</a>
+    class.</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <h2 id="properties" class="heading-with-anchor">Properties</h2>
+          <div class="table-scroll-wrapper">
+            <table class="nameValue">
+              <tbody>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="#P:Maroontress.Util.LinkedHashSet`1.Count" data-linktype="relative-path">Count</a></span>
+                  </td>
+                  <td>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="#P:Maroontress.Util.LinkedHashSet`1.IsReadOnly" data-linktype="relative-path">Is<wbr>Read<wbr>Only</a></span>
+                  </td>
+                  <td>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <h2 id="methods" class="heading-with-anchor">Methods</h2>
+          <div class="table-scroll-wrapper">
+            <table class="nameValue">
+              <tbody>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Util.LinkedHashSet`1.Add(`0)" data-linktype="relative-path">Add(T)</a></span>
+                  </td>
+                  <td>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Util.LinkedHashSet`1.Clear" data-linktype="relative-path">Clear()</a></span>
+                  </td>
+                  <td>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Util.LinkedHashSet`1.Contains(`0)" data-linktype="relative-path">Contains(T)</a></span>
+                  </td>
+                  <td>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Util.LinkedHashSet`1.CopyTo(`0[],System.Int32)" data-linktype="relative-path">Copy<wbr>To(T[], int)</a></span>
+                  </td>
+                  <td>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Util.LinkedHashSet`1.ExceptWith(System.Collections.Generic.IEnumerable{`0})" data-linktype="relative-path">Except<wbr>With(IEnumerable&lt;T&gt;)</a></span>
+                  </td>
+                  <td>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Util.LinkedHashSet`1.GetEnumerator" data-linktype="relative-path">Get<wbr>Enumerator()</a></span>
+                  </td>
+                  <td>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Util.LinkedHashSet`1.IntersectWith(System.Collections.Generic.IEnumerable{`0})" data-linktype="relative-path">Intersect<wbr>With(IEnumerable&lt;T&gt;)</a></span>
+                  </td>
+                  <td>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Util.LinkedHashSet`1.IsProperSubsetOf(System.Collections.Generic.IEnumerable{`0})" data-linktype="relative-path">Is<wbr>Proper<wbr>Subset<wbr>Of(IEnumerable&lt;T&gt;)</a></span>
+                  </td>
+                  <td>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Util.LinkedHashSet`1.IsProperSupersetOf(System.Collections.Generic.IEnumerable{`0})" data-linktype="relative-path">Is<wbr>Proper<wbr>Superset<wbr>Of(IEnumerable&lt;T&gt;)</a></span>
+                  </td>
+                  <td>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Util.LinkedHashSet`1.IsSubsetOf(System.Collections.Generic.IEnumerable{`0})" data-linktype="relative-path">Is<wbr>Subset<wbr>Of(IEnumerable&lt;T&gt;)</a></span>
+                  </td>
+                  <td>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Util.LinkedHashSet`1.IsSupersetOf(System.Collections.Generic.IEnumerable{`0})" data-linktype="relative-path">Is<wbr>Superset<wbr>Of(IEnumerable&lt;T&gt;)</a></span>
+                  </td>
+                  <td>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Util.LinkedHashSet`1.Overlaps(System.Collections.Generic.IEnumerable{`0})" data-linktype="relative-path">Overlaps(IEnumerable&lt;T&gt;)</a></span>
+                  </td>
+                  <td>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Util.LinkedHashSet`1.Remove(`0)" data-linktype="relative-path">Remove(T)</a></span>
+                  </td>
+                  <td>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Util.LinkedHashSet`1.SetEquals(System.Collections.Generic.IEnumerable{`0})" data-linktype="relative-path">Set<wbr>Equals(IEnumerable&lt;T&gt;)</a></span>
+                  </td>
+                  <td>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Util.LinkedHashSet`1.SymmetricExceptWith(System.Collections.Generic.IEnumerable{`0})" data-linktype="relative-path">Symmetric<wbr>Except<wbr>With(IEnumerable&lt;T&gt;)</a></span>
+                  </td>
+                  <td>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Util.LinkedHashSet`1.UnionWith(System.Collections.Generic.IEnumerable{`0})" data-linktype="relative-path">Union<wbr>With(IEnumerable&lt;T&gt;)</a></span>
+                  </td>
+                  <td>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.object.equals?view=netcore-3.0#System_Object_Equals_System_Object_">Equals(object)</a>
+                  </td>
+                  <td>
+                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=netcore-3.0" data-linktype="absolute-path">object</a>)
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.object.gethashcode?view=netcore-3.0">GetHashCode()</a>
+                  </td>
+                  <td>
+                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=netcore-3.0" data-linktype="absolute-path">object</a>)
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.object.gettype?view=netcore-3.0">GetType()</a>
+                  </td>
+                  <td>
+                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=netcore-3.0" data-linktype="absolute-path">object</a>)
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.object.memberwiseclone?view=netcore-3.0">MemberwiseClone()</a>
+                  </td>
+                  <td>
+                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=netcore-3.0" data-linktype="absolute-path">object</a>)
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.object.tostring?view=netcore-3.0">ToString()</a>
+                  </td>
+                  <td>
+                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=netcore-3.0" data-linktype="absolute-path">object</a>)
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <h2 id="explicit-interface-implementations" class="heading-with-anchor">Explicit Interface Implementations</h2>
+          <div class="table-scroll-wrapper">
+            <table class="nameValue">
+              <tbody>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Util.LinkedHashSet`1.System#Collections#Generic#ICollection{T}#Add(`0)" data-linktype="relative-path">ICollection&lt;T&gt;.Add(T)</a></span>
+                  </td>
+                  <td>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Util.LinkedHashSet`1.System#Collections#IEnumerable#GetEnumerator" data-linktype="relative-path">IEnumerable.Get<wbr>Enumerator()</a></span>
+                  </td>
+                  <td>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <h1 id="constructors-detail" class="heading-with-anchor">Constructors Detail</h1>
+          <h2 id="M:Maroontress.Util.LinkedHashSet`1.#ctor">LinkedHashSet()</h2>
+          <div class="summaryHolder">
+            <div class="summary clearFix">
+              <p>Initializes a new instance of the <a href="#">LinkedHashSet&lt;T&gt;</a>
+    class.</p>
+            </div>
+          </div>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-title">LinkedHashSet</span>()</code></pre>
+          <h2 id="M:Maroontress.Util.LinkedHashSet`1.#ctor(System.Int32)">LinkedHashSet(int)</h2>
+          <div class="summaryHolder">
+            <div class="summary clearFix">
+              <p>Initializes a new instance of the <a href="#">LinkedHashSet&lt;T&gt;</a>
+    class.</p>
+            </div>
+          </div>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-title">LinkedHashSet</span>(<span class="hljs-keyword">int</span> initialCapacity)</code></pre>
+          <h4 class="propertyInfoTitle stack">Parameters</h4>
+          <div class="propertyInfo">
+            <dl class="parameterList">
+              <dt>
+                initialCapacity
+              </dt>
+              <dd>
+                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.int32?view=netcore-3.0" data-linktype="absolute-path">int</a></span>
+              </dd>
+            </dl>
+            <p>The initial capacity.</p>
+          </div>
+          <h1 id="properties-detail" class="heading-with-anchor">Properties Detail</h1>
+          <h2 id="P:Maroontress.Util.LinkedHashSet`1.Count">Count</h2>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">Count</span> { <span class="hljs-keyword">get</span>; }</code></pre>
+          <h4 class="propertyInfoTitle stack">Property Value</h4>
+          <div class="propertyInfo">
+            <div class="subtle">
+              <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.int32?view=netcore-3.0" data-linktype="absolute-path">int</a>
+            </div>
+          </div>
+          <h4 class="propertyInfoTitle stack">Implements</h4>
+          <div class="propertyInfo">
+            <div class="cdlHolder">
+              <span class="cdl"><a href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.icollection-1.count?view=netcore-3.0">ICollection&lt;T&gt;.Count</a></span>
+            </div>
+          </div>
+          <h2 id="P:Maroontress.Util.LinkedHashSet`1.IsReadOnly">IsReadOnly</h2>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-keyword">bool</span> <span class="hljs-title">IsReadOnly</span> { <span class="hljs-keyword">get</span>; }</code></pre>
+          <h4 class="propertyInfoTitle stack">Property Value</h4>
+          <div class="propertyInfo">
+            <div class="subtle">
+              <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.boolean?view=netcore-3.0" data-linktype="absolute-path">bool</a>
+            </div>
+          </div>
+          <h4 class="propertyInfoTitle stack">Implements</h4>
+          <div class="propertyInfo">
+            <div class="cdlHolder">
+              <span class="cdl"><a href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.icollection-1.isreadonly?view=netcore-3.0">ICollection&lt;T&gt;.IsReadOnly</a></span>
+            </div>
+          </div>
+          <h1 id="methods-detail" class="heading-with-anchor">Methods Detail</h1>
+          <h2 id="M:Maroontress.Util.LinkedHashSet`1.Add(`0)">Add(T)</h2>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-keyword">bool</span> <span class="hljs-title">Add</span>(<span class="hljs-title">T</span> item)</code></pre>
+          <h4 class="propertyInfoTitle stack">Parameters</h4>
+          <div class="propertyInfo">
+            <dl class="parameterList">
+              <dt>
+                item
+              </dt>
+              <dd>
+                <span class="lang-csharp">T</span>
+              </dd>
+            </dl>
+          </div>
+          <h4 class="propertyInfoTitle stack">Returns</h4>
+          <div class="propertyInfo">
+            <div class="subtle">
+              <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.boolean?view=netcore-3.0" data-linktype="absolute-path">bool</a>
+            </div>
+          </div>
+          <h4 class="propertyInfoTitle stack">Implements</h4>
+          <div class="propertyInfo">
+            <div class="cdlHolder">
+              <span class="cdl"><a href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.iset-1.add?view=netcore-3.0#System_Collections_Generic_ISet_1_Add__0_">ISet&lt;T&gt;.Add(T)</a></span>
+            </div>
+          </div>
+          <h2 id="M:Maroontress.Util.LinkedHashSet`1.Clear">Clear()</h2>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Clear</span>()</code></pre>
+          <h4 class="propertyInfoTitle stack">Implements</h4>
+          <div class="propertyInfo">
+            <div class="cdlHolder">
+              <span class="cdl"><a href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.icollection-1.clear?view=netcore-3.0">ICollection&lt;T&gt;.Clear()</a></span>
+            </div>
+          </div>
+          <h2 id="M:Maroontress.Util.LinkedHashSet`1.Contains(`0)">Contains(T)</h2>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-keyword">bool</span> <span class="hljs-title">Contains</span>(<span class="hljs-title">T</span> item)</code></pre>
+          <h4 class="propertyInfoTitle stack">Parameters</h4>
+          <div class="propertyInfo">
+            <dl class="parameterList">
+              <dt>
+                item
+              </dt>
+              <dd>
+                <span class="lang-csharp">T</span>
+              </dd>
+            </dl>
+          </div>
+          <h4 class="propertyInfoTitle stack">Returns</h4>
+          <div class="propertyInfo">
+            <div class="subtle">
+              <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.boolean?view=netcore-3.0" data-linktype="absolute-path">bool</a>
+            </div>
+          </div>
+          <h4 class="propertyInfoTitle stack">Implements</h4>
+          <div class="propertyInfo">
+            <div class="cdlHolder">
+              <span class="cdl"><a href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.icollection-1.contains?view=netcore-3.0#System_Collections_Generic_ICollection_1_Contains__0_">ICollection&lt;T&gt;.Contains(T)</a></span>
+            </div>
+          </div>
+          <h2 id="M:Maroontress.Util.LinkedHashSet`1.CopyTo(`0[],System.Int32)">CopyTo(T[], int)</h2>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">CopyTo</span>(<span class="hljs-title">T</span>[] array, <span class="hljs-keyword">int</span> arrayIndex)</code></pre>
+          <h4 class="propertyInfoTitle stack">Parameters</h4>
+          <div class="propertyInfo">
+            <dl class="parameterList">
+              <dt>
+                array
+              </dt>
+              <dd>
+                <span class="lang-csharp">T[]</span>
+              </dd>
+            </dl>
+          </div>
+          <div class="propertyInfo stack">
+            <dl class="parameterList">
+              <dt>
+                arrayIndex
+              </dt>
+              <dd>
+                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.int32?view=netcore-3.0" data-linktype="absolute-path">int</a></span>
+              </dd>
+            </dl>
+          </div>
+          <h4 class="propertyInfoTitle stack">Implements</h4>
+          <div class="propertyInfo">
+            <div class="cdlHolder">
+              <span class="cdl"><a href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.icollection-1.copyto?view=netcore-3.0#System_Collections_Generic_ICollection_1_CopyTo__0___System_Int32_">ICollection&lt;T&gt;.CopyTo(T[], int)</a></span>
+            </div>
+          </div>
+          <h2 id="M:Maroontress.Util.LinkedHashSet`1.ExceptWith(System.Collections.Generic.IEnumerable{`0})">ExceptWith(IEnumerable&lt;T&gt;)</h2>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">ExceptWith</span>(<span class="hljs-title">IEnumerable</span>&lt;<span class="hljs-title">T</span>&gt; other)</code></pre>
+          <h4 class="propertyInfoTitle stack">Parameters</h4>
+          <div class="propertyInfo">
+            <dl class="parameterList">
+              <dt>
+                other
+              </dt>
+              <dd>
+                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1?view=netcore-3.0" data-linktype="absolute-path">IEnumerable&lt;T&gt;</a></span>
+              </dd>
+            </dl>
+          </div>
+          <h4 class="propertyInfoTitle stack">Implements</h4>
+          <div class="propertyInfo">
+            <div class="cdlHolder">
+              <span class="cdl"><a href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.iset-1.exceptwith?view=netcore-3.0#System_Collections_Generic_ISet_1_ExceptWith_System_Collections_Generic_IEnumerable__0__">ISet&lt;T&gt;.ExceptWith(IEnumerable&lt;T&gt;)</a></span>
+            </div>
+          </div>
+          <h2 id="M:Maroontress.Util.LinkedHashSet`1.GetEnumerator">GetEnumerator()</h2>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-title">IEnumerator</span>&lt;<span class="hljs-title">T</span>&gt; <span class="hljs-title">GetEnumerator</span>()</code></pre>
+          <h4 class="propertyInfoTitle stack">Returns</h4>
+          <div class="propertyInfo">
+            <div class="subtle">
+              <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerator-1?view=netcore-3.0" data-linktype="absolute-path">IEnumerator&lt;T&gt;</a>
+            </div>
+          </div>
+          <h4 class="propertyInfoTitle stack">Implements</h4>
+          <div class="propertyInfo">
+            <div class="cdlHolder">
+              <span class="cdl"><a href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1.getenumerator?view=netcore-3.0">IEnumerable&lt;T&gt;.GetEnumerator()</a></span>
+            </div>
+          </div>
+          <h2 id="M:Maroontress.Util.LinkedHashSet`1.IntersectWith(System.Collections.Generic.IEnumerable{`0})">IntersectWith(IEnumerable&lt;T&gt;)</h2>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">IntersectWith</span>(<span class="hljs-title">IEnumerable</span>&lt;<span class="hljs-title">T</span>&gt; other)</code></pre>
+          <h4 class="propertyInfoTitle stack">Parameters</h4>
+          <div class="propertyInfo">
+            <dl class="parameterList">
+              <dt>
+                other
+              </dt>
+              <dd>
+                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1?view=netcore-3.0" data-linktype="absolute-path">IEnumerable&lt;T&gt;</a></span>
+              </dd>
+            </dl>
+          </div>
+          <h4 class="propertyInfoTitle stack">Implements</h4>
+          <div class="propertyInfo">
+            <div class="cdlHolder">
+              <span class="cdl"><a href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.iset-1.intersectwith?view=netcore-3.0#System_Collections_Generic_ISet_1_IntersectWith_System_Collections_Generic_IEnumerable__0__">ISet&lt;T&gt;.IntersectWith(IEnumerable&lt;T&gt;)</a></span>
+            </div>
+          </div>
+          <h2 id="M:Maroontress.Util.LinkedHashSet`1.IsProperSubsetOf(System.Collections.Generic.IEnumerable{`0})">IsProperSubsetOf(IEnumerable&lt;T&gt;)</h2>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-keyword">bool</span> <span class="hljs-title">IsProperSubsetOf</span>(<span class="hljs-title">IEnumerable</span>&lt;<span class="hljs-title">T</span>&gt; other)</code></pre>
+          <h4 class="propertyInfoTitle stack">Parameters</h4>
+          <div class="propertyInfo">
+            <dl class="parameterList">
+              <dt>
+                other
+              </dt>
+              <dd>
+                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1?view=netcore-3.0" data-linktype="absolute-path">IEnumerable&lt;T&gt;</a></span>
+              </dd>
+            </dl>
+          </div>
+          <h4 class="propertyInfoTitle stack">Returns</h4>
+          <div class="propertyInfo">
+            <div class="subtle">
+              <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.boolean?view=netcore-3.0" data-linktype="absolute-path">bool</a>
+            </div>
+          </div>
+          <h4 class="propertyInfoTitle stack">Implements</h4>
+          <div class="propertyInfo">
+            <div class="cdlHolder">
+              <span class="cdl"><a href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.iset-1.ispropersubsetof?view=netcore-3.0#System_Collections_Generic_ISet_1_IsProperSubsetOf_System_Collections_Generic_IEnumerable__0__">ISet&lt;T&gt;.IsProperSubsetOf(IEnumerable&lt;T&gt;)</a></span>
+            </div>
+          </div>
+          <h2 id="M:Maroontress.Util.LinkedHashSet`1.IsProperSupersetOf(System.Collections.Generic.IEnumerable{`0})">IsProperSupersetOf(IEnumerable&lt;T&gt;)</h2>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-keyword">bool</span> <span class="hljs-title">IsProperSupersetOf</span>(<span class="hljs-title">IEnumerable</span>&lt;<span class="hljs-title">T</span>&gt; other)</code></pre>
+          <h4 class="propertyInfoTitle stack">Parameters</h4>
+          <div class="propertyInfo">
+            <dl class="parameterList">
+              <dt>
+                other
+              </dt>
+              <dd>
+                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1?view=netcore-3.0" data-linktype="absolute-path">IEnumerable&lt;T&gt;</a></span>
+              </dd>
+            </dl>
+          </div>
+          <h4 class="propertyInfoTitle stack">Returns</h4>
+          <div class="propertyInfo">
+            <div class="subtle">
+              <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.boolean?view=netcore-3.0" data-linktype="absolute-path">bool</a>
+            </div>
+          </div>
+          <h4 class="propertyInfoTitle stack">Implements</h4>
+          <div class="propertyInfo">
+            <div class="cdlHolder">
+              <span class="cdl"><a href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.iset-1.ispropersupersetof?view=netcore-3.0#System_Collections_Generic_ISet_1_IsProperSupersetOf_System_Collections_Generic_IEnumerable__0__">ISet&lt;T&gt;.IsProperSupersetOf(IEnumerable&lt;T&gt;)</a></span>
+            </div>
+          </div>
+          <h2 id="M:Maroontress.Util.LinkedHashSet`1.IsSubsetOf(System.Collections.Generic.IEnumerable{`0})">IsSubsetOf(IEnumerable&lt;T&gt;)</h2>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-keyword">bool</span> <span class="hljs-title">IsSubsetOf</span>(<span class="hljs-title">IEnumerable</span>&lt;<span class="hljs-title">T</span>&gt; other)</code></pre>
+          <h4 class="propertyInfoTitle stack">Parameters</h4>
+          <div class="propertyInfo">
+            <dl class="parameterList">
+              <dt>
+                other
+              </dt>
+              <dd>
+                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1?view=netcore-3.0" data-linktype="absolute-path">IEnumerable&lt;T&gt;</a></span>
+              </dd>
+            </dl>
+          </div>
+          <h4 class="propertyInfoTitle stack">Returns</h4>
+          <div class="propertyInfo">
+            <div class="subtle">
+              <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.boolean?view=netcore-3.0" data-linktype="absolute-path">bool</a>
+            </div>
+          </div>
+          <h4 class="propertyInfoTitle stack">Implements</h4>
+          <div class="propertyInfo">
+            <div class="cdlHolder">
+              <span class="cdl"><a href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.iset-1.issubsetof?view=netcore-3.0#System_Collections_Generic_ISet_1_IsSubsetOf_System_Collections_Generic_IEnumerable__0__">ISet&lt;T&gt;.IsSubsetOf(IEnumerable&lt;T&gt;)</a></span>
+            </div>
+          </div>
+          <h2 id="M:Maroontress.Util.LinkedHashSet`1.IsSupersetOf(System.Collections.Generic.IEnumerable{`0})">IsSupersetOf(IEnumerable&lt;T&gt;)</h2>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-keyword">bool</span> <span class="hljs-title">IsSupersetOf</span>(<span class="hljs-title">IEnumerable</span>&lt;<span class="hljs-title">T</span>&gt; other)</code></pre>
+          <h4 class="propertyInfoTitle stack">Parameters</h4>
+          <div class="propertyInfo">
+            <dl class="parameterList">
+              <dt>
+                other
+              </dt>
+              <dd>
+                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1?view=netcore-3.0" data-linktype="absolute-path">IEnumerable&lt;T&gt;</a></span>
+              </dd>
+            </dl>
+          </div>
+          <h4 class="propertyInfoTitle stack">Returns</h4>
+          <div class="propertyInfo">
+            <div class="subtle">
+              <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.boolean?view=netcore-3.0" data-linktype="absolute-path">bool</a>
+            </div>
+          </div>
+          <h4 class="propertyInfoTitle stack">Implements</h4>
+          <div class="propertyInfo">
+            <div class="cdlHolder">
+              <span class="cdl"><a href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.iset-1.issupersetof?view=netcore-3.0#System_Collections_Generic_ISet_1_IsSupersetOf_System_Collections_Generic_IEnumerable__0__">ISet&lt;T&gt;.IsSupersetOf(IEnumerable&lt;T&gt;)</a></span>
+            </div>
+          </div>
+          <h2 id="M:Maroontress.Util.LinkedHashSet`1.Overlaps(System.Collections.Generic.IEnumerable{`0})">Overlaps(IEnumerable&lt;T&gt;)</h2>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-keyword">bool</span> <span class="hljs-title">Overlaps</span>(<span class="hljs-title">IEnumerable</span>&lt;<span class="hljs-title">T</span>&gt; other)</code></pre>
+          <h4 class="propertyInfoTitle stack">Parameters</h4>
+          <div class="propertyInfo">
+            <dl class="parameterList">
+              <dt>
+                other
+              </dt>
+              <dd>
+                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1?view=netcore-3.0" data-linktype="absolute-path">IEnumerable&lt;T&gt;</a></span>
+              </dd>
+            </dl>
+          </div>
+          <h4 class="propertyInfoTitle stack">Returns</h4>
+          <div class="propertyInfo">
+            <div class="subtle">
+              <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.boolean?view=netcore-3.0" data-linktype="absolute-path">bool</a>
+            </div>
+          </div>
+          <h4 class="propertyInfoTitle stack">Implements</h4>
+          <div class="propertyInfo">
+            <div class="cdlHolder">
+              <span class="cdl"><a href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.iset-1.overlaps?view=netcore-3.0#System_Collections_Generic_ISet_1_Overlaps_System_Collections_Generic_IEnumerable__0__">ISet&lt;T&gt;.Overlaps(IEnumerable&lt;T&gt;)</a></span>
+            </div>
+          </div>
+          <h2 id="M:Maroontress.Util.LinkedHashSet`1.Remove(`0)">Remove(T)</h2>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-keyword">bool</span> <span class="hljs-title">Remove</span>(<span class="hljs-title">T</span> item)</code></pre>
+          <h4 class="propertyInfoTitle stack">Parameters</h4>
+          <div class="propertyInfo">
+            <dl class="parameterList">
+              <dt>
+                item
+              </dt>
+              <dd>
+                <span class="lang-csharp">T</span>
+              </dd>
+            </dl>
+          </div>
+          <h4 class="propertyInfoTitle stack">Returns</h4>
+          <div class="propertyInfo">
+            <div class="subtle">
+              <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.boolean?view=netcore-3.0" data-linktype="absolute-path">bool</a>
+            </div>
+          </div>
+          <h4 class="propertyInfoTitle stack">Implements</h4>
+          <div class="propertyInfo">
+            <div class="cdlHolder">
+              <span class="cdl"><a href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.icollection-1.remove?view=netcore-3.0#System_Collections_Generic_ICollection_1_Remove__0_">ICollection&lt;T&gt;.Remove(T)</a></span>
+            </div>
+          </div>
+          <h2 id="M:Maroontress.Util.LinkedHashSet`1.SetEquals(System.Collections.Generic.IEnumerable{`0})">SetEquals(IEnumerable&lt;T&gt;)</h2>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-keyword">bool</span> <span class="hljs-title">SetEquals</span>(<span class="hljs-title">IEnumerable</span>&lt;<span class="hljs-title">T</span>&gt; other)</code></pre>
+          <h4 class="propertyInfoTitle stack">Parameters</h4>
+          <div class="propertyInfo">
+            <dl class="parameterList">
+              <dt>
+                other
+              </dt>
+              <dd>
+                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1?view=netcore-3.0" data-linktype="absolute-path">IEnumerable&lt;T&gt;</a></span>
+              </dd>
+            </dl>
+          </div>
+          <h4 class="propertyInfoTitle stack">Returns</h4>
+          <div class="propertyInfo">
+            <div class="subtle">
+              <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.boolean?view=netcore-3.0" data-linktype="absolute-path">bool</a>
+            </div>
+          </div>
+          <h4 class="propertyInfoTitle stack">Implements</h4>
+          <div class="propertyInfo">
+            <div class="cdlHolder">
+              <span class="cdl"><a href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.iset-1.setequals?view=netcore-3.0#System_Collections_Generic_ISet_1_SetEquals_System_Collections_Generic_IEnumerable__0__">ISet&lt;T&gt;.SetEquals(IEnumerable&lt;T&gt;)</a></span>
+            </div>
+          </div>
+          <h2 id="M:Maroontress.Util.LinkedHashSet`1.SymmetricExceptWith(System.Collections.Generic.IEnumerable{`0})">SymmetricExceptWith(IEnumerable&lt;T&gt;)</h2>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SymmetricExceptWith</span>(<span class="hljs-title">IEnumerable</span>&lt;<span class="hljs-title">T</span>&gt; other)</code></pre>
+          <h4 class="propertyInfoTitle stack">Parameters</h4>
+          <div class="propertyInfo">
+            <dl class="parameterList">
+              <dt>
+                other
+              </dt>
+              <dd>
+                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1?view=netcore-3.0" data-linktype="absolute-path">IEnumerable&lt;T&gt;</a></span>
+              </dd>
+            </dl>
+          </div>
+          <h4 class="propertyInfoTitle stack">Implements</h4>
+          <div class="propertyInfo">
+            <div class="cdlHolder">
+              <span class="cdl"><a href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.iset-1.symmetricexceptwith?view=netcore-3.0#System_Collections_Generic_ISet_1_SymmetricExceptWith_System_Collections_Generic_IEnumerable__0__">ISet&lt;T&gt;.SymmetricExceptWith(IEnumerable&lt;T&gt;)</a></span>
+            </div>
+          </div>
+          <h2 id="M:Maroontress.Util.LinkedHashSet`1.UnionWith(System.Collections.Generic.IEnumerable{`0})">UnionWith(IEnumerable&lt;T&gt;)</h2>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">UnionWith</span>(<span class="hljs-title">IEnumerable</span>&lt;<span class="hljs-title">T</span>&gt; other)</code></pre>
+          <h4 class="propertyInfoTitle stack">Parameters</h4>
+          <div class="propertyInfo">
+            <dl class="parameterList">
+              <dt>
+                other
+              </dt>
+              <dd>
+                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1?view=netcore-3.0" data-linktype="absolute-path">IEnumerable&lt;T&gt;</a></span>
+              </dd>
+            </dl>
+          </div>
+          <h4 class="propertyInfoTitle stack">Implements</h4>
+          <div class="propertyInfo">
+            <div class="cdlHolder">
+              <span class="cdl"><a href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.iset-1.unionwith?view=netcore-3.0#System_Collections_Generic_ISet_1_UnionWith_System_Collections_Generic_IEnumerable__0__">ISet&lt;T&gt;.UnionWith(IEnumerable&lt;T&gt;)</a></span>
+            </div>
+          </div>
+          <h1 id="explicit-interface-implementations-detail" class="heading-with-anchor">Explicit Interface Implementations Detail</h1>
+          <h2 id="M:Maroontress.Util.LinkedHashSet`1.System#Collections#Generic#ICollection{T}#Add(`0)">ICollection&lt;T&gt;.Add(T)</h2>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">ICollection</span>&lt;<span class="hljs-title">T</span>&gt;.<span class="hljs-title">Add</span>(<span class="hljs-title">T</span> item)</code></pre>
+          <h4 class="propertyInfoTitle stack">Parameters</h4>
+          <div class="propertyInfo">
+            <dl class="parameterList">
+              <dt>
+                item
+              </dt>
+              <dd>
+                <span class="lang-csharp">T</span>
+              </dd>
+            </dl>
+          </div>
+          <h4 class="propertyInfoTitle stack">Implements</h4>
+          <div class="propertyInfo">
+            <div class="cdlHolder">
+              <span class="cdl"><a href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.icollection-1.add?view=netcore-3.0#System_Collections_Generic_ICollection_1_Add__0_">ICollection&lt;T&gt;.Add(T)</a></span>
+            </div>
+          </div>
+          <h2 id="M:Maroontress.Util.LinkedHashSet`1.System#Collections#IEnumerable#GetEnumerator">IEnumerable.GetEnumerator()</h2>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">private</span> <span class="hljs-title">IEnumerator</span> <span class="hljs-title">IEnumerable</span>.<span class="hljs-title">GetEnumerator</span>()</code></pre>
+          <h4 class="propertyInfoTitle stack">Returns</h4>
+          <div class="propertyInfo">
+            <div class="subtle">
+              <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.ienumerator?view=netcore-3.0" data-linktype="absolute-path">IEnumerator</a>
+            </div>
+          </div>
+          <h4 class="propertyInfoTitle stack">Implements</h4>
+          <div class="propertyInfo">
+            <div class="cdlHolder">
+              <span class="cdl"><a href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.ienumerable.getenumerator?view=netcore-3.0">IEnumerable.GetEnumerator()</a></span>
+            </div>
+          </div>
+        </main>
+      </section>
+    </div>
+  </body>
+</html>

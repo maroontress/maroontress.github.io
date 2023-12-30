@@ -1,0 +1,190 @@
+<!doctype html>
+<html>
+  <head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9TQ6JWBKEK">
+    </script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+function gtag() { dataLayer.push(arguments); }
+gtag('js', new Date());
+gtag('config', 'G-9TQ6JWBKEK');
+    </script>
+    <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toolkit Class | API Reference | Euclid Project</title>
+    <link rel="stylesheet" href="bulldoc.css">
+    <script src="highlight.pack.js">
+    </script>
+    <script>
+      hljs.initHighlightingOnLoad();
+    </script>
+  </head>
+  <body>
+    <div class="mainContainer uhf-container has-top-padding has-default-focus" data-bi-name="body">
+      <section>
+        <main class="content">
+          <h1><span class="lang-csharp">Toolkit</span> Class</h1>
+          <div class="metadata">
+            <dl class="attributeList">
+              <dt>
+                Namespace:
+                <dd>
+                  <span class="lang-csharp"><a class="xref" href="Maroontress.Euclid.html" data-linktype="relative-path">Maroontress.Euclid</a></span>
+                </dd>
+              </dt>
+            </dl>
+            <dl class="attributeList">
+              <dt>
+                Assembly:
+                <dd>
+                  <span class="lang-csharp">Euclid.dll</span>
+                </dd>
+              </dt>
+            </dl>
+          </div>
+          <div class="summaryHolder">
+            <div class="summary clearFix">
+              <p>Provides the dependency layer to customize.</p>
+            </div>
+          </div>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">class</span> <span class="hljs-title">Toolkit</span></code></pre>
+          <dl class="attributeList stack">
+            <dt>
+              Inheritance
+            </dt>
+            <dd>
+              <div class="pdlHolder">
+                <div class="pdl">
+                  <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=netcore-3.0" data-linktype="absolute-path">object</a></span>
+                </div>
+                <span class="lang-csharp">Toolkit</span>
+              </div>
+            </dd>
+          </dl>
+          <h2 id="properties" class="heading-with-anchor">Properties</h2>
+          <div class="table-scroll-wrapper">
+            <table class="nameValue">
+              <tbody>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="#P:Maroontress.Euclid.Toolkit.Sqrt" data-linktype="relative-path">Sqrt</a></span>
+                  </td>
+                  <td>
+                    <p>Gets or sets the function that returns the square root of a
+    specified number.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="#P:Maroontress.Euclid.Toolkit.Sin" data-linktype="relative-path">Sin</a></span>
+                  </td>
+                  <td>
+                    <p>Gets or sets the function that returns the sine of the specified
+    angle in radians.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="#P:Maroontress.Euclid.Toolkit.Cos" data-linktype="relative-path">Cos</a></span>
+                  </td>
+                  <td>
+                    <p>Gets or sets the function that returns the cosine of the specified
+    angle in radians.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="#P:Maroontress.Euclid.Toolkit.Atan2" data-linktype="relative-path">Atan2</a></span>
+                  </td>
+                  <td>
+                    <p>Gets or sets the function that returns the angle in radian whose
+    tangent is the quotient of two specified numbers.</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <h1 id="properties-detail" class="heading-with-anchor">Properties Detail</h1>
+          <h2 id="P:Maroontress.Euclid.Toolkit.Sqrt">Sqrt</h2>
+          <div class="summaryHolder">
+            <div class="summary clearFix">
+              <p>Gets or sets the function that returns the square root of a
+    specified number.</p>
+            </div>
+          </div>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-title">Func</span>&lt;<span class="hljs-keyword">float</span>, <span class="hljs-keyword">float</span>&gt; <span class="hljs-title">Sqrt</span> { <span class="hljs-keyword">get</span>; <span class="hljs-keyword">set</span>; }</code></pre>
+          <h4 class="propertyInfoTitle stack">Property Value</h4>
+          <div class="propertyInfo">
+            <div class="subtle">
+              <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.func-2?view=netcore-3.0" data-linktype="absolute-path">Func</a>&lt;<a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.single?view=netcore-3.0" data-linktype="absolute-path">float</a>, <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.single?view=netcore-3.0" data-linktype="absolute-path">float</a>&gt;
+            </div>
+          </div>
+          <h3>Remarks</h3>
+          <p>The default function is <a href="https://docs.microsoft.com/en-us/dotnet/api/system.math.sqrt?view=netcore-3.0#System_Math_Sqrt_System_Double_">Math.Sqrt(double)</a>.</p>
+          <h2 id="P:Maroontress.Euclid.Toolkit.Sin">Sin</h2>
+          <div class="summaryHolder">
+            <div class="summary clearFix">
+              <p>Gets or sets the function that returns the sine of the specified
+    angle in radians.</p>
+            </div>
+          </div>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-title">Func</span>&lt;<span class="hljs-keyword">float</span>, <span class="hljs-keyword">float</span>&gt; <span class="hljs-title">Sin</span> { <span class="hljs-keyword">get</span>; <span class="hljs-keyword">set</span>; }</code></pre>
+          <h4 class="propertyInfoTitle stack">Property Value</h4>
+          <div class="propertyInfo">
+            <div class="subtle">
+              <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.func-2?view=netcore-3.0" data-linktype="absolute-path">Func</a>&lt;<a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.single?view=netcore-3.0" data-linktype="absolute-path">float</a>, <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.single?view=netcore-3.0" data-linktype="absolute-path">float</a>&gt;
+            </div>
+          </div>
+          <h3>Remarks</h3>
+          <p>The default function is <a href="https://docs.microsoft.com/en-us/dotnet/api/system.math.sin?view=netcore-3.0#System_Math_Sin_System_Double_">Math.Sin(double)</a>.</p>
+          <h2 id="P:Maroontress.Euclid.Toolkit.Cos">Cos</h2>
+          <div class="summaryHolder">
+            <div class="summary clearFix">
+              <p>Gets or sets the function that returns the cosine of the specified
+    angle in radians.</p>
+            </div>
+          </div>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-title">Func</span>&lt;<span class="hljs-keyword">float</span>, <span class="hljs-keyword">float</span>&gt; <span class="hljs-title">Cos</span> { <span class="hljs-keyword">get</span>; <span class="hljs-keyword">set</span>; }</code></pre>
+          <h4 class="propertyInfoTitle stack">Property Value</h4>
+          <div class="propertyInfo">
+            <div class="subtle">
+              <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.func-2?view=netcore-3.0" data-linktype="absolute-path">Func</a>&lt;<a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.single?view=netcore-3.0" data-linktype="absolute-path">float</a>, <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.single?view=netcore-3.0" data-linktype="absolute-path">float</a>&gt;
+            </div>
+          </div>
+          <h3>Remarks</h3>
+          <p>The default function is <a href="https://docs.microsoft.com/en-us/dotnet/api/system.math.cos?view=netcore-3.0#System_Math_Cos_System_Double_">Math.Cos(double)</a>.</p>
+          <h2 id="P:Maroontress.Euclid.Toolkit.Atan2">Atan2</h2>
+          <div class="summaryHolder">
+            <div class="summary clearFix">
+              <p>Gets or sets the function that returns the angle in radian whose
+    tangent is the quotient of two specified numbers.</p>
+            </div>
+          </div>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-title">Func</span>&lt;<span class="hljs-keyword">float</span>, <span class="hljs-keyword">float</span>, <span class="hljs-keyword">float</span>&gt; <span class="hljs-title">Atan2</span> { <span class="hljs-keyword">get</span>; <span class="hljs-keyword">set</span>; }</code></pre>
+          <h4 class="propertyInfoTitle stack">Property Value</h4>
+          <div class="propertyInfo">
+            <div class="subtle">
+              <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.func-3?view=netcore-3.0" data-linktype="absolute-path">Func</a>&lt;<a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.single?view=netcore-3.0" data-linktype="absolute-path">float</a>, <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.single?view=netcore-3.0" data-linktype="absolute-path">float</a>, <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.single?view=netcore-3.0" data-linktype="absolute-path">float</a>&gt;
+            </div>
+          </div>
+          <h3>Remarks</h3>
+          <p>The default function is <a href="https://docs.microsoft.com/en-us/dotnet/api/system.math.atan2?view=netcore-3.0#System_Math_Atan2_System_Double_System_Double_">Math.Atan2(double, double)</a>.</p>
+        </main>
+      </section>
+    </div>
+  </body>
+</html>

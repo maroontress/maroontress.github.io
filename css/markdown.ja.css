@@ -1,0 +1,352 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans+Condensed:700');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400');
+
+@media screen and (max-width: 656px) {
+  div.container {
+    margin: auto;
+    width: calc(100% - 16px);
+  }
+
+  p code {
+    overflow-wrap: break-word;
+  }
+}
+
+@media screen and (min-width: 656px) and (max-width: 856px) {
+  div.container {
+    margin: auto;
+    width: 640px;
+  }
+}
+
+@media screen and (max-width: 856px) {
+  nav {
+    border-top: 1px solid;
+    border-top-color: var(--border);
+    padding-top: 8px;
+  }
+}
+
+@media screen and (min-width: 856px) {
+  div.container {
+    margin: auto;
+    width: 840px;
+    display: flex;
+  }
+
+  div.left-container {
+    flex: none;
+    width: 200px;
+    order: 1;
+  }
+
+  div.main-container {
+    flex: none;
+    width: 640px;
+    order: 2;
+  }
+}
+
+div.left-container {
+  margin: 8px;
+}
+
+div.main-container {
+  margin: 8px;
+}
+
+div.logo {
+  background-color: var(--pre-background);
+  text-align: center;
+  margin: 0px;
+  font-weight: bold;
+  font-family: "palatino linotype", serif;
+}
+
+span.project-name {
+  font-weight: bold;
+}
+
+body {
+  -webkit-text-size-adjust: 100%;
+  font-family: "Open Sans", "Yu Gothic UI", -apple-system, BlinkMacSystemFont, "Segoe UI", "Ubuntu", "Droid Sans", sans-serif;
+  font-size: 14px;
+  margin: 0px;
+  padding: 0px;
+  line-height: 1.8rem;
+  word-wrap: break-word;
+  color: var(--text);
+  background-color: var(--body-background);
+}
+
+a {
+  text-decoration: none;
+  color: var(--anchor);
+}
+
+a:hover {
+  color: var(--anchor-hover);
+  text-decoration: underline;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+a:focus, input:focus, select:focus, textarea:focus {
+  outline: 1px solid;
+  outline-offset: -1px;
+}
+
+hr {
+  border: 0;
+  height: 2px;
+  border-bottom: 2px solid;
+  color: var(--border);
+}
+
+div.project-logo {
+  font-family: "Open Sans Condensed", sans-serif;
+  font-size: 2rem;
+  font-weight: bold;
+  line-height: 1.2;
+  text-align: center;
+  margin-block-end: 0.83em;
+}
+
+h1 {
+  font-family: "Open Sans Condensed", "Yu Gothic UI Semibold", sans-serif;
+  font-size: 2rem;
+  padding-bottom: 0.3rem;
+  line-height: 1.2;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-bottom-color: var(--border);
+}
+
+h2 {
+  font-family: "Open Sans Condensed", "Yu Gothic UI Semibold", sans-serif;
+  font-size: 1.5rem;
+}
+
+h3 {
+  font-family: "Open Sans Condensed", "Yu Gothic UI Semibold", sans-serif;
+  font-size: 1.17rem;
+}
+
+h4 {
+  font-family: "Open Sans Condensed", "Yu Gothic UI Semibold", sans-serif;
+}
+
+div.horizontal-scroll {
+  overflow: auto;
+}
+
+table {
+  border-collapse: collapse;
+  line-height: 1.6rem;
+}
+
+table > thead > tr > th {
+  text-align: left;
+  border-bottom: 1px solid;
+}
+
+table > thead > tr > th, table > thead > tr > td, table > tbody > tr > th, table > tbody > tr > td {
+  padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+  border-top: 1px solid;
+  border-top-color: var(--border);
+}
+
+th, td {
+  white-space: nowrap;
+}
+
+blockquote {
+  margin: 0 7px 0 5px;
+  padding: 0 16px 0 10px;
+  border-left-width: 5px;
+  border-left-style: solid;
+  border-left-color: var(--blockquote-border);
+  background-color: var(--blockquote-background);
+}
+
+code {
+  font-family: Menlo, Monaco, Consolas, "Yu Gothic", "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+  color: var(--code);
+}
+
+a > code {
+  color: var(--anchor)
+}
+
+a > code:hover {
+  color: var(--anchor-hover)
+}
+
+pre {
+  width: calc(100% - 32px);
+  padding: 16px;
+  border-radius: 3px;
+  overflow: auto;
+  background-color: var(--pre-background);
+  font-size: 14px;
+  line-height: 1.2rem;
+}
+
+pre > code {
+  width: fit-content;
+  white-space: pre;
+  padding-right: 16px;
+  word-wrap: normal;
+}
+
+nav > ul {
+  padding: 0px;
+  list-style-type: none;
+}
+
+nav > ul > li {
+  text-indent: -1rem;
+  padding-left: 1.5rem;
+  padding-right: 0.5rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  color: var(--anchor);
+}
+
+nav > ul li.selected {
+  background-color: var(--anchor);
+  color: var(--body-background);
+}
+
+nav > ul > li:before {
+  content: "\25b8\0020";
+}
+
+nav > ul > li.selected:before {
+  content: "\25be\0020";
+}
+
+ul#toc-placeholder {
+  list-style-type: none;
+  background-color: var(--blockquote-background);
+  margin-left: 1.5rem;
+  padding-inline-start: 0px;
+}
+
+ul#toc-placeholder > li {
+  padding-top: 0px;
+  padding-bottom: 1rem;
+  padding-right: 1rem;
+  color: var(--anchor);
+}
+
+ul#toc-placeholder > li:first-child {
+  padding-top: 1rem;
+}
+
+ul#toc-placeholder > li.toc-H2 {
+  padding-left: 1rem;
+  font-size: 90%;
+  line-height: 2.5ex;
+}
+
+ul#toc-placeholder > li.toc-H3 {
+  padding-left: 2rem;
+  font-size: 80%;
+  line-height: 2.5ex;
+}
+
+#references + ol > li::marker {
+  content: "[" counter(list-item) "] ";
+}
+
+.hljs {
+  display: revert;
+  overflow-x: auto;
+  color: #abb2bf;
+}
+
+.hljs-comment,
+.hljs-quote {
+  color: #57a64a;
+}
+
+.hljs-doctag,
+.hljs-keyword,
+.hljs-formula {
+  color: #569cd6;
+}
+
+.hljs-section,
+.hljs-name,
+.hljs-selector-tag,
+.hljs-deletion,
+.hljs-subst {
+  color: #e06c75;
+}
+
+.hljs-literal {
+  color: #56b6c2;
+}
+
+.hljs-string,
+.hljs-regexp,
+.hljs-addition,
+.hljs-attribute,
+.hljs-meta-string {
+  color: #ce9178;
+}
+
+.hljs-built_in,
+.hljs-class .hljs-title {
+  color: #01cfff;
+}
+
+.hljs-attr,
+.hljs-variable,
+.hljs-template-variable,
+.hljs-type,
+.hljs-selector-class,
+.hljs-selector-attr,
+.hljs-selector-pseudo,
+.hljs-number {
+  color: #b5cea8;
+}
+
+.hljs-symbol,
+.hljs-bullet,
+.hljs-link,
+.hljs-meta,
+.hljs-selector-id,
+.hljs-title {
+  color: #01cfff;
+}
+
+.hljs-emphasis {
+  font-style: italic;
+}
+
+.hljs-strong {
+  font-weight: bold;
+}
+
+.hljs-link {
+  text-decoration: underline;
+}
+
+:root {
+  --text: #d0d0d0;
+  --body-background: #1e1e1e;
+  --border: #474747;
+  --anchor: #4db2ff;
+  --anchor-hover: #0091ff;
+  --code: #d7ba7d;
+  --pre-background: #161616;
+  --blockquote-background: #282828;
+  --blockquote-border: #14517a;
+}

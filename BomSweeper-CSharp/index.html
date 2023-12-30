@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9TQ6JWBKEK"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-9TQ6JWBKEK');
+    </script>
+    </script>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Top | BomSweeper.CSharp</title>
+    <link rel="canonical" href="https://maroontress.github.io/BomSweeper-CSharp/index.html" />
+    <link rel="stylesheet" type="text/css" href="/css/markdown.css">
+    <link rel="apple-touch-icon" sizes="120x120" href="/images/logo-v2-120x120.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/logo-v2-180x180.png">
+    <link rel="icon" type="image/x-icon" href="/images/logo-v2.ico">
+    <link rel="mask-icon" href="/images/logo-v2-mask-icon.svg" color="#800000">
+    <script src="/js/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+    <script src="/js/toc.js"></script>
+  </head>
+  <body>
+    <div class="logo">
+      <b>Maroontress Fast Software</b>
+    </div>
+    <div class="container">
+      <div class="main-container">
+        <section>
+          <main class="content">
+<div class="project-logo">BomSweeper.CSharp</div>
+<div id="toc-level" data-values="H2,H3"></div>
+<p>BomSweeper is a command-line tool that finds the files starting with a UTF-8 Byte Order Mark (BOM) in the directory tree and removes a BOM from those files.</p>
+<h2>Get started</h2>
+<p>BomSweeper is available as
+<a href="https://www.nuget.org/packages/BomSweeper.GlobalTool/">the <img src="https://maroontress.github.io/images/NuGet-logo.png" alt="NuGet-logo"> NuGet package</a>,
+so it can be installed as follows:</p>
+<pre><code class="language-bash">dotnet tool install -g BomSweeper.GlobalTool
+</code></pre>
+<h3>Example</h3>
+<pre><code class="language-bash">bomsweeper '**/*.cs' '**/*.csproj'
+</code></pre>
+<p>BomSweeper finds <code>.cs</code> and <code>.csproj</code> files starting with a UTF-8 BOM in the
+current directory and subdirectories. BomSweeper exits 0 if no file is found,
+and &gt;0 otherwise.</p>
+<pre><code class="language-bash">bomsweeper -R '**/*.cs'
+</code></pre>
+<p>BomSweeper finds <code>.cs</code> files in the current directory and subdirectories,
+and remove a UTF-8 BOM from the files if any. BomSweeper exits 0,
+and &gt;0 if an error occurs.</p>
+<h2>Documents</h2>
+<ul>
+<li><a href="https://github.com/maroontress/BomSweeper.CSharp/blob/master/README.md">README</a></li>
+<li><a href="releasenotes.html">Release notes</a></li>
+</ul>
+<h2>How to contribute</h2>
+<p>Please send us pull requests or issues from
+<a href="https://github.com/maroontress/BomSweeper.CSharp">the <img src="https://maroontress.github.io/images/GitHub-logo.png" alt="GitHub icon"> GitHub repository</a>.</p>
+          </main>
+        </section>
+      </div>
+      <div class="left-container">
+<nav>
+  <div>
+    <a href="/">Projects</a>
+  </div>
+  <div>
+    <span>&#x25BE;</span>
+  </div>
+  <div>
+    <span class="project-name"><a href="index.html">BomSweeper.CSharp</a></span>
+  </div>
+  <ul>
+    <li class="selected">
+      Top
+    </li>
+    <ul id="toc-placeholder">
+    </ul>
+    <li>
+      <a href="releasenotes.html">Release Notes</a>
+    </li>
+  </ul>
+</nav>
+      </div>
+    </div>
+  </body>
+</html>

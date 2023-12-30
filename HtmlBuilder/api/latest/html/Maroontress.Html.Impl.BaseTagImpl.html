@@ -1,0 +1,574 @@
+<!doctype html>
+<html>
+  <head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9TQ6JWBKEK">
+    </script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+function gtag() { dataLayer.push(arguments); }
+gtag('js', new Date());
+gtag('config', 'G-9TQ6JWBKEK');
+    </script>
+    <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BaseTagImpl&lt;T&gt; Class | API Reference | HtmlBuilder Project</title>
+    <link rel="stylesheet" href="bulldoc.css">
+    <script src="highlight.pack.js">
+    </script>
+    <script>
+      hljs.initHighlightingOnLoad();
+    </script>
+  </head>
+  <body>
+    <div class="mainContainer uhf-container has-top-padding has-default-focus" data-bi-name="body">
+      <section>
+        <main class="content">
+          <h1><span class="lang-csharp">Base<wbr>Tag<wbr>Impl&lt;T&gt;</span> Class</h1>
+          <div class="metadata">
+            <dl class="attributeList">
+              <dt>
+                Namespace:
+                <dd>
+                  <span class="lang-csharp"><a class="xref" href="Maroontress.Html.Impl.html" data-linktype="relative-path">Maroontress.Html.Impl</a></span>
+                </dd>
+              </dt>
+            </dl>
+            <dl class="attributeList">
+              <dt>
+                Assembly:
+                <dd>
+                  <span class="lang-csharp">Html<wbr>Builder.dll</span>
+                </dd>
+              </dt>
+            </dl>
+          </div>
+          <div class="summaryHolder">
+            <div class="summary clearFix">
+              <p>Abstraction of Tag and EmptyTag.</p>
+            </div>
+          </div>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> <span class="hljs-keyword">class</span> <span class="hljs-title">BaseTagImpl</span>&lt;<span class="hljs-title">T</span>&gt; : <span class="hljs-title">AbstractNode</span>, <span class="hljs-title">BaseTag</span>&lt;<span class="hljs-title">T</span>&gt;<br>    <span class="hljs-keyword">where</span> <span class="hljs-title">T</span> : <span class="hljs-title">BaseTag</span>&lt;<span class="hljs-title">T</span>&gt;</code></pre>
+          <h4 id="type-parameters" class="propertyInfoTitle stack heading-with-anchor">Type Parameters</h4>
+          <div class="propertyInfo">
+            <dl class="parameterList">
+              <dt>
+                T
+              </dt>
+              <dd>
+                <span class="lang-csharp"><a class="xref" href="Maroontress.Html.BaseTag.html" data-linktype="relative-path">Base<wbr>Tag&lt;T&gt;</a></span>
+              </dd>
+            </dl>
+            <p>The type of an HTML element.</p>
+          </div>
+          <dl class="attributeList stack">
+            <dt>
+              Inheritance
+            </dt>
+            <dd>
+              <div class="pdlHolder">
+                <div class="pdl">
+                  <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=netcore-3.0" data-linktype="absolute-path">object</a></span>
+                </div>
+                <div class="pdl">
+                  <span class="lang-csharp"><a class="xref" href="Maroontress.Html.Impl.AbstractNode.html" data-linktype="relative-path">Abstract<wbr>Node</a></span>
+                </div>
+                <span class="lang-csharp">Base<wbr>Tag<wbr>Impl&lt;T&gt;</span>
+              </div>
+            </dd>
+          </dl>
+          <dl class="attributeList stack">
+            <dt>
+              Implements
+            </dt>
+            <dd>
+              <div class="cdlHolder">
+                <span class="cdl"><span class="lang-csharp break-text"><a class="xref" href="Maroontress.Html.Node.html" data-linktype="relative-path">Node</a></span></span> <span class="cdl"><span class="lang-csharp break-text"><a class="xref" href="Maroontress.Html.BaseTag.html" data-linktype="relative-path">Base<wbr>Tag&lt;T&gt;</a></span></span>
+              </div>
+            </dd>
+          </dl>
+          <h2 id="properties" class="heading-with-anchor">Properties</h2>
+          <div class="table-scroll-wrapper">
+            <table class="nameValue">
+              <tbody>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="#P:Maroontress.Html.Impl.BaseTagImpl`1.Name" data-linktype="relative-path">Name</a></span>
+                  </td>
+                  <td>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="Maroontress.Html.Impl.AbstractNode.html#P:Maroontress.Html.Impl.AbstractNode.Kind">Kind</a>
+                  </td>
+                  <td>
+                    (Inherited from <a class="xref" href="Maroontress.Html.Impl.AbstractNode.html" data-linktype="relative-path">Abstract<wbr>Node</a>)
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <h2 id="methods" class="heading-with-anchor">Methods</h2>
+          <div class="table-scroll-wrapper">
+            <table class="nameValue">
+              <tbody>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Html.Impl.BaseTagImpl`1.AddAttributes(System.ValueTuple{System.String,System.String}[])" data-linktype="relative-path">Add<wbr>Attributes((string Name, string Value)[])</a></span>
+                  </td>
+                  <td>
+                    <p>Description copied from interface: BaseTag</p>
+                    <blockquote>
+                      <p>Gets a new <a href="Maroontress.Html.BaseTag.html">BaseTag&lt;T&gt;</a> object with the specified attribute
+    that has the specified value.</p>
+                    </blockquote>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Html.Impl.BaseTagImpl`1.AddClass(System.String[])" data-linktype="relative-path">Add<wbr>Class(string[])</a></span>
+                  </td>
+                  <td>
+                    <p>Description copied from interface: BaseTag</p>
+                    <blockquote>
+                      <p>Gets a new <a href="Maroontress.Html.BaseTag.html">BaseTag&lt;T&gt;</a> object with the <code>class</code>
+    attribute that has both the values of this object and the specified
+    values.</p>
+                    </blockquote>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Html.Impl.BaseTagImpl`1.AddEmptyAttributes(System.String[])" data-linktype="relative-path">Add<wbr>Empty<wbr>Attributes(string[])</a></span>
+                  </td>
+                  <td>
+                    <p>Description copied from interface: BaseTag</p>
+                    <blockquote>
+                      <p>Gets a new <a href="Maroontress.Html.BaseTag.html">BaseTag&lt;T&gt;</a> object with the specified empty
+     attribute.</p>
+                    </blockquote>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Html.Impl.BaseTagImpl`1.WithClass(System.String[])" data-linktype="relative-path">With<wbr>Class(string[])</a></span>
+                  </td>
+                  <td>
+                    <p>Description copied from interface: BaseTag</p>
+                    <blockquote>
+                      <p>Gets a new <a href="Maroontress.Html.BaseTag.html">BaseTag&lt;T&gt;</a> object with the <code>class</code>
+    attribute that has the specified values.</p>
+                    </blockquote>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Html.Impl.BaseTagImpl`1.WithId(System.String)" data-linktype="relative-path">With<wbr>Id(string)</a></span>
+                  </td>
+                  <td>
+                    <p>Description copied from interface: BaseTag</p>
+                    <blockquote>
+                      <p>Gets a new <a href="Maroontress.Html.BaseTag.html">BaseTag&lt;T&gt;</a> object with the <code>id</code> attribute
+    that has the specified value.</p>
+                    </blockquote>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Html.Impl.BaseTagImpl`1.Create(System.Func{Maroontress.Html.TagStruct,Maroontress.Html.TagStruct})" data-linktype="relative-path">Create(Func&lt;Tag<wbr>Struct, Tag<wbr>Struct&gt;)</a></span>
+                  </td>
+                  <td>
+                    <p>Gets a new element with the modifying function.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Html.Impl.BaseTagImpl`1.CreateAddingAttributes(System.Collections.Generic.IEnumerable{System.ValueTuple{System.String,System.String}})" data-linktype="relative-path">Create<wbr>Adding<wbr>Attributes(IEnumerable&lt;(string Name, string Value)&gt;)</a></span>
+                  </td>
+                  <td>
+                    <p>Gets a new element with adding the specified attributes.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="Maroontress.Html.Impl.AbstractNode.html#M:Maroontress.Html.Impl.AbstractNode.Accept(Maroontress.Html.NodeVisitor)">Accept(NodeVisitor)</a>
+                  </td>
+                  <td>
+                    <p>Description copied from interface: Node</p>
+                    <blockquote>
+                      <p>Returns the object associated this node that is created with the
+    specified visitor.</p>
+                    </blockquote>
+                    (Inherited from <a class="xref" href="Maroontress.Html.Impl.AbstractNode.html" data-linktype="relative-path">Abstract<wbr>Node</a>)
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="Maroontress.Html.Impl.AbstractNode.html#M:Maroontress.Html.Impl.AbstractNode.ToString">ToString()</a>
+                  </td>
+                  <td>
+                    (Inherited from <a class="xref" href="Maroontress.Html.Impl.AbstractNode.html" data-linktype="relative-path">Abstract<wbr>Node</a>)
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="Maroontress.Html.Impl.AbstractNode.html#M:Maroontress.Html.Impl.AbstractNode.ToString(Maroontress.Html.FormatOptions)">ToString(FormatOptions)</a>
+                  </td>
+                  <td>
+                    <p>Description copied from interface: Node</p>
+                    <blockquote>
+                      <p>Returns the string representing the current object, formatting it with
+    the spcified <a href="Maroontress.Html.FormatOptions.html">FormatOptions</a>.</p>
+                    </blockquote>
+                    (Inherited from <a class="xref" href="Maroontress.Html.Impl.AbstractNode.html" data-linktype="relative-path">Abstract<wbr>Node</a>)
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="Maroontress.Html.Impl.AbstractNode.html#M:Maroontress.Html.Impl.AbstractNode.GetKind">GetKind()</a>
+                  </td>
+                  <td>
+                    <p>Gets the kind of this node.</p>
+                    (Inherited from <a class="xref" href="Maroontress.Html.Impl.AbstractNode.html" data-linktype="relative-path">Abstract<wbr>Node</a>)
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.object.equals?view=netcore-3.0#System_Object_Equals_System_Object_">Equals(object)</a>
+                  </td>
+                  <td>
+                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=netcore-3.0" data-linktype="absolute-path">object</a>)
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.object.gethashcode?view=netcore-3.0">GetHashCode()</a>
+                  </td>
+                  <td>
+                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=netcore-3.0" data-linktype="absolute-path">object</a>)
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.object.gettype?view=netcore-3.0">GetType()</a>
+                  </td>
+                  <td>
+                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=netcore-3.0" data-linktype="absolute-path">object</a>)
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.object.memberwiseclone?view=netcore-3.0">MemberwiseClone()</a>
+                  </td>
+                  <td>
+                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=netcore-3.0" data-linktype="absolute-path">object</a>)
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <h1 id="properties-detail" class="heading-with-anchor">Properties Detail</h1>
+          <h2 id="P:Maroontress.Html.Impl.BaseTagImpl`1.Name">Name</h2>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> <span class="hljs-keyword">string</span> <span class="hljs-title">Name</span> { <span class="hljs-keyword">get</span>; }</code></pre>
+          <h4 class="propertyInfoTitle stack">Property Value</h4>
+          <div class="propertyInfo">
+            <div class="subtle">
+              <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.string?view=netcore-3.0" data-linktype="absolute-path">string</a>
+            </div>
+          </div>
+          <h4 class="propertyInfoTitle stack">Implements</h4>
+          <div class="propertyInfo">
+            <div class="cdlHolder">
+              <span class="cdl"><a href="Maroontress.Html.BaseTag.html#P:Maroontress.Html.BaseTag`1.Name">BaseTag&lt;T&gt;.Name</a></span>
+            </div>
+          </div>
+          <h1 id="methods-detail" class="heading-with-anchor">Methods Detail</h1>
+          <h2 id="M:Maroontress.Html.Impl.BaseTagImpl`1.AddAttributes(System.ValueTuple{System.String,System.String}[])">AddAttributes((string Name, string Value)[])</h2>
+          <div class="summaryHolder">
+            <div class="summary clearFix">
+              <p>Description copied from interface: BaseTag</p>
+              <blockquote>
+                <p>Gets a new <a href="Maroontress.Html.BaseTag.html">BaseTag&lt;T&gt;</a> object with the specified attribute
+    that has the specified value.</p>
+              </blockquote>
+            </div>
+          </div>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-title">T</span> <span class="hljs-title">AddAttributes</span>(<span class="hljs-keyword">params</span> (<span class="hljs-keyword">string</span> <span class="hljs-title">Name</span>, <span class="hljs-keyword">string</span> <span class="hljs-title">Value</span>)[] attributes)</code></pre>
+          <h4 class="propertyInfoTitle stack">Parameters</h4>
+          <div class="propertyInfo">
+            <dl class="parameterList">
+              <dt>
+                attributes
+              </dt>
+              <dd>
+                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.valuetuple-2?view=netcore-3.0" data-linktype="absolute-path">(string Name, string Value)</a>[]</span>
+              </dd>
+            </dl>
+          </div>
+          <h4 class="propertyInfoTitle stack">Returns</h4>
+          <div class="propertyInfo">
+            <div class="subtle">
+              T
+            </div>
+            <p>Description copied from interface: BaseTag</p>
+            <blockquote>
+              <p>The new <a href="Maroontress.Html.BaseTag.html">BaseTag&lt;T&gt;</a> object.</p>
+            </blockquote>
+          </div>
+          <h4 class="propertyInfoTitle stack">Implements</h4>
+          <div class="propertyInfo">
+            <div class="cdlHolder">
+              <span class="cdl"><a href="Maroontress.Html.BaseTag.html#M:Maroontress.Html.BaseTag`1.AddAttributes(System.ValueTuple{System.String,System.String}[])">BaseTag&lt;T&gt;.AddAttributes((string Name, string Value)[])</a></span>
+            </div>
+          </div>
+          <h2 id="M:Maroontress.Html.Impl.BaseTagImpl`1.AddClass(System.String[])">AddClass(string[])</h2>
+          <div class="summaryHolder">
+            <div class="summary clearFix">
+              <p>Description copied from interface: BaseTag</p>
+              <blockquote>
+                <p>Gets a new <a href="Maroontress.Html.BaseTag.html">BaseTag&lt;T&gt;</a> object with the <code>class</code>
+    attribute that has both the values of this object and the specified
+    values.</p>
+              </blockquote>
+            </div>
+          </div>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-title">T</span> <span class="hljs-title">AddClass</span>(<span class="hljs-keyword">params</span> <span class="hljs-keyword">string</span>[] values)</code></pre>
+          <h4 class="propertyInfoTitle stack">Parameters</h4>
+          <div class="propertyInfo">
+            <dl class="parameterList">
+              <dt>
+                values
+              </dt>
+              <dd>
+                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.string?view=netcore-3.0" data-linktype="absolute-path">string</a>[]</span>
+              </dd>
+            </dl>
+          </div>
+          <h4 class="propertyInfoTitle stack">Returns</h4>
+          <div class="propertyInfo">
+            <div class="subtle">
+              T
+            </div>
+            <p>Description copied from interface: BaseTag</p>
+            <blockquote>
+              <p>The new <a href="Maroontress.Html.BaseTag.html">BaseTag&lt;T&gt;</a> object.</p>
+            </blockquote>
+          </div>
+          <h4 class="propertyInfoTitle stack">Implements</h4>
+          <div class="propertyInfo">
+            <div class="cdlHolder">
+              <span class="cdl"><a href="Maroontress.Html.BaseTag.html#M:Maroontress.Html.BaseTag`1.AddClass(System.String[])">BaseTag&lt;T&gt;.AddClass(string[])</a></span>
+            </div>
+          </div>
+          <h2 id="M:Maroontress.Html.Impl.BaseTagImpl`1.AddEmptyAttributes(System.String[])">AddEmptyAttributes(string[])</h2>
+          <div class="summaryHolder">
+            <div class="summary clearFix">
+              <p>Description copied from interface: BaseTag</p>
+              <blockquote>
+                <p>Gets a new <a href="Maroontress.Html.BaseTag.html">BaseTag&lt;T&gt;</a> object with the specified empty
+     attribute.</p>
+              </blockquote>
+            </div>
+          </div>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-title">T</span> <span class="hljs-title">AddEmptyAttributes</span>(<span class="hljs-keyword">params</span> <span class="hljs-keyword">string</span>[] attributeNames)</code></pre>
+          <h4 class="propertyInfoTitle stack">Parameters</h4>
+          <div class="propertyInfo">
+            <dl class="parameterList">
+              <dt>
+                attributeNames
+              </dt>
+              <dd>
+                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.string?view=netcore-3.0" data-linktype="absolute-path">string</a>[]</span>
+              </dd>
+            </dl>
+          </div>
+          <h4 class="propertyInfoTitle stack">Returns</h4>
+          <div class="propertyInfo">
+            <div class="subtle">
+              T
+            </div>
+            <p>Description copied from interface: BaseTag</p>
+            <blockquote>
+              <p>The new <a href="Maroontress.Html.BaseTag.html">BaseTag&lt;T&gt;</a> object.</p>
+            </blockquote>
+          </div>
+          <h4 class="propertyInfoTitle stack">Implements</h4>
+          <div class="propertyInfo">
+            <div class="cdlHolder">
+              <span class="cdl"><a href="Maroontress.Html.BaseTag.html#M:Maroontress.Html.BaseTag`1.AddEmptyAttributes(System.String[])">BaseTag&lt;T&gt;.AddEmptyAttributes(string[])</a></span>
+            </div>
+          </div>
+          <h3>Remarks</h3>
+          <p>Description copied from interface: BaseTag</p>
+          <blockquote>
+            <p>An invocation of this method of the form
+     <code>tag.AddEmptyAttributes(n1, n2)</code> behaves in exactly the same way
+     as the invocation <code>tag.AddAttributes((n1, null), (n2,
+     null))</code>.</p>
+            <p>The web browser interprets the value of the empty attribute as
+     the empty string implicitly. So, for example, <code>&lt;input
+     disabled&gt;</code> is equivalent to <code>&lt;input disabled=""&gt;</code>. The
+     former can be generated with <code>AddEmptyAttributes("disabled")</code> or
+     <code>AddAttributes(("disabled", null))</code>, and the latter with
+     <code>AddAttributes(("disabled", ""))</code>.</p>
+          </blockquote>
+          <h2 id="M:Maroontress.Html.Impl.BaseTagImpl`1.WithClass(System.String[])">WithClass(string[])</h2>
+          <div class="summaryHolder">
+            <div class="summary clearFix">
+              <p>Description copied from interface: BaseTag</p>
+              <blockquote>
+                <p>Gets a new <a href="Maroontress.Html.BaseTag.html">BaseTag&lt;T&gt;</a> object with the <code>class</code>
+    attribute that has the specified values.</p>
+              </blockquote>
+            </div>
+          </div>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-title">T</span> <span class="hljs-title">WithClass</span>(<span class="hljs-keyword">params</span> <span class="hljs-keyword">string</span>[] values)</code></pre>
+          <h4 class="propertyInfoTitle stack">Parameters</h4>
+          <div class="propertyInfo">
+            <dl class="parameterList">
+              <dt>
+                values
+              </dt>
+              <dd>
+                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.string?view=netcore-3.0" data-linktype="absolute-path">string</a>[]</span>
+              </dd>
+            </dl>
+          </div>
+          <h4 class="propertyInfoTitle stack">Returns</h4>
+          <div class="propertyInfo">
+            <div class="subtle">
+              T
+            </div>
+            <p>Description copied from interface: BaseTag</p>
+            <blockquote>
+              <p>The new <a href="Maroontress.Html.BaseTag.html">BaseTag&lt;T&gt;</a> object.</p>
+            </blockquote>
+          </div>
+          <h4 class="propertyInfoTitle stack">Implements</h4>
+          <div class="propertyInfo">
+            <div class="cdlHolder">
+              <span class="cdl"><a href="Maroontress.Html.BaseTag.html#M:Maroontress.Html.BaseTag`1.WithClass(System.String[])">BaseTag&lt;T&gt;.WithClass(string[])</a></span>
+            </div>
+          </div>
+          <h2 id="M:Maroontress.Html.Impl.BaseTagImpl`1.WithId(System.String)">WithId(string)</h2>
+          <div class="summaryHolder">
+            <div class="summary clearFix">
+              <p>Description copied from interface: BaseTag</p>
+              <blockquote>
+                <p>Gets a new <a href="Maroontress.Html.BaseTag.html">BaseTag&lt;T&gt;</a> object with the <code>id</code> attribute
+    that has the specified value.</p>
+              </blockquote>
+            </div>
+          </div>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-title">T</span> <span class="hljs-title">WithId</span>(<span class="hljs-keyword">string</span> id)</code></pre>
+          <h4 class="propertyInfoTitle stack">Parameters</h4>
+          <div class="propertyInfo">
+            <dl class="parameterList">
+              <dt>
+                id
+              </dt>
+              <dd>
+                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.string?view=netcore-3.0" data-linktype="absolute-path">string</a></span>
+              </dd>
+            </dl>
+          </div>
+          <h4 class="propertyInfoTitle stack">Returns</h4>
+          <div class="propertyInfo">
+            <div class="subtle">
+              T
+            </div>
+            <p>Description copied from interface: BaseTag</p>
+            <blockquote>
+              <p>The new <a href="Maroontress.Html.BaseTag.html">BaseTag&lt;T&gt;</a> object.</p>
+            </blockquote>
+          </div>
+          <h4 class="propertyInfoTitle stack">Implements</h4>
+          <div class="propertyInfo">
+            <div class="cdlHolder">
+              <span class="cdl"><a href="Maroontress.Html.BaseTag.html#M:Maroontress.Html.BaseTag`1.WithId(System.String)">BaseTag&lt;T&gt;.WithId(string)</a></span>
+            </div>
+          </div>
+          <h2 id="M:Maroontress.Html.Impl.BaseTagImpl`1.Create(System.Func{Maroontress.Html.TagStruct,Maroontress.Html.TagStruct})">Create(Func&lt;TagStruct, TagStruct&gt;)</h2>
+          <div class="summaryHolder">
+            <div class="summary clearFix">
+              <p>Gets a new element with the modifying function.</p>
+            </div>
+          </div>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">abstract</span> <span class="hljs-title">T</span> <span class="hljs-title">Create</span>(<span class="hljs-title">Func</span>&lt;<span class="hljs-title">TagStruct</span>, <span class="hljs-title">TagStruct</span>&gt; modify)</code></pre>
+          <h4 class="propertyInfoTitle stack">Parameters</h4>
+          <div class="propertyInfo">
+            <dl class="parameterList">
+              <dt>
+                modify
+              </dt>
+              <dd>
+                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.func-2?view=netcore-3.0" data-linktype="absolute-path">Func</a>&lt;<a class="xref" href="Maroontress.Html.TagStruct.html" data-linktype="relative-path">Tag<wbr>Struct</a>, <a class="xref" href="Maroontress.Html.TagStruct.html" data-linktype="relative-path">Tag<wbr>Struct</a>&gt;</span>
+              </dd>
+            </dl>
+            <p>The function that takes the data and returns the modified data.</p>
+          </div>
+          <h4 class="propertyInfoTitle stack">Returns</h4>
+          <div class="propertyInfo">
+            <div class="subtle">
+              T
+            </div>
+            <p>A new element.</p>
+          </div>
+          <h2 id="M:Maroontress.Html.Impl.BaseTagImpl`1.CreateAddingAttributes(System.Collections.Generic.IEnumerable{System.ValueTuple{System.String,System.String}})">CreateAddingAttributes(IEnumerable&lt;(string Name, string Value)&gt;)</h2>
+          <div class="summaryHolder">
+            <div class="summary clearFix">
+              <p>Gets a new element with adding the specified attributes.</p>
+            </div>
+          </div>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">abstract</span> <span class="hljs-title">T</span> <span class="hljs-title">CreateAddingAttributes</span>(<span class="hljs-title">IEnumerable</span>&lt;(<span class="hljs-keyword">string</span> <span class="hljs-title">Name</span>, <span class="hljs-keyword">string</span> <span class="hljs-title">Value</span>)&gt; attributes)</code></pre>
+          <h4 class="propertyInfoTitle stack">Parameters</h4>
+          <div class="propertyInfo">
+            <dl class="parameterList">
+              <dt>
+                attributes
+              </dt>
+              <dd>
+                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1?view=netcore-3.0" data-linktype="absolute-path">IEnumerable</a>&lt;<a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.valuetuple-2?view=netcore-3.0" data-linktype="absolute-path">(string Name, string Value)</a>&gt;</span>
+              </dd>
+            </dl>
+            <p>Tuples of the name and value representing an attribute. If the value of
+    the tuple is <code>null</code>, it represents the empty attribute.</p>
+          </div>
+          <h4 class="propertyInfoTitle stack">Returns</h4>
+          <div class="propertyInfo">
+            <div class="subtle">
+              T
+            </div>
+            <p>A new element.</p>
+          </div>
+        </main>
+      </section>
+    </div>
+  </body>
+</html>

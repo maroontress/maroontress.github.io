@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9TQ6JWBKEK"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-9TQ6JWBKEK');
+    </script>
+    </script>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Part 0. Null | The Insanity Beyond Null</title>
+    <link rel="canonical" href="https://maroontress.github.io/The-Insanity-Beyond-Null/Part-0.html" />
+    <link rel="stylesheet" type="text/css" href="/css/markdown.css">
+    <link rel="stylesheet" type="text/css" href="/css/next-button.css">
+    <link rel="apple-touch-icon" sizes="120x120" href="/images/logo-v2-120x120.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/logo-v2-180x180.png">
+    <link rel="icon" type="image/x-icon" href="/images/logo-v2.ico">
+    <link rel="mask-icon" href="/images/logo-v2-mask-icon.svg" color="#800000">
+    <script src="/js/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+    <script src="/js/toc.js"></script>
+    <script src="/js/next-button.js"></script>
+  </head>
+  <body>
+    <div class="logo">
+      <b>Maroontress Fast Software</b>
+    </div>
+    <div class="container">
+      <div class="main-container">
+        <section>
+          <main class="content">
+<div class="project-logo">The Insanity Beyond Null</div>
+<div id="toc-level" data-values="H2,H3"></div>
+<h1>0. Null</h1>
+<p>The <code>getchar()</code> function of programming language C reads a character from the
+standard input stream and returns it.  However, if the stream reaches the end
+(EOF) or an error occurs, it returns the constant <code>EOF</code>.  It defines this
+constant as a negative integer value.</p>
+<p>Since the character is a single byte, it seems that the return value type could
+be <code>char</code>.  However, the return type cannot be <code>char</code> because it must be a type
+that can represent 257 values at least, which contain 256 possible values of
+<code>char</code> and a special value representing <em>EOF or an error</em>.</p>
+<p>Thus, <strong>some APIs return two or more kinds of result</strong> <sup>†1</sup>,
+and require the caller to check the return value to determine that kind.  And
+they define <strong>the constant to show special results</strong> <sup>†2</sup>
+(e.g., <code>EOF</code> in the above example).</p>
+<blockquote>
+<p>†1 Expressions such as normal process and exception handling are not
+appropriate, because EOF is not an exception for <code>getchar()</code>.  It provides
+two types of results: getting a character from the stream, detecting EOF or
+an input error.</p>
+</blockquote>
+<blockquote>
+<p>†2 So-called <strong>sentinel value</strong>.  See Wikipedia [<a href="#ref1">1</a>].</p>
+</blockquote>
+<p>And some APIs that return a pointer return <code>NULL</code> (a null pointer) to indicate
+failure.  For example, <code>fopen()</code> and <code>malloc()</code> do so if they cannot meet the
+request.  As well, <code>strstr()</code> and <code>strchr()</code> do so if they cannot <em>find</em> the
+target.  If you use the pointer of the return value without checking whether it
+is <code>NULL</code> or not, you will be in for a scary surprise.  That is because what
+happens is not set in stone.</p>
+<p>An object-oriented language often defines <code>null</code>, <code>nil</code>, etc.  to indicate that
+the reference does not refer to anything, as well as a null pointer of C.  They
+are called null references.  The description from Wikipedia [<a href="#ref2">2</a>] is
+quoted below:</p>
+<blockquote>
+<p><em><strong>a null pointer</strong> or <strong>null reference</strong> has a value reserved for indicating
+that the pointer or reference does not refer to a valid object.</em></p>
+</blockquote>
+<p>However, in Java, for example, dereferencing a null reference only throws a
+prescribed exception and nothing terrible happens.  You just have to make sure
+that you don't forget to check if the reference is <code>null</code> with <code>if</code>.  Even if
+you do, what happens is just throwing an exception.</p>
+<p>But checking <code>null</code> with <code>if</code>, the so-called <strong>null check</strong>, is not the only
+way to handle a null reference correctly.  Let's consider how to handle null
+references in some languages.</p>
+<h2>References</h2>
+<!--
+<style>
+#references + ol > li::marker { content: "[" counter(list-item) "] "; }
+</style>
+-->
+<div id="references"></div>
+<ol>
+<li>
+<p><a name="ref1"></a>
+<a href="https://en.wikipedia.org/wiki/Sentinel_value">Wikipedia, <em>Sentinel value</em></a></p>
+</li>
+<li>
+<p><a name="ref2"></a>
+<a href="https://en.wikipedia.org/wiki/Null_pointer">Wikipedia, <em>Null pointer</em></a></p>
+</li>
+</ol>
+          </main>
+        </section>
+      </div>
+      <div class="left-container">
+<nav>
+  <div>
+    <a href="/">Projects</a>
+  </div>
+  <div>
+    <span>&#x25BE;</span>
+  </div>
+  <div>
+    <span class="project-name"><a href="index.html">The Insanity Beyond Null</a></span>
+  </div>
+  <ul>
+    <li>
+      <a href="index.html">Top</a>
+    </li>
+    <li class="selected">
+      0. Null
+    </li>
+    <ul id="toc-placeholder">
+    </ul>
+    <li>
+      <a href="Part-1.html">1. Null in Java 11</a>
+    </li>
+    <li>
+      <a href="Part-2.html">2. Null in C# 8</a>
+    </li>
+    <li>
+      <a href="Part-3.html">3. Null in Others</a>
+    </li>
+    <li>
+      <a href="Part-4.html">4. Exercises</a>
+    </li>
+    <li>
+      <a href="Part-5.html">5. Epilog</a>
+    </li>
+  </ul>
+</nav>
+      </div>
+    </div>
+  </body>
+</html>

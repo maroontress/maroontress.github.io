@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9TQ6JWBKEK"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-9TQ6JWBKEK');
+    </script>
+    </script>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>NotDesignedForExtension | StyleChecker | List of diagnostics</title>
+    <link rel="canonical" href="https://maroontress.github.io/StyleChecker/diagnostics/NotDesignedForExtension.html" />
+    <link rel="stylesheet" type="text/css" href="/css/markdown.css">
+    <link rel="apple-touch-icon" sizes="120x120" href="/images/logo-v2-120x120.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/logo-v2-180x180.png">
+    <link rel="icon" type="image/x-icon" href="/images/logo-v2.ico">
+    <link rel="mask-icon" href="/images/logo-v2-mask-icon.svg" color="#800000">
+    <script src="/js/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+    <script src="/js/toc.js"></script>
+  </head>
+  <body>
+    <div class="logo">
+      <b>Maroontress Fast Software</b>
+    </div>
+    <div class="container">
+      <div class="main-container">
+        <section>
+          <main class="content">
+<div class="project-logo">StyleChecker</div>
+<div id="toc-level" data-values="H2,H3"></div>
+<h1>NotDesignedForExtension</h1>
+<div class="horizontal-scroll">
+<p><img src="https://maroontress.github.io/StyleChecker/images/NotDesignedForExtension.png" alt="NotDesignedForExtension"></p>
+</div>
+<h2>Summary</h2>
+<p>A class must be designed for inheritance, or else be prohibited from it.</p>
+<h2>Default severity</h2>
+<p>Warning</p>
+<h2>Description</h2>
+<p>This is something like the C# version of
+<a href="http://checkstyle.sourceforge.net/config_design.html#DesignForExtension"><em>DesignForExtension check</em></a>
+of Checkstyle[<a href="#ref1">1</a>].
+This rule reports diagnostic information of classes that have
+a non-empty overridable method or property as follows:</p>
+<ul>
+<li>The <code>virtual</code> method which is <code>public</code> or <code>protected</code>
+and implementation of which is not empty</li>
+<li>The <code>virtual</code> property which is <code>public</code> or <code>protected</code></li>
+</ul>
+<p>This rule prevents
+<a href="https://en.wikipedia.org/wiki/Fragile_base_class"><em>the fragile base class problem</em></a> [<a href="#ref2">2</a>].
+And it also prevents <a href="https://en.wikipedia.org/wiki/Call_super"><em>Call Super</em></a> [<a href="#ref2">2</a>],
+<em>neutralizing</em> a call to the overridden method
+of the base class, that is, invoking <code>base</code>.<em>Method</em>(...) in C#.</p>
+<h2>Code fix</h2>
+<p>The code fix is not provided. Refactor the <code>virtual</code> method to be
+empty or <code>abstract</code> one, for example, using the
+<a href="https://en.wikipedia.org/wiki/Template_method_pattern"><em>Template Method Pattern</em></a>
+[<a href="#ref3">3</a>].
+And then, change the <code>override</code> method (this is, the method
+overriding the method of the base class) to be <code>sealed</code>, or change
+the class to be <code>sealed</code>.</p>
+<h2>Example</h2>
+<h3>Diagnostic</h3>
+<pre><code class="language-csharp">public class BaseClass
+{
+    // A virtual method must be empty or be changed to be abstract.
+    public virtual void Method()
+    {
+        DoSomething();
+    }
+}
+
+public class DerivedClass : BaseClass
+{
+    // An overriding method must be sealed or empty.
+    public override void Method()
+    {
+        PerformAnotherAction();
+    }
+}
+</code></pre>
+<h2>See also</h2>
+<ul>
+<li>
+<p><a href="http://checkstyle.sourceforge.net/config_design.html#DesignForExtension"><em>DesignForExtension</em></a> [<a href="#ref1">1</a>]</p>
+<blockquote>
+<p>Rationale: This library design style protects superclasses against being
+broken by subclasses. The downside is that subclasses are limited in their
+flexibility, in particular they cannot prevent execution of code in the
+superclass, but that also means that subclasses cannot corrupt the state
+of the superclass by forgetting to call the superclass's method.</p>
+</blockquote>
+</li>
+<li>
+<p><a href="https://en.wikipedia.org/wiki/Fragile_base_class"><em>Fragile base class</em></a> [<a href="#ref2">2</a>]</p>
+<blockquote>
+<p>The <strong>fragile base class problem</strong> is a fundamental architectural problem
+of object-oriented programming systems where base classes (superclasses)
+are considered “fragile” because seemingly safe modifications to a base
+class, when inherited by the derived classes, may cause the derived
+classes to malfunction. The programmer cannot determine whether a base
+class change is safe simply by examining in isolation the methods of the
+base class.</p>
+</blockquote>
+</li>
+<li>
+<p><a href="https://en.wikipedia.org/wiki/Call_super"><em>Call super</em></a> [<a href="#ref2">2</a>]</p>
+<blockquote>
+<p><strong>Call super</strong> is a code smell or anti-pattern of some object-oriented
+programming languages. Call super is a design pattern in which a
+particular class stipulates that in a derived subclass, the user is
+required to override a method and call back the overridden function
+itself at a particular point. The overridden method may be intentionally
+incomplete, and reliant on the overriding method to augment its
+functionality in a prescribed manner. However, the fact that the
+language itself may not be able to enforce all conditions prescribed on
+this call is what makes this an anti-pattern.</p>
+</blockquote>
+</li>
+</ul>
+<h2>References</h2>
+<p><a id="ref1"></a>
+[1] <a href="http://checkstyle.sourceforge.net/">Checkstyle</a></p>
+<p><a id="ref2"></a>
+[2] <a href="https://en.wikipedia.org/wiki/">Wikipedia</a></p>
+<p><a id="ref3"></a>
+[3] <a href="https://books.google.com/books/about/Design_Patterns.html?id=6oHuKQe3TjQC">Gamma, E. and Helm, R. and Johnson, R. and Vlissides, J.
+<em>Design Patterns: Elements of Reusable Object-Oriented Software</em>.
+Reading, Mass: Addison-Wesley, 1994.</a></p>
+          </main>
+        </section>
+      </div>
+      <div class="left-container">
+<nav>
+  <div>
+    <a href="/">Projects</a>
+  </div>
+  <div>
+    <span>&#x25BE;</span>
+  </div>
+  <div>
+    <span class="project-name"><a href="../index.html">StyleChecker</a></span>
+  </div>
+  <div>
+    <span>&#x25BE;</span>
+  </div>
+  <div>
+    <span class="project-name"><a href="../index.html#List%20of%20diagnostics">List of diagnostics</a></span>
+  </div>
+  <ul>
+    <li>
+      <a href="AssignmentToParameter.html">Assignment<wbr>To<wbr>Parameter</a>
+    </li>
+    <li>
+      <a href="ByteOrderMark.html">Byte<wbr>Order<wbr>Mark</a>
+    </li>
+    <li>
+      <a href="DiscardingReturnValue.html">Discarding<wbr>Return<wbr>Value</a>
+    </li>
+    <li>
+      <a href="EmptyArrayCreation.html">Empty<wbr>Array<wbr>Creation</a>
+    </li>
+    <li>
+      <a href="EqualsNull.html">Equals<wbr>Null</a>
+    </li>
+    <li>
+      <a href="IneffectiveReadByte.html">Ineffective<wbr>Read<wbr>Byte</a>
+    </li>
+    <li>
+      <a href="InvalidConfig.html">Invalid<wbr>Config</a>
+    </li>
+    <li>
+      <a href="IsNull.html">Is<wbr>Null</a>
+    </li>
+    <li>
+      <a href="LongLine.html">Long<wbr>Line</a>
+    </li>
+    <li>
+      <a href="NoDocumentation.html">No<wbr>Documentation</a>
+    </li>
+    <li>
+      <a href="NoSingleSpaceAfterTripleSlash.html">No<wbr>Single<wbr>Space<wbr>After<wbr>Triple<wbr>Slash</a>
+    </li>
+    <li>
+      <a href="NoSpaceAfterSemicolon.html">No<wbr>Space<wbr>After<wbr>Semicolon</a>
+    </li>
+    <li class="selected">
+      Not<wbr>Designed<wbr>For<wbr>Extension
+    </li>
+    <ul id="toc-placeholder">
+    </ul>
+    <li>
+      <a href="NotOneShotInitialization.html">Not<wbr>One<wbr>Shot<wbr>Initialization</a>
+    </li>
+    <li>
+      <a href="PostIncrement.html">Post<wbr>Increment</a>
+    </li>
+    <li>
+      <a href="RedundantTypedArrayCreation.html">Redundant<wbr>Typed<wbr>Array<wbr>Creation</a>
+    </li>
+    <li>
+      <a href="SingleTypeParameter.html">Single<wbr>Type<wbr>Parameter</a>
+    </li>
+    <li>
+      <a href="SpaceBeforeSemicolon.html">Space<wbr>Before<wbr>Semicolon</a>
+    </li>
+    <li>
+      <a href="StaticGenericClass.html">Static<wbr>Generic<wbr>Class</a>
+    </li>
+    <li>
+      <a href="StinkyBooleanExpression.html">Stinky<wbr>Boolean<wbr>Expression</a>
+    </li>
+    <li>
+      <a href="StrayText.html">Stray<wbr>Text</a>
+    </li>
+    <li>
+      <a href="ThoughtlessName.html">Thoughtless<wbr>Name</a>
+    </li>
+    <li>
+      <a href="TypeClassParameter.html">Type<wbr>Class<wbr>Parameter</a>
+    </li>
+    <li>
+      <a href="Underscore.html">Underscore</a>
+    </li>
+    <li>
+      <a href="UninitializedLocalVariable.html">Uninitialized<wbr>Local<wbr>Variable</a>
+    </li>
+    <li>
+      <a href="UnnecessaryUsing.html">Unnecessary<wbr>Using</a>
+    </li>
+    <li>
+      <a href="UnusedUsing.html">Unused<wbr>Using</a>
+    </li>
+    <li>
+      <a href="UnusedVariable.html">Unused<wbr>Variable</a>
+    </li>
+  </ul>
+</nav>
+      </div>
+    </div>
+  </body>
+</html>

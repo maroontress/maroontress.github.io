@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9TQ6JWBKEK"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-9TQ6JWBKEK');
+    </script>
+    </script>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Part 3. Null in Others | The Insanity Beyond Null</title>
+    <link rel="canonical" href="https://maroontress.github.io/The-Insanity-Beyond-Null/Part-3.html" />
+    <link rel="stylesheet" type="text/css" href="/css/markdown.css">
+    <link rel="stylesheet" type="text/css" href="/css/next-button.css">
+    <link rel="apple-touch-icon" sizes="120x120" href="/images/logo-v2-120x120.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/logo-v2-180x180.png">
+    <link rel="icon" type="image/x-icon" href="/images/logo-v2.ico">
+    <link rel="mask-icon" href="/images/logo-v2-mask-icon.svg" color="#800000">
+    <script src="/js/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+    <script src="/js/toc.js"></script>
+    <script src="/js/next-button.js"></script>
+  </head>
+  <body>
+    <div class="logo">
+      <b>Maroontress Fast Software</b>
+    </div>
+    <div class="container">
+      <div class="main-container">
+        <section>
+          <main class="content">
+<div class="project-logo">The Insanity Beyond Null</div>
+<div id="toc-level" data-values="H2,H3"></div>
+<h1>3. Null in Others</h1>
+<p>Finally, we will consider <code>nil</code> in Swift [<a href="#ref1">1</a>] and <code>null</code> in Kotlin
+[<a href="#ref2">2</a>], which are the more recent languages, comparing them with Java
+and C#.  We will also briefly introduce <code>std::optional</code> in C++.</p>
+<h2>Swift 5</h2>
+<p>Swift's <code>nil</code> is safe.  First, local variables are forced to be initialized at
+declaration time.  So you don't have to worry about uninitialized variables.</p>
+<p>Then, like Java's <code>Optional&lt;T&gt;</code>, Swift has the <code>Optional&lt;T&gt;</code> type
+[<a href="#ref3">3</a>] and its instance is an immutable object.  However, unlike Java,
+we can describe it with the notation <code>T?</code>.</p>
+<blockquote>
+<p><code>T?</code> is only a syntax sugar representing <code>Optional&lt;T&gt;</code>, and we may consider
+it similar to <code>java.util.Optional&lt;T&gt;</code> that wraps a value of reference types
+in Java, or <code>System.Nullable&lt;T&gt;</code> that wraps a value of value types in C#.</p>
+</blockquote>
+<p>There are some ways to access the wrapped value.</p>
+<h3>Unconditional unwrapping</h3>
+<p>Applying the <em>forced unwrap operator</em> (postfix <code>!</code> to an expression) to an
+expression of type <code>Optional&lt;T&gt;</code> unwraps forcibly the value of type <code>T</code>.
+However, if the value does not exist, a runtime error occurs.</p>
+<blockquote>
+<p>The <code>!</code> postfix operator in Swift is the notation for the operation
+corresponding to the <code>get()</code> method of <code>java.util.Optional&lt;T&gt;</code> in Java and
+the <code>Value</code> property of <code>System.Nullable&lt;T&gt;</code> in C#.</p>
+</blockquote>
+<h3>Optional chaining</h3>
+<p>Apply the <em>optional chaining operator</em> (postfix <code>?</code> to an expression) to an
+expression of type <code>Optional&lt;T&gt;</code> gives access to the method, property, or
+subscript on an instance of the wrapped type <code>T</code>.  If no value exists, there is
+no access and the expression results in <code>nil</code>.  If the type of the return value
+of the method, of the property, or of the subscript access is <code>U</code>, that of
+expression is <code>U?</code>.</p>
+<p>It is defined that methods whose return value is of type <code>Void</code> returns <code>()</code>,
+that is, an empty tuple<sup>†1</sup>.  Therefore, invoking a method
+whose return value is of type <code>Void</code> with the optional chaining operator
+results in the expression of type <code>Void?</code>, i.e., <code>()?</code>.  Also, since an
+expression that sets a value for a property is equivalent to an expression that
+invokes a setter method of type <code>Void</code>, the type of the expression that sets a
+value for a property with the optional chaining operator is also <code>()?</code>.</p>
+<blockquote>
+<p>†1 <code>Void</code> is a <strong>type alias</strong> of <code>()</code>.</p>
+</blockquote>
+<p>Therefore, the result of access with the optional chaining operator can be
+compared to <code>nil</code> to see if the access was performed.  The following code is
+illustrated in the official documentation:</p>
+<pre><code class="language-swift">// printNumberOfRooms() is a method whose return value is of type 'Void'.
+if john.residence?.printNumberOfRooms() != nil {
+    print(&quot;It was possible to print the number of rooms.&quot;)
+} else {
+    print(&quot;It was not possible to print the number of rooms.&quot;)
+}
+
+// Sets a value to the 'address' property.
+if (john.residence?.address = someAddress) != nil {
+    print(&quot;It was possible to set the address.&quot;)
+} else {
+    print(&quot;It was not possible to set the address.&quot;)
+}
+</code></pre>
+<h3>Nil-coalescing operator</h3>
+<p>The <em>nil-coalescing operator</em> (<code>??</code>) is an operator that provides a default
+value when no value is present in an expression of type <code>Optional&lt;T&gt;</code>.  For
+example, when <code>expr1</code> is of an option type, <code>expr1 ?? expr2</code> is an expression
+representing the value of <code>expr1</code> if it exists, or the value of <code>expr2</code>
+otherwise.</p>
+<h3>Optional binding</h3>
+<p>Swift provides us the following flow-control notations to take the wrapped
+value in an object of <code>Optional&lt;T&gt;</code> into another variable when the value is
+present:</p>
+<ul>
+<li><code>if let</code></li>
+<li><code>guard let</code></li>
+<li><code>switch</code></li>
+</ul>
+<p>You can use <code>if let</code> like
+<a href="https://docs.microsoft.com/en-us/dotnet/csharp/pattern-matching#the-is-type-pattern-expression"><code>is</code> pattern matching in C#</a>:</p>
+<pre><code class="language-swift">if let value = maybeNil {
+    // If 'maybeNil' wraps any value: 'value' has the value in this scope
+    ...
+} else {
+    // Otherwise
+    ...
+}
+</code></pre>
+<p>However, when there are two or more values of the option type, the nesting of
+the code tends to be deeper<sup>†2</sup> as follows:</p>
+<pre><code class="language-swift">if let value1 = maybeNil1 {
+    if let value2 = maybeNil2 {
+        if let value3 = maybeNil3 {
+            // Followed by the code that uses 'value1', 'value2', and 'value3'
+            ...
+</code></pre>
+<blockquote>
+<p>†2 Incidentally, with <code>is</code> pattern matching in C#, it tends as well.
+But since the scope of variables in C# is different from Swift, you can
+invert the condition of <code>if</code> and use it like the <code>guard let</code> in Swift.
+However, in not actively introducing such use cases, Microsoft probably
+doesn't like the idea of <em>Early Exit</em> [<a href="#ref4">4</a>].  The description of the
+<code>is</code> pattern matching in C# [<a href="#ref5">5</a>] states:</p>
+<blockquote>
+<p><em>The samples in this topic use the recommended construct where a pattern
+match <code>is</code> expression definitely assigns the match variable in the <code>true</code>
+branch of the <code>if</code> statement.  You could reverse the logic by saying
+<code>if (!(shape is Square s))</code> and the variable <code>s</code> would be definitely
+assigned only in the <code>false</code> branch.  While this is valid C#, <strong>it is not
+recommended because it is more confusing to follow the logic</strong>.</em></p>
+</blockquote>
+</blockquote>
+<p>The <code>guard let</code> solves this problem.  It allows us to write the code that has a
+structure to do <code>return</code> when one of the required values doesn't exist, as
+follows:</p>
+<pre><code class="language-swift">guard let value1 = maybeNil1 else {
+    return
+}
+guard let value2 = maybeNil2 else {
+    return
+}
+guard let value3 = maybeNil3 else {
+    return
+}
+// Followed by the code that uses 'value1', 'value2', and 'value3'
+...
+</code></pre>
+<p>Of course, flow controls other than <code>return</code> are possible, for example, <code>break</code>
+or <code>continue</code> can be available if it is in a loop.  Note that it is not
+necessary to use the <code>guard</code> in combination with the <code>let</code>.  The constants and
+variables assigned in the conditional expression of the <code>guard</code> statement are
+available until the scope containing the <code>guard</code> statement closes, so they
+are also useful for <em>Early Exit</em> with guards other than <code>nil</code> checks.</p>
+<p>Finally, there is the binding with <code>switch</code>, specifying the constant name and
+<code>?</code> after <code>case let</code> as follows:</p>
+<pre><code class="language-swift">func printValue(_ maybeString: String?) {
+    switch maybeString {
+    case let value?:
+        // When 'maybeString' has a value, it is assigned to 'value'
+        print(&quot;value: \(value)&quot;)
+        break
+    default:
+        // When 'maybeString' is nil
+        print(&quot;no value&quot;)
+        break
+    }
+}
+
+printValue(&quot;foo&quot;)
+printValue(nil)
+</code></pre>
+<p>The output results in:</p>
+<pre><code class="language-plaintext">value: foo
+no value
+</code></pre>
+<blockquote>
+<p><a href="https://repl.it/@maroontress/Example-usage-of-optional-and-switch-1">Run</a></p>
+</blockquote>
+<p>Also, you can use a tuple for <code>switch</code> to check several values as once:</p>
+<pre><code class="language-swift">func printValues(_ maybeInt1: Int?, _ maybeInt2: Int?) {
+    switch (maybeInt1, maybeInt2) {
+    case let (value1?, value2?):
+        print(&quot;values: (\(value1), \(value2))&quot;)
+        break
+    default:
+        print(&quot;one of the values is nil.&quot;)
+        break
+    }
+}
+
+printValues(2, 3)
+printValues(4, nil)
+printValues(nil, nil)
+</code></pre>
+<p>The output results in:</p>
+<pre><code class="language-plaintext">values: (2, 3)
+one of the values is nil.
+one of the values is nil.
+</code></pre>
+<blockquote>
+<p><a href="https://repl.it/@maroontress/Example-usage-of-optional-and-switch-2">Run</a></p>
+</blockquote>
+<h3>Consistency of option types in the standard library</h3>
+<p>The option type in Swift is much better than <code>Optional&lt;T&gt;</code> in Java and nullable
+types in C# because it is built in <strong>from the beginning</strong> as a basic feature
+of the standard library.  For example, the return value of
+<a href="https://developer.apple.com/documentation/swift/dictionary/2885650-subscript">the subscript access (<code>subscript</code>)</a> of
+<code>Dictionary&lt;K, V&gt;</code> is of type <code>V?</code>, and that of
+<a href="https://developer.apple.com/documentation/swift/array/1848165-first"><code>first</code> of <code>Array&lt;E&gt;</code></a> is of type <code>E?</code>.</p>
+<p>For better understanding, I would like to mention <a href="https://developer.apple.com/documentation/swift/sequence/2950916-compactmap">the <code>compactMap</code> of the
+<code>Sequence</code> protocol</a>.  <code>compactMap</code> takes a closure
+that converts the element in the sequence to a value of type <code>T?</code> as an
+argument and generates the new sequence containing the elements of type <code>T</code>.
+That is, <code>compactMap</code> converts the elements in the sequence to the objects of
+the option type with the closure of its argument, removes those that do not
+wrap a value, and then unwraps and retrieves the values from them, thus
+generating the new sequence containing only the elements of type <code>T</code>.  This
+operation includes both the removal of <code>nil</code> and the conversion of type <code>T?</code> to
+<code>T</code>.  What is important is that the static analysis makes it clear that the
+converted sequence does not contain any <code>nil</code>.  In contrast, even if you use
+<code>filter</code> to the sequence containing the elements of type <code>T?</code> to remove the
+<code>nil</code> elements, the compiler assumes that the generated sequence has the
+elements of type <code>T?</code>.</p>
+<p>Let's illustrate this with LINQ in C#.  The following code intends to take a
+list containing the elements of the reference types, but the elements may be
+<code>null</code>, and to generate and return the list that does not contain <code>null</code>:</p>
+<pre><code class="language-csharp">public static IEnumerable&lt;T&gt; WhereNonNull&lt;T&gt;(this IEnumerable&lt;T?&gt; list)
+    where T : class
+{
+    var newList = list.Where(e =&gt; e is {});
+    ...
+</code></pre>
+<p>Thus, you can use <code>Where</code> to the <code>list</code> containing <code>null</code>, to create the
+<code>newList</code> that does not contain <code>null</code>.  At first glance, it seems that you get
+the <code>newList</code> of type <code>IEnumerable&lt;T&gt;</code> and reach the goal.  However, the actual
+type of <code>newList</code> is <code>IEnumerable&lt;T?&gt;</code>.  That is, both the original <code>list</code> and
+the generated <code>newList</code> have the same element type <code>T?</code>.  Therefore, the static
+analysis assumes that <code>newList</code> may contain <code>null</code>.</p>
+<p>Note that, in C#, you can use the <code>OfType</code> method to achieve both removing
+<code>null</code> and converting from type <code>T?</code> to <code>T</code>:</p>
+<pre><code class="language-csharp">public static IEnumerable&lt;T&gt; WhereNonNull&lt;T&gt;(this IEnumerable&lt;T?&gt; list)
+    where T : class
+{
+    var newList = list.OfType&lt;T&gt;();
+    ...
+</code></pre>
+<blockquote>
+<p><a href="https://sharplab.io/#v2:C4LgTgrgdgNAJiA1AHwMRQgG0wQwEaYCmABIVPkQLABQNAAgEwCM9ADMXUwHQAyAllACOAbjYcmAFlG1qdAMziAbBwbEAohgC2hMBUJqAHsDIBnPgHsoJmgG8axBxwWdlnOQB4AKgD5iAJRw+E0IAYQBlAA5FJgBOL28ACmAACyDxD08Afl9MIOAASntHYoB3ZJ0ST2IQFSKHO2pi4oA3HDBiKEIS/hNgYgBeYlzergB1crBCBJJ+3xIAQkGMbHzpJsc6AHYOrp7gNccAXxo6pyV0+OJxioA5SxusTHik1JMLrJy8wsb14jKK4hVGqMU4NX7EVrtTrdPIDIZ5LgAeQAZp4AJ4AB0Iz1Wp2KWx2MN6Bwcxx+DlOGLAfFaxnOdAkxAACtSoMAAGo4TAQQgmZ5uS5czDfcGzcQxBKcVhcABS5gECQARDBiMriEKuGFCEQAMbAaYDXwAEkVNkIh0V+St0lO8npjIAsoEoJKmKwANoAXXVYAA5iYRY4wb9IT7dGi4dCvXigzH1orPOU1YrBBA+DqANbJvBgcwlKBq5aYFWKgBWEE0GJMyfMzR0yZShGTuAAXmjC48YHHiIcSU0WQIOVyeSYEm1w2MJoQ7lAHtgEtbTmSyUA==">Run</a></p>
+</blockquote>
+<p>You can use this to imitate the Swift's <code>compactMap</code> in C#, as follows:</p>
+<pre><code class="language-csharp">public static IEnumerable&lt;U&gt; CompactReferenceMap&lt;T, U&gt;(
+    this IEnumerable&lt;T&gt; list,
+    Func&lt;T, U?&gt; transform)
+    where U : class
+{
+    return list.Select(e =&gt; transform(e))
+        .OfType&lt;U&gt;();
+}
+</code></pre>
+<blockquote>
+<p><a href="https://sharplab.io/#v2:C4LgTgrgdgNAJiA1AHwMRQgG0wQwEaYCmABIVPkQLABQNAAgEwCM9ADMXUwHQAyAllACOAbjYcmAFlG1qdAMziAbBwbEAohgC2hMBUJqAHsDIBnPgHsoJmgG8axBxwWdlnOQB4AqgD5iAYXNNAAccAGNgADUcTAhCAFkcIPcAFRhiHwAKe0cc4AALPhNxD2TfTELgGGychzoAVhS0zwB+X2BdKwAzczBNAEpqmoB3PJ0ST2IQYhN2iHDBu2oaxzoAdmJyma4AZUIicIySAF42jpNu3sO+gaXlmq4AeU7kgE8gwi9vDL7pHIBfGiDeRKYqffyBELhABKhE6YygoXiiUa6S+g1yBSKbhSZQqVVuy3qKJapxwXR6/XRjhGY3SkxUCyptXWm2AOz2hAOx1J5MuhGuTPuT1e70+31+jgBMhyQTAfAAbjhjCC6BJiAAFOVQSLRWImHEZbGlYjRTA3O7EE7iACchqYrC4AClzAIMgAiNIek3Ydn7YCHS2+AAkbpshD+buuP0Gg1lCqVJBcHDVAWCYR1MSRQWShBm30ZBJqirAJrAuheluIUEIQwA2gBdQWLC05N3JUZet2CCB8UIAa07eDA5iGUC9GGwnoAVhBgiZO+Z5TpO/lCJ3cAAvF7jrCYfEWv4S5bF72YSs4Ms4F5cVOQjOxBJBANWwjNXhkADm+WjhZymoE965hkpo/v8gKFnGirKkmqrgmm0KwvCiKPjmebmo4zZ3CeF7lpW1ZDMQAHNA2TaCjkTBpAwaRyGkE57sQdS0buaSrExk5VsxHHscQgqHoK2HYOel7Xre6YwnCYBkMhiTPr4r5cMk5jbO0Agft8oF3P+2pRJmJjAdgGkOFKORAs4TCuGqCSupwrANqWH4mOhDiYcsonhDpD6JKh/qGTUbnAOJSFZt54qDFKfxAA">Run</a></p>
+</blockquote>
+<p>Also, you do so in Java<sup>†3</sup>, as follows:</p>
+<pre><code class="language-java">private static &lt;T, U&gt; List&lt;U&gt; compactMap(
+        List&lt;T&gt; list,
+        Function&lt;T, Optional&lt;U&gt;&gt; transform) {
+    return list.stream()
+        .map(e -&gt; transform.apply(e))
+        .flatMap(o -&gt; o.stream())
+        .collect(Collectors.toList());
+}
+</code></pre>
+<blockquote>
+<p><a href="https://ideone.com/xRs9sK">Run</a></p>
+</blockquote>
+<blockquote>
+<p>†3 We used the <code>stream()</code> method of the <code>Optional</code> class, which has
+been available since Java 9.  The
+<a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Optional.html#stream()">API reference</a> has also a similar description.</p>
+</blockquote>
+<h2>Kotlin 1.3</h2>
+<p>Kotlin's <code>null</code> is as safe as Swift's <code>nil</code>.  See
+<a href="https://kotlinlang.org/docs/reference/">the official reference</a>, which describes null safety
+[<a href="#ref6">6</a>], for the full story.</p>
+<p>The major difference from Swift is that <code>T?</code> is not an option type but a
+nullable type.  The nullable type is fake, as is <strong>the nullable reference type
+in C# 8</strong>.  In other words, the compiler realizes the nullable types with
+static analysis.  JetBrains, which invented Kotlin, is also the company that
+develops the Java IDE — IntelliJ IDEA.  As explained in the Java 11 part,
+the compiler of IntelliJ IDEA can use the <code>@NotNull</code>/<code>@Nullable</code> annotation as
+a hint, to verify whether the null check is appropriate with data flow
+analysis.  So it's no surprise that they also used that technology for Kotlin
+and its compiler.</p>
+<h3>The primitive types and nullable types</h3>
+<p>However, you should take care about the values of primitive types.  For
+example, as described in
+<a href="https://kotlinlang.org/docs/reference/basic-types.html#representation">the official documentation</a>, the
+value of type <code>Int?</code> is a boxed <code>Int</code> object.  This is the same as Java, where
+<code>@Nullable Integer</code> is possible but <code>@Nullable int</code> is not.  The boxed
+primitive values preserve the equality of values, but may not preserve the
+identity of objects, as follows:</p>
+<pre><code class="language-kotlin">val a: Int = 10000
+val boxedA: Int? = a
+val anotherBoxedA: Int? = a
+// Prints 'true'
+println(boxedA == anotherBoxedA)
+// Prints 'false'
+println(boxedA === anotherBoxedA)
+</code></pre>
+<blockquote>
+<p><a href="https://pl.kotl.in/82b2sRxmR">Run</a></p>
+</blockquote>
+<h3>The operators for the nullable types</h3>
+<p>Although you might feel deja vu, the following operators are available for the
+nullable types:</p>
+<ul>
+<li><code>.?</code>（safe call operator）</li>
+<li><code>?:</code>（Elvis operator）</li>
+<li><code>!!</code>（not-null assertion operator）</li>
+</ul>
+<p>Each has the same meaning as the <code>.?</code>, <code>??</code>, and <code>!</code> postfix operators in
+C#/Swift, respectively.  You can refer to the official reference for more
+details, so I only mention some interesting points.</p>
+<p>You can apply the <code>.?</code> operator to <em>l-value</em> as well as in Swift.  Also, you
+can combine the <code>.?</code> operator with
+<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/let.html">the <code>let</code> function</a><sup>†4</sup> to do something
+similar to <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Optional.html#ifPresent(java.util.function.Consumer)"><code>ifPresent(Consumer)</code></a> and
+<a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Optional.html#map(java.util.function.Function)"><code>map(Function)</code></a> of the <code>Optional&lt;T&gt;</code> class in Java,
+as follows:</p>
+<pre><code class="language-kotlin">val item: String? = ...
+item?.let { println(it) }
+val length = item?.let { it.length }
+</code></pre>
+<blockquote>
+<p>†4 More precisely, you can combine not only <code>let</code> but also <a href="https://kotlinlang.org/docs/reference/scope-functions.html"><strong>the
+scope functions</strong></a> described in the
+official documentation, such as <code>run</code>, <code>apply</code>, <code>also</code>.</p>
+</blockquote>
+<p>The right term of the <code>?:</code> operator can be <code>return</code> or <code>throw</code> instead of an
+expression.  The following code is the illustration quoted from
+[<a href="#ref6">6</a>]:</p>
+<pre><code class="language-kotlin">fun foo(node: Node): String? {
+    val parent = node.getParent() ?: return null
+    val name = node.getName() ?: throw IllegalArgumentException(&quot;name expected&quot;)
+    ...
+</code></pre>
+<h3>The nullable types and the collections</h3>
+<p>The <code>Array</code> class and the <code>Iterable</code> interface have the
+<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/map-not-null.html"><code>mapNotNull</code></a> method, which corresponds to
+<code>compactMap</code> in Swift.  They also provide the
+<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/filter-not-null.html"><code>filterNotNull</code></a> method to get only the
+elements that have a value from the collection whose elements are of nullable
+types.</p>
+<p>Like Swift, the existence of such APIs is the advantage of the languages that
+have nullable types from the beginning.</p>
+<h3>The platform types</h3>
+<p>Interoperability with Java is one of the key features of Kotlin.  However, from
+Kotlin's viewpoint, all the reference types from Java are nullable, so using
+thoughtlessly the Java APIs poses a threat to the null safety.  In other words,
+if you call the Java APIs and treat all the return values as of nullable types,
+there should be full of errors, which causes you to add <code>!!</code> earnestly.  In the
+meantime, the errors that you have to fix are buried and then the null safety
+collapses.</p>
+<p>The designers of Kotlin were smart, so they provided special types called
+<em>platform types</em> [<a href="#ref7">7</a>] to handle values coming from Java.  However,
+it is no silver bullet, but the types that simply turn off data flow
+analysis for null at compile time, that is, the types to which the <code>!!</code>
+operator is implicitly applied.  This makes it just a matter that if you
+neglect the null check for instances from Java, the NPE will be thrown at run
+time.  The following code is an illustration quoted from [6]:</p>
+<pre><code class="language-kotlin">// 'list' is of the non-nullable type (the result of constructors)
+val list = ArrayList&lt;String&gt;()
+list.add(&quot;Item&quot;)
+
+// 'size' is of the non-nullable type (the primitive type)
+val size = list.size
+
+// 'item' is of the platform types (the ordinary Java object)
+val item = list[0]
+
+// There is no error at compile time, but the next line throws an exception
+// if 'item' is 'null' at run time.
+item.substring(1)
+
+// No problem.
+val nullable: String? = item
+
+// There is no error at compile time, but it may fail soon at run time.
+val notNull: String = item
+</code></pre>
+<p>Thus, not all values from Java will be of platform types.  Such as constructor
+results and primitive type values that are obvious to be non-<code>null</code> will be of
+non-nullable types.  You should immediately assign the value of platform types
+to a variable of nullable types, or of non-nullable types if you are convinced
+that it is non-<code>null</code>.</p>
+<p>Kotlin has no notation for writing the platform types.  However, there is only
+the notation for the compiler to describe the type in errors, etc.  The
+compiler displays the platform type that means “<code>T</code> or <code>T?</code>” as
+<code>T!</code>.  Here is an example from [6]:</p>
+<ul>
+<li><code>(Mutable)Collection&lt;T&gt;!</code></li>
+<li><code>Array&lt;(out) T&gt;!</code></li>
+</ul>
+<p>The former represents <code>null</code> or a reference to “A mutable or immutable
+Java collection which elements are of type <code>T</code>,” the latter <code>null</code> or a
+reference to “A Java array whose elements are of type <code>T</code> or the subtypes
+of <code>T</code>.”</p>
+<p>Note that the Kotlin compiler understands the annotations around <code>null</code>
+described in the Java part, so if you annotate the Java API that Kotlin
+references with <code>@NotNull</code> and <code>@Nullable</code>, you can prevent Java objects from
+being of platform types.</p>
+<h2>C++17</h2>
+<p>C++ introduced the <code>nullptr</code> keyword in C++11 and the <code>std::optional</code> class in
+C++17.  The <code>std::optional</code> class is intended to solve the problems similar to
+what Java's <code>Optional</code> tries to solve.</p>
+<p>In C/C++, an array is not an object.  Therefore, it is not possible to mimic
+“returning an array of length 0 or 1 instead of <code>null</code>” as
+described in the Java part.  Of course, you can do something similar to that
+with such as <code>std::vector</code> instead of arrays.  But many of the motivations for
+using C++ are not to tolerate such overhead.</p>
+<p>The C++ standard prohibits the implementation of <code>std::optional</code> from
+dynamically allocating memory (for storing the value)<sup>†5</sup>.  The
+standardization committee has already taken measures against those who reject
+the adoption of the option types for performance reasons.</p>
+<blockquote>
+<p>†5 I'll supplement an explanation just in case you misunderstand.  An
+object of type <code>std::optional&lt;T&gt;</code> allocates memory in advance for storing the
+value of type <code>T</code> when it is instantiated.  This means that there is no
+dynamic memory allocation when the object of type <code>std::optional&lt;T&gt;</code> stores a
+value of type <code>T</code>.  Typical implementations allocate the byte array of length
+<code>sizeof(T)</code> and then store a value there with a placement <code>new</code>.  And this
+shows us that, unlike Java and Swift, it is impossible to store a value of
+the derived types of <code>T</code>.</p>
+</blockquote>
+<h3>Creating objects</h3>
+<p>Here is an example of a declaration of objects of type <code>std::optional&lt;int&gt;</code>
+with a value:</p>
+<pre><code class="language-c++">std::optional&lt;int&gt; v1(123);
+std::optional&lt;int&gt; v2 {{123}};
+std::optional&lt;int&gt; v3 = 123;
+auto v4 = std::optional&lt;int&gt;(123);
+auto v5 = std::make_optional&lt;int&gt;(123);
+</code></pre>
+<blockquote>
+<p><a href="https://godbolt.org/#z:OYLghAFBqd5QCxAYwPYBMCmBRdBLAF1QCcAaPECAM1QDsCBlZAQwBtMQBGAFlICsupVs1qhkAUgBMAISnTSAZ0ztkBPHUqZa6AMKpWAVwC2tQVvQAZPLUwA5YwCNMxLgAZSAB1QLC62nsMTQS8fNTorG3sjJxdOdyUVMNoGAmZiAgDjU05FZUxVPxS0ggi7R2c3RVT0zKCchWqS6zLoiriASkVUA2JkDgByKQBma2RDLABqcSG9DyS2aexxVwBBZZXrAgmjZmsIdqmAdllVibOJhvQQEFQ5vwWZzcWJgDdOCE5JIfbpk5Xzi4EK43O50B46J5DbCvSRHWTHT5DcSHAAiyLRQz%2BAMu11u81Y0wh9GeLyGUyGKImiN%2B6wBzAMRFe3HJlJxIPxhMh2A%2BXx%2BmNp53pjJeAFYWYDgTsANaYAD6ePuBMexKhPO%2BNNW6PW/U6rBA/RF/VIpn6riNqH1Ojkcgu3V6mCmX04RoI%2BrN7U6UpAQyGADofQHA0GAGxCfXcI0ms2kC39I0KEDuV2mnWkOCwJBoIwePDsMgUCBZnN5kDAACcklIVFzBGcCYgDjdRoc1jSAE99c7SFmjFoCAB5WisDsp0hYHaidhNsd4Yj5NQvTAJ0eYAAe%2BQZA2jm2U09YeAcxHbeiwnZdxDwRjPnRo9CYbA4PH4gmEohQ1pkQgPCcgnQVdGXABaS5phRCQZDkThDnjPICg0CBzFqbJSHMUoohiYJvF8OgkMw0I/DQ8pYlyRJCkaXD6lgpIinSQjWmIhpigoqpijojDOE6BQ7T6LhdX1Q1jWnWNVwADmDQDg2ZYBkGQCYy19WEIFwQgSEdIYcgmPRs1zZw1I4zSP2kF0mw9UgvR9f0gysn1Qz1foI0E0dY3jRNSGTd00xgRAbgZDwGXISgix04jMHwIhiNvRgWCnJ8AHcjw8a8wwNSMhP1YZOAmWLCAQCZRPEySJmk2T5MkYyU1M8y/Ws6zkocqNzX1FykxMvj%2BjKxzo2ctzWtIRdiB8DRuCAA">Compile</a></p>
+</blockquote>
+<p>Everything will have the same result.  Similarly, here is an example of a
+declaration with no value:</p>
+<pre><code class="language-c++">std::optional&lt;int&gt; n1;
+std::optional&lt;int&gt; n2 {};
+std::optional&lt;int&gt; n3 = std::nullopt;
+auto n4 = std::optional&lt;int&gt;();
+</code></pre>
+<blockquote>
+<p><a href="https://godbolt.org/#z:OYLghAFBqd5QCxAYwPYBMCmBRdBLAF1QCcAaPECAM1QDsCBlZAQwBtMQBGAFlICsupVs1qhkAUgBMAISnTSAZ0ztkBPHUqZa6AMKpWAVwC2tQVvQAZPLUwA5YwCNMxEAE5SAB1QLC62nsMTQS8fNTorG3sjJxd3JRUw2gYCZmICAONTTkVlTFU/ZNSCCLtHZzdFFLSMoOyFKuLrUujy1wBKRVQDYmQOAHIpAGZrZEMsAGpxQb0PRLYp7HEABgBBZZXrAnGjZmsINsmAdllV8bPx%2BvQQEFRZv3npzYXx2k4pk5Xzi4Irm7u6B46J6DbAvSRHWSHAAi73WX0u11uc1YUyB9GetEGk0GUO%2Bv1oBlYrCRsNO52YBiIL242NxCL%2ByNRwOw%2B1Ja2h6z6HVYID6AFY%2BqRTH0loLULydHI5Bcuj1MJNJINOIKCLzRW0OgBrECDQYAOl1hqNxoAbEJedxBcLRaRxX1BQoQEtSKqRVzSHBYEg0EYPHh2GQKBAfX6AyBgK5JKQqP6CM5HRAHGrBQ5rKkAJ685WkH1GLQEADytFYmbdpCwO1E7GT5bwxDyagAbphHWXMAAPPKU/o2zbKGusPAOYgZvRYLMq4h4IwTjo0ehMNgcHj8QTCUQoKUyIRDx2QDpIvytgC0lymUIkMjknEODty%2BQ0EHMNSypHMJSiMWC3l8dBf39CPwPzKFw6nvRJCmqfRMkEeIGwKBpgJaUDKiKf86kQppP3KTgOgUWVei4bleQFIUaztdsAA4TWPE0aWAZBkHGVw9XBCBcEIEgFSVUhxj0X1/WcbjcL4rdpBVZMNVIbVdQNY15N1M0eT6S0yLLO0HSdF1JI9GBEBuSkPEpchKBDQSUMwfAiBQ%2BdGBYasVwAdxHDxZ3NfkrXI3khk4cZHMIBBxiomi6PGBimJYyQJLdKSZP1BSFPc1TrTFXlNOdV11WIvoorUm0NO0mKOmbYgfA0bggA%3D">Compile</a></p>
+</blockquote>
+<p>Likewise, they all have the same result.</p>
+<h3>Checking whether a value is present and accessing the value</h3>
+<p>You can do fewer things with C++17's <code>std::optional</code> than option types and
+nullable types in other languages.  The <code>std::optional</code> does not have the
+operations that accept lambda expressions, such as <code>ifPresent(Consumer)</code> and
+<code>map(Function)</code> methods of Java's <code>Optional</code>.  Before that, the C++ standard
+library currently lacks APIs for <strong>list comprehension</strong>.  So, having such a
+thing only in <code>std::optional</code> will not dramatically improve usability.</p>
+<blockquote>
+<p>In the future, features allowing you to do what you can do in other languages
+may be available since there is the following proposal:</p>
+<p><a href="http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2019/p0798r3.html">p0798R3 Monadic operations for std::optional</a></p>
+</blockquote>
+<p>You can obtain the presence or absence of the value of <code>std::optional</code> with the
+<code>has_value()</code> member function, which returns a value of type <code>bool</code>.  However,
+you don't have to use this function.  Since <code>std::optional</code> has <code>operator bool</code>
+(implicit type conversion to type <code>bool</code>), you can specify the instance
+directly to a conditional expression of such as <code>if</code>:</p>
+<pre><code class="language-c++">std::optional&lt;int&gt; maybeInt = ...;
+if (maybeInt) {
+    // 'maybeInt.has_value()' returns 'true', i.e., the value is present:
+    ...
+} else {
+    // 'maybeInt.has_value()' returns 'false', i.e., the value is absent:
+    ...
+}
+</code></pre>
+<p>To get the value, you can use the <code>operator *</code> or <code>value()</code> member functions.
+These results differ only if there is no value.  In this case, the former is
+undefined behavior and the latter throws the exception
+<code>std::bad_optional_access</code>.</p>
+<p>If there is a value, you can also use <code>operator -&gt;</code> to access the members of
+the value:</p>
+<pre><code class="language-c++">std::optional&lt;std::string&gt; maybeString = ...;
+if (maybeString) {
+    // The next statement is equivalent to:
+    //
+    // auto &amp;s = *maybeString;
+    // auto size = s.size();
+    auto size = maybeString-&gt;size();
+    ...
+}
+</code></pre>
+<blockquote>
+<p><a href="https://godbolt.org/#z:OYLghAFBqd5QCxAYwPYBMCmBRdBLAF1QCcAaPECAM1QDsCBlZAQwBtMQBGAFlICsupVs1qhkAUgBMAISnTSAZ0ztkBPHUqZa6AMKpWAVwC2tQVvQAZPLUwA5YwCNMxLgDZSAB1QLC62nsMTQS8fNTorG3sjJxdOdyUVMNoGAmZiAgDjU05FZUxVPxS0ggi7R2c3RVT0zKCchWqS6zLoiriASkVUA2JkDgByKQBma2RDLABqcSGddQbiTGYjaexxAAYAQWHR8cwpmdQPJLYV9a3N6wIJo2ZrCHapgHZZTYm3iYb0EBBD49ZpnSfb7zazAFbXZgATycKWIoP2ABEppJJAhlKxUKQJgB3EisdBSSTTF4bd4TPBUCYQG7QzCw0EPcTPM5ksnMAxEZGuBSIiYAKhpMIIcNExJZrLe7M5PgAXntpkiFAA6WWYe5i14Sj4EL4obpXAEA5GSVUgY37HRG1UWq0677mf5DElkpkI8VvClUwV04UMp7OrVS1AfPBy3ne%2BmiAC0K1V6qd7tZQL1HJtM2NpvNhvT1uzOm1uodGtJ71dZzLm36nVYIH6AFZ%2BqRTP01o3ULXLTI5B9ur15ZIhpxGwRa632p0ANYgIZDJUz%2BcLxfuGv9biN5ut0jt/qNhQgNakEctqukOCwJBoIwePDsMgUCCX6%2B3kDAACcklIVBvBGce4gDlHRsHGsNJIVrIdSEvIwtAIAB5WhWDA49SCwG5RHYQCULwBYCgAN0wPdkMwAAPfIOQGTdLmUTDWDwBxiFAvQsHA4c4SMFjOhoegmDYDgeH4QRhFEFA5DkIQ6L3SBOl%2BPxCKjT4FQkLsZE4R5dzyAoNAgcxamyUhzFKKIYmCbxfDoXSTNCPxDPKWJckSQpGgs%2BoNKSIp0hs1o7IaYpnKqYpPOMzhOgUXs%2Bi4atawbJtMO3YiAA5XCjVxuAmYBkGQCZXyVSQqVwQgSGRQcsT0K8b2cIrgomTtZBkYdAPHUgpxnOdFzamdl1rNcYuQ7dd33Q8GtPGBEB%2BDkPA5chKEfcq7MwfAiDsrjGBYDD%2BOxBiPA4oQovXWLa2GTgcUIBAJgSpKUrSjKspy%2Brj0a5rZ3a9qdtXPbetrfqDyPMdIv6SR3s3PrBvuzp8OIHwNG4IA%3D">Run</a></p>
+</blockquote>
+<p>However, as well as <code>operator *</code>, it is undefined behavior if there is no
+value.</p>
+<p>The <code>value_or(T)</code> member function returns the value if it is present, otherwise
+the value of the argument:</p>
+<pre><code class="language-c++">std::optional&lt;std::string&gt; maybeString = ...;
+auto s = maybeString.value_or(defaultValue);
+</code></pre>
+<h3>Lazy initialization</h3>
+<p>Interestingly, unlike <code>Optional</code> in Java, <code>Nullable</code> in C#, and <code>Optional</code> in
+Swift, instances of <code>std::optional</code> in C++ are not immutable objects.  It is
+possible to change the state of whether a value is present or not and to change
+the value to another value keeping that state.  You can use the change from
+<em>with no value</em> to <em>with a value</em> to realize <strong>lazy initialization</strong> (See: Late
+Evaluation in #7 <em>Immutable Object</em> and Lazy initialization in #12 <em>Java Memory
+Model</em> ).</p>
+<blockquote>
+<p>To change the state of an object of type <code>std::optional&lt;T&gt;</code> from with no
+value to with a value, or to change the value to something else, you can, for
+example, call the <code>emplace(...)</code> member function, assign an object of type
+<code>T</code> with <code>operator =</code>, or assign another object of type <code>std::optional</code> that
+has a value.  On the other hand, to change the state from with a value to
+with no value, you can, for example, call the <code>reset()</code> member function, or
+assign <code>std::nullopt</code> with <code>operator =</code>.</p>
+</blockquote>
+<p>As an example of the lazy initialization, consider a class <code>Calculator</code> that
+accepts a string representing a calculation formula with its constructor and
+returns the value, which is the result of evaluating the formula, with
+<code>getValue()</code>.  We assume the following use cases:</p>
+<pre><code class="language-c++">int main() {
+    Calculator c(&quot;(8 * 7 + 6) / 4&quot;);
+    std::cout &lt;&lt; c.getValue() &lt;&lt; std::endl;
+}
+</code></pre>
+<p>Here is an example implementation of a class <code>Calculator</code> that defers the
+evaluation of a calculation formula until the first call to <code>getValue()</code>:</p>
+<pre><code class="language-c++">class Calculator {
+public:
+    Calculator(std::string expr) : expr(expr) {
+    }
+
+    int getValue() {
+        if (!value) {
+            value.emplace(evalExpr());
+        }
+        return *value;
+    }
+
+private:
+    std::string expr;
+    std::optional&lt;int&gt; value;
+
+    // Evaluates 'expr' and returns the value.
+    int evalExpr() {
+        return ...
+    }
+};
+</code></pre>
+<blockquote>
+<p><a href="https://godbolt.org/#z:OYLghAFBqd5QCxAYwPYBMCmBRdBLAF1QCcAaPECAM1QDsCBlZAQwBtMQBGAFlICsupVs1qhkAUgBMAISnTSAZ0ztkBPHUqZa6AMKpWAVwC2tLpNJb0AGTy1MAOWMAjTMRCSAbKQAOqBYXVaPUMTMx8/ALobO0cjFzdPRWVMVUCGAmZiAmDjU05zJRU1OnTMgmiHZ1d3LwUMrJzQ/MV68ttKuOrPAEpFVANiZA4AcikAZltkQywAanExnXU64kxmI3nscQAGAEFxyenMOYXUb2LaNg3tvd2p5gUFGZ02ZANhImI5gHZZXe8DJysPDIEDXGbgp4vN7MD4QOroEAgZa2YAzTAAD28xG6MxAaMxxAgGKxOPEPzBELJABFrhTwbYCDNgJgCAA1NgGTAQUnk3YQ/kzPBUGYQMBgABuHMwPN%2BOwF8pmksMmAAdJgjN5hEMiUrsATud15rKFd8aXyFSsCANaDMAFRKzlGumm2l/Yh4SUEDjO%2BGI5GifFYp3m8G%2BkCnc6XBYMjaKqXBm5yiEMtG6/Uy538gD0WZmtFQjLwGvYRi0XvQpBmlutKJmClQpbjypmIgAngB3ZitlWZiHV4g24nEFX%2BABeXMNY2NlK%2BZr2s4T1xTRmYtm532n4OerFe7xIM2QECkkggAA47TMvnMZDMPDjc9xj5PN3WCAiUP1GfMdN%2BDyrmWyUrrt%2Bv5hpYrCLguuzDL0rAgMMACswykKYwxbMhqDwT%2BMhyHW/SDEc4ycMhBDweh3S9AA1iAYxjCqtEMYxTFeHBwzcMhqHoaQmHDMhCggFspCkWhMGkHAsBIGgGp4OwZAUBAUneDJ1TAAAnOYVAyV6xD8RAThkchTi2JkrbwcRpBSaW9AAPK0KwpkiaQWArqI7AGU5eArKk4qYPxjkYikBheu5DLKO5QJOMQJl6FgZkke6Rhxb0ND0EwbAcDw/CCMIogoHIchCHgTj8ZAvQRoEfkALTwvMVISDhMicF8fHJKkGhEtojR5BY2gVLE8SCL4/jnF1g0ROcfVVG4nBJEUaStKNM2FCk5ylFkk2dNNLRlIt23re0/XVJwvT1gMQxcLB8FISh7k8eip4eJVHjcEyyDIDMqkqpIIq4IQ%2B5EZWejSbJ15jMdTz5TIJEGRRpDUbR9FMUjtEsfB7E3Y5PF8QJQkw2JMCIOGQX/AQ5CUIpylbZg%2BAfIIKWMCwbmZe2UXeElQhXRxt3wURMztoQCAzPdj3Pa972fZI0MibD8N0cjyMc2xXOY/B2OCcJ5GXcMksY1xWO49LvQ%2BTpgQgNwQA">Run</a></p>
+</blockquote>
+<p>Let's consider a more practical example.  Suppose that we want a class <code>Foo</code> to
+have a member <code>bar</code> of type <code>Bar</code>, but the <code>Bar</code> class does not have a default
+constructor.  Moreover, it is assumed that we can not initialize <code>bar</code> with the
+constructor of <code>Foo</code> and that we have to defer initialization of <code>bar</code>.</p>
+<p>Before C++17, this can be resolved with <code>std::unique_ptr</code> as follows:</p>
+<pre><code class="language-c++">class Foo {
+public:
+    Foo() {
+        ...
+    }
+
+    void initialize() {
+        bar = std::make_unique&lt;Bar&gt;(...);
+    }
+
+private:
+    std::unique_ptr&lt;Bar&gt; bar;
+};
+</code></pre>
+<p>However, using <code>std::optional</code> allows lazy initialization without dynamic
+memory allocation:</p>
+<pre><code class="language-c++">class Foo {
+public:
+    Foo() {
+        ...
+    }
+
+    void initialize() {
+        bar.emplace(...);
+    }
+
+private:
+    std::optional&lt;Bar&gt; bar;
+};
+</code></pre>
+<h3>From undefined behavior to throwing an exception</h3>
+<p>The main attraction of using <code>std::optional</code> in C++ is throwing the exception
+<code>std::bad_optional_access</code>.  Let's suppose, for example, there is an API that
+does not use <code>std::optional</code> but returns <code>nullptr</code>.  If the return value is
+<code>nullptr</code> and you access it without a null check, the undefined behavior
+occurs.  However, if the API returns <code>std::optional</code>, accessing the return
+value with <code>value</code> without checking whether it has a value will result in
+<strong>just</strong> throwing an exception.  This difference is significant.</p>
+<p>However, because there are historical assets that return <code>nullptr</code> or <code>NULL</code>,
+the use of <code>std::optional</code> only for the newly created APIs should be <em>a drop in
+the bucket</em>.  (It could change over time, but ...)</p>
+<h3>The <code>gsl::not_null</code> class in the C++ Core Guidelines</h3>
+<p>Although not part of the standard library, the <code>gsl::not_null</code> class in the C++
+Core Guidelines [<a href="#ref9">9</a>] is available as a gimmick to handle non-null
+pointers. The following section deals with Microsoft's implementation of
+Guidelines Support Library (GSL) [<a href="#ref10">10</a>].</p>
+<p>Unlike smart pointers, the authors design the <code>gsl::not_null&lt;T&gt;</code> class so that
+<code>T</code> can be the type of any pointer (that is, <code>U *</code>) or any smart
+pointer<sup>†6</sup>. For example, you can write a function that takes a
+non-null argument of “<code>const char *</code>” type as follows:</p>
+<pre><code class="language-c++">std::size_t length(gsl::not_null&lt;const char *&gt; s)
+{
+    return std::strlen(s);
+}
+</code></pre>
+<p>Similarly, you can write <code>gsl::not_null&lt;std::shared_ptr&lt;U&gt;&gt;</code> for a non-null
+argument of <code>std::shared_ptr&lt;U&gt;</code> type.</p>
+<blockquote>
+<p>†6 You can use the <code>std::shared_ptr</code> or <code>std::unique_ptr</code> in the
+standard library for smart pointer types, but not <code>std::weak_ptr</code>. That is
+because <code>T</code> must be the class that the instance is comparable with <code>nullptr</code>
+(i.e., the expression <code>v != nullptr</code> can be evaluated against the value <code>v</code>
+of type <code>T</code>), but <code>std::weak_ptr</code> does not satisfy that requirement. There
+are also other requirements, such as the ability to apply a unary operator
+<code>*</code> to <code>T</code>. Of course, you can specify the appropriate class as T if it meets
+these requirements.</p>
+</blockquote>
+<p>There is the constructor of <code>gsl::not_null&lt;T&gt;</code> that takes an argument of type
+<code>T</code>, so you can call the function <code>length</code> as follows:</p>
+<pre><code class="language-c++">auto n = length(&quot;hello&quot;);
+</code></pre>
+<blockquote>
+<p><a href="https://replit.com/@maroontress/Example-usage-of-notnull-1#main.cpp">Run</a></p>
+</blockquote>
+<p>However, a call that takes a null pointer constant as an argument results in a
+compile error:</p>
+<pre><code class="language-c++">auto n = length(nullptr);
+</code></pre>
+<blockquote>
+<p><a href="https://replit.com/@maroontress/Example-usage-of-notnull-2#main.cpp">Compile</a></p>
+</blockquote>
+<p>At runtime, the constructor of <code>gsl::not_null&lt;T&gt;</code> with a value of type <code>T</code>
+calls <code>std::terminate()</code> to exit if the value is equal to null. It ensures that
+the pointer is non-null after the constructor returns if <code>T</code> is <code>U *</code> (or
+something like <code>std::shared_ptr&lt;U&gt;</code>).</p>
+<blockquote>
+<p>Be careful when you designate your custom class to <code>T</code> that can have a
+non-null value at the construction of the <code>gsl::not_null&lt;T&gt;</code> object but a
+null value when dereferencing it. When you try to dereference the
+<code>gsl::not_null&lt;T&gt;</code> object, it compares the instance of type <code>T</code> with
+<code>nullptr</code> (that is, performs a null check) <strong>before</strong> dereferencing the one
+with a unary operator <code>*</code> of <code>T</code>. Then, if the instance is equal to
+<code>nullptr</code>, it exits by calling <code>std::terminate()</code>, as it did at construction.</p>
+</blockquote>
+<p>Once you construct the <code>gsl::not_null&lt;T&gt;</code> object, you can get the value of type
+<code>T</code> (a pointer to <code>U</code>) from it with its member function <code>get()</code>, and like a
+smart pointer, you can access it with unary operators <code>*</code> and <code>-&gt;</code>. Also, since
+implicit type conversion from <code>gsl::not_null&lt;T&gt;</code> to <code>T</code> (i.e., non-null to
+nullable) is allowed, you may specify the value of type <code>gsl::not_null&lt;T&gt;</code>
+where type <code>T</code> is expected, as the call of <code>std::strlen()</code> in the above
+example.</p>
+<p>The <code>gsl::not_null</code> often makes it unnecessary to check arguments for nulls at
+the beginning of functions as follows:</p>
+<pre><code class="language-c++">void foo(const void *p)
+{
+    assert(p != nullptr);
+    ...
+}
+</code></pre>
+<p>However, pointer operations and subscript access with <code>gsl::not_null&lt;T&gt;</code>
+objects, such as <code>++s</code> and <code>s[1]</code>, are not allowed, so you must assign them to
+other variables of type <code>T</code> if necessary. The idea seems to be that pointers
+should point to single objects (like references).</p>
+<h2>References</h2>
+<!--
+<style>
+#references + ol > li::marker { content: "[" counter(list-item) "] "; }
+</style>
+-->
+<div id="references"></div>
+<ol>
+<li>
+<p><a name="ref1"></a>
+<a href="https://en.wikipedia.org/wiki/Swift_(programming_language)">Wikipedia, <em>Swift (programming language)</em></a></p>
+</li>
+<li>
+<p><a name="ref2"></a>
+<a href="https://en.wikipedia.org/wiki/Kotlin_(programming_language)">Wikipedia, <em>Kotlin (programming language)</em></a></p>
+</li>
+<li>
+<p><a name="ref3"></a>
+<a href="https://developer.apple.com/documentation/swift/optional">Apple, <em>Swift Standard Library, Numbers and Basic Values, Optional</em></a></p>
+</li>
+<li>
+<p><a name="ref4"></a>
+<a href="https://docs.swift.org/swift-book/LanguageGuide/ControlFlow.html#ID525">Apple, <em>The Swift Programming Language, Language Guide, Control Flow</em></a></p>
+</li>
+<li>
+<p><a name="ref5"></a>
+<a href="https://docs.microsoft.com/en-us/dotnet/csharp/pattern-matching">Microsoft, <em>Pattern Matching (C# guide)</em></a></p>
+</li>
+<li>
+<p><a name="ref6"></a>
+<a href="https://kotlinlang.org/docs/reference/null-safety.html">Kotlin Foundation, <em>Kotlin Programming Language, Language Guide, Null Safety</em></a></p>
+</li>
+<li>
+<p><a name="ref7"></a>
+<a href="https://kotlinlang.org/docs/reference/java-interop.html#null-safety-and-platform-types">Kotlin Foundation, <em>Kotlin Programming Language, Language Guide, Calling Java code from Kotlin</em></a></p>
+</li>
+<li>
+<p><a name="ref8"></a>
+<a href="https://en.wikipedia.org/wiki/List_comprehension">Wikipedia, <em>List comprehension</em></a></p>
+</li>
+<li>
+<p><a name="ref9"></a>
+<a href="https://github.com/isocpp/CppCoreGuidelines/blob/master/CppCoreGuidelines.md">Bjarne Stroustrup, Herb Sutter. <em>C++ Core Guidelines</em></a></p>
+</li>
+<li>
+<p><a name="ref10"></a>
+<a href="https://github.com/microsoft/GSL">Microsoft, <em>GSL: Guidelines Support Library</em></a></p>
+</li>
+</ol>
+          </main>
+        </section>
+      </div>
+      <div class="left-container">
+<nav>
+  <div>
+    <a href="/">Projects</a>
+  </div>
+  <div>
+    <span>&#x25BE;</span>
+  </div>
+  <div>
+    <span class="project-name"><a href="index.html">The Insanity Beyond Null</a></span>
+  </div>
+  <ul>
+    <li>
+      <a href="index.html">Top</a>
+    </li>
+    <li>
+      <a href="Part-0.html">0. Null</a>
+    </li>
+    <li>
+      <a href="Part-1.html">1. Null in Java 11</a>
+    </li>
+    <li>
+      <a href="Part-2.html">2. Null in C# 8</a>
+    </li>
+    <li class="selected">
+      3. Null in Others
+    </li>
+    <ul id="toc-placeholder">
+    </ul>
+    <li>
+      <a href="Part-4.html">4. Exercises</a>
+    </li>
+    <li>
+      <a href="Part-5.html">5. Epilog</a>
+    </li>
+  </ul>
+</nav>
+      </div>
+    </div>
+  </body>
+</html>

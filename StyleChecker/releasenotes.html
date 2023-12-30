@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9TQ6JWBKEK"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-9TQ6JWBKEK');
+    </script>
+    </script>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Release Notes | StyleChecker</title>
+    <link rel="canonical" href="https://maroontress.github.io/StyleChecker/releasenotes.html" />
+    <link rel="stylesheet" type="text/css" href="/css/markdown.css">
+    <link rel="apple-touch-icon" sizes="120x120" href="/images/logo-v2-120x120.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/logo-v2-180x180.png">
+    <link rel="icon" type="image/x-icon" href="/images/logo-v2.ico">
+    <link rel="mask-icon" href="/images/logo-v2-mask-icon.svg" color="#800000">
+    <script src="/js/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+    <script src="/js/toc.js"></script>
+  </head>
+  <body>
+    <div class="logo">
+      <b>Maroontress Fast Software</b>
+    </div>
+    <div class="container">
+      <div class="main-container">
+        <section>
+          <main class="content">
+<div class="project-logo">StyleChecker</div>
+<div id="toc-level" data-values="H2"></div>
+<h1>Release Notes</h1>
+<!--
+## x.y.z (yyyy-mm-dd)
+
+abstract
+
+### Requirements to run
+
+- Visual Studio 2017 (15.9) or .NET Core 2.1 (2.1.500)
+
+### Requirements to build
+
+- Visual Studio 2019 (16.0)
+
+### New
+### Removed
+### Changed
+### Fixed
+### Known issue
+
+---
+-->
+<h2>1.0.27 (2020-08-18)</h2>
+<p>Add UninitializedLocalVariable and NotOneShotInitialization analyzers.</p>
+<h3>Requirements to run</h3>
+<ul>
+<li>Visual Studio 2017 (15.9) or .NET Core 2.1 (2.1.500)</li>
+</ul>
+<h3>Requirements to build</h3>
+<ul>
+<li>Visual Studio 2019 (16.7)</li>
+</ul>
+<h3>New</h3>
+<ul>
+<li>Add UninitializedLocalVariable analyzer. See
+<a href="https://github.com/maroontress/StyleChecker/blob/master/doc/rules/UninitializedLocalVariable.md">the description</a>
+for details.</li>
+<li>Add NotOneShotInitialization analyzer. See
+<a href="https://github.com/maroontress/StyleChecker/blob/master/doc/rules/NotOneShotInitialization.md">the description</a>
+for details.</li>
+</ul>
+<hr>
+<h2>1.0.26 (2020-06-16)</h2>
+<p>Add StrayText and StinkyBooleanExpression analyzers.</p>
+<h3>Requirements to run</h3>
+<ul>
+<li>Visual Studio 2017 (15.9) or .NET Core 2.1 (2.1.500)</li>
+</ul>
+<h3>Requirements to build</h3>
+<ul>
+<li>Visual Studio 2019 (16.5)</li>
+</ul>
+<h3>New</h3>
+<ul>
+<li>Add StrayText analyzer. See <a href="https://github.com/maroontress/StyleChecker/blob/master/doc/rules/StrayText.md">the description</a> for details.</li>
+<li>Add StinkyBooleanExpression analyzer. See <a href="https://github.com/maroontress/StyleChecker/blob/master/doc/rules/StinkyBooleanExpression.md">the description</a> for details.</li>
+</ul>
+<h3>Fixed</h3>
+<ul>
+<li><em>NoSingleSpaceAfterTripleSlash</em>:
+<ul>
+<li>Allow a tab character in addition to a space character after '<code>///</code>'.</li>
+<li>Ignore the top-level text in the Documentation Comments, which is not inside
+any XML tag.</li>
+</ul>
+</li>
+<li><em>TypeClassParameter</em>:
+<ul>
+<li>Fix the analyzer to emit diagnostics to the private methods with the editor
+of Visual Studio 2019.</li>
+<li>Fix the code fix provider to rename the method that has the same method
+signature as the modified method.</li>
+</ul>
+</li>
+</ul>
+<h3>Changed</h3>
+<ul>
+<li>Fix NoSingleSpaceAfterTripleSlash analyzer to emit the diagnostics whose location
+is just after '<code>///</code>'.</li>
+</ul>
+<hr>
+<h2>1.0.25 (2020-03-28)</h2>
+<p>Fix some bugs.</p>
+<h3>Requirements to run</h3>
+<ul>
+<li>Visual Studio 2017 (15.9) or .NET Core 2.1 (2.1.500)</li>
+</ul>
+<h3>Requirements to build</h3>
+<ul>
+<li>Visual Studio 2019 (16.5)</li>
+</ul>
+<h3>Fixed</h3>
+<ul>
+<li>Fix
+DiscardingReturnValue,
+EmptyArrayCreation,
+EqualsNull,
+IneffectiveReadByte,
+RedundantTypedArrayCreation,
+TypeClassParameter,
+and UnnecessaryUsing
+analyzers possibly throwing an NRE.</li>
+<li><em>RedundantTypedArrayCreation</em>:
+<ul>
+<li>Fix typo in the diagnostic messages.</li>
+<li>Fix the CodeFix provider to correct nested arrays.</li>
+<li>Improve diagnostic messages.</li>
+</ul>
+</li>
+<li><em>StaticGenericClass</em>:
+<ul>
+<li>Fix the CodeFix provider to rename the type name to the unique name
+when the other type that has the same name already exists.</li>
+</ul>
+</li>
+<li><em>Underscore</em>:
+<ul>
+<li>Fix typo in the diagnostic messages.</li>
+<li>Improve diagnostic messages, especially just for the underscore that
+is not a discard.</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2>1.0.24 (2019-06-24)</h2>
+<p>Fix the bug of the NotDesignedForExtension analyzer.</p>
+<h3>Requirements to run</h3>
+<ul>
+<li>Visual Studio 2017 (15.9) or .NET Core 2.1 (2.1.500)</li>
+</ul>
+<h3>Requirements to build</h3>
+<ul>
+<li>Visual Studio 2019 (16.0)</li>
+</ul>
+<h3>Fixed</h3>
+<ul>
+<li>Fix the NotDesignedForExtension analyzer to emit the diagnostics
+with the virtual method that has a non-empty block.</li>
+<li>Fix the ByteOrderMark analyzer to handle <code>UnauthorizedAccessException</code>.</li>
+<li>Fix and improve documents, adding a default severity and the cover image
+to each description of diagnostics.</li>
+</ul>
+<hr>
+<h2>1.0.23 (2019-05-15)</h2>
+<p>Add NoSingleSpaceAfterTripleSlash and NoDocumentation analyzers.</p>
+<h3>Requirements to run</h3>
+<ul>
+<li>Visual Studio 2017 (15.9) or .NET Core 2.1 (2.1.500)</li>
+</ul>
+<h3>Requirements to build</h3>
+<ul>
+<li>Visual Studio 2019 (16.0)</li>
+</ul>
+<h3>New</h3>
+<ul>
+<li>Add NoSingleSpaceAfterTripleSlash analyzer and code fix provider. See <a href="https://github.com/maroontress/StyleChecker/blob/master/doc/rules/NoSingleSpaceAfterTripleSlash.md">the description</a> for details.</li>
+<li>Add NoDocumentation analyzer. See <a href="https://github.com/maroontress/StyleChecker/blob/master/doc/rules/NoDocumentation.md">the description</a> for details.</li>
+</ul>
+<h3>Changed</h3>
+<ul>
+<li>Fix ByteOrderMark analyzer to ignore I/O errors.</li>
+</ul>
+<h3>Fixed</h3>
+<ul>
+<li>Fix DiscardingReturnValue analyzer and IneffectiveReadByte code fix provider to be built on the Linux platform.</li>
+<li>Fix EmptyArrayCreation, EqualsNull and IsNull analyzers to be in the Refactoring category.</li>
+</ul>
+<hr>
+<h2>1.0.22 (2019-04-07)</h2>
+<p>Add ByteOrderMark analyzer and fix bugs.</p>
+<h3>Requirements to run</h3>
+<ul>
+<li>Visual Studio 2017 (15.9) or .NET Core 2.1 (2.1.500)</li>
+</ul>
+<h3>Requirements to build</h3>
+<ul>
+<li>Visual Studio 2017 (15.9)</li>
+</ul>
+<h3>New</h3>
+<ul>
+<li>Add ByteOrderMark analyzer. See <a href="https://github.com/maroontress/StyleChecker/blob/master/doc/rules/ByteOrderMark.md">the description</a> for details.</li>
+</ul>
+<h3>Changed</h3>
+<ul>
+<li>Remove StyleChecker.Annotations and Maroontress.Oxbind from the source tree. Instead, integrate them with NuGet.</li>
+</ul>
+<h3>Fixed</h3>
+<ul>
+<li>Fix EqualsNull CodeFix provider to show the correct title message.</li>
+<li>Fix SingleTypeParameter analyzer to count a verbatim symbol.</li>
+<li>Fix UnusedVariable analyzer to count local function's parameters.</li>
+<li>Fix UnusedVariable analyzer to count parameters of the constructors
+and methods of <code>struct</code>s.</li>
+</ul>
+<hr>
+<h3>Requirements to run</h3>
+<ul>
+<li>Visual Studio 2017 (15.9) or .NET Core 2.1 (2.1.500)</li>
+</ul>
+<h3>Requirements to build</h3>
+<ul>
+<li>Visual Studio 2017 (15.9)</li>
+</ul>
+<h3>New</h3>
+<ul>
+<li>Add EqualsNull analyzer. See <a href="https://github.com/maroontress/StyleChecker/blob/master/doc/rules/EqualsNull.md">the description</a> for details.</li>
+<li>Add IsNull analyzer. See <a href="https://github.com/maroontress/StyleChecker/blob/master/doc/rules/IsNull.md">the description</a> for details.</li>
+</ul>
+<h3>Changed</h3>
+<ul>
+<li>Fix UnnecessaryUsing analyzer to count more classes: <code>System.IO.StringReader</code>, <code>System.IO.StringWriter</code> and <code>System.IO.UnmanagedMemoryAccessor</code>.</li>
+</ul>
+<h3>Fixed</h3>
+<ul>
+<li>Fix bugs of RedundantTypedArrayCreation, PostIncrement, EmptyArrayCreation, IneffectiveReadByte, StaticGenericClass, TypeClassParameter and UnnecessaryUsing code fix providers to work in some cases. For example, the EmptyArrayCreation code fix provider is fixed to work if there is an empty array creation as an argument.</li>
+<li>Fix bugs of TypeClassParameter analyzer to count the <code>typeof</code> operator with the operand that is <code>static</code> class.</li>
+</ul>
+<hr>
+<h2>1.0.20 (2019-02-19)</h2>
+<p>Add RedundantTypedArrayCreation and EmptyArrayCreation analyzers.</p>
+<h3>Requirements to run</h3>
+<ul>
+<li>Visual Studio 2017 (15.9) or .NET Core 2.1 (2.1.500)</li>
+</ul>
+<h3>Requirements to build</h3>
+<ul>
+<li>Visual Studio 2017 (15.9)</li>
+</ul>
+<h3>New</h3>
+<ul>
+<li>Add RedundantTypedArrayCreation analyzer. See <a href="https://github.com/maroontress/StyleChecker/blob/master/doc/rules/RedundantTypedArrayCreation.md">the description</a> for details.</li>
+<li>Add EmptyArrayCreation analyzer. See <a href="https://github.com/maroontress/StyleChecker/blob/master/doc/rules/EmptyArrayCreation.md">the description</a> for details.</li>
+</ul>
+<hr>
+<h2>1.0.19 (2019-02-03)</h2>
+<p>Add TypeClassParameter analyzer.</p>
+<h3>Requirements to run</h3>
+<ul>
+<li>Visual Studio 2017 (15.9) or .NET Core 2.1 (2.1.500)</li>
+</ul>
+<h3>Requirements to build</h3>
+<ul>
+<li>Visual Studio 2017 (15.9)</li>
+</ul>
+<h3>New</h3>
+<ul>
+<li>Add TypeClassParameter analyzer. See <a href="https://github.com/maroontress/StyleChecker/blob/master/doc/rules/TypeClassParameter.md">the description</a> for details.</li>
+</ul>
+<hr>
+<h2>1.0.18 (2019-01-18)</h2>
+<p>Change the schema of the configuration file to customize the behaviors
+of some analyzers.</p>
+<h3>Requirements to run</h3>
+<ul>
+<li>Visual Studio 2017 (15.9) or .NET Core 2.1 (2.1.500)</li>
+</ul>
+<h3>Requirements to build</h3>
+<ul>
+<li>Visual Studio 2017 (15.9)</li>
+</ul>
+<h3>New</h3>
+<ul>
+<li>Fix ThoughtlessName analyzer to report identifiers not allowed to use which are specified with the configuration file.</li>
+<li>Fix DiscardingReturnValue analyzer to report the methods discarding the return value which are specified with the configuration file.</li>
+<li>Add the help link URI to each analyzer.</li>
+<li>Fix the NuGet package to contain <code>readme.txt</code> and some documents.</li>
+<li>Merge <a href="https://github.com/maroontress/Oxbind.CSharp/tree/REL_1_0_0">Oxbind.CSharp 1.0.0</a>.</li>
+</ul>
+<h3>Changed</h3>
+<ul>
+<li>Rename NoSpaceBeforeSemicolon and SpaceAfterSemicolon analyzer to SpaceBeforeSemicolon and NoSpaceAfterSemicolon, respectively.</li>
+<li>Change the schema of the configuration file <code>StyleChecker.xml</code>. See <a href="https://github.com/maroontress/StyleChecker/blob/master/README.md">README.md</a> for details.</li>
+</ul>
+<h3>Fixed</h3>
+<ul>
+<li>Fix UnusedVariable and ThoughtlessName analyzers throwing <code>InvalidOperationException</code> with message 'Sequence contains no elements'.</li>
+</ul>
+<hr>
+<h2>1.0.17 (2018-12-09)</h2>
+<p>Fix bugs of some analyzers.</p>
+<h3>Requirements to run</h3>
+<ul>
+<li>Visual Studio 2017 (15.9) or .NET Core 2.1 (2.1.500)</li>
+</ul>
+<h3>Requirements to build</h3>
+<ul>
+<li>Visual Studio 2017 (15.9)</li>
+</ul>
+<h3>Fixed</h3>
+<ul>
+<li>Fix the bugs of UnusedVariable and ThoughtlessName analyzer throwing an exception when they handle <code>catch</code> clauses without an exception variable.</li>
+</ul>
+<hr>
+<h2>1.0.16 (2018-11-30)</h2>
+<p>Fix bugs of some analyzers.</p>
+<h3>Requirements to run</h3>
+<ul>
+<li>Visual Studio 2017 (15.9) or .NET Core 2.1 (2.1.500)</li>
+</ul>
+<h3>Requirements to build</h3>
+<ul>
+<li>Visual Studio 2017 (15.9)</li>
+</ul>
+<h3>Fixed</h3>
+<ul>
+<li>Fix the bugs of UnnecessaryUsing and ThoughtlessName analyzer throwing an exception when used with verbatim identifiers.</li>
+<li>Fix ThoughtlessName analyzer to count parameters, out-var, pattern matching, <code>catch</code> and <code>foreach</code>.</li>
+<li>Fix UnusedVariable analyzer to handle <code>catch</code> and <code>foreach</code>.</li>
+</ul>
+<hr>
+<h2>1.0.15 (2018-11-22)</h2>
+<p>Add NotDesignedForExtension analyzer and fix bugs.</p>
+<h3>Requirements to run</h3>
+<ul>
+<li>Visual Studio 2017 (15.9) or .NET Core 2.1 (2.1.500)</li>
+</ul>
+<h3>Requirements to build</h3>
+<ul>
+<li>Visual Studio 2017 (15.9)</li>
+</ul>
+<h3>New</h3>
+<ul>
+<li>Add NotDesignedForExtension analyzer.</li>
+<li>Fix DiscardingReturnValue analyzer to count more methods. The added methods are of immutable types (e.g. <code>string</code>, <code>Type</code>, <code>ImmutableArray</code> and so on). See <a href="https://github.com/maroontress/StyleChecker/blob/master/doc/rules/DiscardingReturnValue.md">the description</a> for details.</li>
+<li>Fix DiscardingReturnValue analyzer to count the methods whose return value is annotated with the <code>DoNotIgnoreAttribute</code>. Note that the attribute is provided with the NuGet package <a href="https://www.nuget.org/packages/StyleChecker.Annotations/">StyleChecker.<wbr>Annotations</a>.</li>
+</ul>
+<h3>Changed</h3>
+<ul>
+<li>Update dependencies:
+<ul>
+<li>StyleCop.Analyzers 1.1.1-beta.61</li>
+<li>Microsoft.CodeAnalysis.CSharp.Workspaces 2.10.0</li>
+</ul>
+</li>
+</ul>
+<h3>Fixed</h3>
+<ul>
+<li>Fix AssignmentToParameter analyzer to report that a local variable passed <em>by value</em> if it is as follows:
+<ul>
+<li>incremented or decremented with the unary operator (i.e. <code>++</code> or <code>--</code> )</li>
+<li>passed to a method as a <code>ref</code> or <code>out</code> parameter.</li>
+</ul>
+</li>
+<li>Fix UnusedVariable analyzer to handle a verbatim identifier, that is a variable name starting with the special character '<code>@</code>'.</li>
+<li>Fix IneffectiveReadByte analyzer throwing exceptions if the integer constant uses binary literals or digit separators, or if it cannot be represented with <code>int</code>.</li>
+<li>Fix Underscore CodeFix provider to handle the identifier that contains only an underscore character.</li>
+</ul>
+<hr>
+<h2>1.0.14 (2018-11-03)</h2>
+<p>Add AssignmentToParameter analyzer and fix bugs of UnusedVariable analyzer.</p>
+<h3>Requirements to run</h3>
+<ul>
+<li>Visual Studio 2017 or .NET Core 2.1</li>
+</ul>
+<h3>Requirements to build</h3>
+<ul>
+<li>Visual Studio 2017</li>
+</ul>
+<h3>New</h3>
+<ul>
+<li>Add AssignmentToParameter analyzer.</li>
+</ul>
+<h3>Fixed</h3>
+<ul>
+<li>Fix UnusedVariable analyzer to ignore:
+<ul>
+<li><code>interface</code>s</li>
+<li><code>abstract</code> and <code>extern</code> methods</li>
+<li><code>partial</code> methods without the implementation</li>
+<li><code>virtual</code> empty methods</li>
+</ul>
+</li>
+<li>Fix UnusedVariable analyzer to ignore parameters annotated with <code>UnusedAttribute</code>. Note that the attribute is provided with the NuGet package <a href="https://www.nuget.org/packages/StyleChecker.Annotations/">StyleChecker.<wbr>Annotations</a>.</li>
+<li>Fix UnusedVariable analyzer to report the parameters annotated with <code>UnusedAttribute</code> if the annotation is not necessary.</li>
+<li>Fix Underscore, ThoughtlessName and UnusedVariable analyzers to count local variables declared with <code>catch</code> or <code>foreach</code>.</li>
+</ul>
+<hr>
+<h2>1.0.13 (2018-10-31)</h2>
+<p>Add UnusedVariable analyzer.</p>
+<h3>Requirements to run</h3>
+<ul>
+<li>Visual Studio 2017 or .NET Core 2.1</li>
+</ul>
+<h3>Requirements to build</h3>
+<ul>
+<li>Visual Studio 2017</li>
+</ul>
+<h3>New</h3>
+<ul>
+<li>Add UnusedVariable analyzer.</li>
+</ul>
+<hr>
+<h2>1.0.12 (2018-10-26)</h2>
+<p>Add DiscardingReturnValue analyzer.</p>
+<h3>Requirements to run</h3>
+<ul>
+<li>Visual Studio 2017 or .NET Core 2.1</li>
+</ul>
+<h3>Requirements to build</h3>
+<ul>
+<li>Visual Studio 2017</li>
+</ul>
+<h3>New</h3>
+<ul>
+<li>Add DiscardingReturnValue analyzer.</li>
+</ul>
+<hr>
+<h2>1.0.11 (2018-10-23)</h2>
+<p>Fix IneffectiveReadByte analyzer.</p>
+<h3>Requirements to run</h3>
+<ul>
+<li>Visual Studio 2017 or .NET Core 2.1</li>
+</ul>
+<h3>Requirements to build</h3>
+<ul>
+<li>Visual Studio 2017</li>
+</ul>
+<h3>Changed</h3>
+<ul>
+<li>Fix UnnecessaryUsing CodeFix provider to keep <code>SyntaxTrivia</code>s around the <code>using</code> statement to be removed.</li>
+<li>Fix IneffectiveReadByte CodeFix provider to enclose the CodeFix with a block statement.</li>
+</ul>
+<h3>Fixed</h3>
+<ul>
+<li>Fix IneffectiveReadByte analyzer to count parameters as well as local variables.</li>
+<li>Fix bugs that IneffectiveReadByte analyzer throws NPE when the variable declaration of the <code>for</code> statement has no initializer, when the <code>for</code> statement has no declaration, or when the <code>for</code> statement has no condition.</li>
+</ul>
+<hr>
+<h2>1.0.10 (2018-10-21)</h2>
+<p>Add UnnecessaryUsing analyzer.</p>
+<h3>Requirements to run</h3>
+<ul>
+<li>Visual Studio 2017 or .NET Core 2.1</li>
+</ul>
+<h3>Requirements to build</h3>
+<ul>
+<li>Visual Studio 2017</li>
+</ul>
+<h3>New</h3>
+<ul>
+<li>Add UnnecessaryUsing analyzer.</li>
+</ul>
+<h3>Fixed</h3>
+<ul>
+<li>Fix IneffectiveReadByte analyzer to count auto-implemented properties.</li>
+</ul>
+<hr>
+<h2>1.0.9 (2018-10-15)</h2>
+<p>Add IneffectiveReadByte analyzer.</p>
+<h3>Requirements to run</h3>
+<ul>
+<li>Visual Studio 2017 or .NET Core 2.1</li>
+</ul>
+<h3>Requirements to build</h3>
+<ul>
+<li>Visual Studio 2017</li>
+</ul>
+<h3>New</h3>
+<ul>
+<li>Add IneffectiveReadByte analyzer.</li>
+<li>Fix ThoughtlessName analyzer to report that Hungarian notation is used.</li>
+</ul>
+<h3>Fixed</h3>
+<ul>
+<li>Fix Underscore/ThoughtlessName analyzers to count pattern matching.</li>
+</ul>
+<hr>
+<h2>1.0.8 (2018-10-05)</h2>
+<p>Add ThoughtlessName analyzer.</p>
+<h3>Requirements to run</h3>
+<ul>
+<li>Visual Studio 2017 or .NET Core 2.1</li>
+</ul>
+<h3>Requirements to build</h3>
+<ul>
+<li>Visual Studio 2017</li>
+</ul>
+<h3>New</h3>
+<ul>
+<li>Add ThoughtlessName analyzer.</li>
+</ul>
+<h3>Fixed</h3>
+<ul>
+<li>Fix StaticGenericClass CodeFix provider to fix referencing codes.</li>
+<li>Refactor test framework.</li>
+</ul>
+<hr>
+<h2>1.0.7 (2018-09-25)</h2>
+<p>Add SingleTypeParameter and StaticGenericClass analyzers.</p>
+<h3>Requirements to run</h3>
+<ul>
+<li>Visual Studio 2017 or .NET Core 2.1</li>
+</ul>
+<h3>Requirements to build</h3>
+<ul>
+<li>Visual Studio 2017</li>
+</ul>
+<h3>New</h3>
+<ul>
+<li>Add SingleTypeParameter analyzer.</li>
+<li>Add StaticGenericClass analyzer. Note that this analyzer is under development so that the CodeFix provider doesn't fix referencing codes.</li>
+<li>Add the document of the InvalidConfig analyzer.</li>
+</ul>
+<hr>
+<h2>1.0.6 (2018-09-08)</h2>
+<p>Add UnusedUsing analyzer again, and add InvalidConfig analyzer.</p>
+<h3>Requirements to run</h3>
+<ul>
+<li>Visual Studio 2017 or .NET Core 2.1</li>
+</ul>
+<h3>Requirements to build</h3>
+<ul>
+<li>Visual Studio 2017</li>
+</ul>
+<h3>New</h3>
+<ul>
+<li>Add UnusedUsing analyzer again.</li>
+<li>Add InvalidConfig analyzer. It reports errors of the configuration file <code>StyleChecker.xml</code>.</li>
+</ul>
+<h3>Changed</h3>
+<ul>
+<li>Fix LongLine analyzer to count XML documentation comment.</li>
+</ul>
+<h3>Fixed</h3>
+<ul>
+<li>Fix the following warning, with changing the target framework to <code>netstandard1.3</code>.</li>
+</ul>
+<blockquote>
+<p>... depends on 'netstandard, Version=2.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51' but it was not found. Analyzers may not run correctly unless the missing assembly is added as an analyzer reference as well.</p>
+</blockquote>
+<hr>
+<h2>1.0.5 (2018-09-02)</h2>
+<p>Remove UnusedUsing analyzer.</p>
+<h3>Requirements to run</h3>
+<ul>
+<li>Visual Studio 2017 or .NET Core 2.1</li>
+</ul>
+<h3>Requirements to build</h3>
+<ul>
+<li>Visual Studio 2017</li>
+</ul>
+<h3>Removed</h3>
+<ul>
+<li>Remove UnusedUsing analyzer.</li>
+</ul>
+<h3>Fixed</h3>
+<ul>
+<li>Refactor test cases.</li>
+<li>Update dependencies.</li>
+</ul>
+<hr>
+<h2>1.0.4 (2018-08-30)</h2>
+<p>Add UnusedUsing analyzer.</p>
+<h3>Requirements to run</h3>
+<ul>
+<li>Visual Studio 2017 or .NET Core 2.1</li>
+</ul>
+<h3>Requirements to build</h3>
+<ul>
+<li>Visual Studio 2017</li>
+</ul>
+<h3>New</h3>
+<ul>
+<li>Add UnusedUsing analyzer.</li>
+<li>Add a description of analyzers.</li>
+</ul>
+<h3>Changed</h3>
+<ul>
+<li>Fix Underscore analyzer to count Out Variable Declarations, local functions, and parameters.</li>
+</ul>
+<h3>Fixed</h3>
+<ul>
+<li>Fix dependencies to remove the dependency on StyleCop Analyzers.</li>
+</ul>
+<hr>
+<h2>1.0.3 (2018-08-14)</h2>
+<p>Add NoSpaceBeforeSemicolon and SpaceAfterSemicolon analyzers.</p>
+<h3>Requirements to run</h3>
+<ul>
+<li>Visual Studio 2017 or .NET Core 2.1</li>
+</ul>
+<h3>Requirements to build</h3>
+<ul>
+<li>Visual Studio 2017</li>
+</ul>
+<h3>New</h3>
+<ul>
+<li>Add NoSpaceBeforeSemicolon and SpaceAfterSemicolon analyzers. They point out spacing around a semicolon, especially in <code>for</code> statements. The style <code>for (;;)</code> of an infinite <code>for</code> loop is allowed. Note that this rule is intended to replace <a href="https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/documentation/SA1002.md">SA1002</a>.</li>
+<li>Add documents like README, COPYRIGHT, and so on.</li>
+<li>Add a way to configure analyzers with the file <code>StyleChecker.xml</code> in the project root.</li>
+</ul>
+<h3>Changed</h3>
+<ul>
+<li>Fix the LongLine analyzer to read the maximum line length from the file <code>StyleChecker.xml</code>.</li>
+</ul>
+<h3>Changed</h3>
+<ul>
+<li>Fix the LongLine analyzer to read the maximum line length from
+the file <code>StyleChecker.xml</code>.</li>
+</ul>
+<hr>
+<h2>1.0.2 (2018-07-25)</h2>
+<p>Add the PostIncrement analyzer.</p>
+<h3>Requirements to run</h3>
+<ul>
+<li>Visual Studio 2017 or .NET Core 2.1</li>
+</ul>
+<h3>Requirements to build</h3>
+<ul>
+<li>Visual Studio 2017</li>
+</ul>
+<h3>New</h3>
+<ul>
+<li>Add the PostIncrement analyzer (with code fix provider). It points out post-increment/decrement operators (e.g. <code>i++</code>) if they can be replaced with pre-increment/decrement ones.</li>
+</ul>
+<hr>
+<h2>1.0.1 (2018-07-24)</h2>
+<p>Consider auto-generated <code>.cs</code> files.</p>
+<h3>Requirements to run</h3>
+<ul>
+<li>Visual Studio 2017 or .NET Core 2.1</li>
+</ul>
+<h3>Requirements to build</h3>
+<ul>
+<li>Visual Studio 2017</li>
+</ul>
+<h3>Fixed</h3>
+<ul>
+<li>Fix to suppress analyzing auto-generated files.</li>
+</ul>
+<hr>
+<h2>1.0.0 (2018-07-23)</h2>
+<p>Initial release.</p>
+<h3>Requirements to run</h3>
+<ul>
+<li>Visual Studio 2017 or .NET Core 2.1</li>
+</ul>
+<h3>Requirements to build</h3>
+<ul>
+<li>Visual Studio 2017</li>
+</ul>
+<h3>New</h3>
+<ul>
+<li>Add the LongLine analyzer. It points out the line equal or over 80 columns. Note that it ignores multi-line comments and XML documentation comments.</li>
+<li>Add the Underscore analyzer (with code fix provider). It points out an underscore character included in the identifier of local variables.</li>
+</ul>
+          </main>
+        </section>
+      </div>
+      <div class="left-container">
+<nav>
+  <div>
+    <a href="/">Projects</a>
+  </div>
+  <div>
+    <span>&#x25BE;</span>
+  </div>
+  <div>
+    <span class="project-name"><a href="index.html">StyleChecker</a></span>
+  </div>
+  <ul>
+    <li>
+      <a href="index.html">Top</a>
+    </li>
+    <li class="selected">
+      Release Notes
+    </li>
+    <ul id="toc-placeholder">
+    </ul>
+  </ul>
+</nav>
+      </div>
+    </div>
+  </body>
+</html>
