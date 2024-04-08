@@ -225,6 +225,19 @@ public class Cast { ... }</code></pre>
               <a class="xref" href="#" data-linktype="relative-path">Schema</a>
             </div>
           </div>
+          <h3>Examples</h3>
+          <p>If the class has no <code>static</code> and <code>readonly</code> <a href="#">Schema</a> field annotated with
+    <a href="Maroontress.Oxbind.ElementSchemaAttribute.html">ElementSchemaAttribute</a>, it is considered to be
+    containing no child elements. So, for example,
+    the <code>MySchema</code> field in the <code>Movie</code> class as follows
+    can be omitted.</p>
+          <pre><code class="lang-csharp">[ForElement("director")]
+public class Director
+{
+    [ElementSchema]
+    private static readonly Schema MySchema = Schema.EMPTY;
+    ...
+}</code></pre>
           <h1 id="methods-detail" class="heading-with-anchor">Methods Detail</h1>
           <h2 id="M:Maroontress.Oxbind.Schema.Of(Maroontress.Oxbind.SchemaType[])">Of(SchemaType[])</h2>
           <div class="summaryHolder">

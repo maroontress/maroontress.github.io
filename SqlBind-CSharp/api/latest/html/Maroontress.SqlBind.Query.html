@@ -50,18 +50,6 @@ gtag('config', 'G-9TQ6JWBKEK');
             <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
           </div>
           <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-keyword">interface</span> <span class="hljs-title">Query</span></code></pre>
-          <dl id="derived" class="attributeList stack">
-            <dt>
-              Derived
-            </dt>
-            <dd>
-              <div>
-                <div>
-                  <span class="lang-csharp break-text"><a class="xref" href="Maroontress.SqlBind.Impl.QueryImpl.html" data-linktype="relative-path">Query<wbr>Impl</a></span>
-                </div>
-              </div>
-            </dd>
-          </dl>
           <h2 id="methods" class="heading-with-anchor">Methods</h2>
           <div class="table-scroll-wrapper">
             <table class="nameValue">
@@ -81,6 +69,15 @@ gtag('config', 'G-9TQ6JWBKEK');
                   <td>
                     <p>Gets the <a href="#M:Maroontress.SqlBind.Query.Select``1(System.String[])">Select&lt;T&gt;(string[])</a> object to select the specified columns
     of the specified table.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.SqlBind.Query.Update``1(System.String)" data-linktype="relative-path">Update&lt;T&gt;(string)</a></span>
+                  </td>
+                  <td>
+                    <p>Gets the <a href="Maroontress.SqlBind.Update.html">Update</a> object to update the specified
+    table.</p>
                   </td>
                 </tr>
                 <tr>
@@ -238,6 +235,64 @@ gtag('config', 'G-9TQ6JWBKEK');
             </div>
             <p>The <a href="#M:Maroontress.SqlBind.Query.Select``1(System.String[])">Select&lt;T&gt;(string[])</a> object.</p>
           </div>
+          <h2 id="M:Maroontress.SqlBind.Query.Update``1(System.String)">Update&lt;T&gt;(string)</h2>
+          <div class="summaryHolder">
+            <div class="summary clearFix">
+              <p>Gets the <a href="Maroontress.SqlBind.Update.html">Update</a> object to update the specified
+    table.</p>
+            </div>
+          </div>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-title">Update</span> <span class="hljs-title">Update</span>&lt;<span class="hljs-title">T</span>&gt;(<span class="hljs-keyword">string</span> alias)</code></pre>
+          <h4 class="propertyInfoTitle stack">Type Parameters</h4>
+          <div class="propertyInfo">
+            <dl class="parameterList">
+              <dt>
+                T
+              </dt>
+              <dd>
+                <code>notnull</code>
+              </dd>
+            </dl>
+            <p>The type qualified with <a href="Maroontress.SqlBind.TableAttribute.html">TableAttribute</a>.</p>
+          </div>
+          <h4 class="propertyInfoTitle stack">Parameters</h4>
+          <div class="propertyInfo">
+            <dl class="parameterList">
+              <dt>
+                alias
+              </dt>
+              <dd>
+                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.string?view=netcore-3.0" data-linktype="absolute-path">string</a></span>
+              </dd>
+            </dl>
+            <p>The alias of the table name, which can be used in the <code>Where</code>
+    clause (see <a href="Maroontress.SqlBind.UpdateSet.html#M:Maroontress.SqlBind.UpdateSet.Where(System.String)">UpdateSet.Where(string)</a>).</p>
+          </div>
+          <h4 class="propertyInfoTitle stack">Returns</h4>
+          <div class="propertyInfo">
+            <div class="subtle">
+              <a class="xref" href="Maroontress.SqlBind.Update.html" data-linktype="relative-path">Update</a>
+            </div>
+            <p>The <a href="Maroontress.SqlBind.Update.html">Update</a> object.</p>
+          </div>
+          <h3>Examples</h3>
+          <pre><code class="lang-csharp">var kit = new TransactionKit(
+    "update_example.db", m =&gt; Console.WriteLine(m()));
+var map = new Dictionary&lt;string, object&gt;()
+{
+    ["$id"] = 2L,
+    ["$newState"] = "Closed",
+};
+kit.Execute(q =&gt;
+{
+    q.Update&lt;Issue&gt;("i")
+        .Set("state = $newState")
+        .Where("i.id = $id")
+        .Execute(map);
+});</code></pre>
           <h2 id="M:Maroontress.SqlBind.Query.DeleteFrom``1">DeleteFrom&lt;T&gt;()</h2>
           <div class="summaryHolder">
             <div class="summary clearFix">

@@ -77,6 +77,15 @@ gtag('config', 'G-9TQ6JWBKEK');
               </div>
             </dd>
           </dl>
+          <h2 id="examples" class="heading-with-anchor">Examples</h2>
+          <pre><code class="lang-csharp">using Maroontress.SqlBind;
+
+[Table("properties")]
+public record class PropertyRow(
+    [Column("key")][Unique] string Key,
+    [Column("value")] string Value)
+{
+}</code></pre>
           <h2 id="remarks" class="heading-with-anchor">Remarks</h2>
           <p>The class that this attribute qualifies must have a single
      constructor, every parameter of which must be qualified with <a href="Maroontress.SqlBind.ColumnAttribute.html">ColumnAttribute</a>. And the class must have the properties

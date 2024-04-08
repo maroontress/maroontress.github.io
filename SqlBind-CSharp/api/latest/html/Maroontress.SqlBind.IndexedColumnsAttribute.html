@@ -77,6 +77,24 @@ gtag('config', 'G-9TQ6JWBKEK');
               </div>
             </dd>
           </dl>
+          <h2 id="examples" class="heading-with-anchor">Examples</h2>
+          <pre><code class="lang-csharp">[Table("persons")]
+[IndexedColumns("firstNameId")]
+[IndexedColumns("lastNameId")]
+[IndexedColumns("firstNameId", "lastNameId")]
+public record class PersonRow(
+    [Column("id")][PrimaryKey][AutoIncrement] long Id,
+    [Column("firstNameId")] long firstNameId,
+    [Column("lastNameId")] long lastNameId)
+{
+}
+
+[Table("string")]
+public record class StringRow(
+    [Column("id")][PrimaryKey][AutoIncrement] long Id,
+    [Column("value")][Unique] string Value)
+{
+}{</code></pre>
           <h2 id="remarks" class="heading-with-anchor">Remarks</h2>
           <p>See: <a href="https://www.sqlite.org/lang_createindex.html">SQLite CREATE
      INDEX</a>.</p>

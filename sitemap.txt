@@ -243,6 +243,9 @@ https://maroontress.github.io/SqlBind-CSharp/api/latest/html/Maroontress.SqlBind
 https://maroontress.github.io/SqlBind-CSharp/api/latest/html/Maroontress.SqlBind.Impl.SqliteCommittable.html
 https://maroontress.github.io/SqlBind-CSharp/api/latest/html/Maroontress.SqlBind.Impl.SqliteDatabaseLink.html
 https://maroontress.github.io/SqlBind-CSharp/api/latest/html/Maroontress.SqlBind.Impl.Toolkit.html
+https://maroontress.github.io/SqlBind-CSharp/api/latest/html/Maroontress.SqlBind.Impl.UpdateImpl.html
+https://maroontress.github.io/SqlBind-CSharp/api/latest/html/Maroontress.SqlBind.Impl.UpdateSetImpl.html
+https://maroontress.github.io/SqlBind-CSharp/api/latest/html/Maroontress.SqlBind.Impl.UpdateWhereImpl.html
 https://maroontress.github.io/SqlBind-CSharp/api/latest/html/Maroontress.SqlBind.Impl.WhereImpl.html
 https://maroontress.github.io/SqlBind-CSharp/api/latest/html/Maroontress.SqlBind.Impl.WildField.html
 https://maroontress.github.io/SqlBind-CSharp/api/latest/html/Maroontress.SqlBind.Impl.WildMetadata.html
@@ -256,6 +259,10 @@ https://maroontress.github.io/SqlBind-CSharp/api/latest/html/Maroontress.SqlBind
 https://maroontress.github.io/SqlBind-CSharp/api/latest/html/Maroontress.SqlBind.TerminalOperation.html
 https://maroontress.github.io/SqlBind-CSharp/api/latest/html/Maroontress.SqlBind.TransactionKit.html
 https://maroontress.github.io/SqlBind-CSharp/api/latest/html/Maroontress.SqlBind.UniqueAttribute.html
+https://maroontress.github.io/SqlBind-CSharp/api/latest/html/Maroontress.SqlBind.Update.html
+https://maroontress.github.io/SqlBind-CSharp/api/latest/html/Maroontress.SqlBind.UpdateSet.html
+https://maroontress.github.io/SqlBind-CSharp/api/latest/html/Maroontress.SqlBind.UpdateTerminalOperation.html
+https://maroontress.github.io/SqlBind-CSharp/api/latest/html/Maroontress.SqlBind.UpdateWhere.html
 https://maroontress.github.io/SqlBind-CSharp/api/latest/html/Maroontress.SqlBind.Where.html
 https://maroontress.github.io/SqlBind-CSharp/api/latest/html/Maroontress.SqlBind.html
 https://maroontress.github.io/SqlBind-CSharp/api/latest/html/index.html
