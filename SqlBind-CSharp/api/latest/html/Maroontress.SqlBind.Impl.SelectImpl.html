@@ -49,7 +49,7 @@ gtag('config', 'G-9TQ6JWBKEK');
           <div class="codeHeader" data-bi-name="code-header">
             <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
           </div>
-          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-keyword">sealed</span> <span class="hljs-keyword">class</span> <span class="hljs-title">SelectImpl</span>&lt;<span class="hljs-title">T</span>&gt; : <span class="hljs-title">Select</span>&lt;<span class="hljs-title">T</span>&gt;<br>    <span class="hljs-keyword">where</span> <span class="hljs-title">T</span> : <span class="hljs-keyword">notnull</span></code></pre>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-keyword">sealed</span> <span class="hljs-keyword">class</span> <span class="hljs-title">SelectImpl</span>&lt;<span class="hljs-title">T</span>&gt;</code></pre>
           <h4 id="type-parameters" class="propertyInfoTitle stack heading-with-anchor">Type Parameters</h4>
           <div class="propertyInfo">
             <dl class="parameterList">
@@ -57,7 +57,6 @@ gtag('config', 'G-9TQ6JWBKEK');
                 T
               </dt>
               <dd>
-                <code>notnull</code>
               </dd>
             </dl>
             <p>The type of the class representing any row of the result of the query.</p>
@@ -75,31 +74,10 @@ gtag('config', 'G-9TQ6JWBKEK');
               </div>
             </dd>
           </dl>
-          <dl class="attributeList stack">
-            <dt>
-              Implements
-            </dt>
-            <dd>
-              <div class="cdlHolder">
-                <span class="cdl"><span class="lang-csharp break-text"><a class="xref" href="Maroontress.SqlBind.Select.html" data-linktype="relative-path">Select&lt;T&gt;</a></span></span>
-              </div>
-            </dd>
-          </dl>
           <h2 id="methods" class="heading-with-anchor">Methods</h2>
           <div class="table-scroll-wrapper">
             <table class="nameValue">
               <tbody>
-                <tr>
-                  <td>
-                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.SqlBind.Impl.SelectImpl`1.From``1(System.String)" data-linktype="relative-path">From&lt;U&gt;(string)</a></span>
-                  </td>
-                  <td>
-                    <p>Description copied from interface: Select</p>
-                    <blockquote>
-                      <p>Gets a new <a href="Maroontress.SqlBind.SelectFrom.html">SelectFrom&lt;T&gt;</a> object.</p>
-                    </blockquote>
-                  </td>
-                </tr>
                 <tr>
                   <td>
                     <a href="https://docs.microsoft.com/en-us/dotnet/api/system.object.equals?view=netcore-3.0#System_Object_Equals_System_Object_">Equals(object)</a>
@@ -142,58 +120,6 @@ gtag('config', 'G-9TQ6JWBKEK');
                 </tr>
               </tbody>
             </table>
-          </div>
-          <h1 id="methods-detail" class="heading-with-anchor">Methods Detail</h1>
-          <h2 id="M:Maroontress.SqlBind.Impl.SelectImpl`1.From``1(System.String)">From&lt;U&gt;(string)</h2>
-          <div class="summaryHolder">
-            <div class="summary clearFix">
-              <p>Description copied from interface: Select</p>
-              <blockquote>
-                <p>Gets a new <a href="Maroontress.SqlBind.SelectFrom.html">SelectFrom&lt;T&gt;</a> object.</p>
-              </blockquote>
-            </div>
-          </div>
-          <div class="codeHeader" data-bi-name="code-header">
-            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
-          </div>
-          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-title">SelectFrom</span>&lt;<span class="hljs-title">T</span>&gt; <span class="hljs-title">From</span>&lt;<span class="hljs-title">U</span>&gt;(<span class="hljs-keyword">string</span> alias)</code></pre>
-          <h4 class="propertyInfoTitle stack">Type Parameters</h4>
-          <div class="propertyInfo">
-            <dl class="parameterList">
-              <dt>
-                U
-              </dt>
-              <dd>
-                <code>notnull</code>
-              </dd>
-            </dl>
-          </div>
-          <h4 class="propertyInfoTitle stack">Parameters</h4>
-          <div class="propertyInfo">
-            <dl class="parameterList">
-              <dt>
-                alias
-              </dt>
-              <dd>
-                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.string?view=netcore-3.0" data-linktype="absolute-path">string</a></span>
-              </dd>
-            </dl>
-          </div>
-          <h4 class="propertyInfoTitle stack">Returns</h4>
-          <div class="propertyInfo">
-            <div class="subtle">
-              <a class="xref" href="Maroontress.SqlBind.SelectFrom.html" data-linktype="relative-path">Select<wbr>From&lt;T&gt;</a>
-            </div>
-            <p>Description copied from interface: Select</p>
-            <blockquote>
-              <p>The new <a href="Maroontress.SqlBind.SelectFrom.html">SelectFrom&lt;T&gt;</a> object.</p>
-            </blockquote>
-          </div>
-          <h4 class="propertyInfoTitle stack">Implements</h4>
-          <div class="propertyInfo">
-            <div class="cdlHolder">
-              <span class="cdl"><a href="Maroontress.SqlBind.Select.html#M:Maroontress.SqlBind.Select`1.From``1(System.String)">Select&lt;T&gt;.From&lt;U&gt;(string)</a></span>
-            </div>
           </div>
         </main>
       </section>

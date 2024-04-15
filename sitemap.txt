@@ -228,6 +228,7 @@ https://maroontress.github.io/SqlBind-CSharp/api/latest/html/Maroontress.SqlBind
 https://maroontress.github.io/SqlBind-CSharp/api/latest/html/Maroontress.SqlBind.ColumnAttribute.html
 https://maroontress.github.io/SqlBind-CSharp/api/latest/html/Maroontress.SqlBind.DeleteFrom.html
 https://maroontress.github.io/SqlBind-CSharp/api/latest/html/Maroontress.SqlBind.IgnoredAttribute.html
+https://maroontress.github.io/SqlBind-CSharp/api/latest/html/Maroontress.SqlBind.Impl.AbstractSelectSorter.html
 https://maroontress.github.io/SqlBind-CSharp/api/latest/html/Maroontress.SqlBind.Impl.Committable.html
 https://maroontress.github.io/SqlBind-CSharp/api/latest/html/Maroontress.SqlBind.Impl.DatabaseLink.html
 https://maroontress.github.io/SqlBind-CSharp/api/latest/html/Maroontress.SqlBind.Impl.DefaultToolkit.html
@@ -239,9 +240,12 @@ https://maroontress.github.io/SqlBind-CSharp/api/latest/html/Maroontress.SqlBind
 https://maroontress.github.io/SqlBind-CSharp/api/latest/html/Maroontress.SqlBind.Impl.Reservoir.html
 https://maroontress.github.io/SqlBind-CSharp/api/latest/html/Maroontress.SqlBind.Impl.SelectFromImpl.html
 https://maroontress.github.io/SqlBind-CSharp/api/latest/html/Maroontress.SqlBind.Impl.SelectImpl.html
+https://maroontress.github.io/SqlBind-CSharp/api/latest/html/Maroontress.SqlBind.Impl.SelectTerminatorImpl.html
 https://maroontress.github.io/SqlBind-CSharp/api/latest/html/Maroontress.SqlBind.Impl.Siphon.html
 https://maroontress.github.io/SqlBind-CSharp/api/latest/html/Maroontress.SqlBind.Impl.SqliteCommittable.html
 https://maroontress.github.io/SqlBind-CSharp/api/latest/html/Maroontress.SqlBind.Impl.SqliteDatabaseLink.html
+https://maroontress.github.io/SqlBind-CSharp/api/latest/html/Maroontress.SqlBind.Impl.SqliteReservoir.html
+https://maroontress.github.io/SqlBind-CSharp/api/latest/html/Maroontress.SqlBind.Impl.SqliteSiphon.html
 https://maroontress.github.io/SqlBind-CSharp/api/latest/html/Maroontress.SqlBind.Impl.Toolkit.html
 https://maroontress.github.io/SqlBind-CSharp/api/latest/html/Maroontress.SqlBind.Impl.UpdateImpl.html
 https://maroontress.github.io/SqlBind-CSharp/api/latest/html/Maroontress.SqlBind.Impl.UpdateSetImpl.html
@@ -255,13 +259,14 @@ https://maroontress.github.io/SqlBind-CSharp/api/latest/html/Maroontress.SqlBind
 https://maroontress.github.io/SqlBind-CSharp/api/latest/html/Maroontress.SqlBind.Query.html
 https://maroontress.github.io/SqlBind-CSharp/api/latest/html/Maroontress.SqlBind.Select.html
 https://maroontress.github.io/SqlBind-CSharp/api/latest/html/Maroontress.SqlBind.SelectFrom.html
+https://maroontress.github.io/SqlBind-CSharp/api/latest/html/Maroontress.SqlBind.SelectSorter.html
+https://maroontress.github.io/SqlBind-CSharp/api/latest/html/Maroontress.SqlBind.SelectTerminator.html
 https://maroontress.github.io/SqlBind-CSharp/api/latest/html/Maroontress.SqlBind.TableAttribute.html
-https://maroontress.github.io/SqlBind-CSharp/api/latest/html/Maroontress.SqlBind.TerminalOperation.html
 https://maroontress.github.io/SqlBind-CSharp/api/latest/html/Maroontress.SqlBind.TransactionKit.html
 https://maroontress.github.io/SqlBind-CSharp/api/latest/html/Maroontress.SqlBind.UniqueAttribute.html
 https://maroontress.github.io/SqlBind-CSharp/api/latest/html/Maroontress.SqlBind.Update.html
 https://maroontress.github.io/SqlBind-CSharp/api/latest/html/Maroontress.SqlBind.UpdateSet.html
-https://maroontress.github.io/SqlBind-CSharp/api/latest/html/Maroontress.SqlBind.UpdateTerminalOperation.html
+https://maroontress.github.io/SqlBind-CSharp/api/latest/html/Maroontress.SqlBind.UpdateTerminator.html
 https://maroontress.github.io/SqlBind-CSharp/api/latest/html/Maroontress.SqlBind.UpdateWhere.html
 https://maroontress.github.io/SqlBind-CSharp/api/latest/html/Maroontress.SqlBind.Where.html
 https://maroontress.github.io/SqlBind-CSharp/api/latest/html/Maroontress.SqlBind.html

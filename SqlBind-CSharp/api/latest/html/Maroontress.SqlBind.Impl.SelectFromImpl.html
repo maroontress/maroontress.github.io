@@ -49,7 +49,7 @@ gtag('config', 'G-9TQ6JWBKEK');
           <div class="codeHeader" data-bi-name="code-header">
             <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
           </div>
-          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-keyword">sealed</span> <span class="hljs-keyword">class</span> <span class="hljs-title">SelectFromImpl</span>&lt;<span class="hljs-title">T</span>&gt; : <span class="hljs-title">SelectFrom</span>&lt;<span class="hljs-title">T</span>&gt;<br>    <span class="hljs-keyword">where</span> <span class="hljs-title">T</span> : <span class="hljs-keyword">notnull</span></code></pre>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-keyword">sealed</span> <span class="hljs-keyword">class</span> <span class="hljs-title">SelectFromImpl</span>&lt;<span class="hljs-title">T</span>&gt;</code></pre>
           <h4 id="type-parameters" class="propertyInfoTitle stack heading-with-anchor">Type Parameters</h4>
           <div class="propertyInfo">
             <dl class="parameterList">
@@ -57,7 +57,6 @@ gtag('config', 'G-9TQ6JWBKEK');
                 T
               </dt>
               <dd>
-                <code>notnull</code>
               </dd>
             </dl>
             <p>The type of the class representing any row of the result of the query.</p>
@@ -75,70 +74,10 @@ gtag('config', 'G-9TQ6JWBKEK');
               </div>
             </dd>
           </dl>
-          <dl class="attributeList stack">
-            <dt>
-              Implements
-            </dt>
-            <dd>
-              <div class="cdlHolder">
-                <span class="cdl"><span class="lang-csharp break-text"><a class="xref" href="Maroontress.SqlBind.SelectFrom.html" data-linktype="relative-path">Select<wbr>From&lt;T&gt;</a></span></span> <span class="cdl"><span class="lang-csharp break-text"><a class="xref" href="Maroontress.SqlBind.TerminalOperation.html" data-linktype="relative-path">Terminal<wbr>Operation&lt;T&gt;</a></span></span>
-              </div>
-            </dd>
-          </dl>
           <h2 id="methods" class="heading-with-anchor">Methods</h2>
           <div class="table-scroll-wrapper">
             <table class="nameValue">
               <tbody>
-                <tr>
-                  <td>
-                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.SqlBind.Impl.SelectFromImpl`1.InnerJoin``1(System.String,System.String)" data-linktype="relative-path">Inner<wbr>Join&lt;U&gt;(string, string)</a></span>
-                  </td>
-                  <td>
-                    <p>Description copied from interface: SelectFrom</p>
-                    <blockquote>
-                      <p>Gets a new <a href="Maroontress.SqlBind.SelectFrom.html">SelectFrom&lt;T&gt;</a> object, which represents
-    the combination of <code>this</code> (<code>SELECT</code> ... <code>From</code> ...)
-    and the <code>INNER JOIN</code> ... <code>ON</code> ... clause with the table that
-    <code>U</code> represents.</p>
-                    </blockquote>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.SqlBind.Impl.SelectFromImpl`1.Where(System.String,System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object})" data-linktype="relative-path">Where(string, IRead<wbr>Only<wbr>Dictionary&lt;string, object&gt;)</a></span>
-                  </td>
-                  <td>
-                    <p>Description copied from interface: SelectFrom</p>
-                    <blockquote>
-                      <p>Gets a new <a href="Maroontress.SqlBind.Where.html">Where&lt;T&gt;</a> object, which represents the
-    combination of <code>this</code> (<code>SELECT</code> ... <code>From</code> ...) and the
-    <code>WHERE</code> ... clause.</p>
-                    </blockquote>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.SqlBind.Impl.SelectFromImpl`1.Execute" data-linktype="relative-path">Execute()</a></span>
-                  </td>
-                  <td>
-                    <p>Description copied from interface: TerminalOperation</p>
-                    <blockquote>
-                      <p>Executes the query and gets the result.</p>
-                    </blockquote>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.SqlBind.Impl.SelectFromImpl`1.OrderBy(System.String[])" data-linktype="relative-path">Order<wbr>By(string[])</a></span>
-                  </td>
-                  <td>
-                    <p>Description copied from interface: TerminalOperation</p>
-                    <blockquote>
-                      <p>Executes the query and gets the result in the order sorted by the
-    specified columns.</p>
-                    </blockquote>
-                  </td>
-                </tr>
                 <tr>
                   <td>
                     <a href="https://docs.microsoft.com/en-us/dotnet/api/system.object.equals?view=netcore-3.0#System_Object_Equals_System_Object_">Equals(object)</a>
@@ -182,213 +121,6 @@ gtag('config', 'G-9TQ6JWBKEK');
               </tbody>
             </table>
           </div>
-          <h1 id="methods-detail" class="heading-with-anchor">Methods Detail</h1>
-          <h2 id="M:Maroontress.SqlBind.Impl.SelectFromImpl`1.InnerJoin``1(System.String,System.String)">InnerJoin&lt;U&gt;(string, string)</h2>
-          <div class="summaryHolder">
-            <div class="summary clearFix">
-              <p>Description copied from interface: SelectFrom</p>
-              <blockquote>
-                <p>Gets a new <a href="Maroontress.SqlBind.SelectFrom.html">SelectFrom&lt;T&gt;</a> object, which represents
-    the combination of <code>this</code> (<code>SELECT</code> ... <code>From</code> ...)
-    and the <code>INNER JOIN</code> ... <code>ON</code> ... clause with the table that
-    <code>U</code> represents.</p>
-              </blockquote>
-            </div>
-          </div>
-          <div class="codeHeader" data-bi-name="code-header">
-            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
-          </div>
-          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-title">SelectFrom</span>&lt;<span class="hljs-title">T</span>&gt; <span class="hljs-title">InnerJoin</span>&lt;<span class="hljs-title">U</span>&gt;(<span class="hljs-keyword">string</span> alias, <span class="hljs-keyword">string</span> constraint)</code></pre>
-          <h4 class="propertyInfoTitle stack">Type Parameters</h4>
-          <div class="propertyInfo">
-            <dl class="parameterList">
-              <dt>
-                U
-              </dt>
-              <dd>
-                <code>notnull</code>
-              </dd>
-            </dl>
-          </div>
-          <h4 class="propertyInfoTitle stack">Parameters</h4>
-          <div class="propertyInfo">
-            <dl class="parameterList">
-              <dt>
-                alias
-              </dt>
-              <dd>
-                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.string?view=netcore-3.0" data-linktype="absolute-path">string</a></span>
-              </dd>
-            </dl>
-          </div>
-          <div class="propertyInfo stack">
-            <dl class="parameterList">
-              <dt>
-                constraint
-              </dt>
-              <dd>
-                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.string?view=netcore-3.0" data-linktype="absolute-path">string</a></span>
-              </dd>
-            </dl>
-          </div>
-          <h4 class="propertyInfoTitle stack">Returns</h4>
-          <div class="propertyInfo">
-            <div class="subtle">
-              <a class="xref" href="Maroontress.SqlBind.SelectFrom.html" data-linktype="relative-path">Select<wbr>From&lt;T&gt;</a>
-            </div>
-            <p>Description copied from interface: SelectFrom</p>
-            <blockquote>
-              <p>The new <a href="Maroontress.SqlBind.SelectFrom.html">SelectFrom&lt;T&gt;</a> object.</p>
-            </blockquote>
-          </div>
-          <h4 class="propertyInfoTitle stack">Implements</h4>
-          <div class="propertyInfo">
-            <div class="cdlHolder">
-              <span class="cdl"><a href="Maroontress.SqlBind.SelectFrom.html#M:Maroontress.SqlBind.SelectFrom`1.InnerJoin``1(System.String,System.String)">SelectFrom&lt;T&gt;.InnerJoin&lt;U&gt;(string, string)</a></span>
-            </div>
-          </div>
-          <h3>Remarks</h3>
-          <p>Description copied from interface: SelectFrom</p>
-          <blockquote>
-            <p>The object that this method returns represents <code>SELECT ... FROM ...
-    INNER JOIN</code> "the table name of U" <code>alias</code> <code>ON</code> <code>constraint</code>.</p>
-          </blockquote>
-          <h2 id="M:Maroontress.SqlBind.Impl.SelectFromImpl`1.Where(System.String,System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object})">Where(string, IReadOnlyDictionary&lt;string, object&gt;)</h2>
-          <div class="summaryHolder">
-            <div class="summary clearFix">
-              <p>Description copied from interface: SelectFrom</p>
-              <blockquote>
-                <p>Gets a new <a href="Maroontress.SqlBind.Where.html">Where&lt;T&gt;</a> object, which represents the
-    combination of <code>this</code> (<code>SELECT</code> ... <code>From</code> ...) and the
-    <code>WHERE</code> ... clause.</p>
-              </blockquote>
-            </div>
-          </div>
-          <div class="codeHeader" data-bi-name="code-header">
-            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
-          </div>
-          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-title">Where</span>&lt;<span class="hljs-title">T</span>&gt; <span class="hljs-title">Where</span>(<span class="hljs-keyword">string</span> condition, <span class="hljs-title">IReadOnlyDictionary</span>&lt;<span class="hljs-keyword">string</span>, <span class="hljs-keyword">object</span>&gt; parameters)</code></pre>
-          <h4 class="propertyInfoTitle stack">Parameters</h4>
-          <div class="propertyInfo">
-            <dl class="parameterList">
-              <dt>
-                condition
-              </dt>
-              <dd>
-                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.string?view=netcore-3.0" data-linktype="absolute-path">string</a></span>
-              </dd>
-            </dl>
-          </div>
-          <div class="propertyInfo stack">
-            <dl class="parameterList">
-              <dt>
-                parameters
-              </dt>
-              <dd>
-                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ireadonlydictionary-2?view=netcore-3.0" data-linktype="absolute-path">IRead<wbr>Only<wbr>Dictionary</a>&lt;<a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.string?view=netcore-3.0" data-linktype="absolute-path">string</a>, <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=netcore-3.0" data-linktype="absolute-path">object</a>&gt;</span>
-              </dd>
-            </dl>
-          </div>
-          <h4 class="propertyInfoTitle stack">Returns</h4>
-          <div class="propertyInfo">
-            <div class="subtle">
-              <a class="xref" href="Maroontress.SqlBind.Where.html" data-linktype="relative-path">Where&lt;T&gt;</a>
-            </div>
-            <p>Description copied from interface: SelectFrom</p>
-            <blockquote>
-              <p>The new <a href="Maroontress.SqlBind.Where.html">Where&lt;T&gt;</a> object.</p>
-            </blockquote>
-          </div>
-          <h4 class="propertyInfoTitle stack">Implements</h4>
-          <div class="propertyInfo">
-            <div class="cdlHolder">
-              <span class="cdl"><a href="Maroontress.SqlBind.SelectFrom.html#M:Maroontress.SqlBind.SelectFrom`1.Where(System.String,System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object})">SelectFrom&lt;T&gt;.Where(string, IReadOnlyDictionary&lt;string, object&gt;)</a></span>
-            </div>
-          </div>
-          <h3>Remarks</h3>
-          <p>Description copied from interface: SelectFrom</p>
-          <blockquote>
-            <p>The object that this method returns represents <code>SELECT ... FROM ...
-    WHERE</code> <code>condition</code>.</p>
-          </blockquote>
-          <h2 id="M:Maroontress.SqlBind.Impl.SelectFromImpl`1.Execute">Execute()</h2>
-          <div class="summaryHolder">
-            <div class="summary clearFix">
-              <p>Description copied from interface: TerminalOperation</p>
-              <blockquote>
-                <p>Executes the query and gets the result.</p>
-              </blockquote>
-            </div>
-          </div>
-          <div class="codeHeader" data-bi-name="code-header">
-            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
-          </div>
-          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-title">IEnumerable</span>&lt;<span class="hljs-title">T</span>&gt; <span class="hljs-title">Execute</span>()</code></pre>
-          <h4 class="propertyInfoTitle stack">Returns</h4>
-          <div class="propertyInfo">
-            <div class="subtle">
-              <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1?view=netcore-3.0" data-linktype="absolute-path">IEnumerable&lt;T&gt;</a>
-            </div>
-            <p>Description copied from interface: TerminalOperation</p>
-            <blockquote>
-              <p>The <code>T</code> objects representing the result of the
-    query.</p>
-            </blockquote>
-          </div>
-          <h4 class="propertyInfoTitle stack">Implements</h4>
-          <div class="propertyInfo">
-            <div class="cdlHolder">
-              <span class="cdl"><a href="Maroontress.SqlBind.TerminalOperation.html#M:Maroontress.SqlBind.TerminalOperation`1.Execute">TerminalOperation&lt;T&gt;.Execute()</a></span>
-            </div>
-          </div>
-          <h2 id="M:Maroontress.SqlBind.Impl.SelectFromImpl`1.OrderBy(System.String[])">OrderBy(string[])</h2>
-          <div class="summaryHolder">
-            <div class="summary clearFix">
-              <p>Description copied from interface: TerminalOperation</p>
-              <blockquote>
-                <p>Executes the query and gets the result in the order sorted by the
-    specified columns.</p>
-              </blockquote>
-            </div>
-          </div>
-          <div class="codeHeader" data-bi-name="code-header">
-            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
-          </div>
-          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-title">IEnumerable</span>&lt;<span class="hljs-title">T</span>&gt; <span class="hljs-title">OrderBy</span>(<span class="hljs-keyword">params</span> <span class="hljs-keyword">string</span>[] columns)</code></pre>
-          <h4 class="propertyInfoTitle stack">Parameters</h4>
-          <div class="propertyInfo">
-            <dl class="parameterList">
-              <dt>
-                columns
-              </dt>
-              <dd>
-                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.string?view=netcore-3.0" data-linktype="absolute-path">string</a>[]</span>
-              </dd>
-            </dl>
-          </div>
-          <h4 class="propertyInfoTitle stack">Returns</h4>
-          <div class="propertyInfo">
-            <div class="subtle">
-              <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1?view=netcore-3.0" data-linktype="absolute-path">IEnumerable&lt;T&gt;</a>
-            </div>
-            <p>Description copied from interface: TerminalOperation</p>
-            <blockquote>
-              <p>The <code>T</code> objects representing the result of the
-    query.</p>
-            </blockquote>
-          </div>
-          <h4 class="propertyInfoTitle stack">Implements</h4>
-          <div class="propertyInfo">
-            <div class="cdlHolder">
-              <span class="cdl"><a href="Maroontress.SqlBind.TerminalOperation.html#M:Maroontress.SqlBind.TerminalOperation`1.OrderBy(System.String[])">TerminalOperation&lt;T&gt;.OrderBy(string[])</a></span>
-            </div>
-          </div>
-          <h3>Remarks</h3>
-          <p>Description copied from interface: TerminalOperation</p>
-          <blockquote>
-            <p>The result that this method returns represents that of <code>SELECT
-    ... FROM ... ORDER BY</code> <code>columns</code>.</p>
-          </blockquote>
         </main>
       </section>
     </div>

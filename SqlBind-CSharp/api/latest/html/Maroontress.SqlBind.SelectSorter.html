@@ -10,7 +10,7 @@ gtag('js', new Date());
 gtag('config', 'G-9TQ6JWBKEK');
     </script>
     <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UpdateSet Interface | API Reference | SqlBind Project</title>
+    <title>SelectSorter&lt;T&gt; Interface | API Reference | SqlBind Project</title>
     <link rel="stylesheet" href="bulldoc.css">
     <script src="highlight.pack.js">
     </script>
@@ -22,7 +22,7 @@ gtag('config', 'G-9TQ6JWBKEK');
     <div class="mainContainer uhf-container has-top-padding has-default-focus" data-bi-name="body">
       <section>
         <main class="content">
-          <h1><span class="lang-csharp">Update<wbr>Set</span> Interface</h1>
+          <h1><span class="lang-csharp">Select<wbr>Sorter&lt;T&gt;</span> Interface</h1>
           <div class="metadata">
             <dl class="attributeList">
               <dt>
@@ -43,20 +43,32 @@ gtag('config', 'G-9TQ6JWBKEK');
           </div>
           <div class="summaryHolder">
             <div class="summary clearFix">
-              <p>Represents the <code>SET</code> clause in an <code>UPDATE</code> statement.</p>
+              <p>Represents the executable <code>SELECT</code> statement.</p>
             </div>
           </div>
           <div class="codeHeader" data-bi-name="code-header">
             <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
           </div>
-          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-keyword">interface</span> <span class="hljs-title">UpdateSet</span> : <span class="hljs-title">UpdateTerminator</span></code></pre>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-keyword">interface</span> <span class="hljs-title">SelectSorter</span>&lt;<span class="hljs-title">T</span>&gt; : <span class="hljs-title">SelectTerminator</span>&lt;<span class="hljs-title">T</span>&gt;<br>    <span class="hljs-keyword">where</span> <span class="hljs-title">T</span> : <span class="hljs-keyword">notnull</span></code></pre>
+          <h4 id="type-parameters" class="propertyInfoTitle stack heading-with-anchor">Type Parameters</h4>
+          <div class="propertyInfo">
+            <dl class="parameterList">
+              <dt>
+                T
+              </dt>
+              <dd>
+                <code>notnull</code>
+              </dd>
+            </dl>
+            <p>The type of the class representing any row of the result of the query.</p>
+          </div>
           <dl class="attributeList stack">
             <dt>
               Implements
             </dt>
             <dd>
               <div class="cdlHolder">
-                <span class="cdl"><span class="lang-csharp break-text"><a class="xref" href="Maroontress.SqlBind.UpdateTerminator.html" data-linktype="relative-path">Update<wbr>Terminator</a></span></span>
+                <span class="cdl"><span class="lang-csharp break-text"><a class="xref" href="Maroontress.SqlBind.SelectTerminator.html" data-linktype="relative-path">Select<wbr>Terminator&lt;T&gt;</a></span></span>
               </div>
             </dd>
           </dl>
@@ -66,53 +78,51 @@ gtag('config', 'G-9TQ6JWBKEK');
               <tbody>
                 <tr>
                   <td>
-                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.SqlBind.UpdateSet.Where(System.String)" data-linktype="relative-path">Where(string)</a></span>
+                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.SqlBind.SelectSorter`1.OrderBy(System.String[])" data-linktype="relative-path">Order<wbr>By(string[])</a></span>
                   </td>
                   <td>
-                    <p>Gets a new <a href="Maroontress.SqlBind.UpdateWhere.html">UpdateWhere</a> object, which represents the
-    combination of <code>this</code> (<code>UPDATE</code> ... <code>SET</code> ...) and the
-    <code>WHERE</code> ... clause.</p>
+                    <p>Executes the query and gets the result in the order sorted by the
+    specified columns.</p>
                   </td>
                 </tr>
               </tbody>
             </table>
           </div>
           <h1 id="methods-detail" class="heading-with-anchor">Methods Detail</h1>
-          <h2 id="M:Maroontress.SqlBind.UpdateSet.Where(System.String)">Where(string)</h2>
+          <h2 id="M:Maroontress.SqlBind.SelectSorter`1.OrderBy(System.String[])">OrderBy(string[])</h2>
           <div class="summaryHolder">
             <div class="summary clearFix">
-              <p>Gets a new <a href="Maroontress.SqlBind.UpdateWhere.html">UpdateWhere</a> object, which represents the
-    combination of <code>this</code> (<code>UPDATE</code> ... <code>SET</code> ...) and the
-    <code>WHERE</code> ... clause.</p>
+              <p>Executes the query and gets the result in the order sorted by the
+    specified columns.</p>
             </div>
           </div>
           <div class="codeHeader" data-bi-name="code-header">
             <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
           </div>
-          <pre class="wrap"><code class="nohighlight"><span class="hljs-title">UpdateWhere</span> <span class="hljs-title">Where</span>(<span class="hljs-keyword">string</span> expr)</code></pre>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-title">SelectTerminator</span>&lt;<span class="hljs-title">T</span>&gt; <span class="hljs-title">OrderBy</span>(<span class="hljs-keyword">params</span> <span class="hljs-keyword">string</span>[] columns)</code></pre>
           <h4 class="propertyInfoTitle stack">Parameters</h4>
           <div class="propertyInfo">
             <dl class="parameterList">
               <dt>
-                expr
+                columns
               </dt>
               <dd>
-                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.string?view=netcore-3.0" data-linktype="absolute-path">string</a></span>
+                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.string?view=netcore-3.0" data-linktype="absolute-path">string</a>[]</span>
               </dd>
             </dl>
-            <p>The expression of the <code>WHERE</code> clause. This expression can contain
-    the <code>alias</code> specified in the <a href="Maroontress.SqlBind.Query.html#M:Maroontress.SqlBind.Query.Update``1(System.String)">Query.Update&lt;T&gt;(string)</a>
-    method. The values of the parameters in the expression can be specified
-    with the <a href="Maroontress.SqlBind.UpdateTerminator.html#M:Maroontress.SqlBind.UpdateTerminator.Execute(System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object})">UpdateTerminator.Execute(IReadOnlyDictionary&lt;string, object&gt;)</a>
-    method.</p>
+            <p>The columns to sort the rows of the result by.</p>
           </div>
           <h4 class="propertyInfoTitle stack">Returns</h4>
           <div class="propertyInfo">
             <div class="subtle">
-              <a class="xref" href="Maroontress.SqlBind.UpdateWhere.html" data-linktype="relative-path">Update<wbr>Where</a>
+              <a class="xref" href="Maroontress.SqlBind.SelectTerminator.html" data-linktype="relative-path">Select<wbr>Terminator&lt;T&gt;</a>
             </div>
-            <p>The new <a href="Maroontress.SqlBind.UpdateWhere.html">UpdateWhere</a> object.</p>
+            <p>The <code>T</code> objects representing the result of the
+    query.</p>
           </div>
+          <h3>Remarks</h3>
+          <p>The result that this method returns represents that of <code>SELECT
+    ... FROM ... ORDER BY</code> <code>columns</code>.</p>
         </main>
       </section>
     </div>
