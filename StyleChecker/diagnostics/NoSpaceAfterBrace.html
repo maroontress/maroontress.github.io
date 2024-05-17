@@ -13,8 +13,8 @@
     </script>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>IsNull | StyleChecker | List of diagnostics</title>
-    <link rel="canonical" href="https://maroontress.github.io/StyleChecker/diagnostics/IsNull.html" />
+    <title>NoSpaceAfterBrace | StyleChecker | List of diagnostics</title>
+    <link rel="canonical" href="https://maroontress.github.io/StyleChecker/diagnostics/NoSpaceAfterBrace.html" />
     <link rel="stylesheet" type="text/css" href="/css/markdown.css">
     <link rel="apple-touch-icon" sizes="120x120" href="/images/logo-v2-120x120.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/images/logo-v2-180x180.png">
@@ -34,59 +34,53 @@
           <main class="content">
 <div class="project-logo">StyleChecker</div>
 <div id="toc-level" data-values="H2,H3"></div>
-<h1>IsNull</h1>
+<h1>NoSpaceAfterBrace</h1>
 <div class="horizontal-scroll">
-<p><img src="https://maroontress.github.io/StyleChecker/images/IsNull.png" alt="IsNull"></p>
+<p><img src="https://maroontress.github.io/StyleChecker/images/NoSpaceAfterBrace.png" alt="NoSpaceAfterBrace"></p>
 </div>
 <h2>Summary</h2>
-<p>Use “<code>… == null</code>” or “<code>… is {}</code>” instead of
-“<code>… is null</code>.”</p>
+<p>A brace (‘<code>{</code>’ or ‘<code>}</code>’) must be followed by a white
+space.</p>
 <h2>Default severity</h2>
-<p>Info</p>
+<p>Warning</p>
 <h2>Description</h2>
-<p>This rule reports diagnostic information of using <code>is</code> pattern matching with
-the <code>null</code> Constant Pattern.</p>
-<p>Note that the default diagnostic severity of this analyzer is
-<a href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.codeanalysis.diagnosticseverity?view=roslyn-dotnet">Information</a>.</p>
+<p>An opening brace (‘<code>{</code>’) that is not the last character on the line
+must be followed by a single space or a closing brace (‘<code>}</code>’).</p>
+<p>A closing brace (‘<code>}</code>’) that is not the last character on the line
+must be followed by a single space, a closing parenthesis (‘<code>)</code>’),
+an opening bracket (‘<code>[</code>’), a comma (‘<code>,</code>’), a period
+(‘<code>.</code>’), an exclamation mark (‘<code>!</code>’), a question mark
+(‘<code>?</code>’), or a semicolon (‘<code>;</code>’).</p>
+<p>Note that this analyzer and the <a href="NoSpaceBeforeBrace.html">NoSpaceBeforeBrace</a> analyzer are intended to
+be used together and replace <a href="https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/documentation/SA1012.md">SA1012</a> and <a href="https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/documentation/SA1013.md">SA1013</a> with them, allowing us to
+write empty braces (<code>{}</code>) as follows:</p>
+<pre><code class="language-csharp">Action doNothing = () =&gt; {};
+
+if (maybeString is {} s)
+{
+    ⋮
+}
+</code></pre>
 <h2>Code fix</h2>
-<p>The code fix provides an option replacing the expressions
-“<code>… is null</code>” and “<code>!(… is null)</code>” with
-“<code>… == null</code>” and “<code>… != null</code>,” respectively.  Also,
-it provides another option replacing them with “<code>!(… is {})</code>” and
-“<code>… is {}</code>,” respectively.</p>
-<h3>Remarks</h3>
-<p>Replacing the expression “<code>… is null</code>” with
-“<code>… == null</code>,” as well as replacing “<code>!(… is null)</code>”
-with “<code>… != null</code>,” can be a breaking change.  For more
-information, refer to
-<a href="EqualsNull.md#Remarks">the description of EqualsNull code fix</a>.</p>
+<p>The code fix provides an option inserting a space after the brace.</p>
 <h2>Example</h2>
 <h3>Diagnostic</h3>
-<pre><code class="language-csharp">public void Method(object? o, string? s)
+<pre><code class="language-csharp">string[] array = {&quot;&quot; };
+
+Action doNothing = () =&gt; {return; };
+
+if (array is {Length: 0 }z)
 {
-    if (o is null &amp;&amp; !(s is null))
-    {
-        ⋮
-    }
-    ⋮
+}
 </code></pre>
-<h3>Code fix (with the equality operators)</h3>
-<pre><code class="language-csharp">public void Method(object? o, string? s)
+<h3>Code fix</h3>
+<pre><code class="language-csharp">string[] array = { &quot;&quot; };
+
+Action doNothing = () =&gt; { return; };
+
+if (array is { Length: 0 } z)
 {
-    if (o == null &amp;&amp; s != null)
-    {
-        ⋮
-    }
-    ⋮
-</code></pre>
-<h3>Code fix (with the property pattern)</h3>
-<pre><code class="language-csharp">public void Method(object? o, string? s)
-{
-    if (!(o is {}) &amp;&amp; s is {})
-    {
-        ⋮
-    }
-    ⋮
+}
 </code></pre>
           </main>
         </section>
@@ -130,11 +124,9 @@ information, refer to
     <li>
       <a href="InvalidConfig.html">Invalid<wbr>Config</a>
     </li>
-    <li class="selected">
-      Is<wbr>Null
+    <li>
+      <a href="IsNull.html">Is<wbr>Null</a>
     </li>
-    <ul id="toc-placeholder">
-    </ul>
     <li>
       <a href="LongLine.html">Long<wbr>Line</a>
     </li>
@@ -147,9 +139,11 @@ information, refer to
     <li>
       <a href="NoSpaceAfterSemicolon.html">No<wbr>Space<wbr>After<wbr>Semicolon</a>
     </li>
-    <li>
-      <a href="NoSpaceAfterBrace.html">No<wbr>Space<wbr>After<wbr>Brace</a>
+    <li class="selected">
+      No<wbr>Space<wbr>After<wbr>Brace
     </li>
+    <ul id="toc-placeholder">
+    </ul>
     <li>
       <a href="NoSpaceBeforeBrace.html">No<wbr>Space<wbr>Before<wbr>Brace</a>
     </li>

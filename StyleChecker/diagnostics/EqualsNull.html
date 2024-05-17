@@ -39,31 +39,35 @@
 <p><img src="https://maroontress.github.io/StyleChecker/images/EqualsNull.png" alt="EqualsNull"></p>
 </div>
 <h2>Summary</h2>
-<p>Use <code>is null</code> instead of <code>== null</code>.</p>
+<p>Use “<code>… is null</code>” or “<code>… is {}</code>” instead of
+“<code>… == null</code>.”</p>
 <h2>Default severity</h2>
 <p>Info</p>
 <h2>Description</h2>
-<p>This rule reports diagnostic information of using <code>==</code> or <code>!=</code> operators
-with <code>null</code> as follows:</p>
+<p>This rule reports diagnostic information of using the equality operators
+(“<code>==</code>” and “<code>!=</code>”) with <code>null</code> as follows:</p>
 <ul>
-<li>The operator is either <code>==</code> or <code>!=</code>.</li>
-<li>The right operand must be <code>null</code>.</li>
-<li>The type of the left operand must not be a non-nullable value type.
+<li>The operator is either “<code>==</code>” or “<code>!=</code>.”</li>
+<li>The right operand is <code>null</code>.</li>
+<li>The type of the left operand is not a non-nullable value type.
 (If it is a non-nullable value type, the compiler raises <a href="https://docs.microsoft.com/en-us/dotnet/csharp/misc/cs0472">CS0472</a>
 and the expression is always <code>true</code> or <code>false</code>.)</li>
 </ul>
 <p>Note that the default diagnostic severity of this analyzer is
 <a href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.codeanalysis.diagnosticseverity?view=roslyn-dotnet">Information</a>.</p>
 <h2>Code fix</h2>
-<p>The code fix provides an option replacing expression <code>... == null</code> and
-<code>... != null</code> with <code>... is null</code> and <code>!(... is null)</code>, respectively.</p>
+<p>The code fix provides an option replacing the expressions
+“<code>… == null</code>” and “<code>… != null</code>” with
+“<code>… is null</code>” and “<code>!(… is null)</code>,” respectively.
+Also, it provides another option replacing them with “<code>!(… is {})</code>”
+and “<code>… is {}</code>,” respectively.</p>
 <h3>Remarks</h3>
-<p>It can be a breaking change to replace
-the expression <code>... == null</code> with <code>... is null</code>,
-as well as <code>... != null</code> with <code>!(... is null)</code>, and vice versa.
-For example, the expressions <code>o is null</code> and <code>o == null</code> result in
-<a href="https://sharplab.io/#v2:EYLgtghgzgLgpgJwDQxASwDYB8ACAmAAgGEBYAKAG9yCaDgB7ejAgSSgDkBXDDACiIL0AlNVpiAvAD5BBNFAIA7bhgDc5UTQZMCAUQCOnCBg7L+gkWTETp9AuPGLlasgF9yQA===">the same IL code</a>
-as long as its equality operators are not overridden, as follows.</p>
+<p>It can be a breaking change to replace the expression “<code>… == null</code>”
+with “<code>… is null</code>,” as well as “<code>… != null</code>” with
+“<code>!(… is null)</code>,” and vice versa.  For example, the expressions
+“<code>o is null</code>” and “<code>o == null</code>” result in
+<a href="https://sharplab.io/#v2:EYLgtghgzgLgpgJwDQxASwDYB8ACAmAAgGEBYAKAG9yCaDgB7ejAgSSgDkBXDDACiIL0AlNVpiAvAD5BBNFAIA7bhgDc5UTQZMCAUQCOnCBg7L+gkWTETp9AuPGLlasgF9yQA===">the same IL code</a> as long as its equality operators
+are not overridden, as follows:</p>
 <pre><code class="language-cs">class C
 {
     bool IsNull(C o) =&gt; o is null;
@@ -83,9 +87,8 @@ as long as its equality operators are not overridden, as follows.</p>
     */
 }
 </code></pre>
-<p>However, when its equality operators are overridden, those expressions result in
-<a href="https://sharplab.io/#v2:EYLgtghgzgLgpgJwDQxASwDYB8ACAmAAgGEBYAKAG9yCaDgB7ejAgSSgDkBXDDACiIL0AlNVpiAvAD5BBNFAIA7bhgDc5UTQZMCAUQCOnCBg7L+gkWTETp9AuPGLlashoI4AzG4CMANjqNmegAHRAgYegR7AjN6LyRiQTwLK1opQWAAKzgAYxgAOgAlOAAzRDgFbLh9Q2NeWPj6JOdXD28/LUCQhDCIgEIHGLiExuSUu2le+kyc/KLShHLK6qMoOqGR5wBfciA==">different IL codes</a>,
-as follows.</p>
+<p>However, when its equality operators are overridden, those expressions result
+in <a href="https://sharplab.io/#v2:EYLgtghgzgLgpgJwDQxASwDYB8ACAmAAgGEBYAKAG9yCaDgB7ejAgSSgDkBXDDACiIL0AlNVpiAvAD5BBNFAIA7bhgDc5UTQZMCAUQCOnCBg7L+gkWTETp9AuPGLlashoI4AzG4CMANjqNmegAHRAgYegR7AjN6LyRiQTwLK1opQWAAKzgAYxgAOgAlOAAzRDgFbLh9Q2NeWPj6JOdXD28/LUCQhDCIgEIHGLiExuSUu2le+kyc/KLShHLK6qMoOqGR5wBfciA==">different IL codes</a>, as follows:</p>
 <pre><code class="language-cs">class C
 {
     bool IsNull(C o) =&gt; o is null;
@@ -111,38 +114,39 @@ as follows.</p>
         =&gt; !object.ReferenceEquals(o1, o2);
 }
 </code></pre>
-<p>Note that
-the result of <code>o == null</code> may differ from the one of <code>o is null</code>
-if the equality operators are <em>strangely</em> overridden as follows.</p>
+<p>Note that the result of “<code>o == null</code>” may differ from the one of
+“<code>o is null</code>” if the equality operators are <em>strangely</em> overridden
+as follows:</p>
 <pre><code class="language-cs">class C
 {
-    ...
+    ⋮
     public static bool operator== (C o1, C o2) =&gt; true;
     public static bool operator!= (C o1, C o2) =&gt; false;
 }
 </code></pre>
 <h2>Example</h2>
 <h3>Diagnostic</h3>
-<pre><code class="language-csharp">public void Method(object o, string s)
+<pre><code class="language-csharp">public void Method(object? o, string? s)
 {
-    if (o == null)
-    {
-        ⋮
-    }
-    if (s != null)
+    if (o == null &amp;&amp; s != null)
     {
         ⋮
     }
     ⋮
 </code></pre>
-<h3>Code fix</h3>
-<pre><code class="language-csharp">public void Method(object o, string s)
+<h3>Code fix (with the constant pattern)</h3>
+<pre><code class="language-csharp">public void Method(object? o, string? s)
 {
-    if (o is null)
+    if (o is null &amp;&amp; !(s is null))
     {
         ⋮
     }
-    if (!(s is null))
+    ⋮
+</code></pre>
+<h3>Code fix (with the property pattern)</h3>
+<pre><code class="language-csharp">public void Method(object? o, string? s)
+{
+    if (!(o is {}) &amp;&amp; s is {})
     {
         ⋮
     }
@@ -206,6 +210,12 @@ if the equality operators are <em>strangely</em> overridden as follows.</p>
     </li>
     <li>
       <a href="NoSpaceAfterSemicolon.html">No<wbr>Space<wbr>After<wbr>Semicolon</a>
+    </li>
+    <li>
+      <a href="NoSpaceAfterBrace.html">No<wbr>Space<wbr>After<wbr>Brace</a>
+    </li>
+    <li>
+      <a href="NoSpaceBeforeBrace.html">No<wbr>Space<wbr>Before<wbr>Brace</a>
     </li>
     <li>
       <a href="NotDesignedForExtension.html">Not<wbr>Designed<wbr>For<wbr>Extension</a>

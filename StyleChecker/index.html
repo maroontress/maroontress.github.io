@@ -57,23 +57,11 @@ select Tools
 ➜ Package Manager Console.)</li>
 <li>Enter the command <code>Install-Package StyleChecker</code> in the Package Manager
 Console.</li>
-<li>Set <code>all</code> to the PrivateAssets property. (Open Solution Explorer
-and select your project
-➜ Dependencies
-➜ NuGet
-➜ Click StyleChecker with a right button to open StyleChecker
-Package Properties, and then enter <code>all</code> to the <code>PrivateAssets</code> field.)</li>
 </ol>
 <h3>Install StyleChecker to your project with .NET Core CLI</h3>
 <ol>
 <li>Enter the command <code>dotnet add package StyleChecker</code> with the console.</li>
-<li>Open your project file (<code>.csproj</code>) using a text editor like Visual Studio
-Code.</li>
-<li>Fix the <code>PackageReference</code> element in the project file adding the
-<code>PrivateAssets</code> attribute with the <code>all</code> value as follows:</li>
 </ol>
-<pre><code class="language-xml">&lt;PackageReference Include=&quot;StyleChecker&quot; Version=&quot;...&quot; PrivateAssets=&quot;all&quot; /&gt;
-</code></pre>
 <h2>List of diagnostics</h2>
 <p>There are the following categories of the diagnostics analyzers:
 Cleaning, Document, Naming, Ordering, Refactoring, Settings, Size,
@@ -308,13 +296,32 @@ It is a replacement for SA1004.</p>
 </dl>
 <dl>
   <dt>
+<p><a href="diagnostics/NoSpaceAfterBrace.html">NoSpaceAfterBrace</a></p>
+  </dt>
+  <dd>
+<p>Regulate spacing after a brace. This analyzer and the <a href="diagnostics/NoSpaceBeforeBrace.html">NoSpaceBeforeBrace</a>
+analyzer are designed to be used together and replace SA1012 and SA1013 with
+them, allowing us to write empty braces (<code>{}</code>).</p>
+  </dd>
+</dl>
+<dl>
+  <dt>
 <p><a href="diagnostics/NoSpaceAfterSemicolon.html">NoSpaceAfterSemicolon</a></p>
   </dt>
   <dd>
-<p>Regulate spacing around a semicolon, especially in <code>for</code> statements.
-The style <code>for (;;)</code> of an infinite <code>for</code> loop is allowed.
-Note that this rule is realized with SpaceBeforeSemicolon and
-NoSpaceAfterSemicolon analyzers, and they are a replacement for SA1002.</p>
+<p>Regulate spacing after a semicolon. This analyzer and the
+<a href="diagnostics/SpaceBeforeSemicolon.html">SpaceBeforeSemicolon</a> analyzer are designed to be used together and replace
+SA1002 with them, allowing us to write an infinite <code>for</code> loop with <code>for (;;)</code>.</p>
+  </dd>
+</dl>
+<dl>
+  <dt>
+<p><a href="diagnostics/NoSpaceBeforeBrace.html">NoSpaceBeforeBrace</a></p>
+  </dt>
+  <dd>
+<p>Regulate spacing before a brace. This analyzer and the <a href="diagnostics/NoSpaceAfterBrace.html">NoSpaceAfterBrace</a>
+analyzer are designed to use them together and replace SA1012 and SA1013 with
+them, allowing us to write empty braces (<code>{}</code>).</p>
   </dd>
 </dl>
 <dl>
@@ -322,7 +329,9 @@ NoSpaceAfterSemicolon analyzers, and they are a replacement for SA1002.</p>
 <p><a href="diagnostics/SpaceBeforeSemicolon.html">SpaceBeforeSemicolon</a></p>
   </dt>
   <dd>
-<p>See <a href="diagnostics/NoSpaceAfterSemicolon.html">NoSpaceAfterSemicolon</a>.</p>
+<p>Regulate spacing before a semicolon. This analyzer and the
+<a href="diagnostics/NoSpaceAfterSemicolon.html">NoSpaceAfterSemicolon</a> analyzer are designed to be used together and replace
+SA1002 with them, allowing us to write an infinite <code>for</code> loop with <code>for (;;)</code>.</p>
   </dd>
 </dl>
 <h2>Customize configuration</h2>

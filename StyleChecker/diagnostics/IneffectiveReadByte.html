@@ -85,7 +85,7 @@ var length = 1000;
 while (length &gt; 0)
 {
     var size = reader.Read(buffer, offset, length);
-    if (size == 0)
+    if (size is 0)
     {
         throw new EndOfStreamException();
     }
@@ -113,8 +113,7 @@ See the specifications of
 <p>The <code>Read</code> method will return zero only if the end of the stream is
 reached. In all other cases, <code>Read</code> always reads at least one byte from
 the stream before returning.</p>
-</blockquote>
-<blockquote>
+<p>⋮</p>
 <p>An implementation is free to return fewer bytes than requested even if
 the end of the stream has not been reached.</p>
 </blockquote>
@@ -150,7 +149,7 @@ if possible.</p>
             while (_length &gt; 0)
             {
                 var _size = _reader.Read(_array, _offset, _length);
-                if (_size == 0)
+                if (_size is 0)
                 {
                     throw new System.IO.EndOfStreamException();
                 }
@@ -223,6 +222,12 @@ if possible.</p>
     </li>
     <li>
       <a href="NoSpaceAfterSemicolon.html">No<wbr>Space<wbr>After<wbr>Semicolon</a>
+    </li>
+    <li>
+      <a href="NoSpaceAfterBrace.html">No<wbr>Space<wbr>After<wbr>Brace</a>
+    </li>
+    <li>
+      <a href="NoSpaceBeforeBrace.html">No<wbr>Space<wbr>Before<wbr>Brace</a>
     </li>
     <li>
       <a href="NotDesignedForExtension.html">Not<wbr>Designed<wbr>For<wbr>Extension</a>

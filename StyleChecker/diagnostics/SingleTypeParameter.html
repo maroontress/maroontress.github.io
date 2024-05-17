@@ -52,6 +52,12 @@
 single-letter type parameter.</li>
 </ul>
 </blockquote>
+<p>However, the following cases are excluded because renaming to <code>T</code> may cause a
+compile error or change the meaning:</p>
+<ul>
+<li>The type name is <code>T</code> and it has one type parameter</li>
+<li>The type <code>T</code> is already contained in the type or member</li>
+</ul>
 <h2>Code fix</h2>
 <p>The code fix provides an option replacing the type parameter name with <code>T</code>.</p>
 <h2>Example</h2>
@@ -136,6 +142,12 @@ single-letter type parameter.</li>
     </li>
     <li>
       <a href="NoSpaceAfterSemicolon.html">No<wbr>Space<wbr>After<wbr>Semicolon</a>
+    </li>
+    <li>
+      <a href="NoSpaceAfterBrace.html">No<wbr>Space<wbr>After<wbr>Brace</a>
+    </li>
+    <li>
+      <a href="NoSpaceBeforeBrace.html">No<wbr>Space<wbr>Before<wbr>Brace</a>
     </li>
     <li>
       <a href="NotDesignedForExtension.html">Not<wbr>Designed<wbr>For<wbr>Extension</a>

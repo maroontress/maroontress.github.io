@@ -286,7 +286,9 @@ https://maroontress.github.io/StyleChecker/diagnostics/IsNull.html
 https://maroontress.github.io/StyleChecker/diagnostics/LongLine.html
 https://maroontress.github.io/StyleChecker/diagnostics/NoDocumentation.html
 https://maroontress.github.io/StyleChecker/diagnostics/NoSingleSpaceAfterTripleSlash.html
+https://maroontress.github.io/StyleChecker/diagnostics/NoSpaceAfterBrace.html
 https://maroontress.github.io/StyleChecker/diagnostics/NoSpaceAfterSemicolon.html
+https://maroontress.github.io/StyleChecker/diagnostics/NoSpaceBeforeBrace.html
 https://maroontress.github.io/StyleChecker/diagnostics/NotDesignedForExtension.html
 https://maroontress.github.io/StyleChecker/diagnostics/NotOneShotInitialization.html
 https://maroontress.github.io/StyleChecker/diagnostics/PostIncrement.html

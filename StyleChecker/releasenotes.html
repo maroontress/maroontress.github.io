@@ -42,11 +42,11 @@ abstract
 
 ### Requirements to run
 
-- Visual Studio 2017 (15.9) or .NET Core 2.1 (2.1.500)
+- Visual Studio 2022 (17.9.6) or .NET 8 (SDK 8.0.204)
 
 ### Requirements to build
 
-- Visual Studio 2019 (16.0)
+- Visual Studio 2022 (17.9.6) or .NET 8 (SDK 8.0.204)
 
 ### New
 ### Removed
@@ -56,6 +56,63 @@ abstract
 
 ---
 -->
+<h2>2.0.0 (2024-05-17)</h2>
+<p>C# 12 Support and New Enhancements</p>
+<h3>Requirements to run</h3>
+<ul>
+<li>Visual Studio 2022 (17.9.6) or .NET 8 (SDK 8.0.204)</li>
+</ul>
+<h3>Requirements to build</h3>
+<ul>
+<li>Visual Studio 2022 (17.9.6) or .NET 8 (SDK 8.0.204)</li>
+</ul>
+<h3>New</h3>
+<ul>
+<li>Handle C# 12 source codes</li>
+<li>Add <a href="https://github.com/maroontress/StyleChecker/blob/master/doc/rules/NoSpaceAfterBrace.md">NoSpaceAfterBrace</a> and
+<a href="https://github.com/maroontress/StyleChecker/blob/master/doc/rules/NoSpaceBeforeBrace.md">NoSpaceBeforeBrace</a> analyzers</li>
+<li><a href="https://github.com/maroontress/StyleChecker/blob/master/doc/rules/EqualsNull.md">EqualsNull</a> analyzers provides a new option of Code Fix to
+replace:
+<ul>
+<li><code>… != null</code> or <code>… != null</code> with the property pattern <code>… is {}</code> or <code>!(… is {})</code></li>
+</ul>
+</li>
+<li><a href="https://github.com/maroontress/StyleChecker/blob/master/doc/rules/IsNull.md">IsNull</a> analyzers provides a new option of Code Fix to replace:
+<ul>
+<li><code>!(… is null)</code> or <code>… is null</code> with the property pattern <code>… is {}</code> or <code>!(… is {})</code></li>
+</ul>
+</li>
+</ul>
+<h3>Removed</h3>
+<ul>
+<li>Remove the VSIX project from the solution</li>
+</ul>
+<h3>Changed</h3>
+<ul>
+<li>Work with Visual Studio 2022</li>
+<li>Update dependent packages</li>
+<li>Improve installation: no longer need to manually edit <code>csproj</code> files</li>
+<li>Perform CI with GitHub Actions</li>
+<li>Switch <code>LangVersion</code> to <code>12.0</code></li>
+<li>Reformat source files with
+<a href="https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/proposals/csharp-10.0/file-scoped-namespaces">File-scoped namespace declarations</a></li>
+<li>Refactor with C# 12 features</li>
+<li>Enable <code>EnforceExtendedAnalyzerRules</code></li>
+<li>Add test cases</li>
+</ul>
+<h3>Fixed</h3>
+<ul>
+<li>Fix warnings</li>
+<li>Fix <a href="https://github.com/maroontress/StyleChecker/blob/master/doc/rules/SingleTypeParameter.md">SingleTypeParameter</a> analyzer to ignore the
+following cases:
+<ul>
+<li>The type name is <code>T</code> and it has one type parameter (e.g., <code>public class T&lt;U&gt; …</code>)</li>
+<li>The type <code>T</code> is already contained in the type or member</li>
+</ul>
+</li>
+<li>Fix documents</li>
+</ul>
+<hr>
 <h2>1.0.27 (2020-08-18)</h2>
 <p>Add UninitializedLocalVariable and NotOneShotInitialization analyzers.</p>
 <h3>Requirements to run</h3>
