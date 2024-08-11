@@ -32,6 +32,7 @@
       <div class="main-container">
         <section>
           <main class="content">
+<!-- markdownlint-disable MD024 MD033 MD041-->
 <div class="project-logo">StyleChecker</div>
 <div id="toc-level" data-values="H2,H3"></div>
 <h1>NoSingleSpaceAfterTripleSlash</h1>
@@ -61,6 +62,43 @@ public void LineBreakInsideAttribute(string a, string b)
 <p>This analyzer does not report diagnostics to the code, which includes
 a line break inside the start/end tags of an XML element,
 as long as a single space follows <code>///</code>.</p>
+<h2>Remarks</h2>
+<p>It is not sufficient to write a <code>///</code> followed by a single whitespace character.
+More precisely, <code>///</code> must be followed by a single whitespace character followed
+by an XML Element (<code>&lt;element&gt;…&lt;/element&gt;</code> or <code>&lt;element … /&gt;</code>). If the XML
+element is long, it can be wrapped, but each wrapped line must begin with <code>///</code>
+followed by one or more whitespace characters. The following is a conformance
+example:</p>
+<pre><code class="language-csharp">/// &lt;summary&gt;Hello.&lt;/summary&gt;
+/// &lt;seealso cref=&quot;Good&quot;/&gt;
+public static void Good()
+{
+}
+
+/// &lt;summary&gt;Hello
+/// World.&lt;/summary&gt;
+public static void GoodWithWrapping()
+{
+}
+</code></pre>
+<p>The following is a nonconformance example:</p>
+<pre><code class="language-csharp">/// Hello &lt;summary&gt;World.&lt;/summary&gt;
+/// See &lt;seealso cref=&quot;Bad&quot;/&gt;
+public static void Bad()
+{
+}
+
+/// Hello.
+public static void BadWithNoElements()
+{
+}
+</code></pre>
+<p>Before version 2.0.1, this analyzer issued diagnostics for <code>Hello</code> and <code>See</code> in
+<code>Bad()</code>. The warning was “A single white space is needed after
+'///',” but a more appropriate warning should have been “Only one
+whitespace character should be placed between /// and the XML element.”</p>
+<p>Even after version 2.0.1, <a href="StrayText.html">StrayText</a> analyzer reports <code>Bad()</code> and
+<code>BadWithNoElements()</code> instead of this analyzer.</p>
 <h2>Code fix</h2>
 <p>The code fix provides an option inserting a single space after <code>///</code>,
 or replacing two or more spaces after <code>///</code> with a single space.
@@ -150,10 +188,10 @@ public void Method(int a, int b)
     <ul id="toc-placeholder">
     </ul>
     <li>
-      <a href="NoSpaceAfterSemicolon.html">No<wbr>Space<wbr>After<wbr>Semicolon</a>
+      <a href="NoSpaceAfterBrace.html">No<wbr>Space<wbr>After<wbr>Brace</a>
     </li>
     <li>
-      <a href="NoSpaceAfterBrace.html">No<wbr>Space<wbr>After<wbr>Brace</a>
+      <a href="NoSpaceAfterSemicolon.html">No<wbr>Space<wbr>After<wbr>Semicolon</a>
     </li>
     <li>
       <a href="NoSpaceBeforeBrace.html">No<wbr>Space<wbr>Before<wbr>Brace</a>

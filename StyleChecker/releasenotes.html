@@ -32,6 +32,7 @@
       <div class="main-container">
         <section>
           <main class="content">
+<!-- markdownlint-disable MD024 MD033 MD041 -->
 <div class="project-logo">StyleChecker</div>
 <div id="toc-level" data-values="H2"></div>
 <h1>Release Notes</h1>
@@ -42,11 +43,11 @@ abstract
 
 ### Requirements to run
 
-- Visual Studio 2022 (17.9.6) or .NET 8 (SDK 8.0.204)
+- Visual Studio 2022 (17.10.5) or .NET 8 (SDK 8.0.303)
 
 ### Requirements to build
 
-- Visual Studio 2022 (17.9.6) or .NET 8 (SDK 8.0.204)
+- Visual Studio 2022 (17.10.5) or .NET 8 (SDK 8.0.303)
 
 ### New
 ### Removed
@@ -56,6 +57,34 @@ abstract
 
 ---
 -->
+<h2>2.0.1 (2024-08-14)</h2>
+<p>Fix NoSingleSpaceAfterTripleSlash analyzer</p>
+<h3>Requirements to run</h3>
+<ul>
+<li>Visual Studio 2022 (17.10.5) or .NET 8 (SDK 8.0.303)</li>
+</ul>
+<h3>Requirements to build</h3>
+<ul>
+<li>Visual Studio 2022 (17.10.5) or .NET 8 (SDK 8.0.303)</li>
+</ul>
+<h3>Changed</h3>
+<ul>
+<li>
+<p>Fix <a href="https://github.com/maroontress/StyleChecker/blob/main/doc/rules/NoSingleSpaceAfterTripleSlash.md">NoSingleSpaceAfterTripleSlash</a> analyzer not to issue diagnostics when
+there are characters that start with a whitespace character and contain a
+non-whitespace character between <code>///</code> and an XML element, as in the following
+code:</p>
+<pre><code class="language-csharp">/// Hello &lt;summary&gt;World.&lt;/summary&gt;
+/// See &lt;seealso cref=&quot;Bad&quot;/&gt;
+public static void Bad()
+{
+}
+</code></pre>
+<p>Note that <a href="https://github.com/maroontress/StyleChecker/blob/main/doc/rules/StrayText.md">StrayText</a> analyzer still issues diagnostics against the <code>Hello</code>
+and <code>See</code> in the example.</p>
+</li>
+</ul>
+<hr>
 <h2>2.0.0 (2024-05-17)</h2>
 <p>C# 12 Support and New Enhancements</p>
 <h3>Requirements to run</h3>
@@ -69,17 +98,17 @@ abstract
 <h3>New</h3>
 <ul>
 <li>Handle C# 12 source codes</li>
-<li>Add <a href="https://github.com/maroontress/StyleChecker/blob/master/doc/rules/NoSpaceAfterBrace.md">NoSpaceAfterBrace</a> and
-<a href="https://github.com/maroontress/StyleChecker/blob/master/doc/rules/NoSpaceBeforeBrace.md">NoSpaceBeforeBrace</a> analyzers</li>
-<li><a href="https://github.com/maroontress/StyleChecker/blob/master/doc/rules/EqualsNull.md">EqualsNull</a> analyzers provides a new option of Code Fix to
-replace:
+<li>Add <a href="https://github.com/maroontress/StyleChecker/blob/main/doc/rules/NoSpaceAfterBrace.md">NoSpaceAfterBrace</a> and <a href="https://github.com/maroontress/StyleChecker/blob/main/doc/rules/NoSpaceBeforeBrace.md">NoSpaceBeforeBrace</a> analyzers</li>
+<li><a href="https://github.com/maroontress/StyleChecker/blob/main/doc/rules/EqualsNull.md">EqualsNull</a> analyzers provides a new option of Code Fix to replace:
 <ul>
-<li><code>… != null</code> or <code>… != null</code> with the property pattern <code>… is {}</code> or <code>!(… is {})</code></li>
+<li><code>… != null</code> or <code>… != null</code> with the property pattern <code>… is {}</code> or
+<code>!(… is {})</code></li>
 </ul>
 </li>
-<li><a href="https://github.com/maroontress/StyleChecker/blob/master/doc/rules/IsNull.md">IsNull</a> analyzers provides a new option of Code Fix to replace:
+<li><a href="https://github.com/maroontress/StyleChecker/blob/main/doc/rules/IsNull.md">IsNull</a> analyzers provides a new option of Code Fix to replace:
 <ul>
-<li><code>!(… is null)</code> or <code>… is null</code> with the property pattern <code>… is {}</code> or <code>!(… is {})</code></li>
+<li><code>!(… is null)</code> or <code>… is null</code> with the property pattern <code>… is {}</code> or
+<code>!(… is {})</code></li>
 </ul>
 </li>
 </ul>
@@ -103,10 +132,10 @@ replace:
 <h3>Fixed</h3>
 <ul>
 <li>Fix warnings</li>
-<li>Fix <a href="https://github.com/maroontress/StyleChecker/blob/master/doc/rules/SingleTypeParameter.md">SingleTypeParameter</a> analyzer to ignore the
-following cases:
+<li>Fix <a href="https://github.com/maroontress/StyleChecker/blob/main/doc/rules/SingleTypeParameter.md">SingleTypeParameter</a> analyzer to ignore the following cases:
 <ul>
-<li>The type name is <code>T</code> and it has one type parameter (e.g., <code>public class T&lt;U&gt; …</code>)</li>
+<li>The type name is <code>T</code> and it has one type parameter (e.g.,
+<code>public class T&lt;U&gt; …</code>)</li>
 <li>The type <code>T</code> is already contained in the type or member</li>
 </ul>
 </li>
@@ -126,11 +155,9 @@ following cases:
 <h3>New</h3>
 <ul>
 <li>Add UninitializedLocalVariable analyzer. See
-<a href="https://github.com/maroontress/StyleChecker/blob/master/doc/rules/UninitializedLocalVariable.md">the description</a>
-for details.</li>
+<a href="https://github.com/maroontress/StyleChecker/blob/main/doc/rules/UninitializedLocalVariable.md">the description</a> for details.</li>
 <li>Add NotOneShotInitialization analyzer. See
-<a href="https://github.com/maroontress/StyleChecker/blob/master/doc/rules/NotOneShotInitialization.md">the description</a>
-for details.</li>
+<a href="https://github.com/maroontress/StyleChecker/blob/main/doc/rules/NotOneShotInitialization.md">the description</a> for details.</li>
 </ul>
 <hr>
 <h2>1.0.26 (2020-06-16)</h2>
@@ -145,8 +172,9 @@ for details.</li>
 </ul>
 <h3>New</h3>
 <ul>
-<li>Add StrayText analyzer. See <a href="https://github.com/maroontress/StyleChecker/blob/master/doc/rules/StrayText.md">the description</a> for details.</li>
-<li>Add StinkyBooleanExpression analyzer. See <a href="https://github.com/maroontress/StyleChecker/blob/master/doc/rules/StinkyBooleanExpression.md">the description</a> for details.</li>
+<li>Add StrayText analyzer. See <a href="https://github.com/maroontress/StyleChecker/blob/main/doc/rules/StrayText.md">the description</a> for details.</li>
+<li>Add StinkyBooleanExpression analyzer. See
+<a href="https://github.com/maroontress/StyleChecker/blob/main/doc/rules/StinkyBooleanExpression.md">the description</a> for details.</li>
 </ul>
 <h3>Fixed</h3>
 <ul>
@@ -168,8 +196,8 @@ signature as the modified method.</li>
 </ul>
 <h3>Changed</h3>
 <ul>
-<li>Fix NoSingleSpaceAfterTripleSlash analyzer to emit the diagnostics whose location
-is just after '<code>///</code>'.</li>
+<li>Fix NoSingleSpaceAfterTripleSlash analyzer to emit the diagnostics whose
+location is just after '<code>///</code>'.</li>
 </ul>
 <hr>
 <h2>1.0.25 (2020-03-28)</h2>
@@ -246,8 +274,10 @@ to each description of diagnostics.</li>
 </ul>
 <h3>New</h3>
 <ul>
-<li>Add NoSingleSpaceAfterTripleSlash analyzer and code fix provider. See <a href="https://github.com/maroontress/StyleChecker/blob/master/doc/rules/NoSingleSpaceAfterTripleSlash.md">the description</a> for details.</li>
-<li>Add NoDocumentation analyzer. See <a href="https://github.com/maroontress/StyleChecker/blob/master/doc/rules/NoDocumentation.md">the description</a> for details.</li>
+<li>Add NoSingleSpaceAfterTripleSlash analyzer and code fix provider. See
+<a href="https://github.com/maroontress/StyleChecker/blob/main/doc/rules/NoSingleSpaceAfterTripleSlash.md">the description</a> for details.</li>
+<li>Add NoDocumentation analyzer. See <a href="https://github.com/maroontress/StyleChecker/blob/main/doc/rules/NoDocumentation.md">the description</a> for
+details.</li>
 </ul>
 <h3>Changed</h3>
 <ul>
@@ -255,8 +285,10 @@ to each description of diagnostics.</li>
 </ul>
 <h3>Fixed</h3>
 <ul>
-<li>Fix DiscardingReturnValue analyzer and IneffectiveReadByte code fix provider to be built on the Linux platform.</li>
-<li>Fix EmptyArrayCreation, EqualsNull and IsNull analyzers to be in the Refactoring category.</li>
+<li>Fix DiscardingReturnValue analyzer and IneffectiveReadByte code fix provider
+to be built on the Linux platform.</li>
+<li>Fix EmptyArrayCreation, EqualsNull and IsNull analyzers to be in the
+Refactoring category.</li>
 </ul>
 <hr>
 <h2>1.0.22 (2019-04-07)</h2>
@@ -271,11 +303,12 @@ to each description of diagnostics.</li>
 </ul>
 <h3>New</h3>
 <ul>
-<li>Add ByteOrderMark analyzer. See <a href="https://github.com/maroontress/StyleChecker/blob/master/doc/rules/ByteOrderMark.md">the description</a> for details.</li>
+<li>Add ByteOrderMark analyzer. See <a href="https://github.com/maroontress/StyleChecker/blob/main/doc/rules/ByteOrderMark.md">the description</a> for details.</li>
 </ul>
 <h3>Changed</h3>
 <ul>
-<li>Remove StyleChecker.Annotations and Maroontress.Oxbind from the source tree. Instead, integrate them with NuGet.</li>
+<li>Remove StyleChecker.Annotations and Maroontress.Oxbind from the source tree.
+Instead, integrate them with NuGet.</li>
 </ul>
 <h3>Fixed</h3>
 <ul>
@@ -296,17 +329,23 @@ and methods of <code>struct</code>s.</li>
 </ul>
 <h3>New</h3>
 <ul>
-<li>Add EqualsNull analyzer. See <a href="https://github.com/maroontress/StyleChecker/blob/master/doc/rules/EqualsNull.md">the description</a> for details.</li>
-<li>Add IsNull analyzer. See <a href="https://github.com/maroontress/StyleChecker/blob/master/doc/rules/IsNull.md">the description</a> for details.</li>
+<li>Add EqualsNull analyzer. See <a href="https://github.com/maroontress/StyleChecker/blob/main/doc/rules/EqualsNull.md">the description</a> for details.</li>
+<li>Add IsNull analyzer. See <a href="https://github.com/maroontress/StyleChecker/blob/main/doc/rules/IsNull.md">the description</a> for details.</li>
 </ul>
 <h3>Changed</h3>
 <ul>
-<li>Fix UnnecessaryUsing analyzer to count more classes: <code>System.IO.StringReader</code>, <code>System.IO.StringWriter</code> and <code>System.IO.UnmanagedMemoryAccessor</code>.</li>
+<li>Fix UnnecessaryUsing analyzer to count more classes: <code>System.IO.StringReader</code>,
+<code>System.IO.StringWriter</code> and <code>System.IO.UnmanagedMemoryAccessor</code>.</li>
 </ul>
 <h3>Fixed</h3>
 <ul>
-<li>Fix bugs of RedundantTypedArrayCreation, PostIncrement, EmptyArrayCreation, IneffectiveReadByte, StaticGenericClass, TypeClassParameter and UnnecessaryUsing code fix providers to work in some cases. For example, the EmptyArrayCreation code fix provider is fixed to work if there is an empty array creation as an argument.</li>
-<li>Fix bugs of TypeClassParameter analyzer to count the <code>typeof</code> operator with the operand that is <code>static</code> class.</li>
+<li>Fix bugs of RedundantTypedArrayCreation, PostIncrement, EmptyArrayCreation,
+IneffectiveReadByte, StaticGenericClass, TypeClassParameter and
+UnnecessaryUsing code fix providers to work in some cases. For example, the
+EmptyArrayCreation code fix provider is fixed to work if there is an empty
+array creation as an argument.</li>
+<li>Fix bugs of TypeClassParameter analyzer to count the <code>typeof</code> operator with
+the operand that is <code>static</code> class.</li>
 </ul>
 <hr>
 <h2>1.0.20 (2019-02-19)</h2>
@@ -321,8 +360,8 @@ and methods of <code>struct</code>s.</li>
 </ul>
 <h3>New</h3>
 <ul>
-<li>Add RedundantTypedArrayCreation analyzer. See <a href="https://github.com/maroontress/StyleChecker/blob/master/doc/rules/RedundantTypedArrayCreation.md">the description</a> for details.</li>
-<li>Add EmptyArrayCreation analyzer. See <a href="https://github.com/maroontress/StyleChecker/blob/master/doc/rules/EmptyArrayCreation.md">the description</a> for details.</li>
+<li>Add RedundantTypedArrayCreation analyzer. See <a href="https://github.com/maroontress/StyleChecker/blob/main/doc/rules/RedundantTypedArrayCreation.md">the description</a> for details.</li>
+<li>Add EmptyArrayCreation analyzer. See <a href="https://github.com/maroontress/StyleChecker/blob/main/doc/rules/EmptyArrayCreation.md">the description</a> for details.</li>
 </ul>
 <hr>
 <h2>1.0.19 (2019-02-03)</h2>
@@ -337,7 +376,8 @@ and methods of <code>struct</code>s.</li>
 </ul>
 <h3>New</h3>
 <ul>
-<li>Add TypeClassParameter analyzer. See <a href="https://github.com/maroontress/StyleChecker/blob/master/doc/rules/TypeClassParameter.md">the description</a> for details.</li>
+<li>Add TypeClassParameter analyzer. See <a href="https://github.com/maroontress/StyleChecker/blob/main/doc/rules/TypeClassParameter.md">the description</a> for
+details.</li>
 </ul>
 <hr>
 <h2>1.0.18 (2019-01-18)</h2>
@@ -353,20 +393,25 @@ of some analyzers.</p>
 </ul>
 <h3>New</h3>
 <ul>
-<li>Fix ThoughtlessName analyzer to report identifiers not allowed to use which are specified with the configuration file.</li>
-<li>Fix DiscardingReturnValue analyzer to report the methods discarding the return value which are specified with the configuration file.</li>
+<li>Fix ThoughtlessName analyzer to report identifiers not allowed to use which
+are specified with the configuration file.</li>
+<li>Fix DiscardingReturnValue analyzer to report the methods discarding the return
+value which are specified with the configuration file.</li>
 <li>Add the help link URI to each analyzer.</li>
 <li>Fix the NuGet package to contain <code>readme.txt</code> and some documents.</li>
 <li>Merge <a href="https://github.com/maroontress/Oxbind.CSharp/tree/REL_1_0_0">Oxbind.CSharp 1.0.0</a>.</li>
 </ul>
 <h3>Changed</h3>
 <ul>
-<li>Rename NoSpaceBeforeSemicolon and SpaceAfterSemicolon analyzer to SpaceBeforeSemicolon and NoSpaceAfterSemicolon, respectively.</li>
-<li>Change the schema of the configuration file <code>StyleChecker.xml</code>. See <a href="https://github.com/maroontress/StyleChecker/blob/master/README.md">README.md</a> for details.</li>
+<li>Rename NoSpaceBeforeSemicolon and SpaceAfterSemicolon analyzer to
+SpaceBeforeSemicolon and NoSpaceAfterSemicolon, respectively.</li>
+<li>Change the schema of the configuration file <code>StyleChecker.xml</code>. See
+<a href="https://github.com/maroontress/StyleChecker/blob/main/README.md">README.md</a> for details.</li>
 </ul>
 <h3>Fixed</h3>
 <ul>
-<li>Fix UnusedVariable and ThoughtlessName analyzers throwing <code>InvalidOperationException</code> with message 'Sequence contains no elements'.</li>
+<li>Fix UnusedVariable and ThoughtlessName analyzers throwing
+<code>InvalidOperationException</code> with message 'Sequence contains no elements'.</li>
 </ul>
 <hr>
 <h2>1.0.17 (2018-12-09)</h2>
@@ -381,7 +426,8 @@ of some analyzers.</p>
 </ul>
 <h3>Fixed</h3>
 <ul>
-<li>Fix the bugs of UnusedVariable and ThoughtlessName analyzer throwing an exception when they handle <code>catch</code> clauses without an exception variable.</li>
+<li>Fix the bugs of UnusedVariable and ThoughtlessName analyzer throwing an
+exception when they handle <code>catch</code> clauses without an exception variable.</li>
 </ul>
 <hr>
 <h2>1.0.16 (2018-11-30)</h2>
@@ -396,8 +442,10 @@ of some analyzers.</p>
 </ul>
 <h3>Fixed</h3>
 <ul>
-<li>Fix the bugs of UnnecessaryUsing and ThoughtlessName analyzer throwing an exception when used with verbatim identifiers.</li>
-<li>Fix ThoughtlessName analyzer to count parameters, out-var, pattern matching, <code>catch</code> and <code>foreach</code>.</li>
+<li>Fix the bugs of UnnecessaryUsing and ThoughtlessName analyzer throwing an
+exception when used with verbatim identifiers.</li>
+<li>Fix ThoughtlessName analyzer to count parameters, out-var, pattern matching,
+<code>catch</code> and <code>foreach</code>.</li>
 <li>Fix UnusedVariable analyzer to handle <code>catch</code> and <code>foreach</code>.</li>
 </ul>
 <hr>
@@ -414,8 +462,13 @@ of some analyzers.</p>
 <h3>New</h3>
 <ul>
 <li>Add NotDesignedForExtension analyzer.</li>
-<li>Fix DiscardingReturnValue analyzer to count more methods. The added methods are of immutable types (e.g. <code>string</code>, <code>Type</code>, <code>ImmutableArray</code> and so on). See <a href="https://github.com/maroontress/StyleChecker/blob/master/doc/rules/DiscardingReturnValue.md">the description</a> for details.</li>
-<li>Fix DiscardingReturnValue analyzer to count the methods whose return value is annotated with the <code>DoNotIgnoreAttribute</code>. Note that the attribute is provided with the NuGet package <a href="https://www.nuget.org/packages/StyleChecker.Annotations/">StyleChecker.<wbr>Annotations</a>.</li>
+<li>Fix DiscardingReturnValue analyzer to count more methods. The added methods
+are of immutable types (e.g. <code>string</code>, <code>Type</code>, <code>ImmutableArray</code> and so on).
+See <a href="https://github.com/maroontress/StyleChecker/blob/main/doc/rules/DiscardingReturnValue.md">the description</a> for details.</li>
+<li>Fix DiscardingReturnValue analyzer to count the methods whose return value is
+annotated with the <code>DoNotIgnoreAttribute</code>. Note that the attribute is provided
+with the NuGet package
+<a href="https://www.nuget.org/packages/StyleChecker.Annotations/">StyleChecker.<wbr>Annotations</a>.</li>
 </ul>
 <h3>Changed</h3>
 <ul>
@@ -428,15 +481,20 @@ of some analyzers.</p>
 </ul>
 <h3>Fixed</h3>
 <ul>
-<li>Fix AssignmentToParameter analyzer to report that a local variable passed <em>by value</em> if it is as follows:
+<li>Fix AssignmentToParameter analyzer to report that a local variable passed <em>by
+value</em> if it is as follows:
 <ul>
 <li>incremented or decremented with the unary operator (i.e. <code>++</code> or <code>--</code> )</li>
 <li>passed to a method as a <code>ref</code> or <code>out</code> parameter.</li>
 </ul>
 </li>
-<li>Fix UnusedVariable analyzer to handle a verbatim identifier, that is a variable name starting with the special character '<code>@</code>'.</li>
-<li>Fix IneffectiveReadByte analyzer throwing exceptions if the integer constant uses binary literals or digit separators, or if it cannot be represented with <code>int</code>.</li>
-<li>Fix Underscore CodeFix provider to handle the identifier that contains only an underscore character.</li>
+<li>Fix UnusedVariable analyzer to handle a verbatim identifier, that is a
+variable name starting with the special character '<code>@</code>'.</li>
+<li>Fix IneffectiveReadByte analyzer throwing exceptions if the integer constant
+uses binary literals or digit separators, or if it cannot be represented with
+<code>int</code>.</li>
+<li>Fix Underscore CodeFix provider to handle the identifier that contains only an
+underscore character.</li>
 </ul>
 <hr>
 <h2>1.0.14 (2018-11-03)</h2>
@@ -463,9 +521,13 @@ of some analyzers.</p>
 <li><code>virtual</code> empty methods</li>
 </ul>
 </li>
-<li>Fix UnusedVariable analyzer to ignore parameters annotated with <code>UnusedAttribute</code>. Note that the attribute is provided with the NuGet package <a href="https://www.nuget.org/packages/StyleChecker.Annotations/">StyleChecker.<wbr>Annotations</a>.</li>
-<li>Fix UnusedVariable analyzer to report the parameters annotated with <code>UnusedAttribute</code> if the annotation is not necessary.</li>
-<li>Fix Underscore, ThoughtlessName and UnusedVariable analyzers to count local variables declared with <code>catch</code> or <code>foreach</code>.</li>
+<li>Fix UnusedVariable analyzer to ignore parameters annotated with
+<code>UnusedAttribute</code>. Note that the attribute is provided with the NuGet package
+<a href="https://www.nuget.org/packages/StyleChecker.Annotations/">StyleChecker.<wbr>Annotations</a>.</li>
+<li>Fix UnusedVariable analyzer to report the parameters annotated with
+<code>UnusedAttribute</code> if the annotation is not necessary.</li>
+<li>Fix Underscore, ThoughtlessName and UnusedVariable analyzers to count local
+variables declared with <code>catch</code> or <code>foreach</code>.</li>
 </ul>
 <hr>
 <h2>1.0.13 (2018-10-31)</h2>
@@ -510,13 +572,18 @@ of some analyzers.</p>
 </ul>
 <h3>Changed</h3>
 <ul>
-<li>Fix UnnecessaryUsing CodeFix provider to keep <code>SyntaxTrivia</code>s around the <code>using</code> statement to be removed.</li>
-<li>Fix IneffectiveReadByte CodeFix provider to enclose the CodeFix with a block statement.</li>
+<li>Fix UnnecessaryUsing CodeFix provider to keep <code>SyntaxTrivia</code>s around the
+<code>using</code> statement to be removed.</li>
+<li>Fix IneffectiveReadByte CodeFix provider to enclose the CodeFix with a block
+statement.</li>
 </ul>
 <h3>Fixed</h3>
 <ul>
-<li>Fix IneffectiveReadByte analyzer to count parameters as well as local variables.</li>
-<li>Fix bugs that IneffectiveReadByte analyzer throws NPE when the variable declaration of the <code>for</code> statement has no initializer, when the <code>for</code> statement has no declaration, or when the <code>for</code> statement has no condition.</li>
+<li>Fix IneffectiveReadByte analyzer to count parameters as well as local
+variables.</li>
+<li>Fix bugs that IneffectiveReadByte analyzer throws NPE when the variable
+declaration of the <code>for</code> statement has no initializer, when the <code>for</code>
+statement has no declaration, or when the <code>for</code> statement has no condition.</li>
 </ul>
 <hr>
 <h2>1.0.10 (2018-10-21)</h2>
@@ -591,7 +658,8 @@ of some analyzers.</p>
 <h3>New</h3>
 <ul>
 <li>Add SingleTypeParameter analyzer.</li>
-<li>Add StaticGenericClass analyzer. Note that this analyzer is under development so that the CodeFix provider doesn't fix referencing codes.</li>
+<li>Add StaticGenericClass analyzer. Note that this analyzer is under development
+so that the CodeFix provider doesn't fix referencing codes.</li>
 <li>Add the document of the InvalidConfig analyzer.</li>
 </ul>
 <hr>
@@ -608,7 +676,8 @@ of some analyzers.</p>
 <h3>New</h3>
 <ul>
 <li>Add UnusedUsing analyzer again.</li>
-<li>Add InvalidConfig analyzer. It reports errors of the configuration file <code>StyleChecker.xml</code>.</li>
+<li>Add InvalidConfig analyzer. It reports errors of the configuration file
+<code>StyleChecker.xml</code>.</li>
 </ul>
 <h3>Changed</h3>
 <ul>
@@ -616,11 +685,17 @@ of some analyzers.</p>
 </ul>
 <h3>Fixed</h3>
 <ul>
-<li>Fix the following warning, with changing the target framework to <code>netstandard1.3</code>.</li>
-</ul>
+<li>
+<p>Fix the following warning, with changing the target framework to
+<code>netstandard1.3</code>.</p>
 <blockquote>
-<p>... depends on 'netstandard, Version=2.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51' but it was not found. Analyzers may not run correctly unless the missing assembly is added as an analyzer reference as well.</p>
+<p>... depends on 'netstandard, Version=2.0.0.0, Culture=neutral,
+PublicKeyToken=cc7b13ffcd2ddd51' but it was not found. Analyzers may not run
+correctly unless the missing assembly is added as an analyzer reference as
+well.</p>
 </blockquote>
+</li>
+</ul>
 <hr>
 <h2>1.0.5 (2018-09-02)</h2>
 <p>Remove UnusedUsing analyzer.</p>
@@ -659,7 +734,8 @@ of some analyzers.</p>
 </ul>
 <h3>Changed</h3>
 <ul>
-<li>Fix Underscore analyzer to count Out Variable Declarations, local functions, and parameters.</li>
+<li>Fix Underscore analyzer to count Out Variable Declarations, local functions,
+and parameters.</li>
 </ul>
 <h3>Fixed</h3>
 <ul>
@@ -678,13 +754,18 @@ of some analyzers.</p>
 </ul>
 <h3>New</h3>
 <ul>
-<li>Add NoSpaceBeforeSemicolon and SpaceAfterSemicolon analyzers. They point out spacing around a semicolon, especially in <code>for</code> statements. The style <code>for (;;)</code> of an infinite <code>for</code> loop is allowed. Note that this rule is intended to replace <a href="https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/documentation/SA1002.md">SA1002</a>.</li>
+<li>Add NoSpaceBeforeSemicolon and SpaceAfterSemicolon analyzers. They point out
+spacing around a semicolon, especially in <code>for</code> statements. The style
+<code>for (;;)</code> of an infinite <code>for</code> loop is allowed. Note that this rule is
+intended to replace <a href="https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/documentation/SA1002.md">SA1002</a>.</li>
 <li>Add documents like README, COPYRIGHT, and so on.</li>
-<li>Add a way to configure analyzers with the file <code>StyleChecker.xml</code> in the project root.</li>
+<li>Add a way to configure analyzers with the file <code>StyleChecker.xml</code> in the
+project root.</li>
 </ul>
 <h3>Changed</h3>
 <ul>
-<li>Fix the LongLine analyzer to read the maximum line length from the file <code>StyleChecker.xml</code>.</li>
+<li>Fix the LongLine analyzer to read the maximum line length from the file
+<code>StyleChecker.xml</code>.</li>
 </ul>
 <h3>Changed</h3>
 <ul>
@@ -704,7 +785,9 @@ the file <code>StyleChecker.xml</code>.</li>
 </ul>
 <h3>New</h3>
 <ul>
-<li>Add the PostIncrement analyzer (with code fix provider). It points out post-increment/decrement operators (e.g. <code>i++</code>) if they can be replaced with pre-increment/decrement ones.</li>
+<li>Add the PostIncrement analyzer (with code fix provider). It points out
+post-increment/decrement operators (e.g. <code>i++</code>) if they can be replaced with
+pre-increment/decrement ones.</li>
 </ul>
 <hr>
 <h2>1.0.1 (2018-07-24)</h2>
@@ -734,8 +817,10 @@ the file <code>StyleChecker.xml</code>.</li>
 </ul>
 <h3>New</h3>
 <ul>
-<li>Add the LongLine analyzer. It points out the line equal or over 80 columns. Note that it ignores multi-line comments and XML documentation comments.</li>
-<li>Add the Underscore analyzer (with code fix provider). It points out an underscore character included in the identifier of local variables.</li>
+<li>Add the LongLine analyzer. It points out the line equal or over 80 columns.
+Note that it ignores multi-line comments and XML documentation comments.</li>
+<li>Add the Underscore analyzer (with code fix provider). It points out an
+underscore character included in the identifier of local variables.</li>
 </ul>
           </main>
         </section>
