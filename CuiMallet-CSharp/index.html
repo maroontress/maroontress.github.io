@@ -34,25 +34,24 @@
           <main class="content">
 <div class="project-logo">CuiMallet.CSharp</div>
 <div id="toc-level" data-values="H2,H3"></div>
-<p>The CuiMallet is a .NET library for making Command Line Interface.
-It depends on .NET Standard 2.0.</p>
+<p>CuiMallet is a .NET library that makes command-line interfaces. It depends on
+.NET Standard 2.1.</p>
 <h2>Get started</h2>
-<p>CuiMallet.CSharp is available as
-<a href="https://www.nuget.org/packages/Maroontress.CuiMallet/">the <img src="https://maroontress.github.io/images/NuGet-logo.png" alt="NuGet-logo"> NuGet package</a>.</p>
+<p>CuiMallet.CSharp is available as the
+<a href="https://www.nuget.org/packages/Maroontress.CuiMallet/"><img src="https://maroontress.github.io/images/NuGet-logo.png" alt="NuGet-logo" /> NuGet package</a>.</p>
 <h2>How to parse command-line options</h2>
-<p>CuiMallet makes it easy to implement the conventions
-which POSIX recommends for command-line options [<a href="#ref1">1</a>]
-and to which GNU adds long options [<a href="#ref2">2</a>].</p>
+<p>CuiMallet makes it easy to implement the conventions for command-line options
+that POSIX recommends [<a href="#ref1">1</a>] and to which GNU adds long options
+[<a href="#ref2">2</a>].</p>
 <h3>Overview</h3>
 <p>First, create an <a href="https://maroontress.github.io/CuiMallet-CSharp/api/latest/html/Maroontress.Cui.OptionSchema.html"><code>OptionSchema</code></a> object as follows:</p>
 <pre><code class="language-csharp">var schema = Options.NewSchema();
 </code></pre>
-<p>And then, add the definition of the command-line options to the
-<code>OptionSchema</code> object.
-For example, to add the <code>--help</code> option, which has the shortened form
+<p>Then, add the definition of the command-line options to the <code>OptionSchema</code>
+object. For example, to add the <code>--help</code> option, which has the shortened form
 <code>-h</code>, no argument, and the description <code>&quot;Show help message&quot;</code> for its help
-message, use the <code>Add(string, char?, string)</code> method against the
-<code>OptionSchema</code> object as follows:</p>
+message, use the <code>Add(string, char?, string)</code> method against the <code>OptionSchema</code>
+object as follows:</p>
 <pre><code class="language-csharp">schema = schema.Add(&quot;help&quot;, 'h', &quot;Show help message&quot;);
 </code></pre>
 <p>Note that the <code>OptionSchema</code> object is immutable, so the <code>Add</code> method returns
@@ -83,18 +82,18 @@ entry point of a program, as follows:</p>
     }
 }
 </code></pre>
+<blockquote>
+<p><a href="https://dotnetfiddle.net/893GBp">Run</a></p>
+</blockquote>
 <p>The <code>Parse(string[])</code> method returns the <a href="https://maroontress.github.io/CuiMallet-CSharp/api/latest/html/Maroontress.Cui.Setting.html"><code>Setting</code></a> object,
-which contains the options and the arguments.
-The <code>options</code> represent the parsed options in order of appearance.
-Each option is given as an <a href="https://maroontress.github.io/CuiMallet-CSharp/api/latest/html/Maroontress.Cui.Option.html"><code>Option</code></a> object,
-and the type of the <code>options</code> is <code>IEnumerable&lt;Option&gt;</code>.
-Meanwhile, the <code>arguments</code> represent the remaining non-option
-arguments. The type of the <code>arguments</code> is <code>IEnumerable&lt;string&gt;</code>.</p>
-<p>In addition, the <code>Parse(string[])</code> method must be in the <code>try</code>
-block followed by the <code>catch</code> clause
-handling an <code>OptionParsingException</code>
-because it may throw the exception when the specified option is
-not valid for the schema.</p>
+which contains the options and the arguments. The <code>options</code> represent the parsed
+options in order of appearance. Each option is given as an
+<a href="https://maroontress.github.io/CuiMallet-CSharp/api/latest/html/Maroontress.Cui.Option.html"><code>Option</code></a> object, and the type of the <code>options</code> is
+<code>IEnumerable&lt;Option&gt;</code>. Meanwhile, the <code>arguments</code> represent the remaining
+non-option arguments. The type of the <code>arguments</code> is <code>IEnumerable&lt;string&gt;</code>.</p>
+<p>In addition, the <code>Parse(string[])</code> method must be in the <code>try</code> block followed by
+the <code>catch</code> clause handling an <code>OptionParsingException</code> because it may throw the
+exception when the specified option is not valid for the schema.</p>
 <h3>Options and non-option arguments</h3>
 <p>Here, there is a relationship between the options and the non-option arguments
 illustrated as follows:</p>
@@ -104,85 +103,71 @@ illustrated as follows:</p>
 <ul>
 <li>
 <p>A component of <em>Options...</em> is a list separated with whitespace characters,
-which contains a string starting with a hyphen (<code>-</code>) character and
-consisting of two or more characters (e.g., <code>--help</code>, <code>-h</code>).
-The string starting with a double hyphen (<code>--</code>) is called an <em>option</em>,
-and the string after the double hyphen is called the <em>option name</em>.
-The option name consists of alphanumeric characters and hyphens.
-Meanwhile, the string consisting of a single character preceded with
-a single hyphen (<code>-</code>) is called a <em>shortened-form</em> option, and the character
-after the hyphen is called a <em>short name</em> of the option.
-The short names are single alphanumeric characters.</p>
+which contains a string starting with a hyphen (<code>-</code>) character and consisting
+of two or more characters (e.g., <code>--help</code>, <code>-h</code>). The string starting with a
+double hyphen (<code>--</code>) is called an <em>option</em>, and the string after the double
+hyphen is called the <em>option name</em>. The option name consists of alphanumeric
+characters and hyphens. Meanwhile, the string consisting of a single character
+preceded by a single hyphen (<code>-</code>) is called a <em>shortened-form</em> option, and the
+character after the hyphen is called a <em>short name</em> of the option. The short
+names are single alphanumeric characters.</p>
 </li>
 <li>
-<p>A component of <em>Arguments...</em> is a list of strings separated with
-whitespace characters.</p>
+<p>A component of <em>Arguments...</em> is a list of strings separated with whitespace
+characters.</p>
 </li>
 </ul>
-<p>Each component enclosed in square brackets can be omitted.
-However, a double hyphen (<code>--</code>) must be placed between <em>Options...</em> and
-<em>Arguments...</em> only if the first element of <em>Arguments...</em>
-begins with a hyphen character and is not a hyphen exactly.</p>
-<p>Note that the option name in CuiMallet corresponds to the long option name
-in GNU <code>getopt_long</code> [<a href="#ref3">3</a>], and the short name corresponds to
-the option name in POSIX <code>getopt</code> [<a href="#ref4">4</a>].</p>
+<p>Each component enclosed in square brackets can be omitted. However, a double
+hyphen (<code>--</code>) must be placed between <em>Options...</em> and <em>Arguments...</em> only if the
+first element of <em>Arguments...</em> begins with a hyphen character and is not a
+hyphen exactly.</p>
+<p>Note that the option name in CuiMallet corresponds to the long option name in
+GNU <code>getopt_long</code> [<a href="#ref3">3</a>], and the short name corresponds to the option
+name in POSIX <code>getopt</code> [<a href="#ref4">4</a>].</p>
 <h3>An option with an option argument</h3>
-<p>There are the two types of options:
-the options that can't have an option argument
-(e.g., <code>--help</code> as described above)
-and that must have a single option argument.
-For example, suppose the <code>--file</code> option,
-which has the shortened form <code>-f</code>,
-requires an option argument.
-Then its argument must be supplied as any one of the following forms:</p>
-<blockquote>
-<p><code>--file ARGUMENT</code></p>
-</blockquote>
-<blockquote>
-<p><code>--file=ARGUMENT</code></p>
-</blockquote>
-<blockquote>
-<p><code>-f ARGUMENT</code></p>
-</blockquote>
-<blockquote>
-<p><code>-fARGUMENT</code></p>
-</blockquote>
-<p>where you must replace the <code>ARGUMENT</code> with the actual option argument.</p>
-<p>Thus, <code>--file index.html</code>, <code>--file=infex.html</code>, <code>-f index.html</code>,
-and <code>-findex.html</code> are equivalent.
-However, if <code>ARGUMENT</code>
-must be a zero-length string (that is, an empty string),
-you cannot use the <code>-fARGUMENT</code> form.</p>
-<p>Note that, in general, there are two types in the options that have an option
-argument: the required argument option and the optional argument option.
-The former cannot omit an option argument, but the latter can omit it.
-However, CuiMallet has not yet implemented the latter.</p>
+<p>There are two types of options: the options that can't have an option argument
+(e.g., <code>--help</code> as described above), and that must have a single-option argument.
+For example, suppose the <code>--file</code> option, which has the shortened form <code>-f</code>,
+requires an option argument. Then its argument must be supplied in any one of
+the following forms:</p>
+<ul>
+<li><code>--file ARGUMENT</code></li>
+<li><code>--file=ARGUMENT</code></li>
+<li><code>-f ARGUMENT</code></li>
+<li><code>-fARGUMENT</code></li>
+</ul>
+<p>Where you must replace the <code>ARGUMENT</code> with the actual option argument.</p>
+<p>Thus, <code>--file index.html</code>, <code>--file=infex.html</code>, <code>-f index.html</code>, and
+<code>-findex.html</code> are equivalent. However, if the <code>ARGUMENT</code> must be a zero-length
+string (i.e., an empty string), you cannot use the <code>-fARGUMENT</code> form.</p>
+<p>Note that, in general, two types of options have an option argument: the
+required argument option and the optional argument option. The former cannot
+omit an option argument, but the latter can. However, CuiMallet has not yet
+implemented the latter.</p>
 <h3>Concatenating the shortened-form options</h3>
-<p>Specifying <code>-a -b -c</code> and <code>-abc</code> are equivalent in meaning.
-The concatenated options, except the last one, can't have an option argument.
-Only the last of them can have an option argument as follows:</p>
+<p>Specifying <code>-a -b -c</code> and <code>-abc</code> are equivalent. The concatenated options,
+except the last one, can't have an option argument. Only the last one can have
+an option argument as follows:</p>
 <blockquote>
 <p><code>-abcf ARGUMENT</code> (or <code>-abcfARGUMENT</code>)</p>
 </blockquote>
-<p>where the <code>ARGUMENT</code> is of the <code>-f</code> option, and <code>-a</code>, <code>-b</code>, and <code>-c</code>
+<p>Where the <code>ARGUMENT</code> is of the <code>-f</code> option, and <code>-a</code>, <code>-b</code>, and <code>-c</code>
 options cannot have an option argument.</p>
 <h3>Abbreviating an option name</h3>
-<p>You can abbreviate the option names as long as the abbreviations are unique.
-For example, suppose there are only three options in the schema: <code>--help</code>,
+<p>You can abbreviate the option names as long as the abbreviations are unique. For
+example, suppose there are only three options in the schema: <code>--help</code>,
 <code>--verbose</code>, and <code>--version</code>. Specifying <code>--h</code>, <code>--he</code>, <code>--hel</code>, and <code>--help</code>
 are equivalent. Likewise, <code>--verb --vers</code> is equivalent to
-<code>--verbose --version</code>. However, specifying <code>--ver</code> cause an error
-because there are two options starting with it.</p>
+<code>--verbose --version</code>. However, specifying <code>--ver</code> causes an error because two
+options start with it.</p>
 <h3>Adding a required argument option to the schema</h3>
-<p>To add the <code>--file</code> option (as described above) to the schema,
-use the
-<code>Add(string, char?, string, string)</code>
-method against the schema object as follows:</p>
+<p>To add the <code>--file</code> option (as described above) to the schema, use the
+<code>Add(string, char?, string, string)</code> method against the schema object as
+follows:</p>
 <pre><code class="language-csharp">schema = schema.Add(&quot;file&quot;, 'f', &quot;FILE&quot;, &quot;Specify an input file&quot;);
 </code></pre>
-<p>To get the value of the actual option argument,
-use a <a href="https://maroontress.github.io/CuiMallet-CSharp/api/latest/html/Maroontress.Cui.RequiredArgumentOption.html"><code>RequiredArgumentOption</code></a>
-object as follows:</p>
+<p>To get the value of the actual option argument, use a
+<a href="https://maroontress.github.io/CuiMallet-CSharp/api/latest/html/Maroontress.Cui.RequiredArgumentOption.html"><code>RequiredArgumentOption</code></a> object as follows:</p>
 <pre><code class="language-csharp">var options = setting.Options;
 foreach (o in options)
 {
@@ -194,17 +179,17 @@ foreach (o in options)
     ⋮
 }
 </code></pre>
-<p>Thus, the <code>ArgumentValue</code> property of a <code>RequiredArgumentOption</code> object
-provides the value of the option argument.</p>
+<p>Thus, the <code>ArgumentValue</code> property of a <code>RequiredArgumentOption</code> object provides
+the value of the option argument.</p>
 <h3>Options with an option argument specified two or more times</h3>
-<p>You can specify the same option two or more times.
-For example, suppose the option <code>-f</code>, as noted above,
-which takes an argument, is specified on the command line as follows:</p>
+<p>You can specify the same option two or more times. For example, suppose the
+option <code>-f</code>, as noted above, which takes an argument, is specified on the
+command line as follows:</p>
 <blockquote>
 <p><code>-f foo -f bar -f baz</code></p>
 </blockquote>
 <p>In such cases, the <code>ArgumentValues</code> property of a <code>RequiredArgumentOption</code>
-object is useful. The following code shows how to use the property.</p>
+object is useful. The following code shows how to use the property:</p>
 <pre><code class="language-csharp">var options = setting.Options;
 foreach (o in options)
 {
@@ -216,27 +201,26 @@ foreach (o in options)
     }
 }
 </code></pre>
-<p>The <code>ArgumentValues</code> property returns
-the values of all the option arguments corresponding to the same option
-in occurrence order.
-Note that they do not contain the option arguments of the options
-specified after it.
-Thus, the output to the console is as follows:</p>
+<blockquote>
+<p><a href="https://dotnetfiddle.net/tbeoDf">Run</a></p>
+</blockquote>
+<p>The <code>ArgumentValues</code> property returns the values of all the option arguments
+corresponding to the same option in occurrence order. Note that they do not
+contain the option arguments of the options specified after it. Thus, the output
+to the console is as follows:</p>
 <pre><code class="language-plaintext">foo foo
 bar foo,bar
 baz foo,bar,baz
 </code></pre>
 <h3>Callback at parsing a command-line option</h3>
-<p>You can also specify a callback function that takes the
-<code>Option</code> or <code>RequiredArgumentOption</code> object as the argument when adding
-the definition of the command-line options to the <code>OptionSchema</code>
-object. From invoking the <code>Parse(string[])</code> method of the
-<code>OptionSchema</code> object until returning, the function is called to provide
-the <code>Option</code> or <code>RequiredArgumentOption</code> object
+<p>You can also specify a callback function that takes the <code>Option</code> or
+<code>RequiredArgumentOption</code> object as the argument when adding the definition of
+the command-line options to the <code>OptionSchema</code> object. From invoking the
+<code>Parse(string[])</code> method of the <code>OptionSchema</code> object until returning, the
+function is called to provide the <code>Option</code> or <code>RequiredArgumentOption</code> object
 each time the object is created.</p>
-<p>To add the option, which has no option argument, with a callback function
-to the <code>OptionSchema</code> object, use the
-<code>Add(string, char?, string, Action&lt;Option&gt;)</code>
+<p>To add the option, which has no option argument, with a callback function to the
+<code>OptionSchema</code> object, use the <code>Add(string, char?, string, Action&lt;Option&gt;)</code>
 method as follows:</p>
 <pre><code class="language-csharp">// Adds the definition of an Option with the callback function.
 schema = schema.Add(
@@ -249,11 +233,10 @@ schema = schema.Add(
         ⋮
     });
 </code></pre>
-<p>In the same way,
-to add the option, which has an option argument, with a callback function
-to the <code>OptionSchema</code> object, use the
-<code>Add(string, char?, string, string, Action&lt;RequiredArgumentOption&gt;)</code>
-method as follows:</p>
+<p>In the same way, to add the option, which has an option argument, with a
+callback function to the <code>OptionSchema</code> object, use the
+<code>Add(string, char?, string, string, Action&lt;RequiredArgumentOption&gt;)</code> method as
+follows:</p>
 <pre><code class="language-csharp">// Adds the definition of a RequiredArgumentOption with the callback
 // function.
 schema = schema.Add(
@@ -268,13 +251,13 @@ schema = schema.Add(
     });
 </code></pre>
 <h3>Getting the help message</h3>
-<p>You can generate the help message of command-line options with
-<code>OptionSchema</code> object. To get the help message,
-use the <code>GetHelpMessage()</code> method against the <code>schema</code> as follows:</p>
+<p>You can generate the help message of command-line options with the
+<code>OptionSchema</code> object. To get the help message, use the <code>GetHelpMessage()</code>
+method against the <code>schema</code> as follows:</p>
 <pre><code class="language-csharp">public static void Main(string[] args)
 {
     var schema = Options.NewSchema()
-        .Add(&quot;file&quot;, 'f', &quot;FILE&quot;, &quot;Specify an input file&quot;);
+        .Add(&quot;file&quot;, 'f', &quot;FILE&quot;, &quot;Specify an input file&quot;)
         .Add(&quot;help&quot;, 'h', &quot;Show help message&quot;);
 
     PrintUsage(schema, Console.Out);
@@ -295,17 +278,17 @@ private static void PrintUsage(OptionSchema schema, TextWriter output)
     }
 }
 </code></pre>
-<p>The type of the value the method returns is <code>IEnumerable&lt;string&gt;</code>.
-The output to the console is as follows:</p>
+<p>The type of the value the method returns is <code>IEnumerable&lt;string&gt;</code>. The output to
+the console is as follows:</p>
 <pre><code class="language-plaintext">usage: command [Options...] [--] Arguments...
 
 Options are:
 -f, --file FILE     Specify an input file
 -h, --help          Show help message
 </code></pre>
-<p>If the description has to be composed of two or more lines,
-you can split it into them by inserting a line feed character (<code>'\n'</code>)
-as a line separator. See the following example:</p>
+<p>If the description has to be composed of two or more lines, you can split it
+into them by inserting a line feed character (<code>'\n'</code>) as a line separator. See
+the following example:</p>
 <pre><code class="language-csharp">var schema = Options.NewSchema()
     .Add(
         &quot;file&quot;,
@@ -322,33 +305,28 @@ as a line separator. See the following example:</p>
                     The FILE can be - for standard input
 -h, --help          Show help message
 </code></pre>
+<blockquote>
+<p><a href="https://dotnetfiddle.net/sfEknT">Run</a></p>
+</blockquote>
 <p>Note that the <code>GetHelpMessage()</code> method sorts options by name.</p>
 <h3>Handling an exception at parsing command-line options</h3>
-<p>The <code>Parse(string[])</code> method, as mentioned earlier,
-throws an <code>OptionParsingException</code>
-when the specified argument to the schema is invalid.
+<p>The <code>Parse(string[])</code> method, as mentioned earlier, throws an
+<code>OptionParsingException</code> when the specified argument to the schema is invalid.
 Specific cases are as follows:</p>
 <blockquote>
-<p><strong>Unknown option</strong><br>
+<p><strong>Unknown option</strong><br />
 The specified option was not found in the schema.</p>
-</blockquote>
-<blockquote>
-<p><strong>Missing an argument</strong><br>
+<p><strong>Missing an argument</strong><br />
 The specified option requires an argument, but no argument was given.</p>
-</blockquote>
-<blockquote>
-<p><strong>Unable to get an argument</strong><br>
+<p><strong>Unable to get an argument</strong><br />
 The specified option takes no argument, but the argument was given.</p>
-</blockquote>
-<blockquote>
-<p><strong>Ambiguous option</strong><br>
+<p><strong>Ambiguous option</strong><br />
 The name of the specified option is abbreviated,
 but the abbreviations were not unique.</p>
 </blockquote>
-<p>In most cases, all you need in the catch clause is
-to write the message of the exception to the standard error output,
-print the usage, and then exit with a non-zero status code.
-The following code shows a typical example:</p>
+<p>In most cases, all you need in the catch clause is to write the message of the
+exception to the standard error output, print the usage, and then exit with a
+non-zero status code. The following code shows a typical example:</p>
 <pre><code class="language-csharp">try
 {
     var setting = schema.Parse(args);
@@ -362,16 +340,17 @@ catch (OptionParsingException e)
     Environment.Exit(1);
 }
 </code></pre>
-<p>When specifying a callback function for a required argument option,
-the value of the option argument often has to be validated in the function.
-In that case, you can throw an <code>OptionParsingException</code>
-when the validation fails so that the catch clause noted above handles
-the exception as well as the other <code>OptionParsingException</code>s.</p>
-<p>For example, suppose the <code>--count</code> option,
-which requires the option argument representing a positive integer.
-You can parse the command-line options to get the value of the
-option argument, as follows:</p>
-<pre><code class="language-csharp">private static int Count { get; set; } = DefaultCount;
+<p>When specifying a callback function for a required argument option, the value of
+the option argument often has to be validated in the function. In that case, you
+can throw an <code>OptionParsingException</code> when the validation fails so that the
+catch clause noted above handles the exception as well as the other
+<code>OptionParsingException</code>s.</p>
+<p>For example, suppose the <code>--count</code> option, which requires the option argument
+representing a positive integer. You can parse the command-line options to get
+the value of the option argument, as follows:</p>
+<pre><code class="language-csharp">private const int DefaultCount = 3;
+
+private static int Count { get; set; } = DefaultCount;
 
 private static void ParseCount(RequiredArgumentOption o)
 {
@@ -407,13 +386,19 @@ public static void Main(string[] args)
         PrintUsage(schema, output);
         Environment.Exit(1);
     }
+    ⋮
 </code></pre>
-<p>The <code>Count</code> property returns 10
-after parsing <code>args</code> containing <code>--count=10</code>.
-But if replacing it with <code>--count=abc</code>,
-you have the output to the console as follows:</p>
+<blockquote>
+<p><a href="https://dotnetfiddle.net/rSR7Df">Run <code>--count=10</code></a></p>
+</blockquote>
+<p>The <code>Count</code> property returns 10 after parsing <code>args</code> containing <code>--count=10</code>.
+But if replacing it with <code>--count=abc</code>, you have the output to the console as
+follows:</p>
 <pre><code class="language-plaintext">option '--count=abc': the value 'abc' is invalid for NUM
 </code></pre>
+<blockquote>
+<p><a href="https://dotnetfiddle.net/L1BCNi">Run <code>--count=abc</code></a></p>
+</blockquote>
 <h2>Documents</h2>
 <ul>
 <li><a href="https://github.com/maroontress/CuiMallet.CSharp/blob/master/README.md">README</a></li>
@@ -422,7 +407,7 @@ you have the output to the console as follows:</p>
 </ul>
 <h2>How to contribute</h2>
 <p>Please send us pull requests or issues from
-<a href="https://github.com/maroontress/CuiMallet.CSharp">the <img src="https://maroontress.github.io/images/GitHub-logo.png" alt="GitHub icon"> GitHub repository</a>.</p>
+<a href="https://github.com/maroontress/CuiMallet.CSharp">the <img src="https://maroontress.github.io/images/GitHub-logo.png" alt="GitHub icon" /> GitHub repository</a>.</p>
 <h2>References</h2>
 <p><a name="ref1"></a>
 [1] <a href="https://pubs.opengroup.org/onlinepubs/9699919799/basedefs/V1_chap12.html">POSIX, <em>Utility Conventions</em></a></p>
