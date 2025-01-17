@@ -36,37 +36,36 @@
 <div id="toc-level" data-values="H2,H3"></div>
 <h1>StinkyBooleanExpression</h1>
 <div class="horizontal-scroll">
-<p><img src="https://maroontress.github.io/StyleChecker/images/StinkyBooleanExpression.png" alt="StinkyBooleanExpression"></p>
+<p><img src="https://maroontress.github.io/StyleChecker/images/StinkyBooleanExpression.png" alt="StinkyBooleanExpression" /></p>
 </div>
 <h2>Summary</h2>
-<p>Do not use the conditional operator (<code>?:</code>)
-where either the second or third operand is a <code>bool</code> literal
-(<code>true</code> or <code>false</code>), resulting in <code>bool</code> values.</p>
+<p>Do not use the conditional operator (<code>?:</code>) where either the second or third
+operand is a <code>bool</code> literal (<code>true</code> or <code>false</code>), resulting in <code>bool</code> values.</p>
 <h2>Default severity</h2>
 <p>Warning</p>
 <h2>Description</h2>
-<p>There are some stinky boolean expressions with a conditional
-operator that can be replaced with the <code>&amp;&amp;</code> (conditional logical
-AND) or <code>||</code> (conditional logical OR) operator, as follows:</p>
+<p>There are some stinky boolean expressions with a conditional operator that can
+be replaced with the <code>&amp;&amp;</code> (conditional logical AND) or <code>||</code> (conditional logical
+OR) operator, as follows:</p>
 <pre><code class="language-csharp">(b1 ? b2 : false)
 (b1 ? true : b2)
 </code></pre>
-<p>where the type of <code>b1</code> and <code>b2</code> is <code>bool</code>. It is possible to
-replace the former conditional expression with <code>b1 &amp;&amp; b2</code>, the
-latter with <code>b1 || b2</code>.</p>
+<p>where the type of <code>b1</code> and <code>b2</code> is <code>bool</code>. It is possible to replace the former
+conditional expression with <code>b1 &amp;&amp; b2</code>, the latter with <code>b1 || b2</code>.</p>
+<h3>Throw expression</h3>
+<p>Conditional expressions where the second or third operand is a
+<a href="https://github.com/dotnet/csharplang/blob/main/proposals/csharp-7.0/throw-expression.md"><em>throw expression</em></a> are not covered, as follows:</p>
+<pre><code class="language-csharp">(b ? true : throw new Exception(…))
+</code></pre>
 <h3>Remarks</h3>
-<p>The diagnostics IDE0057 providing
-<em>Simplify conditional expressions refactoring</em>,
-which is available with
-<a href="https://docs.microsoft.com/en-us/visualstudio/releases/2019/release-notes-preview#16.6.0-pre.2.1">Visual Studio 2019 version 16.6 preview
-2</a>,
-includes the same feature as this analyzer.</p>
+<p>The diagnostics IDE0057 providing <em>Simplify conditional expressions
+refactoring</em>, which is available with <a href="https://docs.microsoft.com/en-us/visualstudio/releases/2019/release-notes-preview#16.6.0-pre.2.1">Visual Studio 2019 version 16.6 preview
+2</a>, includes the same feature as this
+analyzer.</p>
 <h2>Code fix</h2>
-<p>The code fix provides an option replacing the conditional
-operator with the <code>&amp;&amp;</code> or <code>||</code> operator.
-However, if the diagnostics IDE0057 provides an option
-&quot;Simplify conditional expression&quot; with Visual Studio,
-you should use it.</p>
+<p>The code fix provides an option replacing the conditional operator with the <code>&amp;&amp;</code>
+or <code>||</code> operator. However, if the diagnostics IDE0057 provides an option
+&quot;Simplify conditional expression&quot; with Visual Studio, you should use it.</p>
 <h2>Example</h2>
 <h3>Diagnostic</h3>
 <pre><code class="language-csharp">_ = (b1 ? b2 : false);
@@ -144,6 +143,9 @@ _ = (!(b1) || (b2));
     </li>
     <li>
       <a href="NoSpaceBeforeBrace.html">No<wbr>Space<wbr>Before<wbr>Brace</a>
+    </li>
+    <li>
+      <a href="NoUsingDeclaration.html">No<wbr>Using<wbr>Declaration</a>
     </li>
     <li>
       <a href="NotDesignedForExtension.html">Not<wbr>Designed<wbr>For<wbr>Extension</a>

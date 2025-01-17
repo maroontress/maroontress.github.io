@@ -36,7 +36,7 @@
 <div id="toc-level" data-values="H2,H3"></div>
 <h1>NoDocumentation</h1>
 <div class="horizontal-scroll">
-<p><img src="https://maroontress.github.io/StyleChecker/images/NoDocumentation.png" alt="NoDocumentation"></p>
+<p><img src="https://maroontress.github.io/StyleChecker/images/NoDocumentation.png" alt="NoDocumentation" /></p>
 </div>
 <h2>Summary</h2>
 <p>A replacement for <a href="https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/compiler-messages/cs1591">CS1591</a> (Missing XML comment for
@@ -68,6 +68,7 @@ public void Foo()
 }
 </code></pre>
 <p>To do so, edit <code>StyleChecker.xml</code> file as follows:</p>
+<!-- markdownlint-disable MD013 -->
 <pre><code class="language-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;
 &lt;config xmlns=&quot;https://maroontress.com/StyleChecker/config.v1&quot;&gt;
   ⋮
@@ -77,6 +78,7 @@ public void Foo()
   ⋮
 &lt;/config&gt;
 </code></pre>
+<!-- markdownlint-enable MD013 -->
 <p>Further more, for example, if you would like ignore test classes wholly
 (namely, ignore them and all they contain) like the following code:</p>
 <pre><code class="language-csharp">[TestClass]
@@ -162,6 +164,9 @@ public sealed class FooTest
     </li>
     <li>
       <a href="NoSpaceBeforeBrace.html">No<wbr>Space<wbr>Before<wbr>Brace</a>
+    </li>
+    <li>
+      <a href="NoUsingDeclaration.html">No<wbr>Using<wbr>Declaration</a>
     </li>
     <li>
       <a href="NotDesignedForExtension.html">Not<wbr>Designed<wbr>For<wbr>Extension</a>

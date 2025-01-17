@@ -289,6 +289,7 @@ https://maroontress.github.io/StyleChecker/diagnostics/NoSingleSpaceAfterTripleS
 https://maroontress.github.io/StyleChecker/diagnostics/NoSpaceAfterBrace.html
 https://maroontress.github.io/StyleChecker/diagnostics/NoSpaceAfterSemicolon.html
 https://maroontress.github.io/StyleChecker/diagnostics/NoSpaceBeforeBrace.html
+https://maroontress.github.io/StyleChecker/diagnostics/NoUsingDeclaration.html
 https://maroontress.github.io/StyleChecker/diagnostics/NotDesignedForExtension.html
 https://maroontress.github.io/StyleChecker/diagnostics/NotOneShotInitialization.html
 https://maroontress.github.io/StyleChecker/diagnostics/PostIncrement.html

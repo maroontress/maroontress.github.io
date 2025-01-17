@@ -36,7 +36,7 @@
 <div id="toc-level" data-values="H2,H3"></div>
 <h1>TypeClassParameter</h1>
 <div class="horizontal-scroll">
-<p><img src="https://maroontress.github.io/StyleChecker/images/TypeClassParameter.png" alt="TypeClassParameter"></p>
+<p><img src="https://maroontress.github.io/StyleChecker/images/TypeClassParameter.png" alt="TypeClassParameter" /></p>
 </div>
 <h2>Summary</h2>
 <p>Replace the parameter of methods or local functions with a type parameter
@@ -80,7 +80,7 @@ invokes the original version of <code>Print</code> with an argument other than t
 <code>typeof()</code> operator whose operand is not a <code>static</code> class, because it is
 unable to replace the parameter <code>type</code> with a type parameter <code>T</code>.</p>
 <blockquote>
-<h3>Restriction</h3>
+<p>🚧 <strong>Restriction</strong></p>
 <p>This analyzer can only diagnose local functions and private methods
 with the Visual Studio 2019 editor.
 To diagnose non-private methods with Visual Studio 2019,
@@ -116,7 +116,7 @@ public void Invoke()
 }
 </code></pre>
 <blockquote>
-<h3>Remarks</h3>
+<p>🚨 <strong>Remarks</strong></p>
 <p>If a type has both <code>DoSomething&lt;T&gt;()</code> and <code>DoSomething(Type)</code> methods
 at the same time, the code fix provider renames <code>DoSomething&lt;T&gt;</code>
 (to <code>DoSomething_0&lt;T&gt;</code>, for example) at first, and then replaces
@@ -184,6 +184,9 @@ at the same time, the code fix provider renames <code>DoSomething&lt;T&gt;</code
     </li>
     <li>
       <a href="NoSpaceBeforeBrace.html">No<wbr>Space<wbr>Before<wbr>Brace</a>
+    </li>
+    <li>
+      <a href="NoUsingDeclaration.html">No<wbr>Using<wbr>Declaration</a>
     </li>
     <li>
       <a href="NotDesignedForExtension.html">Not<wbr>Designed<wbr>For<wbr>Extension</a>
