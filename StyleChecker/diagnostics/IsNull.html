@@ -36,7 +36,7 @@
 <div id="toc-level" data-values="H2,H3"></div>
 <h1>IsNull</h1>
 <div class="horizontal-scroll">
-<p><img src="https://maroontress.github.io/StyleChecker/images/IsNull.png" alt="IsNull" /></p>
+<p><img src="https://maroontress.github.io/StyleChecker/images/IsNull.png" alt="IsNull"></p>
 </div>
 <h2>Summary</h2>
 <p>Use “<code>… == null</code>” or “<code>… is {}</code>” instead of
@@ -57,9 +57,8 @@ it provides another option replacing them with “<code>!(… is {})</code>” a
 <h3>Remarks</h3>
 <p>Replacing the expression “<code>… is null</code>” with
 “<code>… == null</code>,” as well as replacing “<code>!(… is null)</code>”
-with “<code>… != null</code>,” can be a breaking change.  For more
-information, refer to
-<a href="EqualsNull.md#Remarks">the description of EqualsNull code fix</a>.</p>
+with “<code>… != null</code>,” can be a breaking change. For more information,
+refer to the <a href="EqualsNull.html#Remarks">description of EqualsNull code fix</a>.</p>
 <h2>Example</h2>
 <h3>Diagnostic</h3>
 <pre><code class="language-csharp">public void Method(object? o, string? s)
@@ -161,6 +160,9 @@ information, refer to
     </li>
     <li>
       <a href="NotOneShotInitialization.html">Not<wbr>One<wbr>Shot<wbr>Initialization</a>
+    </li>
+    <li>
+      <a href="NullCheckAfterDeclaration.html">Null<wbr>Check<wbr>After<wbr>Declaration</a>
     </li>
     <li>
       <a href="PostIncrement.html">Post<wbr>Increment</a>

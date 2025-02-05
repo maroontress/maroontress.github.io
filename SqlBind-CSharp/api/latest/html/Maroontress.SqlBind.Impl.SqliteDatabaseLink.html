@@ -49,7 +49,7 @@ gtag('config', 'G-9TQ6JWBKEK');
           <div class="codeHeader" data-bi-name="code-header">
             <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
           </div>
-          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-keyword">sealed</span> <span class="hljs-keyword">class</span> <span class="hljs-title">SqliteDatabaseLink</span></code></pre>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-keyword">sealed</span> <span class="hljs-keyword">class</span> <span class="hljs-title">SqliteDatabaseLink</span> : <span class="hljs-title">DatabaseLink</span></code></pre>
           <dl class="attributeList stack">
             <dt>
               Inheritance
@@ -63,10 +63,64 @@ gtag('config', 'G-9TQ6JWBKEK');
               </div>
             </dd>
           </dl>
+          <dl class="attributeList stack">
+            <dt>
+              Implements
+            </dt>
+            <dd>
+              <div class="cdlHolder">
+                <span class="cdl"><span class="lang-csharp break-text"><a class="xref" href="Maroontress.SqlBind.Impl.DatabaseLink.html" data-linktype="relative-path">Database<wbr>Link</a></span></span> <span class="cdl"><span class="lang-csharp break-text"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.idisposable?view=netcore-3.0" data-linktype="absolute-path">IDisposable</a></span></span>
+              </div>
+            </dd>
+          </dl>
+          <h2 id="constructors" class="heading-with-anchor">Constructors</h2>
+          <div class="table-scroll-wrapper">
+            <table class="nameValue">
+              <tbody>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.SqlBind.Impl.SqliteDatabaseLink.#ctor(Microsoft.Data.Sqlite.SqliteConnection)" data-linktype="relative-path">Sqlite<wbr>Database<wbr>Link(Sqlite<wbr>Connection)</a></span>
+                  </td>
+                  <td>
+                    <p>The implementation with Sqlite.</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
           <h2 id="methods" class="heading-with-anchor">Methods</h2>
           <div class="table-scroll-wrapper">
             <table class="nameValue">
               <tbody>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.SqlBind.Impl.SqliteDatabaseLink.BeginTransaction" data-linktype="relative-path">Begin<wbr>Transaction()</a></span>
+                  </td>
+                  <td>
+                    <p>Description copied from interface: DatabaseLink</p>
+                    <blockquote>
+                      <p>Begins the transaction.</p>
+                    </blockquote>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.SqlBind.Impl.SqliteDatabaseLink.Dispose" data-linktype="relative-path">Dispose()</a></span>
+                  </td>
+                  <td>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.SqlBind.Impl.SqliteDatabaseLink.NewSiphon(System.Action{System.Func{System.String}})" data-linktype="relative-path">New<wbr>Siphon(Action&lt;Func&lt;string&gt;&gt;)</a></span>
+                  </td>
+                  <td>
+                    <p>Description copied from interface: DatabaseLink</p>
+                    <blockquote>
+                      <p>Gets a new siphon with the specified logger.</p>
+                    </blockquote>
+                  </td>
+                </tr>
                 <tr>
                   <td>
                     <a href="https://docs.microsoft.com/en-us/dotnet/api/system.object.equals?view=netcore-3.0#System_Object_Equals_System_Object_">Equals(object)</a>
@@ -109,6 +163,110 @@ gtag('config', 'G-9TQ6JWBKEK');
                 </tr>
               </tbody>
             </table>
+          </div>
+          <h1 id="constructors-detail" class="heading-with-anchor">Constructors Detail</h1>
+          <h2 id="M:Maroontress.SqlBind.Impl.SqliteDatabaseLink.#ctor(Microsoft.Data.Sqlite.SqliteConnection)">SqliteDatabaseLink(SqliteConnection)</h2>
+          <div class="summaryHolder">
+            <div class="summary clearFix">
+              <p>The implementation with Sqlite.</p>
+            </div>
+          </div>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-title">SqliteDatabaseLink</span>(<span class="hljs-title">SqliteConnection</span> connection)</code></pre>
+          <h4 class="propertyInfoTitle stack">Parameters</h4>
+          <div class="propertyInfo">
+            <dl class="parameterList">
+              <dt>
+                connection
+              </dt>
+              <dd>
+                <span class="lang-csharp">Sqlite<wbr>Connection</span>
+              </dd>
+            </dl>
+            <p>The Sqlite's connection.</p>
+          </div>
+          <h1 id="methods-detail" class="heading-with-anchor">Methods Detail</h1>
+          <h2 id="M:Maroontress.SqlBind.Impl.SqliteDatabaseLink.BeginTransaction">BeginTransaction()</h2>
+          <div class="summaryHolder">
+            <div class="summary clearFix">
+              <p>Description copied from interface: DatabaseLink</p>
+              <blockquote>
+                <p>Begins the transaction.</p>
+              </blockquote>
+            </div>
+          </div>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-title">Committable</span> <span class="hljs-title">BeginTransaction</span>()</code></pre>
+          <h4 class="propertyInfoTitle stack">Returns</h4>
+          <div class="propertyInfo">
+            <div class="subtle">
+              <a class="xref" href="Maroontress.SqlBind.Impl.Committable.html" data-linktype="relative-path">Committable</a>
+            </div>
+            <p>Description copied from interface: DatabaseLink</p>
+            <blockquote>
+              <p>The abstract transaction.</p>
+            </blockquote>
+          </div>
+          <h4 class="propertyInfoTitle stack">Implements</h4>
+          <div class="propertyInfo">
+            <div class="cdlHolder">
+              <span class="cdl"><a href="Maroontress.SqlBind.Impl.DatabaseLink.html#M:Maroontress.SqlBind.Impl.DatabaseLink.BeginTransaction">DatabaseLink.BeginTransaction()</a></span>
+            </div>
+          </div>
+          <h2 id="M:Maroontress.SqlBind.Impl.SqliteDatabaseLink.Dispose">Dispose()</h2>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Dispose</span>()</code></pre>
+          <h4 class="propertyInfoTitle stack">Implements</h4>
+          <div class="propertyInfo">
+            <div class="cdlHolder">
+              <span class="cdl"><a href="https://docs.microsoft.com/en-us/dotnet/api/system.idisposable.dispose?view=netcore-3.0">IDisposable.Dispose()</a></span>
+            </div>
+          </div>
+          <h2 id="M:Maroontress.SqlBind.Impl.SqliteDatabaseLink.NewSiphon(System.Action{System.Func{System.String}})">NewSiphon(Action&lt;Func&lt;string&gt;&gt;)</h2>
+          <div class="summaryHolder">
+            <div class="summary clearFix">
+              <p>Description copied from interface: DatabaseLink</p>
+              <blockquote>
+                <p>Gets a new siphon with the specified logger.</p>
+              </blockquote>
+            </div>
+          </div>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-title">Siphon</span> <span class="hljs-title">NewSiphon</span>(<span class="hljs-title">Action</span>&lt;<span class="hljs-title">Func</span>&lt;<span class="hljs-keyword">string</span>&gt;&gt; logger)</code></pre>
+          <h4 class="propertyInfoTitle stack">Parameters</h4>
+          <div class="propertyInfo">
+            <dl class="parameterList">
+              <dt>
+                logger
+              </dt>
+              <dd>
+                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.action-1?view=netcore-3.0" data-linktype="absolute-path">Action</a>&lt;<a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.func-1?view=netcore-3.0" data-linktype="absolute-path">Func</a>&lt;<a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.string?view=netcore-3.0" data-linktype="absolute-path">string</a>&gt;&gt;</span>
+              </dd>
+            </dl>
+          </div>
+          <h4 class="propertyInfoTitle stack">Returns</h4>
+          <div class="propertyInfo">
+            <div class="subtle">
+              <a class="xref" href="Maroontress.SqlBind.Impl.Siphon.html" data-linktype="relative-path">Siphon</a>
+            </div>
+            <p>Description copied from interface: DatabaseLink</p>
+            <blockquote>
+              <p>The new siphon.</p>
+            </blockquote>
+          </div>
+          <h4 class="propertyInfoTitle stack">Implements</h4>
+          <div class="propertyInfo">
+            <div class="cdlHolder">
+              <span class="cdl"><a href="Maroontress.SqlBind.Impl.DatabaseLink.html#M:Maroontress.SqlBind.Impl.DatabaseLink.NewSiphon(System.Action{System.Func{System.String}})">DatabaseLink.NewSiphon(Action&lt;Func&lt;string&gt;&gt;)</a></span>
+            </div>
           </div>
         </main>
       </section>

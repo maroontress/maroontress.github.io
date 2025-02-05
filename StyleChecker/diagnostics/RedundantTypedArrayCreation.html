@@ -36,26 +36,42 @@
 <div id="toc-level" data-values="H2,H3"></div>
 <h1>RedundantTypedArrayCreation</h1>
 <div class="horizontal-scroll">
-<p><img src="https://maroontress.github.io/StyleChecker/images/RedundantTypedArrayCreation.png" alt="RedundantTypedArrayCreation" /></p>
+<p><img src="https://maroontress.github.io/StyleChecker/images/RedundantTypedArrayCreation.png" alt="RedundantTypedArrayCreation"></p>
 </div>
 <h2>Summary</h2>
-<p>Use an implicitly-typed array creation instead of an explicitly-typed one.</p>
+<p>Use an implicitly typed array creation instead of an explicitly typed one.</p>
 <h2>Default severity</h2>
 <p>Warning</p>
 <h2>Description</h2>
 <p>Specifying the explicit type of the array creation is redundant if the type of
-the array instance is inferred from the elements specified in the array
-initializer. Note that
-[<a href="#ref1">1</a>]:</p>
+the array instance can be inferred from the elements specified in the array
+initializer. Note that [<a href="#ref1">1</a>]:</p>
 <blockquote>
-<p>You can create an implicitly-typed array in which the type of the array
+<p>You can create an implicitly typed array in which the type of the array
 instance is inferred from the elements specified in the array initializer.</p>
 </blockquote>
 <h3>Remarks</h3>
-<p>There are some cases where type inference does not work so that the
-implicitly-typed arrays are not available.
-For example, when all the elements are Method References, the implicitly-typed
-array creation causes an error CS0826 as follows:</p>
+<p>There are some cases where type inference does not work so that the implicitly
+typed arrays are not available. For example, it doesn't work when all elements
+are one of the following:</p>
+<ul>
+<li>Target-typed <code>new</code> expression [<a href="#ref2">2</a>] (<code>new(…)</code>)</li>
+<li>Collection expression (<code>[…]</code>)</li>
+<li><code>null</code> literal</li>
+<li><code>default</code> literal</li>
+</ul>
+<p>There are also some cases where the implicitly typed arrays change the meaning.
+For example, the element of <code>array</code> is of type <code>int?</code> (<code>Nullable&lt;int&gt;</code>) in the
+following code:</p>
+<pre><code class="language-cs">var array = new int?[] { 42, };
+</code></pre>
+<p>Let's leave the array initializer and remove <code>int?</code> from the code. Then, the
+element of <code>array</code> is of type <code>int</code>, as follows:</p>
+<pre><code class="language-cs">var array = new[] { 42, };
+</code></pre>
+<h3>C# 9 and earlier versions</h3>
+<p>Before C# 10, the implicitly typed array creation causes an error CS0826 when
+all elements are Method References as follows:</p>
 <pre><code class="language-csharp">public static void RaiseCS0826()
 {
     _ = new[]
@@ -69,8 +85,34 @@ public static void DoSomething()
 }
 </code></pre>
 <blockquote>
-<p><a href="https://sharplab.io/#v2:C4LghgzsA0AmIGoA+ABATARgLAChcoGYACFDANhLSIFEAPMAWwAcAbAUwlwG9ci+TipCigAsRACoBPJmwCSAOwBmbAE5t5AYzkQAcgHtgAQQBuYAJYswAI3YAKAJS9+PHPzdEA9B6KGWLImzsDOrAEERgakTAABZsRMExerBEaspqmhwAdE7uRAD6RAC8RPJsAO4kGGgA2gC6Oe4uubkAInoAynoJ0WbyAObQDW4AvgDcDcO4DYSVwmJSMgpp6lqyECbmljZsDg1NzV4+wETskMd6pQFBIURmYWBEsIFsfWDAbNmuzQXFpWV1Q2cgNytlIaHsbU63V6A2B7khXTYMRhgy+uTGEymaIEsxIYgASuYIGwAMLtAAMAA40GRdtj9rkfiVygDsW4Gc0+Ajof1UZyMdjJtjpoJyHiiNykT1+nT2ZicEKgA">See errors</a></p>
+<p><a href="https://sharplab.io/#v2:C4LghgzsA0AmIGoA+ABATARgLAChcoGYACFDANhLSIFEAPMAWwAcAbAUwlwG9ci+TipCigAsRACoBPJmwCSAOwBmbAE5t5AYzkQAcgHtgAQQBuYAJYswAI3YAKAJS9+PHPzdEA9B6KGWLImzsDOrAEERgakTAABZsRMExerBEaspqmhwAdE7uRAD6RAC8RPJsAO4kGGgA2gC6Oe4uubkAInoAynoJ0WbyAObQDW4AvgDcDcO4DYSVwmJSMgpp6lqyECbmljZsDg1NzV4+wETskMd6pQFBIURmYWBEsIFsfWDAbNmuzQXFpWV1Q2cgNytlIaHsbU63V6A2B7khXTYMRhgy+uTGEymaIEsxIYgASuYIGwAMLtAAMAA40GRdtj9rkfiVygDsW4Gc0+Ajof1UZyMdjJtjpoJyHiiNykT1+nT2ZicEKgA">See errors in C# 9</a></p>
 </blockquote>
+<p>This analyzer ignores the explicitly typed arrays where all the elements are
+Method References in C# 9 and earlier.</p>
+<h3>Alternatives</h3>
+<p>In some cases, it is a good idea to create explicitly typed arrays. For example:</p>
+<pre><code class="language-cs">var array = new[]
+{
+    new Foo(1),
+    new Foo(2),
+};
+</code></pre>
+<p>If it is desirable to describe <code>Foo</code> less often, you can refactor this code as
+follows:</p>
+<pre><code class="language-cs">var array = new Foo[]
+{
+    new(1),
+    new(2),
+};
+</code></pre>
+<p>In most cases, collection expressions are preferable to implicitly typed array
+creations:</p>
+<pre><code class="language-cs">// Collection expression
+public IEnumerable&lt;string&gt; GetStrings() =&gt; [&quot;foo&quot;, &quot;bar&quot;];
+</code></pre>
+<pre><code class="language-cs">// Implicitly typed array creation
+public IEnumerable&lt;string&gt; GetStrings() =&gt; new[] {&quot;foo&quot;, &quot;bar&quot;};
+</code></pre>
 <h2>Code fix</h2>
 <p>The code fix provides an option removing the explicit type of the array.</p>
 <h2>Example</h2>
@@ -90,7 +132,9 @@ public static void DoSomething()
 </code></pre>
 <h2>References</h2>
 <p><a id="ref1"></a>
-[1] <a href="https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/arrays/implicitly-typed-arrays">Microsoft, <em>Implicitly Typed Arrays (C# Programming Guide)</em></a></p>
+[1] <a href="https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/arrays#implicitly-typed-arrays">Microsoft, <em>Implicitly Typed Arrays</em>, C# language reference</a></p>
+<p><a id="ref2"></a>
+[2] <a href="https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/proposals/csharp-9.0/target-typed-new">Microsoft, <em>Target-typed <code>new</code> expressions</em>, C# language reference</a></p>
           </main>
         </section>
       </div>
@@ -162,6 +206,9 @@ public static void DoSomething()
     </li>
     <li>
       <a href="NotOneShotInitialization.html">Not<wbr>One<wbr>Shot<wbr>Initialization</a>
+    </li>
+    <li>
+      <a href="NullCheckAfterDeclaration.html">Null<wbr>Check<wbr>After<wbr>Declaration</a>
     </li>
     <li>
       <a href="PostIncrement.html">Post<wbr>Increment</a>

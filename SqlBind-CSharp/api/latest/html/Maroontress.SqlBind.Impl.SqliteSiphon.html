@@ -49,7 +49,7 @@ gtag('config', 'G-9TQ6JWBKEK');
           <div class="codeHeader" data-bi-name="code-header">
             <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
           </div>
-          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-keyword">sealed</span> <span class="hljs-keyword">class</span> <span class="hljs-title">SqliteSiphon</span></code></pre>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-keyword">sealed</span> <span class="hljs-keyword">class</span> <span class="hljs-title">SqliteSiphon</span> : <span class="hljs-title">Siphon</span></code></pre>
           <dl class="attributeList stack">
             <dt>
               Inheritance
@@ -63,10 +63,68 @@ gtag('config', 'G-9TQ6JWBKEK');
               </div>
             </dd>
           </dl>
+          <dl class="attributeList stack">
+            <dt>
+              Implements
+            </dt>
+            <dd>
+              <div class="cdlHolder">
+                <span class="cdl"><span class="lang-csharp break-text"><a class="xref" href="Maroontress.SqlBind.Impl.Siphon.html" data-linktype="relative-path">Siphon</a></span></span>
+              </div>
+            </dd>
+          </dl>
+          <h2 id="constructors" class="heading-with-anchor">Constructors</h2>
+          <div class="table-scroll-wrapper">
+            <table class="nameValue">
+              <tbody>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.SqlBind.Impl.SqliteSiphon.#ctor(Microsoft.Data.Sqlite.SqliteConnection,System.Action{System.Func{System.String}})" data-linktype="relative-path">Sqlite<wbr>Siphon(Sqlite<wbr>Connection, Action&lt;Func&lt;string&gt;&gt;)</a></span>
+                  </td>
+                  <td>
+                    <p>The implementation with Sqlite that has the logging facility.</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
           <h2 id="methods" class="heading-with-anchor">Methods</h2>
           <div class="table-scroll-wrapper">
             <table class="nameValue">
               <tbody>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.SqlBind.Impl.SqliteSiphon.ExecuteNonQuery(System.String,System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object})" data-linktype="relative-path">Execute<wbr>Non<wbr>Query(string, IRead<wbr>Only<wbr>Dictionary&lt;string, object&gt;)</a></span>
+                  </td>
+                  <td>
+                    <p>Description copied from interface: Siphon</p>
+                    <blockquote>
+                      <p>Executes the SQL statement without the results.</p>
+                    </blockquote>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.SqlBind.Impl.SqliteSiphon.ExecuteReader(System.String,System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object})" data-linktype="relative-path">Execute<wbr>Reader(string, IRead<wbr>Only<wbr>Dictionary&lt;string, object&gt;)</a></span>
+                  </td>
+                  <td>
+                    <p>Description copied from interface: Siphon</p>
+                    <blockquote>
+                      <p>Executes the SQL statement and returns the reader of the results.</p>
+                    </blockquote>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.SqlBind.Impl.SqliteSiphon.ExecuteLong(System.String,System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object})" data-linktype="relative-path">Execute<wbr>Long(string, IRead<wbr>Only<wbr>Dictionary&lt;string, object&gt;)</a></span>
+                  </td>
+                  <td>
+                    <p>Description copied from interface: Siphon</p>
+                    <blockquote>
+                      <p>Executes the SQL statement and returns the scalar result.</p>
+                    </blockquote>
+                  </td>
+                </tr>
                 <tr>
                   <td>
                     <a href="https://docs.microsoft.com/en-us/dotnet/api/system.object.equals?view=netcore-3.0#System_Object_Equals_System_Object_">Equals(object)</a>
@@ -109,6 +167,181 @@ gtag('config', 'G-9TQ6JWBKEK');
                 </tr>
               </tbody>
             </table>
+          </div>
+          <h1 id="constructors-detail" class="heading-with-anchor">Constructors Detail</h1>
+          <h2 id="M:Maroontress.SqlBind.Impl.SqliteSiphon.#ctor(Microsoft.Data.Sqlite.SqliteConnection,System.Action{System.Func{System.String}})">SqliteSiphon(SqliteConnection, Action&lt;Func&lt;string&gt;&gt;)</h2>
+          <div class="summaryHolder">
+            <div class="summary clearFix">
+              <p>The implementation with Sqlite that has the logging facility.</p>
+            </div>
+          </div>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-title">SqliteSiphon</span>(<span class="hljs-title">SqliteConnection</span> connection, <span class="hljs-title">Action</span>&lt;<span class="hljs-title">Func</span>&lt;<span class="hljs-keyword">string</span>&gt;&gt; logger)</code></pre>
+          <h4 class="propertyInfoTitle stack">Parameters</h4>
+          <div class="propertyInfo">
+            <dl class="parameterList">
+              <dt>
+                connection
+              </dt>
+              <dd>
+                <span class="lang-csharp">Sqlite<wbr>Connection</span>
+              </dd>
+            </dl>
+            <p>The connection to the Sqlite.</p>
+          </div>
+          <div class="propertyInfo stack">
+            <dl class="parameterList">
+              <dt>
+                logger
+              </dt>
+              <dd>
+                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.action-1?view=netcore-3.0" data-linktype="absolute-path">Action</a>&lt;<a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.func-1?view=netcore-3.0" data-linktype="absolute-path">Func</a>&lt;<a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.string?view=netcore-3.0" data-linktype="absolute-path">string</a>&gt;&gt;</span>
+              </dd>
+            </dl>
+            <p>The logger.</p>
+          </div>
+          <h1 id="methods-detail" class="heading-with-anchor">Methods Detail</h1>
+          <h2 id="M:Maroontress.SqlBind.Impl.SqliteSiphon.ExecuteNonQuery(System.String,System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object})">ExecuteNonQuery(string, IReadOnlyDictionary&lt;string, object&gt;)</h2>
+          <div class="summaryHolder">
+            <div class="summary clearFix">
+              <p>Description copied from interface: Siphon</p>
+              <blockquote>
+                <p>Executes the SQL statement without the results.</p>
+              </blockquote>
+            </div>
+          </div>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">ExecuteNonQuery</span>(<span class="hljs-keyword">string</span> text, [<span class="hljs-title">IReadOnlyDictionary</span>&lt;<span class="hljs-keyword">string</span>, <span class="hljs-keyword">object</span>&gt; parameters = <span class="hljs-keyword">null</span>])</code></pre>
+          <h4 class="propertyInfoTitle stack">Parameters</h4>
+          <div class="propertyInfo">
+            <dl class="parameterList">
+              <dt>
+                text
+              </dt>
+              <dd>
+                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.string?view=netcore-3.0" data-linktype="absolute-path">string</a></span>
+              </dd>
+            </dl>
+          </div>
+          <div class="propertyInfo stack">
+            <dl class="parameterList">
+              <dt>
+                parameters
+              </dt>
+              <dd>
+                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ireadonlydictionary-2?view=netcore-3.0" data-linktype="absolute-path">IRead<wbr>Only<wbr>Dictionary</a>&lt;<a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.string?view=netcore-3.0" data-linktype="absolute-path">string</a>, <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=netcore-3.0" data-linktype="absolute-path">object</a>&gt;</span>
+              </dd>
+            </dl>
+          </div>
+          <h4 class="propertyInfoTitle stack">Implements</h4>
+          <div class="propertyInfo">
+            <div class="cdlHolder">
+              <span class="cdl"><a href="Maroontress.SqlBind.Impl.Siphon.html#M:Maroontress.SqlBind.Impl.Siphon.ExecuteNonQuery(System.String,System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object})">Siphon.ExecuteNonQuery(string, IReadOnlyDictionary&lt;string, object&gt;)</a></span>
+            </div>
+          </div>
+          <h2 id="M:Maroontress.SqlBind.Impl.SqliteSiphon.ExecuteReader(System.String,System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object})">ExecuteReader(string, IReadOnlyDictionary&lt;string, object&gt;)</h2>
+          <div class="summaryHolder">
+            <div class="summary clearFix">
+              <p>Description copied from interface: Siphon</p>
+              <blockquote>
+                <p>Executes the SQL statement and returns the reader of the results.</p>
+              </blockquote>
+            </div>
+          </div>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-title">Reservoir</span> <span class="hljs-title">ExecuteReader</span>(<span class="hljs-keyword">string</span> text, [<span class="hljs-title">IReadOnlyDictionary</span>&lt;<span class="hljs-keyword">string</span>, <span class="hljs-keyword">object</span>&gt; parameters = <span class="hljs-keyword">null</span>])</code></pre>
+          <h4 class="propertyInfoTitle stack">Parameters</h4>
+          <div class="propertyInfo">
+            <dl class="parameterList">
+              <dt>
+                text
+              </dt>
+              <dd>
+                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.string?view=netcore-3.0" data-linktype="absolute-path">string</a></span>
+              </dd>
+            </dl>
+          </div>
+          <div class="propertyInfo stack">
+            <dl class="parameterList">
+              <dt>
+                parameters
+              </dt>
+              <dd>
+                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ireadonlydictionary-2?view=netcore-3.0" data-linktype="absolute-path">IRead<wbr>Only<wbr>Dictionary</a>&lt;<a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.string?view=netcore-3.0" data-linktype="absolute-path">string</a>, <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=netcore-3.0" data-linktype="absolute-path">object</a>&gt;</span>
+              </dd>
+            </dl>
+          </div>
+          <h4 class="propertyInfoTitle stack">Returns</h4>
+          <div class="propertyInfo">
+            <div class="subtle">
+              <a class="xref" href="Maroontress.SqlBind.Impl.Reservoir.html" data-linktype="relative-path">Reservoir</a>
+            </div>
+            <p>Description copied from interface: Siphon</p>
+            <blockquote>
+              <p>The reader of the results.</p>
+            </blockquote>
+          </div>
+          <h4 class="propertyInfoTitle stack">Implements</h4>
+          <div class="propertyInfo">
+            <div class="cdlHolder">
+              <span class="cdl"><a href="Maroontress.SqlBind.Impl.Siphon.html#M:Maroontress.SqlBind.Impl.Siphon.ExecuteReader(System.String,System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object})">Siphon.ExecuteReader(string, IReadOnlyDictionary&lt;string, object&gt;)</a></span>
+            </div>
+          </div>
+          <h2 id="M:Maroontress.SqlBind.Impl.SqliteSiphon.ExecuteLong(System.String,System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object})">ExecuteLong(string, IReadOnlyDictionary&lt;string, object&gt;)</h2>
+          <div class="summaryHolder">
+            <div class="summary clearFix">
+              <p>Description copied from interface: Siphon</p>
+              <blockquote>
+                <p>Executes the SQL statement and returns the scalar result.</p>
+              </blockquote>
+            </div>
+          </div>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-keyword">long</span> <span class="hljs-title">ExecuteLong</span>(<span class="hljs-keyword">string</span> text, [<span class="hljs-title">IReadOnlyDictionary</span>&lt;<span class="hljs-keyword">string</span>, <span class="hljs-keyword">object</span>&gt; parameters = <span class="hljs-keyword">null</span>])</code></pre>
+          <h4 class="propertyInfoTitle stack">Parameters</h4>
+          <div class="propertyInfo">
+            <dl class="parameterList">
+              <dt>
+                text
+              </dt>
+              <dd>
+                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.string?view=netcore-3.0" data-linktype="absolute-path">string</a></span>
+              </dd>
+            </dl>
+          </div>
+          <div class="propertyInfo stack">
+            <dl class="parameterList">
+              <dt>
+                parameters
+              </dt>
+              <dd>
+                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ireadonlydictionary-2?view=netcore-3.0" data-linktype="absolute-path">IRead<wbr>Only<wbr>Dictionary</a>&lt;<a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.string?view=netcore-3.0" data-linktype="absolute-path">string</a>, <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=netcore-3.0" data-linktype="absolute-path">object</a>&gt;</span>
+              </dd>
+            </dl>
+          </div>
+          <h4 class="propertyInfoTitle stack">Returns</h4>
+          <div class="propertyInfo">
+            <div class="subtle">
+              <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.int64?view=netcore-3.0" data-linktype="absolute-path">long</a>
+            </div>
+            <p>Description copied from interface: Siphon</p>
+            <blockquote>
+              <p>The scalar result.</p>
+            </blockquote>
+          </div>
+          <h4 class="propertyInfoTitle stack">Implements</h4>
+          <div class="propertyInfo">
+            <div class="cdlHolder">
+              <span class="cdl"><a href="Maroontress.SqlBind.Impl.Siphon.html#M:Maroontress.SqlBind.Impl.Siphon.ExecuteLong(System.String,System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object})">Siphon.ExecuteLong(string, IReadOnlyDictionary&lt;string, object&gt;)</a></span>
+            </div>
           </div>
         </main>
       </section>

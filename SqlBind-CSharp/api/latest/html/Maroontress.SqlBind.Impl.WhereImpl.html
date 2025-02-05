@@ -49,7 +49,7 @@ gtag('config', 'G-9TQ6JWBKEK');
           <div class="codeHeader" data-bi-name="code-header">
             <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
           </div>
-          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-keyword">sealed</span> <span class="hljs-keyword">class</span> <span class="hljs-title">WhereImpl</span>&lt;<span class="hljs-title">T</span>&gt;</code></pre>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-keyword">sealed</span> <span class="hljs-keyword">class</span> <span class="hljs-title">WhereImpl</span>&lt;<span class="hljs-title">T</span>&gt; : <span class="hljs-title">AbstractSelectSorter</span>&lt;<span class="hljs-title">T</span>&gt;, <span class="hljs-title">Where</span>&lt;<span class="hljs-title">T</span>&gt;<br>    <span class="hljs-keyword">where</span> <span class="hljs-title">T</span> : <span class="hljs-keyword">notnull</span></code></pre>
           <h4 id="type-parameters" class="propertyInfoTitle stack heading-with-anchor">Type Parameters</h4>
           <div class="propertyInfo">
             <dl class="parameterList">
@@ -57,6 +57,7 @@ gtag('config', 'G-9TQ6JWBKEK');
                 T
               </dt>
               <dd>
+                <code>notnull</code>
               </dd>
             </dl>
             <p>The type of the class representing any row of the result of the query.</p>
@@ -70,14 +71,109 @@ gtag('config', 'G-9TQ6JWBKEK');
                 <div class="pdl">
                   <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=netcore-3.0" data-linktype="absolute-path">object</a></span>
                 </div>
+                <div class="pdl">
+                  <span class="lang-csharp"><a class="xref" href="Maroontress.SqlBind.Impl.AbstractSelectSorter.html" data-linktype="relative-path">Abstract<wbr>Select<wbr>Sorter&lt;T&gt;</a></span>
+                </div>
                 <span class="lang-csharp">Where<wbr>Impl&lt;T&gt;</span>
               </div>
             </dd>
           </dl>
+          <dl class="attributeList stack">
+            <dt>
+              Implements
+            </dt>
+            <dd>
+              <div class="cdlHolder">
+                <span class="cdl"><span class="lang-csharp break-text"><a class="xref" href="Maroontress.SqlBind.Where.html" data-linktype="relative-path">Where&lt;T&gt;</a></span></span> <span class="cdl"><span class="lang-csharp break-text"><a class="xref" href="Maroontress.SqlBind.SelectSorter.html" data-linktype="relative-path">Select<wbr>Sorter&lt;T&gt;</a></span></span> <span class="cdl"><span class="lang-csharp break-text"><a class="xref" href="Maroontress.SqlBind.SelectTerminator.html" data-linktype="relative-path">Select<wbr>Terminator&lt;T&gt;</a></span></span>
+              </div>
+            </dd>
+          </dl>
+          <h2 id="constructors" class="heading-with-anchor">Constructors</h2>
+          <div class="table-scroll-wrapper">
+            <table class="nameValue">
+              <tbody>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.SqlBind.Impl.WhereImpl`1.#ctor(Maroontress.SqlBind.Impl.Siphon,System.String,System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object})" data-linktype="relative-path">Where<wbr>Impl(Siphon, string, IRead<wbr>Only<wbr>Dictionary&lt;string, object&gt;)</a></span>
+                  </td>
+                  <td>
+                    <p>The default implementation of <a href="Maroontress.SqlBind.Where.html">Where&lt;T&gt;</a>.</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <h2 id="properties" class="heading-with-anchor">Properties</h2>
+          <div class="table-scroll-wrapper">
+            <table class="nameValue">
+              <tbody>
+                <tr>
+                  <td>
+                    <a href="Maroontress.SqlBind.Impl.AbstractSelectSorter.html#P:Maroontress.SqlBind.Impl.AbstractSelectSorter`1.Text">Text</a>
+                  </td>
+                  <td>
+                    <p>Gets the SQL query text.</p>
+                    (Inherited from <a class="xref" href="Maroontress.SqlBind.Impl.AbstractSelectSorter.html" data-linktype="relative-path">Abstract<wbr>Select<wbr>Sorter&lt;T&gt;</a>)
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
           <h2 id="methods" class="heading-with-anchor">Methods</h2>
           <div class="table-scroll-wrapper">
             <table class="nameValue">
               <tbody>
+                <tr>
+                  <td>
+                    <a href="Maroontress.SqlBind.Impl.AbstractSelectSorter.html#M:Maroontress.SqlBind.Impl.AbstractSelectSorter`1.OrderBy(System.String[])">OrderBy(string[])</a>
+                  </td>
+                  <td>
+                    <p>Description copied from interface: SelectSorter</p>
+                    <blockquote>
+                      <p>Executes the query and gets the result in the order sorted by the
+    specified columns.</p>
+                    </blockquote>
+                    (Inherited from <a class="xref" href="Maroontress.SqlBind.Impl.AbstractSelectSorter.html" data-linktype="relative-path">Abstract<wbr>Select<wbr>Sorter&lt;T&gt;</a>)
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="Maroontress.SqlBind.Impl.AbstractSelectSorter.html#M:Maroontress.SqlBind.Impl.AbstractSelectSorter`1.Execute">Execute()</a>
+                  </td>
+                  <td>
+                    <p>Description copied from interface: SelectTerminator</p>
+                    <blockquote>
+                      <p>Executes the query and gets the result.</p>
+                    </blockquote>
+                    (Inherited from <a class="xref" href="Maroontress.SqlBind.Impl.AbstractSelectSorter.html" data-linktype="relative-path">Abstract<wbr>Select<wbr>Sorter&lt;T&gt;</a>)
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="Maroontress.SqlBind.Impl.AbstractSelectSorter.html#M:Maroontress.SqlBind.Impl.AbstractSelectSorter`1.Limit(System.Int32)">Limit(int)</a>
+                  </td>
+                  <td>
+                    <p>Description copied from interface: SelectTerminator</p>
+                    <blockquote>
+                      <p>Executes the query and limits the number of rows that the query
+    returns.</p>
+                    </blockquote>
+                    (Inherited from <a class="xref" href="Maroontress.SqlBind.Impl.AbstractSelectSorter.html" data-linktype="relative-path">Abstract<wbr>Select<wbr>Sorter&lt;T&gt;</a>)
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="Maroontress.SqlBind.Impl.AbstractSelectSorter.html#M:Maroontress.SqlBind.Impl.AbstractSelectSorter`1.LimitOffset(System.Int32,System.Int32)">LimitOffset(int, int)</a>
+                  </td>
+                  <td>
+                    <p>Description copied from interface: SelectTerminator</p>
+                    <blockquote>
+                      <p>Executes the query and limits the number of rows that the query returns
+    and specifies the starting offset.</p>
+                    </blockquote>
+                    (Inherited from <a class="xref" href="Maroontress.SqlBind.Impl.AbstractSelectSorter.html" data-linktype="relative-path">Abstract<wbr>Select<wbr>Sorter&lt;T&gt;</a>)
+                  </td>
+                </tr>
                 <tr>
                   <td>
                     <a href="https://docs.microsoft.com/en-us/dotnet/api/system.object.equals?view=netcore-3.0#System_Object_Equals_System_Object_">Equals(object)</a>
@@ -120,6 +216,51 @@ gtag('config', 'G-9TQ6JWBKEK');
                 </tr>
               </tbody>
             </table>
+          </div>
+          <h1 id="constructors-detail" class="heading-with-anchor">Constructors Detail</h1>
+          <h2 id="M:Maroontress.SqlBind.Impl.WhereImpl`1.#ctor(Maroontress.SqlBind.Impl.Siphon,System.String,System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object})">WhereImpl(Siphon, string, IReadOnlyDictionary&lt;string, object&gt;)</h2>
+          <div class="summaryHolder">
+            <div class="summary clearFix">
+              <p>The default implementation of <a href="Maroontress.SqlBind.Where.html">Where&lt;T&gt;</a>.</p>
+            </div>
+          </div>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-title">WhereImpl</span>(<span class="hljs-title">Siphon</span> siphon, <span class="hljs-keyword">string</span> text, <span class="hljs-title">IReadOnlyDictionary</span>&lt;<span class="hljs-keyword">string</span>, <span class="hljs-keyword">object</span>&gt; parameters)</code></pre>
+          <h4 class="propertyInfoTitle stack">Parameters</h4>
+          <div class="propertyInfo">
+            <dl class="parameterList">
+              <dt>
+                siphon
+              </dt>
+              <dd>
+                <span class="lang-csharp"><a class="xref" href="Maroontress.SqlBind.Impl.Siphon.html" data-linktype="relative-path">Siphon</a></span>
+              </dd>
+            </dl>
+            <p>The <a href="Maroontress.SqlBind.Impl.Siphon.html">Siphon</a> object.</p>
+          </div>
+          <div class="propertyInfo stack">
+            <dl class="parameterList">
+              <dt>
+                text
+              </dt>
+              <dd>
+                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.string?view=netcore-3.0" data-linktype="absolute-path">string</a></span>
+              </dd>
+            </dl>
+            <p>The prefix statement.</p>
+          </div>
+          <div class="propertyInfo stack">
+            <dl class="parameterList">
+              <dt>
+                parameters
+              </dt>
+              <dd>
+                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ireadonlydictionary-2?view=netcore-3.0" data-linktype="absolute-path">IRead<wbr>Only<wbr>Dictionary</a>&lt;<a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.string?view=netcore-3.0" data-linktype="absolute-path">string</a>, <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=netcore-3.0" data-linktype="absolute-path">object</a>&gt;</span>
+              </dd>
+            </dl>
+            <p>Immutable key-value pairs.</p>
           </div>
         </main>
       </section>

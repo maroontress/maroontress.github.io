@@ -49,7 +49,7 @@ gtag('config', 'G-9TQ6JWBKEK');
           <div class="codeHeader" data-bi-name="code-header">
             <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
           </div>
-          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-keyword">sealed</span> <span class="hljs-keyword">class</span> <span class="hljs-title">DeleteFromImpl</span>&lt;<span class="hljs-title">T</span>&gt;</code></pre>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-keyword">sealed</span> <span class="hljs-keyword">class</span> <span class="hljs-title">DeleteFromImpl</span>&lt;<span class="hljs-title">T</span>&gt; : <span class="hljs-title">DeleteFrom</span>&lt;<span class="hljs-title">T</span>&gt;</code></pre>
           <h4 id="type-parameters" class="propertyInfoTitle stack heading-with-anchor">Type Parameters</h4>
           <div class="propertyInfo">
             <dl class="parameterList">
@@ -74,10 +74,47 @@ gtag('config', 'G-9TQ6JWBKEK');
               </div>
             </dd>
           </dl>
+          <dl class="attributeList stack">
+            <dt>
+              Implements
+            </dt>
+            <dd>
+              <div class="cdlHolder">
+                <span class="cdl"><span class="lang-csharp break-text"><a class="xref" href="Maroontress.SqlBind.DeleteFrom.html" data-linktype="relative-path">Delete<wbr>From&lt;T&gt;</a></span></span>
+              </div>
+            </dd>
+          </dl>
+          <h2 id="constructors" class="heading-with-anchor">Constructors</h2>
+          <div class="table-scroll-wrapper">
+            <table class="nameValue">
+              <tbody>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.SqlBind.Impl.DeleteFromImpl`1.#ctor(Maroontress.SqlBind.Impl.Siphon,System.String)" data-linktype="relative-path">Delete<wbr>From<wbr>Impl(Siphon, string)</a></span>
+                  </td>
+                  <td>
+                    <p>The default implementation of <a href="Maroontress.SqlBind.DeleteFrom.html">DeleteFrom&lt;T&gt;</a>.</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
           <h2 id="methods" class="heading-with-anchor">Methods</h2>
           <div class="table-scroll-wrapper">
             <table class="nameValue">
               <tbody>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.SqlBind.Impl.DeleteFromImpl`1.Where(System.String,System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object})" data-linktype="relative-path">Where(string, IRead<wbr>Only<wbr>Dictionary&lt;string, object&gt;)</a></span>
+                  </td>
+                  <td>
+                    <p>Description copied from interface: DeleteFrom</p>
+                    <blockquote>
+                      <p>Executes the delete statement with the specified condition and
+    parameters.</p>
+                    </blockquote>
+                  </td>
+                </tr>
                 <tr>
                   <td>
                     <a href="https://docs.microsoft.com/en-us/dotnet/api/system.object.equals?view=netcore-3.0#System_Object_Equals_System_Object_">Equals(object)</a>
@@ -120,6 +157,82 @@ gtag('config', 'G-9TQ6JWBKEK');
                 </tr>
               </tbody>
             </table>
+          </div>
+          <h1 id="constructors-detail" class="heading-with-anchor">Constructors Detail</h1>
+          <h2 id="M:Maroontress.SqlBind.Impl.DeleteFromImpl`1.#ctor(Maroontress.SqlBind.Impl.Siphon,System.String)">DeleteFromImpl(Siphon, string)</h2>
+          <div class="summaryHolder">
+            <div class="summary clearFix">
+              <p>The default implementation of <a href="Maroontress.SqlBind.DeleteFrom.html">DeleteFrom&lt;T&gt;</a>.</p>
+            </div>
+          </div>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-title">DeleteFromImpl</span>(<span class="hljs-title">Siphon</span> siphon, <span class="hljs-keyword">string</span> text)</code></pre>
+          <h4 class="propertyInfoTitle stack">Parameters</h4>
+          <div class="propertyInfo">
+            <dl class="parameterList">
+              <dt>
+                siphon
+              </dt>
+              <dd>
+                <span class="lang-csharp"><a class="xref" href="Maroontress.SqlBind.Impl.Siphon.html" data-linktype="relative-path">Siphon</a></span>
+              </dd>
+            </dl>
+            <p>The <a href="#P:Maroontress.SqlBind.Impl.DeleteFromImpl`1.Siphon">Siphon</a> object.</p>
+          </div>
+          <div class="propertyInfo stack">
+            <dl class="parameterList">
+              <dt>
+                text
+              </dt>
+              <dd>
+                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.string?view=netcore-3.0" data-linktype="absolute-path">string</a></span>
+              </dd>
+            </dl>
+            <p>The prefix statement.</p>
+          </div>
+          <h1 id="methods-detail" class="heading-with-anchor">Methods Detail</h1>
+          <h2 id="M:Maroontress.SqlBind.Impl.DeleteFromImpl`1.Where(System.String,System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object})">Where(string, IReadOnlyDictionary&lt;string, object&gt;)</h2>
+          <div class="summaryHolder">
+            <div class="summary clearFix">
+              <p>Description copied from interface: DeleteFrom</p>
+              <blockquote>
+                <p>Executes the delete statement with the specified condition and
+    parameters.</p>
+              </blockquote>
+            </div>
+          </div>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Where</span>(<span class="hljs-keyword">string</span> condition, <span class="hljs-title">IReadOnlyDictionary</span>&lt;<span class="hljs-keyword">string</span>, <span class="hljs-keyword">object</span>&gt; parameters)</code></pre>
+          <h4 class="propertyInfoTitle stack">Parameters</h4>
+          <div class="propertyInfo">
+            <dl class="parameterList">
+              <dt>
+                condition
+              </dt>
+              <dd>
+                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.string?view=netcore-3.0" data-linktype="absolute-path">string</a></span>
+              </dd>
+            </dl>
+          </div>
+          <div class="propertyInfo stack">
+            <dl class="parameterList">
+              <dt>
+                parameters
+              </dt>
+              <dd>
+                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ireadonlydictionary-2?view=netcore-3.0" data-linktype="absolute-path">IRead<wbr>Only<wbr>Dictionary</a>&lt;<a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.string?view=netcore-3.0" data-linktype="absolute-path">string</a>, <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=netcore-3.0" data-linktype="absolute-path">object</a>&gt;</span>
+              </dd>
+            </dl>
+          </div>
+          <h4 class="propertyInfoTitle stack">Implements</h4>
+          <div class="propertyInfo">
+            <div class="cdlHolder">
+              <span class="cdl"><a href="Maroontress.SqlBind.DeleteFrom.html#M:Maroontress.SqlBind.DeleteFrom`1.Where(System.String,System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object})">DeleteFrom&lt;T&gt;.Where(string, IReadOnlyDictionary&lt;string, object&gt;)</a></span>
+            </div>
           </div>
         </main>
       </section>
