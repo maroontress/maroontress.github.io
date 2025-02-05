@@ -49,7 +49,7 @@ gtag('config', 'G-9TQ6JWBKEK');
           <div class="codeHeader" data-bi-name="code-header">
             <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
           </div>
-          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-keyword">sealed</span> <span class="hljs-keyword">class</span> <span class="hljs-title">QueryImpl</span></code></pre>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-keyword">sealed</span> <span class="hljs-keyword">class</span> <span class="hljs-title">QueryImpl</span> : <span class="hljs-title">Query</span></code></pre>
           <dl class="attributeList stack">
             <dt>
               Inheritance
@@ -63,10 +63,160 @@ gtag('config', 'G-9TQ6JWBKEK');
               </div>
             </dd>
           </dl>
+          <dl class="attributeList stack">
+            <dt>
+              Implements
+            </dt>
+            <dd>
+              <div class="cdlHolder">
+                <span class="cdl"><span class="lang-csharp break-text"><a class="xref" href="Maroontress.SqlBind.Query.html" data-linktype="relative-path">Query</a></span></span>
+              </div>
+            </dd>
+          </dl>
+          <h2 id="constructors" class="heading-with-anchor">Constructors</h2>
+          <div class="table-scroll-wrapper">
+            <table class="nameValue">
+              <tbody>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.SqlBind.Impl.QueryImpl.#ctor(Maroontress.SqlBind.Impl.Siphon,Maroontress.SqlBind.Impl.MetadataBank)" data-linktype="relative-path">Query<wbr>Impl(Siphon, Metadata<wbr>Bank)</a></span>
+                  </td>
+                  <td>
+                    <p>The default implementation of <a href="Maroontress.SqlBind.Query.html">Query</a>.</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
           <h2 id="methods" class="heading-with-anchor">Methods</h2>
           <div class="table-scroll-wrapper">
             <table class="nameValue">
               <tbody>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.SqlBind.Impl.QueryImpl.SelectAllFrom``1(System.String)" data-linktype="relative-path">Select<wbr>All<wbr>From&lt;T&gt;(string)</a></span>
+                  </td>
+                  <td>
+                    <p>Description copied from interface: Query</p>
+                    <blockquote>
+                      <p>Selects all columns of the specified table.</p>
+                    </blockquote>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.SqlBind.Impl.QueryImpl.Select``1(System.String[])" data-linktype="relative-path">Select&lt;T&gt;(string[])</a></span>
+                  </td>
+                  <td>
+                    <p>Description copied from interface: Query</p>
+                    <blockquote>
+                      <p>Gets the <a href="Maroontress.SqlBind.Query.html#M:Maroontress.SqlBind.Query.Select``1(System.String[])">Query.Select&lt;T&gt;(string[])</a> object to select the specified columns
+    of the specified table.</p>
+                    </blockquote>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.SqlBind.Impl.QueryImpl.DeleteFrom``1" data-linktype="relative-path">Delete<wbr>From&lt;T&gt;()</a></span>
+                  </td>
+                  <td>
+                    <p>Description copied from interface: Query</p>
+                    <blockquote>
+                      <p>Gets the <a href="Maroontress.SqlBind.Query.html#M:Maroontress.SqlBind.Query.DeleteFrom``1">Query.DeleteFrom&lt;T&gt;()</a> object to delete the specified
+    rows of the specified table.</p>
+                    </blockquote>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.SqlBind.Impl.QueryImpl.NewTables(System.Type[])" data-linktype="relative-path">New<wbr>Tables(Type[])</a></span>
+                  </td>
+                  <td>
+                    <p>Description copied from interface: Query</p>
+                    <blockquote>
+                      <p>Creates new tables.</p>
+                    </blockquote>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.SqlBind.Impl.QueryImpl.NewTables(System.Collections.Generic.IEnumerable{System.Type})" data-linktype="relative-path">New<wbr>Tables(IEnumerable&lt;Type&gt;)</a></span>
+                  </td>
+                  <td>
+                    <p>Description copied from interface: Query</p>
+                    <blockquote>
+                      <p>Creates new tables.</p>
+                    </blockquote>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.SqlBind.Impl.QueryImpl.Insert``1(``0)" data-linktype="relative-path">Insert&lt;T&gt;(T)</a></span>
+                  </td>
+                  <td>
+                    <p>Description copied from interface: Query</p>
+                    <blockquote>
+                      <p>Inserts a new row into the table.</p>
+                    </blockquote>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.SqlBind.Impl.QueryImpl.InsertAndGetRowId``1(``0)" data-linktype="relative-path">Insert<wbr>And<wbr>Get<wbr>Row<wbr>Id&lt;T&gt;(T)</a></span>
+                  </td>
+                  <td>
+                    <p>Description copied from interface: Query</p>
+                    <blockquote>
+                      <p>Inserts a new row into the table and gets its ID.</p>
+                    </blockquote>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.SqlBind.Impl.QueryImpl.SelectUnique``1(System.String,System.Object)" data-linktype="relative-path">Select<wbr>Unique&lt;T&gt;(string, object)</a></span>
+                  </td>
+                  <td>
+                    <p>Description copied from interface: Query</p>
+                    <blockquote>
+                      <p>Gets the single row of the table in which the specified unique field
+    matches the specified value.</p>
+                    </blockquote>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.SqlBind.Impl.QueryImpl.SelectAll``1" data-linktype="relative-path">Select<wbr>All&lt;T&gt;()</a></span>
+                  </td>
+                  <td>
+                    <p>Description copied from interface: Query</p>
+                    <blockquote>
+                      <p>Gets all the rows of the specified table.</p>
+                    </blockquote>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.SqlBind.Impl.QueryImpl.ColumnName``1(System.String)" data-linktype="relative-path">Column<wbr>Name&lt;T&gt;(string)</a></span>
+                  </td>
+                  <td>
+                    <p>Description copied from interface: Query</p>
+                    <blockquote>
+                      <p>Gets the column name associated with the specified parameter.</p>
+                    </blockquote>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.SqlBind.Impl.QueryImpl.Update``1(System.String)" data-linktype="relative-path">Update&lt;T&gt;(string)</a></span>
+                  </td>
+                  <td>
+                    <p>Description copied from interface: Query</p>
+                    <blockquote>
+                      <p>Gets the <a href="Maroontress.SqlBind.Update.html">Update</a> object to update the specified
+    table.</p>
+                    </blockquote>
+                  </td>
+                </tr>
                 <tr>
                   <td>
                     <a href="https://docs.microsoft.com/en-us/dotnet/api/system.object.equals?view=netcore-3.0#System_Object_Equals_System_Object_">Equals(object)</a>
@@ -110,6 +260,581 @@ gtag('config', 'G-9TQ6JWBKEK');
               </tbody>
             </table>
           </div>
+          <h1 id="constructors-detail" class="heading-with-anchor">Constructors Detail</h1>
+          <h2 id="M:Maroontress.SqlBind.Impl.QueryImpl.#ctor(Maroontress.SqlBind.Impl.Siphon,Maroontress.SqlBind.Impl.MetadataBank)">QueryImpl(Siphon, MetadataBank)</h2>
+          <div class="summaryHolder">
+            <div class="summary clearFix">
+              <p>The default implementation of <a href="Maroontress.SqlBind.Query.html">Query</a>.</p>
+            </div>
+          </div>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-title">QueryImpl</span>(<span class="hljs-title">Siphon</span> siphon, <span class="hljs-title">MetadataBank</span> bank)</code></pre>
+          <h4 class="propertyInfoTitle stack">Parameters</h4>
+          <div class="propertyInfo">
+            <dl class="parameterList">
+              <dt>
+                siphon
+              </dt>
+              <dd>
+                <span class="lang-csharp"><a class="xref" href="Maroontress.SqlBind.Impl.Siphon.html" data-linktype="relative-path">Siphon</a></span>
+              </dd>
+            </dl>
+            <p>The abstraction of the database connection.</p>
+          </div>
+          <div class="propertyInfo stack">
+            <dl class="parameterList">
+              <dt>
+                bank
+              </dt>
+              <dd>
+                <span class="lang-csharp"><a class="xref" href="Maroontress.SqlBind.Impl.MetadataBank.html" data-linktype="relative-path">Metadata<wbr>Bank</a></span>
+              </dd>
+            </dl>
+            <p>The cache for the reflection.</p>
+          </div>
+          <h1 id="methods-detail" class="heading-with-anchor">Methods Detail</h1>
+          <h2 id="M:Maroontress.SqlBind.Impl.QueryImpl.SelectAllFrom``1(System.String)">SelectAllFrom&lt;T&gt;(string)</h2>
+          <div class="summaryHolder">
+            <div class="summary clearFix">
+              <p>Description copied from interface: Query</p>
+              <blockquote>
+                <p>Selects all columns of the specified table.</p>
+              </blockquote>
+            </div>
+          </div>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-title">SelectFrom</span>&lt;<span class="hljs-title">T</span>&gt; <span class="hljs-title">SelectAllFrom</span>&lt;<span class="hljs-title">T</span>&gt;(<span class="hljs-keyword">string</span> alias)</code></pre>
+          <h4 class="propertyInfoTitle stack">Type Parameters</h4>
+          <div class="propertyInfo">
+            <dl class="parameterList">
+              <dt>
+                T
+              </dt>
+              <dd>
+                <code>notnull</code>
+              </dd>
+            </dl>
+          </div>
+          <h4 class="propertyInfoTitle stack">Parameters</h4>
+          <div class="propertyInfo">
+            <dl class="parameterList">
+              <dt>
+                alias
+              </dt>
+              <dd>
+                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.string?view=netcore-3.0" data-linktype="absolute-path">string</a></span>
+              </dd>
+            </dl>
+          </div>
+          <h4 class="propertyInfoTitle stack">Returns</h4>
+          <div class="propertyInfo">
+            <div class="subtle">
+              <a class="xref" href="Maroontress.SqlBind.SelectFrom.html" data-linktype="relative-path">Select<wbr>From&lt;T&gt;</a>
+            </div>
+            <p>Description copied from interface: Query</p>
+            <blockquote>
+              <p>The <a href="Maroontress.SqlBind.SelectFrom.html">SelectFrom&lt;T&gt;</a> object.</p>
+            </blockquote>
+          </div>
+          <h4 class="propertyInfoTitle stack">Implements</h4>
+          <div class="propertyInfo">
+            <div class="cdlHolder">
+              <span class="cdl"><a href="Maroontress.SqlBind.Query.html#M:Maroontress.SqlBind.Query.SelectAllFrom``1(System.String)">Query.SelectAllFrom&lt;T&gt;(string)</a></span>
+            </div>
+          </div>
+          <h2 id="M:Maroontress.SqlBind.Impl.QueryImpl.Select``1(System.String[])">Select&lt;T&gt;(string[])</h2>
+          <div class="summaryHolder">
+            <div class="summary clearFix">
+              <p>Description copied from interface: Query</p>
+              <blockquote>
+                <p>Gets the <a href="Maroontress.SqlBind.Query.html#M:Maroontress.SqlBind.Query.Select``1(System.String[])">Query.Select&lt;T&gt;(string[])</a> object to select the specified columns
+    of the specified table.</p>
+              </blockquote>
+            </div>
+          </div>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-title">Select</span>&lt;<span class="hljs-title">T</span>&gt; <span class="hljs-title">Select</span>&lt;<span class="hljs-title">T</span>&gt;(<span class="hljs-keyword">params</span> <span class="hljs-keyword">string</span>[] columns)</code></pre>
+          <h4 class="propertyInfoTitle stack">Type Parameters</h4>
+          <div class="propertyInfo">
+            <dl class="parameterList">
+              <dt>
+                T
+              </dt>
+              <dd>
+                <code>notnull</code>
+              </dd>
+            </dl>
+          </div>
+          <h4 class="propertyInfoTitle stack">Parameters</h4>
+          <div class="propertyInfo">
+            <dl class="parameterList">
+              <dt>
+                columns
+              </dt>
+              <dd>
+                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.string?view=netcore-3.0" data-linktype="absolute-path">string</a>[]</span>
+              </dd>
+            </dl>
+          </div>
+          <h4 class="propertyInfoTitle stack">Returns</h4>
+          <div class="propertyInfo">
+            <div class="subtle">
+              <a class="xref" href="Maroontress.SqlBind.Select.html" data-linktype="relative-path">Select&lt;T&gt;</a>
+            </div>
+            <p>Description copied from interface: Query</p>
+            <blockquote>
+              <p>The <a href="Maroontress.SqlBind.Query.html#M:Maroontress.SqlBind.Query.Select``1(System.String[])">Query.Select&lt;T&gt;(string[])</a> object.</p>
+            </blockquote>
+          </div>
+          <h4 class="propertyInfoTitle stack">Implements</h4>
+          <div class="propertyInfo">
+            <div class="cdlHolder">
+              <span class="cdl"><a href="Maroontress.SqlBind.Query.html#M:Maroontress.SqlBind.Query.Select``1(System.String[])">Query.Select&lt;T&gt;(string[])</a></span>
+            </div>
+          </div>
+          <h2 id="M:Maroontress.SqlBind.Impl.QueryImpl.DeleteFrom``1">DeleteFrom&lt;T&gt;()</h2>
+          <div class="summaryHolder">
+            <div class="summary clearFix">
+              <p>Description copied from interface: Query</p>
+              <blockquote>
+                <p>Gets the <a href="Maroontress.SqlBind.Query.html#M:Maroontress.SqlBind.Query.DeleteFrom``1">Query.DeleteFrom&lt;T&gt;()</a> object to delete the specified
+    rows of the specified table.</p>
+              </blockquote>
+            </div>
+          </div>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-title">DeleteFrom</span>&lt;<span class="hljs-title">T</span>&gt; <span class="hljs-title">DeleteFrom</span>&lt;<span class="hljs-title">T</span>&gt;()</code></pre>
+          <h4 class="propertyInfoTitle stack">Type Parameters</h4>
+          <div class="propertyInfo">
+            <dl class="parameterList">
+              <dt>
+                T
+              </dt>
+              <dd>
+                <code>notnull</code>
+              </dd>
+            </dl>
+          </div>
+          <h4 class="propertyInfoTitle stack">Returns</h4>
+          <div class="propertyInfo">
+            <div class="subtle">
+              <a class="xref" href="Maroontress.SqlBind.DeleteFrom.html" data-linktype="relative-path">Delete<wbr>From&lt;T&gt;</a>
+            </div>
+            <p>Description copied from interface: Query</p>
+            <blockquote>
+              <p>The <a href="Maroontress.SqlBind.Query.html#M:Maroontress.SqlBind.Query.DeleteFrom``1">Query.DeleteFrom&lt;T&gt;()</a> object.</p>
+            </blockquote>
+          </div>
+          <h4 class="propertyInfoTitle stack">Implements</h4>
+          <div class="propertyInfo">
+            <div class="cdlHolder">
+              <span class="cdl"><a href="Maroontress.SqlBind.Query.html#M:Maroontress.SqlBind.Query.DeleteFrom``1">Query.DeleteFrom&lt;T&gt;()</a></span>
+            </div>
+          </div>
+          <h2 id="M:Maroontress.SqlBind.Impl.QueryImpl.NewTables(System.Type[])">NewTables(Type[])</h2>
+          <div class="summaryHolder">
+            <div class="summary clearFix">
+              <p>Description copied from interface: Query</p>
+              <blockquote>
+                <p>Creates new tables.</p>
+              </blockquote>
+            </div>
+          </div>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">NewTables</span>(<span class="hljs-keyword">params</span> <span class="hljs-title">Type</span>[] tables)</code></pre>
+          <h4 class="propertyInfoTitle stack">Parameters</h4>
+          <div class="propertyInfo">
+            <dl class="parameterList">
+              <dt>
+                tables
+              </dt>
+              <dd>
+                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.type?view=netcore-3.0" data-linktype="absolute-path">Type</a>[]</span>
+              </dd>
+            </dl>
+          </div>
+          <h4 class="propertyInfoTitle stack">Implements</h4>
+          <div class="propertyInfo">
+            <div class="cdlHolder">
+              <span class="cdl"><a href="Maroontress.SqlBind.Query.html#M:Maroontress.SqlBind.Query.NewTables(System.Type[])">Query.NewTables(Type[])</a></span>
+            </div>
+          </div>
+          <h3>Remarks</h3>
+          <p>Description copied from interface: Query</p>
+          <blockquote>
+            <p>This method drops the tables if they exist and then creates them newly.</p>
+          </blockquote>
+          <h2 id="M:Maroontress.SqlBind.Impl.QueryImpl.NewTables(System.Collections.Generic.IEnumerable{System.Type})">NewTables(IEnumerable&lt;Type&gt;)</h2>
+          <div class="summaryHolder">
+            <div class="summary clearFix">
+              <p>Description copied from interface: Query</p>
+              <blockquote>
+                <p>Creates new tables.</p>
+              </blockquote>
+            </div>
+          </div>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">NewTables</span>(<span class="hljs-title">IEnumerable</span>&lt;<span class="hljs-title">Type</span>&gt; allTables)</code></pre>
+          <h4 class="propertyInfoTitle stack">Parameters</h4>
+          <div class="propertyInfo">
+            <dl class="parameterList">
+              <dt>
+                allTables
+              </dt>
+              <dd>
+                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1?view=netcore-3.0" data-linktype="absolute-path">IEnumerable</a>&lt;<a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.type?view=netcore-3.0" data-linktype="absolute-path">Type</a>&gt;</span>
+              </dd>
+            </dl>
+          </div>
+          <h4 class="propertyInfoTitle stack">Implements</h4>
+          <div class="propertyInfo">
+            <div class="cdlHolder">
+              <span class="cdl"><a href="Maroontress.SqlBind.Query.html#M:Maroontress.SqlBind.Query.NewTables(System.Collections.Generic.IEnumerable{System.Type})">Query.NewTables(IEnumerable&lt;Type&gt;)</a></span>
+            </div>
+          </div>
+          <h3>Remarks</h3>
+          <p>Description copied from interface: Query</p>
+          <blockquote>
+            <p>This method drops the tables if they exist and then creates them newly.</p>
+          </blockquote>
+          <h2 id="M:Maroontress.SqlBind.Impl.QueryImpl.Insert``1(``0)">Insert&lt;T&gt;(T)</h2>
+          <div class="summaryHolder">
+            <div class="summary clearFix">
+              <p>Description copied from interface: Query</p>
+              <blockquote>
+                <p>Inserts a new row into the table.</p>
+              </blockquote>
+            </div>
+          </div>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Insert</span>&lt;<span class="hljs-title">T</span>&gt;(<span class="hljs-title">T</span> row)</code></pre>
+          <h4 class="propertyInfoTitle stack">Type Parameters</h4>
+          <div class="propertyInfo">
+            <dl class="parameterList">
+              <dt>
+                T
+              </dt>
+              <dd>
+                <code>notnull</code>
+              </dd>
+            </dl>
+          </div>
+          <h4 class="propertyInfoTitle stack">Parameters</h4>
+          <div class="propertyInfo">
+            <dl class="parameterList">
+              <dt>
+                row
+              </dt>
+              <dd>
+                <span class="lang-csharp">T</span>
+              </dd>
+            </dl>
+          </div>
+          <h4 class="propertyInfoTitle stack">Implements</h4>
+          <div class="propertyInfo">
+            <div class="cdlHolder">
+              <span class="cdl"><a href="Maroontress.SqlBind.Query.html#M:Maroontress.SqlBind.Query.Insert``1(``0)">Query.Insert&lt;T&gt;(T)</a></span>
+            </div>
+          </div>
+          <h2 id="M:Maroontress.SqlBind.Impl.QueryImpl.InsertAndGetRowId``1(``0)">InsertAndGetRowId&lt;T&gt;(T)</h2>
+          <div class="summaryHolder">
+            <div class="summary clearFix">
+              <p>Description copied from interface: Query</p>
+              <blockquote>
+                <p>Inserts a new row into the table and gets its ID.</p>
+              </blockquote>
+            </div>
+          </div>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-keyword">long</span> <span class="hljs-title">InsertAndGetRowId</span>&lt;<span class="hljs-title">T</span>&gt;(<span class="hljs-title">T</span> row)</code></pre>
+          <h4 class="propertyInfoTitle stack">Type Parameters</h4>
+          <div class="propertyInfo">
+            <dl class="parameterList">
+              <dt>
+                T
+              </dt>
+              <dd>
+                <code>notnull</code>
+              </dd>
+            </dl>
+          </div>
+          <h4 class="propertyInfoTitle stack">Parameters</h4>
+          <div class="propertyInfo">
+            <dl class="parameterList">
+              <dt>
+                row
+              </dt>
+              <dd>
+                <span class="lang-csharp">T</span>
+              </dd>
+            </dl>
+          </div>
+          <h4 class="propertyInfoTitle stack">Returns</h4>
+          <div class="propertyInfo">
+            <div class="subtle">
+              <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.int64?view=netcore-3.0" data-linktype="absolute-path">long</a>
+            </div>
+            <p>Description copied from interface: Query</p>
+            <blockquote>
+              <p>The ID of the row newly inserted.</p>
+            </blockquote>
+          </div>
+          <h4 class="propertyInfoTitle stack">Implements</h4>
+          <div class="propertyInfo">
+            <div class="cdlHolder">
+              <span class="cdl"><a href="Maroontress.SqlBind.Query.html#M:Maroontress.SqlBind.Query.InsertAndGetRowId``1(``0)">Query.InsertAndGetRowId&lt;T&gt;(T)</a></span>
+            </div>
+          </div>
+          <h2 id="M:Maroontress.SqlBind.Impl.QueryImpl.SelectUnique``1(System.String,System.Object)">SelectUnique&lt;T&gt;(string, object)</h2>
+          <div class="summaryHolder">
+            <div class="summary clearFix">
+              <p>Description copied from interface: Query</p>
+              <blockquote>
+                <p>Gets the single row of the table in which the specified unique field
+    matches the specified value.</p>
+              </blockquote>
+            </div>
+          </div>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-title">T</span> <span class="hljs-title">SelectUnique</span>&lt;<span class="hljs-title">T</span>&gt;(<span class="hljs-keyword">string</span> columnName, <span class="hljs-keyword">object</span> value)</code></pre>
+          <h4 class="propertyInfoTitle stack">Type Parameters</h4>
+          <div class="propertyInfo">
+            <dl class="parameterList">
+              <dt>
+                T
+              </dt>
+              <dd>
+                <code>class</code>
+              </dd>
+            </dl>
+          </div>
+          <h4 class="propertyInfoTitle stack">Parameters</h4>
+          <div class="propertyInfo">
+            <dl class="parameterList">
+              <dt>
+                columnName
+              </dt>
+              <dd>
+                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.string?view=netcore-3.0" data-linktype="absolute-path">string</a></span>
+              </dd>
+            </dl>
+          </div>
+          <div class="propertyInfo stack">
+            <dl class="parameterList">
+              <dt>
+                value
+              </dt>
+              <dd>
+                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=netcore-3.0" data-linktype="absolute-path">object</a></span>
+              </dd>
+            </dl>
+          </div>
+          <h4 class="propertyInfoTitle stack">Returns</h4>
+          <div class="propertyInfo">
+            <div class="subtle">
+              T
+            </div>
+            <p>Description copied from interface: Query</p>
+            <blockquote>
+              <p>The row in which the field specified with <code>columnName</code>
+    matches the specified <code>value</code> if it exists,
+    <code>null</code> otherwise.</p>
+            </blockquote>
+          </div>
+          <h4 class="propertyInfoTitle stack">Implements</h4>
+          <div class="propertyInfo">
+            <div class="cdlHolder">
+              <span class="cdl"><a href="Maroontress.SqlBind.Query.html#M:Maroontress.SqlBind.Query.SelectUnique``1(System.String,System.Object)">Query.SelectUnique&lt;T&gt;(string, object)</a></span>
+            </div>
+          </div>
+          <h2 id="M:Maroontress.SqlBind.Impl.QueryImpl.SelectAll``1">SelectAll&lt;T&gt;()</h2>
+          <div class="summaryHolder">
+            <div class="summary clearFix">
+              <p>Description copied from interface: Query</p>
+              <blockquote>
+                <p>Gets all the rows of the specified table.</p>
+              </blockquote>
+            </div>
+          </div>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-title">IEnumerable</span>&lt;<span class="hljs-title">T</span>&gt; <span class="hljs-title">SelectAll</span>&lt;<span class="hljs-title">T</span>&gt;()</code></pre>
+          <h4 class="propertyInfoTitle stack">Type Parameters</h4>
+          <div class="propertyInfo">
+            <dl class="parameterList">
+              <dt>
+                T
+              </dt>
+              <dd>
+                <code>notnull</code>
+              </dd>
+            </dl>
+          </div>
+          <h4 class="propertyInfoTitle stack">Returns</h4>
+          <div class="propertyInfo">
+            <div class="subtle">
+              <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1?view=netcore-3.0" data-linktype="absolute-path">IEnumerable&lt;T&gt;</a>
+            </div>
+            <p>Description copied from interface: Query</p>
+            <blockquote>
+              <p>All the rows of the specified table.</p>
+            </blockquote>
+          </div>
+          <h4 class="propertyInfoTitle stack">Implements</h4>
+          <div class="propertyInfo">
+            <div class="cdlHolder">
+              <span class="cdl"><a href="Maroontress.SqlBind.Query.html#M:Maroontress.SqlBind.Query.SelectAll``1">Query.SelectAll&lt;T&gt;()</a></span>
+            </div>
+          </div>
+          <h3>Remarks</h3>
+          <p>Description copied from interface: Query</p>
+          <blockquote>
+            <p>The <a href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1?view=netcore-3.0">IEnumerable&lt;T&gt;</a> object returned by this method is
+    valid as long as the transaction is in progress. If you need access to
+    it after the transaction, you must use something like the
+    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.linq.enumerable.tolist--1?view=netcore-3.0#System_Linq_Enumerable_ToList__1_System_Collections_Generic_IEnumerable___0__">Enumerable.ToList&lt;TSource&gt;(IEnumerable&lt;TSource&gt;)</a>
+    method to get the list in the meantime and then use it afterward.</p>
+          </blockquote>
+          <h2 id="M:Maroontress.SqlBind.Impl.QueryImpl.ColumnName``1(System.String)">ColumnName&lt;T&gt;(string)</h2>
+          <div class="summaryHolder">
+            <div class="summary clearFix">
+              <p>Description copied from interface: Query</p>
+              <blockquote>
+                <p>Gets the column name associated with the specified parameter.</p>
+              </blockquote>
+            </div>
+          </div>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-keyword">string</span> <span class="hljs-title">ColumnName</span>&lt;<span class="hljs-title">T</span>&gt;(<span class="hljs-keyword">string</span> parameterName)</code></pre>
+          <h4 class="propertyInfoTitle stack">Type Parameters</h4>
+          <div class="propertyInfo">
+            <dl class="parameterList">
+              <dt>
+                T
+              </dt>
+              <dd>
+                <code>notnull</code>
+              </dd>
+            </dl>
+          </div>
+          <h4 class="propertyInfoTitle stack">Parameters</h4>
+          <div class="propertyInfo">
+            <dl class="parameterList">
+              <dt>
+                parameterName
+              </dt>
+              <dd>
+                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.string?view=netcore-3.0" data-linktype="absolute-path">string</a></span>
+              </dd>
+            </dl>
+          </div>
+          <h4 class="propertyInfoTitle stack">Returns</h4>
+          <div class="propertyInfo">
+            <div class="subtle">
+              <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.string?view=netcore-3.0" data-linktype="absolute-path">string</a>
+            </div>
+            <p>Description copied from interface: Query</p>
+            <blockquote>
+              <p>The column name.</p>
+            </blockquote>
+          </div>
+          <h4 class="propertyInfoTitle stack">Implements</h4>
+          <div class="propertyInfo">
+            <div class="cdlHolder">
+              <span class="cdl"><a href="Maroontress.SqlBind.Query.html#M:Maroontress.SqlBind.Query.ColumnName``1(System.String)">Query.ColumnName&lt;T&gt;(string)</a></span>
+            </div>
+          </div>
+          <h2 id="M:Maroontress.SqlBind.Impl.QueryImpl.Update``1(System.String)">Update&lt;T&gt;(string)</h2>
+          <div class="summaryHolder">
+            <div class="summary clearFix">
+              <p>Description copied from interface: Query</p>
+              <blockquote>
+                <p>Gets the <a href="Maroontress.SqlBind.Update.html">Update</a> object to update the specified
+    table.</p>
+              </blockquote>
+            </div>
+          </div>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-title">Update</span> <span class="hljs-title">Update</span>&lt;<span class="hljs-title">T</span>&gt;(<span class="hljs-keyword">string</span> alias)</code></pre>
+          <h4 class="propertyInfoTitle stack">Type Parameters</h4>
+          <div class="propertyInfo">
+            <dl class="parameterList">
+              <dt>
+                T
+              </dt>
+              <dd>
+                <code>notnull</code>
+              </dd>
+            </dl>
+          </div>
+          <h4 class="propertyInfoTitle stack">Parameters</h4>
+          <div class="propertyInfo">
+            <dl class="parameterList">
+              <dt>
+                alias
+              </dt>
+              <dd>
+                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.string?view=netcore-3.0" data-linktype="absolute-path">string</a></span>
+              </dd>
+            </dl>
+          </div>
+          <h4 class="propertyInfoTitle stack">Returns</h4>
+          <div class="propertyInfo">
+            <div class="subtle">
+              <a class="xref" href="Maroontress.SqlBind.Update.html" data-linktype="relative-path">Update</a>
+            </div>
+            <p>Description copied from interface: Query</p>
+            <blockquote>
+              <p>The <a href="Maroontress.SqlBind.Update.html">Update</a> object.</p>
+            </blockquote>
+          </div>
+          <h4 class="propertyInfoTitle stack">Implements</h4>
+          <div class="propertyInfo">
+            <div class="cdlHolder">
+              <span class="cdl"><a href="Maroontress.SqlBind.Query.html#M:Maroontress.SqlBind.Query.Update``1(System.String)">Query.Update&lt;T&gt;(string)</a></span>
+            </div>
+          </div>
+          <h3>Examples</h3>
+          <p>Description copied from interface: Query</p>
+          <blockquote>
+            <pre><code class="lang-csharp">var kit = new TransactionKit(
+    "update_example.db", m =&gt; Console.WriteLine(m()));
+var map = new Dictionary&lt;string, object&gt;()
+{
+    ["$id"] = 2L,
+    ["$newState"] = "Closed",
+};
+kit.Execute(q =&gt;
+{
+    q.Update&lt;Issue&gt;("i")
+        .Set("state = $newState")
+        .Where("i.id = $id")
+        .Execute(map);
+});</code></pre>
+          </blockquote>
         </main>
       </section>
     </div>

@@ -49,7 +49,7 @@ gtag('config', 'G-9TQ6JWBKEK');
           <div class="codeHeader" data-bi-name="code-header">
             <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
           </div>
-          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-keyword">sealed</span> <span class="hljs-keyword">class</span> <span class="hljs-title">SqliteReservoir</span></code></pre>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-keyword">sealed</span> <span class="hljs-keyword">class</span> <span class="hljs-title">SqliteReservoir</span> : <span class="hljs-title">Reservoir</span></code></pre>
           <dl class="attributeList stack">
             <dt>
               Inheritance
@@ -63,10 +63,75 @@ gtag('config', 'G-9TQ6JWBKEK');
               </div>
             </dd>
           </dl>
+          <dl class="attributeList stack">
+            <dt>
+              Implements
+            </dt>
+            <dd>
+              <div class="cdlHolder">
+                <span class="cdl"><span class="lang-csharp break-text"><a class="xref" href="Maroontress.SqlBind.Impl.Reservoir.html" data-linktype="relative-path">Reservoir</a></span></span> <span class="cdl"><span class="lang-csharp break-text"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.idisposable?view=netcore-3.0" data-linktype="absolute-path">IDisposable</a></span></span>
+              </div>
+            </dd>
+          </dl>
+          <h2 id="constructors" class="heading-with-anchor">Constructors</h2>
+          <div class="table-scroll-wrapper">
+            <table class="nameValue">
+              <tbody>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.SqlBind.Impl.SqliteReservoir.#ctor(Microsoft.Data.Sqlite.SqliteDataReader)" data-linktype="relative-path">Sqlite<wbr>Reservoir(Sqlite<wbr>Data<wbr>Reader)</a></span>
+                  </td>
+                  <td>
+                    <p>The <a href="Maroontress.SqlBind.Impl.Reservoir.html">Reservoir</a> implementation wrapping SQLite.</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
           <h2 id="methods" class="heading-with-anchor">Methods</h2>
           <div class="table-scroll-wrapper">
             <table class="nameValue">
               <tbody>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.SqlBind.Impl.SqliteReservoir.Dispose" data-linktype="relative-path">Dispose()</a></span>
+                  </td>
+                  <td>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.SqlBind.Impl.SqliteReservoir.NewInstance``1" data-linktype="relative-path">New<wbr>Instance&lt;T&gt;()</a></span>
+                  </td>
+                  <td>
+                    <p>Description copied from interface: Reservoir</p>
+                    <blockquote>
+                      <p>Creates an instance with the current row.</p>
+                    </blockquote>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.SqlBind.Impl.SqliteReservoir.NewInstances``1" data-linktype="relative-path">New<wbr>Instances&lt;T&gt;()</a></span>
+                  </td>
+                  <td>
+                    <p>Description copied from interface: Reservoir</p>
+                    <blockquote>
+                      <p>Creates new instances with the current and susequent rows.</p>
+                    </blockquote>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.SqlBind.Impl.SqliteReservoir.Read" data-linktype="relative-path">Read()</a></span>
+                  </td>
+                  <td>
+                    <p>Description copied from interface: Reservoir</p>
+                    <blockquote>
+                      <p>Advances to the next row in the result set.</p>
+                    </blockquote>
+                  </td>
+                </tr>
                 <tr>
                   <td>
                     <a href="https://docs.microsoft.com/en-us/dotnet/api/system.object.equals?view=netcore-3.0#System_Object_Equals_System_Object_">Equals(object)</a>
@@ -109,6 +174,148 @@ gtag('config', 'G-9TQ6JWBKEK');
                 </tr>
               </tbody>
             </table>
+          </div>
+          <h1 id="constructors-detail" class="heading-with-anchor">Constructors Detail</h1>
+          <h2 id="M:Maroontress.SqlBind.Impl.SqliteReservoir.#ctor(Microsoft.Data.Sqlite.SqliteDataReader)">SqliteReservoir(SqliteDataReader)</h2>
+          <div class="summaryHolder">
+            <div class="summary clearFix">
+              <p>The <a href="Maroontress.SqlBind.Impl.Reservoir.html">Reservoir</a> implementation wrapping SQLite.</p>
+            </div>
+          </div>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-title">SqliteReservoir</span>(<span class="hljs-title">SqliteDataReader</span> reader)</code></pre>
+          <h4 class="propertyInfoTitle stack">Parameters</h4>
+          <div class="propertyInfo">
+            <dl class="parameterList">
+              <dt>
+                reader
+              </dt>
+              <dd>
+                <span class="lang-csharp">Sqlite<wbr>Data<wbr>Reader</span>
+              </dd>
+            </dl>
+            <p>The <a href="#">?</a> object.</p>
+          </div>
+          <h1 id="methods-detail" class="heading-with-anchor">Methods Detail</h1>
+          <h2 id="M:Maroontress.SqlBind.Impl.SqliteReservoir.Dispose">Dispose()</h2>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Dispose</span>()</code></pre>
+          <h4 class="propertyInfoTitle stack">Implements</h4>
+          <div class="propertyInfo">
+            <div class="cdlHolder">
+              <span class="cdl"><a href="https://docs.microsoft.com/en-us/dotnet/api/system.idisposable.dispose?view=netcore-3.0">IDisposable.Dispose()</a></span>
+            </div>
+          </div>
+          <h2 id="M:Maroontress.SqlBind.Impl.SqliteReservoir.NewInstance``1">NewInstance&lt;T&gt;()</h2>
+          <div class="summaryHolder">
+            <div class="summary clearFix">
+              <p>Description copied from interface: Reservoir</p>
+              <blockquote>
+                <p>Creates an instance with the current row.</p>
+              </blockquote>
+            </div>
+          </div>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-title">T</span> <span class="hljs-title">NewInstance</span>&lt;<span class="hljs-title">T</span>&gt;()</code></pre>
+          <h4 class="propertyInfoTitle stack">Type Parameters</h4>
+          <div class="propertyInfo">
+            <dl class="parameterList">
+              <dt>
+                T
+              </dt>
+              <dd>
+              </dd>
+            </dl>
+          </div>
+          <h4 class="propertyInfoTitle stack">Returns</h4>
+          <div class="propertyInfo">
+            <div class="subtle">
+              T
+            </div>
+            <p>Description copied from interface: Reservoir</p>
+            <blockquote>
+              <p>The new instance.</p>
+            </blockquote>
+          </div>
+          <h4 class="propertyInfoTitle stack">Implements</h4>
+          <div class="propertyInfo">
+            <div class="cdlHolder">
+              <span class="cdl"><a href="Maroontress.SqlBind.Impl.Reservoir.html#M:Maroontress.SqlBind.Impl.Reservoir.NewInstance``1">Reservoir.NewInstance&lt;T&gt;()</a></span>
+            </div>
+          </div>
+          <h2 id="M:Maroontress.SqlBind.Impl.SqliteReservoir.NewInstances``1">NewInstances&lt;T&gt;()</h2>
+          <div class="summaryHolder">
+            <div class="summary clearFix">
+              <p>Description copied from interface: Reservoir</p>
+              <blockquote>
+                <p>Creates new instances with the current and susequent rows.</p>
+              </blockquote>
+            </div>
+          </div>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-title">IEnumerable</span>&lt;<span class="hljs-title">T</span>&gt; <span class="hljs-title">NewInstances</span>&lt;<span class="hljs-title">T</span>&gt;()</code></pre>
+          <h4 class="propertyInfoTitle stack">Type Parameters</h4>
+          <div class="propertyInfo">
+            <dl class="parameterList">
+              <dt>
+                T
+              </dt>
+              <dd>
+              </dd>
+            </dl>
+          </div>
+          <h4 class="propertyInfoTitle stack">Returns</h4>
+          <div class="propertyInfo">
+            <div class="subtle">
+              <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1?view=netcore-3.0" data-linktype="absolute-path">IEnumerable&lt;T&gt;</a>
+            </div>
+            <p>Description copied from interface: Reservoir</p>
+            <blockquote>
+              <p>The new instances.</p>
+            </blockquote>
+          </div>
+          <h4 class="propertyInfoTitle stack">Implements</h4>
+          <div class="propertyInfo">
+            <div class="cdlHolder">
+              <span class="cdl"><a href="Maroontress.SqlBind.Impl.Reservoir.html#M:Maroontress.SqlBind.Impl.Reservoir.NewInstances``1">Reservoir.NewInstances&lt;T&gt;()</a></span>
+            </div>
+          </div>
+          <h2 id="M:Maroontress.SqlBind.Impl.SqliteReservoir.Read">Read()</h2>
+          <div class="summaryHolder">
+            <div class="summary clearFix">
+              <p>Description copied from interface: Reservoir</p>
+              <blockquote>
+                <p>Advances to the next row in the result set.</p>
+              </blockquote>
+            </div>
+          </div>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-keyword">bool</span> <span class="hljs-title">Read</span>()</code></pre>
+          <h4 class="propertyInfoTitle stack">Returns</h4>
+          <div class="propertyInfo">
+            <div class="subtle">
+              <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.boolean?view=netcore-3.0" data-linktype="absolute-path">bool</a>
+            </div>
+            <p>Description copied from interface: Reservoir</p>
+            <blockquote>
+              <p><code>true</code> if there are more rows; otherwise, <code>false</code>.</p>
+            </blockquote>
+          </div>
+          <h4 class="propertyInfoTitle stack">Implements</h4>
+          <div class="propertyInfo">
+            <div class="cdlHolder">
+              <span class="cdl"><a href="Maroontress.SqlBind.Impl.Reservoir.html#M:Maroontress.SqlBind.Impl.Reservoir.Read">Reservoir.Read()</a></span>
+            </div>
           </div>
         </main>
       </section>

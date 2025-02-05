@@ -37,7 +37,7 @@
 <p>BomSweeper is a command-line tool that finds the files starting with a UTF-8
 Byte Order Mark (BOM) in the directory tree and removes BOMs from those files.</p>
 <h2>Get started</h2>
-<p>BomSweeper is available as <a href="https://www.nuget.org/packages/BomSweeper.GlobalTool/">the <img src="https://maroontress.github.io/images/NuGet-logo.png" alt="NuGet-logo" /> NuGet
+<p>BomSweeper is available as <a href="https://www.nuget.org/packages/BomSweeper.GlobalTool/">the <img src="https://maroontress.github.io/images/NuGet-logo.png" alt="NuGet-logo"> NuGet
 package</a>, so it can be installed as follows:</p>
 <pre><code class="language-plaintext">dotnet tool install -g BomSweeper.GlobalTool
 </code></pre>
@@ -80,14 +80,54 @@ the directories, and subdirectories. For example, <code>foo/**/bar</code> matche
 </li>
 </ul>
 <p>Options are as follows:</p>
-<p>| | Option | | Description |
-|---:|:---|:---|:---|
-| <code>-C</code>, | <code>--directory</code> | <em>DIR</em> | Change to directory. (Default: <code>.</code>) |
-| <code>-h</code>, | <code>--help</code> | | Show help message and exit |
-| <code>-D</code>, | <code>--max-depth</code> | <em>N</em> | The maximum number of directory levels to search. (Default: <code>16</code>) |
-| <code>-R</code>, | <code>--remove</code> | | Remove a BOM |
-| <code>-v</code>, | <code>--verbose</code> | | Be verbose |
-| <code>-V</code>, | <code>--version</code> | | Show version and exit |</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:right"></th>
+<th style="text-align:left">Option</th>
+<th style="text-align:left"></th>
+<th style="text-align:left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right"><code>-C</code>,</td>
+<td style="text-align:left"><code>--directory</code></td>
+<td style="text-align:left"><em>DIR</em></td>
+<td style="text-align:left">Change to directory. (Default: <code>.</code>)</td>
+</tr>
+<tr>
+<td style="text-align:right"><code>-h</code>,</td>
+<td style="text-align:left"><code>--help</code></td>
+<td style="text-align:left"></td>
+<td style="text-align:left">Show help message and exit</td>
+</tr>
+<tr>
+<td style="text-align:right"><code>-D</code>,</td>
+<td style="text-align:left"><code>--max-depth</code></td>
+<td style="text-align:left"><em>N</em></td>
+<td style="text-align:left">The maximum number of directory levels to search. (Default: <code>16</code>)</td>
+</tr>
+<tr>
+<td style="text-align:right"><code>-R</code>,</td>
+<td style="text-align:left"><code>--remove</code></td>
+<td style="text-align:left"></td>
+<td style="text-align:left">Remove a BOM</td>
+</tr>
+<tr>
+<td style="text-align:right"><code>-v</code>,</td>
+<td style="text-align:left"><code>--verbose</code></td>
+<td style="text-align:left"></td>
+<td style="text-align:left">Be verbose</td>
+</tr>
+<tr>
+<td style="text-align:right"><code>-V</code>,</td>
+<td style="text-align:left"><code>--version</code></td>
+<td style="text-align:left"></td>
+<td style="text-align:left">Show version and exit</td>
+</tr>
+</tbody>
+</table>
 <h3>Exit status</h3>
 <p>BomSweeper exits 0 if no files starting with a UTF-8 BOM are found, and &gt;0 if
 one or more files are found or if an error occurs.</p>
@@ -111,7 +151,7 @@ BOM from the files if any.</p>
 </ul>
 <h2>How to contribute</h2>
 <p>Please send us pull requests or issues from
-<a href="https://github.com/maroontress/BomSweeper.CSharp">the <img src="https://maroontress.github.io/images/GitHub-logo.png" alt="GitHub icon" /> GitHub repository</a>.</p>
+<a href="https://github.com/maroontress/BomSweeper.CSharp">the <img src="https://maroontress.github.io/images/GitHub-logo.png" alt="GitHub icon"> GitHub repository</a>.</p>
           </main>
         </section>
       </div>

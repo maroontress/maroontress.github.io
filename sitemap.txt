@@ -292,6 +292,7 @@ https://maroontress.github.io/StyleChecker/diagnostics/NoSpaceBeforeBrace.html
 https://maroontress.github.io/StyleChecker/diagnostics/NoUsingDeclaration.html
 https://maroontress.github.io/StyleChecker/diagnostics/NotDesignedForExtension.html
 https://maroontress.github.io/StyleChecker/diagnostics/NotOneShotInitialization.html
+https://maroontress.github.io/StyleChecker/diagnostics/NullCheckAfterDeclaration.html
 https://maroontress.github.io/StyleChecker/diagnostics/PostIncrement.html
 https://maroontress.github.io/StyleChecker/diagnostics/RedundantTypedArrayCreation.html
 https://maroontress.github.io/StyleChecker/diagnostics/SingleTypeParameter.html

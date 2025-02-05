@@ -36,15 +36,15 @@
 <div id="toc-level" data-values="H2,H3"></div>
 <h1>SingleTypeParameter</h1>
 <div class="horizontal-scroll">
-<p><img src="https://maroontress.github.io/StyleChecker/images/SingleTypeParameter.png" alt="SingleTypeParameter" /></p>
+<p><img src="https://maroontress.github.io/StyleChecker/images/SingleTypeParameter.png" alt="SingleTypeParameter"></p>
 </div>
 <h2>Summary</h2>
-<p>Use <code>T</code> as a type parameter name if the type parameter is single.</p>
+<p>Use <code>T</code> as the type parameter name if the type parameter is single.</p>
 <h2>Default severity</h2>
 <p>Warning</p>
 <h2>Description</h2>
-<p><a href="https://docs.microsoft.com/en-us/dotnet/standard/design-guidelines/names-of-classes-structs-and-interfaces">Names of Classes, Structs, and Interfaces</a>
-[<a href="#ref1">1</a>] is quoted as follows:</p>
+<p><a href="https://docs.microsoft.com/en-us/dotnet/standard/design-guidelines/names-of-classes-structs-and-interfaces">Names of Classes, Structs, and Interfaces</a> [<a href="#ref1">1</a>] are cited as
+follows:</p>
 <blockquote>
 <h3>Names of Generic Type Parameters</h3>
 <ul>
@@ -52,14 +52,155 @@
 single-letter type parameter.</li>
 </ul>
 </blockquote>
-<p>However, the following cases are excluded because renaming to <code>T</code> may cause a
-compile error or change the meaning:</p>
+<p>However, renaming the type parameter name to <code>T</code> may cause a compilation
+error/warning or change the meaning, so some cases must be excluded.</p>
+<blockquote>
+<p>🛠️ <strong>Changed</strong></p>
+<p>Before version 2.1.0, this analyzer issued diagnostics even if the code fix
+would cause compilation errors or warnings.</p>
+</blockquote>
+<h3>How to decide if renaming is possible</h3>
+<p>Suppose you want to know if the type parameter <code>NotT</code> can be renamed to <code>T</code>
+without causing a compilation error or warning and changing the meaning.</p>
+<p>First, we will discuss the case where a syntax node with the type parameter
+<code>NotT</code> is a type <em>C</em> (e.g., <code>class</code>, <code>struct</code>, etc.). We cannot rename <code>NotT</code> to
+<code>T</code> in the following cases:</p>
 <ul>
-<li>The type name is <code>T</code> and it has one type parameter</li>
-<li>The type <code>T</code> is already contained in the type or member</li>
+<li>The type name of <em>C</em> is <code>T</code>.</li>
+<li>One of the members of type <em>C</em> is named <code>T</code>.</li>
 </ul>
+<p>For example, renaming the type parameter <code>NotT</code> to <code>T</code> causes a compilation
+error as follows:</p>
+<pre><code class="language-cs">// Renaming NotT to T causes an error CS0694 at the line /*💀*/
+/*💀*/ public sealed class T&lt;NotT&gt;
+{
+}
+</code></pre>
+<pre><code class="language-cs">// Renaming NotT to T causes an error CS0102 at the line /*💀*/
+public sealed class U&lt;NotT&gt;
+{
+    // A MemberDeclaration with the name &quot;T&quot; exists in this scope.
+    /*💀*/ public void T()
+    {
+    }
+}
+</code></pre>
+<p>In the example above, the member named <code>T</code> is a method, but it can also be a
+field, property, delegate, event, or inner type.</p>
+<p>We also cannot rename it to avoid compilation warnings in the following cases:</p>
+<ul>
+<li>The type <em>C</em> has the syntax nodes containing the type parameter <code>T</code> inside
+<em>C</em>.</li>
+<li>One of the ancestors of type <em>C</em> is the syntax node containing the type
+parameter <code>T</code>.</li>
+</ul>
+<p>For example:</p>
+<pre><code class="language-cs">// Renaming NotT to T causes a warning CS0693 at the line /*💀*/
+public sealed class C&lt;NotT&gt;
+{
+    public sealed class Inner
+    {
+        /*💀*/ public static class U&lt;T&gt;
+        {
+        }
+    }
+
+    /*💀*/ public void M&lt;T&gt;()
+    {
+    }
+}
+</code></pre>
+<pre><code class="language-cs">public sealed class U&lt;T&gt;
+{
+    public sealed class Inner
+    {
+        // Renaming NotT to T causes a warning CS0693 at the line /*💀*/
+        /*💀*/ public static class C&lt;NotT&gt;
+        {
+        }
+    }
+}
+</code></pre>
+<p>In some cases, we change the meaning of <code>T</code> when we rename <code>NotT</code> to <code>T</code>. If
+there is a token named <code>T</code> inside type <em>C</em>, <code>NotT</code> cannot be renamed to <code>T</code>
+unless <code>T</code> is the type name and the declaration of <code>T</code> is inside <em>C</em>. For
+example:</p>
+<pre><code class="language-cs">public sealed class U
+{
+    public sealed class Inner
+    {
+        // Renaming NotT to T causes a change the meaning of T in C&lt;NotT&gt;:
+        // U.T -&gt; T in C&lt;T&gt;
+        public static class C&lt;NotT&gt;
+        {
+            public static T? Default { get; }
+        }
+    }
+
+    public sealed class T
+    {
+    }
+}
+</code></pre>
+<pre><code class="language-cs">// Renaming NotT to T does not change the meaning of T in C&lt;NotT&gt;:
+public sealed class C&lt;NotT&gt;
+{
+    public sealed class Inner
+    {
+        // In this scope, &quot;T&quot; becomes &quot;C&lt;?&gt;.Inner.T&quot;, so it is all right.
+        public static T Default = new();
+
+        public class T
+        {
+        }
+    }
+}
+</code></pre>
+<p>Next, we will discuss the case where a syntax node with the type parameter
+<code>NotT</code> is a member <em>M</em> (e.g., a method, etc.). We cannot rename <code>NotT</code> to <code>T</code>
+in the following cases:</p>
+<ul>
+<li>The member <em>M</em> has a syntax token named <code>T</code> inside <em>M</em>.</li>
+<li>One of the ancestors of the member <em>M</em> is the syntax node containing the type
+parameter <code>T</code>.</li>
+</ul>
+<p>For example:</p>
+<pre><code class="language-cs">public sealed class C
+{
+    // Renaming NotT to T causes an error CS0412 at the line /*💀*/
+    public static int M&lt;NotT&gt;()
+    {
+        /*💀*/ var T = 0;
+        return T;
+    }
+}
+</code></pre>
+<pre><code class="language-cs">public sealed class C
+{
+    // Renaming NotT to T causes an error CS0412 at the line /*💀*/
+    public static void M&lt;NotT&gt;()
+    {
+        /*💀*/ static void T()
+        {
+        }
+
+        T();
+    }
+}
+</code></pre>
+<pre><code class="language-cs">public sealed class C&lt;T&gt;
+{
+    public sealed class Inner
+    {
+        // Renaming NotT to T causes a warning CS0693 at the line /*💀*/
+        /*💀*/ public static void M&lt;NotT&gt;()
+        {
+        }
+    }
+}
+</code></pre>
 <h2>Code fix</h2>
-<p>The code fix provides an option replacing the type parameter name with <code>T</code>.</p>
+<p>The code fix provides an option to replace the type parameter name with <code>T</code>.</p>
 <h2>Example</h2>
 <h3>Diagnostic</h3>
 <pre><code class="language-csharp">public sealed class Code&lt;Type&gt;
@@ -157,6 +298,9 @@ compile error or change the meaning:</p>
     </li>
     <li>
       <a href="NotOneShotInitialization.html">Not<wbr>One<wbr>Shot<wbr>Initialization</a>
+    </li>
+    <li>
+      <a href="NullCheckAfterDeclaration.html">Null<wbr>Check<wbr>After<wbr>Declaration</a>
     </li>
     <li>
       <a href="PostIncrement.html">Post<wbr>Increment</a>
