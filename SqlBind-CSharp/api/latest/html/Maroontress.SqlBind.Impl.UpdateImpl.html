@@ -49,7 +49,7 @@ gtag('config', 'G-9TQ6JWBKEK');
           <div class="codeHeader" data-bi-name="code-header">
             <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
           </div>
-          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-keyword">sealed</span> <span class="hljs-keyword">class</span> <span class="hljs-title">UpdateImpl</span></code></pre>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-keyword">sealed</span> <span class="hljs-keyword">class</span> <span class="hljs-title">UpdateImpl</span> : <span class="hljs-title">Update</span></code></pre>
           <dl class="attributeList stack">
             <dt>
               Inheritance
@@ -63,10 +63,46 @@ gtag('config', 'G-9TQ6JWBKEK');
               </div>
             </dd>
           </dl>
+          <dl class="attributeList stack">
+            <dt>
+              Implements
+            </dt>
+            <dd>
+              <div class="cdlHolder">
+                <span class="cdl"><span class="lang-csharp break-text"><a class="xref" href="Maroontress.SqlBind.Update.html" data-linktype="relative-path">Update</a></span></span>
+              </div>
+            </dd>
+          </dl>
+          <h2 id="constructors" class="heading-with-anchor">Constructors</h2>
+          <div class="table-scroll-wrapper">
+            <table class="nameValue">
+              <tbody>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.SqlBind.Impl.UpdateImpl.#ctor(Maroontress.SqlBind.Impl.Siphon,System.String,System.String)" data-linktype="relative-path">Update<wbr>Impl(Siphon, string, string)</a></span>
+                  </td>
+                  <td>
+                    <p>The default implementation of <a href="Maroontress.SqlBind.Update.html">Update</a>.</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
           <h2 id="methods" class="heading-with-anchor">Methods</h2>
           <div class="table-scroll-wrapper">
             <table class="nameValue">
               <tbody>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.SqlBind.Impl.UpdateImpl.Set(System.String)" data-linktype="relative-path">Set(string)</a></span>
+                  </td>
+                  <td>
+                    <p>Description copied from interface: Update</p>
+                    <blockquote>
+                      <p>Gets a new <a href="Maroontress.SqlBind.UpdateSet.html">UpdateSet</a> object.</p>
+                    </blockquote>
+                  </td>
+                </tr>
                 <tr>
                   <td>
                     <a href="https://docs.microsoft.com/en-us/dotnet/api/system.object.equals?view=netcore-3.0#System_Object_Equals_System_Object_">Equals(object)</a>
@@ -109,6 +145,92 @@ gtag('config', 'G-9TQ6JWBKEK');
                 </tr>
               </tbody>
             </table>
+          </div>
+          <h1 id="constructors-detail" class="heading-with-anchor">Constructors Detail</h1>
+          <h2 id="M:Maroontress.SqlBind.Impl.UpdateImpl.#ctor(Maroontress.SqlBind.Impl.Siphon,System.String,System.String)">UpdateImpl(Siphon, string, string)</h2>
+          <div class="summaryHolder">
+            <div class="summary clearFix">
+              <p>The default implementation of <a href="Maroontress.SqlBind.Update.html">Update</a>.</p>
+            </div>
+          </div>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-title">UpdateImpl</span>(<span class="hljs-title">Siphon</span> siphon, <span class="hljs-keyword">string</span> updateStatement, <span class="hljs-keyword">string</span> alias)</code></pre>
+          <h4 class="propertyInfoTitle stack">Parameters</h4>
+          <div class="propertyInfo">
+            <dl class="parameterList">
+              <dt>
+                siphon
+              </dt>
+              <dd>
+                <span class="lang-csharp"><a class="xref" href="Maroontress.SqlBind.Impl.Siphon.html" data-linktype="relative-path">Siphon</a></span>
+              </dd>
+            </dl>
+            <p>The siphon to be used in the update operation.</p>
+          </div>
+          <div class="propertyInfo stack">
+            <dl class="parameterList">
+              <dt>
+                updateStatement
+              </dt>
+              <dd>
+                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.string?view=netcore-3.0" data-linktype="absolute-path">string</a></span>
+              </dd>
+            </dl>
+            <p>The SQL update statement.</p>
+          </div>
+          <div class="propertyInfo stack">
+            <dl class="parameterList">
+              <dt>
+                alias
+              </dt>
+              <dd>
+                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.string?view=netcore-3.0" data-linktype="absolute-path">string</a></span>
+              </dd>
+            </dl>
+            <p>The alias for the table in the update statement.</p>
+          </div>
+          <h1 id="methods-detail" class="heading-with-anchor">Methods Detail</h1>
+          <h2 id="M:Maroontress.SqlBind.Impl.UpdateImpl.Set(System.String)">Set(string)</h2>
+          <div class="summaryHolder">
+            <div class="summary clearFix">
+              <p>Description copied from interface: Update</p>
+              <blockquote>
+                <p>Gets a new <a href="Maroontress.SqlBind.UpdateSet.html">UpdateSet</a> object.</p>
+              </blockquote>
+            </div>
+          </div>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-title">UpdateSet</span> <span class="hljs-title">Set</span>(<span class="hljs-keyword">string</span> expr)</code></pre>
+          <h4 class="propertyInfoTitle stack">Parameters</h4>
+          <div class="propertyInfo">
+            <dl class="parameterList">
+              <dt>
+                expr
+              </dt>
+              <dd>
+                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.string?view=netcore-3.0" data-linktype="absolute-path">string</a></span>
+              </dd>
+            </dl>
+          </div>
+          <h4 class="propertyInfoTitle stack">Returns</h4>
+          <div class="propertyInfo">
+            <div class="subtle">
+              <a class="xref" href="Maroontress.SqlBind.UpdateSet.html" data-linktype="relative-path">Update<wbr>Set</a>
+            </div>
+            <p>Description copied from interface: Update</p>
+            <blockquote>
+              <p>The new <a href="Maroontress.SqlBind.UpdateSet.html">UpdateSet</a> object.</p>
+            </blockquote>
+          </div>
+          <h4 class="propertyInfoTitle stack">Implements</h4>
+          <div class="propertyInfo">
+            <div class="cdlHolder">
+              <span class="cdl"><a href="Maroontress.SqlBind.Update.html#M:Maroontress.SqlBind.Update.Set(System.String)">Update.Set(string)</a></span>
+            </div>
           </div>
         </main>
       </section>
