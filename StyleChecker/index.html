@@ -34,34 +34,29 @@
           <main class="content">
 <div class="project-logo">StyleChecker</div>
 <div id="toc-level" data-values="H2,H3"></div>
-<p>StyleChecker is yet another code style checker and refactoring tool like
-<a href="https://github.com/dotnet/roslyn-analyzers">FxCopAnalyzers</a>,
-<a href="https://github.com/DotNetAnalyzers/StyleCopAnalyzers">StyleCop Analyzers</a>,
-<a href="https://github.com/SonarSource/sonarlint-visualstudio">SonarLint</a>,
-<a href="https://github.com/JosefPihrt/Roslynator">Roslynator</a>,
-and so on. It uses
-<a href="https://github.com/dotnet/roslyn">the .NET Compiler Platform (&quot;Roslyn&quot;)</a>
-to analyze the C# source code of .NET Core projects and outputs diagnostics
-of a rule violation,
-and when running with Visual Studio it provides code fixes as much as possible.
-Note that StyleChecker contains only supplemental or niche analyzers,
-so it is intended to be used together with other Roslyn analyzers.</p>
+<p>StyleChecker is another code style checking and refactoring tool similar to
+<a href="https://github.com/dotnet/roslyn-analyzers">FxCopAnalyzers</a>, <a href="https://github.com/DotNetAnalyzers/StyleCopAnalyzers">StyleCop Analyzers</a>,
+<a href="https://github.com/SonarSource/sonarlint-visualstudio">SonarLint</a>, <a href="https://github.com/JosefPihrt/Roslynator">Roslynator</a>, etc. It uses the
+<a href="https://github.com/dotnet/roslyn">.NET Compiler Platform (&quot;Roslyn&quot;)</a> to analyze the C# source code of
+.NET projects and outputs diagnostics of rule violations. And when used with
+IDEs such as Visual Studio, it provides as many code fixes as possible. Note
+that you should use this tool with other Roslyn analyzers, as it contains only
+complementary or niche analyzers.</p>
 <h2>Get started</h2>
-<p>StyleChecker is available as
-<a href="https://www.nuget.org/packages/StyleChecker/">the <img src="https://maroontress.github.io/images/NuGet-logo.png" alt="NuGet-logo"> NuGet package</a>.</p>
+<p>StyleChecker is available as <a href="https://www.nuget.org/packages/StyleChecker/">the <img src="https://maroontress.github.io/images/NuGet-logo.png" alt="NuGet-logo"> NuGet
+package</a>.</p>
 <h3>Install StyleChecker to your project with Visual Studio</h3>
 <ol>
 <li>Open Package Manager Console. (Open your project with Visual Studio, and
-select Tools
-➜ NuGet Package Manager
-➜ Package Manager Console.)</li>
+select Tools ➜ NuGet Package Manager ➜ Package Manager
+Console.)</li>
 <li>Enter the command <code>Install-Package StyleChecker</code> in the Package Manager
 Console.</li>
 </ol>
-<h3>Install StyleChecker to your project with .NET Core CLI</h3>
-<ol>
+<h3>Install StyleChecker to your project with .NET CLI</h3>
+<ul>
 <li>Enter the command <code>dotnet add package StyleChecker</code> with the console.</li>
-</ol>
+</ul>
 <h2>List of diagnostics</h2>
 <p>There are the following categories of the diagnostics analyzers:
 Cleaning, Document, Naming, Ordering, Refactoring, Settings, Size,
@@ -351,31 +346,26 @@ SA1002 with them, allowing us to write an infinite <code>for</code> loop with <c
   </dd>
 </dl>
 <h2>Customize configuration</h2>
-<p>Some analyzers can be customized to change their behaviors,
-placing the configuration file <code>StyleChecker.xml</code> at the project root.
-The XML Schema Definition file <code>config.v1.xsd</code> of the configuration file
-and a sample of the configuration file are provided in the directory
-<code>StyleChecker/StyleChecker/nuget/samples/</code> of the source tree
-(or in <code>~/.nuget/packages/stylechecker/VERSION/samples/</code>
-if you installed StyleChecker with the NuGet package). Note that
-StyleChecker does not use the XML Schema Definition file,
-but it helps you edit <code>StyleChecker.xml</code> with the text editor
-that is able to validate XML documents (for example, Visual Studio IDE,
-Visual Studio Code, and so on).</p>
-<p>Create your own <code>StyleChecker.xml</code> file and place it at your project root,
-and add the <code>AdditionalFiles</code> element to <code>.csproj</code> file in your project
-as follows:</p>
+<p>You can customize some analyzers to change their behaviors by placing the
+configuration file <code>StyleChecker.xml</code> at the project root. The XML Schema
+Definition file <code>config.v1.xsd</code> of the configuration file and a sample of the
+configuration file are available in the directory
+<code>StyleChecker/StyleChecker/nuget/samples/</code> of the source tree (or in
+<code>~/.nuget/packages/stylechecker/VERSION/samples/</code> if you installed StyleChecker
+with the NuGet package). Note that StyleChecker does not use the XML Schema
+Definition file. But it helps you edit <code>StyleChecker.xml</code> with the text editor
+that can validate XML documents (for example, Visual Studio IDE, Visual Studio
+Code, and so on).</p>
+<p>Create your own <code>StyleChecker.xml</code> file, place it at your project root, and add
+the <code>AdditionalFiles</code> element to the <code>.csproj</code> file in your project as follows:</p>
 <pre><code class="language-xml">&lt;ItemGroup&gt;
   &lt;AdditionalFiles Include=&quot;StyleChecker.xml&quot; /&gt;
 &lt;/ItemGroup&gt;
 </code></pre>
-<p>Alternatively, with Visual Studio you can set &quot;C# analyzer additional file&quot;
-to Build Action property (This property can be changed from
-Solution Explorer
-➜ Right Click on the <code>StyleChecker.xml</code>
-➜ Properties
-➜ Advanced
-➜ Build Action).</p>
+<p>Alternatively, in Visual Studio, you can set the value &quot;C# analyzer additional
+file&quot; to the Build Action property. You can change this property from Solution
+Explorer ➜ Right Click on the <code>StyleChecker.xml</code> ➜ Properties
+➜ Advanced ➜ Build Action.</p>
 <h2>Documents</h2>
 <ul>
 <li><a href="https://github.com/maroontress/StyleChecker/blob/master/README.md">README</a></li>
