@@ -1,1 +1,1 @@
-tagSearchIndex = [{"l":"Serialized Form","h":"","u":"serialized-form.html"}];updateSearchResults();
+tagSearchIndex = [{"l":"Expressions","h":"class com.maroontress.intexpr.IntExpr","d":"Section","u":"com.maroontress.intexpr/com/maroontress/intexpr/IntExpr.html#expressions-heading"},{"l":"Numbers","h":"class com.maroontress.intexpr.IntExpr","d":"Section","u":"com.maroontress.intexpr/com/maroontress/intexpr/IntExpr.html#numbers-heading"},{"l":"Serialized Form","h":"","u":"serialized-form.html"}];updateSearchResults();

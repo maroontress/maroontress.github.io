@@ -37,6 +37,7 @@ https://maroontress.github.io/Clione-Java/api/latest/html/help-doc.html
 https://maroontress.github.io/Clione-Java/api/latest/html/index-all.html
 https://maroontress.github.io/Clione-Java/api/latest/html/index.html
 https://maroontress.github.io/Clione-Java/api/latest/html/overview-tree.html
+https://maroontress.github.io/Clione-Java/api/latest/html/search.html
 https://maroontress.github.io/Clione-Java/index.html
 https://maroontress.github.io/Clione-Java/releasenotes.html
 https://maroontress.github.io/Collection-CSharp/api/latest/html/Maroontress.Collection.HashTableConstants.html
@@ -152,6 +153,7 @@ https://maroontress.github.io/IntExpr-Java/api/latest/html/help-doc.html
 https://maroontress.github.io/IntExpr-Java/api/latest/html/index-all.html
 https://maroontress.github.io/IntExpr-Java/api/latest/html/index.html
 https://maroontress.github.io/IntExpr-Java/api/latest/html/overview-tree.html
+https://maroontress.github.io/IntExpr-Java/api/latest/html/search.html
 https://maroontress.github.io/IntExpr-Java/api/latest/html/serialized-form.html
 https://maroontress.github.io/IntExpr-Java/index.html
 https://maroontress.github.io/IntExpr-Java/releasenotes.html
