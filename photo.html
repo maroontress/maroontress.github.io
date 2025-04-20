@@ -1,0 +1,22 @@
+<html>
+  <head>
+    <title>Photo</title>
+    <link rel="stylesheet" type="text/css" href="css/markdown.css">
+  </head>
+  <body>
+    <div class="container">
+      <a id="download-link" href="" download="photo.jpg">
+        <img id="photo-img" src="" alt="A beautiful scenery" class="photo">
+      </a>
+    </div>
+    <script>
+      (async function() {
+        const response = await fetch('photo.jpg');
+        const blob = await response.blob();
+        const url = URL.createObjectURL(blob, { type: 'image/jpeg' });
+        document.getElementById('photo-img').src = url;
+        document.getElementById('download-link').href = url;
+      })();
+    </script>
+  </body>
+</html>

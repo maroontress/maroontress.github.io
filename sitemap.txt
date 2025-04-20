@@ -171,6 +171,9 @@ https://maroontress.github.io/NugetScraper/api/latest/html/index.html
 https://maroontress.github.io/NugetScraper/api/latest/html/overview-tree.html
 https://maroontress.github.io/NugetScraper/index.html
 https://maroontress.github.io/NugetScraper/releasenotes.html
+https://maroontress.github.io/OneTimeShare/index.html
+https://maroontress.github.io/OneTimeShare/support_en_US.html
+https://maroontress.github.io/OneTimeShare/support_ja_JP.html
 https://maroontress.github.io/Oxbind-CSharp/api/latest/html/Maroontress.Oxbind.BindEvent.html
 https://maroontress.github.io/Oxbind-CSharp/api/latest/html/Maroontress.Oxbind.BindException.html
 https://maroontress.github.io/Oxbind-CSharp/api/latest/html/Maroontress.Oxbind.ElementSchemaAttribute.html
