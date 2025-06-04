@@ -32,16 +32,8 @@ gtag('config', 'G-9TQ6JWBKEK');
                     <span class="lang-csharp break-text"><a class="xref" href="Maroontress.Oxbind.BindException.html" data-linktype="relative-path">Bind<wbr>Exception</a></span>
                   </td>
                   <td>
-                    <p>Indicates that an error has occurred while creating a new instance with
-    the XML reader.</p>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <span class="lang-csharp break-text"><a class="xref" href="Maroontress.Oxbind.ElementSchemaAttribute.html" data-linktype="relative-path">Element<wbr>Schema<wbr>Attribute</a></span>
-                  </td>
-                  <td>
-                    <p>Marks a <code>static</code> field that defines the schema of child elements.</p>
+                    <p>Indicates that an error occurred during XML deserialization, binding, or
+    configuration validation.</p>
                   </td>
                 </tr>
                 <tr>
@@ -49,15 +41,7 @@ gtag('config', 'G-9TQ6JWBKEK');
                     <span class="lang-csharp break-text"><a class="xref" href="Maroontress.Oxbind.ForAttributeAttribute.html" data-linktype="relative-path">For<wbr>Attribute<wbr>Attribute</a></span>
                   </td>
                   <td>
-                    <p>Marks an instance field to be bound with the XML attribute.</p>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <span class="lang-csharp break-text"><a class="xref" href="Maroontress.Oxbind.ForChildAttribute.html" data-linktype="relative-path">For<wbr>Child<wbr>Attribute</a></span>
-                  </td>
-                  <td>
-                    <p>Marks an instance field to be bound with the XML element.</p>
+                    <p>Marks a constructor parameter to be bound to the XML attribute.</p>
                   </td>
                 </tr>
                 <tr>
@@ -65,7 +49,7 @@ gtag('config', 'G-9TQ6JWBKEK');
                     <span class="lang-csharp break-text"><a class="xref" href="Maroontress.Oxbind.ForElementAttribute.html" data-linktype="relative-path">For<wbr>Element<wbr>Attribute</a></span>
                   </td>
                   <td>
-                    <p>Marks a class to be bound with the XML element.</p>
+                    <p>Marks a class to be bound to the XML element.</p>
                   </td>
                 </tr>
                 <tr>
@@ -73,60 +57,34 @@ gtag('config', 'G-9TQ6JWBKEK');
                     <span class="lang-csharp break-text"><a class="xref" href="Maroontress.Oxbind.ForTextAttribute.html" data-linktype="relative-path">For<wbr>Text<wbr>Attribute</a></span>
                   </td>
                   <td>
-                    <p>Marks an instance field to be bound with the text inside the XML
+                    <p>Marks a constructor parameter to be bound to the text inside an XML
     element.</p>
                   </td>
                 </tr>
                 <tr>
                   <td>
-                    <span class="lang-csharp break-text"><a class="xref" href="Maroontress.Oxbind.FromAttributeAttribute.html" data-linktype="relative-path">From<wbr>Attribute<wbr>Attribute</a></span>
+                    <span class="lang-csharp break-text"><a class="xref" href="Maroontress.Oxbind.IgnoredAttribute.html" data-linktype="relative-path">Ignored<wbr>Attribute</a></span>
                   </td>
                   <td>
-                    <p>Marks an instance method to be notified with the XML attribute.</p>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <span class="lang-csharp break-text"><a class="xref" href="Maroontress.Oxbind.FromChildAttribute.html" data-linktype="relative-path">From<wbr>Child<wbr>Attribute</a></span>
-                  </td>
-                  <td>
-                    <p>Marks an instance method to be notified with the XML element.</p>
+                    <p>Marks a constructor that Oxbind should ignore during deserialization.</p>
                   </td>
                 </tr>
                 <tr>
                   <td>
-                    <span class="lang-csharp break-text"><a class="xref" href="Maroontress.Oxbind.FromTextAttribute.html" data-linktype="relative-path">From<wbr>Text<wbr>Attribute</a></span>
+                    <span class="lang-csharp break-text"><a class="xref" href="Maroontress.Oxbind.MultipleAttribute.html" data-linktype="relative-path">Multiple<wbr>Attribute</a></span>
                   </td>
                   <td>
-                    <p>Marks an instance method to be notified with the text inside the XML
-    element.</p>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <span class="lang-csharp break-text"><a class="xref" href="Maroontress.Oxbind.Mandatory.html" data-linktype="relative-path">Mandatory</a></span>
-                  </td>
-                  <td>
-                    <p>The factory of the <a href="Maroontress.Oxbind.SchemaType.html">SchemaType</a> object that represents
-    the child element that occurs exactly one times.</p>
+                    <p>Marks a constructor parameter to be bound to an XML element that can occur
+    zero or more times.</p>
                   </td>
                 </tr>
                 <tr>
                   <td>
-                    <span class="lang-csharp break-text"><a class="xref" href="Maroontress.Oxbind.Multiple.html" data-linktype="relative-path">Multiple</a></span>
+                    <span class="lang-csharp break-text"><a class="xref" href="Maroontress.Oxbind.OptionalAttribute.html" data-linktype="relative-path">Optional<wbr>Attribute</a></span>
                   </td>
                   <td>
-                    <p>The factory of the <a href="Maroontress.Oxbind.SchemaType.html">SchemaType</a> object that represents
-    the child element that consecutively occurs zero or more times.</p>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <span class="lang-csharp break-text"><a class="xref" href="Maroontress.Oxbind.Optional.html" data-linktype="relative-path">Optional</a></span>
-                  </td>
-                  <td>
-                    <p>The factory of the <a href="Maroontress.Oxbind.SchemaType.html">SchemaType</a> object that represents
-    the child element that occurs once or not at all.</p>
+                    <p>Marks a constructor parameter to be bound to an XML element that occurs
+    once or not at all.</p>
                   </td>
                 </tr>
                 <tr>
@@ -134,26 +92,16 @@ gtag('config', 'G-9TQ6JWBKEK');
                     <span class="lang-csharp break-text"><a class="xref" href="Maroontress.Oxbind.OxbinderFactory.html" data-linktype="relative-path">Oxbinder<wbr>Factory</a></span>
                   </td>
                   <td>
-                    <p>The factory of the <a href="Maroontress.Oxbind.Oxbinder.html">Oxbinder&lt;T&gt;</a> object.</p>
+                    <p>A factory for <a href="Maroontress.Oxbind.Oxbinder.html">Oxbinder&lt;T&gt;</a> objects.</p>
                   </td>
                 </tr>
                 <tr>
                   <td>
-                    <span class="lang-csharp break-text"><a class="xref" href="Maroontress.Oxbind.Schema.html" data-linktype="relative-path">Schema</a></span>
+                    <span class="lang-csharp break-text"><a class="xref" href="Maroontress.Oxbind.RequiredAttribute.html" data-linktype="relative-path">Required<wbr>Attribute</a></span>
                   </td>
                   <td>
-                    <p>Metadata for the class corresponding to the XML element, that
-     represents the relationship between the element and its child elements.</p>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <span class="lang-csharp break-text"><a class="xref" href="Maroontress.Oxbind.SchemaType.html" data-linktype="relative-path">Schema<wbr>Type</a></span>
-                  </td>
-                  <td>
-                    <p>A component of <a href="Maroontress.Oxbind.Schema.html">Schema</a> that represents one of the child
-    elements, which stands for the class corresponding to the child
-    element, and how the child element occurs inside the parent.</p>
+                    <p>Marks a constructor parameter to be bound to an XML element that occurs
+    exactly once.</p>
                   </td>
                 </tr>
               </tbody>
@@ -165,10 +113,11 @@ gtag('config', 'G-9TQ6JWBKEK');
               <tbody>
                 <tr>
                   <td>
-                    <span class="lang-csharp break-text"><a class="xref" href="Maroontress.Oxbind.BindEvent.html" data-linktype="relative-path">Bind<wbr>Event&lt;T&gt;</a></span>
+                    <span class="lang-csharp break-text"><a class="xref" href="Maroontress.Oxbind.BindResult.html" data-linktype="relative-path">Bind<wbr>Result&lt;T&gt;</a></span>
                   </td>
                   <td>
-                    <p>The event of the deserialized value.</p>
+                    <p>A result that occurs during XML deserialization, providing the deserialized
+    value along with its location in the XML document.</p>
                   </td>
                 </tr>
                 <tr>
@@ -176,7 +125,8 @@ gtag('config', 'G-9TQ6JWBKEK');
                     <span class="lang-csharp break-text"><a class="xref" href="Maroontress.Oxbind.Oxbinder.html" data-linktype="relative-path">Oxbinder&lt;T&gt;</a></span>
                   </td>
                   <td>
-                    <p>Provides a way to create new instances from text readers.</p>
+                    <p>Defines a contract for deserializing XML from a text reader into an object
+    of type <code>T</code>.</p>
                   </td>
                 </tr>
               </tbody>

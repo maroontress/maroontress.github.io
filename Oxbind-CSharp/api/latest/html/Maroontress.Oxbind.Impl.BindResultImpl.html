@@ -10,7 +10,7 @@ gtag('js', new Date());
 gtag('config', 'G-9TQ6JWBKEK');
     </script>
     <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BindEventImpl&lt;T&gt; Class | API Reference | Oxbind Project</title>
+    <title>BindResultImpl&lt;T&gt; Class | API Reference | Oxbind Project</title>
     <link rel="stylesheet" href="bulldoc.css">
     <script src="highlight.pack.js">
     </script>
@@ -22,7 +22,7 @@ gtag('config', 'G-9TQ6JWBKEK');
     <div class="mainContainer uhf-container has-top-padding has-default-focus" data-bi-name="body">
       <section>
         <main class="content">
-          <h1><span class="lang-csharp">Bind<wbr>Event<wbr>Impl&lt;T&gt;</span> Class</h1>
+          <h1><span class="lang-csharp">Bind<wbr>Result<wbr>Impl&lt;T&gt;</span> Class</h1>
           <div class="metadata">
             <dl class="attributeList">
               <dt>
@@ -43,13 +43,13 @@ gtag('config', 'G-9TQ6JWBKEK');
           </div>
           <div class="summaryHolder">
             <div class="summary clearFix">
-              <p>The default implementation of the <a href="Maroontress.Oxbind.BindEvent.html">BindEvent&lt;T&gt;</a> interface.</p>
+              <p>The default implementation of the <a href="Maroontress.Oxbind.BindResult.html">BindResult&lt;T&gt;</a> interface.</p>
             </div>
           </div>
           <div class="codeHeader" data-bi-name="code-header">
             <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
           </div>
-          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">BindEventImpl</span>&lt;<span class="hljs-title">T</span>&gt; : <span class="hljs-title">BindEvent</span>&lt;<span class="hljs-title">T</span>&gt;<br>    <span class="hljs-keyword">where</span> <span class="hljs-title">T</span> : <span class="hljs-keyword">class</span></code></pre>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-keyword">sealed</span> <span class="hljs-keyword">class</span> <span class="hljs-title">BindResultImpl</span>&lt;<span class="hljs-title">T</span>&gt; : <span class="hljs-title">BindResult</span>&lt;<span class="hljs-title">T</span>&gt;<br>    <span class="hljs-keyword">where</span> <span class="hljs-title">T</span> : <span class="hljs-keyword">class</span></code></pre>
           <h4 id="type-parameters" class="propertyInfoTitle stack heading-with-anchor">Type Parameters</h4>
           <div class="propertyInfo">
             <dl class="parameterList">
@@ -60,7 +60,7 @@ gtag('config', 'G-9TQ6JWBKEK');
                 <code>class</code>
               </dd>
             </dl>
-            <p>The type of the deserialized event.</p>
+            <p>The type of the deserialized value.</p>
           </div>
           <dl class="attributeList stack">
             <dt>
@@ -69,9 +69,9 @@ gtag('config', 'G-9TQ6JWBKEK');
             <dd>
               <div class="pdlHolder">
                 <div class="pdl">
-                  <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=netcore-3.0" data-linktype="absolute-path">object</a></span>
+                  <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=net-9.0" data-linktype="absolute-path">object</a></span>
                 </div>
-                <span class="lang-csharp">Bind<wbr>Event<wbr>Impl&lt;T&gt;</span>
+                <span class="lang-csharp">Bind<wbr>Result<wbr>Impl&lt;T&gt;</span>
               </div>
             </dd>
           </dl>
@@ -81,7 +81,7 @@ gtag('config', 'G-9TQ6JWBKEK');
             </dt>
             <dd>
               <div class="cdlHolder">
-                <span class="cdl"><span class="lang-csharp break-text"><a class="xref" href="Maroontress.Oxbind.BindEvent.html" data-linktype="relative-path">Bind<wbr>Event&lt;T&gt;</a></span></span>
+                <span class="cdl"><span class="lang-csharp break-text"><a class="xref" href="Maroontress.Oxbind.BindResult.html" data-linktype="relative-path">Bind<wbr>Result&lt;T&gt;</a></span></span>
               </div>
             </dd>
           </dl>
@@ -91,11 +91,10 @@ gtag('config', 'G-9TQ6JWBKEK');
               <tbody>
                 <tr>
                   <td>
-                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Oxbind.Impl.BindEventImpl`1.#ctor(`0,System.Xml.IXmlLineInfo)" data-linktype="relative-path">Bind<wbr>Event<wbr>Impl(T, IXml<wbr>Line<wbr>Info)</a></span>
+                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Oxbind.Impl.BindResultImpl`1.#ctor(`0,System.Xml.IXmlLineInfo)" data-linktype="relative-path">Bind<wbr>Result<wbr>Impl(T, IXml<wbr>Line<wbr>Info)</a></span>
                   </td>
                   <td>
-                    <p>Initializes a new instance of the <a href="#">BindEventImpl&lt;T&gt;</a>
-    class.</p>
+                    <p>The default implementation of the <a href="Maroontress.Oxbind.BindResult.html">BindResult&lt;T&gt;</a> interface.</p>
                   </td>
                 </tr>
               </tbody>
@@ -107,21 +106,21 @@ gtag('config', 'G-9TQ6JWBKEK');
               <tbody>
                 <tr>
                   <td>
-                    <span class="lang-csharp break-text"><a class="xref" href="#P:Maroontress.Oxbind.Impl.BindEventImpl`1.Value" data-linktype="relative-path">Value</a></span>
+                    <span class="lang-csharp break-text"><a class="xref" href="#P:Maroontress.Oxbind.Impl.BindResultImpl`1.Value" data-linktype="relative-path">Value</a></span>
                   </td>
                   <td>
                   </td>
                 </tr>
                 <tr>
                   <td>
-                    <span class="lang-csharp break-text"><a class="xref" href="#P:Maroontress.Oxbind.Impl.BindEventImpl`1.Line" data-linktype="relative-path">Line</a></span>
+                    <span class="lang-csharp break-text"><a class="xref" href="#P:Maroontress.Oxbind.Impl.BindResultImpl`1.Line" data-linktype="relative-path">Line</a></span>
                   </td>
                   <td>
                   </td>
                 </tr>
                 <tr>
                   <td>
-                    <span class="lang-csharp break-text"><a class="xref" href="#P:Maroontress.Oxbind.Impl.BindEventImpl`1.Column" data-linktype="relative-path">Column</a></span>
+                    <span class="lang-csharp break-text"><a class="xref" href="#P:Maroontress.Oxbind.Impl.BindResultImpl`1.Column" data-linktype="relative-path">Column</a></span>
                   </td>
                   <td>
                   </td>
@@ -135,59 +134,58 @@ gtag('config', 'G-9TQ6JWBKEK');
               <tbody>
                 <tr>
                   <td>
-                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.object.equals?view=netcore-3.0#System_Object_Equals_System_Object_">Equals(object)</a>
+                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.object.equals?view=net-9.0#System_Object_Equals_System_Object_">Equals(object)</a>
                   </td>
                   <td>
-                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=netcore-3.0" data-linktype="absolute-path">object</a>)
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.object.gethashcode?view=netcore-3.0">GetHashCode()</a>
-                  </td>
-                  <td>
-                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=netcore-3.0" data-linktype="absolute-path">object</a>)
+                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=net-9.0" data-linktype="absolute-path">object</a>)
                   </td>
                 </tr>
                 <tr>
                   <td>
-                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.object.gettype?view=netcore-3.0">GetType()</a>
+                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.object.gethashcode?view=net-9.0">GetHashCode()</a>
                   </td>
                   <td>
-                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=netcore-3.0" data-linktype="absolute-path">object</a>)
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.object.memberwiseclone?view=netcore-3.0">MemberwiseClone()</a>
-                  </td>
-                  <td>
-                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=netcore-3.0" data-linktype="absolute-path">object</a>)
+                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=net-9.0" data-linktype="absolute-path">object</a>)
                   </td>
                 </tr>
                 <tr>
                   <td>
-                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.object.tostring?view=netcore-3.0">ToString()</a>
+                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.object.gettype?view=net-9.0">GetType()</a>
                   </td>
                   <td>
-                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=netcore-3.0" data-linktype="absolute-path">object</a>)
+                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=net-9.0" data-linktype="absolute-path">object</a>)
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.object.memberwiseclone?view=net-9.0">MemberwiseClone()</a>
+                  </td>
+                  <td>
+                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=net-9.0" data-linktype="absolute-path">object</a>)
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.object.tostring?view=net-9.0">ToString()</a>
+                  </td>
+                  <td>
+                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=net-9.0" data-linktype="absolute-path">object</a>)
                   </td>
                 </tr>
               </tbody>
             </table>
           </div>
           <h1 id="constructors-detail" class="heading-with-anchor">Constructors Detail</h1>
-          <h2 id="M:Maroontress.Oxbind.Impl.BindEventImpl`1.#ctor(`0,System.Xml.IXmlLineInfo)">BindEventImpl(T, IXmlLineInfo)</h2>
+          <h2 id="M:Maroontress.Oxbind.Impl.BindResultImpl`1.#ctor(`0,System.Xml.IXmlLineInfo)">BindResultImpl(T, IXmlLineInfo)</h2>
           <div class="summaryHolder">
             <div class="summary clearFix">
-              <p>Initializes a new instance of the <a href="#">BindEventImpl&lt;T&gt;</a>
-    class.</p>
+              <p>The default implementation of the <a href="Maroontress.Oxbind.BindResult.html">BindResult&lt;T&gt;</a> interface.</p>
             </div>
           </div>
           <div class="codeHeader" data-bi-name="code-header">
             <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
           </div>
-          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-title">BindEventImpl</span>(<span class="hljs-title">T</span> value, <span class="hljs-title">IXmlLineInfo</span> info)</code></pre>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-title">BindResultImpl</span>(<span class="hljs-title">T</span> value, <span class="hljs-title">IXmlLineInfo</span> info)</code></pre>
           <h4 class="propertyInfoTitle stack">Parameters</h4>
           <div class="propertyInfo">
             <dl class="parameterList">
@@ -206,13 +204,13 @@ gtag('config', 'G-9TQ6JWBKEK');
                 info
               </dt>
               <dd>
-                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.xml.ixmllineinfo?view=netcore-3.0" data-linktype="absolute-path">IXml<wbr>Line<wbr>Info</a></span>
+                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.xml.ixmllineinfo?view=net-9.0" data-linktype="absolute-path">IXml<wbr>Line<wbr>Info</a></span>
               </dd>
             </dl>
-            <p>The location information of the XML document.</p>
+            <p>The location in the XML document where this result occurred.</p>
           </div>
           <h1 id="properties-detail" class="heading-with-anchor">Properties Detail</h1>
-          <h2 id="P:Maroontress.Oxbind.Impl.BindEventImpl`1.Value">Value</h2>
+          <h2 id="P:Maroontress.Oxbind.Impl.BindResultImpl`1.Value">Value</h2>
           <div class="codeHeader" data-bi-name="code-header">
             <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
           </div>
@@ -226,10 +224,10 @@ gtag('config', 'G-9TQ6JWBKEK');
           <h4 class="propertyInfoTitle stack">Implements</h4>
           <div class="propertyInfo">
             <div class="cdlHolder">
-              <span class="cdl"><a href="Maroontress.Oxbind.BindEvent.html#P:Maroontress.Oxbind.BindEvent`1.Value">BindEvent&lt;T&gt;.Value</a></span>
+              <span class="cdl"><a href="Maroontress.Oxbind.BindResult.html#P:Maroontress.Oxbind.BindResult`1.Value">BindResult&lt;T&gt;.Value</a></span>
             </div>
           </div>
-          <h2 id="P:Maroontress.Oxbind.Impl.BindEventImpl`1.Line">Line</h2>
+          <h2 id="P:Maroontress.Oxbind.Impl.BindResultImpl`1.Line">Line</h2>
           <div class="codeHeader" data-bi-name="code-header">
             <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
           </div>
@@ -237,16 +235,16 @@ gtag('config', 'G-9TQ6JWBKEK');
           <h4 class="propertyInfoTitle stack">Property Value</h4>
           <div class="propertyInfo">
             <div class="subtle">
-              <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.int32?view=netcore-3.0" data-linktype="absolute-path">int</a>
+              <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.int32?view=net-9.0" data-linktype="absolute-path">int</a>
             </div>
           </div>
           <h4 class="propertyInfoTitle stack">Implements</h4>
           <div class="propertyInfo">
             <div class="cdlHolder">
-              <span class="cdl"><a href="Maroontress.Oxbind.BindEvent.html#P:Maroontress.Oxbind.BindEvent`1.Line">BindEvent&lt;T&gt;.Line</a></span>
+              <span class="cdl"><a href="Maroontress.Oxbind.BindResult.html#P:Maroontress.Oxbind.BindResult`1.Line">BindResult&lt;T&gt;.Line</a></span>
             </div>
           </div>
-          <h2 id="P:Maroontress.Oxbind.Impl.BindEventImpl`1.Column">Column</h2>
+          <h2 id="P:Maroontress.Oxbind.Impl.BindResultImpl`1.Column">Column</h2>
           <div class="codeHeader" data-bi-name="code-header">
             <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
           </div>
@@ -254,13 +252,13 @@ gtag('config', 'G-9TQ6JWBKEK');
           <h4 class="propertyInfoTitle stack">Property Value</h4>
           <div class="propertyInfo">
             <div class="subtle">
-              <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.int32?view=netcore-3.0" data-linktype="absolute-path">int</a>
+              <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.int32?view=net-9.0" data-linktype="absolute-path">int</a>
             </div>
           </div>
           <h4 class="propertyInfoTitle stack">Implements</h4>
           <div class="propertyInfo">
             <div class="cdlHolder">
-              <span class="cdl"><a href="Maroontress.Oxbind.BindEvent.html#P:Maroontress.Oxbind.BindEvent`1.Column">BindEvent&lt;T&gt;.Column</a></span>
+              <span class="cdl"><a href="Maroontress.Oxbind.BindResult.html#P:Maroontress.Oxbind.BindResult`1.Column">BindResult&lt;T&gt;.Column</a></span>
             </div>
           </div>
         </main>

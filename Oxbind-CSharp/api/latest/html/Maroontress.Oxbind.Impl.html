@@ -29,10 +29,11 @@ gtag('config', 'G-9TQ6JWBKEK');
               <tbody>
                 <tr>
                   <td>
-                    <span class="lang-csharp break-text"><a class="xref" href="Maroontress.Oxbind.Impl.AbstractValidator.html" data-linktype="relative-path">Abstract<wbr>Validator</a></span>
+                    <span class="lang-csharp break-text"><a class="xref" href="Maroontress.Oxbind.Impl.AttributeBank.html" data-linktype="relative-path">Attribute<wbr>Bank</a></span>
                   </td>
                   <td>
-                    <p>An abstraction of the validator.</p>
+                    <p>Represents metadata that binds a class and its constructor parameters to
+    XML attributes.</p>
                   </td>
                 </tr>
                 <tr>
@@ -40,25 +41,16 @@ gtag('config', 'G-9TQ6JWBKEK');
                     <span class="lang-csharp break-text"><a class="xref" href="Maroontress.Oxbind.Impl.AttributeReflectorMap.html" data-linktype="relative-path">Attribute<wbr>Reflector<wbr>Map</a></span>
                   </td>
                   <td>
-                    <p>The map of an attribute name to the <a href="Maroontress.Oxbind.Impl.Reflector.html">Reflector&lt;T&gt;</a> object
-    that dispatches a <a href="https://docs.microsoft.com/en-us/dotnet/api/system.string?view=netcore-3.0">string</a> value to an instance.</p>
+                    <p>The map of an attribute name to the <a href="Maroontress.Oxbind.Impl.Reflector.html"></a> object that
+    dispatches a string value to a constructor argument.</p>
                   </td>
                 </tr>
                 <tr>
                   <td>
-                    <span class="lang-csharp break-text"><a class="xref" href="Maroontress.Oxbind.Impl.BindEventImpl.html" data-linktype="relative-path">Bind<wbr>Event<wbr>Impl&lt;T&gt;</a></span>
+                    <span class="lang-csharp break-text"><a class="xref" href="Maroontress.Oxbind.Impl.BindResultImpl.html" data-linktype="relative-path">Bind<wbr>Result<wbr>Impl&lt;T&gt;</a></span>
                   </td>
                   <td>
-                    <p>The default implementation of the <a href="Maroontress.Oxbind.BindEvent.html">BindEvent&lt;T&gt;</a> interface.</p>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <span class="lang-csharp break-text"><a class="xref" href="Maroontress.Oxbind.Impl.ChildReflectorMap.html" data-linktype="relative-path">Child<wbr>Reflector<wbr>Map</a></span>
-                  </td>
-                  <td>
-                    <p>The map of a <code>class</code> object annotated with <a href="Maroontress.Oxbind.ForElementAttribute.html">ForElementAttribute</a> to the <a href="Maroontress.Oxbind.Impl.Reflector.html">Reflector&lt;T&gt;</a> object
-    that dispatches an <code>object</code> of the class to an instance.</p>
+                    <p>The default implementation of the <a href="Maroontress.Oxbind.BindResult.html">BindResult&lt;T&gt;</a> interface.</p>
                   </td>
                 </tr>
                 <tr>
@@ -66,7 +58,15 @@ gtag('config', 'G-9TQ6JWBKEK');
                     <span class="lang-csharp break-text"><a class="xref" href="Maroontress.Oxbind.Impl.DefaultXmlLineInfo.html" data-linktype="relative-path">Default<wbr>Xml<wbr>Line<wbr>Info</a></span>
                   </td>
                   <td>
-                    <p>The default implementation of <a href="https://docs.microsoft.com/en-us/dotnet/api/system.xml.ixmllineinfo?view=netcore-3.0">IXmlLineInfo</a> interface.</p>
+                    <p>The default implementation of the <a href="https://docs.microsoft.com/en-us/dotnet/api/system.xml.ixmllineinfo?view=net-9.0">IXmlLineInfo</a> interface.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="Maroontress.Oxbind.Impl.Journal.html" data-linktype="relative-path">Journal</a></span>
+                  </td>
+                  <td>
+                    <p>Provides a logging mechanism, primarily for validation messages.</p>
                   </td>
                 </tr>
                 <tr>
@@ -74,8 +74,16 @@ gtag('config', 'G-9TQ6JWBKEK');
                     <span class="lang-csharp break-text"><a class="xref" href="Maroontress.Oxbind.Impl.Metadata.html" data-linktype="relative-path">Metadata</a></span>
                   </td>
                   <td>
-                    <p>Metadata binding a class and its members to the XML element and
-    attributes.</p>
+                    <p>Represents metadata that binds a class and its constructor parameters to an
+    XML element.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="Maroontress.Oxbind.Impl.MultipleSchemaType.html" data-linktype="relative-path">Multiple<wbr>Schema<wbr>Type</a></span>
+                  </td>
+                  <td>
+                    <p>Represents a schema type that is associated with <a href="Maroontress.Oxbind.MultipleAttribute.html">MultipleAttribute</a>.</p>
                   </td>
                 </tr>
                 <tr>
@@ -83,16 +91,15 @@ gtag('config', 'G-9TQ6JWBKEK');
                     <span class="lang-csharp break-text"><a class="xref" href="Maroontress.Oxbind.Impl.Names.html" data-linktype="relative-path">Names</a></span>
                   </td>
                   <td>
-                    <p>Creates various joined names of the class, method, field.</p>
+                    <p>Provides helper methods to format type and parameter names.</p>
                   </td>
                 </tr>
                 <tr>
                   <td>
-                    <span class="lang-csharp break-text"><a class="xref" href="Maroontress.Oxbind.Impl.ObjectReflectors.html" data-linktype="relative-path">Object<wbr>Reflectors</a></span>
+                    <span class="lang-csharp break-text"><a class="xref" href="Maroontress.Oxbind.Impl.OptionalSchemaType.html" data-linktype="relative-path">Optional<wbr>Schema<wbr>Type</a></span>
                   </td>
                   <td>
-                    <p>Provides methods for <a href="Maroontress.Oxbind.Impl.Reflector.html">Reflector&lt;T&gt;</a> (<code>T</code> is
-    <code>object</code>).</p>
+                    <p>Represents a schema type that is associated with <a href="Maroontress.Oxbind.OptionalAttribute.html">OptionalAttribute</a>.</p>
                   </td>
                 </tr>
                 <tr>
@@ -108,7 +115,8 @@ gtag('config', 'G-9TQ6JWBKEK');
                     <span class="lang-csharp break-text"><a class="xref" href="Maroontress.Oxbind.Impl.Readers.html" data-linktype="relative-path">Readers</a></span>
                   </td>
                   <td>
-                    <p>Reads and checks XML reader.</p>
+                    <p>Provides utility methods for reading and validating XML content using an
+    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.xml.xmlreader?view=net-9.0">XmlReader</a>.</p>
                   </td>
                 </tr>
                 <tr>
@@ -116,15 +124,7 @@ gtag('config', 'G-9TQ6JWBKEK');
                     <span class="lang-csharp break-text"><a class="xref" href="Maroontress.Oxbind.Impl.Reflector.html" data-linktype="relative-path">Reflector&lt;T&gt;</a></span>
                   </td>
                   <td>
-                    <p>Capsulizes each step to realize the injection.</p>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <span class="lang-csharp break-text"><a class="xref" href="Maroontress.Oxbind.Impl.ReflectorMap.html" data-linktype="relative-path">Reflector<wbr>Map&lt;K, V&gt;</a></span>
-                  </td>
-                  <td>
-                    <p>The map of a key to the <a href="Maroontress.Oxbind.Impl.Reflector.html">Reflector&lt;T&gt;</a> object.</p>
+                    <p>Encapsulates the logic for value injection, including type transformation.</p>
                   </td>
                 </tr>
                 <tr>
@@ -132,7 +132,15 @@ gtag('config', 'G-9TQ6JWBKEK');
                     <span class="lang-csharp break-text"><a class="xref" href="Maroontress.Oxbind.Impl.Reflectors.html" data-linktype="relative-path">Reflectors</a></span>
                   </td>
                   <td>
-                    <p>Provides factory methods of <a href="Maroontress.Oxbind.Impl.Reflector.html">Reflector&lt;T&gt;</a>.</p>
+                    <p>Provides factory methods for <a href="Maroontress.Oxbind.Impl.Reflector.html">Reflector&lt;T&gt;</a> instances.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="Maroontress.Oxbind.Impl.RequiredSchemaType.html" data-linktype="relative-path">Required<wbr>Schema<wbr>Type</a></span>
+                  </td>
+                  <td>
+                    <p>Represents a schema type that is associated with <a href="Maroontress.Oxbind.RequiredAttribute.html">RequiredAttribute</a>.</p>
                   </td>
                 </tr>
                 <tr>
@@ -140,7 +148,17 @@ gtag('config', 'G-9TQ6JWBKEK');
                     <span class="lang-csharp break-text"><a class="xref" href="Maroontress.Oxbind.Impl.SchemaMetadata.html" data-linktype="relative-path">Schema<wbr>Metadata</a></span>
                   </td>
                   <td>
-                    <p>Metadata of the classes that have a <code>static</code> and <code>readonly</code> <a href="Maroontress.Oxbind.Schema.html">Schema</a> field annotated with the <a href="Maroontress.Oxbind.ElementSchemaAttribute.html">ElementSchemaAttribute</a>.</p>
+                    <p>Metadata of the classes that have constructor parameters annotated with
+    the <a href="Maroontress.Oxbind.RequiredAttribute.html">RequiredAttribute</a>, <a href="Maroontress.Oxbind.OptionalAttribute.html">OptionalAttribute</a>,
+    or <a href="Maroontress.Oxbind.MultipleAttribute.html">MultipleAttribute</a>.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="Maroontress.Oxbind.Impl.SchemaType.html" data-linktype="relative-path">Schema<wbr>Type</a></span>
+                  </td>
+                  <td>
+                    <p>The base class for the schema type.</p>
                   </td>
                 </tr>
                 <tr>
@@ -148,8 +166,7 @@ gtag('config', 'G-9TQ6JWBKEK');
                     <span class="lang-csharp break-text"><a class="xref" href="Maroontress.Oxbind.Impl.StringSugarcoaters.html" data-linktype="relative-path">String<wbr>Sugarcoaters</a></span>
                   </td>
                   <td>
-                    <p>Provides methods for <a href="Maroontress.Oxbind.Impl.Sugarcoater.html">Sugarcoater&lt;T&gt;</a> (<code>T</code> is
-    <code>string</code>).</p>
+                    <p>Provides methods for <a href="Maroontress.Oxbind.Impl.Sugarcoater.html">Sugarcoater&lt;string&gt;</a>.</p>
                   </td>
                 </tr>
                 <tr>
@@ -157,8 +174,9 @@ gtag('config', 'G-9TQ6JWBKEK');
                     <span class="lang-csharp break-text"><a class="xref" href="Maroontress.Oxbind.Impl.TextMetadata.html" data-linktype="relative-path">Text<wbr>Metadata</a></span>
                   </td>
                   <td>
-                    <p>Metadata of the classes that have a single <a href="https://docs.microsoft.com/en-us/dotnet/api/system.string?view=netcore-3.0">string</a> field
-    annotated with the <a href="Maroontress.Oxbind.ForTextAttribute.html">ForTextAttribute</a>.</p>
+                    <p>Represents metadata that binds the text content of an XML element to a
+    constructor parameter marked with the <a href="Maroontress.Oxbind.ForTextAttribute.html">ForTextAttribute</a>
+    annotation.</p>
                   </td>
                 </tr>
                 <tr>
@@ -166,8 +184,8 @@ gtag('config', 'G-9TQ6JWBKEK');
                     <span class="lang-csharp break-text"><a class="xref" href="Maroontress.Oxbind.Impl.Types.html" data-linktype="relative-path">Types</a></span>
                   </td>
                   <td>
-                    <p>Provides methods to convert a type to another type, or to the object
-    associated with the type.</p>
+                    <p>Provides utility methods for type reflection and manipulation, particularly
+    for types used in Oxbind.</p>
                   </td>
                 </tr>
                 <tr>
@@ -175,7 +193,8 @@ gtag('config', 'G-9TQ6JWBKEK');
                     <span class="lang-csharp break-text"><a class="xref" href="Maroontress.Oxbind.Impl.Validator.html" data-linktype="relative-path">Validator</a></span>
                   </td>
                   <td>
-                    <p>Validates the semantics of the Oxbind annotations.</p>
+                    <p>Validates the semantics of Oxbind attributes on classes and constructor
+    parameters.</p>
                   </td>
                 </tr>
               </tbody>
@@ -187,10 +206,38 @@ gtag('config', 'G-9TQ6JWBKEK');
               <tbody>
                 <tr>
                   <td>
-                    <span class="lang-csharp break-text"><a class="xref" href="Maroontress.Oxbind.Impl.Triplet.html" data-linktype="relative-path">Triplet</a></span>
+                    <span class="lang-csharp break-text"><a class="xref" href="Maroontress.Oxbind.Impl.AttributeParameter.html" data-linktype="relative-path">Attribute<wbr>Parameter</a></span>
                   </td>
                   <td>
-                    <p>Capsulize the placeholder type, the unit type, and the sugarcoater.</p>
+                    <p>Represents a constructor parameter associated with an XML attribute, as
+    specified by a <a href="Maroontress.Oxbind.ForAttributeAttribute.html">ForAttributeAttribute</a>.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="Maroontress.Oxbind.Impl.ChildParameter.html" data-linktype="relative-path">Child<wbr>Parameter</a></span>
+                  </td>
+                  <td>
+                    <p>Represents a parameter that is associated with a child element in the XML
+    binding schema.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="Maroontress.Oxbind.Impl.Dependency.html" data-linktype="relative-path">Dependency</a></span>
+                  </td>
+                  <td>
+                    <p>Represents a dependency for XML binding that specifies whether an element
+    has inner text or child elements.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="Maroontress.Oxbind.Impl.Doublet.html" data-linktype="relative-path">Doublet</a></span>
+                  </td>
+                  <td>
+                    <p>Encapsulates the element type and the value transformation logic
+    (sugarcoater) for a constructor parameter representing a child XML element.</p>
                   </td>
                 </tr>
               </tbody>
@@ -202,18 +249,11 @@ gtag('config', 'G-9TQ6JWBKEK');
               <tbody>
                 <tr>
                   <td>
-                    <span class="lang-csharp break-text"><a class="xref" href="Maroontress.Oxbind.Impl.Injector.html" data-linktype="relative-path">Injector</a></span>
-                  </td>
-                  <td>
-                    <p>The function to inject a value to an instance.</p>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
                     <span class="lang-csharp break-text"><a class="xref" href="Maroontress.Oxbind.Impl.Sugarcoater.html" data-linktype="relative-path">Sugarcoater&lt;T&gt;</a></span>
                   </td>
                   <td>
-                    <p>The function to sugarcoat the specified value.</p>
+                    <p>A delegate that transforms or wraps a raw deserialized value, often to
+    include metadata such as line information.</p>
                   </td>
                 </tr>
               </tbody>

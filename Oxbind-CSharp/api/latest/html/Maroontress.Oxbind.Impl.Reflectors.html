@@ -43,7 +43,7 @@ gtag('config', 'G-9TQ6JWBKEK');
           </div>
           <div class="summaryHolder">
             <div class="summary clearFix">
-              <p>Provides factory methods of <a href="Maroontress.Oxbind.Impl.Reflector.html">Reflector&lt;T&gt;</a>.</p>
+              <p>Provides factory methods for <a href="Maroontress.Oxbind.Impl.Reflector.html">Reflector&lt;T&gt;</a> instances.</p>
             </div>
           </div>
           <div class="codeHeader" data-bi-name="code-header">
@@ -57,7 +57,7 @@ gtag('config', 'G-9TQ6JWBKEK');
             <dd>
               <div class="pdlHolder">
                 <div class="pdl">
-                  <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=netcore-3.0" data-linktype="absolute-path">object</a></span>
+                  <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=net-9.0" data-linktype="absolute-path">object</a></span>
                 </div>
                 <span class="lang-csharp">Reflectors</span>
               </div>
@@ -69,76 +69,80 @@ gtag('config', 'G-9TQ6JWBKEK');
               <tbody>
                 <tr>
                   <td>
-                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Oxbind.Impl.Reflectors.Of``1(Maroontress.Oxbind.Impl.Injector,System.Type,Maroontress.Oxbind.Impl.Sugarcoater{``0})" data-linktype="relative-path">Of&lt;T&gt;(Injector, Type, Sugarcoater&lt;T&gt;)</a></span>
+                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Oxbind.Impl.Reflectors.OfString(System.Reflection.ParameterInfo)" data-linktype="relative-path">Of<wbr>String(Parameter<wbr>Info)</a></span>
                   </td>
                   <td>
-                    <p>Gets a new instance of the <a href="Maroontress.Oxbind.Impl.Reflector.html">Reflector&lt;T&gt;</a> class.</p>
+                    <p>Creates a new instance of the <a href="Maroontress.Oxbind.Impl.Reflector.html">Reflector&lt;string&gt;</a> class.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Oxbind.Impl.Reflectors.Of(System.Reflection.ParameterInfo)" data-linktype="relative-path">Of(Parameter<wbr>Info)</a></span>
+                  </td>
+                  <td>
+                    <p>Creates a new instance of the <a href="Maroontress.Oxbind.Impl.Reflector.html">Reflector&lt;object&gt;</a> class.</p>
                   </td>
                 </tr>
               </tbody>
             </table>
           </div>
           <h1 id="methods-detail" class="heading-with-anchor">Methods Detail</h1>
-          <h2 id="M:Maroontress.Oxbind.Impl.Reflectors.Of``1(Maroontress.Oxbind.Impl.Injector,System.Type,Maroontress.Oxbind.Impl.Sugarcoater{``0})">Of&lt;T&gt;(Injector, Type, Sugarcoater&lt;T&gt;)</h2>
+          <h2 id="M:Maroontress.Oxbind.Impl.Reflectors.OfString(System.Reflection.ParameterInfo)">OfString(ParameterInfo)</h2>
           <div class="summaryHolder">
             <div class="summary clearFix">
-              <p>Gets a new instance of the <a href="Maroontress.Oxbind.Impl.Reflector.html">Reflector&lt;T&gt;</a> class.</p>
+              <p>Creates a new instance of the <a href="Maroontress.Oxbind.Impl.Reflector.html">Reflector&lt;string&gt;</a> class.</p>
             </div>
           </div>
           <div class="codeHeader" data-bi-name="code-header">
             <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
           </div>
-          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-title">Reflector</span>&lt;<span class="hljs-title">T</span>&gt; <span class="hljs-title">Of</span>&lt;<span class="hljs-title">T</span>&gt;(<span class="hljs-title">Injector</span> inject, <span class="hljs-title">Type</span> unitType, <span class="hljs-title">Sugarcoater</span>&lt;<span class="hljs-title">T</span>&gt; sugarcoater)</code></pre>
-          <h4 class="propertyInfoTitle stack">Type Parameters</h4>
-          <div class="propertyInfo">
-            <dl class="parameterList">
-              <dt>
-                T
-              </dt>
-              <dd>
-              </dd>
-            </dl>
-            <p>The type of the value to be injected.</p>
-          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-title">Reflector</span>&lt;<span class="hljs-keyword">string</span>&gt; <span class="hljs-title">OfString</span>(<span class="hljs-title">ParameterInfo</span> info)</code></pre>
           <h4 class="propertyInfoTitle stack">Parameters</h4>
           <div class="propertyInfo">
             <dl class="parameterList">
               <dt>
-                inject
+                info
               </dt>
               <dd>
-                <span class="lang-csharp"><a class="xref" href="Maroontress.Oxbind.Impl.Injector.html" data-linktype="relative-path">Injector</a></span>
+                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.reflection.parameterinfo?view=net-9.0" data-linktype="absolute-path">Parameter<wbr>Info</a></span>
               </dd>
             </dl>
-            <p>The delegate that injects the sugarcoated value to the field or
-    with the method.</p>
-          </div>
-          <div class="propertyInfo stack">
-            <dl class="parameterList">
-              <dt>
-                unitType
-              </dt>
-              <dd>
-                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.type?view=netcore-3.0" data-linktype="absolute-path">Type</a></span>
-              </dd>
-            </dl>
-            <p>Get the type of the unit.</p>
-          </div>
-          <div class="propertyInfo stack">
-            <dl class="parameterList">
-              <dt>
-                sugarcoater
-              </dt>
-              <dd>
-                <span class="lang-csharp"><a class="xref" href="Maroontress.Oxbind.Impl.Sugarcoater.html" data-linktype="relative-path">Sugarcoater&lt;T&gt;</a></span>
-              </dd>
-            </dl>
-            <p>The delegate that sugarcoats the specified value.</p>
+            <p>The constructor parameter marked with the attribute <a href="Maroontress.Oxbind.ForAttributeAttribute.html">ForAttributeAttribute</a> or <a href="Maroontress.Oxbind.ForTextAttribute.html">ForTextAttribute</a>.
+    The parameter type must be a <a href="https://docs.microsoft.com/en-us/dotnet/api/system.string?view=net-9.0">string</a> or <a href="Maroontress.Oxbind.BindResult.html">BindResult&lt;string&gt;</a>.</p>
           </div>
           <h4 class="propertyInfoTitle stack">Returns</h4>
           <div class="propertyInfo">
             <div class="subtle">
-              <a class="xref" href="Maroontress.Oxbind.Impl.Reflector.html" data-linktype="relative-path">Reflector&lt;T&gt;</a>
+              <a class="xref" href="Maroontress.Oxbind.Impl.Reflector.html" data-linktype="relative-path">Reflector</a>&lt;<a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.string?view=net-9.0" data-linktype="absolute-path">string</a>&gt;
+            </div>
+            <p>The new instance of the <a href="Maroontress.Oxbind.Impl.Reflector.html">Reflector&lt;T&gt;</a> class.</p>
+          </div>
+          <h2 id="M:Maroontress.Oxbind.Impl.Reflectors.Of(System.Reflection.ParameterInfo)">Of(ParameterInfo)</h2>
+          <div class="summaryHolder">
+            <div class="summary clearFix">
+              <p>Creates a new instance of the <a href="Maroontress.Oxbind.Impl.Reflector.html">Reflector&lt;object&gt;</a> class.</p>
+            </div>
+          </div>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-title">Reflector</span>&lt;<span class="hljs-keyword">object</span>&gt; <span class="hljs-title">Of</span>(<span class="hljs-title">ParameterInfo</span> info)</code></pre>
+          <h4 class="propertyInfoTitle stack">Parameters</h4>
+          <div class="propertyInfo">
+            <dl class="parameterList">
+              <dt>
+                info
+              </dt>
+              <dd>
+                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.reflection.parameterinfo?view=net-9.0" data-linktype="absolute-path">Parameter<wbr>Info</a></span>
+              </dd>
+            </dl>
+            <p>The constructor parameter marked with the attribute <a href="Maroontress.Oxbind.RequiredAttribute.html">RequiredAttribute</a>, <a href="Maroontress.Oxbind.OptionalAttribute.html">OptionalAttribute</a>, or <a href="Maroontress.Oxbind.MultipleAttribute.html">MultipleAttribute</a>.</p>
+          </div>
+          <h4 class="propertyInfoTitle stack">Returns</h4>
+          <div class="propertyInfo">
+            <div class="subtle">
+              <a class="xref" href="Maroontress.Oxbind.Impl.Reflector.html" data-linktype="relative-path">Reflector</a>&lt;<a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=net-9.0" data-linktype="absolute-path">object</a>&gt;
             </div>
             <p>The new instance of the <a href="Maroontress.Oxbind.Impl.Reflector.html">Reflector&lt;T&gt;</a> class.</p>
           </div>

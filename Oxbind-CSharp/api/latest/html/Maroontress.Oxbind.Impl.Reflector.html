@@ -43,7 +43,7 @@ gtag('config', 'G-9TQ6JWBKEK');
           </div>
           <div class="summaryHolder">
             <div class="summary clearFix">
-              <p>Capsulizes each step to realize the injection.</p>
+              <p>Encapsulates the logic for value injection, including type transformation.</p>
             </div>
           </div>
           <div class="codeHeader" data-bi-name="code-header">
@@ -68,7 +68,7 @@ gtag('config', 'G-9TQ6JWBKEK');
             <dd>
               <div class="pdlHolder">
                 <div class="pdl">
-                  <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=netcore-3.0" data-linktype="absolute-path">object</a></span>
+                  <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=net-9.0" data-linktype="absolute-path">object</a></span>
                 </div>
                 <span class="lang-csharp">Reflector&lt;T&gt;</span>
               </div>
@@ -80,10 +80,10 @@ gtag('config', 'G-9TQ6JWBKEK');
               <tbody>
                 <tr>
                   <td>
-                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Oxbind.Impl.Reflector`1.#ctor(Maroontress.Oxbind.Impl.Injector,System.Type,Maroontress.Oxbind.Impl.Sugarcoater{`0})" data-linktype="relative-path">Reflector(Injector, Type, Sugarcoater&lt;T&gt;)</a></span>
+                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Oxbind.Impl.Reflector`1.#ctor(System.Int32,System.Type,Maroontress.Oxbind.Impl.Sugarcoater{`0})" data-linktype="relative-path">Reflector(int, Type, Sugarcoater&lt;T&gt;)</a></span>
                   </td>
                   <td>
-                    <p>Initializes a new instance of the <a href="#">Reflector&lt;T&gt;</a> class.</p>
+                    <p>Encapsulates the logic for value injection, including type transformation.</p>
                   </td>
                 </tr>
               </tbody>
@@ -95,10 +95,10 @@ gtag('config', 'G-9TQ6JWBKEK');
               <tbody>
                 <tr>
                   <td>
-                    <span class="lang-csharp break-text"><a class="xref" href="#P:Maroontress.Oxbind.Impl.Reflector`1.Inject" data-linktype="relative-path">Inject</a></span>
+                    <span class="lang-csharp break-text"><a class="xref" href="#P:Maroontress.Oxbind.Impl.Reflector`1.ParameterIndex" data-linktype="relative-path">Parameter<wbr>Index</a></span>
                   </td>
                   <td>
-                    <p>Gets the injector.</p>
+                    <p>Gets the parameter index.</p>
                   </td>
                 </tr>
                 <tr>
@@ -126,70 +126,77 @@ gtag('config', 'G-9TQ6JWBKEK');
               <tbody>
                 <tr>
                   <td>
-                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.object.equals?view=netcore-3.0#System_Object_Equals_System_Object_">Equals(object)</a>
+                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Oxbind.Impl.Reflector`1.Inject(System.Object[],System.Object)" data-linktype="relative-path">Inject(object[], object)</a></span>
                   </td>
                   <td>
-                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=netcore-3.0" data-linktype="absolute-path">object</a>)
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.object.gethashcode?view=netcore-3.0">GetHashCode()</a>
-                  </td>
-                  <td>
-                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=netcore-3.0" data-linktype="absolute-path">object</a>)
+                    <p>Injects a value into an array of constructor arguments.</p>
                   </td>
                 </tr>
                 <tr>
                   <td>
-                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.object.gettype?view=netcore-3.0">GetType()</a>
+                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.object.equals?view=net-9.0#System_Object_Equals_System_Object_">Equals(object)</a>
                   </td>
                   <td>
-                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=netcore-3.0" data-linktype="absolute-path">object</a>)
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.object.memberwiseclone?view=netcore-3.0">MemberwiseClone()</a>
-                  </td>
-                  <td>
-                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=netcore-3.0" data-linktype="absolute-path">object</a>)
+                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=net-9.0" data-linktype="absolute-path">object</a>)
                   </td>
                 </tr>
                 <tr>
                   <td>
-                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.object.tostring?view=netcore-3.0">ToString()</a>
+                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.object.gethashcode?view=net-9.0">GetHashCode()</a>
                   </td>
                   <td>
-                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=netcore-3.0" data-linktype="absolute-path">object</a>)
+                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=net-9.0" data-linktype="absolute-path">object</a>)
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.object.gettype?view=net-9.0">GetType()</a>
+                  </td>
+                  <td>
+                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=net-9.0" data-linktype="absolute-path">object</a>)
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.object.memberwiseclone?view=net-9.0">MemberwiseClone()</a>
+                  </td>
+                  <td>
+                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=net-9.0" data-linktype="absolute-path">object</a>)
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.object.tostring?view=net-9.0">ToString()</a>
+                  </td>
+                  <td>
+                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=net-9.0" data-linktype="absolute-path">object</a>)
                   </td>
                 </tr>
               </tbody>
             </table>
           </div>
           <h1 id="constructors-detail" class="heading-with-anchor">Constructors Detail</h1>
-          <h2 id="M:Maroontress.Oxbind.Impl.Reflector`1.#ctor(Maroontress.Oxbind.Impl.Injector,System.Type,Maroontress.Oxbind.Impl.Sugarcoater{`0})">Reflector(Injector, Type, Sugarcoater&lt;T&gt;)</h2>
+          <h2 id="M:Maroontress.Oxbind.Impl.Reflector`1.#ctor(System.Int32,System.Type,Maroontress.Oxbind.Impl.Sugarcoater{`0})">Reflector(int, Type, Sugarcoater&lt;T&gt;)</h2>
           <div class="summaryHolder">
             <div class="summary clearFix">
-              <p>Initializes a new instance of the <a href="#">Reflector&lt;T&gt;</a> class.</p>
+              <p>Encapsulates the logic for value injection, including type transformation.</p>
             </div>
           </div>
           <div class="codeHeader" data-bi-name="code-header">
             <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
           </div>
-          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-title">Reflector</span>(<span class="hljs-title">Injector</span> inject, <span class="hljs-title">Type</span> unitType, <span class="hljs-title">Sugarcoater</span>&lt;<span class="hljs-title">T</span>&gt; sugarcoater)</code></pre>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-title">Reflector</span>(<span class="hljs-keyword">int</span> parameterIndex, <span class="hljs-title">Type</span> unitType, <span class="hljs-title">Sugarcoater</span>&lt;<span class="hljs-title">T</span>&gt; sugarcoater)</code></pre>
           <h4 class="propertyInfoTitle stack">Parameters</h4>
           <div class="propertyInfo">
             <dl class="parameterList">
               <dt>
-                inject
+                parameterIndex
               </dt>
               <dd>
-                <span class="lang-csharp"><a class="xref" href="Maroontress.Oxbind.Impl.Injector.html" data-linktype="relative-path">Injector</a></span>
+                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.int32?view=net-9.0" data-linktype="absolute-path">int</a></span>
               </dd>
             </dl>
-            <p>The delegate that injects the sugarcoated value to the field or
-    with the method.</p>
+            <p>The parameter index in the constructor where the value is injected.</p>
           </div>
           <div class="propertyInfo stack">
             <dl class="parameterList">
@@ -197,7 +204,7 @@ gtag('config', 'G-9TQ6JWBKEK');
                 unitType
               </dt>
               <dd>
-                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.type?view=netcore-3.0" data-linktype="absolute-path">Type</a></span>
+                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.type?view=net-9.0" data-linktype="absolute-path">Type</a></span>
               </dd>
             </dl>
             <p>The type of the unit.</p>
@@ -214,20 +221,20 @@ gtag('config', 'G-9TQ6JWBKEK');
             <p>The delegate that sugarcoats the specified value.</p>
           </div>
           <h1 id="properties-detail" class="heading-with-anchor">Properties Detail</h1>
-          <h2 id="P:Maroontress.Oxbind.Impl.Reflector`1.Inject">Inject</h2>
+          <h2 id="P:Maroontress.Oxbind.Impl.Reflector`1.ParameterIndex">ParameterIndex</h2>
           <div class="summaryHolder">
             <div class="summary clearFix">
-              <p>Gets the injector.</p>
+              <p>Gets the parameter index.</p>
             </div>
           </div>
           <div class="codeHeader" data-bi-name="code-header">
             <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
           </div>
-          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-title">Injector</span> <span class="hljs-title">Inject</span> { <span class="hljs-keyword">get</span>; }</code></pre>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">ParameterIndex</span> { <span class="hljs-keyword">get</span>; }</code></pre>
           <h4 class="propertyInfoTitle stack">Property Value</h4>
           <div class="propertyInfo">
             <div class="subtle">
-              <a class="xref" href="Maroontress.Oxbind.Impl.Injector.html" data-linktype="relative-path">Injector</a>
+              <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.int32?view=net-9.0" data-linktype="absolute-path">int</a>
             </div>
           </div>
           <h2 id="P:Maroontress.Oxbind.Impl.Reflector`1.UnitType">UnitType</h2>
@@ -243,7 +250,7 @@ gtag('config', 'G-9TQ6JWBKEK');
           <h4 class="propertyInfoTitle stack">Property Value</h4>
           <div class="propertyInfo">
             <div class="subtle">
-              <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.type?view=netcore-3.0" data-linktype="absolute-path">Type</a>
+              <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.type?view=net-9.0" data-linktype="absolute-path">Type</a>
             </div>
           </div>
           <h2 id="P:Maroontress.Oxbind.Impl.Reflector`1.Sugarcoater">Sugarcoater</h2>
@@ -261,6 +268,40 @@ gtag('config', 'G-9TQ6JWBKEK');
             <div class="subtle">
               <a class="xref" href="Maroontress.Oxbind.Impl.Sugarcoater.html" data-linktype="relative-path">Sugarcoater&lt;T&gt;</a>
             </div>
+          </div>
+          <h1 id="methods-detail" class="heading-with-anchor">Methods Detail</h1>
+          <h2 id="M:Maroontress.Oxbind.Impl.Reflector`1.Inject(System.Object[],System.Object)">Inject(object[], object)</h2>
+          <div class="summaryHolder">
+            <div class="summary clearFix">
+              <p>Injects a value into an array of constructor arguments.</p>
+            </div>
+          </div>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Inject</span>(<span class="hljs-keyword">object</span>[] arguments, <span class="hljs-keyword">object</span> value)</code></pre>
+          <h4 class="propertyInfoTitle stack">Parameters</h4>
+          <div class="propertyInfo">
+            <dl class="parameterList">
+              <dt>
+                arguments
+              </dt>
+              <dd>
+                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=net-9.0" data-linktype="absolute-path">object</a>[]</span>
+              </dd>
+            </dl>
+            <p>The constructor arguments to inject the value into.</p>
+          </div>
+          <div class="propertyInfo stack">
+            <dl class="parameterList">
+              <dt>
+                value
+              </dt>
+              <dd>
+                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=net-9.0" data-linktype="absolute-path">object</a></span>
+              </dd>
+            </dl>
+            <p>The value to be injected.</p>
           </div>
         </main>
       </section>

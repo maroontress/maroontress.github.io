@@ -28,7 +28,7 @@ gtag('config', 'G-9TQ6JWBKEK');
               <dt>
                 Namespace:
                 <dd>
-                  <span class="lang-csharp"><a class="xref" href="Maroontress.Util.Graph.html" data-linktype="relative-path">Maroontress.Util.Graph</a></span>
+                  <span class="lang-csharp"><a class="xref" href="Maroontress.Oxbind.Util.Graph.html" data-linktype="relative-path">Maroontress.Oxbind.Util.Graph</a></span>
                 </dd>
               </dt>
             </dl>
@@ -43,8 +43,8 @@ gtag('config', 'G-9TQ6JWBKEK');
           </div>
           <div class="summaryHolder">
             <div class="summary clearFix">
-              <p>Provides a way of graph traversal to visit all the reachable nodes from
-     the specified node.</p>
+              <p>Provides a mechanism for graph traversal to visit all reachable nodes from
+     a starting node.</p>
             </div>
           </div>
           <div class="codeHeader" data-bi-name="code-header">
@@ -69,28 +69,42 @@ gtag('config', 'G-9TQ6JWBKEK');
             <dd>
               <div class="pdlHolder">
                 <div class="pdl">
-                  <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=netcore-3.0" data-linktype="absolute-path">object</a></span>
+                  <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=net-9.0" data-linktype="absolute-path">object</a></span>
                 </div>
                 <span class="lang-csharp">Traversal&lt;T&gt;</span>
               </div>
             </dd>
           </dl>
           <h2 id="remarks" class="heading-with-anchor">Remarks</h2>
-          <p>For more information, see
-     <a href="https://en.wikipedia.org/wiki/Graph_traversal">Graph traversal</a>:
+          <p>For more information, see <a href="https://en.wikipedia.org/wiki/Graph_traversal">Graph traversal</a>:
     
      </p>
-          <p></p>
+          <p>Unlike tree traversal, graph traversal may require that some nodes be
+     visited more than once, since it is not necessarily known before
+     transitioning to a node that it has already been explored. As graphs become
+     more dense, this redundancy becomes more prevalent, causing computation
+     time to increase; as graphs become more sparse, the opposite holds
+     true.</p>
+          <p>Thus, it is usually necessary to remember which nodes have already
+     been explored by the algorithm, so that nodes are revisited as infrequently
+     as possible (or in the worst case, to prevent the traversal from continuing
+     indefinitely). This may be accomplished by associating each node of the
+     graph with a "color" or "visitation" state during the traversal, which is
+     then checked and updated as the algorithm visits each node. If the node has
+     already been visited, it is ignored and the path is pursued no further;
+     otherwise, the algorithm checks/updates the node and continues down its
+     current path.</p>
           <h2 id="constructors" class="heading-with-anchor">Constructors</h2>
           <div class="table-scroll-wrapper">
             <table class="nameValue">
               <tbody>
                 <tr>
                   <td>
-                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Util.Graph.Traversal`1.#ctor(System.Func{`0,System.Collections.Generic.IEnumerable{`0}})" data-linktype="relative-path">Traversal(Func&lt;T, IEnumerable&lt;T&gt;&gt;)</a></span>
+                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Oxbind.Util.Graph.Traversal`1.#ctor(System.Func{`0,System.Collections.Generic.IEnumerable{`0}})" data-linktype="relative-path">Traversal(Func&lt;T, IEnumerable&lt;T&gt;&gt;)</a></span>
                   </td>
                   <td>
-                    <p>Initializes a new instance of the <a href="#">Traversal&lt;T&gt;</a> class.</p>
+                    <p>Provides a mechanism for graph traversal to visit all reachable nodes from
+     a starting node.</p>
                   </td>
                 </tr>
               </tbody>
@@ -102,7 +116,7 @@ gtag('config', 'G-9TQ6JWBKEK');
               <tbody>
                 <tr>
                   <td>
-                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Util.Graph.Traversal`1.Visit(`0)" data-linktype="relative-path">Visit(T)</a></span>
+                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Oxbind.Util.Graph.Traversal`1.Visit(`0)" data-linktype="relative-path">Visit(T)</a></span>
                   </td>
                   <td>
                     <p>Visits all the reachable nodes from the specified node.</p>
@@ -110,52 +124,53 @@ gtag('config', 'G-9TQ6JWBKEK');
                 </tr>
                 <tr>
                   <td>
-                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.object.equals?view=netcore-3.0#System_Object_Equals_System_Object_">Equals(object)</a>
+                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.object.equals?view=net-9.0#System_Object_Equals_System_Object_">Equals(object)</a>
                   </td>
                   <td>
-                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=netcore-3.0" data-linktype="absolute-path">object</a>)
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.object.gethashcode?view=netcore-3.0">GetHashCode()</a>
-                  </td>
-                  <td>
-                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=netcore-3.0" data-linktype="absolute-path">object</a>)
+                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=net-9.0" data-linktype="absolute-path">object</a>)
                   </td>
                 </tr>
                 <tr>
                   <td>
-                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.object.gettype?view=netcore-3.0">GetType()</a>
+                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.object.gethashcode?view=net-9.0">GetHashCode()</a>
                   </td>
                   <td>
-                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=netcore-3.0" data-linktype="absolute-path">object</a>)
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.object.memberwiseclone?view=netcore-3.0">MemberwiseClone()</a>
-                  </td>
-                  <td>
-                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=netcore-3.0" data-linktype="absolute-path">object</a>)
+                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=net-9.0" data-linktype="absolute-path">object</a>)
                   </td>
                 </tr>
                 <tr>
                   <td>
-                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.object.tostring?view=netcore-3.0">ToString()</a>
+                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.object.gettype?view=net-9.0">GetType()</a>
                   </td>
                   <td>
-                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=netcore-3.0" data-linktype="absolute-path">object</a>)
+                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=net-9.0" data-linktype="absolute-path">object</a>)
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.object.memberwiseclone?view=net-9.0">MemberwiseClone()</a>
+                  </td>
+                  <td>
+                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=net-9.0" data-linktype="absolute-path">object</a>)
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.object.tostring?view=net-9.0">ToString()</a>
+                  </td>
+                  <td>
+                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=net-9.0" data-linktype="absolute-path">object</a>)
                   </td>
                 </tr>
               </tbody>
             </table>
           </div>
           <h1 id="constructors-detail" class="heading-with-anchor">Constructors Detail</h1>
-          <h2 id="M:Maroontress.Util.Graph.Traversal`1.#ctor(System.Func{`0,System.Collections.Generic.IEnumerable{`0}})">Traversal(Func&lt;T, IEnumerable&lt;T&gt;&gt;)</h2>
+          <h2 id="M:Maroontress.Oxbind.Util.Graph.Traversal`1.#ctor(System.Func{`0,System.Collections.Generic.IEnumerable{`0}})">Traversal(Func&lt;T, IEnumerable&lt;T&gt;&gt;)</h2>
           <div class="summaryHolder">
             <div class="summary clearFix">
-              <p>Initializes a new instance of the <a href="#">Traversal&lt;T&gt;</a> class.</p>
+              <p>Provides a mechanism for graph traversal to visit all reachable nodes from
+     a starting node.</p>
             </div>
           </div>
           <div class="codeHeader" data-bi-name="code-header">
@@ -169,13 +184,32 @@ gtag('config', 'G-9TQ6JWBKEK');
                 getDependencies
               </dt>
               <dd>
-                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.func-2?view=netcore-3.0" data-linktype="absolute-path">Func</a>&lt;T, <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1?view=netcore-3.0" data-linktype="absolute-path">IEnumerable&lt;T&gt;</a>&gt;</span>
+                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.func-2?view=net-9.0" data-linktype="absolute-path">Func</a>&lt;T, <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1?view=net-9.0" data-linktype="absolute-path">IEnumerable&lt;T&gt;</a>&gt;</span>
               </dd>
             </dl>
-            <p>The function that returns the dependencies of the specified node.</p>
+            <p>The function that returns the dependencies for the specified node.</p>
           </div>
+          <h3>Remarks</h3>
+          <p>For more information, see <a href="https://en.wikipedia.org/wiki/Graph_traversal">Graph traversal</a>:
+    
+     </p>
+          <p>Unlike tree traversal, graph traversal may require that some nodes be
+     visited more than once, since it is not necessarily known before
+     transitioning to a node that it has already been explored. As graphs become
+     more dense, this redundancy becomes more prevalent, causing computation
+     time to increase; as graphs become more sparse, the opposite holds
+     true.</p>
+          <p>Thus, it is usually necessary to remember which nodes have already
+     been explored by the algorithm, so that nodes are revisited as infrequently
+     as possible (or in the worst case, to prevent the traversal from continuing
+     indefinitely). This may be accomplished by associating each node of the
+     graph with a "color" or "visitation" state during the traversal, which is
+     then checked and updated as the algorithm visits each node. If the node has
+     already been visited, it is ignored and the path is pursued no further;
+     otherwise, the algorithm checks/updates the node and continues down its
+     current path.</p>
           <h1 id="methods-detail" class="heading-with-anchor">Methods Detail</h1>
-          <h2 id="M:Maroontress.Util.Graph.Traversal`1.Visit(`0)">Visit(T)</h2>
+          <h2 id="M:Maroontress.Oxbind.Util.Graph.Traversal`1.Visit(`0)">Visit(T)</h2>
           <div class="summaryHolder">
             <div class="summary clearFix">
               <p>Visits all the reachable nodes from the specified node.</p>
@@ -195,7 +229,7 @@ gtag('config', 'G-9TQ6JWBKEK');
                 <span class="lang-csharp">T</span>
               </dd>
             </dl>
-            <p>The node where to start visiting.</p>
+            <p>The starting node for the traversal.</p>
           </div>
         </main>
       </section>

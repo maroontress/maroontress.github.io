@@ -28,7 +28,7 @@ gtag('config', 'G-9TQ6JWBKEK');
               <dt>
                 Namespace:
                 <dd>
-                  <span class="lang-csharp"><a class="xref" href="Maroontress.Util.html" data-linktype="relative-path">Maroontress.Util</a></span>
+                  <span class="lang-csharp"><a class="xref" href="Maroontress.Oxbind.Util.html" data-linktype="relative-path">Maroontress.Oxbind.Util</a></span>
                 </dd>
               </dt>
             </dl>
@@ -43,7 +43,7 @@ gtag('config', 'G-9TQ6JWBKEK');
           </div>
           <div class="summaryHolder">
             <div class="summary clearFix">
-              <p>Hash table and linked list implementation of the <a href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.iset-1?view=netcore-3.0">ISet&lt;T&gt;</a>
+              <p>Hash table and linked list implementation of the <a href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.iset-1?view=net-9.0">ISet&lt;T&gt;</a>
     interface, with predictable iteration order.</p>
             </div>
           </div>
@@ -70,7 +70,7 @@ gtag('config', 'G-9TQ6JWBKEK');
             <dd>
               <div class="pdlHolder">
                 <div class="pdl">
-                  <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=netcore-3.0" data-linktype="absolute-path">object</a></span>
+                  <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=net-9.0" data-linktype="absolute-path">object</a></span>
                 </div>
                 <span class="lang-csharp">Linked<wbr>Hash<wbr>Set&lt;T&gt;</span>
               </div>
@@ -82,39 +82,37 @@ gtag('config', 'G-9TQ6JWBKEK');
             </dt>
             <dd>
               <div class="cdlHolder">
-                <span class="cdl"><span class="lang-csharp break-text"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.iset-1?view=netcore-3.0" data-linktype="absolute-path">ISet&lt;T&gt;</a></span></span> <span class="cdl"><span class="lang-csharp break-text"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.icollection-1?view=netcore-3.0" data-linktype="absolute-path">ICollection&lt;T&gt;</a></span></span> <span class="cdl"><span class="lang-csharp break-text"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1?view=netcore-3.0" data-linktype="absolute-path">IEnumerable&lt;T&gt;</a></span></span> <span class="cdl"><span class="lang-csharp break-text"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.ienumerable?view=netcore-3.0" data-linktype="absolute-path">IEnumerable</a></span></span>
+                <span class="cdl"><span class="lang-csharp break-text"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.iset-1?view=net-9.0" data-linktype="absolute-path">ISet&lt;T&gt;</a></span></span> <span class="cdl"><span class="lang-csharp break-text"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.icollection-1?view=net-9.0" data-linktype="absolute-path">ICollection&lt;T&gt;</a></span></span> <span class="cdl"><span class="lang-csharp break-text"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1?view=net-9.0" data-linktype="absolute-path">IEnumerable&lt;T&gt;</a></span></span> <span class="cdl"><span class="lang-csharp break-text"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.ienumerable?view=net-9.0" data-linktype="absolute-path">IEnumerable</a></span></span>
               </div>
             </dd>
           </dl>
           <h2 id="remarks" class="heading-with-anchor">Remarks</h2>
-          <p>This implementation differs from <a href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.hashset-1?view=netcore-3.0">HashSet&lt;T&gt;</a> in that it
+          <p>This implementation differs from <a href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.hashset-1?view=net-9.0">HashSet&lt;T&gt;</a> in that it
     maintains a doubly-linked list running through all of its entries. This
     linked list defines the iteration ordering, which is the order in which
-    elements were inserted into the set (<i>insertion-order</i>). Note that
-    insertion order is <i>not</i> affected if an element is re-inserted
-    into the set. (An element <code>e</code> is reinserted into a set <code>s</code> if
-    <code>s.Add(e)</code> is invoked when <code>s.Contains(e)</code> would return
-    <code>true</code> immediately prior to the invocation.)</p>
+    elements were inserted into the set (insertion-order). Note that insertion
+    order is not affected if an element is re-inserted into the set. (An
+    element <code>e</code> is reinserted into a set <code>s</code> if <code>s.Add(e)</code> is
+    invoked when <code>s.Contains(e)</code> would return <code>true</code> immediately
+    prior to the invocation.)</p>
           <h2 id="constructors" class="heading-with-anchor">Constructors</h2>
           <div class="table-scroll-wrapper">
             <table class="nameValue">
               <tbody>
                 <tr>
                   <td>
-                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Util.LinkedHashSet`1.#ctor" data-linktype="relative-path">Linked<wbr>Hash<wbr>Set()</a></span>
+                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Oxbind.Util.LinkedHashSet`1.#ctor" data-linktype="relative-path">Linked<wbr>Hash<wbr>Set()</a></span>
                   </td>
                   <td>
-                    <p>Initializes a new instance of the <a href="#">LinkedHashSet&lt;T&gt;</a>
-    class.</p>
+                    <p>Initializes a new instance of the <a href="#">LinkedHashSet&lt;T&gt;</a> class.</p>
                   </td>
                 </tr>
                 <tr>
                   <td>
-                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Util.LinkedHashSet`1.#ctor(System.Int32)" data-linktype="relative-path">Linked<wbr>Hash<wbr>Set(int)</a></span>
+                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Oxbind.Util.LinkedHashSet`1.#ctor(System.Int32)" data-linktype="relative-path">Linked<wbr>Hash<wbr>Set(int)</a></span>
                   </td>
                   <td>
-                    <p>Initializes a new instance of the <a href="#">LinkedHashSet&lt;T&gt;</a>
-    class.</p>
+                    <p>Initializes a new instance of the <a href="#">LinkedHashSet&lt;T&gt;</a> class.</p>
                   </td>
                 </tr>
               </tbody>
@@ -126,14 +124,14 @@ gtag('config', 'G-9TQ6JWBKEK');
               <tbody>
                 <tr>
                   <td>
-                    <span class="lang-csharp break-text"><a class="xref" href="#P:Maroontress.Util.LinkedHashSet`1.Count" data-linktype="relative-path">Count</a></span>
+                    <span class="lang-csharp break-text"><a class="xref" href="#P:Maroontress.Oxbind.Util.LinkedHashSet`1.Count" data-linktype="relative-path">Count</a></span>
                   </td>
                   <td>
                   </td>
                 </tr>
                 <tr>
                   <td>
-                    <span class="lang-csharp break-text"><a class="xref" href="#P:Maroontress.Util.LinkedHashSet`1.IsReadOnly" data-linktype="relative-path">Is<wbr>Read<wbr>Only</a></span>
+                    <span class="lang-csharp break-text"><a class="xref" href="#P:Maroontress.Oxbind.Util.LinkedHashSet`1.IsReadOnly" data-linktype="relative-path">Is<wbr>Read<wbr>Only</a></span>
                   </td>
                   <td>
                   </td>
@@ -147,154 +145,154 @@ gtag('config', 'G-9TQ6JWBKEK');
               <tbody>
                 <tr>
                   <td>
-                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Util.LinkedHashSet`1.Add(`0)" data-linktype="relative-path">Add(T)</a></span>
+                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Oxbind.Util.LinkedHashSet`1.Add(`0)" data-linktype="relative-path">Add(T)</a></span>
                   </td>
                   <td>
                   </td>
                 </tr>
                 <tr>
                   <td>
-                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Util.LinkedHashSet`1.Clear" data-linktype="relative-path">Clear()</a></span>
+                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Oxbind.Util.LinkedHashSet`1.Clear" data-linktype="relative-path">Clear()</a></span>
                   </td>
                   <td>
                   </td>
                 </tr>
                 <tr>
                   <td>
-                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Util.LinkedHashSet`1.Contains(`0)" data-linktype="relative-path">Contains(T)</a></span>
+                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Oxbind.Util.LinkedHashSet`1.Contains(`0)" data-linktype="relative-path">Contains(T)</a></span>
                   </td>
                   <td>
                   </td>
                 </tr>
                 <tr>
                   <td>
-                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Util.LinkedHashSet`1.CopyTo(`0[],System.Int32)" data-linktype="relative-path">Copy<wbr>To(T[], int)</a></span>
+                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Oxbind.Util.LinkedHashSet`1.CopyTo(`0[],System.Int32)" data-linktype="relative-path">Copy<wbr>To(T[], int)</a></span>
                   </td>
                   <td>
                   </td>
                 </tr>
                 <tr>
                   <td>
-                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Util.LinkedHashSet`1.ExceptWith(System.Collections.Generic.IEnumerable{`0})" data-linktype="relative-path">Except<wbr>With(IEnumerable&lt;T&gt;)</a></span>
+                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Oxbind.Util.LinkedHashSet`1.ExceptWith(System.Collections.Generic.IEnumerable{`0})" data-linktype="relative-path">Except<wbr>With(IEnumerable&lt;T&gt;)</a></span>
                   </td>
                   <td>
                   </td>
                 </tr>
                 <tr>
                   <td>
-                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Util.LinkedHashSet`1.GetEnumerator" data-linktype="relative-path">Get<wbr>Enumerator()</a></span>
+                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Oxbind.Util.LinkedHashSet`1.GetEnumerator" data-linktype="relative-path">Get<wbr>Enumerator()</a></span>
                   </td>
                   <td>
                   </td>
                 </tr>
                 <tr>
                   <td>
-                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Util.LinkedHashSet`1.IntersectWith(System.Collections.Generic.IEnumerable{`0})" data-linktype="relative-path">Intersect<wbr>With(IEnumerable&lt;T&gt;)</a></span>
+                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Oxbind.Util.LinkedHashSet`1.IntersectWith(System.Collections.Generic.IEnumerable{`0})" data-linktype="relative-path">Intersect<wbr>With(IEnumerable&lt;T&gt;)</a></span>
                   </td>
                   <td>
                   </td>
                 </tr>
                 <tr>
                   <td>
-                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Util.LinkedHashSet`1.IsProperSubsetOf(System.Collections.Generic.IEnumerable{`0})" data-linktype="relative-path">Is<wbr>Proper<wbr>Subset<wbr>Of(IEnumerable&lt;T&gt;)</a></span>
+                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Oxbind.Util.LinkedHashSet`1.IsProperSubsetOf(System.Collections.Generic.IEnumerable{`0})" data-linktype="relative-path">Is<wbr>Proper<wbr>Subset<wbr>Of(IEnumerable&lt;T&gt;)</a></span>
                   </td>
                   <td>
                   </td>
                 </tr>
                 <tr>
                   <td>
-                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Util.LinkedHashSet`1.IsProperSupersetOf(System.Collections.Generic.IEnumerable{`0})" data-linktype="relative-path">Is<wbr>Proper<wbr>Superset<wbr>Of(IEnumerable&lt;T&gt;)</a></span>
+                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Oxbind.Util.LinkedHashSet`1.IsProperSupersetOf(System.Collections.Generic.IEnumerable{`0})" data-linktype="relative-path">Is<wbr>Proper<wbr>Superset<wbr>Of(IEnumerable&lt;T&gt;)</a></span>
                   </td>
                   <td>
                   </td>
                 </tr>
                 <tr>
                   <td>
-                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Util.LinkedHashSet`1.IsSubsetOf(System.Collections.Generic.IEnumerable{`0})" data-linktype="relative-path">Is<wbr>Subset<wbr>Of(IEnumerable&lt;T&gt;)</a></span>
+                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Oxbind.Util.LinkedHashSet`1.IsSubsetOf(System.Collections.Generic.IEnumerable{`0})" data-linktype="relative-path">Is<wbr>Subset<wbr>Of(IEnumerable&lt;T&gt;)</a></span>
                   </td>
                   <td>
                   </td>
                 </tr>
                 <tr>
                   <td>
-                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Util.LinkedHashSet`1.IsSupersetOf(System.Collections.Generic.IEnumerable{`0})" data-linktype="relative-path">Is<wbr>Superset<wbr>Of(IEnumerable&lt;T&gt;)</a></span>
+                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Oxbind.Util.LinkedHashSet`1.IsSupersetOf(System.Collections.Generic.IEnumerable{`0})" data-linktype="relative-path">Is<wbr>Superset<wbr>Of(IEnumerable&lt;T&gt;)</a></span>
                   </td>
                   <td>
                   </td>
                 </tr>
                 <tr>
                   <td>
-                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Util.LinkedHashSet`1.Overlaps(System.Collections.Generic.IEnumerable{`0})" data-linktype="relative-path">Overlaps(IEnumerable&lt;T&gt;)</a></span>
+                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Oxbind.Util.LinkedHashSet`1.Overlaps(System.Collections.Generic.IEnumerable{`0})" data-linktype="relative-path">Overlaps(IEnumerable&lt;T&gt;)</a></span>
                   </td>
                   <td>
                   </td>
                 </tr>
                 <tr>
                   <td>
-                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Util.LinkedHashSet`1.Remove(`0)" data-linktype="relative-path">Remove(T)</a></span>
+                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Oxbind.Util.LinkedHashSet`1.Remove(`0)" data-linktype="relative-path">Remove(T)</a></span>
                   </td>
                   <td>
                   </td>
                 </tr>
                 <tr>
                   <td>
-                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Util.LinkedHashSet`1.SetEquals(System.Collections.Generic.IEnumerable{`0})" data-linktype="relative-path">Set<wbr>Equals(IEnumerable&lt;T&gt;)</a></span>
+                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Oxbind.Util.LinkedHashSet`1.SetEquals(System.Collections.Generic.IEnumerable{`0})" data-linktype="relative-path">Set<wbr>Equals(IEnumerable&lt;T&gt;)</a></span>
                   </td>
                   <td>
                   </td>
                 </tr>
                 <tr>
                   <td>
-                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Util.LinkedHashSet`1.SymmetricExceptWith(System.Collections.Generic.IEnumerable{`0})" data-linktype="relative-path">Symmetric<wbr>Except<wbr>With(IEnumerable&lt;T&gt;)</a></span>
+                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Oxbind.Util.LinkedHashSet`1.SymmetricExceptWith(System.Collections.Generic.IEnumerable{`0})" data-linktype="relative-path">Symmetric<wbr>Except<wbr>With(IEnumerable&lt;T&gt;)</a></span>
                   </td>
                   <td>
                   </td>
                 </tr>
                 <tr>
                   <td>
-                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Util.LinkedHashSet`1.UnionWith(System.Collections.Generic.IEnumerable{`0})" data-linktype="relative-path">Union<wbr>With(IEnumerable&lt;T&gt;)</a></span>
+                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Oxbind.Util.LinkedHashSet`1.UnionWith(System.Collections.Generic.IEnumerable{`0})" data-linktype="relative-path">Union<wbr>With(IEnumerable&lt;T&gt;)</a></span>
                   </td>
                   <td>
                   </td>
                 </tr>
                 <tr>
                   <td>
-                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.object.equals?view=netcore-3.0#System_Object_Equals_System_Object_">Equals(object)</a>
+                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.object.equals?view=net-9.0#System_Object_Equals_System_Object_">Equals(object)</a>
                   </td>
                   <td>
-                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=netcore-3.0" data-linktype="absolute-path">object</a>)
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.object.gethashcode?view=netcore-3.0">GetHashCode()</a>
-                  </td>
-                  <td>
-                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=netcore-3.0" data-linktype="absolute-path">object</a>)
+                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=net-9.0" data-linktype="absolute-path">object</a>)
                   </td>
                 </tr>
                 <tr>
                   <td>
-                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.object.gettype?view=netcore-3.0">GetType()</a>
+                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.object.gethashcode?view=net-9.0">GetHashCode()</a>
                   </td>
                   <td>
-                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=netcore-3.0" data-linktype="absolute-path">object</a>)
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.object.memberwiseclone?view=netcore-3.0">MemberwiseClone()</a>
-                  </td>
-                  <td>
-                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=netcore-3.0" data-linktype="absolute-path">object</a>)
+                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=net-9.0" data-linktype="absolute-path">object</a>)
                   </td>
                 </tr>
                 <tr>
                   <td>
-                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.object.tostring?view=netcore-3.0">ToString()</a>
+                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.object.gettype?view=net-9.0">GetType()</a>
                   </td>
                   <td>
-                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=netcore-3.0" data-linktype="absolute-path">object</a>)
+                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=net-9.0" data-linktype="absolute-path">object</a>)
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.object.memberwiseclone?view=net-9.0">MemberwiseClone()</a>
+                  </td>
+                  <td>
+                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=net-9.0" data-linktype="absolute-path">object</a>)
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.object.tostring?view=net-9.0">ToString()</a>
+                  </td>
+                  <td>
+                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=net-9.0" data-linktype="absolute-path">object</a>)
                   </td>
                 </tr>
               </tbody>
@@ -306,14 +304,14 @@ gtag('config', 'G-9TQ6JWBKEK');
               <tbody>
                 <tr>
                   <td>
-                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Util.LinkedHashSet`1.System#Collections#Generic#ICollection{T}#Add(`0)" data-linktype="relative-path">ICollection&lt;T&gt;.Add(T)</a></span>
+                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Oxbind.Util.LinkedHashSet`1.System#Collections#Generic#ICollection{T}#Add(`0)" data-linktype="relative-path">ICollection&lt;T&gt;.Add(T)</a></span>
                   </td>
                   <td>
                   </td>
                 </tr>
                 <tr>
                   <td>
-                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Util.LinkedHashSet`1.System#Collections#IEnumerable#GetEnumerator" data-linktype="relative-path">IEnumerable.Get<wbr>Enumerator()</a></span>
+                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Oxbind.Util.LinkedHashSet`1.System#Collections#IEnumerable#GetEnumerator" data-linktype="relative-path">IEnumerable.Get<wbr>Enumerator()</a></span>
                   </td>
                   <td>
                   </td>
@@ -322,22 +320,20 @@ gtag('config', 'G-9TQ6JWBKEK');
             </table>
           </div>
           <h1 id="constructors-detail" class="heading-with-anchor">Constructors Detail</h1>
-          <h2 id="M:Maroontress.Util.LinkedHashSet`1.#ctor">LinkedHashSet()</h2>
+          <h2 id="M:Maroontress.Oxbind.Util.LinkedHashSet`1.#ctor">LinkedHashSet()</h2>
           <div class="summaryHolder">
             <div class="summary clearFix">
-              <p>Initializes a new instance of the <a href="#">LinkedHashSet&lt;T&gt;</a>
-    class.</p>
+              <p>Initializes a new instance of the <a href="#">LinkedHashSet&lt;T&gt;</a> class.</p>
             </div>
           </div>
           <div class="codeHeader" data-bi-name="code-header">
             <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
           </div>
           <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-title">LinkedHashSet</span>()</code></pre>
-          <h2 id="M:Maroontress.Util.LinkedHashSet`1.#ctor(System.Int32)">LinkedHashSet(int)</h2>
+          <h2 id="M:Maroontress.Oxbind.Util.LinkedHashSet`1.#ctor(System.Int32)">LinkedHashSet(int)</h2>
           <div class="summaryHolder">
             <div class="summary clearFix">
-              <p>Initializes a new instance of the <a href="#">LinkedHashSet&lt;T&gt;</a>
-    class.</p>
+              <p>Initializes a new instance of the <a href="#">LinkedHashSet&lt;T&gt;</a> class.</p>
             </div>
           </div>
           <div class="codeHeader" data-bi-name="code-header">
@@ -351,13 +347,13 @@ gtag('config', 'G-9TQ6JWBKEK');
                 initialCapacity
               </dt>
               <dd>
-                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.int32?view=netcore-3.0" data-linktype="absolute-path">int</a></span>
+                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.int32?view=net-9.0" data-linktype="absolute-path">int</a></span>
               </dd>
             </dl>
             <p>The initial capacity.</p>
           </div>
           <h1 id="properties-detail" class="heading-with-anchor">Properties Detail</h1>
-          <h2 id="P:Maroontress.Util.LinkedHashSet`1.Count">Count</h2>
+          <h2 id="P:Maroontress.Oxbind.Util.LinkedHashSet`1.Count">Count</h2>
           <div class="codeHeader" data-bi-name="code-header">
             <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
           </div>
@@ -365,16 +361,16 @@ gtag('config', 'G-9TQ6JWBKEK');
           <h4 class="propertyInfoTitle stack">Property Value</h4>
           <div class="propertyInfo">
             <div class="subtle">
-              <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.int32?view=netcore-3.0" data-linktype="absolute-path">int</a>
+              <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.int32?view=net-9.0" data-linktype="absolute-path">int</a>
             </div>
           </div>
           <h4 class="propertyInfoTitle stack">Implements</h4>
           <div class="propertyInfo">
             <div class="cdlHolder">
-              <span class="cdl"><a href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.icollection-1.count?view=netcore-3.0">ICollection&lt;T&gt;.Count</a></span>
+              <span class="cdl"><a href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.icollection-1.count?view=net-9.0">ICollection&lt;T&gt;.Count</a></span>
             </div>
           </div>
-          <h2 id="P:Maroontress.Util.LinkedHashSet`1.IsReadOnly">IsReadOnly</h2>
+          <h2 id="P:Maroontress.Oxbind.Util.LinkedHashSet`1.IsReadOnly">IsReadOnly</h2>
           <div class="codeHeader" data-bi-name="code-header">
             <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
           </div>
@@ -382,17 +378,17 @@ gtag('config', 'G-9TQ6JWBKEK');
           <h4 class="propertyInfoTitle stack">Property Value</h4>
           <div class="propertyInfo">
             <div class="subtle">
-              <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.boolean?view=netcore-3.0" data-linktype="absolute-path">bool</a>
+              <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.boolean?view=net-9.0" data-linktype="absolute-path">bool</a>
             </div>
           </div>
           <h4 class="propertyInfoTitle stack">Implements</h4>
           <div class="propertyInfo">
             <div class="cdlHolder">
-              <span class="cdl"><a href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.icollection-1.isreadonly?view=netcore-3.0">ICollection&lt;T&gt;.IsReadOnly</a></span>
+              <span class="cdl"><a href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.icollection-1.isreadonly?view=net-9.0">ICollection&lt;T&gt;.IsReadOnly</a></span>
             </div>
           </div>
           <h1 id="methods-detail" class="heading-with-anchor">Methods Detail</h1>
-          <h2 id="M:Maroontress.Util.LinkedHashSet`1.Add(`0)">Add(T)</h2>
+          <h2 id="M:Maroontress.Oxbind.Util.LinkedHashSet`1.Add(`0)">Add(T)</h2>
           <div class="codeHeader" data-bi-name="code-header">
             <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
           </div>
@@ -411,16 +407,16 @@ gtag('config', 'G-9TQ6JWBKEK');
           <h4 class="propertyInfoTitle stack">Returns</h4>
           <div class="propertyInfo">
             <div class="subtle">
-              <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.boolean?view=netcore-3.0" data-linktype="absolute-path">bool</a>
+              <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.boolean?view=net-9.0" data-linktype="absolute-path">bool</a>
             </div>
           </div>
           <h4 class="propertyInfoTitle stack">Implements</h4>
           <div class="propertyInfo">
             <div class="cdlHolder">
-              <span class="cdl"><a href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.iset-1.add?view=netcore-3.0#System_Collections_Generic_ISet_1_Add__0_">ISet&lt;T&gt;.Add(T)</a></span>
+              <span class="cdl"><a href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.iset-1.add?view=net-9.0#System_Collections_Generic_ISet_1_Add__0_">ISet&lt;T&gt;.Add(T)</a></span>
             </div>
           </div>
-          <h2 id="M:Maroontress.Util.LinkedHashSet`1.Clear">Clear()</h2>
+          <h2 id="M:Maroontress.Oxbind.Util.LinkedHashSet`1.Clear">Clear()</h2>
           <div class="codeHeader" data-bi-name="code-header">
             <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
           </div>
@@ -428,10 +424,10 @@ gtag('config', 'G-9TQ6JWBKEK');
           <h4 class="propertyInfoTitle stack">Implements</h4>
           <div class="propertyInfo">
             <div class="cdlHolder">
-              <span class="cdl"><a href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.icollection-1.clear?view=netcore-3.0">ICollection&lt;T&gt;.Clear()</a></span>
+              <span class="cdl"><a href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.icollection-1.clear?view=net-9.0">ICollection&lt;T&gt;.Clear()</a></span>
             </div>
           </div>
-          <h2 id="M:Maroontress.Util.LinkedHashSet`1.Contains(`0)">Contains(T)</h2>
+          <h2 id="M:Maroontress.Oxbind.Util.LinkedHashSet`1.Contains(`0)">Contains(T)</h2>
           <div class="codeHeader" data-bi-name="code-header">
             <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
           </div>
@@ -450,16 +446,16 @@ gtag('config', 'G-9TQ6JWBKEK');
           <h4 class="propertyInfoTitle stack">Returns</h4>
           <div class="propertyInfo">
             <div class="subtle">
-              <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.boolean?view=netcore-3.0" data-linktype="absolute-path">bool</a>
+              <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.boolean?view=net-9.0" data-linktype="absolute-path">bool</a>
             </div>
           </div>
           <h4 class="propertyInfoTitle stack">Implements</h4>
           <div class="propertyInfo">
             <div class="cdlHolder">
-              <span class="cdl"><a href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.icollection-1.contains?view=netcore-3.0#System_Collections_Generic_ICollection_1_Contains__0_">ICollection&lt;T&gt;.Contains(T)</a></span>
+              <span class="cdl"><a href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.icollection-1.contains?view=net-9.0#System_Collections_Generic_ICollection_1_Contains__0_">ICollection&lt;T&gt;.Contains(T)</a></span>
             </div>
           </div>
-          <h2 id="M:Maroontress.Util.LinkedHashSet`1.CopyTo(`0[],System.Int32)">CopyTo(T[], int)</h2>
+          <h2 id="M:Maroontress.Oxbind.Util.LinkedHashSet`1.CopyTo(`0[],System.Int32)">CopyTo(T[], int)</h2>
           <div class="codeHeader" data-bi-name="code-header">
             <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
           </div>
@@ -481,17 +477,17 @@ gtag('config', 'G-9TQ6JWBKEK');
                 arrayIndex
               </dt>
               <dd>
-                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.int32?view=netcore-3.0" data-linktype="absolute-path">int</a></span>
+                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.int32?view=net-9.0" data-linktype="absolute-path">int</a></span>
               </dd>
             </dl>
           </div>
           <h4 class="propertyInfoTitle stack">Implements</h4>
           <div class="propertyInfo">
             <div class="cdlHolder">
-              <span class="cdl"><a href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.icollection-1.copyto?view=netcore-3.0#System_Collections_Generic_ICollection_1_CopyTo__0___System_Int32_">ICollection&lt;T&gt;.CopyTo(T[], int)</a></span>
+              <span class="cdl"><a href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.icollection-1.copyto?view=net-9.0#System_Collections_Generic_ICollection_1_CopyTo__0___System_Int32_">ICollection&lt;T&gt;.CopyTo(T[], int)</a></span>
             </div>
           </div>
-          <h2 id="M:Maroontress.Util.LinkedHashSet`1.ExceptWith(System.Collections.Generic.IEnumerable{`0})">ExceptWith(IEnumerable&lt;T&gt;)</h2>
+          <h2 id="M:Maroontress.Oxbind.Util.LinkedHashSet`1.ExceptWith(System.Collections.Generic.IEnumerable{`0})">ExceptWith(IEnumerable&lt;T&gt;)</h2>
           <div class="codeHeader" data-bi-name="code-header">
             <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
           </div>
@@ -503,17 +499,17 @@ gtag('config', 'G-9TQ6JWBKEK');
                 other
               </dt>
               <dd>
-                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1?view=netcore-3.0" data-linktype="absolute-path">IEnumerable&lt;T&gt;</a></span>
+                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1?view=net-9.0" data-linktype="absolute-path">IEnumerable&lt;T&gt;</a></span>
               </dd>
             </dl>
           </div>
           <h4 class="propertyInfoTitle stack">Implements</h4>
           <div class="propertyInfo">
             <div class="cdlHolder">
-              <span class="cdl"><a href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.iset-1.exceptwith?view=netcore-3.0#System_Collections_Generic_ISet_1_ExceptWith_System_Collections_Generic_IEnumerable__0__">ISet&lt;T&gt;.ExceptWith(IEnumerable&lt;T&gt;)</a></span>
+              <span class="cdl"><a href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.iset-1.exceptwith?view=net-9.0#System_Collections_Generic_ISet_1_ExceptWith_System_Collections_Generic_IEnumerable__0__">ISet&lt;T&gt;.ExceptWith(IEnumerable&lt;T&gt;)</a></span>
             </div>
           </div>
-          <h2 id="M:Maroontress.Util.LinkedHashSet`1.GetEnumerator">GetEnumerator()</h2>
+          <h2 id="M:Maroontress.Oxbind.Util.LinkedHashSet`1.GetEnumerator">GetEnumerator()</h2>
           <div class="codeHeader" data-bi-name="code-header">
             <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
           </div>
@@ -521,16 +517,16 @@ gtag('config', 'G-9TQ6JWBKEK');
           <h4 class="propertyInfoTitle stack">Returns</h4>
           <div class="propertyInfo">
             <div class="subtle">
-              <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerator-1?view=netcore-3.0" data-linktype="absolute-path">IEnumerator&lt;T&gt;</a>
+              <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerator-1?view=net-9.0" data-linktype="absolute-path">IEnumerator&lt;T&gt;</a>
             </div>
           </div>
           <h4 class="propertyInfoTitle stack">Implements</h4>
           <div class="propertyInfo">
             <div class="cdlHolder">
-              <span class="cdl"><a href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1.getenumerator?view=netcore-3.0">IEnumerable&lt;T&gt;.GetEnumerator()</a></span>
+              <span class="cdl"><a href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1.getenumerator?view=net-9.0">IEnumerable&lt;T&gt;.GetEnumerator()</a></span>
             </div>
           </div>
-          <h2 id="M:Maroontress.Util.LinkedHashSet`1.IntersectWith(System.Collections.Generic.IEnumerable{`0})">IntersectWith(IEnumerable&lt;T&gt;)</h2>
+          <h2 id="M:Maroontress.Oxbind.Util.LinkedHashSet`1.IntersectWith(System.Collections.Generic.IEnumerable{`0})">IntersectWith(IEnumerable&lt;T&gt;)</h2>
           <div class="codeHeader" data-bi-name="code-header">
             <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
           </div>
@@ -542,17 +538,17 @@ gtag('config', 'G-9TQ6JWBKEK');
                 other
               </dt>
               <dd>
-                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1?view=netcore-3.0" data-linktype="absolute-path">IEnumerable&lt;T&gt;</a></span>
+                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1?view=net-9.0" data-linktype="absolute-path">IEnumerable&lt;T&gt;</a></span>
               </dd>
             </dl>
           </div>
           <h4 class="propertyInfoTitle stack">Implements</h4>
           <div class="propertyInfo">
             <div class="cdlHolder">
-              <span class="cdl"><a href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.iset-1.intersectwith?view=netcore-3.0#System_Collections_Generic_ISet_1_IntersectWith_System_Collections_Generic_IEnumerable__0__">ISet&lt;T&gt;.IntersectWith(IEnumerable&lt;T&gt;)</a></span>
+              <span class="cdl"><a href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.iset-1.intersectwith?view=net-9.0#System_Collections_Generic_ISet_1_IntersectWith_System_Collections_Generic_IEnumerable__0__">ISet&lt;T&gt;.IntersectWith(IEnumerable&lt;T&gt;)</a></span>
             </div>
           </div>
-          <h2 id="M:Maroontress.Util.LinkedHashSet`1.IsProperSubsetOf(System.Collections.Generic.IEnumerable{`0})">IsProperSubsetOf(IEnumerable&lt;T&gt;)</h2>
+          <h2 id="M:Maroontress.Oxbind.Util.LinkedHashSet`1.IsProperSubsetOf(System.Collections.Generic.IEnumerable{`0})">IsProperSubsetOf(IEnumerable&lt;T&gt;)</h2>
           <div class="codeHeader" data-bi-name="code-header">
             <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
           </div>
@@ -564,23 +560,23 @@ gtag('config', 'G-9TQ6JWBKEK');
                 other
               </dt>
               <dd>
-                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1?view=netcore-3.0" data-linktype="absolute-path">IEnumerable&lt;T&gt;</a></span>
+                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1?view=net-9.0" data-linktype="absolute-path">IEnumerable&lt;T&gt;</a></span>
               </dd>
             </dl>
           </div>
           <h4 class="propertyInfoTitle stack">Returns</h4>
           <div class="propertyInfo">
             <div class="subtle">
-              <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.boolean?view=netcore-3.0" data-linktype="absolute-path">bool</a>
+              <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.boolean?view=net-9.0" data-linktype="absolute-path">bool</a>
             </div>
           </div>
           <h4 class="propertyInfoTitle stack">Implements</h4>
           <div class="propertyInfo">
             <div class="cdlHolder">
-              <span class="cdl"><a href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.iset-1.ispropersubsetof?view=netcore-3.0#System_Collections_Generic_ISet_1_IsProperSubsetOf_System_Collections_Generic_IEnumerable__0__">ISet&lt;T&gt;.IsProperSubsetOf(IEnumerable&lt;T&gt;)</a></span>
+              <span class="cdl"><a href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.iset-1.ispropersubsetof?view=net-9.0#System_Collections_Generic_ISet_1_IsProperSubsetOf_System_Collections_Generic_IEnumerable__0__">ISet&lt;T&gt;.IsProperSubsetOf(IEnumerable&lt;T&gt;)</a></span>
             </div>
           </div>
-          <h2 id="M:Maroontress.Util.LinkedHashSet`1.IsProperSupersetOf(System.Collections.Generic.IEnumerable{`0})">IsProperSupersetOf(IEnumerable&lt;T&gt;)</h2>
+          <h2 id="M:Maroontress.Oxbind.Util.LinkedHashSet`1.IsProperSupersetOf(System.Collections.Generic.IEnumerable{`0})">IsProperSupersetOf(IEnumerable&lt;T&gt;)</h2>
           <div class="codeHeader" data-bi-name="code-header">
             <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
           </div>
@@ -592,23 +588,23 @@ gtag('config', 'G-9TQ6JWBKEK');
                 other
               </dt>
               <dd>
-                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1?view=netcore-3.0" data-linktype="absolute-path">IEnumerable&lt;T&gt;</a></span>
+                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1?view=net-9.0" data-linktype="absolute-path">IEnumerable&lt;T&gt;</a></span>
               </dd>
             </dl>
           </div>
           <h4 class="propertyInfoTitle stack">Returns</h4>
           <div class="propertyInfo">
             <div class="subtle">
-              <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.boolean?view=netcore-3.0" data-linktype="absolute-path">bool</a>
+              <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.boolean?view=net-9.0" data-linktype="absolute-path">bool</a>
             </div>
           </div>
           <h4 class="propertyInfoTitle stack">Implements</h4>
           <div class="propertyInfo">
             <div class="cdlHolder">
-              <span class="cdl"><a href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.iset-1.ispropersupersetof?view=netcore-3.0#System_Collections_Generic_ISet_1_IsProperSupersetOf_System_Collections_Generic_IEnumerable__0__">ISet&lt;T&gt;.IsProperSupersetOf(IEnumerable&lt;T&gt;)</a></span>
+              <span class="cdl"><a href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.iset-1.ispropersupersetof?view=net-9.0#System_Collections_Generic_ISet_1_IsProperSupersetOf_System_Collections_Generic_IEnumerable__0__">ISet&lt;T&gt;.IsProperSupersetOf(IEnumerable&lt;T&gt;)</a></span>
             </div>
           </div>
-          <h2 id="M:Maroontress.Util.LinkedHashSet`1.IsSubsetOf(System.Collections.Generic.IEnumerable{`0})">IsSubsetOf(IEnumerable&lt;T&gt;)</h2>
+          <h2 id="M:Maroontress.Oxbind.Util.LinkedHashSet`1.IsSubsetOf(System.Collections.Generic.IEnumerable{`0})">IsSubsetOf(IEnumerable&lt;T&gt;)</h2>
           <div class="codeHeader" data-bi-name="code-header">
             <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
           </div>
@@ -620,23 +616,23 @@ gtag('config', 'G-9TQ6JWBKEK');
                 other
               </dt>
               <dd>
-                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1?view=netcore-3.0" data-linktype="absolute-path">IEnumerable&lt;T&gt;</a></span>
+                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1?view=net-9.0" data-linktype="absolute-path">IEnumerable&lt;T&gt;</a></span>
               </dd>
             </dl>
           </div>
           <h4 class="propertyInfoTitle stack">Returns</h4>
           <div class="propertyInfo">
             <div class="subtle">
-              <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.boolean?view=netcore-3.0" data-linktype="absolute-path">bool</a>
+              <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.boolean?view=net-9.0" data-linktype="absolute-path">bool</a>
             </div>
           </div>
           <h4 class="propertyInfoTitle stack">Implements</h4>
           <div class="propertyInfo">
             <div class="cdlHolder">
-              <span class="cdl"><a href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.iset-1.issubsetof?view=netcore-3.0#System_Collections_Generic_ISet_1_IsSubsetOf_System_Collections_Generic_IEnumerable__0__">ISet&lt;T&gt;.IsSubsetOf(IEnumerable&lt;T&gt;)</a></span>
+              <span class="cdl"><a href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.iset-1.issubsetof?view=net-9.0#System_Collections_Generic_ISet_1_IsSubsetOf_System_Collections_Generic_IEnumerable__0__">ISet&lt;T&gt;.IsSubsetOf(IEnumerable&lt;T&gt;)</a></span>
             </div>
           </div>
-          <h2 id="M:Maroontress.Util.LinkedHashSet`1.IsSupersetOf(System.Collections.Generic.IEnumerable{`0})">IsSupersetOf(IEnumerable&lt;T&gt;)</h2>
+          <h2 id="M:Maroontress.Oxbind.Util.LinkedHashSet`1.IsSupersetOf(System.Collections.Generic.IEnumerable{`0})">IsSupersetOf(IEnumerable&lt;T&gt;)</h2>
           <div class="codeHeader" data-bi-name="code-header">
             <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
           </div>
@@ -648,23 +644,23 @@ gtag('config', 'G-9TQ6JWBKEK');
                 other
               </dt>
               <dd>
-                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1?view=netcore-3.0" data-linktype="absolute-path">IEnumerable&lt;T&gt;</a></span>
+                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1?view=net-9.0" data-linktype="absolute-path">IEnumerable&lt;T&gt;</a></span>
               </dd>
             </dl>
           </div>
           <h4 class="propertyInfoTitle stack">Returns</h4>
           <div class="propertyInfo">
             <div class="subtle">
-              <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.boolean?view=netcore-3.0" data-linktype="absolute-path">bool</a>
+              <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.boolean?view=net-9.0" data-linktype="absolute-path">bool</a>
             </div>
           </div>
           <h4 class="propertyInfoTitle stack">Implements</h4>
           <div class="propertyInfo">
             <div class="cdlHolder">
-              <span class="cdl"><a href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.iset-1.issupersetof?view=netcore-3.0#System_Collections_Generic_ISet_1_IsSupersetOf_System_Collections_Generic_IEnumerable__0__">ISet&lt;T&gt;.IsSupersetOf(IEnumerable&lt;T&gt;)</a></span>
+              <span class="cdl"><a href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.iset-1.issupersetof?view=net-9.0#System_Collections_Generic_ISet_1_IsSupersetOf_System_Collections_Generic_IEnumerable__0__">ISet&lt;T&gt;.IsSupersetOf(IEnumerable&lt;T&gt;)</a></span>
             </div>
           </div>
-          <h2 id="M:Maroontress.Util.LinkedHashSet`1.Overlaps(System.Collections.Generic.IEnumerable{`0})">Overlaps(IEnumerable&lt;T&gt;)</h2>
+          <h2 id="M:Maroontress.Oxbind.Util.LinkedHashSet`1.Overlaps(System.Collections.Generic.IEnumerable{`0})">Overlaps(IEnumerable&lt;T&gt;)</h2>
           <div class="codeHeader" data-bi-name="code-header">
             <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
           </div>
@@ -676,23 +672,23 @@ gtag('config', 'G-9TQ6JWBKEK');
                 other
               </dt>
               <dd>
-                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1?view=netcore-3.0" data-linktype="absolute-path">IEnumerable&lt;T&gt;</a></span>
+                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1?view=net-9.0" data-linktype="absolute-path">IEnumerable&lt;T&gt;</a></span>
               </dd>
             </dl>
           </div>
           <h4 class="propertyInfoTitle stack">Returns</h4>
           <div class="propertyInfo">
             <div class="subtle">
-              <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.boolean?view=netcore-3.0" data-linktype="absolute-path">bool</a>
+              <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.boolean?view=net-9.0" data-linktype="absolute-path">bool</a>
             </div>
           </div>
           <h4 class="propertyInfoTitle stack">Implements</h4>
           <div class="propertyInfo">
             <div class="cdlHolder">
-              <span class="cdl"><a href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.iset-1.overlaps?view=netcore-3.0#System_Collections_Generic_ISet_1_Overlaps_System_Collections_Generic_IEnumerable__0__">ISet&lt;T&gt;.Overlaps(IEnumerable&lt;T&gt;)</a></span>
+              <span class="cdl"><a href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.iset-1.overlaps?view=net-9.0#System_Collections_Generic_ISet_1_Overlaps_System_Collections_Generic_IEnumerable__0__">ISet&lt;T&gt;.Overlaps(IEnumerable&lt;T&gt;)</a></span>
             </div>
           </div>
-          <h2 id="M:Maroontress.Util.LinkedHashSet`1.Remove(`0)">Remove(T)</h2>
+          <h2 id="M:Maroontress.Oxbind.Util.LinkedHashSet`1.Remove(`0)">Remove(T)</h2>
           <div class="codeHeader" data-bi-name="code-header">
             <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
           </div>
@@ -711,16 +707,16 @@ gtag('config', 'G-9TQ6JWBKEK');
           <h4 class="propertyInfoTitle stack">Returns</h4>
           <div class="propertyInfo">
             <div class="subtle">
-              <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.boolean?view=netcore-3.0" data-linktype="absolute-path">bool</a>
+              <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.boolean?view=net-9.0" data-linktype="absolute-path">bool</a>
             </div>
           </div>
           <h4 class="propertyInfoTitle stack">Implements</h4>
           <div class="propertyInfo">
             <div class="cdlHolder">
-              <span class="cdl"><a href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.icollection-1.remove?view=netcore-3.0#System_Collections_Generic_ICollection_1_Remove__0_">ICollection&lt;T&gt;.Remove(T)</a></span>
+              <span class="cdl"><a href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.icollection-1.remove?view=net-9.0#System_Collections_Generic_ICollection_1_Remove__0_">ICollection&lt;T&gt;.Remove(T)</a></span>
             </div>
           </div>
-          <h2 id="M:Maroontress.Util.LinkedHashSet`1.SetEquals(System.Collections.Generic.IEnumerable{`0})">SetEquals(IEnumerable&lt;T&gt;)</h2>
+          <h2 id="M:Maroontress.Oxbind.Util.LinkedHashSet`1.SetEquals(System.Collections.Generic.IEnumerable{`0})">SetEquals(IEnumerable&lt;T&gt;)</h2>
           <div class="codeHeader" data-bi-name="code-header">
             <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
           </div>
@@ -732,23 +728,23 @@ gtag('config', 'G-9TQ6JWBKEK');
                 other
               </dt>
               <dd>
-                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1?view=netcore-3.0" data-linktype="absolute-path">IEnumerable&lt;T&gt;</a></span>
+                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1?view=net-9.0" data-linktype="absolute-path">IEnumerable&lt;T&gt;</a></span>
               </dd>
             </dl>
           </div>
           <h4 class="propertyInfoTitle stack">Returns</h4>
           <div class="propertyInfo">
             <div class="subtle">
-              <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.boolean?view=netcore-3.0" data-linktype="absolute-path">bool</a>
+              <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.boolean?view=net-9.0" data-linktype="absolute-path">bool</a>
             </div>
           </div>
           <h4 class="propertyInfoTitle stack">Implements</h4>
           <div class="propertyInfo">
             <div class="cdlHolder">
-              <span class="cdl"><a href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.iset-1.setequals?view=netcore-3.0#System_Collections_Generic_ISet_1_SetEquals_System_Collections_Generic_IEnumerable__0__">ISet&lt;T&gt;.SetEquals(IEnumerable&lt;T&gt;)</a></span>
+              <span class="cdl"><a href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.iset-1.setequals?view=net-9.0#System_Collections_Generic_ISet_1_SetEquals_System_Collections_Generic_IEnumerable__0__">ISet&lt;T&gt;.SetEquals(IEnumerable&lt;T&gt;)</a></span>
             </div>
           </div>
-          <h2 id="M:Maroontress.Util.LinkedHashSet`1.SymmetricExceptWith(System.Collections.Generic.IEnumerable{`0})">SymmetricExceptWith(IEnumerable&lt;T&gt;)</h2>
+          <h2 id="M:Maroontress.Oxbind.Util.LinkedHashSet`1.SymmetricExceptWith(System.Collections.Generic.IEnumerable{`0})">SymmetricExceptWith(IEnumerable&lt;T&gt;)</h2>
           <div class="codeHeader" data-bi-name="code-header">
             <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
           </div>
@@ -760,17 +756,17 @@ gtag('config', 'G-9TQ6JWBKEK');
                 other
               </dt>
               <dd>
-                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1?view=netcore-3.0" data-linktype="absolute-path">IEnumerable&lt;T&gt;</a></span>
+                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1?view=net-9.0" data-linktype="absolute-path">IEnumerable&lt;T&gt;</a></span>
               </dd>
             </dl>
           </div>
           <h4 class="propertyInfoTitle stack">Implements</h4>
           <div class="propertyInfo">
             <div class="cdlHolder">
-              <span class="cdl"><a href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.iset-1.symmetricexceptwith?view=netcore-3.0#System_Collections_Generic_ISet_1_SymmetricExceptWith_System_Collections_Generic_IEnumerable__0__">ISet&lt;T&gt;.SymmetricExceptWith(IEnumerable&lt;T&gt;)</a></span>
+              <span class="cdl"><a href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.iset-1.symmetricexceptwith?view=net-9.0#System_Collections_Generic_ISet_1_SymmetricExceptWith_System_Collections_Generic_IEnumerable__0__">ISet&lt;T&gt;.SymmetricExceptWith(IEnumerable&lt;T&gt;)</a></span>
             </div>
           </div>
-          <h2 id="M:Maroontress.Util.LinkedHashSet`1.UnionWith(System.Collections.Generic.IEnumerable{`0})">UnionWith(IEnumerable&lt;T&gt;)</h2>
+          <h2 id="M:Maroontress.Oxbind.Util.LinkedHashSet`1.UnionWith(System.Collections.Generic.IEnumerable{`0})">UnionWith(IEnumerable&lt;T&gt;)</h2>
           <div class="codeHeader" data-bi-name="code-header">
             <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
           </div>
@@ -782,18 +778,18 @@ gtag('config', 'G-9TQ6JWBKEK');
                 other
               </dt>
               <dd>
-                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1?view=netcore-3.0" data-linktype="absolute-path">IEnumerable&lt;T&gt;</a></span>
+                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1?view=net-9.0" data-linktype="absolute-path">IEnumerable&lt;T&gt;</a></span>
               </dd>
             </dl>
           </div>
           <h4 class="propertyInfoTitle stack">Implements</h4>
           <div class="propertyInfo">
             <div class="cdlHolder">
-              <span class="cdl"><a href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.iset-1.unionwith?view=netcore-3.0#System_Collections_Generic_ISet_1_UnionWith_System_Collections_Generic_IEnumerable__0__">ISet&lt;T&gt;.UnionWith(IEnumerable&lt;T&gt;)</a></span>
+              <span class="cdl"><a href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.iset-1.unionwith?view=net-9.0#System_Collections_Generic_ISet_1_UnionWith_System_Collections_Generic_IEnumerable__0__">ISet&lt;T&gt;.UnionWith(IEnumerable&lt;T&gt;)</a></span>
             </div>
           </div>
           <h1 id="explicit-interface-implementations-detail" class="heading-with-anchor">Explicit Interface Implementations Detail</h1>
-          <h2 id="M:Maroontress.Util.LinkedHashSet`1.System#Collections#Generic#ICollection{T}#Add(`0)">ICollection&lt;T&gt;.Add(T)</h2>
+          <h2 id="M:Maroontress.Oxbind.Util.LinkedHashSet`1.System#Collections#Generic#ICollection{T}#Add(`0)">ICollection&lt;T&gt;.Add(T)</h2>
           <div class="codeHeader" data-bi-name="code-header">
             <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
           </div>
@@ -812,10 +808,10 @@ gtag('config', 'G-9TQ6JWBKEK');
           <h4 class="propertyInfoTitle stack">Implements</h4>
           <div class="propertyInfo">
             <div class="cdlHolder">
-              <span class="cdl"><a href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.icollection-1.add?view=netcore-3.0#System_Collections_Generic_ICollection_1_Add__0_">ICollection&lt;T&gt;.Add(T)</a></span>
+              <span class="cdl"><a href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.icollection-1.add?view=net-9.0#System_Collections_Generic_ICollection_1_Add__0_">ICollection&lt;T&gt;.Add(T)</a></span>
             </div>
           </div>
-          <h2 id="M:Maroontress.Util.LinkedHashSet`1.System#Collections#IEnumerable#GetEnumerator">IEnumerable.GetEnumerator()</h2>
+          <h2 id="M:Maroontress.Oxbind.Util.LinkedHashSet`1.System#Collections#IEnumerable#GetEnumerator">IEnumerable.GetEnumerator()</h2>
           <div class="codeHeader" data-bi-name="code-header">
             <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
           </div>
@@ -823,13 +819,13 @@ gtag('config', 'G-9TQ6JWBKEK');
           <h4 class="propertyInfoTitle stack">Returns</h4>
           <div class="propertyInfo">
             <div class="subtle">
-              <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.ienumerator?view=netcore-3.0" data-linktype="absolute-path">IEnumerator</a>
+              <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.ienumerator?view=net-9.0" data-linktype="absolute-path">IEnumerator</a>
             </div>
           </div>
           <h4 class="propertyInfoTitle stack">Implements</h4>
           <div class="propertyInfo">
             <div class="cdlHolder">
-              <span class="cdl"><a href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.ienumerable.getenumerator?view=netcore-3.0">IEnumerable.GetEnumerator()</a></span>
+              <span class="cdl"><a href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.ienumerable.getenumerator?view=net-9.0">IEnumerable.GetEnumerator()</a></span>
             </div>
           </div>
         </main>

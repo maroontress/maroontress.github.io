@@ -1,0 +1,282 @@
+<!doctype html>
+<html>
+  <head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9TQ6JWBKEK">
+    </script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+function gtag() { dataLayer.push(arguments); }
+gtag('js', new Date());
+gtag('config', 'G-9TQ6JWBKEK');
+    </script>
+    <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AttributeParameter Struct | API Reference | Oxbind Project</title>
+    <link rel="stylesheet" href="bulldoc.css">
+    <script src="highlight.pack.js">
+    </script>
+    <script>
+      hljs.initHighlightingOnLoad();
+    </script>
+  </head>
+  <body>
+    <div class="mainContainer uhf-container has-top-padding has-default-focus" data-bi-name="body">
+      <section>
+        <main class="content">
+          <h1><span class="lang-csharp">Attribute<wbr>Parameter</span> Struct</h1>
+          <div class="metadata">
+            <dl class="attributeList">
+              <dt>
+                Namespace:
+                <dd>
+                  <span class="lang-csharp"><a class="xref" href="Maroontress.Oxbind.Impl.html" data-linktype="relative-path">Maroontress.Oxbind.Impl</a></span>
+                </dd>
+              </dt>
+            </dl>
+            <dl class="attributeList">
+              <dt>
+                Assembly:
+                <dd>
+                  <span class="lang-csharp">Oxbind.dll</span>
+                </dd>
+              </dt>
+            </dl>
+          </div>
+          <div class="summaryHolder">
+            <div class="summary clearFix">
+              <p>Represents a constructor parameter associated with an XML attribute, as
+    specified by a <a href="Maroontress.Oxbind.ForAttributeAttribute.html">ForAttributeAttribute</a>.</p>
+            </div>
+          </div>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-keyword">record</span> <span class="hljs-keyword">struct</span> AttributeParameter : <span class="hljs-title">IEquatable</span>&lt;AttributeParameter&gt;</code></pre>
+          <dl class="attributeList stack">
+            <dt>
+              Inheritance
+            </dt>
+            <dd>
+              <div class="pdlHolder">
+                <div class="pdl">
+                  <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=net-9.0" data-linktype="absolute-path">object</a></span>
+                </div>
+                <div class="pdl">
+                  <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.valuetype?view=net-9.0" data-linktype="absolute-path">Value<wbr>Type</a></span>
+                </div>
+                <span class="lang-csharp">Attribute<wbr>Parameter</span>
+              </div>
+            </dd>
+          </dl>
+          <dl class="attributeList stack">
+            <dt>
+              Implements
+            </dt>
+            <dd>
+              <div class="cdlHolder">
+                <span class="cdl"><span class="lang-csharp break-text"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.iequatable-1?view=net-9.0" data-linktype="absolute-path">IEquatable</a>&lt;<a class="xref" href="#" data-linktype="relative-path">Attribute<wbr>Parameter</a>&gt;</span></span>
+              </div>
+            </dd>
+          </dl>
+          <h2 id="constructors" class="heading-with-anchor">Constructors</h2>
+          <div class="table-scroll-wrapper">
+            <table class="nameValue">
+              <tbody>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Oxbind.Impl.AttributeParameter.#ctor(System.Xml.XmlQualifiedName,System.Reflection.ParameterInfo)" data-linktype="relative-path">Attribute<wbr>Parameter(Xml<wbr>Qualified<wbr>Name, Parameter<wbr>Info)</a></span>
+                  </td>
+                  <td>
+                    <p>Represents a constructor parameter associated with an XML attribute, as
+    specified by a <a href="Maroontress.Oxbind.ForAttributeAttribute.html">ForAttributeAttribute</a>.</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <h2 id="properties" class="heading-with-anchor">Properties</h2>
+          <div class="table-scroll-wrapper">
+            <table class="nameValue">
+              <tbody>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="#P:Maroontress.Oxbind.Impl.AttributeParameter.Name" data-linktype="relative-path">Name</a></span>
+                  </td>
+                  <td>
+                    <p>The qualified name of the XML attribute associated with the parameter.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="#P:Maroontress.Oxbind.Impl.AttributeParameter.Info" data-linktype="relative-path">Info</a></span>
+                  </td>
+                  <td>
+                    <p>The <a href="https://docs.microsoft.com/en-us/dotnet/api/system.reflection.parameterinfo?view=net-9.0">ParameterInfo</a> instance containing metadata about the
+    parameter.</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <h2 id="methods" class="heading-with-anchor">Methods</h2>
+          <div class="table-scroll-wrapper">
+            <table class="nameValue">
+              <tbody>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Oxbind.Impl.AttributeParameter.Of(System.Reflection.ConstructorInfo)" data-linktype="relative-path">Of(Constructor<wbr>Info)</a></span>
+                  </td>
+                  <td>
+                    <p>Gets a collection of <a href="#">AttributeParameter</a> instances for
+    constructor parameters attributed with <a href="Maroontress.Oxbind.ForAttributeAttribute.html">ForAttributeAttribute</a> within the specified constructor.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.valuetype.equals?view=net-9.0#System_ValueType_Equals_System_Object_">Equals(object)</a>
+                  </td>
+                  <td>
+                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.valuetype?view=net-9.0" data-linktype="absolute-path">Value<wbr>Type</a>)
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.valuetype.gethashcode?view=net-9.0">GetHashCode()</a>
+                  </td>
+                  <td>
+                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.valuetype?view=net-9.0" data-linktype="absolute-path">Value<wbr>Type</a>)
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.valuetype.tostring?view=net-9.0">ToString()</a>
+                  </td>
+                  <td>
+                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.valuetype?view=net-9.0" data-linktype="absolute-path">Value<wbr>Type</a>)
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.object.gettype?view=net-9.0">GetType()</a>
+                  </td>
+                  <td>
+                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=net-9.0" data-linktype="absolute-path">object</a>)
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.object.memberwiseclone?view=net-9.0">MemberwiseClone()</a>
+                  </td>
+                  <td>
+                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=net-9.0" data-linktype="absolute-path">object</a>)
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <h1 id="constructors-detail" class="heading-with-anchor">Constructors Detail</h1>
+          <h2 id="M:Maroontress.Oxbind.Impl.AttributeParameter.#ctor(System.Xml.XmlQualifiedName,System.Reflection.ParameterInfo)">AttributeParameter(XmlQualifiedName, ParameterInfo)</h2>
+          <div class="summaryHolder">
+            <div class="summary clearFix">
+              <p>Represents a constructor parameter associated with an XML attribute, as
+    specified by a <a href="Maroontress.Oxbind.ForAttributeAttribute.html">ForAttributeAttribute</a>.</p>
+            </div>
+          </div>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> AttributeParameter(<span class="hljs-title">XmlQualifiedName</span> Name, <span class="hljs-title">ParameterInfo</span> Info)</code></pre>
+          <h4 class="propertyInfoTitle stack">Parameters</h4>
+          <div class="propertyInfo">
+            <dl class="parameterList">
+              <dt>
+                Name
+              </dt>
+              <dd>
+                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.xml.xmlqualifiedname?view=net-9.0" data-linktype="absolute-path">Xml<wbr>Qualified<wbr>Name</a></span>
+              </dd>
+            </dl>
+            <p>The qualified name of the XML attribute associated with the parameter.</p>
+          </div>
+          <div class="propertyInfo stack">
+            <dl class="parameterList">
+              <dt>
+                Info
+              </dt>
+              <dd>
+                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.reflection.parameterinfo?view=net-9.0" data-linktype="absolute-path">Parameter<wbr>Info</a></span>
+              </dd>
+            </dl>
+            <p>The <a href="https://docs.microsoft.com/en-us/dotnet/api/system.reflection.parameterinfo?view=net-9.0">ParameterInfo</a> instance containing metadata about the
+    parameter.</p>
+          </div>
+          <h1 id="properties-detail" class="heading-with-anchor">Properties Detail</h1>
+          <h2 id="P:Maroontress.Oxbind.Impl.AttributeParameter.Name">Name</h2>
+          <div class="summaryHolder">
+            <div class="summary clearFix">
+              <p>The qualified name of the XML attribute associated with the parameter.</p>
+            </div>
+          </div>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-title">XmlQualifiedName</span> <span class="hljs-title">Name</span> { <span class="hljs-keyword">get</span>; <span class="hljs-keyword">set</span>; }</code></pre>
+          <h4 class="propertyInfoTitle stack">Property Value</h4>
+          <div class="propertyInfo">
+            <div class="subtle">
+              <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.xml.xmlqualifiedname?view=net-9.0" data-linktype="absolute-path">Xml<wbr>Qualified<wbr>Name</a>
+            </div>
+          </div>
+          <h2 id="P:Maroontress.Oxbind.Impl.AttributeParameter.Info">Info</h2>
+          <div class="summaryHolder">
+            <div class="summary clearFix">
+              <p>The <a href="https://docs.microsoft.com/en-us/dotnet/api/system.reflection.parameterinfo?view=net-9.0">ParameterInfo</a> instance containing metadata about the
+    parameter.</p>
+            </div>
+          </div>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-title">ParameterInfo</span> <span class="hljs-title">Info</span> { <span class="hljs-keyword">get</span>; <span class="hljs-keyword">set</span>; }</code></pre>
+          <h4 class="propertyInfoTitle stack">Property Value</h4>
+          <div class="propertyInfo">
+            <div class="subtle">
+              <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.reflection.parameterinfo?view=net-9.0" data-linktype="absolute-path">Parameter<wbr>Info</a>
+            </div>
+          </div>
+          <h1 id="methods-detail" class="heading-with-anchor">Methods Detail</h1>
+          <h2 id="M:Maroontress.Oxbind.Impl.AttributeParameter.Of(System.Reflection.ConstructorInfo)">Of(ConstructorInfo)</h2>
+          <div class="summaryHolder">
+            <div class="summary clearFix">
+              <p>Gets a collection of <a href="#">AttributeParameter</a> instances for
+    constructor parameters attributed with <a href="Maroontress.Oxbind.ForAttributeAttribute.html">ForAttributeAttribute</a> within the specified constructor.</p>
+            </div>
+          </div>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-title">IEnumerable</span>&lt;AttributeParameter&gt; <span class="hljs-title">Of</span>(<span class="hljs-title">ConstructorInfo</span> ctor)</code></pre>
+          <h4 class="propertyInfoTitle stack">Parameters</h4>
+          <div class="propertyInfo">
+            <dl class="parameterList">
+              <dt>
+                ctor
+              </dt>
+              <dd>
+                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.reflection.constructorinfo?view=net-9.0" data-linktype="absolute-path">Constructor<wbr>Info</a></span>
+              </dd>
+            </dl>
+            <p>The constructor to analyze.</p>
+          </div>
+          <h4 class="propertyInfoTitle stack">Returns</h4>
+          <div class="propertyInfo">
+            <div class="subtle">
+              <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1?view=net-9.0" data-linktype="absolute-path">IEnumerable</a>&lt;<a class="xref" href="#" data-linktype="relative-path">Attribute<wbr>Parameter</a>&gt;
+            </div>
+            <p>A collection of <a href="#">AttributeParameter</a> instances for
+    constructor parameters marked with <a href="Maroontress.Oxbind.ForAttributeAttribute.html">ForAttributeAttribute</a>.</p>
+          </div>
+        </main>
+      </section>
+    </div>
+  </body>
+</html>

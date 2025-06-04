@@ -28,7 +28,7 @@ gtag('config', 'G-9TQ6JWBKEK');
               <dt>
                 Namespace:
                 <dd>
-                  <span class="lang-csharp"><a class="xref" href="Maroontress.Util.Graph.html" data-linktype="relative-path">Maroontress.Util.Graph</a></span>
+                  <span class="lang-csharp"><a class="xref" href="Maroontress.Oxbind.Util.Graph.html" data-linktype="relative-path">Maroontress.Oxbind.Util.Graph</a></span>
                 </dd>
               </dt>
             </dl>
@@ -43,7 +43,8 @@ gtag('config', 'G-9TQ6JWBKEK');
           </div>
           <div class="summaryHolder">
             <div class="summary clearFix">
-              <p>Thrown when a circular dependency has occurred in the DAG.</p>
+              <p>Thrown when a circular dependency is detected in a directed acyclic graph
+    (DAG).</p>
             </div>
           </div>
           <div class="codeHeader" data-bi-name="code-header">
@@ -57,12 +58,22 @@ gtag('config', 'G-9TQ6JWBKEK');
             <dd>
               <div class="pdlHolder">
                 <div class="pdl">
-                  <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=netcore-3.0" data-linktype="absolute-path">object</a></span>
+                  <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=net-9.0" data-linktype="absolute-path">object</a></span>
                 </div>
                 <div class="pdl">
-                  <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.exception?view=netcore-3.0" data-linktype="absolute-path">Exception</a></span>
+                  <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.exception?view=net-9.0" data-linktype="absolute-path">Exception</a></span>
                 </div>
                 <span class="lang-csharp">Circular<wbr>Dependency<wbr>Exception</span>
+              </div>
+            </dd>
+          </dl>
+          <dl class="attributeList stack">
+            <dt>
+              Implements
+            </dt>
+            <dd>
+              <div class="cdlHolder">
+                <span class="cdl"><span class="lang-csharp break-text"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.runtime.serialization.iserializable?view=net-9.0" data-linktype="absolute-path">ISerializable</a></span></span>
               </div>
             </dd>
           </dl>
@@ -72,7 +83,7 @@ gtag('config', 'G-9TQ6JWBKEK');
               <tbody>
                 <tr>
                   <td>
-                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Util.Graph.CircularDependencyException.#ctor" data-linktype="relative-path">Circular<wbr>Dependency<wbr>Exception()</a></span>
+                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Oxbind.Util.Graph.CircularDependencyException.#ctor" data-linktype="relative-path">Circular<wbr>Dependency<wbr>Exception()</a></span>
                   </td>
                   <td>
                     <p>Initializes a new instance of the <a href="#">CircularDependencyException</a> class.</p>
@@ -80,16 +91,16 @@ gtag('config', 'G-9TQ6JWBKEK');
                 </tr>
                 <tr>
                   <td>
-                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Util.Graph.CircularDependencyException.#ctor(System.String)" data-linktype="relative-path">Circular<wbr>Dependency<wbr>Exception(string)</a></span>
+                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Oxbind.Util.Graph.CircularDependencyException.#ctor(System.String)" data-linktype="relative-path">Circular<wbr>Dependency<wbr>Exception(string)</a></span>
                   </td>
                   <td>
-                    <p>Initializes a new instance of the <a href="#">CircularDependencyException</a> class,
-    with the specified detail message.</p>
+                    <p>Initializes a new instance of the <a href="#">CircularDependencyException</a> class, with the specified detail
+    message.</p>
                   </td>
                 </tr>
                 <tr>
                   <td>
-                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Util.Graph.CircularDependencyException.#ctor(System.String,System.Exception)" data-linktype="relative-path">Circular<wbr>Dependency<wbr>Exception(string, Exception)</a></span>
+                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Oxbind.Util.Graph.CircularDependencyException.#ctor(System.String,System.Exception)" data-linktype="relative-path">Circular<wbr>Dependency<wbr>Exception(string, Exception)</a></span>
                   </td>
                   <td>
                     <p>Initializes a new instance of the <a href="#">CircularDependencyException</a> class.</p>
@@ -104,58 +115,66 @@ gtag('config', 'G-9TQ6JWBKEK');
               <tbody>
                 <tr>
                   <td>
-                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.exception.data?view=netcore-3.0">Data</a>
+                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.exception.data?view=net-9.0">Data</a>
                   </td>
                   <td>
-                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.exception?view=netcore-3.0" data-linktype="absolute-path">Exception</a>)
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.exception.helplink?view=netcore-3.0">HelpLink</a>
-                  </td>
-                  <td>
-                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.exception?view=netcore-3.0" data-linktype="absolute-path">Exception</a>)
+                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.exception?view=net-9.0" data-linktype="absolute-path">Exception</a>)
                   </td>
                 </tr>
                 <tr>
                   <td>
-                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.exception.hresult?view=netcore-3.0">HResult</a>
+                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.exception.helplink?view=net-9.0">HelpLink</a>
                   </td>
                   <td>
-                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.exception?view=netcore-3.0" data-linktype="absolute-path">Exception</a>)
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.exception.innerexception?view=netcore-3.0">InnerException</a>
-                  </td>
-                  <td>
-                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.exception?view=netcore-3.0" data-linktype="absolute-path">Exception</a>)
+                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.exception?view=net-9.0" data-linktype="absolute-path">Exception</a>)
                   </td>
                 </tr>
                 <tr>
                   <td>
-                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.exception.message?view=netcore-3.0">Message</a>
+                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.exception.hresult?view=net-9.0">HResult</a>
                   </td>
                   <td>
-                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.exception?view=netcore-3.0" data-linktype="absolute-path">Exception</a>)
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.exception.source?view=netcore-3.0">Source</a>
-                  </td>
-                  <td>
-                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.exception?view=netcore-3.0" data-linktype="absolute-path">Exception</a>)
+                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.exception?view=net-9.0" data-linktype="absolute-path">Exception</a>)
                   </td>
                 </tr>
                 <tr>
                   <td>
-                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.exception.stacktrace?view=netcore-3.0">StackTrace</a>
+                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.exception.innerexception?view=net-9.0">InnerException</a>
                   </td>
                   <td>
-                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.exception?view=netcore-3.0" data-linktype="absolute-path">Exception</a>)
+                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.exception?view=net-9.0" data-linktype="absolute-path">Exception</a>)
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.exception.message?view=net-9.0">Message</a>
+                  </td>
+                  <td>
+                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.exception?view=net-9.0" data-linktype="absolute-path">Exception</a>)
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.exception.source?view=net-9.0">Source</a>
+                  </td>
+                  <td>
+                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.exception?view=net-9.0" data-linktype="absolute-path">Exception</a>)
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.exception.stacktrace?view=net-9.0">StackTrace</a>
+                  </td>
+                  <td>
+                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.exception?view=net-9.0" data-linktype="absolute-path">Exception</a>)
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.exception.targetsite?view=net-9.0">TargetSite</a>
+                  </td>
+                  <td>
+                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.exception?view=net-9.0" data-linktype="absolute-path">Exception</a>)
                   </td>
                 </tr>
               </tbody>
@@ -167,66 +186,83 @@ gtag('config', 'G-9TQ6JWBKEK');
               <tbody>
                 <tr>
                   <td>
-                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Util.Graph.CircularDependencyException.Of``1(System.Collections.Generic.IEnumerable{``0})" data-linktype="relative-path">Of&lt;T&gt;(IEnumerable&lt;T&gt;)</a></span>
+                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Oxbind.Util.Graph.CircularDependencyException.Of``1(System.Collections.Generic.IEnumerable{``0})" data-linktype="relative-path">Of&lt;T&gt;(IEnumerable&lt;T&gt;)</a></span>
                   </td>
                   <td>
-                    <p>Creates a new instance of the <a href="#">CircularDependencyException</a> class,
-    with the list representing a circular dependency.</p>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.exception.getbaseexception?view=netcore-3.0">GetBaseException()</a>
-                  </td>
-                  <td>
-                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.exception?view=netcore-3.0" data-linktype="absolute-path">Exception</a>)
+                    <p>Creates a new instance of the <a href="#">CircularDependencyException</a>
+    class, with a message detailing the circular dependency based on the
+    provided list of nodes.</p>
                   </td>
                 </tr>
                 <tr>
                   <td>
-                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.exception.tostring?view=netcore-3.0">ToString()</a>
+                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.exception.getbaseexception?view=net-9.0">GetBaseException()</a>
                   </td>
                   <td>
-                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.exception?view=netcore-3.0" data-linktype="absolute-path">Exception</a>)
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.object.equals?view=netcore-3.0#System_Object_Equals_System_Object_">Equals(object)</a>
-                  </td>
-                  <td>
-                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=netcore-3.0" data-linktype="absolute-path">object</a>)
+                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.exception?view=net-9.0" data-linktype="absolute-path">Exception</a>)
                   </td>
                 </tr>
                 <tr>
                   <td>
-                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.object.gethashcode?view=netcore-3.0">GetHashCode()</a>
+                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.exception.getobjectdata?view=net-9.0#System_Exception_GetObjectData_System_Runtime_Serialization_SerializationInfo_System_Runtime_Serialization_StreamingContext_">GetObjectData(SerializationInfo, StreamingContext)</a>
                   </td>
                   <td>
-                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=netcore-3.0" data-linktype="absolute-path">object</a>)
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.object.gettype?view=netcore-3.0">GetType()</a>
-                  </td>
-                  <td>
-                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=netcore-3.0" data-linktype="absolute-path">object</a>)
+                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.exception?view=net-9.0" data-linktype="absolute-path">Exception</a>)
                   </td>
                 </tr>
                 <tr>
                   <td>
-                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.object.memberwiseclone?view=netcore-3.0">MemberwiseClone()</a>
+                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.exception.gettype?view=net-9.0">GetType()</a>
                   </td>
                   <td>
-                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=netcore-3.0" data-linktype="absolute-path">object</a>)
+                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.exception?view=net-9.0" data-linktype="absolute-path">Exception</a>)
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.exception.tostring?view=net-9.0">ToString()</a>
+                  </td>
+                  <td>
+                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.exception?view=net-9.0" data-linktype="absolute-path">Exception</a>)
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.object.equals?view=net-9.0#System_Object_Equals_System_Object_">Equals(object)</a>
+                  </td>
+                  <td>
+                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=net-9.0" data-linktype="absolute-path">object</a>)
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.object.gethashcode?view=net-9.0">GetHashCode()</a>
+                  </td>
+                  <td>
+                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=net-9.0" data-linktype="absolute-path">object</a>)
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.object.gettype?view=net-9.0">GetType()</a>
+                  </td>
+                  <td>
+                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=net-9.0" data-linktype="absolute-path">object</a>)
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.object.memberwiseclone?view=net-9.0">MemberwiseClone()</a>
+                  </td>
+                  <td>
+                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=net-9.0" data-linktype="absolute-path">object</a>)
                   </td>
                 </tr>
               </tbody>
             </table>
           </div>
           <h1 id="constructors-detail" class="heading-with-anchor">Constructors Detail</h1>
-          <h2 id="M:Maroontress.Util.Graph.CircularDependencyException.#ctor">CircularDependencyException()</h2>
+          <h2 id="M:Maroontress.Oxbind.Util.Graph.CircularDependencyException.#ctor">CircularDependencyException()</h2>
           <div class="summaryHolder">
             <div class="summary clearFix">
               <p>Initializes a new instance of the <a href="#">CircularDependencyException</a> class.</p>
@@ -236,11 +272,11 @@ gtag('config', 'G-9TQ6JWBKEK');
             <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
           </div>
           <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-title">CircularDependencyException</span>()</code></pre>
-          <h2 id="M:Maroontress.Util.Graph.CircularDependencyException.#ctor(System.String)">CircularDependencyException(string)</h2>
+          <h2 id="M:Maroontress.Oxbind.Util.Graph.CircularDependencyException.#ctor(System.String)">CircularDependencyException(string)</h2>
           <div class="summaryHolder">
             <div class="summary clearFix">
-              <p>Initializes a new instance of the <a href="#">CircularDependencyException</a> class,
-    with the specified detail message.</p>
+              <p>Initializes a new instance of the <a href="#">CircularDependencyException</a> class, with the specified detail
+    message.</p>
             </div>
           </div>
           <div class="codeHeader" data-bi-name="code-header">
@@ -254,12 +290,12 @@ gtag('config', 'G-9TQ6JWBKEK');
                 message
               </dt>
               <dd>
-                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.string?view=netcore-3.0" data-linktype="absolute-path">string</a></span>
+                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.string?view=net-9.0" data-linktype="absolute-path">string</a></span>
               </dd>
             </dl>
             <p>A detail message.</p>
           </div>
-          <h2 id="M:Maroontress.Util.Graph.CircularDependencyException.#ctor(System.String,System.Exception)">CircularDependencyException(string, Exception)</h2>
+          <h2 id="M:Maroontress.Oxbind.Util.Graph.CircularDependencyException.#ctor(System.String,System.Exception)">CircularDependencyException(string, Exception)</h2>
           <div class="summaryHolder">
             <div class="summary clearFix">
               <p>Initializes a new instance of the <a href="#">CircularDependencyException</a> class.</p>
@@ -276,7 +312,7 @@ gtag('config', 'G-9TQ6JWBKEK');
                 message
               </dt>
               <dd>
-                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.string?view=netcore-3.0" data-linktype="absolute-path">string</a></span>
+                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.string?view=net-9.0" data-linktype="absolute-path">string</a></span>
               </dd>
             </dl>
             <p>A detail message.</p>
@@ -287,17 +323,18 @@ gtag('config', 'G-9TQ6JWBKEK');
                 innerException
               </dt>
               <dd>
-                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.exception?view=netcore-3.0" data-linktype="absolute-path">Exception</a></span>
+                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.exception?view=net-9.0" data-linktype="absolute-path">Exception</a></span>
               </dd>
             </dl>
             <p>The cause.</p>
           </div>
           <h1 id="methods-detail" class="heading-with-anchor">Methods Detail</h1>
-          <h2 id="M:Maroontress.Util.Graph.CircularDependencyException.Of``1(System.Collections.Generic.IEnumerable{``0})">Of&lt;T&gt;(IEnumerable&lt;T&gt;)</h2>
+          <h2 id="M:Maroontress.Oxbind.Util.Graph.CircularDependencyException.Of``1(System.Collections.Generic.IEnumerable{``0})">Of&lt;T&gt;(IEnumerable&lt;T&gt;)</h2>
           <div class="summaryHolder">
             <div class="summary clearFix">
-              <p>Creates a new instance of the <a href="#">CircularDependencyException</a> class,
-    with the list representing a circular dependency.</p>
+              <p>Creates a new instance of the <a href="#">CircularDependencyException</a>
+    class, with a message detailing the circular dependency based on the
+    provided list of nodes.</p>
             </div>
           </div>
           <div class="codeHeader" data-bi-name="code-header">
@@ -323,11 +360,12 @@ gtag('config', 'G-9TQ6JWBKEK');
                 list
               </dt>
               <dd>
-                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1?view=netcore-3.0" data-linktype="absolute-path">IEnumerable&lt;T&gt;</a></span>
+                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1?view=net-9.0" data-linktype="absolute-path">IEnumerable&lt;T&gt;</a></span>
               </dd>
             </dl>
-            <p>The list of nodes. The first node is equals to the
-    last node. The <i>k</i>th node depends (<i>k</i> + 1)th node.</p>
+            <p>A list of nodes representing the cycle. The first node must equal the
+    last node, and the <code>k</code>-th node depends on the (<code>k</code> + 1)-th
+    node.</p>
           </div>
           <h4 class="propertyInfoTitle stack">Returns</h4>
           <div class="propertyInfo">

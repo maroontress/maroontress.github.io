@@ -28,7 +28,7 @@ gtag('config', 'G-9TQ6JWBKEK');
               <dt>
                 Namespace:
                 <dd>
-                  <span class="lang-csharp"><a class="xref" href="Maroontress.Util.html" data-linktype="relative-path">Maroontress.Util</a></span>
+                  <span class="lang-csharp"><a class="xref" href="Maroontress.Oxbind.Util.html" data-linktype="relative-path">Maroontress.Oxbind.Util</a></span>
                 </dd>
               </dt>
             </dl>
@@ -43,7 +43,8 @@ gtag('config', 'G-9TQ6JWBKEK');
           </div>
           <div class="summaryHolder">
             <div class="summary clearFix">
-              <p>Provides the canonical value object corresponding to the key.</p>
+              <p>Provides a mechanism to obtain a canonical (interned) instance of a value
+    for a given key, typically used for caching or reducing memory footprint.</p>
             </div>
           </div>
           <div class="codeHeader" data-bi-name="code-header">
@@ -80,7 +81,7 @@ gtag('config', 'G-9TQ6JWBKEK');
             <dd>
               <div class="pdlHolder">
                 <div class="pdl">
-                  <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=netcore-3.0" data-linktype="absolute-path">object</a></span>
+                  <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=net-9.0" data-linktype="absolute-path">object</a></span>
                 </div>
                 <span class="lang-csharp">Intern<wbr>Map&lt;K, V&gt;</span>
               </div>
@@ -92,29 +93,27 @@ gtag('config', 'G-9TQ6JWBKEK');
               <tbody>
                 <tr>
                   <td>
-                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Util.InternMap`2.#ctor" data-linktype="relative-path">Intern<wbr>Map()</a></span>
+                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Oxbind.Util.InternMap`2.#ctor(System.Int32,System.Int32)" data-linktype="relative-path">Intern<wbr>Map(int, int)</a></span>
                   </td>
                   <td>
-                    <p>Initializes a new instance of the <a href="#">InternMap&lt;K, V&gt;</a>
-    class.</p>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Util.InternMap`2.#ctor(System.Int32)" data-linktype="relative-path">Intern<wbr>Map(int)</a></span>
-                  </td>
-                  <td>
-                    <p>Initializes a new instance of the <a href="#">InternMap&lt;K, V&gt;</a>
-    class.</p>
+                    <p>Provides a mechanism to obtain a canonical (interned) instance of a value
+    for a given key, typically used for caching or reducing memory footprint.</p>
                   </td>
                 </tr>
                 <tr>
                   <td>
-                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Util.InternMap`2.#ctor(System.Int32,System.Int32)" data-linktype="relative-path">Intern<wbr>Map(int, int)</a></span>
+                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Oxbind.Util.InternMap`2.#ctor" data-linktype="relative-path">Intern<wbr>Map()</a></span>
                   </td>
                   <td>
-                    <p>Initializes a new instance of the <a href="#">InternMap&lt;K, V&gt;</a>
-    class.</p>
+                    <p>Initializes a new instance of the <a href="#">InternMap&lt;K, V&gt;</a> class.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Oxbind.Util.InternMap`2.#ctor(System.Int32)" data-linktype="relative-path">Intern<wbr>Map(int)</a></span>
+                  </td>
+                  <td>
+                    <p>Initializes a new instance of the <a href="#">InternMap&lt;K, V&gt;</a> class.</p>
                   </td>
                 </tr>
               </tbody>
@@ -126,109 +125,81 @@ gtag('config', 'G-9TQ6JWBKEK');
               <tbody>
                 <tr>
                   <td>
-                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Util.InternMap`2.Intern(`0,System.Func{`0,`1})" data-linktype="relative-path">Intern(K, Func&lt;K, V&gt;)</a></span>
+                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Oxbind.Util.InternMap`2.Get(`0)" data-linktype="relative-path">Get(K)</a></span>
                   </td>
                   <td>
-                    <p>Gets the canonical value object corresponding to the specified key
-    object. If the canonical value object does not exist in the
-    internal object pool, creates a new value object with the specified
-    function.</p>
+                    <p>Gets the canonical value object corresponding to the specified key.</p>
                   </td>
                 </tr>
                 <tr>
                   <td>
-                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Util.InternMap`2.Intern(`0,System.Func{`1})" data-linktype="relative-path">Intern(K, Func&lt;V&gt;)</a></span>
+                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Oxbind.Util.InternMap`2.Intern(`0,System.Func{`0,`1})" data-linktype="relative-path">Intern(K, Func&lt;K, V&gt;)</a></span>
                   </td>
                   <td>
-                    <p>Gets the canonical value object corresponding to the specified key
-    object. If the canonical value object does not exist in the
-    internal object pool, creates a new value object with the specified
-    supplier.</p>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.object.equals?view=netcore-3.0#System_Object_Equals_System_Object_">Equals(object)</a>
-                  </td>
-                  <td>
-                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=netcore-3.0" data-linktype="absolute-path">object</a>)
+                    <p>Gets the canonical value object corresponding to the specified key. If
+    a canonical value does not already exist in the map, it is created
+    using the specified function.</p>
                   </td>
                 </tr>
                 <tr>
                   <td>
-                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.object.gethashcode?view=netcore-3.0">GetHashCode()</a>
+                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Oxbind.Util.InternMap`2.Intern(`0,System.Func{`1})" data-linktype="relative-path">Intern(K, Func&lt;V&gt;)</a></span>
                   </td>
                   <td>
-                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=netcore-3.0" data-linktype="absolute-path">object</a>)
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.object.gettype?view=netcore-3.0">GetType()</a>
-                  </td>
-                  <td>
-                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=netcore-3.0" data-linktype="absolute-path">object</a>)
+                    <p>Gets the canonical value object corresponding to the specified key. If
+    a canonical value does not already exist in the map, it is created
+    using the specified supplier.</p>
                   </td>
                 </tr>
                 <tr>
                   <td>
-                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.object.memberwiseclone?view=netcore-3.0">MemberwiseClone()</a>
+                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.object.equals?view=net-9.0#System_Object_Equals_System_Object_">Equals(object)</a>
                   </td>
                   <td>
-                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=netcore-3.0" data-linktype="absolute-path">object</a>)
+                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=net-9.0" data-linktype="absolute-path">object</a>)
                   </td>
                 </tr>
                 <tr>
                   <td>
-                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.object.tostring?view=netcore-3.0">ToString()</a>
+                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.object.gethashcode?view=net-9.0">GetHashCode()</a>
                   </td>
                   <td>
-                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=netcore-3.0" data-linktype="absolute-path">object</a>)
+                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=net-9.0" data-linktype="absolute-path">object</a>)
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.object.gettype?view=net-9.0">GetType()</a>
+                  </td>
+                  <td>
+                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=net-9.0" data-linktype="absolute-path">object</a>)
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.object.memberwiseclone?view=net-9.0">MemberwiseClone()</a>
+                  </td>
+                  <td>
+                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=net-9.0" data-linktype="absolute-path">object</a>)
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.object.tostring?view=net-9.0">ToString()</a>
+                  </td>
+                  <td>
+                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=net-9.0" data-linktype="absolute-path">object</a>)
                   </td>
                 </tr>
               </tbody>
             </table>
           </div>
           <h1 id="constructors-detail" class="heading-with-anchor">Constructors Detail</h1>
-          <h2 id="M:Maroontress.Util.InternMap`2.#ctor">InternMap()</h2>
+          <h2 id="M:Maroontress.Oxbind.Util.InternMap`2.#ctor(System.Int32,System.Int32)">InternMap(int, int)</h2>
           <div class="summaryHolder">
             <div class="summary clearFix">
-              <p>Initializes a new instance of the <a href="#">InternMap&lt;K, V&gt;</a>
-    class.</p>
-            </div>
-          </div>
-          <div class="codeHeader" data-bi-name="code-header">
-            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
-          </div>
-          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-title">InternMap</span>()</code></pre>
-          <h2 id="M:Maroontress.Util.InternMap`2.#ctor(System.Int32)">InternMap(int)</h2>
-          <div class="summaryHolder">
-            <div class="summary clearFix">
-              <p>Initializes a new instance of the <a href="#">InternMap&lt;K, V&gt;</a>
-    class.</p>
-            </div>
-          </div>
-          <div class="codeHeader" data-bi-name="code-header">
-            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
-          </div>
-          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-title">InternMap</span>(<span class="hljs-keyword">int</span> initialCapacity)</code></pre>
-          <h4 class="propertyInfoTitle stack">Parameters</h4>
-          <div class="propertyInfo">
-            <dl class="parameterList">
-              <dt>
-                initialCapacity
-              </dt>
-              <dd>
-                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.int32?view=netcore-3.0" data-linktype="absolute-path">int</a></span>
-              </dd>
-            </dl>
-            <p>The initial capacity.</p>
-          </div>
-          <h2 id="M:Maroontress.Util.InternMap`2.#ctor(System.Int32,System.Int32)">InternMap(int, int)</h2>
-          <div class="summaryHolder">
-            <div class="summary clearFix">
-              <p>Initializes a new instance of the <a href="#">InternMap&lt;K, V&gt;</a>
-    class.</p>
+              <p>Provides a mechanism to obtain a canonical (interned) instance of a value
+    for a given key, typically used for caching or reducing memory footprint.</p>
             </div>
           </div>
           <div class="codeHeader" data-bi-name="code-header">
@@ -242,7 +213,7 @@ gtag('config', 'G-9TQ6JWBKEK');
                 initialCapacity
               </dt>
               <dd>
-                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.int32?view=netcore-3.0" data-linktype="absolute-path">int</a></span>
+                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.int32?view=net-9.0" data-linktype="absolute-path">int</a></span>
               </dd>
             </dl>
             <p>The initial capacity.</p>
@@ -253,19 +224,80 @@ gtag('config', 'G-9TQ6JWBKEK');
                 concurrencyLevel
               </dt>
               <dd>
-                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.int32?view=netcore-3.0" data-linktype="absolute-path">int</a></span>
+                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.int32?view=net-9.0" data-linktype="absolute-path">int</a></span>
               </dd>
             </dl>
             <p>The concurrency level.</p>
           </div>
-          <h1 id="methods-detail" class="heading-with-anchor">Methods Detail</h1>
-          <h2 id="M:Maroontress.Util.InternMap`2.Intern(`0,System.Func{`0,`1})">Intern(K, Func&lt;K, V&gt;)</h2>
+          <h2 id="M:Maroontress.Oxbind.Util.InternMap`2.#ctor">InternMap()</h2>
           <div class="summaryHolder">
             <div class="summary clearFix">
-              <p>Gets the canonical value object corresponding to the specified key
-    object. If the canonical value object does not exist in the
-    internal object pool, creates a new value object with the specified
-    function.</p>
+              <p>Initializes a new instance of the <a href="#">InternMap&lt;K, V&gt;</a> class.</p>
+            </div>
+          </div>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-title">InternMap</span>()</code></pre>
+          <h2 id="M:Maroontress.Oxbind.Util.InternMap`2.#ctor(System.Int32)">InternMap(int)</h2>
+          <div class="summaryHolder">
+            <div class="summary clearFix">
+              <p>Initializes a new instance of the <a href="#">InternMap&lt;K, V&gt;</a> class.</p>
+            </div>
+          </div>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-title">InternMap</span>(<span class="hljs-keyword">int</span> initialCapacity)</code></pre>
+          <h4 class="propertyInfoTitle stack">Parameters</h4>
+          <div class="propertyInfo">
+            <dl class="parameterList">
+              <dt>
+                initialCapacity
+              </dt>
+              <dd>
+                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.int32?view=net-9.0" data-linktype="absolute-path">int</a></span>
+              </dd>
+            </dl>
+            <p>The initial capacity.</p>
+          </div>
+          <h1 id="methods-detail" class="heading-with-anchor">Methods Detail</h1>
+          <h2 id="M:Maroontress.Oxbind.Util.InternMap`2.Get(`0)">Get(K)</h2>
+          <div class="summaryHolder">
+            <div class="summary clearFix">
+              <p>Gets the canonical value object corresponding to the specified key.</p>
+            </div>
+          </div>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-title">V</span> <span class="hljs-title">Get</span>(<span class="hljs-title">K</span> key)</code></pre>
+          <h4 class="propertyInfoTitle stack">Parameters</h4>
+          <div class="propertyInfo">
+            <dl class="parameterList">
+              <dt>
+                key
+              </dt>
+              <dd>
+                <span class="lang-csharp">K</span>
+              </dd>
+            </dl>
+            <p>The key.</p>
+          </div>
+          <h4 class="propertyInfoTitle stack">Returns</h4>
+          <div class="propertyInfo">
+            <div class="subtle">
+              V
+            </div>
+            <p>The canonical value object associated with the specified key,
+    or <code>null</code> if no value is found.</p>
+          </div>
+          <h2 id="M:Maroontress.Oxbind.Util.InternMap`2.Intern(`0,System.Func{`0,`1})">Intern(K, Func&lt;K, V&gt;)</h2>
+          <div class="summaryHolder">
+            <div class="summary clearFix">
+              <p>Gets the canonical value object corresponding to the specified key. If
+    a canonical value does not already exist in the map, it is created
+    using the specified function.</p>
             </div>
           </div>
           <div class="codeHeader" data-bi-name="code-header">
@@ -282,7 +314,7 @@ gtag('config', 'G-9TQ6JWBKEK');
                 <span class="lang-csharp">K</span>
               </dd>
             </dl>
-            <p>The key object.</p>
+            <p>The key.</p>
           </div>
           <div class="propertyInfo stack">
             <dl class="parameterList">
@@ -290,11 +322,10 @@ gtag('config', 'G-9TQ6JWBKEK');
                 newValue
               </dt>
               <dd>
-                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.func-2?view=netcore-3.0" data-linktype="absolute-path">Func&lt;K, V&gt;</a></span>
+                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.func-2?view=net-9.0" data-linktype="absolute-path">Func&lt;K, V&gt;</a></span>
               </dd>
             </dl>
-            <p>The function that returns a new value object corresponding to the
-    specified argument.</p>
+            <p>The function that creates a new value object for the specified key.</p>
           </div>
           <h4 class="propertyInfoTitle stack">Returns</h4>
           <div class="propertyInfo">
@@ -304,16 +335,16 @@ gtag('config', 'G-9TQ6JWBKEK');
             <p>The canonical value object.</p>
           </div>
           <h3>Remarks</h3>
-          <p>The specified function can be called concurrently with the equal
-    keys if the multiple threads call this method. However, the
-    canonical value object that this method returns is only one.</p>
-          <h2 id="M:Maroontress.Util.InternMap`2.Intern(`0,System.Func{`1})">Intern(K, Func&lt;V&gt;)</h2>
+          <p>If multiple threads call this method concurrently with the same key,
+    the <code>newValue</code> function might be invoked multiple
+    times. However, only one canonical value object will be stored and
+    returned for that key.</p>
+          <h2 id="M:Maroontress.Oxbind.Util.InternMap`2.Intern(`0,System.Func{`1})">Intern(K, Func&lt;V&gt;)</h2>
           <div class="summaryHolder">
             <div class="summary clearFix">
-              <p>Gets the canonical value object corresponding to the specified key
-    object. If the canonical value object does not exist in the
-    internal object pool, creates a new value object with the specified
-    supplier.</p>
+              <p>Gets the canonical value object corresponding to the specified key. If
+    a canonical value does not already exist in the map, it is created
+    using the specified supplier.</p>
             </div>
           </div>
           <div class="codeHeader" data-bi-name="code-header">
@@ -330,7 +361,7 @@ gtag('config', 'G-9TQ6JWBKEK');
                 <span class="lang-csharp">K</span>
               </dd>
             </dl>
-            <p>The key object.</p>
+            <p>The key.</p>
           </div>
           <div class="propertyInfo stack">
             <dl class="parameterList">
@@ -338,11 +369,11 @@ gtag('config', 'G-9TQ6JWBKEK');
                 supplier
               </dt>
               <dd>
-                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.func-1?view=netcore-3.0" data-linktype="absolute-path">Func&lt;V&gt;</a></span>
+                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.func-1?view=net-9.0" data-linktype="absolute-path">Func&lt;V&gt;</a></span>
               </dd>
             </dl>
-            <p>The supplier that returns a new value object corresponding to the
-    specified key object.</p>
+            <p>The supplier that returns a new value object. This function is called
+    if the key is not already present in the map.</p>
           </div>
           <h4 class="propertyInfoTitle stack">Returns</h4>
           <div class="propertyInfo">
@@ -352,9 +383,10 @@ gtag('config', 'G-9TQ6JWBKEK');
             <p>The canonical value object.</p>
           </div>
           <h3>Remarks</h3>
-          <p>The specified function can be called concurrently with the equal
-    keys if the multiple threads call this method. However, the
-    canonical value object that this method returns is only one.</p>
+          <p>If multiple threads call this method concurrently with the same key,
+    the <code>supplier</code> function might be invoked multiple
+    times. However, only a single canonical value object will be stored and
+    returned for that key.</p>
         </main>
       </section>
     </div>

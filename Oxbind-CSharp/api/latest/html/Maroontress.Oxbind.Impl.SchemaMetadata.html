@@ -43,7 +43,9 @@ gtag('config', 'G-9TQ6JWBKEK');
           </div>
           <div class="summaryHolder">
             <div class="summary clearFix">
-              <p>Metadata of the classes that have a <code>static</code> and <code>readonly</code> <a href="Maroontress.Oxbind.Schema.html">Schema</a> field annotated with the <a href="Maroontress.Oxbind.ElementSchemaAttribute.html">ElementSchemaAttribute</a>.</p>
+              <p>Metadata of the classes that have constructor parameters annotated with
+    the <a href="Maroontress.Oxbind.RequiredAttribute.html">RequiredAttribute</a>, <a href="Maroontress.Oxbind.OptionalAttribute.html">OptionalAttribute</a>,
+    or <a href="Maroontress.Oxbind.MultipleAttribute.html">MultipleAttribute</a>.</p>
             </div>
           </div>
           <div class="codeHeader" data-bi-name="code-header">
@@ -57,7 +59,7 @@ gtag('config', 'G-9TQ6JWBKEK');
             <dd>
               <div class="pdlHolder">
                 <div class="pdl">
-                  <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=netcore-3.0" data-linktype="absolute-path">object</a></span>
+                  <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=net-9.0" data-linktype="absolute-path">object</a></span>
                 </div>
                 <div class="pdl">
                   <span class="lang-csharp"><a class="xref" href="Maroontress.Oxbind.Impl.Metadata.html" data-linktype="relative-path">Metadata</a></span>
@@ -72,11 +74,12 @@ gtag('config', 'G-9TQ6JWBKEK');
               <tbody>
                 <tr>
                   <td>
-                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Oxbind.Impl.SchemaMetadata.#ctor(System.Type)" data-linktype="relative-path">Schema<wbr>Metadata(Type)</a></span>
+                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Oxbind.Impl.SchemaMetadata.#ctor(Maroontress.Oxbind.Impl.AttributeBank,System.Collections.Generic.IEnumerable{Maroontress.Oxbind.Impl.ChildParameter})" data-linktype="relative-path">Schema<wbr>Metadata(Attribute<wbr>Bank, IEnumerable&lt;Child<wbr>Parameter&gt;)</a></span>
                   </td>
                   <td>
-                    <p>Initializes a new instance of the <a href="#">SchemaMetadata</a>
-    class.</p>
+                    <p>Metadata of the classes that have constructor parameters annotated with
+    the <a href="Maroontress.Oxbind.RequiredAttribute.html">RequiredAttribute</a>, <a href="Maroontress.Oxbind.OptionalAttribute.html">OptionalAttribute</a>,
+    or <a href="Maroontress.Oxbind.MultipleAttribute.html">MultipleAttribute</a>.</p>
                   </td>
                 </tr>
               </tbody>
@@ -88,21 +91,10 @@ gtag('config', 'G-9TQ6JWBKEK');
               <tbody>
                 <tr>
                   <td>
-                    <a href="Maroontress.Oxbind.Impl.Metadata.html#P:Maroontress.Oxbind.Impl.Metadata.ElementClass">ElementClass</a>
+                    <a href="Maroontress.Oxbind.Impl.Metadata.html#P:Maroontress.Oxbind.Impl.Metadata.Bank">Bank</a>
                   </td>
                   <td>
-                    <p>Gets the class representing the XML element, annotated with <a href="Maroontress.Oxbind.ForElementAttribute.html">ForElementAttribute</a> for the class bound to this metadata.</p>
-                    (Inherited from <a class="xref" href="Maroontress.Oxbind.Impl.Metadata.html" data-linktype="relative-path">Metadata</a>)
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <a href="Maroontress.Oxbind.Impl.Metadata.html#P:Maroontress.Oxbind.Impl.Metadata.ElementName">ElementName</a>
-                  </td>
-                  <td>
-                    <p>Gets the name of the XML element, which is the value of the
-    annotation <a href="Maroontress.Oxbind.ForElementAttribute.html">ForElementAttribute</a> for the class bound to
-    this metadata.</p>
+                    <p>Gets the attribute bank associated with this metadata.</p>
                     (Inherited from <a class="xref" href="Maroontress.Oxbind.Impl.Metadata.html" data-linktype="relative-path">Metadata</a>)
                   </td>
                 </tr>
@@ -115,35 +107,35 @@ gtag('config', 'G-9TQ6JWBKEK');
               <tbody>
                 <tr>
                   <td>
-                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Oxbind.Impl.SchemaMetadata.HandleComponentsWithContent(System.Object,System.Xml.XmlReader,System.Func{System.Type,Maroontress.Oxbind.Impl.Metadata})" data-linktype="relative-path">Handle<wbr>Components<wbr>With<wbr>Content(object, Xml<wbr>Reader, Func&lt;Type, Metadata&gt;)</a></span>
+                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Oxbind.Impl.SchemaMetadata.HandleComponentsWithContent(System.Object[],System.Xml.XmlReader,System.Func{System.Type,Maroontress.Oxbind.Impl.Metadata})" data-linktype="relative-path">Handle<wbr>Components<wbr>With<wbr>Content(object[], Xml<wbr>Reader, Func&lt;Type, Metadata&gt;)</a></span>
                   </td>
                   <td>
                     <p>Description copied from class: Metadata</p>
                     <blockquote>
-                      <p>Handles the component of the specified instance with content of
-    the element that the specified XML reader provides.</p>
+                      <p>Handles the components of the instance using the content of the current
+    XML element provided by the specified XML reader.</p>
                     </blockquote>
                   </td>
                 </tr>
                 <tr>
                   <td>
-                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Oxbind.Impl.SchemaMetadata.HandleComponentsWithEmptyElement(System.Object,System.Xml.XmlReader,System.Func{System.Type,Maroontress.Oxbind.Impl.Metadata})" data-linktype="relative-path">Handle<wbr>Components<wbr>With<wbr>Empty<wbr>Element(object, Xml<wbr>Reader, Func&lt;Type, Metadata&gt;)</a></span>
+                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Oxbind.Impl.SchemaMetadata.HandleComponentsWithEmptyElement(System.Object[],System.Xml.XmlReader,System.Func{System.Type,Maroontress.Oxbind.Impl.Metadata})" data-linktype="relative-path">Handle<wbr>Components<wbr>With<wbr>Empty<wbr>Element(object[], Xml<wbr>Reader, Func&lt;Type, Metadata&gt;)</a></span>
                   </td>
                   <td>
                     <p>Description copied from class: Metadata</p>
                     <blockquote>
-                      <p>Handles the component of the specified instance with empty element
-    that the specified XML reader is providing.</p>
+                      <p>Handles component binding when the XML reader encounters an empty
+    element.</p>
                     </blockquote>
                   </td>
                 </tr>
                 <tr>
                   <td>
-                    <a href="Maroontress.Oxbind.Impl.Metadata.html#M:Maroontress.Oxbind.Impl.Metadata.MandatoryElement(System.Xml.XmlReader,System.Func{System.Type,Maroontress.Oxbind.Impl.Metadata})">MandatoryElement(XmlReader, Func&lt;Type, Metadata&gt;)</a>
+                    <a href="Maroontress.Oxbind.Impl.Metadata.html#M:Maroontress.Oxbind.Impl.Metadata.RequiredElement(System.Xml.XmlReader,System.Func{System.Type,Maroontress.Oxbind.Impl.Metadata})">RequiredElement(XmlReader, Func&lt;Type, Metadata&gt;)</a>
                   </td>
                   <td>
-                    <p>Returns a new instance bound to the root XML element that is read
-    from the specified XML reader.</p>
+                    <p>Returns a new instance bound to the root XML element that is read from
+    the specified XML reader.</p>
                     (Inherited from <a class="xref" href="Maroontress.Oxbind.Impl.Metadata.html" data-linktype="relative-path">Metadata</a>)
                   </td>
                 </tr>
@@ -152,121 +144,133 @@ gtag('config', 'G-9TQ6JWBKEK');
                     <a href="Maroontress.Oxbind.Impl.Metadata.html#M:Maroontress.Oxbind.Impl.Metadata.CreateInstance(System.Xml.XmlReader,System.Func{System.Type,Maroontress.Oxbind.Impl.Metadata})">CreateInstance(XmlReader, Func&lt;Type, Metadata&gt;)</a>
                   </td>
                   <td>
-                    <p>Creates a new instance bound to the next XML element in the
-    specified XML reader.</p>
+                    <p>Creates a new instance bound to the next XML element in the specified
+    XML reader.</p>
                     (Inherited from <a class="xref" href="Maroontress.Oxbind.Impl.Metadata.html" data-linktype="relative-path">Metadata</a>)
                   </td>
                 </tr>
                 <tr>
                   <td>
-                    <a href="Maroontress.Oxbind.Impl.Metadata.html#M:Maroontress.Oxbind.Impl.Metadata.HandleComponentsWithContent(System.Object,System.Xml.XmlReader,System.Func{System.Type,Maroontress.Oxbind.Impl.Metadata})">HandleComponentsWithContent(object, XmlReader, Func&lt;Type, Metadata&gt;)</a>
+                    <a href="Maroontress.Oxbind.Impl.Metadata.html#M:Maroontress.Oxbind.Impl.Metadata.HandleComponentsWithContent(System.Object[],System.Xml.XmlReader,System.Func{System.Type,Maroontress.Oxbind.Impl.Metadata})">HandleComponentsWithContent(object[], XmlReader, Func&lt;Type, Metadata&gt;)</a>
                   </td>
                   <td>
-                    <p>Handles the component of the specified instance with content of
-    the element that the specified XML reader provides.</p>
+                    <p>Handles the components of the instance using the content of the current
+    XML element provided by the specified XML reader.</p>
                     (Inherited from <a class="xref" href="Maroontress.Oxbind.Impl.Metadata.html" data-linktype="relative-path">Metadata</a>)
                   </td>
                 </tr>
                 <tr>
                   <td>
-                    <a href="Maroontress.Oxbind.Impl.Metadata.html#M:Maroontress.Oxbind.Impl.Metadata.HandleComponentsWithEmptyElement(System.Object,System.Xml.XmlReader,System.Func{System.Type,Maroontress.Oxbind.Impl.Metadata})">HandleComponentsWithEmptyElement(object, XmlReader, Func&lt;Type, Metadata&gt;)</a>
+                    <a href="Maroontress.Oxbind.Impl.Metadata.html#M:Maroontress.Oxbind.Impl.Metadata.HandleComponentsWithEmptyElement(System.Object[],System.Xml.XmlReader,System.Func{System.Type,Maroontress.Oxbind.Impl.Metadata})">HandleComponentsWithEmptyElement(object[], XmlReader, Func&lt;Type, Metadata&gt;)</a>
                   </td>
                   <td>
-                    <p>Handles the component of the specified instance with empty element
-    that the specified XML reader is providing.</p>
+                    <p>Handles component binding when the XML reader encounters an empty
+    element.</p>
                     (Inherited from <a class="xref" href="Maroontress.Oxbind.Impl.Metadata.html" data-linktype="relative-path">Metadata</a>)
                   </td>
                 </tr>
                 <tr>
                   <td>
-                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.object.equals?view=netcore-3.0#System_Object_Equals_System_Object_">Equals(object)</a>
+                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.object.equals?view=net-9.0#System_Object_Equals_System_Object_">Equals(object)</a>
                   </td>
                   <td>
-                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=netcore-3.0" data-linktype="absolute-path">object</a>)
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.object.gethashcode?view=netcore-3.0">GetHashCode()</a>
-                  </td>
-                  <td>
-                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=netcore-3.0" data-linktype="absolute-path">object</a>)
+                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=net-9.0" data-linktype="absolute-path">object</a>)
                   </td>
                 </tr>
                 <tr>
                   <td>
-                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.object.gettype?view=netcore-3.0">GetType()</a>
+                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.object.gethashcode?view=net-9.0">GetHashCode()</a>
                   </td>
                   <td>
-                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=netcore-3.0" data-linktype="absolute-path">object</a>)
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.object.memberwiseclone?view=netcore-3.0">MemberwiseClone()</a>
-                  </td>
-                  <td>
-                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=netcore-3.0" data-linktype="absolute-path">object</a>)
+                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=net-9.0" data-linktype="absolute-path">object</a>)
                   </td>
                 </tr>
                 <tr>
                   <td>
-                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.object.tostring?view=netcore-3.0">ToString()</a>
+                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.object.gettype?view=net-9.0">GetType()</a>
                   </td>
                   <td>
-                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=netcore-3.0" data-linktype="absolute-path">object</a>)
+                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=net-9.0" data-linktype="absolute-path">object</a>)
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.object.memberwiseclone?view=net-9.0">MemberwiseClone()</a>
+                  </td>
+                  <td>
+                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=net-9.0" data-linktype="absolute-path">object</a>)
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.object.tostring?view=net-9.0">ToString()</a>
+                  </td>
+                  <td>
+                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=net-9.0" data-linktype="absolute-path">object</a>)
                   </td>
                 </tr>
               </tbody>
             </table>
           </div>
           <h1 id="constructors-detail" class="heading-with-anchor">Constructors Detail</h1>
-          <h2 id="M:Maroontress.Oxbind.Impl.SchemaMetadata.#ctor(System.Type)">SchemaMetadata(Type)</h2>
+          <h2 id="M:Maroontress.Oxbind.Impl.SchemaMetadata.#ctor(Maroontress.Oxbind.Impl.AttributeBank,System.Collections.Generic.IEnumerable{Maroontress.Oxbind.Impl.ChildParameter})">SchemaMetadata(AttributeBank, IEnumerable&lt;ChildParameter&gt;)</h2>
           <div class="summaryHolder">
             <div class="summary clearFix">
-              <p>Initializes a new instance of the <a href="#">SchemaMetadata</a>
-    class.</p>
+              <p>Metadata of the classes that have constructor parameters annotated with
+    the <a href="Maroontress.Oxbind.RequiredAttribute.html">RequiredAttribute</a>, <a href="Maroontress.Oxbind.OptionalAttribute.html">OptionalAttribute</a>,
+    or <a href="Maroontress.Oxbind.MultipleAttribute.html">MultipleAttribute</a>.</p>
             </div>
           </div>
           <div class="codeHeader" data-bi-name="code-header">
             <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
           </div>
-          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-title">SchemaMetadata</span>(<span class="hljs-title">Type</span> clazz)</code></pre>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-title">SchemaMetadata</span>(<span class="hljs-title">AttributeBank</span> bank, <span class="hljs-title">IEnumerable</span>&lt;ChildParameter&gt; children)</code></pre>
           <h4 class="propertyInfoTitle stack">Parameters</h4>
           <div class="propertyInfo">
             <dl class="parameterList">
               <dt>
-                clazz
+                bank
               </dt>
               <dd>
-                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.type?view=netcore-3.0" data-linktype="absolute-path">Type</a></span>
+                <span class="lang-csharp"><a class="xref" href="Maroontress.Oxbind.Impl.AttributeBank.html" data-linktype="relative-path">Attribute<wbr>Bank</a></span>
               </dd>
             </dl>
-            <p>The class annotated with <a href="Maroontress.Oxbind.ForElementAttribute.html">ForElementAttribute</a>.</p>
+            <p>The attribute bank to be associated with this metadata.</p>
+          </div>
+          <div class="propertyInfo stack">
+            <dl class="parameterList">
+              <dt>
+                children
+              </dt>
+              <dd>
+                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1?view=net-9.0" data-linktype="absolute-path">IEnumerable</a>&lt;<a class="xref" href="Maroontress.Oxbind.Impl.ChildParameter.html" data-linktype="relative-path">Child<wbr>Parameter</a>&gt;</span>
+              </dd>
+            </dl>
+            <p>A collection of <a href="Maroontress.Oxbind.Impl.ChildParameter.html">ChildParameter</a> objects.</p>
           </div>
           <h1 id="methods-detail" class="heading-with-anchor">Methods Detail</h1>
-          <h2 id="M:Maroontress.Oxbind.Impl.SchemaMetadata.HandleComponentsWithContent(System.Object,System.Xml.XmlReader,System.Func{System.Type,Maroontress.Oxbind.Impl.Metadata})">HandleComponentsWithContent(object, XmlReader, Func&lt;Type, Metadata&gt;)</h2>
+          <h2 id="M:Maroontress.Oxbind.Impl.SchemaMetadata.HandleComponentsWithContent(System.Object[],System.Xml.XmlReader,System.Func{System.Type,Maroontress.Oxbind.Impl.Metadata})">HandleComponentsWithContent(object[], XmlReader, Func&lt;Type, Metadata&gt;)</h2>
           <div class="summaryHolder">
             <div class="summary clearFix">
               <p>Description copied from class: Metadata</p>
               <blockquote>
-                <p>Handles the component of the specified instance with content of
-    the element that the specified XML reader provides.</p>
+                <p>Handles the components of the instance using the content of the current
+    XML element provided by the specified XML reader.</p>
               </blockquote>
             </div>
           </div>
           <div class="codeHeader" data-bi-name="code-header">
             <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
           </div>
-          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">override</span> <span class="hljs-keyword">void</span> <span class="hljs-title">HandleComponentsWithContent</span>(<span class="hljs-keyword">object</span> instance, <span class="hljs-title">XmlReader</span> @in, <span class="hljs-title">Func</span>&lt;<span class="hljs-title">Type</span>, <span class="hljs-title">Metadata</span>&gt; getMetadata)</code></pre>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">override</span> <span class="hljs-keyword">void</span> <span class="hljs-title">HandleComponentsWithContent</span>(<span class="hljs-keyword">object</span>[] arguments, <span class="hljs-title">XmlReader</span> @in, <span class="hljs-title">Func</span>&lt;<span class="hljs-title">Type</span>, <span class="hljs-title">Metadata</span>&gt; getMetadata)</code></pre>
           <h4 class="propertyInfoTitle stack">Parameters</h4>
           <div class="propertyInfo">
             <dl class="parameterList">
               <dt>
-                instance
+                arguments
               </dt>
               <dd>
-                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=netcore-3.0" data-linktype="absolute-path">object</a></span>
+                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=net-9.0" data-linktype="absolute-path">object</a>[]</span>
               </dd>
             </dl>
           </div>
@@ -276,7 +280,7 @@ gtag('config', 'G-9TQ6JWBKEK');
                 in
               </dt>
               <dd>
-                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.xml.xmlreader?view=netcore-3.0" data-linktype="absolute-path">Xml<wbr>Reader</a></span>
+                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.xml.xmlreader?view=net-9.0" data-linktype="absolute-path">Xml<wbr>Reader</a></span>
               </dd>
             </dl>
           </div>
@@ -286,32 +290,32 @@ gtag('config', 'G-9TQ6JWBKEK');
                 getMetadata
               </dt>
               <dd>
-                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.func-2?view=netcore-3.0" data-linktype="absolute-path">Func</a>&lt;<a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.type?view=netcore-3.0" data-linktype="absolute-path">Type</a>, <a class="xref" href="Maroontress.Oxbind.Impl.Metadata.html" data-linktype="relative-path">Metadata</a>&gt;</span>
+                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.func-2?view=net-9.0" data-linktype="absolute-path">Func</a>&lt;<a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.type?view=net-9.0" data-linktype="absolute-path">Type</a>, <a class="xref" href="Maroontress.Oxbind.Impl.Metadata.html" data-linktype="relative-path">Metadata</a>&gt;</span>
               </dd>
             </dl>
           </div>
-          <h2 id="M:Maroontress.Oxbind.Impl.SchemaMetadata.HandleComponentsWithEmptyElement(System.Object,System.Xml.XmlReader,System.Func{System.Type,Maroontress.Oxbind.Impl.Metadata})">HandleComponentsWithEmptyElement(object, XmlReader, Func&lt;Type, Metadata&gt;)</h2>
+          <h2 id="M:Maroontress.Oxbind.Impl.SchemaMetadata.HandleComponentsWithEmptyElement(System.Object[],System.Xml.XmlReader,System.Func{System.Type,Maroontress.Oxbind.Impl.Metadata})">HandleComponentsWithEmptyElement(object[], XmlReader, Func&lt;Type, Metadata&gt;)</h2>
           <div class="summaryHolder">
             <div class="summary clearFix">
               <p>Description copied from class: Metadata</p>
               <blockquote>
-                <p>Handles the component of the specified instance with empty element
-    that the specified XML reader is providing.</p>
+                <p>Handles component binding when the XML reader encounters an empty
+    element.</p>
               </blockquote>
             </div>
           </div>
           <div class="codeHeader" data-bi-name="code-header">
             <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
           </div>
-          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">override</span> <span class="hljs-keyword">void</span> <span class="hljs-title">HandleComponentsWithEmptyElement</span>(<span class="hljs-keyword">object</span> instance, <span class="hljs-title">XmlReader</span> @in, <span class="hljs-title">Func</span>&lt;<span class="hljs-title">Type</span>, <span class="hljs-title">Metadata</span>&gt; getMetadata)</code></pre>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">override</span> <span class="hljs-keyword">void</span> <span class="hljs-title">HandleComponentsWithEmptyElement</span>(<span class="hljs-keyword">object</span>[] arguments, <span class="hljs-title">XmlReader</span> @in, <span class="hljs-title">Func</span>&lt;<span class="hljs-title">Type</span>, <span class="hljs-title">Metadata</span>&gt; getMetadata)</code></pre>
           <h4 class="propertyInfoTitle stack">Parameters</h4>
           <div class="propertyInfo">
             <dl class="parameterList">
               <dt>
-                instance
+                arguments
               </dt>
               <dd>
-                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=netcore-3.0" data-linktype="absolute-path">object</a></span>
+                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=net-9.0" data-linktype="absolute-path">object</a>[]</span>
               </dd>
             </dl>
           </div>
@@ -321,7 +325,7 @@ gtag('config', 'G-9TQ6JWBKEK');
                 in
               </dt>
               <dd>
-                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.xml.xmlreader?view=netcore-3.0" data-linktype="absolute-path">Xml<wbr>Reader</a></span>
+                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.xml.xmlreader?view=net-9.0" data-linktype="absolute-path">Xml<wbr>Reader</a></span>
               </dd>
             </dl>
           </div>
@@ -331,7 +335,7 @@ gtag('config', 'G-9TQ6JWBKEK');
                 getMetadata
               </dt>
               <dd>
-                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.func-2?view=netcore-3.0" data-linktype="absolute-path">Func</a>&lt;<a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.type?view=netcore-3.0" data-linktype="absolute-path">Type</a>, <a class="xref" href="Maroontress.Oxbind.Impl.Metadata.html" data-linktype="relative-path">Metadata</a>&gt;</span>
+                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.func-2?view=net-9.0" data-linktype="absolute-path">Func</a>&lt;<a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.type?view=net-9.0" data-linktype="absolute-path">Type</a>, <a class="xref" href="Maroontress.Oxbind.Impl.Metadata.html" data-linktype="relative-path">Metadata</a>&gt;</span>
               </dd>
             </dl>
           </div>

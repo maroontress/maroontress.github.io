@@ -1,0 +1,447 @@
+<!doctype html>
+<html>
+  <head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9TQ6JWBKEK">
+    </script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+function gtag() { dataLayer.push(arguments); }
+gtag('js', new Date());
+gtag('config', 'G-9TQ6JWBKEK');
+    </script>
+    <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChildParameter Struct | API Reference | Oxbind Project</title>
+    <link rel="stylesheet" href="bulldoc.css">
+    <script src="highlight.pack.js">
+    </script>
+    <script>
+      hljs.initHighlightingOnLoad();
+    </script>
+  </head>
+  <body>
+    <div class="mainContainer uhf-container has-top-padding has-default-focus" data-bi-name="body">
+      <section>
+        <main class="content">
+          <h1><span class="lang-csharp">Child<wbr>Parameter</span> Struct</h1>
+          <div class="metadata">
+            <dl class="attributeList">
+              <dt>
+                Namespace:
+                <dd>
+                  <span class="lang-csharp"><a class="xref" href="Maroontress.Oxbind.Impl.html" data-linktype="relative-path">Maroontress.Oxbind.Impl</a></span>
+                </dd>
+              </dt>
+            </dl>
+            <dl class="attributeList">
+              <dt>
+                Assembly:
+                <dd>
+                  <span class="lang-csharp">Oxbind.dll</span>
+                </dd>
+              </dt>
+            </dl>
+          </div>
+          <div class="summaryHolder">
+            <div class="summary clearFix">
+              <p>Represents a parameter that is associated with a child element in the XML
+    binding schema.</p>
+            </div>
+          </div>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-keyword">record</span> <span class="hljs-keyword">struct</span> ChildParameter : <span class="hljs-title">IEquatable</span>&lt;ChildParameter&gt;</code></pre>
+          <dl class="attributeList stack">
+            <dt>
+              Inheritance
+            </dt>
+            <dd>
+              <div class="pdlHolder">
+                <div class="pdl">
+                  <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=net-9.0" data-linktype="absolute-path">object</a></span>
+                </div>
+                <div class="pdl">
+                  <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.valuetype?view=net-9.0" data-linktype="absolute-path">Value<wbr>Type</a></span>
+                </div>
+                <span class="lang-csharp">Child<wbr>Parameter</span>
+              </div>
+            </dd>
+          </dl>
+          <dl class="attributeList stack">
+            <dt>
+              Implements
+            </dt>
+            <dd>
+              <div class="cdlHolder">
+                <span class="cdl"><span class="lang-csharp break-text"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.iequatable-1?view=net-9.0" data-linktype="absolute-path">IEquatable</a>&lt;<a class="xref" href="#" data-linktype="relative-path">Child<wbr>Parameter</a>&gt;</span></span>
+              </div>
+            </dd>
+          </dl>
+          <h2 id="constructors" class="heading-with-anchor">Constructors</h2>
+          <div class="table-scroll-wrapper">
+            <table class="nameValue">
+              <tbody>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Oxbind.Impl.ChildParameter.#ctor(System.Type,Maroontress.Oxbind.Impl.SchemaType,System.Xml.XmlQualifiedName,System.Reflection.ParameterInfo)" data-linktype="relative-path">Child<wbr>Parameter(Type, Schema<wbr>Type, Xml<wbr>Qualified<wbr>Name, Parameter<wbr>Info)</a></span>
+                  </td>
+                  <td>
+                    <p>Represents a parameter that is associated with a child element in the XML
+    binding schema.</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <h2 id="properties" class="heading-with-anchor">Properties</h2>
+          <div class="table-scroll-wrapper">
+            <table class="nameValue">
+              <tbody>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="#P:Maroontress.Oxbind.Impl.ChildParameter.UnitType" data-linktype="relative-path">Unit<wbr>Type</a></span>
+                  </td>
+                  <td>
+                    <p>The type of the unit represented by this parameter. This type must be a
+    class attributed with <a href="Maroontress.Oxbind.ForElementAttribute.html">ForElementAttribute</a>.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="#P:Maroontress.Oxbind.Impl.ChildParameter.SchemaType" data-linktype="relative-path">Schema<wbr>Type</a></span>
+                  </td>
+                  <td>
+                    <p>The schema type that describes how the parameter is mapped and processed in
+    the schema.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="#P:Maroontress.Oxbind.Impl.ChildParameter.ElementName" data-linktype="relative-path">Element<wbr>Name</a></span>
+                  </td>
+                  <td>
+                    <p>The qualified name of the XML element associated with the <code>UnitType</code>.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="#P:Maroontress.Oxbind.Impl.ChildParameter.Info" data-linktype="relative-path">Info</a></span>
+                  </td>
+                  <td>
+                    <p>The <a href="https://docs.microsoft.com/en-us/dotnet/api/system.reflection.parameterinfo?view=net-9.0">ParameterInfo</a> instance that provides metadata about the
+    parameter.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="#P:Maroontress.Oxbind.Impl.ChildParameter.SchemaTypeMap" data-linktype="relative-path">Schema<wbr>Type<wbr>Map</a></span>
+                  </td>
+                  <td>
+                    <p>Gets a mapping from attribute types to their corresponding schema
+    types.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="#P:Maroontress.Oxbind.Impl.ChildParameter.AttributeTypes" data-linktype="relative-path">Attribute<wbr>Types</a></span>
+                  </td>
+                  <td>
+                    <p>Gets the collection of attribute types that are supported for schema
+    mapping.</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <h2 id="methods" class="heading-with-anchor">Methods</h2>
+          <div class="table-scroll-wrapper">
+            <table class="nameValue">
+              <tbody>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Oxbind.Impl.ChildParameter.ToSchemaType(System.Type)" data-linktype="relative-path">To<wbr>Schema<wbr>Type(Type)</a></span>
+                  </td>
+                  <td>
+                    <p>Gets the <a href="#P:Maroontress.Oxbind.Impl.ChildParameter.SchemaType">SchemaType</a> associated with the specified
+    attribute type.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Oxbind.Impl.ChildParameter.Of(System.Reflection.ParameterInfo)" data-linktype="relative-path">Of(Parameter<wbr>Info)</a></span>
+                  </td>
+                  <td>
+                    <p>Creates a <a href="#">ChildParameter</a> instance from the specified <a href="https://docs.microsoft.com/en-us/dotnet/api/system.reflection.parameterinfo?view=net-9.0">ParameterInfo</a>.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.valuetype.equals?view=net-9.0#System_ValueType_Equals_System_Object_">Equals(object)</a>
+                  </td>
+                  <td>
+                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.valuetype?view=net-9.0" data-linktype="absolute-path">Value<wbr>Type</a>)
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.valuetype.gethashcode?view=net-9.0">GetHashCode()</a>
+                  </td>
+                  <td>
+                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.valuetype?view=net-9.0" data-linktype="absolute-path">Value<wbr>Type</a>)
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.valuetype.tostring?view=net-9.0">ToString()</a>
+                  </td>
+                  <td>
+                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.valuetype?view=net-9.0" data-linktype="absolute-path">Value<wbr>Type</a>)
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.object.gettype?view=net-9.0">GetType()</a>
+                  </td>
+                  <td>
+                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=net-9.0" data-linktype="absolute-path">object</a>)
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.object.memberwiseclone?view=net-9.0">MemberwiseClone()</a>
+                  </td>
+                  <td>
+                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=net-9.0" data-linktype="absolute-path">object</a>)
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <h1 id="constructors-detail" class="heading-with-anchor">Constructors Detail</h1>
+          <h2 id="M:Maroontress.Oxbind.Impl.ChildParameter.#ctor(System.Type,Maroontress.Oxbind.Impl.SchemaType,System.Xml.XmlQualifiedName,System.Reflection.ParameterInfo)">ChildParameter(Type, SchemaType, XmlQualifiedName, ParameterInfo)</h2>
+          <div class="summaryHolder">
+            <div class="summary clearFix">
+              <p>Represents a parameter that is associated with a child element in the XML
+    binding schema.</p>
+            </div>
+          </div>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> ChildParameter(<span class="hljs-title">Type</span> UnitType, <span class="hljs-title">SchemaType</span> SchemaType, <span class="hljs-title">XmlQualifiedName</span> ElementName, <span class="hljs-title">ParameterInfo</span> Info)</code></pre>
+          <h4 class="propertyInfoTitle stack">Parameters</h4>
+          <div class="propertyInfo">
+            <dl class="parameterList">
+              <dt>
+                UnitType
+              </dt>
+              <dd>
+                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.type?view=net-9.0" data-linktype="absolute-path">Type</a></span>
+              </dd>
+            </dl>
+            <p>The type of the unit represented by this parameter. This type must be a
+    class attributed with <a href="Maroontress.Oxbind.ForElementAttribute.html">ForElementAttribute</a>.</p>
+          </div>
+          <div class="propertyInfo stack">
+            <dl class="parameterList">
+              <dt>
+                SchemaType
+              </dt>
+              <dd>
+                <span class="lang-csharp"><a class="xref" href="Maroontress.Oxbind.Impl.SchemaType.html" data-linktype="relative-path">Schema<wbr>Type</a></span>
+              </dd>
+            </dl>
+            <p>The schema type that describes how the parameter is mapped and processed in
+    the schema.</p>
+          </div>
+          <div class="propertyInfo stack">
+            <dl class="parameterList">
+              <dt>
+                ElementName
+              </dt>
+              <dd>
+                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.xml.xmlqualifiedname?view=net-9.0" data-linktype="absolute-path">Xml<wbr>Qualified<wbr>Name</a></span>
+              </dd>
+            </dl>
+            <p>The qualified name of the XML element associated with the <code>UnitType</code>.</p>
+          </div>
+          <div class="propertyInfo stack">
+            <dl class="parameterList">
+              <dt>
+                Info
+              </dt>
+              <dd>
+                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.reflection.parameterinfo?view=net-9.0" data-linktype="absolute-path">Parameter<wbr>Info</a></span>
+              </dd>
+            </dl>
+            <p>The <a href="https://docs.microsoft.com/en-us/dotnet/api/system.reflection.parameterinfo?view=net-9.0">ParameterInfo</a> instance that provides metadata about the
+    parameter.</p>
+          </div>
+          <h1 id="properties-detail" class="heading-with-anchor">Properties Detail</h1>
+          <h2 id="P:Maroontress.Oxbind.Impl.ChildParameter.UnitType">UnitType</h2>
+          <div class="summaryHolder">
+            <div class="summary clearFix">
+              <p>The type of the unit represented by this parameter. This type must be a
+    class attributed with <a href="Maroontress.Oxbind.ForElementAttribute.html">ForElementAttribute</a>.</p>
+            </div>
+          </div>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-title">Type</span> <span class="hljs-title">UnitType</span> { <span class="hljs-keyword">get</span>; <span class="hljs-keyword">set</span>; }</code></pre>
+          <h4 class="propertyInfoTitle stack">Property Value</h4>
+          <div class="propertyInfo">
+            <div class="subtle">
+              <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.type?view=net-9.0" data-linktype="absolute-path">Type</a>
+            </div>
+          </div>
+          <h2 id="P:Maroontress.Oxbind.Impl.ChildParameter.SchemaType">SchemaType</h2>
+          <div class="summaryHolder">
+            <div class="summary clearFix">
+              <p>The schema type that describes how the parameter is mapped and processed in
+    the schema.</p>
+            </div>
+          </div>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-title">SchemaType</span> <span class="hljs-title">SchemaType</span> { <span class="hljs-keyword">get</span>; <span class="hljs-keyword">set</span>; }</code></pre>
+          <h4 class="propertyInfoTitle stack">Property Value</h4>
+          <div class="propertyInfo">
+            <div class="subtle">
+              <a class="xref" href="Maroontress.Oxbind.Impl.SchemaType.html" data-linktype="relative-path">Schema<wbr>Type</a>
+            </div>
+          </div>
+          <h2 id="P:Maroontress.Oxbind.Impl.ChildParameter.ElementName">ElementName</h2>
+          <div class="summaryHolder">
+            <div class="summary clearFix">
+              <p>The qualified name of the XML element associated with the <code>UnitType</code>.</p>
+            </div>
+          </div>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-title">XmlQualifiedName</span> <span class="hljs-title">ElementName</span> { <span class="hljs-keyword">get</span>; <span class="hljs-keyword">set</span>; }</code></pre>
+          <h4 class="propertyInfoTitle stack">Property Value</h4>
+          <div class="propertyInfo">
+            <div class="subtle">
+              <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.xml.xmlqualifiedname?view=net-9.0" data-linktype="absolute-path">Xml<wbr>Qualified<wbr>Name</a>
+            </div>
+          </div>
+          <h2 id="P:Maroontress.Oxbind.Impl.ChildParameter.Info">Info</h2>
+          <div class="summaryHolder">
+            <div class="summary clearFix">
+              <p>The <a href="https://docs.microsoft.com/en-us/dotnet/api/system.reflection.parameterinfo?view=net-9.0">ParameterInfo</a> instance that provides metadata about the
+    parameter.</p>
+            </div>
+          </div>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-title">ParameterInfo</span> <span class="hljs-title">Info</span> { <span class="hljs-keyword">get</span>; <span class="hljs-keyword">set</span>; }</code></pre>
+          <h4 class="propertyInfoTitle stack">Property Value</h4>
+          <div class="propertyInfo">
+            <div class="subtle">
+              <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.reflection.parameterinfo?view=net-9.0" data-linktype="absolute-path">Parameter<wbr>Info</a>
+            </div>
+          </div>
+          <h2 id="P:Maroontress.Oxbind.Impl.ChildParameter.SchemaTypeMap">SchemaTypeMap</h2>
+          <div class="summaryHolder">
+            <div class="summary clearFix">
+              <p>Gets a mapping from attribute types to their corresponding schema
+    types.</p>
+            </div>
+          </div>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-title">IReadOnlyDictionary</span>&lt;<span class="hljs-title">Type</span>, <span class="hljs-title">SchemaType</span>&gt; <span class="hljs-title">SchemaTypeMap</span> { <span class="hljs-keyword">get</span>; }</code></pre>
+          <h4 class="propertyInfoTitle stack">Property Value</h4>
+          <div class="propertyInfo">
+            <div class="subtle">
+              <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ireadonlydictionary-2?view=net-9.0" data-linktype="absolute-path">IRead<wbr>Only<wbr>Dictionary</a>&lt;<a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.type?view=net-9.0" data-linktype="absolute-path">Type</a>, <a class="xref" href="Maroontress.Oxbind.Impl.SchemaType.html" data-linktype="relative-path">Schema<wbr>Type</a>&gt;
+            </div>
+          </div>
+          <h2 id="P:Maroontress.Oxbind.Impl.ChildParameter.AttributeTypes">AttributeTypes</h2>
+          <div class="summaryHolder">
+            <div class="summary clearFix">
+              <p>Gets the collection of attribute types that are supported for schema
+    mapping.</p>
+            </div>
+          </div>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-title">IReadOnlyCollection</span>&lt;<span class="hljs-title">Type</span>&gt; <span class="hljs-title">AttributeTypes</span> { <span class="hljs-keyword">get</span>; }</code></pre>
+          <h4 class="propertyInfoTitle stack">Property Value</h4>
+          <div class="propertyInfo">
+            <div class="subtle">
+              <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ireadonlycollection-1?view=net-9.0" data-linktype="absolute-path">IRead<wbr>Only<wbr>Collection</a>&lt;<a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.type?view=net-9.0" data-linktype="absolute-path">Type</a>&gt;
+            </div>
+          </div>
+          <h1 id="methods-detail" class="heading-with-anchor">Methods Detail</h1>
+          <h2 id="M:Maroontress.Oxbind.Impl.ChildParameter.ToSchemaType(System.Type)">ToSchemaType(Type)</h2>
+          <div class="summaryHolder">
+            <div class="summary clearFix">
+              <p>Gets the <a href="#P:Maroontress.Oxbind.Impl.ChildParameter.SchemaType">SchemaType</a> associated with the specified
+    attribute type.</p>
+            </div>
+          </div>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-title">SchemaType</span> <span class="hljs-title">ToSchemaType</span>(<span class="hljs-title">Type</span> type)</code></pre>
+          <h4 class="propertyInfoTitle stack">Parameters</h4>
+          <div class="propertyInfo">
+            <dl class="parameterList">
+              <dt>
+                type
+              </dt>
+              <dd>
+                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.type?view=net-9.0" data-linktype="absolute-path">Type</a></span>
+              </dd>
+            </dl>
+            <p>The attribute type.</p>
+          </div>
+          <h4 class="propertyInfoTitle stack">Returns</h4>
+          <div class="propertyInfo">
+            <div class="subtle">
+              <a class="xref" href="Maroontress.Oxbind.Impl.SchemaType.html" data-linktype="relative-path">Schema<wbr>Type</a>
+            </div>
+            <p>The corresponding <a href="#P:Maroontress.Oxbind.Impl.ChildParameter.SchemaType">SchemaType</a>, or <code>null</code> if the type
+    is not mapped.</p>
+          </div>
+          <h2 id="M:Maroontress.Oxbind.Impl.ChildParameter.Of(System.Reflection.ParameterInfo)">Of(ParameterInfo)</h2>
+          <div class="summaryHolder">
+            <div class="summary clearFix">
+              <p>Creates a <a href="#">ChildParameter</a> instance from the specified <a href="https://docs.microsoft.com/en-us/dotnet/api/system.reflection.parameterinfo?view=net-9.0">ParameterInfo</a>.</p>
+            </div>
+          </div>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> ChildParameter <span class="hljs-title">Of</span>(<span class="hljs-title">ParameterInfo</span> p)</code></pre>
+          <h4 class="propertyInfoTitle stack">Parameters</h4>
+          <div class="propertyInfo">
+            <dl class="parameterList">
+              <dt>
+                p
+              </dt>
+              <dd>
+                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.reflection.parameterinfo?view=net-9.0" data-linktype="absolute-path">Parameter<wbr>Info</a></span>
+              </dd>
+            </dl>
+            <p>The parameter information.</p>
+          </div>
+          <h4 class="propertyInfoTitle stack">Returns</h4>
+          <div class="propertyInfo">
+            <div class="subtle">
+              <a class="xref" href="#" data-linktype="relative-path">Child<wbr>Parameter</a>
+            </div>
+            <p>A <a href="#">ChildParameter</a> representing the parameter.</p>
+          </div>
+        </main>
+      </section>
+    </div>
+  </body>
+</html>

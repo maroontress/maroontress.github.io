@@ -43,13 +43,13 @@ gtag('config', 'G-9TQ6JWBKEK');
           </div>
           <div class="summaryHolder">
             <div class="summary clearFix">
-              <p>Marks an instance field to be bound with the XML attribute.</p>
+              <p>Marks a constructor parameter to be bound to the XML attribute.</p>
             </div>
           </div>
           <div class="codeHeader" data-bi-name="code-header">
             <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
           </div>
-          <pre class="wrap"><code class="nohighlight">[<span class="hljs-title">AttributeUsage</span>(<span class="hljs-title">System.AttributeTargets.Field</span>, Inherited = <span class="hljs-keyword">false</span>, AllowMultiple = <span class="hljs-keyword">false</span>)]<br><span class="hljs-keyword">public</span> <span class="hljs-keyword">sealed</span> <span class="hljs-keyword">class</span> <span class="hljs-title">ForAttributeAttribute</span> : <span class="hljs-title">Attribute</span></code></pre>
+          <pre class="wrap"><code class="nohighlight">[<span class="hljs-title">AttributeUsage</span>(<span class="hljs-title">System.AttributeTargets.Parameter</span>, Inherited = <span class="hljs-keyword">false</span>, AllowMultiple = <span class="hljs-keyword">false</span>)]<br><span class="hljs-keyword">public</span> <span class="hljs-keyword">sealed</span> <span class="hljs-keyword">class</span> <span class="hljs-title">ForAttributeAttribute</span> : <span class="hljs-title">Attribute</span></code></pre>
           <dl class="attributeList stack">
             <dt>
               Inheritance
@@ -57,10 +57,10 @@ gtag('config', 'G-9TQ6JWBKEK');
             <dd>
               <div class="pdlHolder">
                 <div class="pdl">
-                  <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=netcore-3.0" data-linktype="absolute-path">object</a></span>
+                  <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=net-9.0" data-linktype="absolute-path">object</a></span>
                 </div>
                 <div class="pdl">
-                  <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.attribute?view=netcore-3.0" data-linktype="absolute-path">Attribute</a></span>
+                  <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.attribute?view=net-9.0" data-linktype="absolute-path">Attribute</a></span>
                 </div>
                 <span class="lang-csharp">For<wbr>Attribute<wbr>Attribute</span>
               </div>
@@ -72,22 +72,41 @@ gtag('config', 'G-9TQ6JWBKEK');
             </dt>
             <dd>
               <div class="cdlHolder">
-                <span class="cdl"><span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.attributeusageattribute?view=netcore-3.0" data-linktype="absolute-path">Attribute<wbr>Usage<wbr>Attribute</a></span></span>
+                <span class="cdl"><span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.attributeusageattribute?view=net-9.0" data-linktype="absolute-path">Attribute<wbr>Usage<wbr>Attribute</a></span></span>
               </div>
             </dd>
           </dl>
+          <h2 id="examples" class="heading-with-anchor">Examples</h2>
+          <pre><code class="lang-csharp">[ForElement("person")]
+public record class Person(
+    [ForAttribute("id")] string? Id,
+    [ForAttribute("name")] string? Name);
+
+// Corresponding XML:
+// &lt;person id="42" name="John Doe"/&gt;</code></pre>
           <h2 id="remarks" class="heading-with-anchor">Remarks</h2>
-          <p>If the <a href="Maroontress.Oxbind.Oxbinder.html">Oxbinder&lt;T&gt;</a> finds the XML attribute, it populates
-    the annotated field corresponding to the attribute name, with that
-    value.</p>
-          <p>This annotation must mark an instance field whose type is <a href="https://docs.microsoft.com/en-us/dotnet/api/system.string?view=netcore-3.0">string</a>. And the class that has the instance field must be
-    annotated with <a href="Maroontress.Oxbind.ForElementAttribute.html">ForElementAttribute</a>.</p>
-          <p>Each attribute name of the annotation <a href="#">ForAttributeAttribute</a> and <a href="Maroontress.Oxbind.FromAttributeAttribute.html">FromAttributeAttribute</a>
-    must be unique in one class.
-    For example, in a class, if an instance field is annotated with
-    <code>[ForAttribute("name")]</code>, there must be no other fields annotated
-    with <code>[ForAttribute("name")]</code> and also be no methods annotated
-    with <code>[FromAttribute("name")]</code>.</p>
+          <p>The <a href="#">ForAttributeAttribute</a> associates a constructor parameter
+     with an XML attribute name and namespace. Use an empty string (<code>""</code>)
+     for <code>ns</code> to specify the null namespace (i.e., no
+     namespace).</p>
+          <p>If the <a href="Maroontress.Oxbind.Oxbinder.html">Oxbinder&lt;T&gt;</a> encounters an XML attribute, it populates
+     the constructor parameter corresponding to the attribute name with the
+     attribute's value.</p>
+          <p>This attribute must mark a constructor parameter and the parameter must be
+     one of the following types:
+     <ul><li><a href="https://docs.microsoft.com/en-us/dotnet/api/system.string?view=net-9.0">string</a>?</li><li><a href="Maroontress.Oxbind.BindResult.html">BindResult&lt;string&gt;</a>?</li></ul>
+     Additionally, the class containing this constructor must be annotated with
+     <a href="Maroontress.Oxbind.ForElementAttribute.html">ForElementAttribute</a>.</p>
+          <p>The attribute name specified in <a href="#">ForAttributeAttribute</a> must be
+     unique within a single class. For example, if a constructor parameter is
+     annotated with <code>[ForAttribute("foo")]</code>, no other parameter in the same
+     class can be annotated with <code>[ForAttribute("foo")]</code>.</p>
+          <p>All parameters marked with <a href="#">ForAttributeAttribute</a> must be
+     placed at the beginning of the constructor parameter list, before any other
+     parameters marked with other Oxbind binding attributes (such as <a href="Maroontress.Oxbind.RequiredAttribute.html">RequiredAttribute</a>, <a href="Maroontress.Oxbind.OptionalAttribute.html">OptionalAttribute</a>, <a href="Maroontress.Oxbind.MultipleAttribute.html">MultipleAttribute</a>, or <a href="Maroontress.Oxbind.ForTextAttribute.html">ForTextAttribute</a>).</p>
+          <p>If the XML attribute does not exist in the element, the parameter is
+     populated with <code>null</code>. Therefore, the parameter type must
+     be a nullable reference type.</p>
           <h2 id="constructors" class="heading-with-anchor">Constructors</h2>
           <div class="table-scroll-wrapper">
             <table class="nameValue">
@@ -97,7 +116,7 @@ gtag('config', 'G-9TQ6JWBKEK');
                     <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Oxbind.ForAttributeAttribute.#ctor(System.String,System.String)" data-linktype="relative-path">For<wbr>Attribute<wbr>Attribute(string, string)</a></span>
                   </td>
                   <td>
-                    <p>Initializes a new instance of the <a href="#">ForAttributeAttribute</a> class.</p>
+                    <p>Marks a constructor parameter to be bound to the XML attribute.</p>
                   </td>
                 </tr>
               </tbody>
@@ -115,6 +134,14 @@ gtag('config', 'G-9TQ6JWBKEK');
                     <p>Gets the qualified name of the attribute.</p>
                   </td>
                 </tr>
+                <tr>
+                  <td>
+                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.attribute.typeid?view=net-9.0">TypeId</a>
+                  </td>
+                  <td>
+                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.attribute?view=net-9.0" data-linktype="absolute-path">Attribute</a>)
+                  </td>
+                </tr>
               </tbody>
             </table>
           </div>
@@ -124,61 +151,68 @@ gtag('config', 'G-9TQ6JWBKEK');
               <tbody>
                 <tr>
                   <td>
-                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.attribute.equals?view=netcore-3.0#System_Attribute_Equals_System_Object_">Equals(object)</a>
+                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.attribute.equals?view=net-9.0#System_Attribute_Equals_System_Object_">Equals(object)</a>
                   </td>
                   <td>
-                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.attribute?view=netcore-3.0" data-linktype="absolute-path">Attribute</a>)
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.attribute.gethashcode?view=netcore-3.0">GetHashCode()</a>
-                  </td>
-                  <td>
-                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.attribute?view=netcore-3.0" data-linktype="absolute-path">Attribute</a>)
+                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.attribute?view=net-9.0" data-linktype="absolute-path">Attribute</a>)
                   </td>
                 </tr>
                 <tr>
                   <td>
-                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.object.gettype?view=netcore-3.0">GetType()</a>
+                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.attribute.gethashcode?view=net-9.0">GetHashCode()</a>
                   </td>
                   <td>
-                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=netcore-3.0" data-linktype="absolute-path">object</a>)
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.object.memberwiseclone?view=netcore-3.0">MemberwiseClone()</a>
-                  </td>
-                  <td>
-                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=netcore-3.0" data-linktype="absolute-path">object</a>)
+                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.attribute?view=net-9.0" data-linktype="absolute-path">Attribute</a>)
                   </td>
                 </tr>
                 <tr>
                   <td>
-                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.object.tostring?view=netcore-3.0">ToString()</a>
+                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.attribute.isdefaultattribute?view=net-9.0">IsDefaultAttribute()</a>
                   </td>
                   <td>
-                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=netcore-3.0" data-linktype="absolute-path">object</a>)
+                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.attribute?view=net-9.0" data-linktype="absolute-path">Attribute</a>)
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.attribute.match?view=net-9.0#System_Attribute_Match_System_Object_">Match(object)</a>
+                  </td>
+                  <td>
+                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.attribute?view=net-9.0" data-linktype="absolute-path">Attribute</a>)
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.object.gettype?view=net-9.0">GetType()</a>
+                  </td>
+                  <td>
+                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=net-9.0" data-linktype="absolute-path">object</a>)
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.object.memberwiseclone?view=net-9.0">MemberwiseClone()</a>
+                  </td>
+                  <td>
+                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=net-9.0" data-linktype="absolute-path">object</a>)
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.object.tostring?view=net-9.0">ToString()</a>
+                  </td>
+                  <td>
+                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=net-9.0" data-linktype="absolute-path">object</a>)
                   </td>
                 </tr>
               </tbody>
             </table>
           </div>
-          <h2 id="see-also" class="heading-with-anchor">See Also</h2>
-          <ul>
-            <li>
-              <a href="Maroontress.Oxbind.FromAttributeAttribute.html">FromAttributeAttribute</a>
-            </li>
-            <li>
-              <a href="Maroontress.Oxbind.ForElementAttribute.html">ForElementAttribute</a>
-            </li>
-          </ul>
           <h1 id="constructors-detail" class="heading-with-anchor">Constructors Detail</h1>
           <h2 id="M:Maroontress.Oxbind.ForAttributeAttribute.#ctor(System.String,System.String)">ForAttributeAttribute(string, string)</h2>
           <div class="summaryHolder">
             <div class="summary clearFix">
-              <p>Initializes a new instance of the <a href="#">ForAttributeAttribute</a> class.</p>
+              <p>Marks a constructor parameter to be bound to the XML attribute.</p>
             </div>
           </div>
           <div class="codeHeader" data-bi-name="code-header">
@@ -192,10 +226,10 @@ gtag('config', 'G-9TQ6JWBKEK');
                 name
               </dt>
               <dd>
-                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.string?view=netcore-3.0" data-linktype="absolute-path">string</a></span>
+                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.string?view=net-9.0" data-linktype="absolute-path">string</a></span>
               </dd>
             </dl>
-            <p>The attribute name.</p>
+            <p>The attribute name. This must be a valid XML attribute name.</p>
           </div>
           <div class="propertyInfo stack">
             <dl class="parameterList">
@@ -203,11 +237,43 @@ gtag('config', 'G-9TQ6JWBKEK');
                 ns
               </dt>
               <dd>
-                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.string?view=netcore-3.0" data-linktype="absolute-path">string</a></span>
+                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.string?view=net-9.0" data-linktype="absolute-path">string</a></span>
               </dd>
             </dl>
-            <p>The namespace URI.</p>
+            <p>The namespace URI. Use an empty string ("") for attributes without a
+     namespace.</p>
           </div>
+          <h3>Remarks</h3>
+          <p>The <a href="#">ForAttributeAttribute</a> associates a constructor parameter
+     with an XML attribute name and namespace. Use an empty string (<code>""</code>)
+     for <code>ns</code> to specify the null namespace (i.e., no
+     namespace).</p>
+          <p>If the <a href="Maroontress.Oxbind.Oxbinder.html">Oxbinder&lt;T&gt;</a> encounters an XML attribute, it populates
+     the constructor parameter corresponding to the attribute name with the
+     attribute's value.</p>
+          <p>This attribute must mark a constructor parameter and the parameter must be
+     one of the following types:
+     <ul><li><a href="https://docs.microsoft.com/en-us/dotnet/api/system.string?view=net-9.0">string</a>?</li><li><a href="Maroontress.Oxbind.BindResult.html">BindResult&lt;string&gt;</a>?</li></ul>
+     Additionally, the class containing this constructor must be annotated with
+     <a href="Maroontress.Oxbind.ForElementAttribute.html">ForElementAttribute</a>.</p>
+          <p>The attribute name specified in <a href="#">ForAttributeAttribute</a> must be
+     unique within a single class. For example, if a constructor parameter is
+     annotated with <code>[ForAttribute("foo")]</code>, no other parameter in the same
+     class can be annotated with <code>[ForAttribute("foo")]</code>.</p>
+          <p>All parameters marked with <a href="#">ForAttributeAttribute</a> must be
+     placed at the beginning of the constructor parameter list, before any other
+     parameters marked with other Oxbind binding attributes (such as <a href="Maroontress.Oxbind.RequiredAttribute.html">RequiredAttribute</a>, <a href="Maroontress.Oxbind.OptionalAttribute.html">OptionalAttribute</a>, <a href="Maroontress.Oxbind.MultipleAttribute.html">MultipleAttribute</a>, or <a href="Maroontress.Oxbind.ForTextAttribute.html">ForTextAttribute</a>).</p>
+          <p>If the XML attribute does not exist in the element, the parameter is
+     populated with <code>null</code>. Therefore, the parameter type must
+     be a nullable reference type.</p>
+          <h3>Examples</h3>
+          <pre><code class="lang-csharp">[ForElement("person")]
+public record class Person(
+    [ForAttribute("id")] string? Id,
+    [ForAttribute("name")] string? Name);
+
+// Corresponding XML:
+// &lt;person id="42" name="John Doe"/&gt;</code></pre>
           <h1 id="properties-detail" class="heading-with-anchor">Properties Detail</h1>
           <h2 id="P:Maroontress.Oxbind.ForAttributeAttribute.QName">QName</h2>
           <div class="summaryHolder">
@@ -222,7 +288,7 @@ gtag('config', 'G-9TQ6JWBKEK');
           <h4 class="propertyInfoTitle stack">Property Value</h4>
           <div class="propertyInfo">
             <div class="subtle">
-              <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.xml.xmlqualifiedname?view=netcore-3.0" data-linktype="absolute-path">Xml<wbr>Qualified<wbr>Name</a>
+              <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.xml.xmlqualifiedname?view=net-9.0" data-linktype="absolute-path">Xml<wbr>Qualified<wbr>Name</a>
             </div>
           </div>
         </main>

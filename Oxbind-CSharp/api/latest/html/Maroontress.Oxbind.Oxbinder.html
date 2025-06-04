@@ -43,7 +43,8 @@ gtag('config', 'G-9TQ6JWBKEK');
           </div>
           <div class="summaryHolder">
             <div class="summary clearFix">
-              <p>Provides a way to create new instances from text readers.</p>
+              <p>Defines a contract for deserializing XML from a text reader into an object
+    of type <code>T</code>.</p>
             </div>
           </div>
           <div class="codeHeader" data-bi-name="code-header">
@@ -60,7 +61,8 @@ gtag('config', 'G-9TQ6JWBKEK');
                 <code>class</code>
               </dd>
             </dl>
-            <p>The type of the instance to create.</p>
+            <p>The type of the instance to create. This must be a class attributed with
+    <a href="Maroontress.Oxbind.ForElementAttribute.html">ForElementAttribute</a>.</p>
           </div>
           <h2 id="methods" class="heading-with-anchor">Methods</h2>
           <div class="table-scroll-wrapper">
@@ -95,7 +97,7 @@ gtag('config', 'G-9TQ6JWBKEK');
                 reader
               </dt>
               <dd>
-                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.io.textreader?view=netcore-3.0" data-linktype="absolute-path">Text<wbr>Reader</a></span>
+                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.io.textreader?view=net-9.0" data-linktype="absolute-path">Text<wbr>Reader</a></span>
               </dd>
             </dl>
             <p>The text reader that provides the XML stream.</p>
@@ -105,14 +107,12 @@ gtag('config', 'G-9TQ6JWBKEK');
             <div class="subtle">
               T
             </div>
-            <p>A new instance.</p>
+            <p>A new instance corresponding to the XML root element.</p>
           </div>
           <h3>Remarks</h3>
-          <p>This method throws <a href="Maroontress.Oxbind.BindException.html">BindException</a> if there are
-    invalid annotations in the class representing the XML root element
-    (that was specified with <a href="Maroontress.Oxbind.OxbinderFactory.html#M:Maroontress.Oxbind.OxbinderFactory.Of``1">OxbinderFactory.Of&lt;T&gt;()</a> when
-    this <code>Oxbinder</code> was created), or in the classes representing
-    the descendants of that root element.</p>
+          <p>The XML document must have a root element that matches type
+    <code>T</code> (i.e., the element name and namespace must
+    correspond to the <a href="Maroontress.Oxbind.ForElementAttribute.html">ForElementAttribute</a> on <code>T</code>).</p>
         </main>
       </section>
     </div>

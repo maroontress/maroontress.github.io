@@ -43,13 +43,14 @@ gtag('config', 'G-9TQ6JWBKEK');
           </div>
           <div class="summaryHolder">
             <div class="summary clearFix">
-              <p>Validates the semantics of the Oxbind annotations.</p>
+              <p>Validates the semantics of Oxbind attributes on classes and constructor
+    parameters.</p>
             </div>
           </div>
           <div class="codeHeader" data-bi-name="code-header">
             <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
           </div>
-          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-keyword">sealed</span> <span class="hljs-keyword">class</span> <span class="hljs-title">Validator</span> : <span class="hljs-title">AbstractValidator</span></code></pre>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-keyword">sealed</span> <span class="hljs-keyword">class</span> <span class="hljs-title">Validator</span></code></pre>
           <dl class="attributeList stack">
             <dt>
               Inheritance
@@ -57,10 +58,7 @@ gtag('config', 'G-9TQ6JWBKEK');
             <dd>
               <div class="pdlHolder">
                 <div class="pdl">
-                  <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=netcore-3.0" data-linktype="absolute-path">object</a></span>
-                </div>
-                <div class="pdl">
-                  <span class="lang-csharp"><a class="xref" href="Maroontress.Oxbind.Impl.AbstractValidator.html" data-linktype="relative-path">Abstract<wbr>Validator</a></span>
+                  <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=net-9.0" data-linktype="absolute-path">object</a></span>
                 </div>
                 <span class="lang-csharp">Validator</span>
               </div>
@@ -72,7 +70,7 @@ gtag('config', 'G-9TQ6JWBKEK');
               <tbody>
                 <tr>
                   <td>
-                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Oxbind.Impl.Validator.#ctor(System.Type)" data-linktype="relative-path">Validator(Type)</a></span>
+                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Oxbind.Impl.Validator.#ctor(System.Type,Maroontress.Oxbind.Impl.Journal)" data-linktype="relative-path">Validator(Type, Journal)</a></span>
                   </td>
                   <td>
                     <p>Initializes a new instance of the <a href="#">Validator</a> class.</p>
@@ -87,20 +85,54 @@ gtag('config', 'G-9TQ6JWBKEK');
               <tbody>
                 <tr>
                   <td>
-                    <span class="lang-csharp break-text"><a class="xref" href="#P:Maroontress.Oxbind.Impl.Validator.SchemaClasses" data-linktype="relative-path">Schema<wbr>Classes</a></span>
+                    <span class="lang-csharp break-text"><a class="xref" href="#P:Maroontress.Oxbind.Impl.Validator.Logger" data-linktype="relative-path">Logger</a></span>
                   </td>
                   <td>
-                    <p>Gets the collection of the class that the <a href="Maroontress.Oxbind.Schema.html">Schema</a>
-    object of the validated class contains.</p>
+                    <p>Gets the <a href="Maroontress.Oxbind.Impl.Journal.html">Journal</a> instance.</p>
                   </td>
                 </tr>
                 <tr>
                   <td>
-                    <a href="Maroontress.Oxbind.Impl.AbstractValidator.html#P:Maroontress.Oxbind.Impl.AbstractValidator.IsValid">IsValid</a>
+                    <span class="lang-csharp break-text"><a class="xref" href="#P:Maroontress.Oxbind.Impl.Validator.Constructor" data-linktype="relative-path">Constructor</a></span>
+                  </td>
+                  <td>
+                    <p>Gets the <a href="https://docs.microsoft.com/en-us/dotnet/api/system.reflection.constructorinfo?view=net-9.0">ConstructorInfo</a> for the constructor of the
+    validated class that has been determined to be used for binding, or
+    <code>null</code> if no suitable constructor is found.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="#P:Maroontress.Oxbind.Impl.Validator.ElementName" data-linktype="relative-path">Element<wbr>Name</a></span>
+                  </td>
+                  <td>
+                    <p>Gets the XML element name from the <a href="Maroontress.Oxbind.ForElementAttribute.html">ForElementAttribute</a>
+    annotation on the class.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="#P:Maroontress.Oxbind.Impl.Validator.IsValid" data-linktype="relative-path">Is<wbr>Valid</a></span>
                   </td>
                   <td>
                     <p>Gets a value indicating whether this validator has detected errors.</p>
-                    (Inherited from <a class="xref" href="Maroontress.Oxbind.Impl.AbstractValidator.html" data-linktype="relative-path">Abstract<wbr>Validator</a>)
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="#P:Maroontress.Oxbind.Impl.Validator.AttributeParameters" data-linktype="relative-path">Attribute<wbr>Parameters</a></span>
+                  </td>
+                  <td>
+                    <p>Gets the collection of the constructor parameters attributed with <a href="Maroontress.Oxbind.ForAttributeAttribute.html">ForAttributeAttribute</a>.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="#P:Maroontress.Oxbind.Impl.Validator.ChildDependency" data-linktype="relative-path">Child<wbr>Dependency</a></span>
+                  </td>
+                  <td>
+                    <p>Gets the <a href="Maroontress.Oxbind.Impl.Dependency.html">Dependency</a> object representing the child element
+    dependencies of the validated class.</p>
                   </td>
                 </tr>
               </tbody>
@@ -112,86 +144,49 @@ gtag('config', 'G-9TQ6JWBKEK');
               <tbody>
                 <tr>
                   <td>
-                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Oxbind.Impl.Validator.GetDependencies(System.Type)" data-linktype="relative-path">Get<wbr>Dependencies(Type)</a></span>
+                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.object.equals?view=net-9.0#System_Object_Equals_System_Object_">Equals(object)</a>
                   </td>
                   <td>
-                    <p>Returns the new set of types that the specified class depends on.</p>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <a href="Maroontress.Oxbind.Impl.AbstractValidator.html#M:Maroontress.Oxbind.Impl.AbstractValidator.GetMessages">GetMessages()</a>
-                  </td>
-                  <td>
-                    <p>Get a new log messages representing the warnings/errors that
-    this validator has detected.</p>
-                    (Inherited from <a class="xref" href="Maroontress.Oxbind.Impl.AbstractValidator.html" data-linktype="relative-path">Abstract<wbr>Validator</a>)
+                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=net-9.0" data-linktype="absolute-path">object</a>)
                   </td>
                 </tr>
                 <tr>
                   <td>
-                    <a href="Maroontress.Oxbind.Impl.AbstractValidator.html#M:Maroontress.Oxbind.Impl.AbstractValidator.Warn(System.String,System.Object[])">Warn(string, object[])</a>
+                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.object.gethashcode?view=net-9.0">GetHashCode()</a>
                   </td>
                   <td>
-                    <p>Logs a warning message.</p>
-                    (Inherited from <a class="xref" href="Maroontress.Oxbind.Impl.AbstractValidator.html" data-linktype="relative-path">Abstract<wbr>Validator</a>)
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <a href="Maroontress.Oxbind.Impl.AbstractValidator.html#M:Maroontress.Oxbind.Impl.AbstractValidator.Error(System.String,System.Object[])">Error(string, object[])</a>
-                  </td>
-                  <td>
-                    <p>Logs an error message and marks this validator to indicate that it
-    has detected errors.</p>
-                    (Inherited from <a class="xref" href="Maroontress.Oxbind.Impl.AbstractValidator.html" data-linktype="relative-path">Abstract<wbr>Validator</a>)
+                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=net-9.0" data-linktype="absolute-path">object</a>)
                   </td>
                 </tr>
                 <tr>
                   <td>
-                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.object.equals?view=netcore-3.0#System_Object_Equals_System_Object_">Equals(object)</a>
+                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.object.gettype?view=net-9.0">GetType()</a>
                   </td>
                   <td>
-                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=netcore-3.0" data-linktype="absolute-path">object</a>)
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.object.gethashcode?view=netcore-3.0">GetHashCode()</a>
-                  </td>
-                  <td>
-                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=netcore-3.0" data-linktype="absolute-path">object</a>)
+                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=net-9.0" data-linktype="absolute-path">object</a>)
                   </td>
                 </tr>
                 <tr>
                   <td>
-                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.object.gettype?view=netcore-3.0">GetType()</a>
+                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.object.memberwiseclone?view=net-9.0">MemberwiseClone()</a>
                   </td>
                   <td>
-                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=netcore-3.0" data-linktype="absolute-path">object</a>)
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.object.memberwiseclone?view=netcore-3.0">MemberwiseClone()</a>
-                  </td>
-                  <td>
-                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=netcore-3.0" data-linktype="absolute-path">object</a>)
+                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=net-9.0" data-linktype="absolute-path">object</a>)
                   </td>
                 </tr>
                 <tr>
                   <td>
-                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.object.tostring?view=netcore-3.0">ToString()</a>
+                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.object.tostring?view=net-9.0">ToString()</a>
                   </td>
                   <td>
-                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=netcore-3.0" data-linktype="absolute-path">object</a>)
+                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=net-9.0" data-linktype="absolute-path">object</a>)
                   </td>
                 </tr>
               </tbody>
             </table>
           </div>
           <h1 id="constructors-detail" class="heading-with-anchor">Constructors Detail</h1>
-          <h2 id="M:Maroontress.Oxbind.Impl.Validator.#ctor(System.Type)">Validator(Type)</h2>
+          <h2 id="M:Maroontress.Oxbind.Impl.Validator.#ctor(System.Type,Maroontress.Oxbind.Impl.Journal)">Validator(Type, Journal)</h2>
           <div class="summaryHolder">
             <div class="summary clearFix">
               <p>Initializes a new instance of the <a href="#">Validator</a> class.</p>
@@ -200,7 +195,7 @@ gtag('config', 'G-9TQ6JWBKEK');
           <div class="codeHeader" data-bi-name="code-header">
             <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
           </div>
-          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-title">Validator</span>(<span class="hljs-title">Type</span> clazz)</code></pre>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-title">Validator</span>(<span class="hljs-title">Type</span> clazz, <span class="hljs-title">Journal</span> journal)</code></pre>
           <h4 class="propertyInfoTitle stack">Parameters</h4>
           <div class="propertyInfo">
             <dl class="parameterList">
@@ -208,58 +203,122 @@ gtag('config', 'G-9TQ6JWBKEK');
                 clazz
               </dt>
               <dd>
-                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.type?view=netcore-3.0" data-linktype="absolute-path">Type</a></span>
+                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.type?view=net-9.0" data-linktype="absolute-path">Type</a></span>
               </dd>
             </dl>
-            <p>The class annotated with <a href="Maroontress.Oxbind.ForElementAttribute.html">ForElementAttribute</a>.</p>
+            <p>The type of the class attributed with <a href="Maroontress.Oxbind.ForElementAttribute.html">ForElementAttribute</a>.</p>
+          </div>
+          <div class="propertyInfo stack">
+            <dl class="parameterList">
+              <dt>
+                journal
+              </dt>
+              <dd>
+                <span class="lang-csharp"><a class="xref" href="Maroontress.Oxbind.Impl.Journal.html" data-linktype="relative-path">Journal</a></span>
+              </dd>
+            </dl>
+            <p>The <a href="Maroontress.Oxbind.Impl.Journal.html">Journal</a> instance.</p>
           </div>
           <h1 id="properties-detail" class="heading-with-anchor">Properties Detail</h1>
-          <h2 id="P:Maroontress.Oxbind.Impl.Validator.SchemaClasses">SchemaClasses</h2>
+          <h2 id="P:Maroontress.Oxbind.Impl.Validator.Logger">Logger</h2>
           <div class="summaryHolder">
             <div class="summary clearFix">
-              <p>Gets the collection of the class that the <a href="Maroontress.Oxbind.Schema.html">Schema</a>
-    object of the validated class contains.</p>
+              <p>Gets the <a href="Maroontress.Oxbind.Impl.Journal.html">Journal</a> instance.</p>
             </div>
           </div>
           <div class="codeHeader" data-bi-name="code-header">
             <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
           </div>
-          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-title">IEnumerable</span>&lt;<span class="hljs-title">Type</span>&gt; <span class="hljs-title">SchemaClasses</span> { <span class="hljs-keyword">get</span>; }</code></pre>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-title">Journal</span> <span class="hljs-title">Logger</span> { <span class="hljs-keyword">get</span>; }</code></pre>
           <h4 class="propertyInfoTitle stack">Property Value</h4>
           <div class="propertyInfo">
             <div class="subtle">
-              <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1?view=netcore-3.0" data-linktype="absolute-path">IEnumerable</a>&lt;<a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.type?view=netcore-3.0" data-linktype="absolute-path">Type</a>&gt;
+              <a class="xref" href="Maroontress.Oxbind.Impl.Journal.html" data-linktype="relative-path">Journal</a>
             </div>
           </div>
-          <h1 id="methods-detail" class="heading-with-anchor">Methods Detail</h1>
-          <h2 id="M:Maroontress.Oxbind.Impl.Validator.GetDependencies(System.Type)">GetDependencies(Type)</h2>
+          <h2 id="P:Maroontress.Oxbind.Impl.Validator.Constructor">Constructor</h2>
           <div class="summaryHolder">
             <div class="summary clearFix">
-              <p>Returns the new set of types that the specified class depends on.</p>
+              <p>Gets the <a href="https://docs.microsoft.com/en-us/dotnet/api/system.reflection.constructorinfo?view=net-9.0">ConstructorInfo</a> for the constructor of the
+    validated class that has been determined to be used for binding, or
+    <code>null</code> if no suitable constructor is found.</p>
             </div>
           </div>
           <div class="codeHeader" data-bi-name="code-header">
             <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
           </div>
-          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-title">ISet</span>&lt;<span class="hljs-title">Type</span>&gt; <span class="hljs-title">GetDependencies</span>(<span class="hljs-title">Type</span> clazz)</code></pre>
-          <h4 class="propertyInfoTitle stack">Parameters</h4>
-          <div class="propertyInfo">
-            <dl class="parameterList">
-              <dt>
-                clazz
-              </dt>
-              <dd>
-                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.type?view=netcore-3.0" data-linktype="absolute-path">Type</a></span>
-              </dd>
-            </dl>
-            <p>The type of the class.</p>
-          </div>
-          <h4 class="propertyInfoTitle stack">Returns</h4>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-title">ConstructorInfo</span> <span class="hljs-title">Constructor</span> { <span class="hljs-keyword">get</span>; }</code></pre>
+          <h4 class="propertyInfoTitle stack">Property Value</h4>
           <div class="propertyInfo">
             <div class="subtle">
-              <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.iset-1?view=netcore-3.0" data-linktype="absolute-path">ISet</a>&lt;<a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.type?view=netcore-3.0" data-linktype="absolute-path">Type</a>&gt;
+              <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.reflection.constructorinfo?view=net-9.0" data-linktype="absolute-path">Constructor<wbr>Info</a>
             </div>
-            <p>The new set of types that <code>clazz</code> depends on.</p>
+          </div>
+          <h2 id="P:Maroontress.Oxbind.Impl.Validator.ElementName">ElementName</h2>
+          <div class="summaryHolder">
+            <div class="summary clearFix">
+              <p>Gets the XML element name from the <a href="Maroontress.Oxbind.ForElementAttribute.html">ForElementAttribute</a>
+    annotation on the class.</p>
+            </div>
+          </div>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-title">XmlQualifiedName</span> <span class="hljs-title">ElementName</span> { <span class="hljs-keyword">get</span>; }</code></pre>
+          <h4 class="propertyInfoTitle stack">Property Value</h4>
+          <div class="propertyInfo">
+            <div class="subtle">
+              <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.xml.xmlqualifiedname?view=net-9.0" data-linktype="absolute-path">Xml<wbr>Qualified<wbr>Name</a>
+            </div>
+          </div>
+          <h2 id="P:Maroontress.Oxbind.Impl.Validator.IsValid">IsValid</h2>
+          <div class="summaryHolder">
+            <div class="summary clearFix">
+              <p>Gets a value indicating whether this validator has detected errors.</p>
+            </div>
+          </div>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-keyword">bool</span> <span class="hljs-title">IsValid</span> { <span class="hljs-keyword">get</span>; }</code></pre>
+          <h4 class="propertyInfoTitle stack">Property Value</h4>
+          <div class="propertyInfo">
+            <div class="subtle">
+              <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.boolean?view=net-9.0" data-linktype="absolute-path">bool</a>
+            </div>
+          </div>
+          <h2 id="P:Maroontress.Oxbind.Impl.Validator.AttributeParameters">AttributeParameters</h2>
+          <div class="summaryHolder">
+            <div class="summary clearFix">
+              <p>Gets the collection of the constructor parameters attributed with <a href="Maroontress.Oxbind.ForAttributeAttribute.html">ForAttributeAttribute</a>.</p>
+            </div>
+          </div>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-title">IEnumerable</span>&lt;AttributeParameter&gt; <span class="hljs-title">AttributeParameters</span> { <span class="hljs-keyword">get</span>; }</code></pre>
+          <h4 class="propertyInfoTitle stack">Property Value</h4>
+          <div class="propertyInfo">
+            <div class="subtle">
+              <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1?view=net-9.0" data-linktype="absolute-path">IEnumerable</a>&lt;<a class="xref" href="Maroontress.Oxbind.Impl.AttributeParameter.html" data-linktype="relative-path">Attribute<wbr>Parameter</a>&gt;
+            </div>
+          </div>
+          <h2 id="P:Maroontress.Oxbind.Impl.Validator.ChildDependency">ChildDependency</h2>
+          <div class="summaryHolder">
+            <div class="summary clearFix">
+              <p>Gets the <a href="Maroontress.Oxbind.Impl.Dependency.html">Dependency</a> object representing the child element
+    dependencies of the validated class.</p>
+            </div>
+          </div>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> Dependency <span class="hljs-title">ChildDependency</span> { <span class="hljs-keyword">get</span>; }</code></pre>
+          <h4 class="propertyInfoTitle stack">Property Value</h4>
+          <div class="propertyInfo">
+            <div class="subtle">
+              <a class="xref" href="Maroontress.Oxbind.Impl.Dependency.html" data-linktype="relative-path">Dependency</a>
+            </div>
           </div>
         </main>
       </section>

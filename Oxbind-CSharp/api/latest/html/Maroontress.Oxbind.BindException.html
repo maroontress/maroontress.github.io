@@ -43,8 +43,8 @@ gtag('config', 'G-9TQ6JWBKEK');
           </div>
           <div class="summaryHolder">
             <div class="summary clearFix">
-              <p>Indicates that an error has occurred while creating a new instance with
-    the XML reader.</p>
+              <p>Indicates that an error occurred during XML deserialization, binding, or
+    configuration validation.</p>
             </div>
           </div>
           <div class="codeHeader" data-bi-name="code-header">
@@ -58,15 +58,29 @@ gtag('config', 'G-9TQ6JWBKEK');
             <dd>
               <div class="pdlHolder">
                 <div class="pdl">
-                  <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=netcore-3.0" data-linktype="absolute-path">object</a></span>
+                  <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=net-9.0" data-linktype="absolute-path">object</a></span>
                 </div>
                 <div class="pdl">
-                  <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.exception?view=netcore-3.0" data-linktype="absolute-path">Exception</a></span>
+                  <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.exception?view=net-9.0" data-linktype="absolute-path">Exception</a></span>
                 </div>
                 <span class="lang-csharp">Bind<wbr>Exception</span>
               </div>
             </dd>
           </dl>
+          <dl class="attributeList stack">
+            <dt>
+              Implements
+            </dt>
+            <dd>
+              <div class="cdlHolder">
+                <span class="cdl"><span class="lang-csharp break-text"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.runtime.serialization.iserializable?view=net-9.0" data-linktype="absolute-path">ISerializable</a></span></span>
+              </div>
+            </dd>
+          </dl>
+          <h2 id="remarks" class="heading-with-anchor">Remarks</h2>
+          <p>This exception is thrown when Oxbind fails to bind XML data to a target
+    class, for example, when the XML structure does not match the expected
+    schema defined by the constructor parameters of the target class.</p>
           <h2 id="constructors" class="heading-with-anchor">Constructors</h2>
           <div class="table-scroll-wrapper">
             <table class="nameValue">
@@ -76,8 +90,7 @@ gtag('config', 'G-9TQ6JWBKEK');
                     <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Oxbind.BindException.#ctor" data-linktype="relative-path">Bind<wbr>Exception()</a></span>
                   </td>
                   <td>
-                    <p>Initializes a new instance of the <a href="#">BindException</a>
-    class.</p>
+                    <p>Initializes a new instance of the <a href="#">BindException</a> class.</p>
                   </td>
                 </tr>
                 <tr>
@@ -85,8 +98,8 @@ gtag('config', 'G-9TQ6JWBKEK');
                     <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Oxbind.BindException.#ctor(System.String)" data-linktype="relative-path">Bind<wbr>Exception(string)</a></span>
                   </td>
                   <td>
-                    <p>Initializes a new instance of the <a href="#">BindException</a>
-    class, with the specified detail message.</p>
+                    <p>Initializes a new instance of the <a href="#">BindException</a> class,
+    with the specified detail message.</p>
                   </td>
                 </tr>
                 <tr>
@@ -94,8 +107,8 @@ gtag('config', 'G-9TQ6JWBKEK');
                     <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Oxbind.BindException.#ctor(System.String,System.Exception)" data-linktype="relative-path">Bind<wbr>Exception(string, Exception)</a></span>
                   </td>
                   <td>
-                    <p>Initializes a new instance of the <a href="#">BindException</a>
-    class, with the specified detail message and cause.</p>
+                    <p>Initializes a new instance of the <a href="#">BindException</a> class,
+    with the specified detail message and cause.</p>
                   </td>
                 </tr>
                 <tr>
@@ -103,9 +116,8 @@ gtag('config', 'G-9TQ6JWBKEK');
                     <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Oxbind.BindException.#ctor(System.String,System.Xml.IXmlLineInfo)" data-linktype="relative-path">Bind<wbr>Exception(string, IXml<wbr>Line<wbr>Info)</a></span>
                   </td>
                   <td>
-                    <p>Initializes a new instance of the <a href="#">BindException</a>
-    class, with the specified detail message and the specified
-    location.</p>
+                    <p>Initializes a new instance of the <a href="#">BindException</a> class,
+    with the specified detail message and the specified location.</p>
                   </td>
                 </tr>
                 <tr>
@@ -113,8 +125,8 @@ gtag('config', 'G-9TQ6JWBKEK');
                     <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Oxbind.BindException.#ctor(System.String,System.Exception,System.Xml.IXmlLineInfo)" data-linktype="relative-path">Bind<wbr>Exception(string, Exception, IXml<wbr>Line<wbr>Info)</a></span>
                   </td>
                   <td>
-                    <p>Initializes a new instance of the <a href="#">BindException</a>
-    class, with the specified detail message and cause.</p>
+                    <p>Initializes a new instance of the <a href="#">BindException</a> class,
+    with the specified detail message and cause.</p>
                   </td>
                 </tr>
               </tbody>
@@ -134,58 +146,66 @@ gtag('config', 'G-9TQ6JWBKEK');
                 </tr>
                 <tr>
                   <td>
-                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.exception.data?view=netcore-3.0">Data</a>
+                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.exception.data?view=net-9.0">Data</a>
                   </td>
                   <td>
-                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.exception?view=netcore-3.0" data-linktype="absolute-path">Exception</a>)
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.exception.helplink?view=netcore-3.0">HelpLink</a>
-                  </td>
-                  <td>
-                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.exception?view=netcore-3.0" data-linktype="absolute-path">Exception</a>)
+                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.exception?view=net-9.0" data-linktype="absolute-path">Exception</a>)
                   </td>
                 </tr>
                 <tr>
                   <td>
-                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.exception.hresult?view=netcore-3.0">HResult</a>
+                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.exception.helplink?view=net-9.0">HelpLink</a>
                   </td>
                   <td>
-                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.exception?view=netcore-3.0" data-linktype="absolute-path">Exception</a>)
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.exception.innerexception?view=netcore-3.0">InnerException</a>
-                  </td>
-                  <td>
-                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.exception?view=netcore-3.0" data-linktype="absolute-path">Exception</a>)
+                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.exception?view=net-9.0" data-linktype="absolute-path">Exception</a>)
                   </td>
                 </tr>
                 <tr>
                   <td>
-                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.exception.message?view=netcore-3.0">Message</a>
+                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.exception.hresult?view=net-9.0">HResult</a>
                   </td>
                   <td>
-                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.exception?view=netcore-3.0" data-linktype="absolute-path">Exception</a>)
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.exception.source?view=netcore-3.0">Source</a>
-                  </td>
-                  <td>
-                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.exception?view=netcore-3.0" data-linktype="absolute-path">Exception</a>)
+                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.exception?view=net-9.0" data-linktype="absolute-path">Exception</a>)
                   </td>
                 </tr>
                 <tr>
                   <td>
-                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.exception.stacktrace?view=netcore-3.0">StackTrace</a>
+                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.exception.innerexception?view=net-9.0">InnerException</a>
                   </td>
                   <td>
-                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.exception?view=netcore-3.0" data-linktype="absolute-path">Exception</a>)
+                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.exception?view=net-9.0" data-linktype="absolute-path">Exception</a>)
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.exception.message?view=net-9.0">Message</a>
+                  </td>
+                  <td>
+                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.exception?view=net-9.0" data-linktype="absolute-path">Exception</a>)
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.exception.source?view=net-9.0">Source</a>
+                  </td>
+                  <td>
+                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.exception?view=net-9.0" data-linktype="absolute-path">Exception</a>)
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.exception.stacktrace?view=net-9.0">StackTrace</a>
+                  </td>
+                  <td>
+                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.exception?view=net-9.0" data-linktype="absolute-path">Exception</a>)
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.exception.targetsite?view=net-9.0">TargetSite</a>
+                  </td>
+                  <td>
+                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.exception?view=net-9.0" data-linktype="absolute-path">Exception</a>)
                   </td>
                 </tr>
               </tbody>
@@ -205,50 +225,66 @@ gtag('config', 'G-9TQ6JWBKEK');
                 </tr>
                 <tr>
                   <td>
-                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.exception.getbaseexception?view=netcore-3.0">GetBaseException()</a>
+                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.exception.getbaseexception?view=net-9.0">GetBaseException()</a>
                   </td>
                   <td>
-                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.exception?view=netcore-3.0" data-linktype="absolute-path">Exception</a>)
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.exception.tostring?view=netcore-3.0">ToString()</a>
-                  </td>
-                  <td>
-                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.exception?view=netcore-3.0" data-linktype="absolute-path">Exception</a>)
+                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.exception?view=net-9.0" data-linktype="absolute-path">Exception</a>)
                   </td>
                 </tr>
                 <tr>
                   <td>
-                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.object.equals?view=netcore-3.0#System_Object_Equals_System_Object_">Equals(object)</a>
+                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.exception.getobjectdata?view=net-9.0#System_Exception_GetObjectData_System_Runtime_Serialization_SerializationInfo_System_Runtime_Serialization_StreamingContext_">GetObjectData(SerializationInfo, StreamingContext)</a>
                   </td>
                   <td>
-                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=netcore-3.0" data-linktype="absolute-path">object</a>)
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.object.gethashcode?view=netcore-3.0">GetHashCode()</a>
-                  </td>
-                  <td>
-                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=netcore-3.0" data-linktype="absolute-path">object</a>)
+                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.exception?view=net-9.0" data-linktype="absolute-path">Exception</a>)
                   </td>
                 </tr>
                 <tr>
                   <td>
-                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.object.gettype?view=netcore-3.0">GetType()</a>
+                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.exception.gettype?view=net-9.0">GetType()</a>
                   </td>
                   <td>
-                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=netcore-3.0" data-linktype="absolute-path">object</a>)
+                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.exception?view=net-9.0" data-linktype="absolute-path">Exception</a>)
                   </td>
                 </tr>
                 <tr>
                   <td>
-                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.object.memberwiseclone?view=netcore-3.0">MemberwiseClone()</a>
+                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.exception.tostring?view=net-9.0">ToString()</a>
                   </td>
                   <td>
-                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=netcore-3.0" data-linktype="absolute-path">object</a>)
+                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.exception?view=net-9.0" data-linktype="absolute-path">Exception</a>)
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.object.equals?view=net-9.0#System_Object_Equals_System_Object_">Equals(object)</a>
+                  </td>
+                  <td>
+                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=net-9.0" data-linktype="absolute-path">object</a>)
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.object.gethashcode?view=net-9.0">GetHashCode()</a>
+                  </td>
+                  <td>
+                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=net-9.0" data-linktype="absolute-path">object</a>)
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.object.gettype?view=net-9.0">GetType()</a>
+                  </td>
+                  <td>
+                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=net-9.0" data-linktype="absolute-path">object</a>)
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.object.memberwiseclone?view=net-9.0">MemberwiseClone()</a>
+                  </td>
+                  <td>
+                    (Inherited from <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=net-9.0" data-linktype="absolute-path">object</a>)
                   </td>
                 </tr>
               </tbody>
@@ -258,19 +294,21 @@ gtag('config', 'G-9TQ6JWBKEK');
           <h2 id="M:Maroontress.Oxbind.BindException.#ctor">BindException()</h2>
           <div class="summaryHolder">
             <div class="summary clearFix">
-              <p>Initializes a new instance of the <a href="#">BindException</a>
-    class.</p>
+              <p>Initializes a new instance of the <a href="#">BindException</a> class.</p>
             </div>
           </div>
           <div class="codeHeader" data-bi-name="code-header">
             <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
           </div>
           <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-title">BindException</span>()</code></pre>
+          <h3>Remarks</h3>
+          <p>The <a href="#P:Maroontress.Oxbind.BindException.LineInfo">LineInfo</a> property is initialized to represent no line
+    information.</p>
           <h2 id="M:Maroontress.Oxbind.BindException.#ctor(System.String)">BindException(string)</h2>
           <div class="summaryHolder">
             <div class="summary clearFix">
-              <p>Initializes a new instance of the <a href="#">BindException</a>
-    class, with the specified detail message.</p>
+              <p>Initializes a new instance of the <a href="#">BindException</a> class,
+    with the specified detail message.</p>
             </div>
           </div>
           <div class="codeHeader" data-bi-name="code-header">
@@ -284,16 +322,19 @@ gtag('config', 'G-9TQ6JWBKEK');
                 message
               </dt>
               <dd>
-                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.string?view=netcore-3.0" data-linktype="absolute-path">string</a></span>
+                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.string?view=net-9.0" data-linktype="absolute-path">string</a></span>
               </dd>
             </dl>
             <p>The detail message.</p>
           </div>
+          <h3>Remarks</h3>
+          <p>The <a href="#P:Maroontress.Oxbind.BindException.LineInfo">LineInfo</a> property is initialized to represent no line
+    information.</p>
           <h2 id="M:Maroontress.Oxbind.BindException.#ctor(System.String,System.Exception)">BindException(string, Exception)</h2>
           <div class="summaryHolder">
             <div class="summary clearFix">
-              <p>Initializes a new instance of the <a href="#">BindException</a>
-    class, with the specified detail message and cause.</p>
+              <p>Initializes a new instance of the <a href="#">BindException</a> class,
+    with the specified detail message and cause.</p>
             </div>
           </div>
           <div class="codeHeader" data-bi-name="code-header">
@@ -307,7 +348,7 @@ gtag('config', 'G-9TQ6JWBKEK');
                 message
               </dt>
               <dd>
-                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.string?view=netcore-3.0" data-linktype="absolute-path">string</a></span>
+                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.string?view=net-9.0" data-linktype="absolute-path">string</a></span>
               </dd>
             </dl>
             <p>The detail message.</p>
@@ -318,17 +359,19 @@ gtag('config', 'G-9TQ6JWBKEK');
                 innerException
               </dt>
               <dd>
-                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.exception?view=netcore-3.0" data-linktype="absolute-path">Exception</a></span>
+                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.exception?view=net-9.0" data-linktype="absolute-path">Exception</a></span>
               </dd>
             </dl>
             <p>The cause.</p>
           </div>
+          <h3>Remarks</h3>
+          <p>The <a href="#P:Maroontress.Oxbind.BindException.LineInfo">LineInfo</a> property is initialized to represent no line
+    information.</p>
           <h2 id="M:Maroontress.Oxbind.BindException.#ctor(System.String,System.Xml.IXmlLineInfo)">BindException(string, IXmlLineInfo)</h2>
           <div class="summaryHolder">
             <div class="summary clearFix">
-              <p>Initializes a new instance of the <a href="#">BindException</a>
-    class, with the specified detail message and the specified
-    location.</p>
+              <p>Initializes a new instance of the <a href="#">BindException</a> class,
+    with the specified detail message and the specified location.</p>
             </div>
           </div>
           <div class="codeHeader" data-bi-name="code-header">
@@ -342,7 +385,7 @@ gtag('config', 'G-9TQ6JWBKEK');
                 message
               </dt>
               <dd>
-                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.string?view=netcore-3.0" data-linktype="absolute-path">string</a></span>
+                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.string?view=net-9.0" data-linktype="absolute-path">string</a></span>
               </dd>
             </dl>
             <p>The detail message.</p>
@@ -353,7 +396,7 @@ gtag('config', 'G-9TQ6JWBKEK');
                 info
               </dt>
               <dd>
-                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.xml.ixmllineinfo?view=netcore-3.0" data-linktype="absolute-path">IXml<wbr>Line<wbr>Info</a></span>
+                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.xml.ixmllineinfo?view=net-9.0" data-linktype="absolute-path">IXml<wbr>Line<wbr>Info</a></span>
               </dd>
             </dl>
             <p>The line information.</p>
@@ -361,8 +404,8 @@ gtag('config', 'G-9TQ6JWBKEK');
           <h2 id="M:Maroontress.Oxbind.BindException.#ctor(System.String,System.Exception,System.Xml.IXmlLineInfo)">BindException(string, Exception, IXmlLineInfo)</h2>
           <div class="summaryHolder">
             <div class="summary clearFix">
-              <p>Initializes a new instance of the <a href="#">BindException</a>
-    class, with the specified detail message and cause.</p>
+              <p>Initializes a new instance of the <a href="#">BindException</a> class,
+    with the specified detail message and cause.</p>
             </div>
           </div>
           <div class="codeHeader" data-bi-name="code-header">
@@ -376,7 +419,7 @@ gtag('config', 'G-9TQ6JWBKEK');
                 message
               </dt>
               <dd>
-                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.string?view=netcore-3.0" data-linktype="absolute-path">string</a></span>
+                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.string?view=net-9.0" data-linktype="absolute-path">string</a></span>
               </dd>
             </dl>
             <p>The detail message.</p>
@@ -387,7 +430,7 @@ gtag('config', 'G-9TQ6JWBKEK');
                 innerException
               </dt>
               <dd>
-                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.exception?view=netcore-3.0" data-linktype="absolute-path">Exception</a></span>
+                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.exception?view=net-9.0" data-linktype="absolute-path">Exception</a></span>
               </dd>
             </dl>
             <p>The cause.</p>
@@ -398,7 +441,7 @@ gtag('config', 'G-9TQ6JWBKEK');
                 info
               </dt>
               <dd>
-                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.xml.ixmllineinfo?view=netcore-3.0" data-linktype="absolute-path">IXml<wbr>Line<wbr>Info</a></span>
+                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.xml.ixmllineinfo?view=net-9.0" data-linktype="absolute-path">IXml<wbr>Line<wbr>Info</a></span>
               </dd>
             </dl>
             <p>The line information.</p>
@@ -417,7 +460,7 @@ gtag('config', 'G-9TQ6JWBKEK');
           <h4 class="propertyInfoTitle stack">Property Value</h4>
           <div class="propertyInfo">
             <div class="subtle">
-              <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.xml.ixmllineinfo?view=netcore-3.0" data-linktype="absolute-path">IXml<wbr>Line<wbr>Info</a>
+              <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.xml.ixmllineinfo?view=net-9.0" data-linktype="absolute-path">IXml<wbr>Line<wbr>Info</a>
             </div>
           </div>
           <h1 id="methods-detail" class="heading-with-anchor">Methods Detail</h1>
@@ -434,16 +477,14 @@ gtag('config', 'G-9TQ6JWBKEK');
           <h4 class="propertyInfoTitle stack">Returns</h4>
           <div class="propertyInfo">
             <div class="subtle">
-              <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.string?view=netcore-3.0" data-linktype="absolute-path">string</a>
+              <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.string?view=net-9.0" data-linktype="absolute-path">string</a>
             </div>
             <p>The string representation.</p>
           </div>
           <h3>Remarks</h3>
-          <p>This method returns the string with the form
-    <code>"</code>Line<code>:</code>Column<code>:</code>Message<code>"</code>
-    if the <a href="#P:Maroontress.Oxbind.BindException.LineInfo">LineInfo</a> has the line information (i.e.
-    <a href="https://docs.microsoft.com/en-us/dotnet/api/system.xml.ixmllineinfo.haslineinfo?view=netcore-3.0">IXmlLineInfo.HasLineInfo()</a> returns <code>true</code>),
-    otherwise returns the same as <a href="https://docs.microsoft.com/en-us/dotnet/api/system.exception.message?view=netcore-3.0">Exception.Message</a>.</p>
+          <p>This method returns a string in the format
+    <code>"</code>Line<code>:</code>Column<code>:</code>Message<code>"</code> if <a href="#P:Maroontress.Oxbind.BindException.LineInfo">LineInfo</a> contains line information (i.e., <a href="https://docs.microsoft.com/en-us/dotnet/api/system.xml.ixmllineinfo.haslineinfo?view=net-9.0">IXmlLineInfo.HasLineInfo()</a> returns true), otherwise it returns
+    the same as <a href="https://docs.microsoft.com/en-us/dotnet/api/system.exception.message?view=net-9.0">Exception.Message</a>.</p>
         </main>
       </section>
     </div>

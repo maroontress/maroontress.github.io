@@ -10,7 +10,7 @@ gtag('js', new Date());
 gtag('config', 'G-9TQ6JWBKEK');
     </script>
     <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BindEvent&lt;T&gt; Interface | API Reference | Oxbind Project</title>
+    <title>BindResult&lt;T&gt; Interface | API Reference | Oxbind Project</title>
     <link rel="stylesheet" href="bulldoc.css">
     <script src="highlight.pack.js">
     </script>
@@ -22,7 +22,7 @@ gtag('config', 'G-9TQ6JWBKEK');
     <div class="mainContainer uhf-container has-top-padding has-default-focus" data-bi-name="body">
       <section>
         <main class="content">
-          <h1><span class="lang-csharp">Bind<wbr>Event&lt;T&gt;</span> Interface</h1>
+          <h1><span class="lang-csharp">Bind<wbr>Result&lt;T&gt;</span> Interface</h1>
           <div class="metadata">
             <dl class="attributeList">
               <dt>
@@ -43,13 +43,14 @@ gtag('config', 'G-9TQ6JWBKEK');
           </div>
           <div class="summaryHolder">
             <div class="summary clearFix">
-              <p>The event of the deserialized value.</p>
+              <p>A result that occurs during XML deserialization, providing the deserialized
+    value along with its location in the XML document.</p>
             </div>
           </div>
           <div class="codeHeader" data-bi-name="code-header">
             <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
           </div>
-          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-keyword">interface</span> <span class="hljs-title">BindEvent</span>&lt;<span class="hljs-keyword">out</span> <span class="hljs-title">T</span>&gt;<br>    <span class="hljs-keyword">where</span> <span class="hljs-title">T</span> : <span class="hljs-keyword">class</span></code></pre>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-keyword">interface</span> <span class="hljs-title">BindResult</span>&lt;<span class="hljs-keyword">out</span> <span class="hljs-title">T</span>&gt;<br>    <span class="hljs-keyword">where</span> <span class="hljs-title">T</span> : <span class="hljs-keyword">class</span></code></pre>
           <h4 id="type-parameters" class="propertyInfoTitle stack heading-with-anchor">Type Parameters</h4>
           <div class="propertyInfo">
             <dl class="parameterList">
@@ -60,7 +61,9 @@ gtag('config', 'G-9TQ6JWBKEK');
                 <code>class</code>
               </dd>
             </dl>
-            <p>The type of the value.</p>
+            <p>The type of the deserialized value. When binding to an XML element, this is
+    typically a class annotated with <a href="Maroontress.Oxbind.ForElementAttribute.html">ForElementAttribute</a>. When
+    binding to an XML attribute or text content, this is typically <a href="https://docs.microsoft.com/en-us/dotnet/api/system.string?view=net-9.0">string</a>.</p>
           </div>
           <h2 id="properties" class="heading-with-anchor">Properties</h2>
           <div class="table-scroll-wrapper">
@@ -68,7 +71,7 @@ gtag('config', 'G-9TQ6JWBKEK');
               <tbody>
                 <tr>
                   <td>
-                    <span class="lang-csharp break-text"><a class="xref" href="#P:Maroontress.Oxbind.BindEvent`1.Value" data-linktype="relative-path">Value</a></span>
+                    <span class="lang-csharp break-text"><a class="xref" href="#P:Maroontress.Oxbind.BindResult`1.Value" data-linktype="relative-path">Value</a></span>
                   </td>
                   <td>
                     <p>Gets the deserialized value.</p>
@@ -76,25 +79,27 @@ gtag('config', 'G-9TQ6JWBKEK');
                 </tr>
                 <tr>
                   <td>
-                    <span class="lang-csharp break-text"><a class="xref" href="#P:Maroontress.Oxbind.BindEvent`1.Line" data-linktype="relative-path">Line</a></span>
+                    <span class="lang-csharp break-text"><a class="xref" href="#P:Maroontress.Oxbind.BindResult`1.Line" data-linktype="relative-path">Line</a></span>
                   </td>
                   <td>
-                    <p>Gets the line number where this event occurs in the XML document.</p>
+                    <p>Gets the line number where this result occurs in the XML document. The
+    value is 1-based.</p>
                   </td>
                 </tr>
                 <tr>
                   <td>
-                    <span class="lang-csharp break-text"><a class="xref" href="#P:Maroontress.Oxbind.BindEvent`1.Column" data-linktype="relative-path">Column</a></span>
+                    <span class="lang-csharp break-text"><a class="xref" href="#P:Maroontress.Oxbind.BindResult`1.Column" data-linktype="relative-path">Column</a></span>
                   </td>
                   <td>
-                    <p>Gets the column number where this event occurs in the XML document.</p>
+                    <p>Gets the column number where this result occurs in the XML document.
+    The value is 1-based.</p>
                   </td>
                 </tr>
               </tbody>
             </table>
           </div>
           <h1 id="properties-detail" class="heading-with-anchor">Properties Detail</h1>
-          <h2 id="P:Maroontress.Oxbind.BindEvent`1.Value">Value</h2>
+          <h2 id="P:Maroontress.Oxbind.BindResult`1.Value">Value</h2>
           <div class="summaryHolder">
             <div class="summary clearFix">
               <p>Gets the deserialized value.</p>
@@ -110,10 +115,11 @@ gtag('config', 'G-9TQ6JWBKEK');
               T
             </div>
           </div>
-          <h2 id="P:Maroontress.Oxbind.BindEvent`1.Line">Line</h2>
+          <h2 id="P:Maroontress.Oxbind.BindResult`1.Line">Line</h2>
           <div class="summaryHolder">
             <div class="summary clearFix">
-              <p>Gets the line number where this event occurs in the XML document.</p>
+              <p>Gets the line number where this result occurs in the XML document. The
+    value is 1-based.</p>
             </div>
           </div>
           <div class="codeHeader" data-bi-name="code-header">
@@ -123,13 +129,14 @@ gtag('config', 'G-9TQ6JWBKEK');
           <h4 class="propertyInfoTitle stack">Property Value</h4>
           <div class="propertyInfo">
             <div class="subtle">
-              <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.int32?view=netcore-3.0" data-linktype="absolute-path">int</a>
+              <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.int32?view=net-9.0" data-linktype="absolute-path">int</a>
             </div>
           </div>
-          <h2 id="P:Maroontress.Oxbind.BindEvent`1.Column">Column</h2>
+          <h2 id="P:Maroontress.Oxbind.BindResult`1.Column">Column</h2>
           <div class="summaryHolder">
             <div class="summary clearFix">
-              <p>Gets the column number where this event occurs in the XML document.</p>
+              <p>Gets the column number where this result occurs in the XML document.
+    The value is 1-based.</p>
             </div>
           </div>
           <div class="codeHeader" data-bi-name="code-header">
@@ -139,7 +146,7 @@ gtag('config', 'G-9TQ6JWBKEK');
           <h4 class="propertyInfoTitle stack">Property Value</h4>
           <div class="propertyInfo">
             <div class="subtle">
-              <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.int32?view=netcore-3.0" data-linktype="absolute-path">int</a>
+              <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.int32?view=net-9.0" data-linktype="absolute-path">int</a>
             </div>
           </div>
         </main>

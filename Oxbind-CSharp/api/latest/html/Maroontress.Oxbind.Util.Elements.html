@@ -28,7 +28,7 @@ gtag('config', 'G-9TQ6JWBKEK');
               <dt>
                 Namespace:
                 <dd>
-                  <span class="lang-csharp"><a class="xref" href="Maroontress.Util.html" data-linktype="relative-path">Maroontress.Util</a></span>
+                  <span class="lang-csharp"><a class="xref" href="Maroontress.Oxbind.Util.html" data-linktype="relative-path">Maroontress.Oxbind.Util</a></span>
                 </dd>
               </dt>
             </dl>
@@ -43,8 +43,7 @@ gtag('config', 'G-9TQ6JWBKEK');
           </div>
           <div class="summaryHolder">
             <div class="summary clearFix">
-              <p>The utility class for <a href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.icollection-1?view=netcore-3.0">ICollection&lt;T&gt;</a> objects and loop
-    operations.</p>
+              <p>A utility class for common operations on collections (primarily <a href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1?view=net-9.0">IEnumerable&lt;T&gt;</a>) and iteration.</p>
             </div>
           </div>
           <div class="codeHeader" data-bi-name="code-header">
@@ -58,7 +57,7 @@ gtag('config', 'G-9TQ6JWBKEK');
             <dd>
               <div class="pdlHolder">
                 <div class="pdl">
-                  <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=netcore-3.0" data-linktype="absolute-path">object</a></span>
+                  <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=net-9.0" data-linktype="absolute-path">object</a></span>
                 </div>
                 <span class="lang-csharp">Elements</span>
               </div>
@@ -70,44 +69,42 @@ gtag('config', 'G-9TQ6JWBKEK');
               <tbody>
                 <tr>
                   <td>
-                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Util.Elements.ForEach(System.Int32,System.Action{System.Int32})" data-linktype="relative-path">For<wbr>Each(int, Action&lt;int&gt;)</a></span>
+                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Oxbind.Util.Elements.ForEach(System.Int32,System.Action{System.Int32})" data-linktype="relative-path">For<wbr>Each(int, Action&lt;int&gt;)</a></span>
                   </td>
                   <td>
-                    <p>Performs an action for each <code>int</code> value that is sequential
-    ordered from 0 (inclusive) to the specified value (exclusive) by an
-    incremental step of 1.</p>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Util.Elements.IfNotEmpty``1(System.Collections.Generic.IEnumerable{``0},System.Action{System.Collections.Generic.IEnumerable{``0}})" data-linktype="relative-path">If<wbr>Not<wbr>Empty&lt;T&gt;(IEnumerable&lt;T&gt;, Action&lt;IEnumerable&lt;T&gt;&gt;)</a></span>
-                  </td>
-                  <td>
-                    <p>Accepts the specified consumer function if the specified collection
-    is not empty.</p>
+                    <p>Performs an action for each integer from 0 up to (but not including)
+    <code>count</code>.</p>
                   </td>
                 </tr>
                 <tr>
                   <td>
-                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Util.Elements.DifferenceOf``1(System.Collections.Generic.IEnumerable{``0},System.Collections.Generic.IEnumerable{``0})" data-linktype="relative-path">Difference<wbr>Of&lt;T&gt;(IEnumerable&lt;T&gt;, IEnumerable&lt;T&gt;)</a></span>
+                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Oxbind.Util.Elements.IfNotEmpty``1(System.Collections.Generic.IEnumerable{``0},System.Action{System.Collections.Generic.IEnumerable{``0}})" data-linktype="relative-path">If<wbr>Not<wbr>Empty&lt;T&gt;(IEnumerable&lt;T&gt;, Action&lt;IEnumerable&lt;T&gt;&gt;)</a></span>
+                  </td>
+                  <td>
+                    <p>Accepts the specified consumer function if the specified collection is
+    not empty.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Oxbind.Util.Elements.DifferenceOf``1(System.Collections.Generic.IEnumerable{``0},System.Collections.Generic.IEnumerable{``0})" data-linktype="relative-path">Difference<wbr>Of&lt;T&gt;(IEnumerable&lt;T&gt;, IEnumerable&lt;T&gt;)</a></span>
                   </td>
                   <td>
                     <p>Returns the relative complement of B in A (also called the
-    set-theoretic difference of A and B), denoted by A \ B (or A
-    − B), is the set of all elements that are members of A but
-    not members of B.</p>
+    set-theoretic difference of A and B), denoted by A \ B (or A −
+    B). This is the set of all elements that are members of A but not
+    members of B.</p>
                   </td>
                 </tr>
               </tbody>
             </table>
           </div>
           <h1 id="methods-detail" class="heading-with-anchor">Methods Detail</h1>
-          <h2 id="M:Maroontress.Util.Elements.ForEach(System.Int32,System.Action{System.Int32})">ForEach(int, Action&lt;int&gt;)</h2>
+          <h2 id="M:Maroontress.Oxbind.Util.Elements.ForEach(System.Int32,System.Action{System.Int32})">ForEach(int, Action&lt;int&gt;)</h2>
           <div class="summaryHolder">
             <div class="summary clearFix">
-              <p>Performs an action for each <code>int</code> value that is sequential
-    ordered from 0 (inclusive) to the specified value (exclusive) by an
-    incremental step of 1.</p>
+              <p>Performs an action for each integer from 0 up to (but not including)
+    <code>count</code>.</p>
             </div>
           </div>
           <div class="codeHeader" data-bi-name="code-header">
@@ -121,7 +118,7 @@ gtag('config', 'G-9TQ6JWBKEK');
                 count
               </dt>
               <dd>
-                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.int32?view=netcore-3.0" data-linktype="absolute-path">int</a></span>
+                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.int32?view=net-9.0" data-linktype="absolute-path">int</a></span>
               </dd>
             </dl>
             <p>The exclusive upper bound.</p>
@@ -132,18 +129,17 @@ gtag('config', 'G-9TQ6JWBKEK');
                 consumer
               </dt>
               <dd>
-                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.action-1?view=netcore-3.0" data-linktype="absolute-path">Action</a>&lt;<a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.int32?view=netcore-3.0" data-linktype="absolute-path">int</a>&gt;</span>
+                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.action-1?view=net-9.0" data-linktype="absolute-path">Action</a>&lt;<a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.int32?view=net-9.0" data-linktype="absolute-path">int</a>&gt;</span>
               </dd>
             </dl>
-            <p>The action to perform <code>count</code> times with the
-    argument 0, 1, ..., <code>count</code> − 1 (in order
-    of increasing).</p>
+            <p>The action to execute for each integer from 0 (inclusive) to <code>count</code> (exclusive). The current integer is passed as an
+    argument to the action.</p>
           </div>
-          <h2 id="M:Maroontress.Util.Elements.IfNotEmpty``1(System.Collections.Generic.IEnumerable{``0},System.Action{System.Collections.Generic.IEnumerable{``0}})">IfNotEmpty&lt;T&gt;(IEnumerable&lt;T&gt;, Action&lt;IEnumerable&lt;T&gt;&gt;)</h2>
+          <h2 id="M:Maroontress.Oxbind.Util.Elements.IfNotEmpty``1(System.Collections.Generic.IEnumerable{``0},System.Action{System.Collections.Generic.IEnumerable{``0}})">IfNotEmpty&lt;T&gt;(IEnumerable&lt;T&gt;, Action&lt;IEnumerable&lt;T&gt;&gt;)</h2>
           <div class="summaryHolder">
             <div class="summary clearFix">
-              <p>Accepts the specified consumer function if the specified collection
-    is not empty.</p>
+              <p>Accepts the specified consumer function if the specified collection is
+    not empty.</p>
             </div>
           </div>
           <div class="codeHeader" data-bi-name="code-header">
@@ -168,7 +164,7 @@ gtag('config', 'G-9TQ6JWBKEK');
                 all
               </dt>
               <dd>
-                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1?view=netcore-3.0" data-linktype="absolute-path">IEnumerable&lt;T&gt;</a></span>
+                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1?view=net-9.0" data-linktype="absolute-path">IEnumerable&lt;T&gt;</a></span>
               </dd>
             </dl>
             <p>The collection.</p>
@@ -179,18 +175,18 @@ gtag('config', 'G-9TQ6JWBKEK');
                 consumer
               </dt>
               <dd>
-                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.action-1?view=netcore-3.0" data-linktype="absolute-path">Action</a>&lt;<a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1?view=netcore-3.0" data-linktype="absolute-path">IEnumerable&lt;T&gt;</a>&gt;</span>
+                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.action-1?view=net-9.0" data-linktype="absolute-path">Action</a>&lt;<a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1?view=net-9.0" data-linktype="absolute-path">IEnumerable&lt;T&gt;</a>&gt;</span>
               </dd>
             </dl>
             <p>The consumer function to apply when the collection is not empty.</p>
           </div>
-          <h2 id="M:Maroontress.Util.Elements.DifferenceOf``1(System.Collections.Generic.IEnumerable{``0},System.Collections.Generic.IEnumerable{``0})">DifferenceOf&lt;T&gt;(IEnumerable&lt;T&gt;, IEnumerable&lt;T&gt;)</h2>
+          <h2 id="M:Maroontress.Oxbind.Util.Elements.DifferenceOf``1(System.Collections.Generic.IEnumerable{``0},System.Collections.Generic.IEnumerable{``0})">DifferenceOf&lt;T&gt;(IEnumerable&lt;T&gt;, IEnumerable&lt;T&gt;)</h2>
           <div class="summaryHolder">
             <div class="summary clearFix">
               <p>Returns the relative complement of B in A (also called the
-    set-theoretic difference of A and B), denoted by A \ B (or A
-    − B), is the set of all elements that are members of A but
-    not members of B.</p>
+    set-theoretic difference of A and B), denoted by A \ B (or A −
+    B). This is the set of all elements that are members of A but not
+    members of B.</p>
             </div>
           </div>
           <div class="codeHeader" data-bi-name="code-header">
@@ -215,7 +211,7 @@ gtag('config', 'G-9TQ6JWBKEK');
                 a
               </dt>
               <dd>
-                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1?view=netcore-3.0" data-linktype="absolute-path">IEnumerable&lt;T&gt;</a></span>
+                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1?view=net-9.0" data-linktype="absolute-path">IEnumerable&lt;T&gt;</a></span>
               </dd>
             </dl>
             <p>The collection A.</p>
@@ -226,7 +222,7 @@ gtag('config', 'G-9TQ6JWBKEK');
                 b
               </dt>
               <dd>
-                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1?view=netcore-3.0" data-linktype="absolute-path">IEnumerable&lt;T&gt;</a></span>
+                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1?view=net-9.0" data-linktype="absolute-path">IEnumerable&lt;T&gt;</a></span>
               </dd>
             </dl>
             <p>The collection B.</p>
@@ -234,9 +230,9 @@ gtag('config', 'G-9TQ6JWBKEK');
           <h4 class="propertyInfoTitle stack">Returns</h4>
           <div class="propertyInfo">
             <div class="subtle">
-              <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.iset-1?view=netcore-3.0" data-linktype="absolute-path">ISet&lt;T&gt;</a>
+              <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.iset-1?view=net-9.0" data-linktype="absolute-path">ISet&lt;T&gt;</a>
             </div>
-            <p>The new <a href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.iset-1?view=netcore-3.0">ISet&lt;T&gt;</a> object that has the relative
+            <p>The new <a href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.iset-1?view=net-9.0">ISet&lt;T&gt;</a> object that contains the relative
     complement of B in A.</p>
           </div>
         </main>
