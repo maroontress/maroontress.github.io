@@ -36,20 +36,19 @@
 <div id="toc-level" data-values="H2,H3"></div>
 <h1>TypeClassParameter</h1>
 <div class="horizontal-scroll">
-<p><img src="https://maroontress.github.io/StyleChecker/images/TypeClassParameter.png" alt="TypeClassParameter"></p>
+<p><img src="https://maroontress.github.io/StyleChecker/images/TypeClassParameter.webp" alt="TypeClassParameter"></p>
 </div>
 <h2>Summary</h2>
-<p>Replace the parameter of methods or local functions with a type parameter
-if possible.</p>
+<p>Replace a <code>System.Type</code> parameter in a method or local function with a generic
+type parameter when all arguments passed to it are <code>typeof(…)</code> expressions.</p>
 <h2>Default severity</h2>
 <p>Warning</p>
 <h2>Description</h2>
-<p>The parameter of methods or local functions can be replaced with a type
-parameter if its type is <code>System.Type</code> and every argument for it is a
-<code>typeof()</code> operator. For example, the local function <code>Print</code> has a single
-parameter <code>type</code>, whose type is <code>System.Type</code>, and <em>all</em> the invocations of it
-are performed with an argument of the <code>typeof()</code> operator whose operand is
-not a <code>static</code> class, as follows:</p>
+<p>This analyzer identifies method or local function parameters of type
+<code>System.Type</code> that are <em>always</em> invoked with <code>typeof(…)</code> expressions. In such
+cases, the parameter can be safely replaced with a generic type parameter <code>T</code>,
+which improves type safety and readability.</p>
+<p>For example, consider the following code:</p>
 <pre><code class="language-csharp">public void PrintTypes()
 {
     void Print(Type type)
@@ -61,8 +60,8 @@ not a <code>static</code> class, as follows:</p>
     Print(typeof(int));
     ⋮
 </code></pre>
-<p>The following code shows the revised version of <code>Print</code> where the
-parameter <code>type</code> is removed but a type parameter <code>T</code> is added instead:</p>
+<p>All calls to <code>Print</code> use <code>typeof(…)</code>. Therefore, you can refactor it using a
+generic type parameter:</p>
 <pre><code class="language-csharp">public void PrintTypes()
 {
     void Print&lt;T&gt;()
@@ -75,22 +74,51 @@ parameter <code>type</code> is removed but a type parameter <code>T</code> is ad
     Print&lt;int&gt;();
     ⋮
 </code></pre>
-<p>Note that this analyzer doesn't report diagnostics if at least one caller
-invokes the original version of <code>Print</code> with an argument other than the
-<code>typeof()</code> operator whose operand is not a <code>static</code> class, because it is
-unable to replace the parameter <code>type</code> with a type parameter <code>T</code>.</p>
 <blockquote>
 <p>🚧 <strong>Restriction</strong></p>
-<p>This analyzer can only diagnose local functions and private methods
-with the Visual Studio 2019 editor.
-To diagnose non-private methods with Visual Studio 2019,
-perform Build Solution or Analysis ➜ Run Code Analysis.</p>
+<p>In Visual Studio IDE, this analyzer only reports diagnostics for:</p>
+<ul>
+<li>Local functions</li>
+<li>Private methods</li>
+</ul>
+<p>To analyze non-private methods, you must build the solution or run Analyze ➜
+Run Code Analysis.</p>
 </blockquote>
+<h2>Excluded Cases</h2>
+<h3>Static classes cannot be used with type parameters</h3>
+<p>This analyzer does <strong>not</strong> report diagnostics if any of the <code>typeof(…)</code>
+arguments refer to a <code>static</code> class. Static classes cannot be used as type
+arguments in C#, so replacing <code>System.Type</code> with a type parameter would be
+invalid.</p>
+<pre><code class="language-csharp">public static class SomeStaticClass;
+
+// ❌ Skipped — static classes are not allowed as type arguments
+Print(typeof(SomeStaticClass));
+</code></pre>
+<h3>Method references prevent replacement</h3>
+<p>If the method or local function is passed as a method group (method reference)
+to a delegate (e.g., <code>Action&lt;Type&gt;</code>), the analyzer does <strong>not</strong> report a
+diagnostic.</p>
+<pre><code class="language-csharp">void DoAction(Action&lt;Type&gt; action)
+{
+    ⋮
+}
+
+// ❌ Skipped — cannot convert generic method to Action&lt;Type&gt;
+DoAction(Print);
+</code></pre>
+<p>Replacing <code>Print(Type)</code> with a generic method <code>Print&lt;T&gt;()</code> would
+break this usage, so the analyzer conservatively ignores such cases.</p>
 <h2>Code fix</h2>
-<p>The code fix provides the option of replacing the parameter with a type
-parameter and inserting a local variable declaration to the top of the
-method or the local function. The variable name of the inserted declaration
-is the same as the name of the removed parameter.</p>
+<p>The code fix will:</p>
+<ul>
+<li>Replace the <code>Type</code> parameter with a generic type parameter.</li>
+<li>Insert a local variable declaration <code>var … = typeof(T);</code> at the beginning of
+the method or local function.</li>
+<li>Update all call sites to use generic method syntax (e.g.,
+<code>DoSomething&lt;string&gt;()</code>).</li>
+</ul>
+<p>The new local variable will reuse the original parameter name for consistency.</p>
 <h2>Example</h2>
 <h3>Diagnostic</h3>
 <pre><code class="language-csharp">private void DoSomething(Type type)
@@ -117,10 +145,12 @@ public void Invoke()
 </code></pre>
 <blockquote>
 <p>🚨 <strong>Remarks</strong></p>
-<p>If a type has both <code>DoSomething&lt;T&gt;()</code> and <code>DoSomething(Type)</code> methods
-at the same time, the code fix provider renames <code>DoSomething&lt;T&gt;</code>
-(to <code>DoSomething_0&lt;T&gt;</code>, for example) at first, and then replaces
-<code>DoSomething(Type)</code> with <code>DoSomething&lt;T&gt;()</code>.</p>
+<p>If the type already contains both <code>DoSomething(Type)</code> and <code>DoSomething&lt;T&gt;()</code>,
+the code fix first <strong>renames the existing <code>DoSomething&lt;T&gt;()</code> method (e.g., to
+<code>DoSomething_0&lt;T&gt;</code>) to avoid a name conflict</strong>. Then it replaces the
+<code>DoSomething(Type)</code> method with the new generic version using the original
+name (<code>DoSomething&lt;T&gt;()</code>). This ensures that call sites referring to
+<code>DoSomething(Type)</code> can be safely updated to use the generic method.</p>
 </blockquote>
           </main>
         </section>

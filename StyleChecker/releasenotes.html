@@ -57,8 +57,8 @@ abstract
 
 ---
 -->
-<h2>Unreleased</h2>
-<p>Support C# 13 and fix bugs</p>
+<h2>2.2.0 (2025-06-12)</h2>
+<p>Fix some analyzers</p>
 <h3>Requirements to run</h3>
 <ul>
 <li>Visual Studio 2022 (17.14.0) or .NET 9 (SDK 9.0.300)</li>
@@ -70,13 +70,18 @@ abstract
 <h3>Changed</h3>
 <ul>
 <li>Fix the project structure</li>
-<li>Update Microsoft.CodeAnalysis.CSharp.Workspaces to 4.13.0 (C# 13 support)</li>
+<li>Update Microsoft.CodeAnalysis.CSharp.Workspaces to 4.14.0</li>
+<li>Update dependent packages</li>
+<li>Switch <code>LangVersion</code> to <code>13</code></li>
 </ul>
 <h3>Fixed</h3>
 <ul>
-<li>Fix <a href="https://github.com/maroontress/StyleChecker/blob/main/doc/rules/Underscore.md">Underscore</a> analyzer to:
+<li>Fix <a href="https://github.com/maroontress/StyleChecker/blob/main/doc/rules/Underscore.md">Underscore</a> analyzer to ignore
+<a href="https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/proposals/csharp-9.0/lambda-discard-parameters">lambda discard parameters</a></li>
+<li>Fix <a href="https://github.com/maroontress/StyleChecker/blob/main/doc/rules/TypeClassParameter.md">TypeClassParameter</a> analyzer to:
 <ul>
-<li>ignore <a href="https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/proposals/csharp-9.0/lambda-discard-parameters">lambda discard parameters</a>.</li>
+<li>ignore methods and local functions used as a Method Reference</li>
+<li>rename a method on Visual Studio IDE</li>
 </ul>
 </li>
 </ul>
