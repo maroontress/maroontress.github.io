@@ -153,6 +153,16 @@ gtag('config', 'G-9TQ6JWBKEK');
                 </tr>
                 <tr>
                   <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Oxbind.Util.InternMap`2.Intern(`0,`1)" data-linktype="relative-path">Intern(K, V)</a></span>
+                  </td>
+                  <td>
+                    <p>Gets the canonical value object corresponding to the specified key. If
+    a canonical value does not already exist in the map, the specified
+    value is stored and returned.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
                     <a href="https://docs.microsoft.com/en-us/dotnet/api/system.object.equals?view=net-9.0#System_Object_Equals_System_Object_">Equals(object)</a>
                   </td>
                   <td>
@@ -387,6 +397,53 @@ gtag('config', 'G-9TQ6JWBKEK');
     the <code>supplier</code> function might be invoked multiple
     times. However, only a single canonical value object will be stored and
     returned for that key.</p>
+          <h2 id="M:Maroontress.Oxbind.Util.InternMap`2.Intern(`0,`1)">Intern(K, V)</h2>
+          <div class="summaryHolder">
+            <div class="summary clearFix">
+              <p>Gets the canonical value object corresponding to the specified key. If
+    a canonical value does not already exist in the map, the specified
+    value is stored and returned.</p>
+            </div>
+          </div>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-title">V</span> <span class="hljs-title">Intern</span>(<span class="hljs-title">K</span> key, <span class="hljs-title">V</span> value)</code></pre>
+          <h4 class="propertyInfoTitle stack">Parameters</h4>
+          <div class="propertyInfo">
+            <dl class="parameterList">
+              <dt>
+                key
+              </dt>
+              <dd>
+                <span class="lang-csharp">K</span>
+              </dd>
+            </dl>
+            <p>The key.</p>
+          </div>
+          <div class="propertyInfo stack">
+            <dl class="parameterList">
+              <dt>
+                value
+              </dt>
+              <dd>
+                <span class="lang-csharp">V</span>
+              </dd>
+            </dl>
+            <p>The value to associate with the key if the key is not already present
+    in the map.</p>
+          </div>
+          <h4 class="propertyInfoTitle stack">Returns</h4>
+          <div class="propertyInfo">
+            <div class="subtle">
+              V
+            </div>
+            <p>The canonical value object.</p>
+          </div>
+          <h3>Remarks</h3>
+          <p>If multiple threads call this method concurrently with the same key,
+    only one canonical value object will be stored and returned for that
+    key.</p>
         </main>
       </section>
     </div>

@@ -168,7 +168,7 @@ gtag('config', 'G-9TQ6JWBKEK');
                 </tr>
                 <tr>
                   <td>
-                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Oxbind.Impl.ChildParameter.Of(System.Reflection.ParameterInfo)" data-linktype="relative-path">Of(Parameter<wbr>Info)</a></span>
+                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Oxbind.Impl.ChildParameter.Of(System.Reflection.ParameterInfo,Maroontress.Oxbind.Impl.QNameBank)" data-linktype="relative-path">Of(Parameter<wbr>Info, QName<wbr>Bank)</a></span>
                   </td>
                   <td>
                     <p>Creates a <a href="#">ChildParameter</a> instance from the specified <a href="https://docs.microsoft.com/en-us/dotnet/api/system.reflection.parameterinfo?view=net-9.0">ParameterInfo</a>.</p>
@@ -411,7 +411,7 @@ gtag('config', 'G-9TQ6JWBKEK');
             <p>The corresponding <a href="#P:Maroontress.Oxbind.Impl.ChildParameter.SchemaType">SchemaType</a>, or <code>null</code> if the type
     is not mapped.</p>
           </div>
-          <h2 id="M:Maroontress.Oxbind.Impl.ChildParameter.Of(System.Reflection.ParameterInfo)">Of(ParameterInfo)</h2>
+          <h2 id="M:Maroontress.Oxbind.Impl.ChildParameter.Of(System.Reflection.ParameterInfo,Maroontress.Oxbind.Impl.QNameBank)">Of(ParameterInfo, QNameBank)</h2>
           <div class="summaryHolder">
             <div class="summary clearFix">
               <p>Creates a <a href="#">ChildParameter</a> instance from the specified <a href="https://docs.microsoft.com/en-us/dotnet/api/system.reflection.parameterinfo?view=net-9.0">ParameterInfo</a>.</p>
@@ -420,7 +420,7 @@ gtag('config', 'G-9TQ6JWBKEK');
           <div class="codeHeader" data-bi-name="code-header">
             <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
           </div>
-          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> ChildParameter <span class="hljs-title">Of</span>(<span class="hljs-title">ParameterInfo</span> p)</code></pre>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> ChildParameter <span class="hljs-title">Of</span>(<span class="hljs-title">ParameterInfo</span> p, <span class="hljs-title">QNameBank</span> nameBank)</code></pre>
           <h4 class="propertyInfoTitle stack">Parameters</h4>
           <div class="propertyInfo">
             <dl class="parameterList">
@@ -432,6 +432,18 @@ gtag('config', 'G-9TQ6JWBKEK');
               </dd>
             </dl>
             <p>The parameter information.</p>
+          </div>
+          <div class="propertyInfo stack">
+            <dl class="parameterList">
+              <dt>
+                nameBank
+              </dt>
+              <dd>
+                <span class="lang-csharp"><a class="xref" href="Maroontress.Oxbind.Impl.QNameBank.html" data-linktype="relative-path">QName<wbr>Bank</a></span>
+              </dd>
+            </dl>
+            <p>The <a href="Maroontress.Oxbind.Impl.QNameBank.html">QNameBank</a> instance used to intern XML qualified
+    names.</p>
           </div>
           <h4 class="propertyInfoTitle stack">Returns</h4>
           <div class="propertyInfo">

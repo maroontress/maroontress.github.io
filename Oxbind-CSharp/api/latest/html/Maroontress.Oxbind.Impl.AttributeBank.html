@@ -72,7 +72,7 @@ gtag('config', 'G-9TQ6JWBKEK');
               <tbody>
                 <tr>
                   <td>
-                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Oxbind.Impl.AttributeBank.#ctor(System.Reflection.ConstructorInfo,System.Xml.XmlQualifiedName,System.Collections.Generic.IEnumerable{Maroontress.Oxbind.Impl.AttributeParameter})" data-linktype="relative-path">Attribute<wbr>Bank(Constructor<wbr>Info, Xml<wbr>Qualified<wbr>Name, IEnumerable&lt;Attribute<wbr>Parameter&gt;)</a></span>
+                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Oxbind.Impl.AttributeBank.#ctor(System.Reflection.ConstructorInfo,System.Xml.XmlQualifiedName,System.Collections.Generic.IEnumerable{Maroontress.Oxbind.Impl.AttributeParameter},Maroontress.Oxbind.Impl.QNameBank)" data-linktype="relative-path">Attribute<wbr>Bank(Constructor<wbr>Info, Xml<wbr>Qualified<wbr>Name, IEnumerable&lt;Attribute<wbr>Parameter&gt;, QName<wbr>Bank)</a></span>
                   </td>
                   <td>
                     <p>Initializes a new instance of the <a href="#">AttributeBank</a> class.</p>
@@ -87,10 +87,12 @@ gtag('config', 'G-9TQ6JWBKEK');
               <tbody>
                 <tr>
                   <td>
-                    <span class="lang-csharp break-text"><a class="xref" href="#P:Maroontress.Oxbind.Impl.AttributeBank.ElementConstructor" data-linktype="relative-path">Element<wbr>Constructor</a></span>
+                    <span class="lang-csharp break-text"><a class="xref" href="#P:Maroontress.Oxbind.Impl.AttributeBank.Factory" data-linktype="relative-path">Factory</a></span>
                   </td>
                   <td>
-                    <p>Gets the constructor of the class that represents the XML element.</p>
+                    <p>Gets a function that creates an instance of the class bound to this
+    <a href="#">AttributeBank</a> instance, given an array of constructor
+    parameters.</p>
                   </td>
                 </tr>
                 <tr>
@@ -99,6 +101,15 @@ gtag('config', 'G-9TQ6JWBKEK');
                   </td>
                   <td>
                     <p>Gets the qualified name of the XML element, derived from the <a href="Maroontress.Oxbind.ForElementAttribute.html">ForElementAttribute</a> on the class bound to this metadata.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="#P:Maroontress.Oxbind.Impl.AttributeBank.NameBank" data-linktype="relative-path">Name<wbr>Bank</a></span>
+                  </td>
+                  <td>
+                    <p>Gets the <a href="Maroontress.Oxbind.Impl.QNameBank.html">QNameBank</a> instance used to intern XML qualified
+    names.</p>
                   </td>
                 </tr>
                 <tr>
@@ -118,11 +129,20 @@ gtag('config', 'G-9TQ6JWBKEK');
               <tbody>
                 <tr>
                   <td>
-                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Oxbind.Impl.AttributeBank.NewPlaceholder" data-linktype="relative-path">New<wbr>Placeholder()</a></span>
+                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Oxbind.Impl.AttributeBank.GetPlaceholder" data-linktype="relative-path">Get<wbr>Placeholder()</a></span>
                   </td>
                   <td>
-                    <p>Creates a new array of objects to be used as placeholders for the
-    constructor parameters.</p>
+                    <p>Retrieves a placeholder array of objects to be used as constructor
+    parameters.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Oxbind.Impl.AttributeBank.RecyclePlaceholder(System.Object[])" data-linktype="relative-path">Recycle<wbr>Placeholder(object[])</a></span>
+                  </td>
+                  <td>
+                    <p>Recycles a placeholder array of constructor parameters for future
+    reuse.</p>
                   </td>
                 </tr>
                 <tr>
@@ -169,7 +189,7 @@ gtag('config', 'G-9TQ6JWBKEK');
             </table>
           </div>
           <h1 id="constructors-detail" class="heading-with-anchor">Constructors Detail</h1>
-          <h2 id="M:Maroontress.Oxbind.Impl.AttributeBank.#ctor(System.Reflection.ConstructorInfo,System.Xml.XmlQualifiedName,System.Collections.Generic.IEnumerable{Maroontress.Oxbind.Impl.AttributeParameter})">AttributeBank(ConstructorInfo, XmlQualifiedName, IEnumerable&lt;AttributeParameter&gt;)</h2>
+          <h2 id="M:Maroontress.Oxbind.Impl.AttributeBank.#ctor(System.Reflection.ConstructorInfo,System.Xml.XmlQualifiedName,System.Collections.Generic.IEnumerable{Maroontress.Oxbind.Impl.AttributeParameter},Maroontress.Oxbind.Impl.QNameBank)">AttributeBank(ConstructorInfo, XmlQualifiedName, IEnumerable&lt;AttributeParameter&gt;, QNameBank)</h2>
           <div class="summaryHolder">
             <div class="summary clearFix">
               <p>Initializes a new instance of the <a href="#">AttributeBank</a> class.</p>
@@ -178,7 +198,7 @@ gtag('config', 'G-9TQ6JWBKEK');
           <div class="codeHeader" data-bi-name="code-header">
             <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
           </div>
-          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-title">AttributeBank</span>(<span class="hljs-title">ConstructorInfo</span> ctor, <span class="hljs-title">XmlQualifiedName</span> elementName, <span class="hljs-title">IEnumerable</span>&lt;AttributeParameter&gt; attributeParameters)</code></pre>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-title">AttributeBank</span>(<span class="hljs-title">ConstructorInfo</span> ctor, <span class="hljs-title">XmlQualifiedName</span> elementName, <span class="hljs-title">IEnumerable</span>&lt;AttributeParameter&gt; attributeParameters, <span class="hljs-title">QNameBank</span> nameBank)</code></pre>
           <h4 class="propertyInfoTitle stack">Parameters</h4>
           <div class="propertyInfo">
             <dl class="parameterList">
@@ -214,21 +234,35 @@ gtag('config', 'G-9TQ6JWBKEK');
             <p>The collection of <a href="Maroontress.Oxbind.Impl.AttributeParameter.html">AttributeParameter</a> instances,
     representing constructor parameters attributed with <a href="Maroontress.Oxbind.ForAttributeAttribute.html">ForAttributeAttribute</a>.</p>
           </div>
+          <div class="propertyInfo stack">
+            <dl class="parameterList">
+              <dt>
+                nameBank
+              </dt>
+              <dd>
+                <span class="lang-csharp"><a class="xref" href="Maroontress.Oxbind.Impl.QNameBank.html" data-linktype="relative-path">QName<wbr>Bank</a></span>
+              </dd>
+            </dl>
+            <p>The <a href="Maroontress.Oxbind.Impl.QNameBank.html">QNameBank</a> instance used to intern XML qualified
+    names.</p>
+          </div>
           <h1 id="properties-detail" class="heading-with-anchor">Properties Detail</h1>
-          <h2 id="P:Maroontress.Oxbind.Impl.AttributeBank.ElementConstructor">ElementConstructor</h2>
+          <h2 id="P:Maroontress.Oxbind.Impl.AttributeBank.Factory">Factory</h2>
           <div class="summaryHolder">
             <div class="summary clearFix">
-              <p>Gets the constructor of the class that represents the XML element.</p>
+              <p>Gets a function that creates an instance of the class bound to this
+    <a href="#">AttributeBank</a> instance, given an array of constructor
+    parameters.</p>
             </div>
           </div>
           <div class="codeHeader" data-bi-name="code-header">
             <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
           </div>
-          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-title">ConstructorInfo</span> <span class="hljs-title">ElementConstructor</span> { <span class="hljs-keyword">get</span>; }</code></pre>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-title">Func</span>&lt;<span class="hljs-keyword">object</span>[], <span class="hljs-keyword">object</span>&gt; <span class="hljs-title">Factory</span> { <span class="hljs-keyword">get</span>; }</code></pre>
           <h4 class="propertyInfoTitle stack">Property Value</h4>
           <div class="propertyInfo">
             <div class="subtle">
-              <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.reflection.constructorinfo?view=net-9.0" data-linktype="absolute-path">Constructor<wbr>Info</a>
+              <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.func-2?view=net-9.0" data-linktype="absolute-path">Func</a>&lt;<a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=net-9.0" data-linktype="absolute-path">object</a>[], <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=net-9.0" data-linktype="absolute-path">object</a>&gt;
             </div>
           </div>
           <h2 id="P:Maroontress.Oxbind.Impl.AttributeBank.ElementName">ElementName</h2>
@@ -245,6 +279,23 @@ gtag('config', 'G-9TQ6JWBKEK');
           <div class="propertyInfo">
             <div class="subtle">
               <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.xml.xmlqualifiedname?view=net-9.0" data-linktype="absolute-path">Xml<wbr>Qualified<wbr>Name</a>
+            </div>
+          </div>
+          <h2 id="P:Maroontress.Oxbind.Impl.AttributeBank.NameBank">NameBank</h2>
+          <div class="summaryHolder">
+            <div class="summary clearFix">
+              <p>Gets the <a href="Maroontress.Oxbind.Impl.QNameBank.html">QNameBank</a> instance used to intern XML qualified
+    names.</p>
+            </div>
+          </div>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-title">QNameBank</span> <span class="hljs-title">NameBank</span> { <span class="hljs-keyword">get</span>; }</code></pre>
+          <h4 class="propertyInfoTitle stack">Property Value</h4>
+          <div class="propertyInfo">
+            <div class="subtle">
+              <a class="xref" href="Maroontress.Oxbind.Impl.QNameBank.html" data-linktype="relative-path">QName<wbr>Bank</a>
             </div>
           </div>
           <h2 id="P:Maroontress.Oxbind.Impl.AttributeBank.ToReflector">ToReflector</h2>
@@ -264,29 +315,52 @@ gtag('config', 'G-9TQ6JWBKEK');
             </div>
           </div>
           <h1 id="methods-detail" class="heading-with-anchor">Methods Detail</h1>
-          <h2 id="M:Maroontress.Oxbind.Impl.AttributeBank.NewPlaceholder">NewPlaceholder()</h2>
+          <h2 id="M:Maroontress.Oxbind.Impl.AttributeBank.GetPlaceholder">GetPlaceholder()</h2>
           <div class="summaryHolder">
             <div class="summary clearFix">
-              <p>Creates a new array of objects to be used as placeholders for the
-    constructor parameters.</p>
+              <p>Retrieves a placeholder array of objects to be used as constructor
+    parameters.</p>
             </div>
           </div>
           <div class="codeHeader" data-bi-name="code-header">
             <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
           </div>
-          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-keyword">object</span>[] <span class="hljs-title">NewPlaceholder</span>()</code></pre>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-keyword">object</span>[] <span class="hljs-title">GetPlaceholder</span>()</code></pre>
           <h4 class="propertyInfoTitle stack">Returns</h4>
           <div class="propertyInfo">
             <div class="subtle">
               <a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=net-9.0" data-linktype="absolute-path">object</a>[]
             </div>
-            <p>An array of <a href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=net-9.0">object</a> with a length equal to the number of
-    constructor parameters.</p>
+            <p>An array of <a href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=net-9.0">object</a> with a length equal to the number
+    of constructor parameters.</p>
           </div>
           <h3>Remarks</h3>
-          <p>The length of the returned array matches the number of parameters of
-    the constructor associated with this <a href="#">AttributeBank</a>
-    instance.</p>
+          <p>If a previously used placeholder is available in the internal queue,
+    it is reused. Otherwise, a new placeholder array is created.</p>
+          <h2 id="M:Maroontress.Oxbind.Impl.AttributeBank.RecyclePlaceholder(System.Object[])">RecyclePlaceholder(object[])</h2>
+          <div class="summaryHolder">
+            <div class="summary clearFix">
+              <p>Recycles a placeholder array of constructor parameters for future
+    reuse.</p>
+            </div>
+          </div>
+          <div class="codeHeader" data-bi-name="code-header">
+            <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
+          </div>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">RecyclePlaceholder</span>(<span class="hljs-keyword">object</span>[] placeholder)</code></pre>
+          <h4 class="propertyInfoTitle stack">Parameters</h4>
+          <div class="propertyInfo">
+            <dl class="parameterList">
+              <dt>
+                placeholder
+              </dt>
+              <dd>
+                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=net-9.0" data-linktype="absolute-path">object</a>[]</span>
+              </dd>
+            </dl>
+            <p>The placeholder array to recycle. Its length must match the number of
+    constructor parameters.</p>
+          </div>
         </main>
       </section>
     </div>

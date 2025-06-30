@@ -89,7 +89,7 @@ gtag('config', 'G-9TQ6JWBKEK');
               <tbody>
                 <tr>
                   <td>
-                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Oxbind.Impl.SchemaType.ApplyWithContent(System.Type,System.Xml.XmlReader,System.Func{System.Type,Maroontress.Oxbind.Impl.Metadata},Maroontress.Oxbind.Impl.Reflector{System.Object},System.Action{System.Object})" data-linktype="relative-path">Apply<wbr>With<wbr>Content(Type, Xml<wbr>Reader, Func&lt;Type, Metadata&gt;, Reflector&lt;object&gt;, Action&lt;object&gt;)</a></span>
+                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Oxbind.Impl.SchemaType.ApplyWithContent(System.Type,System.Xml.XmlReader,System.Func{System.Type,Maroontress.Oxbind.Impl.Metadata},Maroontress.Oxbind.Impl.Reflector{System.Object},System.Object[])" data-linktype="relative-path">Apply<wbr>With<wbr>Content(Type, Xml<wbr>Reader, Func&lt;Type, Metadata&gt;, Reflector&lt;object&gt;, object[])</a></span>
                   </td>
                   <td>
                     <p>Processes a child element that has content, applying the binding logic.</p>
@@ -97,7 +97,7 @@ gtag('config', 'G-9TQ6JWBKEK');
                 </tr>
                 <tr>
                   <td>
-                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Oxbind.Impl.SchemaType.ApplyWithEmptyElement(System.Type,System.Xml.XmlReader,System.Func{System.Type,Maroontress.Oxbind.Impl.Metadata},Maroontress.Oxbind.Impl.Reflector{System.Object},System.Action{System.Object})" data-linktype="relative-path">Apply<wbr>With<wbr>Empty<wbr>Element(Type, Xml<wbr>Reader, Func&lt;Type, Metadata&gt;, Reflector&lt;object&gt;, Action&lt;object&gt;)</a></span>
+                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Oxbind.Impl.SchemaType.ApplyWithEmptyElement(System.Type,System.Xml.XmlReader,System.Func{System.Type,Maroontress.Oxbind.Impl.Metadata},Maroontress.Oxbind.Impl.Reflector{System.Object},System.Object[])" data-linktype="relative-path">Apply<wbr>With<wbr>Empty<wbr>Element(Type, Xml<wbr>Reader, Func&lt;Type, Metadata&gt;, Reflector&lt;object&gt;, object[])</a></span>
                   </td>
                   <td>
                     <p>Processes an empty child element, applying the binding logic.</p>
@@ -147,7 +147,7 @@ gtag('config', 'G-9TQ6JWBKEK');
             </table>
           </div>
           <h1 id="methods-detail" class="heading-with-anchor">Methods Detail</h1>
-          <h2 id="M:Maroontress.Oxbind.Impl.SchemaType.ApplyWithContent(System.Type,System.Xml.XmlReader,System.Func{System.Type,Maroontress.Oxbind.Impl.Metadata},Maroontress.Oxbind.Impl.Reflector{System.Object},System.Action{System.Object})">ApplyWithContent(Type, XmlReader, Func&lt;Type, Metadata&gt;, Reflector&lt;object&gt;, Action&lt;object&gt;)</h2>
+          <h2 id="M:Maroontress.Oxbind.Impl.SchemaType.ApplyWithContent(System.Type,System.Xml.XmlReader,System.Func{System.Type,Maroontress.Oxbind.Impl.Metadata},Maroontress.Oxbind.Impl.Reflector{System.Object},System.Object[])">ApplyWithContent(Type, XmlReader, Func&lt;Type, Metadata&gt;, Reflector&lt;object&gt;, object[])</h2>
           <div class="summaryHolder">
             <div class="summary clearFix">
               <p>Processes a child element that has content, applying the binding logic.</p>
@@ -156,7 +156,7 @@ gtag('config', 'G-9TQ6JWBKEK');
           <div class="codeHeader" data-bi-name="code-header">
             <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
           </div>
-          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> <span class="hljs-keyword">void</span> <span class="hljs-title">ApplyWithContent</span>(<span class="hljs-title">Type</span> unitType, <span class="hljs-title">XmlReader</span> input, <span class="hljs-title">Func</span>&lt;<span class="hljs-title">Type</span>, <span class="hljs-title">Metadata</span>&gt; getMetadata, <span class="hljs-title">Reflector</span>&lt;<span class="hljs-keyword">object</span>&gt; reflector, <span class="hljs-title">Action</span>&lt;<span class="hljs-keyword">object</span>&gt; setChildValue)</code></pre>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> <span class="hljs-keyword">void</span> <span class="hljs-title">ApplyWithContent</span>(<span class="hljs-title">Type</span> unitType, <span class="hljs-title">XmlReader</span> input, <span class="hljs-title">Func</span>&lt;<span class="hljs-title">Type</span>, <span class="hljs-title">Metadata</span>&gt; getMetadata, <span class="hljs-title">Reflector</span>&lt;<span class="hljs-keyword">object</span>&gt; reflector, <span class="hljs-keyword">object</span>[] arguments)</code></pre>
           <h4 class="propertyInfoTitle stack">Parameters</h4>
           <div class="propertyInfo">
             <dl class="parameterList">
@@ -206,16 +206,15 @@ gtag('config', 'G-9TQ6JWBKEK');
           <div class="propertyInfo stack">
             <dl class="parameterList">
               <dt>
-                setChildValue
+                arguments
               </dt>
               <dd>
-                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.action-1?view=net-9.0" data-linktype="absolute-path">Action</a>&lt;<a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=net-9.0" data-linktype="absolute-path">object</a>&gt;</span>
+                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=net-9.0" data-linktype="absolute-path">object</a>[]</span>
               </dd>
             </dl>
-            <p>An action that injects the processed child value into the parent
-    object's constructor arguments.</p>
+            <p>The parent object's constructor arguments.</p>
           </div>
-          <h2 id="M:Maroontress.Oxbind.Impl.SchemaType.ApplyWithEmptyElement(System.Type,System.Xml.XmlReader,System.Func{System.Type,Maroontress.Oxbind.Impl.Metadata},Maroontress.Oxbind.Impl.Reflector{System.Object},System.Action{System.Object})">ApplyWithEmptyElement(Type, XmlReader, Func&lt;Type, Metadata&gt;, Reflector&lt;object&gt;, Action&lt;object&gt;)</h2>
+          <h2 id="M:Maroontress.Oxbind.Impl.SchemaType.ApplyWithEmptyElement(System.Type,System.Xml.XmlReader,System.Func{System.Type,Maroontress.Oxbind.Impl.Metadata},Maroontress.Oxbind.Impl.Reflector{System.Object},System.Object[])">ApplyWithEmptyElement(Type, XmlReader, Func&lt;Type, Metadata&gt;, Reflector&lt;object&gt;, object[])</h2>
           <div class="summaryHolder">
             <div class="summary clearFix">
               <p>Processes an empty child element, applying the binding logic.</p>
@@ -224,7 +223,7 @@ gtag('config', 'G-9TQ6JWBKEK');
           <div class="codeHeader" data-bi-name="code-header">
             <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
           </div>
-          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> <span class="hljs-keyword">void</span> <span class="hljs-title">ApplyWithEmptyElement</span>(<span class="hljs-title">Type</span> unitType, <span class="hljs-title">XmlReader</span> input, <span class="hljs-title">Func</span>&lt;<span class="hljs-title">Type</span>, <span class="hljs-title">Metadata</span>&gt; getMetadata, <span class="hljs-title">Reflector</span>&lt;<span class="hljs-keyword">object</span>&gt; reflector, <span class="hljs-title">Action</span>&lt;<span class="hljs-keyword">object</span>&gt; setChildValue)</code></pre>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> <span class="hljs-keyword">void</span> <span class="hljs-title">ApplyWithEmptyElement</span>(<span class="hljs-title">Type</span> unitType, <span class="hljs-title">XmlReader</span> input, <span class="hljs-title">Func</span>&lt;<span class="hljs-title">Type</span>, <span class="hljs-title">Metadata</span>&gt; getMetadata, <span class="hljs-title">Reflector</span>&lt;<span class="hljs-keyword">object</span>&gt; reflector, <span class="hljs-keyword">object</span>[] arguments)</code></pre>
           <h4 class="propertyInfoTitle stack">Parameters</h4>
           <div class="propertyInfo">
             <dl class="parameterList">
@@ -274,14 +273,13 @@ gtag('config', 'G-9TQ6JWBKEK');
           <div class="propertyInfo stack">
             <dl class="parameterList">
               <dt>
-                setChildValue
+                arguments
               </dt>
               <dd>
-                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.action-1?view=net-9.0" data-linktype="absolute-path">Action</a>&lt;<a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=net-9.0" data-linktype="absolute-path">object</a>&gt;</span>
+                <span class="lang-csharp"><a class="xref" href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=net-9.0" data-linktype="absolute-path">object</a>[]</span>
               </dd>
             </dl>
-            <p>An action that injects the processed child value into the parent
-    object's constructor arguments.</p>
+            <p>The parent object's constructor arguments.</p>
           </div>
         </main>
       </section>

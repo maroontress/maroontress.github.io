@@ -123,7 +123,7 @@ gtag('config', 'G-9TQ6JWBKEK');
               <tbody>
                 <tr>
                   <td>
-                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Oxbind.Impl.AttributeParameter.Of(System.Reflection.ConstructorInfo)" data-linktype="relative-path">Of(Constructor<wbr>Info)</a></span>
+                    <span class="lang-csharp break-text"><a class="xref" href="#M:Maroontress.Oxbind.Impl.AttributeParameter.Of(System.Reflection.ConstructorInfo,Maroontress.Oxbind.Impl.QNameBank)" data-linktype="relative-path">Of(Constructor<wbr>Info, QName<wbr>Bank)</a></span>
                   </td>
                   <td>
                     <p>Gets a collection of <a href="#">AttributeParameter</a> instances for
@@ -244,7 +244,7 @@ gtag('config', 'G-9TQ6JWBKEK');
             </div>
           </div>
           <h1 id="methods-detail" class="heading-with-anchor">Methods Detail</h1>
-          <h2 id="M:Maroontress.Oxbind.Impl.AttributeParameter.Of(System.Reflection.ConstructorInfo)">Of(ConstructorInfo)</h2>
+          <h2 id="M:Maroontress.Oxbind.Impl.AttributeParameter.Of(System.Reflection.ConstructorInfo,Maroontress.Oxbind.Impl.QNameBank)">Of(ConstructorInfo, QNameBank)</h2>
           <div class="summaryHolder">
             <div class="summary clearFix">
               <p>Gets a collection of <a href="#">AttributeParameter</a> instances for
@@ -254,7 +254,7 @@ gtag('config', 'G-9TQ6JWBKEK');
           <div class="codeHeader" data-bi-name="code-header">
             <span class="language">C#</span><button class="action" data-bi-name="copy"><span class="docon docon-edit-copy" role="presentation"></span><span>Copy</span></button>
           </div>
-          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-title">IEnumerable</span>&lt;AttributeParameter&gt; <span class="hljs-title">Of</span>(<span class="hljs-title">ConstructorInfo</span> ctor)</code></pre>
+          <pre class="wrap"><code class="nohighlight"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-title">IEnumerable</span>&lt;AttributeParameter&gt; <span class="hljs-title">Of</span>(<span class="hljs-title">ConstructorInfo</span> ctor, <span class="hljs-title">QNameBank</span> nameBank)</code></pre>
           <h4 class="propertyInfoTitle stack">Parameters</h4>
           <div class="propertyInfo">
             <dl class="parameterList">
@@ -266,6 +266,18 @@ gtag('config', 'G-9TQ6JWBKEK');
               </dd>
             </dl>
             <p>The constructor to analyze.</p>
+          </div>
+          <div class="propertyInfo stack">
+            <dl class="parameterList">
+              <dt>
+                nameBank
+              </dt>
+              <dd>
+                <span class="lang-csharp"><a class="xref" href="Maroontress.Oxbind.Impl.QNameBank.html" data-linktype="relative-path">QName<wbr>Bank</a></span>
+              </dd>
+            </dl>
+            <p>The <a href="Maroontress.Oxbind.Impl.QNameBank.html">QNameBank</a> instance used to intern XML qualified
+    names.</p>
           </div>
           <h4 class="propertyInfoTitle stack">Returns</h4>
           <div class="propertyInfo">

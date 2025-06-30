@@ -194,6 +194,7 @@ https://maroontress.github.io/Oxbind-CSharp/api/latest/html/Maroontress.Oxbind.I
 https://maroontress.github.io/Oxbind-CSharp/api/latest/html/Maroontress.Oxbind.Impl.Names.html
 https://maroontress.github.io/Oxbind-CSharp/api/latest/html/Maroontress.Oxbind.Impl.OptionalSchemaType.html
 https://maroontress.github.io/Oxbind-CSharp/api/latest/html/Maroontress.Oxbind.Impl.OxBinderImpl.html
+https://maroontress.github.io/Oxbind-CSharp/api/latest/html/Maroontress.Oxbind.Impl.QNameBank.html
 https://maroontress.github.io/Oxbind-CSharp/api/latest/html/Maroontress.Oxbind.Impl.Readers.html
 https://maroontress.github.io/Oxbind-CSharp/api/latest/html/Maroontress.Oxbind.Impl.Reflector.html
 https://maroontress.github.io/Oxbind-CSharp/api/latest/html/Maroontress.Oxbind.Impl.Reflectors.html
@@ -204,6 +205,7 @@ https://maroontress.github.io/Oxbind-CSharp/api/latest/html/Maroontress.Oxbind.I
 https://maroontress.github.io/Oxbind-CSharp/api/latest/html/Maroontress.Oxbind.Impl.Sugarcoater.html
 https://maroontress.github.io/Oxbind-CSharp/api/latest/html/Maroontress.Oxbind.Impl.TextMetadata.html
 https://maroontress.github.io/Oxbind-CSharp/api/latest/html/Maroontress.Oxbind.Impl.Types.html
+https://maroontress.github.io/Oxbind-CSharp/api/latest/html/Maroontress.Oxbind.Impl.ValidationKit.html
 https://maroontress.github.io/Oxbind-CSharp/api/latest/html/Maroontress.Oxbind.Impl.Validator.html
 https://maroontress.github.io/Oxbind-CSharp/api/latest/html/Maroontress.Oxbind.Impl.html
 https://maroontress.github.io/Oxbind-CSharp/api/latest/html/Maroontress.Oxbind.MultipleAttribute.html
