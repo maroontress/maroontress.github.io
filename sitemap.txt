@@ -157,6 +157,9 @@ https://maroontress.github.io/IntExpr-Java/api/latest/html/search.html
 https://maroontress.github.io/IntExpr-Java/api/latest/html/serialized-form.html
 https://maroontress.github.io/IntExpr-Java/index.html
 https://maroontress.github.io/IntExpr-Java/releasenotes.html
+https://maroontress.github.io/LatteArtCoach/index.html
+https://maroontress.github.io/LatteArtCoach/support_en_US.html
+https://maroontress.github.io/LatteArtCoach/support_ja_JP.html
 https://maroontress.github.io/NugetScraper/api/latest/html/allclasses-index.html
 https://maroontress.github.io/NugetScraper/api/latest/html/allpackages-index.html
 https://maroontress.github.io/NugetScraper/api/latest/html/com.maroontress.nugetscraper/com/maroontress/nugetscraper/NugetScraper.html
