@@ -105,8 +105,10 @@ public record class Person(
      placed at the beginning of the constructor parameter list, before any other
      parameters marked with other Oxbind binding attributes (such as <a href="Maroontress.Oxbind.RequiredAttribute.html">RequiredAttribute</a>, <a href="Maroontress.Oxbind.OptionalAttribute.html">OptionalAttribute</a>, <a href="Maroontress.Oxbind.MultipleAttribute.html">MultipleAttribute</a>, or <a href="Maroontress.Oxbind.ForTextAttribute.html">ForTextAttribute</a>).</p>
           <p>If the XML attribute does not exist in the element, the parameter is
-     populated with <code>null</code>. Therefore, the parameter type must
-     be a nullable reference type.</p>
+     populated with <code>null</code>. Therefore, in a nullable-aware
+     context, the parameter type must be a nullable reference type (e.g.,
+     <code>string?</code> or <code></code>) to avoid
+     warnings.</p>
           <h2 id="constructors" class="heading-with-anchor">Constructors</h2>
           <div class="table-scroll-wrapper">
             <table class="nameValue">
@@ -264,8 +266,10 @@ public record class Person(
      placed at the beginning of the constructor parameter list, before any other
      parameters marked with other Oxbind binding attributes (such as <a href="Maroontress.Oxbind.RequiredAttribute.html">RequiredAttribute</a>, <a href="Maroontress.Oxbind.OptionalAttribute.html">OptionalAttribute</a>, <a href="Maroontress.Oxbind.MultipleAttribute.html">MultipleAttribute</a>, or <a href="Maroontress.Oxbind.ForTextAttribute.html">ForTextAttribute</a>).</p>
           <p>If the XML attribute does not exist in the element, the parameter is
-     populated with <code>null</code>. Therefore, the parameter type must
-     be a nullable reference type.</p>
+     populated with <code>null</code>. Therefore, in a nullable-aware
+     context, the parameter type must be a nullable reference type (e.g.,
+     <code>string?</code> or <code></code>) to avoid
+     warnings.</p>
           <h3>Examples</h3>
           <pre><code class="lang-csharp">[ForElement("person")]
 public record class Person(
