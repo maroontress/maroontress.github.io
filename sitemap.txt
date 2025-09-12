@@ -18,10 +18,13 @@ https://maroontress.github.io/Clione-Java/api/latest/html/com.maroontress.clione
 https://maroontress.github.io/Clione-Java/api/latest/html/com.maroontress.clione/com/maroontress/clione/impl/DefaultToken.html
 https://maroontress.github.io/Clione-Java/api/latest/html/com.maroontress.clione/com/maroontress/clione/impl/DefaultTokenizer.html
 https://maroontress.github.io/Clione-Java/api/latest/html/com.maroontress.clione/com/maroontress/clione/impl/Digraphs.html
+https://maroontress.github.io/Clione-Java/api/latest/html/com.maroontress.clione/com/maroontress/clione/impl/DirectiveParseKit.TokenListConsumer.html
+https://maroontress.github.io/Clione-Java/api/latest/html/com.maroontress.clione/com/maroontress/clione/impl/DirectiveParseKit.html
 https://maroontress.github.io/Clione-Java/api/latest/html/com.maroontress.clione/com/maroontress/clione/impl/Eof.html
 https://maroontress.github.io/Clione-Java/api/latest/html/com.maroontress.clione/com/maroontress/clione/impl/PhaseOneSource.html
 https://maroontress.github.io/Clione-Java/api/latest/html/com.maroontress.clione/com/maroontress/clione/impl/PhaseTwoSource.html
 https://maroontress.github.io/Clione-Java/api/latest/html/com.maroontress.clione/com/maroontress/clione/impl/ReaderSource.html
+https://maroontress.github.io/Clione-Java/api/latest/html/com.maroontress.clione/com/maroontress/clione/impl/ReparseSource.html
 https://maroontress.github.io/Clione-Java/api/latest/html/com.maroontress.clione/com/maroontress/clione/impl/Source.html
 https://maroontress.github.io/Clione-Java/api/latest/html/com.maroontress.clione/com/maroontress/clione/impl/SourceChars.html
 https://maroontress.github.io/Clione-Java/api/latest/html/com.maroontress.clione/com/maroontress/clione/impl/Switches.html
@@ -34,6 +37,7 @@ https://maroontress.github.io/Clione-Java/api/latest/html/com.maroontress.clione
 https://maroontress.github.io/Clione-Java/api/latest/html/com.maroontress.clione/com/maroontress/clione/package-summary.html
 https://maroontress.github.io/Clione-Java/api/latest/html/com.maroontress.clione/com/maroontress/clione/package-tree.html
 https://maroontress.github.io/Clione-Java/api/latest/html/com.maroontress.clione/module-summary.html
+https://maroontress.github.io/Clione-Java/api/latest/html/deprecated-list.html
 https://maroontress.github.io/Clione-Java/api/latest/html/help-doc.html
 https://maroontress.github.io/Clione-Java/api/latest/html/index-all.html
 https://maroontress.github.io/Clione-Java/api/latest/html/index.html
