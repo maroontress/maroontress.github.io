@@ -233,6 +233,7 @@ https://maroontress.github.io/Oxbind-CSharp/api/latest/html/Maroontress.Oxbind.h
 https://maroontress.github.io/Oxbind-CSharp/api/latest/html/index.html
 https://maroontress.github.io/Oxbind-CSharp/index.html
 https://maroontress.github.io/Oxbind-CSharp/releasenotes.html
+https://maroontress.github.io/Potemkin/index.html
 https://maroontress.github.io/PourOver/index.html
 https://maroontress.github.io/PourOver/releasenotes.html
 https://maroontress.github.io/SqlBind-CSharp/api/latest/html/Maroontress.SqlBind.AutoIncrementAttribute.html

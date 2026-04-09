@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9TQ6JWBKEK"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-9TQ6JWBKEK');
+    </script>
+    </script>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Top | 崖の上のポチョムキン</title>
+    <link rel="canonical" href="https://maroontress.github.io/Potemkin/index.html" />
+    <link rel="stylesheet" type="text/css" href="/css/markdown.ja.css">
+    <link rel="stylesheet" type="text/css" href="/css/next-button.css">
+    <link rel="apple-touch-icon" sizes="120x120" href="/images/logo-v2-120x120.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/logo-v2-180x180.png">
+    <link rel="icon" type="image/x-icon" href="/images/logo-v2.ico">
+    <link rel="mask-icon" href="/images/logo-v2-mask-icon.svg" color="#800000">
+    <script src="/js/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+    <script src="/js/toc.js"></script>
+    <script src="/js/next-button.js"></script>
+  </head>
+  <body>
+    <div class="logo">
+      <b>Maroontress Fast Software</b>
+    </div>
+    <div class="container">
+      <div class="main-container">
+        <section>
+          <main class="content">
+<h2>生成AIによるコード補完</h2>
+<p>先日、日本のGitHubの<a href="https://moulongzhang.github.io/2025-Github-Copilot-Workshop/github-copilot-workshop/">ワークショップ</a>に参加してきた。内容は主にVS CodeでGitHub Copilotの使い方を紹介するものだった。コード補完も進化していて、クラス名を変更すると、そのクラスの実装を「名前の変更に応じて」変えるように促すという例を紹介していた。具体的には、次のコード:</p>
+<pre><code class="language-python">import math
+
+class Point2D:
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+
+    def distance_to(self, other):
+        dx = self.x - other.x
+        dy = self.y - other.y
+        return math.sqrt(dx * dx + dy * dy)
+
+    def __str__(self):
+        return f&quot;Point2D({self.x}, {self.y})&quot;
+</code></pre>
+<p>の<code>Point2D</code>を<code>Point3D</code>に変えると、つまり<code>2</code>を<code>3</code>に変えると、次のようにCopilotが次々に変更を提案してくる:</p>
+<ul>
+<li><code>__init__</code>: パラメータに<code>z</code>を追加、最後の行に<code>self.z = z</code>を追加する。</li>
+<li><code>distance_to</code>: <code>dz = self.z - other.z</code>を追加、<code>math.sqrt</code>の引数の最後に<code>+ dz * dz</code>を追加。</li>
+<li><code>__str__</code>: 返す文字列を <code>f&quot;Point3D({self.x}, {self.y}, {self.z})&quot;</code>に修正。</li>
+</ul>
+<p>提案を全て受け入れると、次のようなコードに変わった:</p>
+<pre><code class="language-python">class Point3D:
+    def __init__(self, x, y, z):
+        self.x = x
+        self.y = y
+        self.z = z
+
+    def distance_to(self, other):
+        dx = self.x - other.x
+        dy = self.y - other.y
+        dz = self.z - other.z
+        return math.sqrt(dx * dx + dy * dy + dz * dz)
+
+    def __str__(self):
+        return f&quot;Point3D({self.x}, {self.y}, {self.z})&quot;
+</code></pre>
+<p>繰り返しになるが、<code>2</code>を<code>3</code>に変えた後、私は少し待ちながらタブキーを押しただけで、所望の<code>Point3D</code>クラスを手に入れることができた。生成AI、万歳。</p>
+<p>だが、それは本当に望ましいことだろうか。</p>
+<h2>展開されたコード</h2>
+<p><code>Point3D</code>クラスの<code>distance_to</code>の中のコードを次のように色分けしてみる:</p>
+<pre style="background-color: black;">
+dx = <span style="color: #f0f;">self</span>.<span style="color: red;">x</span> - <span style="color: #0ff;">other</span>.<span style="color: red;">x</span>
+dy = <span style="color: #f0f;;">self</span>.<span style="color: #0F0;">y</span> - <span style="color: cyan;">other</span>.<span style="color: #0F0;;">y</span>
+dz = <span style="color: #f0f;;">self</span>.<span style="color: #44F;">z</span> - <span style="color: #0ff;">other</span>.<span style="color: #44F;">z</span>
+</pre>
+<p>まるで行列の掛け算を展開したような配色だ。
+どの行の右辺も、<code>self</code>の<strong>何か</strong>から、<code>other</code>の<strong>同じ何か</strong>を引いたものだ。
+このようなコードは（多分、未だに）名前の無い「スメル」であり、
+私は<strong>因数分解を展開したようなコード</strong>とか、<strong>展開されたコード</strong>などと呼んでいる。</p>
+<p>概念的には、次のように記載したい:</p>
+<pre style="background-color: black;">
+(dx, dy, dz) = (self - other)⊙(x, y, z)
+</pre>
+<p>しかし、相手はPythonなので、私の願望を押し付けても無意味だ。一般的に、多くのオブジェクト指向のプログラミング言語では、「展開されたコード」を次のような手順で「因数分解」できる:</p>
+<ol>
+<li><code>self</code>と<code>other</code>を「ペア」とするインスタンス<code>p</code>を作成する（<code>p.left</code>と<code>p.right</code>が<code>self</code>と<code>other</code>に対応）</li>
+<li><code>self</code>から<code>x</code>, <code>y</code>, <code>z</code>を取り出すラムダ式のリスト$L$を作成する</li>
+<li>リスト内包表記により<code>f(p.left) - f(p.right)</code>に変換する（<code>f</code>はリスト$L$の要素）</li>
+</ol>
+<p>このような蘊蓄をプロンプトに添えて、
+<code>distance_to</code>をChatGPTにリファクタリングさせてみると、次のようなコードを示した:</p>
+<pre><code class="language-python">    def distance_to(self, other):
+        pair = (self, other)
+        accessors = [
+            lambda p: p.x,
+            lambda p: p.y,
+            lambda p: p.z,
+        ]
+        diffs = [f(pair[0]) - f(pair[1]) for f in accessors]
+        return math.sqrt(sum(d * d for d in diffs))
+</code></pre>
+<p>ChatGPTによると、クラスを新しく作る必要はなく、タプルで良いとのこと。であれば、<code>pair</code>は不要であり、<code>pair[0]</code>を<code>self</code>、<code>pair[1]</code>を<code>other</code>にした方が良い。また、<code>accessors</code>のリストは毎回作成して欲しくないので、クラス属性にしたい。つまり、次のようにリファクタリングして欲しかった:</p>
+<pre><code class="language-python">from typing import Callable, Self, final
+⋮
+@final
+class Point3D:
+    accessors: tuple[Callable[[Self], float], ...] = (
+        lambda p: p.x,
+        lambda p: p.y,
+        lambda p: p.z,
+    )
+    ⋮
+    def distance_to(self, other: Self) -&gt; float:
+        accessors = Point3D.accessors
+        diffs = (f(self) - f(other) for f in accessors)
+        return math.sqrt(sum(d * d for d in diffs))
+</code></pre>
+<p>続けて、ChatGPTは、この<strong>因数分解されたコード</strong>には次のような利点があると主張した:</p>
+<ul>
+<li><strong>保守性</strong>: 差分計算ロジックが1か所（<code>dx</code>, <code>dy</code>, <code>dz</code>の重複消滅）</li>
+<li><strong>拡張性</strong>: 次元を増やすときはアクセサを追加するだけ（例: <code>lambda p: p.w</code>）</li>
+<li><strong>アルゴリズムとデータ構造の分離</strong>: 「何を引くか」と「どう計算するか」が分離されている</li>
+</ul>
+<p>さらに、ChatGPTは親切にも、Pythonでは次のようにすれば<strong>ラムダ式すら不要</strong>にできると教えてくれた:</p>
+<pre><code class="language-python">coords = (&quot;x&quot;, &quot;y&quot;, &quot;z&quot;)
+diffs = [getattr(self, c) - getattr(other, c) for c in coords]
+</code></pre>
+<p>これは、JavaやC#などでリフレクションを使うことに相当する、と理解すればよい。</p>
+<p>また、データの持ち方、データ構造を変えることも提案してくれた。コンストラクタを次のように変更する:</p>
+<pre><code class="language-python">class Point3D:
+    def __init__(self, x, y, z):
+        self.coords = (x, y, z)
+</code></pre>
+<p>こうなると、ラムダ式のリストは不要であり、<code>distance_to</code>は次のように書ける:</p>
+<pre><code class="language-python">    def distance_to(self, other):
+        diffs = [(a - b) for a, b in zip(self.coords, other.coords)]
+        return math.sqrt(sum(d * d for d in diffs))
+</code></pre>
+<p>ただし、このままでは属性<code>x</code>でx成分を参照することができない。属性<code>x</code>でのアクセスを可能にするには、次のようにすれば良い（<code>y</code>, <code>z</code>も同様）:</p>
+<pre><code class="language-python">    @property
+    def x(self):
+        return self.coords[0]
+</code></pre>
+<p>とにかく、展開されたコードを因数分解して、重複を消すことができた。しかし、これで終わりではない。このようなコードは実行が遅い（パフォーマンスが悪い）ので、<code>distance_to</code>が短時間に多数呼び出される場合（例えば、秒間100万回など）は、元のコードに戻す必要がある。つまり、<code>distance_to</code>を最適化するため、コードを展開する必要がある。もちろん、展開されたコードが常に高速になるわけではないが、この場合は当てはまる。このようなところが、ソフトウェア開発の難しいところだ。</p>
+<p>ただし、そもそもパフォーマンスが重要なのであれば、Pythonなら<code>numpy.ndarray</code>を使うところから始めるだろう。余程の事情が無い限り、<code>Point2D</code>や<code>Point3D</code>のようなクラスを自作するべきではない（学習の題材としては良いが）。</p>
+<p>そんなことよりも、私には不思議なことがある。なぜ、生成AIは「展開されたコード」を提案してくるのだろうか。</p>
+<h2>生成AIが「展開されたコード」を提案する理由</h2>
+<p>元々の<code>Point2D</code>のコードが「展開された」ものだったので、Copilotはそのスタイルに合わせて変更を提案してくれるのではないか、と考える人もいるだろう。しかし、実際はそうではない。コードを次のように書いて、Copilotのコード補完を確認してみると良い:</p>
+<pre><code class="language-python">class Point3D:
+    def __init__(self, x, y, z):
+        self.x = x
+        self.y = y
+        self.z = z
+
+    def distance_to(self, other):
+</code></pre>
+<p><code>distance_to</code>の続きとして、次のように提案した:</p>
+<pre><code class="language-python">        dx = self.x - other.x
+        dy = self.y - other.y
+        dz = self.z - other.z
+        return math.sqrt(dx * dx + dy * dy + dz * dz)
+</code></pre>
+<p>パフォーマンスが重要だからと気を使ってくれているのだろうか。いや、そうではない。生成AIが提示するコードには次のような傾向がある。</p>
+<h3>1. 学習データ的に「最も典型」なものが選ばれやすい</h3>
+<p><code>Point3D</code>のようなコードの例は、教科書、ブログ、Stack Overflow、入門書などに大量に出現する。そうした例では、距離計算は次のような形で紹介されることが多い:</p>
+<pre><code>dx = self.x - other.x
+dy = self.y - other.y
+dz = self.z - other.z
+</code></pre>
+<p>生成AIは確率モデルであり、このような例を多く学習している。その結果、最も確率が高い提案は「展開されたコード」のパターンになりやすい。</p>
+<p>一方、ラムダ式や<code>getattr</code>を使うコードは、Pythonでは中級以上であり、数学的距離の例としてはまず出てこないため、確率的に負けやすい。</p>
+<h3>2. 汎用すぎて意味が曖昧になるコードを嫌う</h3>
+<p>生成AIは基本的に前提が少なく、意味が1行で確定するコードを好む傾向がある。</p>
+<p>反対に、設計として高度なコード、すなわち:</p>
+<ul>
+<li>変更が容易（<code>Point3D</code>でいうと、次元数を変えやすい）</li>
+<li>DRY</li>
+<li>メタプログラミング的</li>
+</ul>
+<p>といった利点があるコードは、<strong>暗黙の前提</strong>が多くなる。そのため、生成AIはそのようなコードを好まない。</p>
+<blockquote>
+<p>ここでの暗黙の前提とは、「このクラスは本当に<code>x</code>, <code>y</code>, <code>z</code> だけ?」「順序は保証されてる?」「将来属性が増えたらどうなる?」などのようなことを指す。</p>
+</blockquote>
+<h3>3. 「初心者」に読みやすいものを優先する</h3>
+<p>生成AIはデフォルトで「初学者が読んで理解できるか」を重視し、「賢く見えるコード」より「事故らないコード」を好む。例えば:</p>
+<ul>
+<li>変数名に意味がある</li>
+<li>デバッグしやすい</li>
+<li>行番号と対応が明確</li>
+</ul>
+<p>一方、設計として高度なコードは（初心者にとって）:</p>
+<ul>
+<li>変数が抽象的なものを指していて、具体的には何であるか追う必要がある</li>
+<li>デバッグしにくい（例えば、ラムダ式、ジェネレータ式は遅延実行されるため実行順序を把握しにくい）</li>
+<li>エラーが起きた時に、原因がどの軸なのか分かりにくい</li>
+</ul>
+<h3>4. 間違いを避ける</h3>
+<p>そして、生成AIは、多くの人間と同様に、誰かに怒られることを恐れている。ChatGPTの主張を次に引用する:</p>
+<blockquote>
+<p>重要なのはここです。生成AIは、</p>
+<ul>
+<li>賢く見える最短コード</li>
+<li>拡張性のある設計</li>
+</ul>
+<p>よりも、「誰に渡しても怒られにくいコード」を優先します。</p>
+<p>あなたの書き方は:</p>
+<ul>
+<li>設計者視点</li>
+<li>抽象化に価値を見出す人向け</li>
+<li>ライブラリ内部や研究コード向き</li>
+</ul>
+<p>生成AIの書き方は:</p>
+<ul>
+<li>サンプルコード</li>
+<li>教育用途</li>
+<li>Q&amp;A回答向き</li>
+</ul>
+</blockquote>
+<p>ああ、なるほど。それなら<a href="https://cloud.google.com/discover/what-is-vibe-coding?hl=ja">バイブコーディング</a>が行き詰まるのも納得だ。もし、人間がこのような指針でコードを書いていたら、ある程度の規模になった段階で必ず行き詰まるだろう。何度も経験したから、とてもよくわかるよ。</p>
+<p>しかし、ChatGPTは、次のようなプロンプトを与えれば生成するコードを改善できると、ついでに主張してきた。</p>
+<blockquote>
+<p>DRYを重視し、将来…が変わっても対応できる実装にしてください</p>
+</blockquote>
+<p>将来変わりそうなのが何か分からないなら、この仕事は任せられないんだけどね。とにかく、何か指示すれば「もっと良い」コードを生成できるらしい。</p>
+<p>残念なことに、実際のところ、それを信じてそのようなプロンプトを書いても、成功する可能性は少ない。根本的な問題は、学習データに含まれる高度なコードの割合が少ない、ということだ（というか、高度なコードの割合はそもそも少ない）。「三つ子の魂百まで」のように、若いときに貧乏だと歳をとって裕福になっても貧乏性だけは変わらない、ようなことはよくある。それと似たようなもので、生成AIは初心者向けのコードばかり学習してきたので、そういうコードを出しがちな（つい出てしまう）体質だと考えて良い。</p>
+<p>しかし、健康に悪いことは完璧に理解しているのにタバコをやめられないあの人のように、生成AIの行動（出力）が彼らの理解（知識）に伴わないのは、いったい何故か。生成AIは何かの依存症に罹患しているわけじゃないだろう。</p>
+<h2>ポチョムキン理解</h2>
+<p><a href="https://arxiv.org/pdf/2506.21521">ポチョムキン理解（Potemkin Understanding）</a>[1] とは、AIが「表面上は完璧に理解しているように見えるが、実際には中身を伴っておらず、応用や一貫した推論ができない」現象を指す。詳細についてはリンク先の論文をChatGPTにでも要約させて調べてもらいたい。</p>
+<p>なお、ポチョムキン理解という用語は、STAP細胞のようなものと異なり、新規に発見された現象に新しく付けられた名前ではない。展開されたコードではないが、多くの人が知っているが名前が無かった現象である。今後はポチョムキン上司、ポチョムキン新入社員などが出現する可能性が高いが、彼らははるか昔から存在している。</p>
+<p>というのは、この概念はLLMだけではなく、人間でも当てはまる。例えば、ほとんどのデザインパターンは理解していて説明もできるのに、ゴミのようなコードしか書けない輩を私はたくさん見てきた。現代の生成AIはそうした連中と同じく、上っ面はエリートのようだが中身が無い人間のようなものなのだ。</p>
+<p>また、この論文では次のようなLLMを対象にしており、現時点では積極的には利用しない型落ちしたモデル名が並んでいる。</p>
+<blockquote>
+<p>Our analysis spans the following 7 models: Llama-3.3 (70B), GPT-4o, Gemini-2.0 (Flash), Claude3.5 (Sonnet), DeepSeek-V3, DeepSeek-R1, and Qwen2-VL (72B).</p>
+</blockquote>
+<p>だからといって、より最新のLLMを使っているのでポチョムキン理解とは関係無いだろうと判断するのは早計だ。
+文献[1]で興味深かったトピックをいくつか紹介しておく。</p>
+<h3>LLMのベンチマーク</h3>
+<p>LLMの一部のベンチマークは、AP試験（アメリカの大学単位認定試験）や数学の競技大会、プログラミングテストなど、既存の「人間向けのベンチマークテスト」で高得点を取ることを良しとしている。ChatGPTの最新モデルがどこぞの大学の入学試験で合格水準に達した、というニュースを聞いたことがあるかもしれないが、それもそれらのベンチマーク結果に由来している。</p>
+<p>人間向けのベンチマークテストには、次のような前提がある。</p>
+<ul>
+<li>人間の間違い方（誤解）のパターンは限定的で、構造化されている</li>
+</ul>
+<p>人間相手に試験を考える側は「ここを根本的に理解していないと、こう間違えるはずだ」という予測を立てる。良い試験は「本当に理解している人間しか正解できない」ように上手く設計されている。したがって、このような人間向けの試験をLLMに課して結果をベンチマークする場合、次のような前提が成り立つ必要がある。</p>
+<ul>
+<li>LLMも人間と同じようなパターンで概念を誤解する</li>
+</ul>
+<p>つまり、人間向けのベンチマークテストをLLMに用いるということは、「人間もLLMも同じように理解するので、間違い方のパターンも共通である」という前提を置いたことになる。</p>
+<p>だが、もしLLMが、人間とは全く違う仕組みで理解し、全く違うパターンで誤解するのだとしたら、人間向けの試験にたまたま正解できたとしても、それが人間と同じように概念を理解していることにはならない。</p>
+<p>文献[1]では、LLMが人間とは異なる理解の仕方をしている場合、試験の高得点は、実は、表面的な張りぼてに過ぎないということを指摘している。一見すると見事に理解しているようにみえる（テストには正解する）が、いざやらせてみると人間なら絶対にしないようなトンチンカンな間違いをする、ということである。</p>
+<p>例えば、アナウンサーやコメンテーターが上手にスポーツの実況中継や解説ができるからといって、彼らがそのスポーツ自体を上手にプレイできるかどうかは別である。LLMのベンチマークに人間向けの試験を流用するのは、それを混同するようなものである。</p>
+<h2>最後に</h2>
+<p>私は生成AIにコードを書かせることに否定的ではなく、むしろ肯定的に捉えている。世の中には、公文式の算数の教材の解答欄を埋めるようなソフトウェア開発の仕事が、未だに尽きない。そのような仕事には生成AIが適任だ。というよりも、そんなものは元々人間がやるべきことだったのか、疑問に思うことが、まだまだたくさんある。そして、ダイクストラ法で最適解が求まるような問題を生成AIに解かせている人たちとか、自覚のない地球温暖化推進派が増殖中だ。</p>
+<p>LLMが人間と同じように理解しているかどうかは別として、LLMが便利に使える局面でそれを使わないのは愚行である。強盗が<strong>バールのようなもの</strong>で押し入ったという事件があったとしても、強盗がテコの原理を知っていたかどうかなど問題ではないのだ。人間と似て非なるLLMは、人の会話を模倣するように作られたハリボテかもしれないが、24時間働かせても病気になったりしない。我々が<strong>人のようなもの</strong>で「押し入ることができる所」は、いくらでもありそうだ。</p>
+<p>人類は空に太陽があれば昼、なければ夜として、夜に太陽の代わりとなる灯りを発明してきた。火、松明、電球など。エジソンはオームの法則を知らずに電球を発明したが、ポチョムキン理解と批判されたりしないだろう。太陽と違う仕組みで明かりをもたらしても、本物と違う仕組みで光っているので使わないという奴はいなかったはずだ。太陽が光を放つ仕組みがわかったのは、電球の発明と比べても、つい最近だからだ。</p>
+<p>確かに、人類は「LLMがどう理解を実現しているのか」をよく分かってない。それどころか、そもそも人類は、自分たちの脳がどのように意識を理解しているのか、思考、理解、創造性の正体、感情の統合的な仕組み、なぜニューロンネットワークの回路で知能が成立するのかも、未だにほとんどわかっていない。</p>
+<p>便利なものは使う。ただし、どう使うかはよく考えて使うべきだ。</p>
+<p>AGIが実現すれば、このような憂慮は無意味かもしれない。しかし、何の根拠もないが、今のLLMの技術的延長上にAGIの実現は無いと思う。なので、これからしばらくはVibe Code Cleanup Specialistという職業が重要になるだろう。</p>
+<h2>参考文献</h2>
+<p>[1] Mancoridis, M., Weeks, B., Vafa, K., &amp; Mullainathan, S. (2025). <a href="https://arxiv.org/abs/2506.21521">Potemkin Understanding in Large Language Models.</a> ArXiv, abs/2506.21521.</p>
+<!-- -->
+          </main>
+        </section>
+      </div>
+      <div class="left-container">
+<nav>
+  <div>
+    <a href="/">Projects</a>
+  </div>
+  <div>
+    <span>&#x25BE;</span>
+  </div>
+  <div>
+    <span class="project-name"><a href="index.html">崖の上のポチョムキン</a></span>
+  </div>
+  <ul>
+    <li class="selected">
+      Top
+    </li>
+    <ul id="toc-placeholder">
+    </ul>
+  </ul>
+</nav>
+      </div>
+    </div>
+  </body>
+</html>
