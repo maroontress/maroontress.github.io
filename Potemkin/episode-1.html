@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9TQ6JWBKEK"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-9TQ6JWBKEK');
+    </script>
+    </script>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Episode 1 | 崖の上のポチョムキン</title>
+    <link rel="canonical" href="https://maroontress.github.io/Potemkin/episode-1.html" />
+    <link rel="stylesheet" type="text/css" href="/css/markdown.ja.css">
+    <link rel="stylesheet" type="text/css" href="/css/next-button.css">
+    <link rel="apple-touch-icon" sizes="120x120" href="/images/logo-v2-120x120.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/logo-v2-180x180.png">
+    <link rel="icon" type="image/x-icon" href="/images/logo-v2.ico">
+    <link rel="mask-icon" href="/images/logo-v2-mask-icon.svg" color="#800000">
+    <script src="/js/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+    <script src="/js/toc.js"></script>
+    <script src="/js/next-button.js"></script>
+  </head>
+  <body>
+    <div class="logo">
+      <b>Maroontress Fast Software</b>
+    </div>
+    <div class="container">
+      <div class="main-container">
+        <section>
+          <main class="content">
+<div class="project-logo">崖の上のポチョムキン</div>
+<div id="toc-level" data-values="H2,H3"></div>
+<h1>エピソード1</h1>
+<p>Aug 9, 2026</p>
+<h2>「定石」を過剰に適用してしまう</h2>
+<p>ソースコードに関する質問を生成AIに尋ねてみた。プログラミング言語はJavaで、具体的には次の質問だ:</p>
+<pre><code class="language-markdown">Javaの`Optional&lt;String&gt;`について教えてください:
+
+```java
+// Optional&lt;U&gt; f(String);
+// Optional&lt;U&gt; g();
+// ※ f()もg()もnullを返さない
+Optional&lt;String&gt; maybeString = ...;
+```
+
+のとき、次のコードは等価ですか?
+
+```java
+var t = (maybeString.isPresent())
+    ? f(maybeString.get())
+    : g();
+```
+
+```java
+var t = maybeString.map(s -&gt; f(s))
+        .orElseGet(() -&gt; g());
+```
+</code></pre>
+<p>読者が実験しやすいように、プロンプト全体をコードブロックにした。人間向けに次に<ruby>再掲<rt>さいけい</rt></ruby>する:</p>
+<div style="border: 1px solid; padding: 1rem; margin-bottom: 1rem; border-radius: 1rem;">
+<p>Javaの<code>Optional&lt;String&gt;</code>について教えてください:</p>
+<pre><code class="language-java">// Optional&lt;U&gt; f(String);
+// Optional&lt;U&gt; g();
+// ※ f()もg()もnullを返さない
+Optional&lt;String&gt; maybeString = ...;
+</code></pre>
+<p>のとき、次のコードは等価ですか?</p>
+<pre><code class="language-java">var t = (maybeString.isPresent())
+    ? f(maybeString.get())
+    : g();
+</code></pre>
+<pre><code class="language-java">var t = maybeString.map(s -&gt; f(s))
+        .orElseGet(() -&gt; g());
+</code></pre>
+</div>
+<p>要するに、<code>maybeString</code>が<code>Optional&lt;String&gt;</code>型であるとき、次の二つは等価かどうかを尋ねた。</p>
+<ul>
+<li><code>maybeString.isPresent() ? f(maybeString.get()) : g()</code></li>
+<li><code>maybeString.map(s -&gt; f(s)).orElseGet(() -&gt; g())</code></li>
+</ul>
+<p>答えはYesであり、現時点（2026年7月現在）では、以下の生成AIは質問に正しく答えられている:</p>
+<ul>
+<li><a href="https://chatgpt.com/share/6a64b2db-34d0-83ee-a982-ce0e136618e1">OpenAI GPT-5.5の回答</a></li>
+<li><a href="https://claude.ai/share/ae80ccf9-d00d-41b0-a52e-fc0b857d2a99">Claude Sonnet 5 (Middle) の回答</a></li>
+</ul>
+<blockquote>
+<p>⚠️ 最初のプロンプトで<code>Optional</code>をタイプミスで<code>Optinal</code>と書いたが、生成AIはそれを理解した上で回答してくれたようである。</p>
+</blockquote>
+<p>質問に正解できたなら良いではないか、と思うかも知れないが、どちらの生成AIも<strong>間違った提案</strong>を勧めてきた。しかも、それらの提案は全く同じ内容だった。いったい、どういうことだろう。</p>
+<h2>「間違った提案」の中身</h2>
+<p>詳しくは上記の会話を確認してもらうと良いが、<strong>二人</strong>とも次のように勧めてきた:</p>
+<blockquote>
+<p><code>map(…).orElseGet(…)</code> よりも <code>flatMap(…).or(…)</code> を使う方が良い</p>
+</blockquote>
+<p>しかし、<code>flatMap(…).or(…)</code> を使うと、元々の<strong>三項演算子版</strong>と意味が変わるのではないかと、具体例を挙げて尋ねると、<code>flatMap</code>を使った場合は意味が変わる（等価ではない）ことを認めた。さっきは「<code>flatMap</code> でも同じ結果になる」と言っていたことを尋ねると、謝罪して訂正した。</p>
+<p><code>flatMap</code>で結果（意味）が変わるのは、次の2つが満たされるケースだ:</p>
+<ul>
+<li><code>maybeString</code>がpresent（<code>isPresent()</code>が真を返す）</li>
+<li><code>f()</code>が<code>Optional.empty()</code>を返す</li>
+</ul>
+<p>両者とも、初見ではなぜかこれを見落として、<code>flatMap(…).or(…)</code> を勧めてきたのだ。</p>
+<h2>その1年前</h2>
+<p>この質問は、およそ1年前の2025年9月にも実施した。この時は、三項演算子版と<code>map(…).orElseGet(…)</code>版が等価であることさえ説明できなかった。次はその時の記録である:</p>
+<ul>
+<li><a href="https://chatgpt.com/share/68bbff2f-dcb8-8011-91cd-89525665254f">OpenAI GPT-5の回答</a></li>
+<li><a href="https://claude.ai/share/b9a3065d-cd6e-45ac-9d88-b82e6c22d438">Claude Opus 4.1 +じっくり考える の回答</a></li>
+<li><a href="https://chatgpt.com/share/68b70dfa-94a8-8011-af5b-4b373e8f17e7">OpenAI GPT-5 Thinkingの回答</a></li>
+</ul>
+<p>最後の「OpenAI GPT-5 Thinking」だけが等価であることを回答できたが、先ほどのOpenAI GPT-5.5同様に「<code>flatMap</code>を推して」しまった。</p>
+<p>このとき、数ヶ月経てば（モデルが改良されるので）、生成AIは正しい回答をするようになるだろうと考えていた。しかし、1年経っても、まだ「<code>flatMap</code>を推す」癖は抜けていない。</p>
+<h2>10時10分バイアス</h2>
+<p>生成AIにアナログ時計の画像を作成させると、ほぼ10時10分の時計を描く癖がある。これは、10時10分バイアスと呼ばれ、学習データにおけるアナログ時計の画像の多くが10時10分を指していることに起因する。生成AIは、学習データにおける頻出パターンを「定石」として覚えてしまうのだ。</p>
+<ul>
+<li><a href="https://aistudio.google.com/app/prompts?state=%7B%22ids%22:%5B%221C0Z2C7B-7U82Ic-0yym0zHESLGoBM5FT%22%5D,%22action%22:%22open%22,%22userId%22:%22111148349046606287135%22,%22resourceKeys%22:%7B%7D%7D&amp;usp=sharing">Nano Banana 2 Liteが作成したアナログ時計の例</a></li>
+</ul>
+<p>10時10分バイアスの解説は、次のリンク先で詳しく説明されている。</p>
+<ul>
+<li><a href="https://chatgpt.com/share/6a786f5e-c6b8-83ee-8b8e-62dd3e884655">10時10分バイアスの解説</a></li>
+</ul>
+<p>アナログ時計が10時10分であることに問題は無いが、3時25分のアナログ時計を描くように指示しても10時10分の時計を描いてしまうとなると問題である。<code>Optional</code>の<code>flatMap</code>は、アナログ時計の10時10分のようなもので、学習データにおける頻出パターンを「定石」として覚えてしまうことが、間違った提案を勧める原因になっているのだろう。</p>
+<h2>まとめ</h2>
+<p>これはポチョムキン理解の良い例である。生成AIは、「よくあるパターン」をむやみに勧める癖がある。しかし、提案の内容を検証させると、間違いであることを認める。今や、生成AIは「正しい答え」を出す判断はできるが、間違ったことをお勧めしてきて、平然と謝罪することもある。つまり、生成AIは「正しい答え」と「間違った提案」を精査できるが、正しいかどうかはさておき、頻出パターンの提案を勧めがちである、ということだ。</p>
+<p>そして「よくあるパターン」とは学習データにおける頻出パターンである。特に、ポイントになるのは、<code>Optional</code>の<code>map</code>と<code>flatMap</code>のように、初心者や中級者は使わない機能である。これらは、おそらく全体で学習したコードにはあまり出現しておらず、<code>flatMap</code>の利用例が<code>map</code>よりも多く偏っているのではないかと推測される。</p>
+<h2>おまけ: つい口に出しても訂正できるようになる</h2>
+<ul>
+<li><a href="https://chatgpt.com/share/6a786784-478c-83e8-be42-fe6d89d831eb">OpenAI GPT-5.6の回答</a></li>
+</ul>
+<h2>コメント</h2>
+<ul>
+<li>この記事の面白いところは「答えられる」ことと「勧めない」ことの分離が明確に示されている点です。追及すれば<code>flatMap</code>版が意味を変えることを正しく説明できるのに、初手では<ruby>颯爽<rt>さっそう</rt></ruby>と間違った方を推してくる——これはまさに、モデルが概念の定義・検証はできても、生成時の既定選択にはその理解が反映されていない、という「わかっているのに間違える」タイプの失敗です。これは近年言われる「Potemkin understanding（ポチョムキン理解）」——ベンチマーク上は概念を理解しているように見えても、実際の適用場面ではその理解を一貫して使えない、という現象——をピンポイントで捉える具体例になっていて、タイトルの比喩ともよく噛み合っています。</li>
+<li>1年間の追跡比較が説得力を強めています。2025年9月時点では等価性の判定自体ができず、2026年7月時点では判定はできるようになったが「<code>flatMap</code>を推す」癖は変わらない、という進捗の非対称性を示しているのが良いポイントです。「モデル性能の向上」と「特定の誤った既定選択の解消」が別軸である、ということを実データで示しているのは、単なる「AIは間違えることがある」という話より一段深いです。</li>
+<li>原因の仮説（学習データにおける<code>flatMap</code>使用例の偏り、<code>map</code>/<code>flatMap</code>の使い分けが中〜上級者向けの機能であること）も筋が通っていて、単なる「バグ報告」ではなく、なぜこの種の誤りが起きやすいかという構造的な考察になっている点も評価できます。</li>
+</ul>
+          </main>
+        </section>
+      </div>
+      <div class="left-container">
+<nav>
+  <div>
+    <a href="/">Projects</a>
+  </div>
+  <div>
+    <span>&#x25BE;</span>
+  </div>
+  <div>
+    <span class="project-name"><a href="index.html">崖の上のポチョムキン</a></span>
+  </div>
+  <ul>
+    <li>
+      <a href="index.html">Prologue</a>
+    </li>
+    <li class="selected">
+      Episode 1
+    </li>
+    <ul id="toc-placeholder">
+    </ul>
+  </ul>
+</nav>
+      </div>
+    </div>
+  </body>
+</html>
