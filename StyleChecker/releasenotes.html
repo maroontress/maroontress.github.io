@@ -57,6 +57,23 @@ abstract
 
 ---
 -->
+<h2>2.2.1 (2026-10-30)</h2>
+<p>.NET 10 Migration and Brace Spacing Bug Fix</p>
+<h2>Requirements to run</h2>
+<p>Visual Studio 2022 (17.14.42) or .NET 10 (SDK 10.0.402)</p>
+<h2>Requirements to build</h2>
+<p>Visual Studio 2022 (17.14.42) or .NET 10 (SDK 10.0.402)</p>
+<h2>Changed</h2>
+<ul>
+<li>Update dependencies and target .NET 10</li>
+</ul>
+<h2>Fixed</h2>
+<ul>
+<li>Fix <code>NoSpaceBeforeBrace</code> and <code>NoSpaceAfterBrace</code> analyzers to handle brace
+spacing correctly, e.g., when a <a href="https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/language-specification/patterns#11211-list-pattern">list pattern</a>
+contains a property pattern</li>
+</ul>
+<hr>
 <h2>2.2.0 (2025-06-12)</h2>
 <p>Fix some analyzers</p>
 <h3>Requirements to run</h3>
